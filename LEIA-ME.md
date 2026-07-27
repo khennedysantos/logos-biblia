@@ -58,11 +58,20 @@ python traduzir_comentarios.py enviar entradas_calvin.json
 python traduzir_comentarios.py baixar <batch_id>   # um por lote impresso
 python mesclar_traducoes.py
 
-# 3. Léxico de Strong em português (~US$ 4, uma vez):
+# 3. Léxico de Strong em português (~US$ 1, uma vez):
 python traduzir_comentarios.py enviar entradas_strongs.json
 python traduzir_comentarios.py baixar <batch_id>
 python mesclar_strongs.py
+
+# 4. Glosas do interlinear em português (~US$ 4, uma vez):
+python extrair_glosas.py          # já vem pronto, mas pode regerar
+python traduzir_comentarios.py enviar entradas_glosas.json
+python traduzir_comentarios.py baixar <batch_id>
+python mesclar_glosas.py
 ```
+
+Depois de cada mesclagem: `git add . && git commit -m "traduções" && git push`
+na pasta do site, e as mudanças vão ao ar em ~2 minutos.
 
 Depois é só publicar a pasta de novo. O site detecta capítulos traduzidos
 automaticamente e deixa de exibir o aviso "comentário em inglês".

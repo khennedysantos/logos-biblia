@@ -40,7 +40,7 @@ MAX_TOKENS_SAIDA = 4096        # suficiente p/ blocos de comentário; aumente se
 ARQ_SAIDA = "traducoes.json"
 ARQ_PENDENTES = "batches_pendentes.txt"
 
-PROMPT_SISTEMA = (
+PROMPT_COMENTARIO = (
     "Você é um tradutor especializado em literatura teológica clássica. "
     "Traduza o comentário bíblico a seguir do inglês para português brasileiro. "
     "Regras: (1) mantenha o tom erudito, mas em português natural e fluente, "
@@ -49,6 +49,26 @@ PROMPT_SISTEMA = (
     "como estão; (4) não resuma, não omita, não acrescente nada; "
     "(5) responda APENAS com a tradução, sem preâmbulo nem comentários seus."
 )
+PROMPT_LEXICO = (
+    "Traduza esta definição de léxico bíblico (dicionário de Strong) do inglês "
+    "para português brasileiro. Mantenha o estilo telegráfico de dicionário, "
+    "os separadores (; , ||) e termos transliterados como estão. "
+    "Responda APENAS com a tradução."
+)
+PROMPT_GLOSA = (
+    "Traduza esta glosa interlinear bíblica do inglês para português brasileiro. "
+    "É a tradução literal de UMA palavra grega ou hebraica, então seja o mais "
+    "curto e literal possível. Preserve colchetes [], sinais <> e barras / "
+    "exatamente onde estão (indicam palavras implícitas ou marcadores "
+    "gramaticais). Não explique. Responda APENAS com a glosa traduzida."
+)
+
+def prompt_para(entrada_id: str) -> str:
+    if entrada_id.startswith("glosa-"):
+        return PROMPT_GLOSA
+    if entrada_id.startswith("strong-"):
+        return PROMPT_LEXICO
+    return PROMPT_COMENTARIO
 
 
 def carregar_traducoes() -> dict:
@@ -76,7 +96,7 @@ def enviar(caminho_entradas: str) -> None:
                 "params": {
                     "model": MODELO,
                     "max_tokens": MAX_TOKENS_SAIDA,
-                    "system": PROMPT_SISTEMA,
+                    "system": prompt_para(e["id"]),
                     "messages": [{"role": "user", "content": e["texto"]}],
                 },
             }
