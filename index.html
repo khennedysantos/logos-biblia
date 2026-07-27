@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logos — Estudo Bíblico</title>
+<meta name="description" content="Bíblia completa em português, inglês e espanhol, com originais em grego e hebraico, comentários clássicos, marcações e anotações. Gratuito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topo">
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro">☰ <span id="lblLivroAtual">João 1</span></button>
+  <div class="marca"><span class="lambda">Λ</span><span class="nome">Logos</span></div>
+  <div class="topo-acoes">
+    <button id="btnBusca" class="btn-icone" aria-label="Buscar">⌕</button>
+    <button id="btnNotas" class="btn-icone" aria-label="Minhas anotações">✎</button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
+  </div>
+</header>
+
+<div class="controles">
+  <label><span id="lblIdioma">Idioma</span>
+    <select id="selIdioma">
+      <option value="pt">Português</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+  </label>
+  <label><span id="lblTraducao">Tradução</span><select id="selTraducao"></select></label>
+  <label><span id="lblComparar">Comparar com…</span><select id="selComparar"></select></label>
+</div>
+
+<main id="leitor" class="leitor"></main>
+
+<nav class="rodape-nav">
+  <button id="btnAnterior">‹ <span></span></button>
+  <button id="btnProximo"><span></span> ›</button>
+</nav>
+
+<!-- Painel de livros -->
+<div id="painelLivros" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div id="listaLivros" class="lista-livros"></div>
+    <div id="listaCapitulos" class="lista-capitulos oculto"></div>
+  </div>
+</div>
+
+<!-- Painel de busca -->
+<div id="painelBusca" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
+    <div class="busca-linha">
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
+      <button id="btnBuscar">⌕</button>
+    </div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status"></div>
+    <div id="buscaResultados" class="busca-resultados"></div>
+  </div>
+</div>
+
+<!-- Painel de anotações -->
+<div id="painelNotas" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div id="listaNotas"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
