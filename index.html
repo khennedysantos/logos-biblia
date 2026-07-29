@@ -17,6 +17,7 @@
   <div class="topo-acoes">
     <button id="btnBusca" class="btn-icone" aria-label="Buscar">⌕</button>
     <button id="btnNotas" class="btn-icone" aria-label="Minhas anotações">✎</button>
+    <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua">¶</button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
   </div>
 </header>
@@ -53,6 +54,11 @@
 <div id="painelBusca" class="painel oculto">
   <div class="painel-caixa">
     <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
+    <div class="busca-abas">
+      <button data-modo="texto" class="aba ativa">Texto</button>
+      <button data-modo="temas" class="aba">Temas</button>
+      <button data-modo="dicionario" class="aba">Dicionário</button>
+    </div>
     <div class="busca-linha">
       <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
       <button id="btnBuscar">⌕</button>
@@ -68,6 +74,60 @@
   <div class="painel-caixa">
     <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<footer class="rodape">
+  <div class="rodape-grade">
+    <div>
+      <div class="marca"><span class="lambda">Λ</span><span class="nome">Logos</span></div>
+      <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
+      Bíblia completa, interlinear grego e hebraico, léxico de Strong,
+      comentários clássicos e referências cruzadas.</p>
+    </div>
+    <div>
+      <h3>Sobre</h3>
+      <a href="#" data-painel="painelSobre">Sobre o projeto</a>
+      <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="mailto:contato@exemplo.com">Contato</a>
+    </div>
+    <div>
+      <h3>Recursos</h3>
+      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="#" data-painel="painelNotas">Minhas anotações</a>
+      <a href="#" data-painel="painelBusca">Busca</a>
+    </div>
+    <div>
+      <h3>Comunidade</h3>
+      <a href="#" rel="noopener">Instagram (em breve)</a>
+      <a href="#" rel="noopener">YouTube (em breve)</a>
+      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+    </div>
+  </div>
+  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
+</footer>
+
+<div id="painelSobre" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
+    <p class="painel-texto">O Logos nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores.</p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
   </div>
 </div>
 

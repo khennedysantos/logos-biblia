@@ -8,6 +8,12 @@ const UI = {
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
     lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
+    leituraCorrida:"Leitura contínua",
+    abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
+    exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
+    conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
+    fonteNave:"Nave's Topical Bible (1897), domínio público", fonteEaston:"Dicionário Bíblico de Easton (1897), domínio público",
     semOriginal:"Texto original indisponível para este versículo.",
     semComentario:"Ainda não há comentário para este versículo.",
     avisoIdiomaComentario:"Comentário exibido no original em inglês — tradução em andamento.",
@@ -23,6 +29,12 @@ const UI = {
     original:"Original", comentario:"Commentary", anotacao:"Note", copiar:"Copy", copiado:"Copied!",
     grego:"Greek — Textus Receptus", hebraico:"Hebrew — Leningrad Codex",
     lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
+    referencias:"Cross-refs", semRefs:"No cross-references for this verse.", refFonte:"Cross-references: openbible.info (CC-BY)",
+    leituraCorrida:"Continuous reading",
+    abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
+    exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
+    conteudoEN:"Content in the original English.",
+    fonteNave:"Nave's Topical Bible (1897), public domain", fonteEaston:"Easton's Bible Dictionary (1897), public domain",
     semOriginal:"Original text unavailable for this verse.",
     semComentario:"No commentary available for this verse yet.",
     avisoIdiomaComentario:"Commentary shown in the original English.",
@@ -38,6 +50,12 @@ const UI = {
     original:"Original", comentario:"Comentario", anotacao:"Nota", copiar:"Copiar", copiado:"¡Copiado!",
     grego:"Griego — Textus Receptus", hebraico:"Hebreo — Códice de Leningrado",
     lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    referencias:"Referencias", semRefs:"Sin referencias para este versículo.", refFonte:"Referencias: openbible.info (CC-BY)",
+    leituraCorrida:"Lectura continua",
+    abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
+    exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
+    conteudoEN:"Contenido en el inglés original.",
+    fonteNave:"Nave's Topical Bible (1897), dominio público", fonteEaston:"Diccionario Bíblico de Easton (1897), dominio público",
     semOriginal:"Texto original no disponible para este versículo.",
     semComentario:"Aún no hay comentario para este versículo.",
     avisoIdiomaComentario:"Comentario mostrado en el inglés original.",
@@ -56,6 +74,7 @@ const est = {
   meta:null, idioma:"pt", traducao:"blivre", comparar:"",
   livro:"JHN", cap:1, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
+  corrida: lerLS("logos_corrida", false),
   cacheBiblia:{}, cacheComent:{}, versoAtivo:null, gaveta:null, // {tipo, verso}
 };
 function lerLS(k, padrao){ try{ return JSON.parse(localStorage.getItem(k)) ?? padrao; }catch(e){ return padrao; } }
@@ -81,7 +100,31 @@ async function carregarComentario(usfm, cap){
   }
   return est.cacheComent[chave];
 }
-est.cacheInter = {}; est.cacheLex = {};
+est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {};
+est.buscaModo = "texto"; est.cacheTemas = {}; est.cacheDic = {}; est.idxTemas = null; est.idxDic = null; est.aliasPT = null;
+async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
+async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
+async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
+async function temaSecao(letra){ if(!est.cacheTemas[letra]){ est.cacheTemas[letra] = await json(`data/topics/${letra}.json`); } return est.cacheTemas[letra]; }
+async function dicLetra(letra){ if(!est.cacheDic[letra]){ est.cacheDic[letra] = await json(`data/dictionary/${letra}.json`); } return est.cacheDic[letra]; }
+const RE_REF = /\b([1-3]?[A-Z]{2,3})\s(\d+):(\d+)(?:-(\d+))?/g;
+function linkarRefs(txt){
+  return esc(txt).replace(RE_REF, (m, l, c, v)=> est.meta.books.find(b=>b.id===l)
+    ? `<span class="tema-ref" data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}:${v}${m.includes("-")?m.slice(m.indexOf("-")):""}</span>` : m);
+}
+function ativarRefs(container){
+  container.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
+    alternarPainel("painelBusca", false); irPara(el.dataset.l, +el.dataset.c);
+  }));
+}
+async function carregarRefs(usfm, cap){
+  const chave = usfm+"/"+cap;
+  if(!(chave in est.cacheRefs)){
+    try{ est.cacheRefs[chave] = await json(`data/crossrefs/${usfm}/${cap}.json`); }
+    catch(e){ est.cacheRefs[chave] = null; }
+  }
+  return est.cacheRefs[chave];
+}
 async function carregarInterlinear(usfm, cap){
   const chave = usfm+"/"+cap;
   if(!(chave in est.cacheInter)){
@@ -141,6 +184,17 @@ async function renderizarCapitulo(){
 
   let html = `<h1 class="titulo-cap escritura">${nomeLivro(est.livro)} ${est.cap}</h1>
     <p class="sub-cap">${nomeTrad}${est.comparar ? " · " + est.meta.translations.find(tr=>tr.id===est.comparar).name : ""}</p>`;
+  if(est.corrida){
+    html += `<p class="escritura corrida">` +
+      versos.filter(Boolean).map(t=>esc(t)).join(" ") + `</p>`;
+    leitor.innerHTML = html;
+    atualizarNav();
+    $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
+    document.title = `${nomeLivro(est.livro)} ${est.cap} — Logos`;
+    location.hash = `#/${est.livro}/${est.cap}`;
+    window.scrollTo({top:0});
+    return;
+  }
   versos.forEach((texto, i)=>{
     if(!texto && !(versosComp && versosComp[i])) return;
     const v = i+1, chave = `${est.livro}.${est.cap}.${v}`;
@@ -184,6 +238,7 @@ function montarBarra(el){
     `<span class="sep"></span>
      <button class="acao" data-acao="original">${x.original}</button>
      <button class="acao" data-acao="comentario">${x.comentario}</button>
+     <button class="acao" data-acao="referencias">${x.referencias}</button>
      <button class="acao" data-acao="anotacao">${x.anotacao}</button>
      <button class="acao" data-acao="copiar">${x.copiar}</button>`;
   barra.querySelectorAll(".cor").forEach(b=>{
@@ -267,6 +322,30 @@ async function acaoVerso(el, v, acao, botao){
                ${est.idioma!=="en" && !com.__pt ? `<p class="aviso-idioma">${x.avisoIdiomaComentario}</p>` : ""}`
             : `<p class="comentario-texto">${x.semComentario}</p>`);
   }
+  if(acao==="referencias"){
+    const refs = await carregarRefs(est.livro, est.cap);
+    const lista = refs ? refs[String(v)] : null;
+    if(!lista || !lista.length){
+      gavetas.innerHTML = gaveta(x.referencias, `<p class="comentario-texto">${x.semRefs}</p>`);
+    } else {
+      gavetas.innerHTML = gaveta(x.referencias,
+        `<div class="refs">` + lista.map((r,ri)=>{
+          const rot = `${nomeLivro(r[0])} ${r[1]}:${r[2]}${r[3]>r[2] ? "-"+r[3] : ""}`;
+          return `<div class="ref-item" data-ri="${ri}">
+            <button class="ref-ir">${rot}</button>
+            <span class="ref-previa" id="rp-${v}-${ri}"></span></div>`;
+        }).join("") + `</div><p class="fonte">${x.refFonte}</p>`);
+      gavetas.querySelectorAll(".ref-ir").forEach((b,ri)=>b.addEventListener("click", ()=>{
+        const r = lista[ri]; irPara(r[0], r[1]);
+      }));
+      lista.forEach(async (r,ri)=>{
+        const alvo = document.getElementById(`rp-${v}-${ri}`);
+        const livro = await carregarLivro(est.traducao, r[0]);
+        if(alvo && livro && livro[r[1]-1] && livro[r[1]-1][r[2]-1])
+          alvo.textContent = livro[r[1]-1][r[2]-1];
+      });
+    }
+  }
   if(acao==="anotacao"){
     gavetas.innerHTML = gaveta(x.anotacao,
       `<textarea id="campoNota" placeholder="${x.escrevaNota}">${esc(est.notas[chave]||"")}</textarea>
@@ -332,6 +411,8 @@ function montarListaLivros(){
 
 /* ---------- busca ---------- */
 async function buscar(){
+  if(est.buscaModo==="temas") return buscarTemas();
+  if(est.buscaModo==="dicionario") return buscarDic();
   const x = t(), termo = $("campoBusca").value.trim();
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
@@ -362,6 +443,64 @@ async function buscar(){
     alternarPainel("painelBusca", false);
     irPara(a.usfm, a.cap);
   }));
+}
+
+const normStr = (s)=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+async function buscarTemas(){
+  const x = t(), termo = $("campoBusca").value.trim();
+  const res = $("buscaResultados"), status = $("buscaStatus");
+  res.innerHTML = ""; status.textContent = "";
+  if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
+  const [idx, alias] = await Promise.all([idxTemas(), aliasPT()]);
+  const alvo = normStr(termo);
+  const diretos = idx.filter(s=>normStr(s).includes(alvo));
+  const viaAlias = Object.entries(alias).filter(([pt])=>normStr(pt).includes(alvo)).map(([,en])=>en);
+  const nomes = [...new Set([...viaAlias, ...diretos])].slice(0, 40);
+  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
+  status.textContent = `${nomes.length} ${x.resultados}`;
+  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${esc(n)}</div></div>`).join("");
+  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
+    const nome = nomes[+el.dataset.n];
+    const secao = await temaSecao(nome[0].toUpperCase());
+    const linhas = secao[nome] || [];
+    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${esc(nome)}</h3>` +
+      linhas.map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
+      `<p class="fonte">${x.fonteNave}</p><p class="aviso-en">${x.conteudoEN}</p>`;
+    ativarRefs(res);
+  }));
+}
+async function buscarDic(){
+  const x = t(), termo = $("campoBusca").value.trim();
+  const res = $("buscaResultados"), status = $("buscaStatus");
+  res.innerHTML = ""; status.textContent = "";
+  if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
+  const idx = await idxDic();
+  const alvo = normStr(termo);
+  const nomes = idx.filter(s=>normStr(s).includes(alvo)).slice(0, 40);
+  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
+  status.textContent = `${nomes.length} ${x.resultados}`;
+  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${esc(n)}</div></div>`).join("");
+  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
+    const nome = nomes[+el.dataset.n];
+    const letra = /[A-Za-z]/.test(nome[0]) ? nome[0].toUpperCase() : "_";
+    const dic = await dicLetra(letra);
+    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${esc(nome)}</h3>` +
+      (dic[nome]||[]).map(d=>`<p class="dic-def">${esc(d)}</p>`).join("") +
+      `<p class="fonte">${x.fonteEaston}</p><p class="aviso-en">${x.conteudoEN}</p>`;
+  }));
+}
+function prepararAbas(){
+  const x = t();
+  document.querySelectorAll(".busca-abas .aba").forEach(b=>{
+    b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="temas" ? x.abaTemas : x.abaDic;
+    b.onclick = ()=>{
+      est.buscaModo = b.dataset.modo;
+      document.querySelectorAll(".busca-abas .aba").forEach(o=>o.classList.toggle("ativa", o===b));
+      document.querySelector(".busca-escopo").style.display = est.buscaModo==="texto" ? "" : "none";
+      $("campoBusca").placeholder = est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="temas" ? x.exTema : x.exDic;
+      $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+    };
+  });
 }
 
 /* ---------- anotações ---------- */
@@ -425,9 +564,22 @@ async function iniciar(){
   });
   $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizarCapitulo(); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
-  $("btnBusca").addEventListener("click", ()=>{ alternarPainel("painelBusca"); $("campoBusca").focus(); });
+  $("btnBusca").addEventListener("click", ()=>{ prepararAbas(); alternarPainel("painelBusca"); $("campoBusca").focus(); });
   $("btnNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas"); });
   $("btnTema").addEventListener("click", ()=>{ est.tema = est.tema==="escuro"?"claro":"escuro"; aplicarTema(); });
+  const bC = $("btnCorrida");
+  if(bC){
+    bC.title = t().leituraCorrida;
+    bC.classList.toggle("ativa", est.corrida);
+    bC.addEventListener("click", ()=>{
+      est.corrida = !est.corrida; gravarLS("logos_corrida", est.corrida);
+      bC.classList.toggle("ativa", est.corrida);
+      renderizarCapitulo();
+    });
+  }
+  document.querySelectorAll("[data-painel]").forEach(a=>a.addEventListener("click", (e)=>{
+    e.preventDefault(); alternarPainel(a.dataset.painel);
+  }));
   $("btnBuscar").addEventListener("click", buscar);
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));
