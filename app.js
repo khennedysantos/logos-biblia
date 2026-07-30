@@ -280,10 +280,35 @@ async function acaoVerso(el, v, acao, botao){
            <span class="ip-gloss">${esc(p[3])}</span>
            <span class="ip-strong">${p[2]||""}</span>
          </button>`).join("");
+      const mss = ehAT ? "" : `<div class="mss-abas">
+          <button data-mss="tr">Textus Receptus</button>
+          <button data-mss="byz">Bizantino</button>
+          <button data-mss="diff">Diferenças</button>
+        </div><div class="mss-alvo"></div>`;
       gavetas.innerHTML = gaveta(rotulo,
         `<div class="inter-grid" ${ehAT?'dir="rtl"':''}>${grid}</div>
-         <div class="lex-caixa oculto"></div>
+         <div class="lex-caixa oculto"></div>${mss}
          <p class="fonte">${x.lexFonte}</p>`);
+      gavetas.querySelectorAll(".mss-abas button").forEach(b=>b.addEventListener("click", async ()=>{
+        const alvo = gavetas.querySelector(".mss-alvo");
+        const ativa = b.classList.contains("ativa");
+        gavetas.querySelectorAll(".mss-abas button").forEach(o=>o.classList.remove("ativa"));
+        if(ativa){ alvo.innerHTML = ""; return; }
+        b.classList.add("ativa");
+        const [tr, byz] = await Promise.all([carregarLivro("orig", est.livro), carregarLivro("byz", est.livro)]);
+        const tTR = tr && tr[est.cap-1] ? (tr[est.cap-1][v-1]||"") : "";
+        const tBZ = byz && byz[est.cap-1] ? (byz[est.cap-1][v-1]||"") : "";
+        const modo = b.dataset.mss;
+        if(modo==="tr") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus (1550)</span>${esc(tTR)}</p>`;
+        else if(modo==="byz") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Texto Bizantino (Robinson-Pierpont)</span>${esc(tBZ)}</p>`;
+        else {
+          const A = tTR.split(/\s+/), B = tBZ.split(/\s+/);
+          const sA = new Set(B), sB = new Set(A);
+          const marcar = (toks, outro)=>toks.map(w=>outro.has(w.replace(/[.,;·]/g,"")) || outro.has(w) ? esc(w) : `<mark>${esc(w)}</mark>`).join(" ");
+          alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus</span>${marcar(A,sA)}</p>
+            <p class="mss-texto" lang="grc"><span class="rot">Bizantino</span>${marcar(B,sB)}</p>`;
+        }
+      }));
       gavetas.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
         const caixa = gavetas.querySelector(".lex-caixa");
         const strong = btn.dataset.strong;
@@ -503,9 +528,149 @@ function prepararAbas(){
   });
 }
 
+/* ---------- planos de leitura ---------- */
+est.planos = null; est.progresso = lerLS("logos_planos", {});
+async function planos(){ if(!est.planos){ est.planos = await json("data/plans.json"); } return est.planos; }
+function pctPlano(pl){
+  const pr = est.progresso[pl.id] || {};
+  const feitos = Object.values(pr).filter(Boolean).length;
+  return Math.round(feitos / pl.dias.length * 100);
+}
+async function montarPlanos(planoAberto){
+  const alvo = $("conteudoPlanos");
+  const ps = await planos();
+  if(!planoAberto){
+    alvo.innerHTML = ps.map(pl=>{
+      const pct = pctPlano(pl);
+      return `<div class="plano-card" data-id="${pl.id}">
+        <h3>${pl.nome[est.idioma]||pl.nome.pt}</h3>
+        <div class="plano-barra"><i style="width:${pct}%"></i></div>
+        <div class="plano-pct">${pct}% · ${pl.dias.length} dias</div></div>`;
+    }).join("");
+    alvo.querySelectorAll(".plano-card").forEach(c=>c.addEventListener("click", ()=>montarPlanos(c.dataset.id)));
+    return;
+  }
+  const pl = ps.find(x=>x.id===planoAberto);
+  const pr = est.progresso[pl.id] || {};
+  let html = `<button class="voltar-planos">‹ ${t().fechar==="Fechar"?"Voltar":"Back"}</button>
+    <h3 style="font-family:'Cardo',serif;margin:.2rem 0 .6rem">${pl.nome[est.idioma]||pl.nome.pt}</h3>`;
+  html += pl.dias.map((caps,i)=>{
+    const links = caps.map(([l,c])=>`<span data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}</span>`).join(", ");
+    return `<div class="dia-linha"><span class="dia-num">Dia ${i+1}</span>
+      <span class="dia-caps">${links}</span>
+      <input type="checkbox" class="dia-check" data-i="${i}" ${pr[i]?"checked":""}></div>`;
+  }).join("");
+  alvo.innerHTML = html;
+  alvo.querySelector(".voltar-planos").addEventListener("click", ()=>montarPlanos(null));
+  alvo.querySelectorAll(".dia-caps span").forEach(sp=>sp.addEventListener("click", ()=>{
+    alternarPainel("painelPlanos", false); irPara(sp.dataset.l, +sp.dataset.c);
+  }));
+  alvo.querySelectorAll(".dia-check").forEach(ch=>ch.addEventListener("change", ()=>{
+    est.progresso[pl.id] = est.progresso[pl.id] || {};
+    est.progresso[pl.id][ch.dataset.i] = ch.checked;
+    gravarLS("logos_planos", est.progresso);
+  }));
+  const primeiro = pl.dias.findIndex((_,i)=>!pr[i]);
+  if(primeiro > 3){ const el = alvo.querySelectorAll(".dia-linha")[primeiro]; if(el) el.scrollIntoView({block:"center"}); }
+}
+
+/* ---------- linha do tempo ---------- */
+est.tempo = null;
+async function montarTempo(){
+  if(!est.tempo){ est.tempo = await json("data/timeline.json"); }
+  $("conteudoTempo").innerHTML = est.tempo.eras.map(era=>
+    `<div class="era"><h3>${esc(era.nome)}</h3>` + era.eventos.map(ev=>
+      `<div class="evento"><span class="data">${esc(ev.d)}</span>
+       <span class="corpo">${esc(ev.t)} — ` +
+       ev.r.map(([l,c])=>`<span class="tema-ref" data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}</span>`).join(", ") +
+      `</span></div>`).join("") + `</div>`).join("");
+  $("conteudoTempo").querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
+    alternarPainel("painelTempo", false); irPara(el.dataset.l, +el.dataset.c);
+  }));
+}
+
+/* ---------- atlas ---------- */
+est.lugares = null; est.mapa = null; est.marcadores = [];
+function carregarLeaflet(){
+  return new Promise((res)=>{
+    if(window.L) return res();
+    const css = document.createElement("link");
+    css.rel = "stylesheet"; css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    document.head.appendChild(css);
+    const js = document.createElement("script");
+    js.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    js.onload = ()=>res();
+    document.head.appendChild(js);
+  });
+}
+async function abrirAtlas(){
+  alternarPainel("painelAtlas", true);
+  await carregarLeaflet();
+  if(!est.lugares){ est.lugares = await json("data/places.json"); }
+  if(!est.mapa){
+    est.mapa = L.map("mapa").setView([31.77, 35.21], 6);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      { attribution: "© OpenStreetMap", maxZoom: 15 }).addTo(est.mapa);
+  }
+  setTimeout(()=>est.mapa.invalidateSize(), 150);
+}
+function buscarAtlas(){
+  const termo = normStr($("campoAtlas").value.trim());
+  const res = $("atlasResultados");
+  if(termo.length < 2){ res.innerHTML = ""; return; }
+  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo)).slice(0, 12);
+  est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
+  res.innerHTML = achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(l.n)}</div>
+    <p>${l.r.slice(0,6).map(([b,c])=>`<span class="tema-ref" data-l="${b}" data-c="${c}">${nomeLivro(b)} ${c}</span>`).join(" · ")}</p></div>`).join("");
+  achados.forEach(l=>{
+    const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(l.n));
+    est.marcadores.push(m);
+  });
+  if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
+  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("tema-ref")) return;
+    const l = achados[+el.dataset.i];
+    est.mapa.setView([l.la, l.lo], 10);
+  }));
+  res.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
+    alternarPainel("painelAtlas", false); irPara(el.dataset.l, +el.dataset.c);
+  }));
+}
+
 /* ---------- anotações ---------- */
 function montarNotas(){
   const x = t(), alvo = $("listaNotas");
+  let acoes = document.querySelector(".notas-acoes");
+  if(!acoes){
+    acoes = document.createElement("div");
+    acoes.className = "notas-acoes";
+    acoes.innerHTML = `<button id="btnExportar">⬇ Backup</button>
+      <label for="arqImportar">⬆ Restaurar</label>
+      <input type="file" id="arqImportar" accept=".json" style="display:none">`;
+    alvo.parentNode.insertBefore(acoes, alvo);
+    acoes.querySelector("#btnExportar").addEventListener("click", ()=>{
+      const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, v: 1 };
+      const blob = new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "logos-backup.json";
+      a.click();
+    });
+    acoes.querySelector("#arqImportar").addEventListener("change", (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      const r = new FileReader();
+      r.onload = ()=>{
+        try{
+          const d = JSON.parse(r.result);
+          if(d.marcas) { est.marcas = d.marcas; gravarLS("logos_marcas", est.marcas); }
+          if(d.notas) { est.notas = d.notas; gravarLS("logos_notas", est.notas); }
+          if(d.planos) { est.progresso = d.planos; gravarLS("logos_planos", est.progresso); }
+          montarNotas(); renderizarCapitulo();
+        }catch(err){ alert("Arquivo inválido."); }
+      };
+      r.readAsText(f);
+    });
+  }
   const chaves = Object.keys(est.notas);
   if(!chaves.length){ alvo.innerHTML = `<p class="vazio">${x.semNotas}</p>`; return; }
   alvo.innerHTML = chaves.map(k=>{
@@ -578,8 +743,16 @@ async function iniciar(){
     });
   }
   document.querySelectorAll("[data-painel]").forEach(a=>a.addEventListener("click", (e)=>{
-    e.preventDefault(); alternarPainel(a.dataset.painel);
+    e.preventDefault();
+    const id = a.dataset.painel;
+    if(id==="painelAtlas") return abrirAtlas();
+    if(id==="painelPlanos") montarPlanos(null);
+    if(id==="painelTempo") montarTempo();
+    alternarPainel(id);
   }));
+  $("btnPlanos").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos"); });
+  $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
+  $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));

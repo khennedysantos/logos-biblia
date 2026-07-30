@@ -17,6 +17,7 @@
   <div class="topo-acoes">
     <button id="btnBusca" class="btn-icone" aria-label="Buscar">⌕</button>
     <button id="btnNotas" class="btn-icone" aria-label="Minhas anotações">✎</button>
+    <button id="btnPlanos" class="btn-icone" aria-label="Planos de leitura">▤</button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua">¶</button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
   </div>
@@ -94,6 +95,9 @@
     <div>
       <h3>Recursos</h3>
       <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="#" data-painel="painelPlanos">Planos de leitura</a>
+      <a href="#" data-painel="painelTempo">Linha do tempo</a>
+      <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
       <a href="#" data-painel="painelBusca">Busca</a>
     </div>
@@ -108,6 +112,27 @@
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
+<div id="painelPlanos" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
+  </div>
+</div>
 <div id="painelSobre" class="painel oculto">
   <div class="painel-caixa">
     <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>

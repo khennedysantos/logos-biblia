@@ -1,0 +1,59 @@
+{"eras":[
+{"nome":"Primórdios","eventos":[
+{"d":"No princípio","t":"Criação dos céus e da terra","r":[["GEN",1]]},
+{"d":"—","t":"Queda do homem no Éden","r":[["GEN",3]]},
+{"d":"—","t":"Dilúvio e a aliança com Noé","r":[["GEN",7],["GEN",9]]},
+{"d":"—","t":"Torre de Babel e dispersão dos povos","r":[["GEN",11]]}]},
+{"nome":"Patriarcas (c. 2100–1800 a.C.)","eventos":[
+{"d":"c. 2091 a.C.","t":"Chamado de Abraão; partida de Harã","r":[["GEN",12]]},
+{"d":"—","t":"Aliança de Deus com Abraão","r":[["GEN",15],["GEN",17]]},
+{"d":"—","t":"Nascimento de Isaque; o sacrifício no Moriá","r":[["GEN",21],["GEN",22]]},
+{"d":"—","t":"Jacó torna-se Israel","r":[["GEN",28],["GEN",32]]},
+{"d":"—","t":"José governa o Egito; Israel desce ao Egito","r":[["GEN",41],["GEN",46]]}]},
+{"nome":"Êxodo e deserto (c. 1446–1406 a.C.)","eventos":[
+{"d":"c. 1446 a.C.","t":"As dez pragas e a Páscoa; saída do Egito","r":[["EXO",12],["EXO",14]]},
+{"d":"—","t":"A Lei entregue no Sinai","r":[["EXO",20]]},
+{"d":"—","t":"O tabernáculo é erguido","r":[["EXO",40]]},
+{"d":"—","t":"40 anos de peregrinação no deserto","r":[["NUM",14]]}]},
+{"nome":"Conquista e juízes (c. 1406–1050 a.C.)","eventos":[
+{"d":"c. 1406 a.C.","t":"Travessia do Jordão; queda de Jericó","r":[["JOS",3],["JOS",6]]},
+{"d":"—","t":"Repartição da terra entre as tribos","r":[["JOS",13]]},
+{"d":"—","t":"Período dos juízes: Débora, Gideão, Sansão","r":[["JDG",4],["JDG",7],["JDG",16]]},
+{"d":"—","t":"História de Rute, bisavó de Davi","r":[["RUT",1]]}]},
+{"nome":"Reino unido (c. 1050–930 a.C.)","eventos":[
+{"d":"c. 1050 a.C.","t":"Saul, primeiro rei de Israel","r":[["1SA",10]]},
+{"d":"c. 1010 a.C.","t":"Davi reina; Jerusalém vira capital","r":[["2SA",5]]},
+{"d":"—","t":"A aliança davídica","r":[["2SA",7]]},
+{"d":"c. 970 a.C.","t":"Salomão; construção do templo","r":[["1KI",6],["1KI",8]]}]},
+{"nome":"Reino dividido (930–586 a.C.)","eventos":[
+{"d":"930 a.C.","t":"Divisão: Israel (norte) e Judá (sul)","r":[["1KI",12]]},
+{"d":"—","t":"Elias no Carmelo contra os profetas de Baal","r":[["1KI",18]]},
+{"d":"722 a.C.","t":"Assíria destrói Samaria; fim do reino do norte","r":[["2KI",17]]},
+{"d":"—","t":"Reforma de Ezequias; livramento de Jerusalém","r":[["2KI",18],["2KI",19]]},
+{"d":"—","t":"Ministério de Isaías, Jeremias e os profetas","r":[["ISA",6],["JER",1]]},
+{"d":"586 a.C.","t":"Babilônia destrói Jerusalém e o templo","r":[["2KI",25],["LAM",1]]}]},
+{"nome":"Exílio e retorno (586–430 a.C.)","eventos":[
+{"d":"—","t":"Daniel na corte da Babilônia","r":[["DAN",1],["DAN",6]]},
+{"d":"—","t":"Visões de Ezequiel entre os exilados","r":[["EZK",1],["EZK",37]]},
+{"d":"538 a.C.","t":"Decreto de Ciro; primeiro retorno","r":[["EZR",1]]},
+{"d":"516 a.C.","t":"O segundo templo é concluído","r":[["EZR",6]]},
+{"d":"—","t":"Ester livra os judeus na Pérsia","r":[["EST",4],["EST",7]]},
+{"d":"445 a.C.","t":"Neemias reconstrói os muros de Jerusalém","r":[["NEH",2],["NEH",6]]},
+{"d":"c. 430 a.C.","t":"Malaquias, último profeta do AT","r":[["MAL",3]]}]},
+{"nome":"Vida de Jesus (c. 5 a.C.–30 d.C.)","eventos":[
+{"d":"c. 5 a.C.","t":"Nascimento de Jesus em Belém","r":[["MAT",1],["LUK",2]]},
+{"d":"c. 27 d.C.","t":"Batismo e início do ministério","r":[["MAT",3],["LUK",4]]},
+{"d":"—","t":"Sermão do Monte","r":[["MAT",5]]},
+{"d":"—","t":"Milagres e parábolas do Reino","r":[["MRK",4],["JHN",11]]},
+{"d":"—","t":"Transfiguração","r":[["MAT",17]]},
+{"d":"c. 30 d.C.","t":"Última ceia, cruz e sepultamento","r":[["JHN",13],["JHN",19]]},
+{"d":"c. 30 d.C.","t":"Ressurreição e grande comissão","r":[["MAT",28],["JHN",20]]}]},
+{"nome":"Igreja primitiva (30–95 d.C.)","eventos":[
+{"d":"30 d.C.","t":"Pentecostes: o Espírito é derramado","r":[["ACT",2]]},
+{"d":"—","t":"Conversão de Paulo","r":[["ACT",9]]},
+{"d":"—","t":"O evangelho chega aos gentios","r":[["ACT",10],["ACT",15]]},
+{"d":"48–57 d.C.","t":"Viagens missionárias de Paulo","r":[["ACT",13],["ACT",16],["ACT",19]]},
+{"d":"c. 57 d.C.","t":"Carta aos Romanos","r":[["ROM",1]]},
+{"d":"60–62 d.C.","t":"Paulo preso em Roma; cartas da prisão","r":[["ACT",28],["EPH",1]]},
+{"d":"c. 95 d.C.","t":"Apocalipse: visões de João em Patmos","r":[["REV",1],["REV",21]]}]}
+]}
