@@ -13,6 +13,8 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
+    comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
+    semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
     fonteNave:"Nave's Topical Bible (1897), domínio público", fonteEaston:"Dicionário Bíblico de Easton (1897), domínio público",
     semOriginal:"Texto original indisponível para este versículo.",
     semComentario:"Ainda não há comentário para este versículo.",
@@ -34,6 +36,8 @@ const UI = {
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
+    comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
+    semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
     fonteNave:"Nave's Topical Bible (1897), public domain", fonteEaston:"Easton's Bible Dictionary (1897), public domain",
     semOriginal:"Original text unavailable for this verse.",
     semComentario:"No commentary available for this verse yet.",
@@ -55,6 +59,8 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
+    comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
+    semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
     fonteNave:"Nave's Topical Bible (1897), dominio público", fonteEaston:"Diccionario Bíblico de Easton (1897), dominio público",
     semOriginal:"Texto original no disponible para este versículo.",
     semComentario:"Aún no hay comentario para este versículo.",
@@ -100,7 +106,24 @@ async function carregarComentario(usfm, cap){
   }
   return est.cacheComent[chave];
 }
-est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {};
+est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {}; est.calvinLivros = null;
+async function livrosCalvin(){
+  if(!est.calvinLivros){
+    try{ est.calvinLivros = (await json("data/commentaries/calvin/manifest.json")).books; }
+    catch(e){ est.calvinLivros = []; }
+  }
+  return est.calvinLivros;
+}
+function comentarioProximo(com, v){
+  if(!com) return null;
+  if(com[String(v)]) return { v: v, texto: com[String(v)] };
+  let melhor = 0;
+  for(const k of Object.keys(com)){
+    const n = +k;
+    if(k !== "__pt" && !isNaN(n) && n < v && n > melhor) melhor = n;
+  }
+  return melhor ? { v: melhor, texto: com[String(melhor)] } : null;
+}
 est.buscaModo = "texto"; est.cacheTemas = {}; est.cacheDic = {}; est.idxTemas = null; est.idxDic = null; est.aliasPT = null;
 async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
@@ -349,13 +372,18 @@ async function acaoVerso(el, v, acao, botao){
     }
   }
   if(acao==="comentario"){
-    const com = await carregarComentario(est.livro, est.cap);
-    const texto = com ? com[String(v)] : null;
-    gavetas.innerHTML = gaveta(x.comentario,
-      texto ? `<p class="comentario-texto">${esc(texto)}</p>
-               <p class="fonte">${x.fonte}: João Calvino (1509–1564), domínio público</p>
-               ${est.idioma!=="en" && !com.__pt ? `<p class="aviso-idioma">${x.avisoIdiomaComentario}</p>` : ""}`
-            : `<p class="comentario-texto">${x.semComentario}</p>`);
+    const [com, cobertos] = await Promise.all([carregarComentario(est.livro, est.cap), livrosCalvin()]);
+    const achado = comentarioProximo(com, v);
+    let corpo;
+    if(achado){
+      const nota = achado.v !== v ? `<p class="aviso-idioma">${x.comRef} ${achado.v} ${x.comBloco}</p>` : "";
+      corpo = `${nota}<p class="comentario-texto">${esc(achado.texto)}</p>
+        <p class="fonte">${x.fonte}: João Calvino (1509–1564), domínio público</p>
+        ${est.idioma!=="en" && !com.__pt ? `<p class="aviso-idioma">${x.avisoIdiomaComentario}</p>` : ""}`;
+    } else {
+      corpo = `<p class="comentario-texto">${cobertos.length && !cobertos.includes(est.livro) ? x.semLivroCalvin : x.semComentario}</p>`;
+    }
+    gavetas.innerHTML = gaveta(x.comentario, corpo);
   }
   if(acao==="referencias"){
     const refs = await carregarRefs(est.livro, est.cap);
@@ -799,9 +827,9 @@ async function atualizarEstudo(v){
   } else {
     alvoO.innerHTML = `<p class="estudo-vazio">${t().semOriginal}</p>`;
   }
-  const texto = com ? com[String(v)] : null;
-  alvoC.innerHTML = texto
-    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino</p><p class="comentario-texto" style="font-size:.82rem">${esc(texto)}</p>`
+  const achado = comentarioProximo(com, v);
+  alvoC.innerHTML = achado
+    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino${achado.v !== v ? ` · ${t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
     : `<p class="estudo-vazio">${t().semComentario}</p>`;
 }
 
