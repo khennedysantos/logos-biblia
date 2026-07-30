@@ -258,3 +258,15 @@ body{margin:0;background:var(--papel);color:var(--tinta);
 .estudo-vazio{font-size:.78rem;color:var(--suave)}
 body.estudo #btnEstudo{border-color:var(--ouro);color:var(--ouro)}
 @media (max-width:1099px){.col-estudo{display:none!important}}
+
+/* barra de navegação */
+.navbar{position:sticky;top:3.4rem;z-index:25;display:flex;gap:.4rem;align-items:center;
+  padding:.45rem 1rem;background:var(--papel);border-bottom:1px solid var(--borda);
+  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.navbar::-webkit-scrollbar{display:none}
+.navbar button{flex:0 0 auto;border:1px solid var(--borda);background:var(--painel);
+  color:var(--tinta);border-radius:999px;padding:.4rem .85rem;font-size:.78rem;
+  font-weight:500;cursor:pointer;white-space:nowrap}
+.navbar button:hover{border-color:var(--ouro);color:var(--ouro)}
+.navbar button.ativa{border-color:var(--ouro);color:var(--ouro);font-weight:600}
+@media (max-width:1099px){.so-desktop{display:none}}

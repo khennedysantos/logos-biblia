@@ -147,6 +147,12 @@ function refStr(usfm, cap, v){ return `${nomeLivro(usfm)} ${cap}:${v}`; }
 /* ---------- interface base ---------- */
 function aplicarTextos(){
   const x = t();
+  const NAV = {
+    pt:{buscar:"⌕ Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"◫ Modo estudo"},
+    en:{buscar:"⌕ Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"◫ Study mode"},
+    es:{buscar:"⌕ Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"◫ Modo estudio"}
+  }[est.idioma];
+  document.querySelectorAll(".navbar [data-nav]").forEach(b=>{ if(NAV[b.dataset.nav]) b.textContent = NAV[b.dataset.nav]; });
   $("lblIdioma").textContent = x.idioma;
   $("lblTraducao").textContent = x.traducao;
   $("lblComparar").textContent = x.comparar;
@@ -518,6 +524,13 @@ async function buscarDic(){
       `<p class="fonte">${x.fonteEaston}</p><p class="aviso-en">${x.conteudoEN}</p>`;
   }));
 }
+function abrirBusca(modo){
+  prepararAbas();
+  alternarPainel("painelBusca", true);
+  const alvo = document.querySelector(`.busca-abas .aba[data-modo="${modo}"]`);
+  if(alvo) alvo.onclick();
+  $("campoBusca").focus();
+}
 function prepararAbas(){
   const x = t();
   document.querySelectorAll(".busca-abas .aba").forEach(b=>{
@@ -751,6 +764,7 @@ est.estudo = lerLS("logos_estudo", false);
 function aplicarEstudo(){
   document.body.classList.toggle("estudo", est.estudo);
   $("colEstudo").classList.toggle("oculto", !est.estudo);
+  $("btnEstudo").classList.toggle("ativa", est.estudo);
 }
 async function atualizarEstudo(v){
   if(!est.estudo || window.innerWidth < 1100) return;
@@ -883,7 +897,12 @@ async function iniciar(){
   });
   $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizarCapitulo(); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
-  $("btnBusca").addEventListener("click", ()=>{ prepararAbas(); alternarPainel("painelBusca"); $("campoBusca").focus(); });
+  $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
+  $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
+  $("navDic").addEventListener("click", ()=>abrirBusca("dicionario"));
+  $("navTempo").addEventListener("click", ()=>{ montarTempo(); alternarPainel("painelTempo"); });
+  $("navAtlas").addEventListener("click", abrirAtlas);
+  $("navContexto").addEventListener("click", abrirContexto);
   $("btnNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas"); });
   $("btnTema").addEventListener("click", ()=>{ est.tema = est.tema==="escuro"?"claro":"escuro"; aplicarTema(); });
   const bC = $("btnCorrida");

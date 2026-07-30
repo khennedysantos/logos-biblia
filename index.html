@@ -15,14 +15,22 @@
   <button id="btnLivros" class="btn-livros" aria-label="Escolher livro">☰ <span id="lblLivroAtual">João 1</span></button>
   <div class="marca"><span class="lambda">Λ</span><span class="nome">Logos</span></div>
   <div class="topo-acoes">
-    <button id="btnBusca" class="btn-icone" aria-label="Buscar">⌕</button>
-    <button id="btnNotas" class="btn-icone" aria-label="Minhas anotações">✎</button>
-    <button id="btnEstudo" class="btn-icone" aria-label="Modo estudo" title="Modo estudo">◫</button>
-    <button id="btnPlanos" class="btn-icone" aria-label="Planos de leitura">▤</button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua">¶</button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
   </div>
 </header>
+
+<nav class="navbar" aria-label="Recursos">
+  <button id="btnBusca" data-nav="buscar">⌕ Buscar</button>
+  <button id="navTemas" data-nav="temas">Temas</button>
+  <button id="navDic" data-nav="dicionario">Dicionário</button>
+  <button id="btnPlanos" data-nav="planos">Planos</button>
+  <button id="navTempo" data-nav="tempo">Linha do tempo</button>
+  <button id="navAtlas" data-nav="atlas">Atlas</button>
+  <button id="navContexto" data-nav="contexto">Contexto</button>
+  <button id="btnNotas" data-nav="notas">Anotações</button>
+  <button id="btnEstudo" data-nav="estudo" class="so-desktop">◫ Modo estudo</button>
+</nav>
 
 <div class="controles">
   <label><span id="lblIdioma">Idioma</span>
