@@ -224,3 +224,37 @@ body{margin:0;background:var(--papel);color:var(--tinta);
 /* exportar/importar */
 .notas-acoes{display:flex;gap:.5rem;margin-bottom:.8rem}
 .notas-acoes button,.notas-acoes label{border:1px solid var(--borda);background:var(--papel);color:var(--tinta);border-radius:999px;padding:.35rem .8rem;font-size:.72rem;cursor:pointer}
+
+/* contexto do livro */
+.btn-contexto{border:1px solid var(--borda);background:var(--painel);color:var(--ouro);
+  font-size:.68rem;font-weight:600;border-radius:999px;padding:.3rem .8rem;cursor:pointer;
+  vertical-align:middle;margin-left:.6rem}
+.ctx-grade{display:grid;grid-template-columns:auto 1fr;gap:.35rem .8rem;font-size:.85rem;line-height:1.5}
+.ctx-grade dt{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--ouro);align-self:baseline}
+.ctx-grade dd{margin:0}
+.ctx-barra{position:relative;height:.5rem;border-radius:999px;background:var(--hover);margin:1rem 0 .2rem}
+.ctx-barra i{position:absolute;top:-0.22rem;width:.95rem;height:.95rem;border-radius:50%;
+  background:var(--ouro);border:2px solid var(--papel);transform:translateX(-50%)}
+.ctx-escala{display:flex;justify-content:space-between;font-size:.6rem;color:var(--suave)}
+/* atlas: painel do lugar */
+.lugar-card{border:1px solid var(--ouro);border-radius:.8rem;padding:.8rem;margin:.6rem 0;background:var(--papel)}
+.lugar-card h3{font-family:'Cardo',serif;margin:0 0 .4rem;font-size:1.05rem}
+.lugar-meta{font-size:.72rem;color:var(--suave);margin:.15rem 0}
+.lugar-refs{font-size:.8rem;line-height:1.7}
+.lugar-dist{font-size:.72rem;color:var(--suave);margin-top:.4rem;line-height:1.6}
+.lugar-card a{color:var(--ouro)}
+/* modo estudo */
+.area-leitura{display:block}
+@media (min-width:1100px){
+  body.estudo .area-leitura{display:grid;grid-template-columns:minmax(0,1fr) 24rem;
+    gap:1.2rem;max-width:78rem;margin:0 auto;padding:0 1rem}
+  body.estudo .leitor{max-width:none;padding:0 0 5.5rem}
+}
+.col-estudo{position:sticky;top:4.5rem;align-self:start;max-height:calc(100vh - 6rem);
+  overflow-y:auto;display:flex;flex-direction:column;gap:.8rem;padding-bottom:2rem}
+.estudo-bloco{border:1px solid var(--borda);border-radius:.9rem;background:var(--painel);padding:.8rem}
+.estudo-bloco h4{margin:0 0 .5rem;font-size:.62rem;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--ouro)}
+.estudo-vazio{font-size:.78rem;color:var(--suave)}
+body.estudo #btnEstudo{border-color:var(--ouro);color:var(--ouro)}
+@media (max-width:1099px){.col-estudo{display:none!important}}

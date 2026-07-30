@@ -17,6 +17,7 @@
   <div class="topo-acoes">
     <button id="btnBusca" class="btn-icone" aria-label="Buscar">⌕</button>
     <button id="btnNotas" class="btn-icone" aria-label="Minhas anotações">✎</button>
+    <button id="btnEstudo" class="btn-icone" aria-label="Modo estudo" title="Modo estudo">◫</button>
     <button id="btnPlanos" class="btn-icone" aria-label="Planos de leitura">▤</button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua">¶</button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
@@ -35,7 +36,13 @@
   <label><span id="lblComparar">Comparar com…</span><select id="selComparar"></select></label>
 </div>
 
-<main id="leitor" class="leitor"></main>
+<div id="areaLeitura" class="area-leitura">
+  <main id="leitor" class="leitor"></main>
+  <aside id="colEstudo" class="col-estudo oculto">
+    <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
+    <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
+  </aside>
+</div>
 
 <nav class="rodape-nav">
   <button id="btnAnterior">‹ <span></span></button>
@@ -128,6 +135,7 @@
   <div class="painel-caixa painel-larga">
     <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
     <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
+    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
     <div id="atlasResultados" class="busca-resultados"></div>
     <div id="mapa"></div>
     <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>

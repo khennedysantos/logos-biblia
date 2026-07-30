@@ -182,7 +182,7 @@ async function renderizarCapitulo(){
   const versosComp = livroComp ? (livroComp[est.cap-1]||[]) : null;
   const nomeTrad = est.meta.translations.find(tr=>tr.id===est.traducao).name;
 
-  let html = `<h1 class="titulo-cap escritura">${nomeLivro(est.livro)} ${est.cap}</h1>
+  let html = `<h1 class="titulo-cap escritura">${nomeLivro(est.livro)} ${est.cap}<button class="btn-contexto" onclick="abrirContexto()">Contexto</button></h1>
     <p class="sub-cap">${nomeTrad}${est.comparar ? " · " + est.meta.translations.find(tr=>tr.id===est.comparar).name : ""}</p>`;
   if(est.corrida){
     html += `<p class="escritura corrida">` +
@@ -225,6 +225,10 @@ function ativarVerso(el, toque){
   est.versoAtivo = el;
   el.classList.add("ativo");
   montarBarra(el);
+  if(toque || est.ultimoEstudo !== el.dataset.v + est.cap + est.livro){
+    est.ultimoEstudo = el.dataset.v + est.cap + est.livro;
+    atualizarEstudo(+el.dataset.v);
+  }
 }
 function fecharGavetas(el){ el.querySelector(".gavetas").innerHTML=""; est.gaveta=null; }
 
@@ -607,6 +611,7 @@ async function abrirAtlas(){
   alternarPainel("painelAtlas", true);
   await carregarLeaflet();
   if(!est.lugares){ est.lugares = await json("data/places.json"); }
+  montarViagens();
   if(!est.mapa){
     est.mapa = L.map("mapa").setView([31.77, 35.21], 6);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -629,12 +634,161 @@ function buscarAtlas(){
   if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
   res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
     if(e.target.classList.contains("tema-ref")) return;
-    const l = achados[+el.dataset.i];
-    est.mapa.setView([l.la, l.lo], 10);
+    mostrarLugar(achados[+el.dataset.i]);
   }));
   res.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
     alternarPainel("painelAtlas", false); irPara(el.dataset.l, +el.dataset.c);
   }));
+}
+
+/* ---------- contexto do livro ---------- */
+est.ctx = null;
+async function abrirContexto(){
+  if(!est.ctx){ est.ctx = await json("data/context.json"); }
+  const c = est.ctx[est.livro];
+  if(!c) return;
+  let painel = $("painelCtx");
+  if(!painel){
+    painel = document.createElement("div");
+    painel.id = "painelCtx"; painel.className = "painel oculto";
+    painel.innerHTML = `<div class="painel-caixa">
+      <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx">✕</button></div>
+      <div id="ctxCorpo"></div></div>`;
+    document.body.appendChild(painel);
+    painel.querySelector(".fechar").addEventListener("click", ()=>painel.classList.add("oculto"));
+    painel.addEventListener("click", (e)=>{ if(e.target===painel) painel.classList.add("oculto"); });
+  }
+  $("ctxTitulo").textContent = nomeLivro(est.livro);
+  const par = (c.par||[]).map(([l,ch])=>`<span class="tema-ref" data-l="${l}" data-c="${ch}">${nomeLivro(l)} ${ch}</span>`).join(" · ");
+  $("ctxCorpo").innerHTML = `<dl class="ctx-grade">
+    <dt>Autor</dt><dd>${esc(c.a)}</dd>
+    <dt>Data</dt><dd>${esc(c.d)}</dd>
+    <dt>Local</dt><dd>${esc(c.l)}</dd>
+    <dt>Público</dt><dd>${esc(c.p)}</dd>
+    <dt>Tema</dt><dd>${esc(c.t)}</dd>
+    ${par ? `<dt>Paralelos</dt><dd>${par}</dd>` : ""}
+  </dl>
+  <div class="ctx-barra"><i style="left:${c.pos}%"></i></div>
+  <div class="ctx-escala"><span>Criação</span><span>Êxodo</span><span>Davi</span><span>Exílio</span><span>Cristo</span><span>Igreja</span></div>`;
+  $("ctxCorpo").querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
+    painel.classList.add("oculto"); irPara(el.dataset.l, +el.dataset.c);
+  }));
+  alternarPainel("painelCtx", true);
+}
+window.abrirContexto = abrirContexto;
+
+/* ---------- atlas: lugar detalhado, distâncias e viagens ---------- */
+const CIDADES_CHAVE = [["Jerusalém",31.7784,35.2354],["Babilônia",32.5364,44.4208],["Roma",41.8919,12.5113],["Éfeso",37.9411,27.3419],["Alexandria",31.2001,29.9187],["Damasco",33.5132,36.2919]];
+function distKm(a1,o1,a2,o2){
+  const R=6371, r=Math.PI/180;
+  const dA=(a2-a1)*r, dO=(o2-o1)*r;
+  const h=Math.sin(dA/2)**2 + Math.cos(a1*r)*Math.cos(a2*r)*Math.sin(dO/2)**2;
+  return Math.round(2*R*Math.asin(Math.sqrt(h)));
+}
+function mostrarLugar(l){
+  const res = $("atlasResultados");
+  const refs = l.r.map(([b,c,v])=>`<span class="tema-ref" data-l="${b}" data-c="${c}">${nomeLivro(b)} ${c}:${v}</span>`).join(" · ");
+  const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
+  const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase())
+    .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
+  res.innerHTML = `<div class="lugar-card">
+    <h3>${esc(l.n)}</h3>
+    <p class="lugar-meta">${l.tot} ocorrência(s) na Bíblia
+      · Primeira: <span class="tema-ref" data-l="${primeira[0]}" data-c="${primeira[1]}">${nomeLivro(primeira[0])} ${primeira[1]}:${primeira[2]}</span>
+      · Última: <span class="tema-ref" data-l="${ultima[0]}" data-c="${ultima[1]}">${nomeLivro(ultima[0])} ${ultima[1]}:${ultima[2]}</span></p>
+    <p class="lugar-refs">${refs}</p>
+    <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
+    ${l.f ? `<p class="lugar-meta"><a href="${l.f}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
+  </div>`;
+  res.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
+    alternarPainel("painelAtlas", false); irPara(el.dataset.l, +el.dataset.c);
+  }));
+  est.mapa.setView([l.la, l.lo], 9);
+}
+est.viagens = null; est.camadaViagem = [];
+async function montarViagens(){
+  if(!est.viagens){ est.viagens = await json("data/journeys.json"); }
+  const alvo = $("viagens");
+  if(alvo.dataset.pronto) return;
+  alvo.dataset.pronto = "1";
+  alvo.innerHTML = est.viagens.map(v=>`<button data-v="${v.id}">${v.nome.split(" (")[0]}</button>`).join("");
+  alvo.querySelectorAll("button").forEach(b=>b.addEventListener("click", ()=>{
+    const ativa = b.classList.contains("ativa");
+    alvo.querySelectorAll("button").forEach(o=>o.classList.remove("ativa"));
+    limparViagem();
+    if(ativa) return;
+    b.classList.add("ativa");
+    desenharViagem(est.viagens.find(v=>v.id===b.dataset.v));
+  }));
+}
+function limparViagem(){
+  est.camadaViagem.forEach(c=>est.mapa.removeLayer(c));
+  est.camadaViagem = [];
+}
+function desenharViagem(v){
+  const pontos = v.paradas.map(p=>p[1]);
+  v.paradas.forEach((p,i)=>{
+    const m = L.circleMarker(p[1], {radius:6, color:v.cor, fillColor:v.cor, fillOpacity:.9})
+      .addTo(est.mapa)
+      .bindPopup(`<b>${i+1}. ${p[0]}</b><br>` +
+        p[2].map(([b,c,vv])=>`<a href="#/${b}/${c}" onclick="document.getElementById('painelAtlas').classList.add('oculto')">${nomeLivro(b)} ${c}:${vv}</a>`).join(", "));
+    est.camadaViagem.push(m);
+  });
+  est.mapa.fitBounds(L.latLngBounds(pontos).pad(0.15));
+  // linha animada: desenha o percurso trecho a trecho
+  let i = 0;
+  const linha = L.polyline([pontos[0]], {color:v.cor, weight:3, opacity:.85, dashArray:"6 6"}).addTo(est.mapa);
+  est.camadaViagem.push(linha);
+  const timer = setInterval(()=>{
+    i++;
+    if(i >= pontos.length || !est.camadaViagem.includes(linha)){ clearInterval(timer); return; }
+    linha.addLatLng(pontos[i]);
+  }, 350);
+}
+
+/* ---------- modo estudo ---------- */
+est.estudo = lerLS("logos_estudo", false);
+function aplicarEstudo(){
+  document.body.classList.toggle("estudo", est.estudo);
+  $("colEstudo").classList.toggle("oculto", !est.estudo);
+}
+async function atualizarEstudo(v){
+  if(!est.estudo || window.innerWidth < 1100) return;
+  const ref = `${nomeLivro(est.livro)} ${est.cap}:${v}`;
+  const alvoO = $("estudoOriginal"), alvoC = $("estudoComentario");
+  alvoO.innerHTML = `<p class="estudo-vazio">${t().carregando}</p>`;
+  alvoC.innerHTML = `<p class="estudo-vazio">${t().carregando}</p>`;
+  const ehAT = infoLivro(est.livro).t==="AT";
+  const [inter, com] = await Promise.all([carregarInterlinear(est.livro, est.cap), carregarComentario(est.livro, est.cap)]);
+  const palavras = inter && inter[v-1] ? inter[v-1] : [];
+  if(palavras.length){
+    alvoO.innerHTML = `<p class="lugar-meta" style="margin-top:0">${ref}</p>
+      <div class="inter-grid" ${ehAT?'dir="rtl"':''}>` + palavras.map((p,pi)=>
+      `<button class="inter-palavra" data-strong="${p[2]||""}">
+        <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0])}</span>
+        <span class="ip-translit">${esc(p[1])}</span>
+        <span class="ip-gloss">${esc(p[3])}</span>
+        <span class="ip-strong">${p[2]||""}</span></button>`).join("") +
+      `</div><div class="lex-caixa oculto"></div>`;
+    alvoO.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
+      const caixa = alvoO.querySelector(".lex-caixa");
+      const strong = btn.dataset.strong;
+      alvoO.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
+      if(!strong){ caixa.classList.add("oculto"); return; }
+      btn.classList.add("sel"); caixa.classList.remove("oculto");
+      const lex = await carregarLexico(strong[0]);
+      const ent = lex && lex[strong];
+      caixa.innerHTML = ent ? `<div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
+        <span class="lex-translit">${esc(ent.translit)}</span><span class="lex-num">${strong}</span></div>
+        <p class="lex-def">${esc(ent.defpt || ent.def)}</p>` : "";
+    }));
+  } else {
+    alvoO.innerHTML = `<p class="estudo-vazio">${t().semOriginal}</p>`;
+  }
+  const texto = com ? com[String(v)] : null;
+  alvoC.innerHTML = texto
+    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino</p><p class="comentario-texto" style="font-size:.82rem">${esc(texto)}</p>`
+    : `<p class="estudo-vazio">${t().semComentario}</p>`;
 }
 
 /* ---------- anotações ---------- */
@@ -751,6 +905,10 @@ async function iniciar(){
     alternarPainel(id);
   }));
   $("btnPlanos").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos"); });
+  aplicarEstudo();
+  $("btnEstudo").addEventListener("click", ()=>{
+    est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
+  });
   $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
   $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
