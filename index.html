@@ -3,34 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logos — Estudo Bíblico</title>
-<meta name="description" content="Bíblia completa em português, inglês e espanhol, com originais em grego e hebraico, comentários clássicos, marcações e anotações. Gratuito.">
+<title>Sola — Estudo Bíblico</title>
+<meta name="description" content="Sola: estudo bíblico profundo e gratuito. Bíblia completa, interlinear grego e hebraico, léxico de Strong, comentários clássicos, referências cruzadas, atlas e planos de leitura.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
+<symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
+<symbol id="i-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></symbol>
+<symbol id="i-temas" viewBox="0 0 24 24"><path d="M2.5 2.5H11l10 10-8.5 8.5-10-10z"/><circle cx="7" cy="7" r="1.4" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-dicionario" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+<symbol id="i-planos" viewBox="0 0 24 24"><path d="M10 6h11M10 12h11M10 18h11"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></symbol>
+<symbol id="i-tempo" viewBox="0 0 24 24"><path d="M2 12h20"/><circle cx="6" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="18" cy="12" r="2" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-atlas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18M3 12h18"/></symbol>
+<symbol id="i-contexto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.2v.01"/></symbol>
+<symbol id="i-anotacoes" viewBox="0 0 24 24"><path d="M17 3l4 4L8 20l-5 1 1-5z"/><path d="M14.5 5.5l4 4"/></symbol>
+<symbol id="i-estudo" viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/></symbol>
+<symbol id="i-corrida" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h10"/></symbol>
+<symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+<symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+</svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro">☰ <span id="lblLivroAtual">João 1</span></button>
-  <div class="marca"><span class="lambda">Λ</span><span class="nome">Logos</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">João 1</span></button>
+  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <nav class="navbar" aria-label="Recursos">
+    <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
+    <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
+    <button id="navDic" data-nav="dicionario"><svg class="ico"><use href="#i-dicionario"/></svg><span data-label>Dicionário</span></button>
+    <button id="btnPlanos" data-nav="planos"><svg class="ico"><use href="#i-planos"/></svg><span data-label>Planos</span></button>
+    <button id="navTempo" data-nav="tempo"><svg class="ico"><use href="#i-tempo"/></svg><span data-label>Linha do tempo</span></button>
+    <button id="navAtlas" data-nav="atlas"><svg class="ico"><use href="#i-atlas"/></svg><span data-label>Atlas</span></button>
+    <button id="navContexto" data-nav="contexto"><svg class="ico"><use href="#i-contexto"/></svg><span data-label>Contexto</span></button>
+    <button id="btnNotas" data-nav="notas"><svg class="ico"><use href="#i-anotacoes"/></svg><span data-label>Anotações</span></button>
+    <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
+  </nav>
   <div class="topo-acoes">
-    <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua">¶</button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema">☾</button>
+    <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
-
-<nav class="navbar" aria-label="Recursos">
-  <button id="btnBusca" data-nav="buscar">⌕ Buscar</button>
-  <button id="navTemas" data-nav="temas">Temas</button>
-  <button id="navDic" data-nav="dicionario">Dicionário</button>
-  <button id="btnPlanos" data-nav="planos">Planos</button>
-  <button id="navTempo" data-nav="tempo">Linha do tempo</button>
-  <button id="navAtlas" data-nav="atlas">Atlas</button>
-  <button id="navContexto" data-nav="contexto">Contexto</button>
-  <button id="btnNotas" data-nav="notas">Anotações</button>
-  <button id="btnEstudo" data-nav="estudo" class="so-desktop">◫ Modo estudo</button>
-</nav>
 
 <div class="controles">
   <label><span id="lblIdioma">Idioma</span>
@@ -96,7 +111,7 @@
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><span class="lambda">Λ</span><span class="nome">Logos</span></div>
+      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -152,7 +167,7 @@
 <div id="painelSobre" class="painel oculto">
   <div class="painel-caixa">
     <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Logos nasceu para preencher uma lacuna: não existia uma
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
     ferramenta de estudo bíblico profundo em português — com originais, interlinear,
     léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
     de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>

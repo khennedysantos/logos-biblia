@@ -1,4 +1,4 @@
-/* Logos — Estudo Bíblico. SPA em JS puro, sem dependências. */
+/* Sola — Estudo Bíblico. SPA em JS puro, sem dependências. */
 "use strict";
 
 /* ---------- textos da interface ---------- */
@@ -14,6 +14,7 @@ const UI = {
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
+    comInicio:"Neste capítulo, o comentário de Calvino começa no v.",
     semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
     fonteNave:"Nave's Topical Bible (1897), domínio público", fonteEaston:"Dicionário Bíblico de Easton (1897), domínio público",
     semOriginal:"Texto original indisponível para este versículo.",
@@ -37,6 +38,7 @@ const UI = {
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
     comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
+    comInicio:"In this chapter, Calvin's commentary begins at v.",
     semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
     fonteNave:"Nave's Topical Bible (1897), public domain", fonteEaston:"Easton's Bible Dictionary (1897), public domain",
     semOriginal:"Original text unavailable for this verse.",
@@ -60,6 +62,7 @@ const UI = {
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
     comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
+    comInicio:"En este capítulo, el comentario de Calvino comienza en el v.",
     semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
     fonteNave:"Nave's Topical Bible (1897), dominio público", fonteEaston:"Diccionario Bíblico de Easton (1897), dominio público",
     semOriginal:"Texto original no disponible para este versículo.",
@@ -117,12 +120,16 @@ async function livrosCalvin(){
 function comentarioProximo(com, v){
   if(!com) return null;
   if(com[String(v)]) return { v: v, texto: com[String(v)] };
-  let melhor = 0;
+  let antes = 0, depois = Infinity;
   for(const k of Object.keys(com)){
     const n = +k;
-    if(k !== "__pt" && !isNaN(n) && n < v && n > melhor) melhor = n;
+    if(k === "__pt" || isNaN(n)) continue;
+    if(n < v && n > antes) antes = n;
+    if(n > v && n < depois) depois = n;
   }
-  return melhor ? { v: melhor, texto: com[String(melhor)] } : null;
+  if(antes) return { v: antes, texto: com[String(antes)] };
+  if(depois < Infinity) return { v: depois, texto: com[String(depois)], seguinte: true };
+  return null;
 }
 est.buscaModo = "texto"; est.cacheTemas = {}; est.cacheDic = {}; est.idxTemas = null; est.idxDic = null; est.aliasPT = null;
 async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
@@ -171,11 +178,14 @@ function refStr(usfm, cap, v){ return `${nomeLivro(usfm)} ${cap}:${v}`; }
 function aplicarTextos(){
   const x = t();
   const NAV = {
-    pt:{buscar:"⌕ Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"◫ Modo estudo"},
-    en:{buscar:"⌕ Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"◫ Study mode"},
-    es:{buscar:"⌕ Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"◫ Modo estudio"}
+    pt:{buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
+    en:{buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
+    es:{buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
   }[est.idioma];
-  document.querySelectorAll(".navbar [data-nav]").forEach(b=>{ if(NAV[b.dataset.nav]) b.textContent = NAV[b.dataset.nav]; });
+  document.querySelectorAll(".navbar [data-nav] [data-label]").forEach(sp=>{
+    const chave = sp.parentNode.dataset.nav;
+    if(NAV[chave]) sp.textContent = NAV[chave];
+  });
   $("lblIdioma").textContent = x.idioma;
   $("lblTraducao").textContent = x.traducao;
   $("lblComparar").textContent = x.comparar;
@@ -219,7 +229,7 @@ async function renderizarCapitulo(){
     leitor.innerHTML = html;
     atualizarNav();
     $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
-    document.title = `${nomeLivro(est.livro)} ${est.cap} — Logos`;
+    document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
     location.hash = `#/${est.livro}/${est.cap}`;
     window.scrollTo({top:0});
     return;
@@ -243,7 +253,7 @@ async function renderizarCapitulo(){
   });
   atualizarNav();
   $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
-  document.title = `${nomeLivro(est.livro)} ${est.cap} — Logos`;
+  document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
   location.hash = `#/${est.livro}/${est.cap}`;
   window.scrollTo({top:0});
 }
@@ -376,7 +386,8 @@ async function acaoVerso(el, v, acao, botao){
     const achado = comentarioProximo(com, v);
     let corpo;
     if(achado){
-      const nota = achado.v !== v ? `<p class="aviso-idioma">${x.comRef} ${achado.v} ${x.comBloco}</p>` : "";
+      const nota = achado.v !== v
+        ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
       corpo = `${nota}<p class="comentario-texto">${esc(achado.texto)}</p>
         <p class="fonte">${x.fonte}: João Calvino (1509–1564), domínio público</p>
         ${est.idioma!=="en" && !com.__pt ? `<p class="aviso-idioma">${x.avisoIdiomaComentario}</p>` : ""}`;
@@ -829,7 +840,7 @@ async function atualizarEstudo(v){
   }
   const achado = comentarioProximo(com, v);
   alvoC.innerHTML = achado
-    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino${achado.v !== v ? ` · ${t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
+    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino${achado.v !== v ? ` · ${achado.seguinte ? t().comInicio : t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
     : `<p class="estudo-vazio">${t().semComentario}</p>`;
 }
 
@@ -849,7 +860,7 @@ function montarNotas(){
       const blob = new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"});
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "logos-backup.json";
+      a.download = "sola-backup.json";
       a.click();
     });
     acoes.querySelector("#arqImportar").addEventListener("change", (e)=>{
@@ -897,7 +908,7 @@ function alternarPainel(id, abrir){
 }
 function aplicarTema(){
   document.documentElement.dataset.tema = est.tema==="escuro" ? "escuro" : "claro";
-  $("btnTema").textContent = est.tema==="escuro" ? "☀" : "☾";
+  $("btnTema").innerHTML = `<svg class="ico"><use href="#i-${est.tema==="escuro"?"sol":"lua"}"/></svg>`;
   gravarLS("logos_tema", est.tema);
 }
 
