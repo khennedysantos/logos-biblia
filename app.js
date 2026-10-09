@@ -7,12 +7,13 @@ const UI = {
     livros:"Livros", buscar:"Buscar", notas:"Minhas anotações", marcar:"Marcar",
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
-    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
+    tradAuto:"Tradução automática do original em inglês.",
     comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
     comInicio:"Neste capítulo, o comentário de Calvino começa no v.",
     semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
@@ -37,6 +38,7 @@ const UI = {
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
+    tradAuto:"",
     comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
     comInicio:"In this chapter, Calvin's commentary begins at v.",
     semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
@@ -61,6 +63,7 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
+    tradAuto:"",
     comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
     comInicio:"En este capítulo, el comentario de Calvino comienza en el v.",
     semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
@@ -102,10 +105,13 @@ async function carregarLivro(trad, usfm){
   return est.cacheBiblia[chave];
 }
 async function carregarComentario(usfm, cap){
-  const chave = usfm+"/"+cap;
+  const pt = est.idioma==="pt";
+  const chave = (pt?"pt/":"") + usfm+"/"+cap;
   if(!(chave in est.cacheComent)){
-    try{ est.cacheComent[chave] = await json(`data/commentaries/calvin/${usfm}/${cap}.json`); }
-    catch(e){ est.cacheComent[chave] = null; }
+    let base = null, trad = null;
+    try{ base = await json(`data/commentaries/calvin/${usfm}/${cap}.json`); }catch(e){}
+    if(pt){ try{ trad = await json(`data/commentaries/calvin/pt/${usfm}/${cap}.json`); }catch(e){} }
+    est.cacheComent[chave] = base && trad ? Object.assign({}, base, trad) : base;
   }
   return est.cacheComent[chave];
 }
@@ -135,8 +141,22 @@ est.buscaModo = "texto"; est.cacheTemas = {}; est.cacheDic = {}; est.idxTemas = 
 async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
 async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
-async function temaSecao(letra){ if(!est.cacheTemas[letra]){ est.cacheTemas[letra] = await json(`data/topics/${letra}.json`); } return est.cacheTemas[letra]; }
-async function dicLetra(letra){ if(!est.cacheDic[letra]){ est.cacheDic[letra] = await json(`data/dictionary/${letra}.json`); } return est.cacheDic[letra]; }
+async function temaSecao(letra){
+  const k = (est.idioma==="pt"?"pt/":"") + letra;
+  if(!est.cacheTemas[k]){
+    try{ est.cacheTemas[k] = await json(`data/topics/${k}.json`); }
+    catch(e){ est.cacheTemas[k] = await json(`data/topics/${letra}.json`); }
+  }
+  return est.cacheTemas[k];
+}
+async function dicLetra(letra){
+  const k = (est.idioma==="pt"?"pt/":"") + letra;
+  if(!est.cacheDic[k]){
+    try{ est.cacheDic[k] = await json(`data/dictionary/${k}.json`); }
+    catch(e){ est.cacheDic[k] = await json(`data/dictionary/${letra}.json`); }
+  }
+  return est.cacheDic[k];
+}
 const RE_REF = /\b([1-3]?[A-Z]{2,3})\s(\d+):(\d+)(?:-(\d+))?/g;
 function linkarRefs(txt){
   return esc(txt).replace(RE_REF, (m, l, c, v)=> est.meta.books.find(b=>b.id===l)
@@ -370,8 +390,8 @@ async function acaoVerso(el, v, acao, botao){
           <div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
             <span class="lex-translit">${esc(ent.translit)}</span>
             <span class="lex-num">${strong}</span></div>
-          <p class="lex-def"><strong>${x.lexDef}:</strong> ${esc(ent.defpt || ent.def)}</p>
-          ${ent.kjv ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
+          <p class="lex-def"><strong>${x.lexDef}:</strong> ${esc((est.idioma==="pt" && ent.defpt) || ent.def)}</p>
+          ${ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
       }));
     } else {
       const orig = await carregarLivro("orig", est.livro);
@@ -520,26 +540,40 @@ async function buscar(){
 }
 
 const normStr = (s)=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const emPT = ()=>est.idioma==="pt";
+est.titulosPT = {};
+async function titulos(tipo){
+  if(!(tipo in est.titulosPT)){
+    try{ est.titulosPT[tipo] = await json(`data/${tipo}/titulos_pt.json`); }
+    catch(e){ est.titulosPT[tipo] = {}; }
+  }
+  return est.titulosPT[tipo];
+}
+function avisoConteudo(x, temPT){ return !emPT() ? "" : `<p class="aviso-en">${temPT ? x.tradAuto : x.conteudoEN}</p>`; }
+function rotuloDuplo(tit, n){
+  return tit[n] && tit[n].toLowerCase() !== n.toLowerCase()
+    ? `${esc(tit[n])} <span style="opacity:.55;font-weight:400">(${esc(n)})</span>` : esc(n);
+}
 async function buscarTemas(){
   const x = t(), termo = $("campoBusca").value.trim();
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = ""; status.textContent = "";
   if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
-  const [idx, alias] = await Promise.all([idxTemas(), aliasPT()]);
+  const [idx, alias, tit] = await Promise.all([idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
   const alvo = normStr(termo);
-  const diretos = idx.filter(s=>normStr(s).includes(alvo));
+  const diretos = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo)));
   const viaAlias = Object.entries(alias).filter(([pt])=>normStr(pt).includes(alvo)).map(([,en])=>en);
   const nomes = [...new Set([...viaAlias, ...diretos])].slice(0, 40);
   if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
   status.textContent = `${nomes.length} ${x.resultados}`;
-  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${esc(n)}</div></div>`).join("");
+  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
   res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
     const nome = nomes[+el.dataset.n];
     const secao = await temaSecao(nome[0].toUpperCase());
     const linhas = secao[nome] || [];
-    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${esc(nome)}</h3>` +
+    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${rotuloDuplo(tit, nome)}</h3>` +
       linhas.map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
-      `<p class="fonte">${x.fonteNave}</p><p class="aviso-en">${x.conteudoEN}</p>`;
+      `<p class="fonte">${x.fonteNave}</p>` + avisoConteudo(x, !!secao.__pt);
     ativarRefs(res);
   }));
 }
@@ -548,19 +582,19 @@ async function buscarDic(){
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = ""; status.textContent = "";
   if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
-  const idx = await idxDic();
+  const [idx, tit] = await Promise.all([idxDic(), emPT() ? titulos("dictionary") : {}]);
   const alvo = normStr(termo);
-  const nomes = idx.filter(s=>normStr(s).includes(alvo)).slice(0, 40);
+  const nomes = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40);
   if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
   status.textContent = `${nomes.length} ${x.resultados}`;
-  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${esc(n)}</div></div>`).join("");
+  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
   res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
     const nome = nomes[+el.dataset.n];
     const letra = /[A-Za-z]/.test(nome[0]) ? nome[0].toUpperCase() : "_";
     const dic = await dicLetra(letra);
-    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${esc(nome)}</h3>` +
+    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${rotuloDuplo(tit, nome)}</h3>` +
       (dic[nome]||[]).map(d=>`<p class="dic-def">${esc(d)}</p>`).join("") +
-      `<p class="fonte">${x.fonteEaston}</p><p class="aviso-en">${x.conteudoEN}</p>`;
+      `<p class="fonte">${x.fonteEaston}</p>` + avisoConteudo(x, !!dic.__pt);
   }));
 }
 function abrirBusca(modo){
@@ -675,12 +709,13 @@ function buscarAtlas(){
   const termo = normStr($("campoAtlas").value.trim());
   const res = $("atlasResultados");
   if(termo.length < 2){ res.innerHTML = ""; return; }
-  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo)).slice(0, 12);
+  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo))).slice(0, 12);
+  const nomeL = (l)=> (emPT() && l.p) || l.n;
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
-  res.innerHTML = achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(l.n)}</div>
+  res.innerHTML = achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
     <p>${l.r.slice(0,6).map(([b,c])=>`<span class="tema-ref" data-l="${b}" data-c="${c}">${nomeLivro(b)} ${c}</span>`).join(" · ")}</p></div>`).join("");
   achados.forEach(l=>{
-    const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(l.n));
+    const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(nomeL(l)));
     est.marcadores.push(m);
   });
   if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
@@ -744,7 +779,7 @@ function mostrarLugar(l){
   const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase())
     .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
   res.innerHTML = `<div class="lugar-card">
-    <h3>${esc(l.n)}</h3>
+    <h3>${esc((emPT() && l.p) || l.n)}</h3>
     <p class="lugar-meta">${l.tot} ocorrência(s) na Bíblia
       · Primeira: <span class="tema-ref" data-l="${primeira[0]}" data-c="${primeira[1]}">${nomeLivro(primeira[0])} ${primeira[1]}:${primeira[2]}</span>
       · Última: <span class="tema-ref" data-l="${ultima[0]}" data-c="${ultima[1]}">${nomeLivro(ultima[0])} ${ultima[1]}:${ultima[2]}</span></p>
@@ -833,7 +868,7 @@ async function atualizarEstudo(v){
       const ent = lex && lex[strong];
       caixa.innerHTML = ent ? `<div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
         <span class="lex-translit">${esc(ent.translit)}</span><span class="lex-num">${strong}</span></div>
-        <p class="lex-def">${esc(ent.defpt || ent.def)}</p>` : "";
+        <p class="lex-def">${esc((est.idioma==="pt" && ent.defpt) || ent.def)}</p>` : "";
     }));
   } else {
     alvoO.innerHTML = `<p class="estudo-vazio">${t().semOriginal}</p>`;
