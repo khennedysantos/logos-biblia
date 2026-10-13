@@ -13,7 +13,7 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
-    tradAuto:"Tradução automática do original em inglês.",
+    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher",
     comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
     comInicio:"Neste capítulo, o comentário de Calvino começa no v.",
     semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
@@ -38,7 +38,7 @@ const UI = {
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
-    tradAuto:"",
+    tradAuto:"", lerMais:"Read more", lerMenos:"Show less",
     comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
     comInicio:"In this chapter, Calvin's commentary begins at v.",
     semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
@@ -63,7 +63,7 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
-    tradAuto:"",
+    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar",
     comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
     comInicio:"En este capítulo, el comentario de Calvino comienza en el v.",
     semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
@@ -283,6 +283,8 @@ function ativarVerso(el, toque){
   if(est.versoAtivo && est.versoAtivo!==el){ est.versoAtivo.classList.remove("ativo"); fecharGavetas(est.versoAtivo); }
   est.versoAtivo = el;
   el.classList.add("ativo");
+  const topoFixo = document.querySelector(".topo").getBoundingClientRect().bottom;
+  el.classList.toggle("barra-baixo", el.getBoundingClientRect().top < topoFixo + 28);
   montarBarra(el);
   if(toque || est.ultimoEstudo !== el.dataset.v + est.cap + est.livro){
     est.ultimoEstudo = el.dataset.v + est.cap + est.livro;
@@ -408,13 +410,22 @@ async function acaoVerso(el, v, acao, botao){
     if(achado){
       const nota = achado.v !== v
         ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
-      corpo = `${nota}<p class="comentario-texto">${esc(achado.texto)}</p>
+      const longo = achado.texto.length > 1400;
+      const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
+      corpo = `${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
+        ${longo ? `<button class="ler-mais">${x.lerMais}</button>` : ""}
         <p class="fonte">${x.fonte}: João Calvino (1509–1564), domínio público</p>
-        ${est.idioma!=="en" && !com.__pt ? `<p class="aviso-idioma">${x.avisoIdiomaComentario}</p>` : ""}`;
+        ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
     } else {
       corpo = `<p class="comentario-texto">${cobertos.length && !cobertos.includes(est.livro) ? x.semLivroCalvin : x.semComentario}</p>`;
     }
     gavetas.innerHTML = gaveta(x.comentario, corpo);
+    const lm = gavetas.querySelector(".ler-mais");
+    if(lm) lm.addEventListener("click", ()=>{
+      const txt = gavetas.querySelector(".comentario-texto");
+      const abrir = txt.classList.toggle("recolhido") === false;
+      lm.textContent = abrir ? x.lerMenos : x.lerMais;
+    });
   }
   if(acao==="referencias"){
     const refs = await carregarRefs(est.livro, est.cap);
