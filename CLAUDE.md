@@ -57,6 +57,12 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Não rode tarefas de dezenas de minutos no ambiente do Claude (já travou uma vez). Trabalho pesado vai
   para o GitHub Actions ou para o notebook dele.
 - Arquivos grandes de dados: gere por script e valide uma amostra; nunca edite à mão em massa.
+- Teste sempre nos dois temas (claro e escuro). Botões não herdam cor por padrão: já existe a regra
+  global `button{color:inherit}` — não a remova. Texto em português dentro do hebraico precisa de
+  `unicode-bidi:isolate`, senão a pontuação se embaralha.
+- Antes de dar uma atualização por concluída, confira se os arquivos chegaram ao repositório. A pasta
+  `data/crossrefs` ficou de fora por semanas porque um zip nunca foi enviado (regerada com
+  `ferramentas/gerar_crossrefs.py`).
 - Créditos obrigatórios (já no painel "Fontes e licenças"): STEPBible/Tyndale House (CC BY),
   openbible.info (CC-BY), demais fontes em domínio público.
 

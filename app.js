@@ -340,7 +340,7 @@ async function acaoVerso(el, v, acao, botao){
     if(palavras){
       const grid = palavras.map((p,pi)=>
         `<button class="inter-palavra" data-pi="${pi}" data-strong="${p[2]||""}">
-           <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0])}</span>
+           <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
            <span class="ip-translit">${esc(p[1])}</span>
            <span class="ip-gloss">${esc(p[3])}</span>
            <span class="ip-strong">${p[2]||""}</span>
@@ -864,7 +864,7 @@ async function atualizarEstudo(v){
     alvoO.innerHTML = `<p class="lugar-meta" style="margin-top:0">${ref}</p>
       <div class="inter-grid" ${ehAT?'dir="rtl"':''}>` + palavras.map((p,pi)=>
       `<button class="inter-palavra" data-strong="${p[2]||""}">
-        <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0])}</span>
+        <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
         <span class="ip-translit">${esc(p[1])}</span>
         <span class="ip-gloss">${esc(p[3])}</span>
         <span class="ip-strong">${p[2]||""}</span></button>`).join("") +

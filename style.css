@@ -4,11 +4,13 @@
   --m-ouro:#F3E3B3; --m-verde:#CFE6C8; --m-azul:#C9DDEE; --m-rosa:#F0CFD6;
 }
 [data-tema="escuro"]{
-  --papel:#141820; --painel:#1C222E; --borda:#2A3242;
-  --tinta:#E8E4DA; --suave:#9AA3B2; --ouro:#C9A45C; --hover:#222A38;
-  --m-ouro:#5A4A1E; --m-verde:#2E4A2A; --m-azul:#24384E; --m-rosa:#4E2833;
+  --papel:#11151C; --painel:#1A202B; --borda:#363F52;
+  --tinta:#EEE9DE; --suave:#B6BECB; --ouro:#DDB872; --hover:#242C3A;
+  --m-ouro:#5E4C1F; --m-verde:#30502C; --m-azul:#284260; --m-rosa:#55303D;
 }
 *{box-sizing:border-box}
+/* botões e campos não herdam a cor da página por padrão: sem isso o texto deles fica preto no modo noturno */
+button,input,select,textarea{color:inherit;font-family:inherit}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--papel);color:var(--tinta);
   font-family:'Inter',system-ui,sans-serif;transition:background .3s,color .3s}
@@ -139,10 +141,12 @@ body{margin:0;background:var(--papel);color:var(--tinta);
   padding:.4rem .55rem;cursor:pointer;min-width:3.2rem}
 .inter-palavra:hover{background:var(--hover)}
 .inter-palavra.sel{border-color:var(--ouro);background:var(--hover)}
-.ip-surf{font-size:1.15rem;line-height:1.3}
-.ip-translit{font-size:.6rem;color:var(--suave)}
-.ip-gloss{font-size:.66rem;max-width:7rem;text-align:center}
-.ip-strong{font-size:.56rem;color:var(--ouro);font-weight:600}
+.ip-surf{font-size:1.25rem;line-height:1.3;color:var(--tinta)}
+.ip-translit{font-size:.7rem;color:var(--suave);font-style:italic}
+.ip-gloss{font-size:.78rem;max-width:7.5rem;text-align:center;color:var(--tinta);font-weight:500}
+.ip-strong{font-size:.64rem;color:var(--ouro);font-weight:700;letter-spacing:.02em}
+/* glosa, transliteração e número ficam sempre da esquerda para a direita, mesmo dentro do hebraico */
+.ip-translit,.ip-gloss,.ip-strong{direction:ltr;unicode-bidi:isolate}
 .lex-caixa{border:1px solid var(--ouro);border-radius:.7rem;background:var(--painel);
   padding:.7rem;margin-top:.6rem;direction:ltr}
 .lex-topo{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.35rem}
