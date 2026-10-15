@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://solabiblia.com.br/sitemap.xml

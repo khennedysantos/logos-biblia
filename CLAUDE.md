@@ -19,7 +19,13 @@ informal e direto. Ele usa Ubuntu e Firefox/Chrome.
 
 Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages a partir da raiz do branch `main`.
 
-- `index.html`, `style.css`, `app.js` — a aplicação inteira (SPA, rotas por hash `#/JHN/3`).
+- `index.html`, `style.css`, `app.js` — a aplicação inteira (SPA). Endereços: `/biblia/{livro}/{cap}/`
+  (ex.: `/biblia/joao/3/`, `/biblia/1-corintios/13/`), via `history.pushState`. Links antigos `#/JHN/3`
+  ainda funcionam e são convertidos. Dados sempre por caminho absoluto (`/data/...`).
+- `biblia/` — 1.189 páginas estáticas GERADAS (uma por capítulo, com título, descrição e o texto no HTML
+  para o Google). Mais `sitemap.xml`, `robots.txt` e `404.html`. **Sempre que mexer no `index.html`, rode
+  `python3 ferramentas/gerar_paginas.py`** — as páginas são cópias dele. Nunca edite `biblia/` à mão.
+- `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` (preview no WhatsApp, 1200×630).
 - `CNAME` — domínio personalizado. **Nunca apagar.**
 - `data/books.json` — cânon (66 livros, ids USFM, nomes pt/en/es) e lista de traduções.
 - `data/bibles/{blivre,kjv,rva,orig,byz}/{USFM}.json` — texto por livro: lista de capítulos → lista de versículos.
@@ -57,6 +63,7 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Não rode tarefas de dezenas de minutos no ambiente do Claude (já travou uma vez). Trabalho pesado vai
   para o GitHub Actions ou para o notebook dele.
 - Arquivos grandes de dados: gere por script e valide uma amostra; nunca edite à mão em massa.
+- O Chrome descarta o nome de arquivo de download com acento: gere nomes sem acento.
 - Teste sempre nos dois temas (claro e escuro). Botões não herdam cor por padrão: já existe a regra
   global `button{color:inherit}` — não a remova. Texto em português dentro do hebraico precisa de
   `unicode-bidi:isolate`, senão a pontuação se embaralha.
@@ -69,6 +76,6 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 ## Pendências conhecidas
 
 - E-mail de contato no rodapé ainda é `contato@exemplo.com`.
-- Páginas estáticas por capítulo + sitemap para SEO (não feito).
+- Ele precisa cadastrar o site no Google Search Console e enviar o `sitemap.xml` (só ele pode, é conta dele).
 - Qualidade da tradução de Calvino/Easton pode ser elevada com a Batch API da Anthropic (~US$ 45, uma vez),
   se ele decidir pagar.
