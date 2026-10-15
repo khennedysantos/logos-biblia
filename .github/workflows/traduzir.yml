@@ -1,0 +1,176 @@
+# Tradução en->pt com o NLLB-200 1.3B (Meta), de graça, nas máquinas do GitHub.
+# O trabalho é dividido em N partes que rodam ao mesmo tempo (repositório público = minutos ilimitados).
+# Ao fim, o resultado é gravado em data/.../pt/ e enviado para o branch "traducao-<etapa>",
+# para ser revisado e juntado ao main por pull request.
+#
+# Rodar: aba Actions -> "Traduzir (NLLB)" -> Run workflow.
+# Se alguma parte não terminar a tempo, rode de novo com "retomar" = número da execução anterior:
+# ele aproveita o que já foi traduzido e faz só o que falta.
+name: Traduzir (NLLB)
+
+on:
+  workflow_dispatch:
+    inputs:
+      etapa:
+        description: "O que traduzir"
+        type: choice
+        options: [henry, calvino, dicionario, temas]
+        default: henry
+      partes:
+        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40)"
+        default: "20"
+      retomar:
+        description: "Opcional: número (run id) de uma execução anterior para continuar dela"
+        default: ""
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  MODELO: JustFrederik/nllb-200-distilled-1.3B-ct2-int8
+  ETAPA: ${{ inputs.etapa }}
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    outputs:
+      matriz: ${{ steps.m.outputs.matriz }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Modelo (cache)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: modelo-nllb
+          key: nllb-1.3B-int8-v1
+      - name: Baixar modelo
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install -q huggingface_hub
+          python -c "from huggingface_hub import snapshot_download as d; d('$MODELO', local_dir='modelo-nllb')"
+          ls -la modelo-nllb
+      - name: Traduções de uma execução anterior
+        if: inputs.retomar != ''
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh run download "${{ inputs.retomar }}" -n "traducao-$ETAPA" -D anterior
+          ls -la anterior
+      - name: Preparar textos
+        run: |
+          cd ferramentas/tradutor
+          python etapas.py preparar "$ETAPA"
+          python - <<'EOF'
+          import json, os, pathlib
+          e = os.environ["ETAPA"]
+          itens = json.load(open(f"trabalho/{e}.json"))
+          ant = pathlib.Path(f"../../anterior/{e}_pt.json")
+          feitos = json.load(open(ant)) if ant.exists() else {}
+          pend = [i for i in itens if i["id"] not in feitos]
+          json.dump(pend, open(f"trabalho/{e}.json", "w"), ensure_ascii=False)
+          print(f"{len(itens)} itens, {len(feitos)} já traduzidos, {len(pend)} para fazer, "
+                f"{sum(len(i['texto']) for i in pend)/1e6:.1f} milhões de caracteres")
+          EOF
+      - name: Juntar entrada
+        run: |
+          mkdir -p entrada
+          cp "ferramentas/tradutor/trabalho/$ETAPA.json" entrada/
+          if [ -d anterior ]; then cp anterior/*.json entrada/; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: entrada
+          path: entrada/
+          if-no-files-found: error
+          retention-days: 7
+      - id: m
+        run: python -c "print('matriz=' + str(list(range(int('${{ inputs.partes }}')))))" >> "$GITHUB_OUTPUT"
+
+  traduzir:
+    needs: preparar
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        parte: ${{ fromJson(needs.preparar.outputs.matriz) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: ferramentas/tradutor
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q ctranslate2 sentencepiece
+      - uses: actions/cache/restore@v4
+        with:
+          path: modelo-nllb
+          key: nllb-1.3B-int8-v1
+          fail-on-cache-miss: true
+      - uses: actions/download-artifact@v4
+        with: { name: entrada, path: entrada }
+      - name: Traduzir parte ${{ matrix.parte }}
+        run: |
+          mkdir -p saida
+          # para antes do limite de 6 h do GitHub, para que o que já foi feito seja guardado
+          timeout 335m python ferramentas/tradutor/lote.py \
+            "entrada/$ETAPA.json" "saida/parte-${{ matrix.parte }}.json" \
+            modelo-nllb --motor nllb --parte "${{ matrix.parte }}/${{ inputs.partes }}" --bloco 200 --max-car 15000 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: parte-${{ matrix.parte }}
+          path: saida/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  juntar:
+    needs: [preparar, traduzir]
+    if: always() && needs.preparar.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "parte-*", path: partes, merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: entrada, path: entrada }
+      - name: Juntar e gravar nos arquivos do site
+        run: |
+          cd ferramentas/tradutor
+          mkdir -p trabalho
+          python - <<'EOF'
+          import json, os, pathlib
+          e = os.environ["ETAPA"]
+          tudo = {}
+          ant = pathlib.Path(f"../../entrada/{e}_pt.json")
+          if ant.exists():
+              tudo.update(json.load(open(ant)))
+          for p in sorted(pathlib.Path("../../partes").glob("*.json")):
+              tudo.update(json.load(open(p)))
+          json.dump(tudo, open(f"trabalho/{e}_pt.json", "w"), ensure_ascii=False)
+          pend = json.load(open(f"../../entrada/{e}.json"))
+          faltam = sum(1 for i in pend if i["id"] not in tudo and i["texto"].strip())
+          print(f"{len(tudo)} traduzidos; faltam {faltam}")
+          open(os.environ["GITHUB_STEP_SUMMARY"], "a").write(
+              f"### {e}\n{len(tudo)} trechos traduzidos, faltam {faltam}.\n"
+              + ("\nRode de novo com **retomar = ${{ github.run_id }}** para terminar.\n" if faltam else ""))
+          EOF
+          python etapas.py aplicar "$ETAPA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: traducao-${{ inputs.etapa }}
+          path: ferramentas/tradutor/trabalho/${{ inputs.etapa }}_pt.json
+          retention-days: 90
+      - name: Enviar para o branch traducao-${{ inputs.etapa }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "traducao-$ETAPA"
+          git add data
+          git commit -q -m "Tradução automática (NLLB-200 1.3B): $ETAPA" || { echo "nada mudou"; exit 0; }
+          git push -f origin "traducao-$ETAPA"

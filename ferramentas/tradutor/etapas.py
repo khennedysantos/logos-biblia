@@ -1,5 +1,5 @@
 """Prepara e aplica cada etapa da tradução do Sola.
-uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino
+uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
@@ -205,9 +205,12 @@ def aplicar_dicionario():
     print(f"[dicionario] {len(tr)} definições gravadas em data/dictionary/pt/")
 
 
-# ---------------- comentários de Calvino ----------------
-def preparar_calvino():
-    base = DATA / "commentaries" / "calvin"
+# ---------------- comentários (Calvino e Matthew Henry) ----------------
+NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
+
+
+def preparar_comentario(etapa, pasta):
+    base = DATA / "commentaries" / pasta
     itens = []
     for livro in sorted(p for p in base.iterdir() if p.is_dir() and p.name != "pt"):
         for arq in sorted(livro.glob("*.json"), key=lambda a: int(a.stem)):
@@ -216,17 +219,14 @@ def preparar_calvino():
                     # o número do versículo no início ("16.") vai separado, senão vira "16 anos."
                     corpo = NUM_VERSO.sub("", txt, count=1)
                     itens.append({"id": f"{livro.name}|{arq.stem}|{v}", "texto": corpo})
-    entradas("calvino", itens)
+    entradas(etapa, itens)
 
 
-NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
-
-
-def aplicar_calvino():
-    tr = traducoes("calvino")
+def aplicar_comentario(etapa, pasta):
+    tr = traducoes(etapa)
     if not tr:
-        return print("[calvino] nada traduzido ainda")
-    base = DATA / "commentaries" / "calvin"
+        return print(f"[{etapa}] nada traduzido ainda")
+    base = DATA / "commentaries" / pasta
     por_cap, originais = {}, {}
     for k, v in tr.items():
         livro, cap, verso = k.split("|")
@@ -237,8 +237,14 @@ def aplicar_calvino():
         por_cap.setdefault((livro, cap), {})[verso] = prefixo + v
     for (livro, cap), versos in por_cap.items():
         versos["__pt"] = True
-        gravar(DATA / "commentaries" / "calvin" / "pt" / livro / f"{cap}.json", versos)
-    print(f"[calvino] {len(tr)} blocos em {len(por_cap)} capítulos gravados em data/commentaries/calvin/pt/")
+        gravar(base / "pt" / livro / f"{cap}.json", versos)
+    print(f"[{etapa}] {len(tr)} blocos em {len(por_cap)} capítulos gravados em data/commentaries/{pasta}/pt/")
+
+
+def preparar_calvino(): preparar_comentario("calvino", "calvin")
+def aplicar_calvino(): aplicar_comentario("calvino", "calvin")
+def preparar_henry(): preparar_comentario("henry", "henry")
+def aplicar_henry(): aplicar_comentario("henry", "henry")
 
 
 if __name__ == "__main__":

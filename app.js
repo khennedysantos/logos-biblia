@@ -14,9 +14,11 @@ const UI = {
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
-    comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
-    comInicio:"Neste capítulo, o comentário de Calvino começa no v.",
-    semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
+    comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
+    comInicio:"Neste capítulo, o comentário começa no v.",
+    semLivroCalvin:"Ainda não há comentário para este livro.",
+    autorCalvin:"João Calvino (1509–1564), domínio público", autorHenry:"Matthew Henry (1662–1714), domínio público",
+    notaHenry:"Calvino não comentou este livro; aqui, o comentário é de Matthew Henry, pastor puritano.",
     fonteNave:"Nave's Topical Bible (1897), domínio público", fonteEaston:"Dicionário Bíblico de Easton (1897), domínio público",
     semOriginal:"Texto original indisponível para este versículo.",
     semComentario:"Ainda não há comentário para este versículo.",
@@ -39,9 +41,11 @@ const UI = {
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
     tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…",
-    comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
-    comInicio:"In this chapter, Calvin's commentary begins at v.",
-    semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
+    comRef:"Commentary on v.", comBloco:"(the commentary covers a block of verses)",
+    comInicio:"In this chapter, the commentary begins at v.",
+    semLivroCalvin:"No commentary available for this book yet.",
+    autorCalvin:"John Calvin (1509–1564), public domain", autorHenry:"Matthew Henry (1662–1714), public domain",
+    notaHenry:"Calvin did not comment on this book; this commentary is by Matthew Henry, Puritan pastor.",
     fonteNave:"Nave's Topical Bible (1897), public domain", fonteEaston:"Easton's Bible Dictionary (1897), public domain",
     semOriginal:"Original text unavailable for this verse.",
     semComentario:"No commentary available for this verse yet.",
@@ -64,9 +68,11 @@ const UI = {
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
     tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…",
-    comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
-    comInicio:"En este capítulo, el comentario de Calvino comienza en el v.",
-    semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
+    comRef:"Comentario sobre el v.", comBloco:"(el comentario abarca un bloque de versículos)",
+    comInicio:"En este capítulo, el comentario comienza en el v.",
+    semLivroCalvin:"Aún no hay comentario para este libro.",
+    autorCalvin:"Juan Calvino (1509–1564), dominio público", autorHenry:"Matthew Henry (1662–1714), dominio público",
+    notaHenry:"Calvino no comentó este libro; aquí el comentario es de Matthew Henry, pastor puritano.",
     fonteNave:"Nave's Topical Bible (1897), dominio público", fonteEaston:"Diccionario Bíblico de Easton (1897), dominio público",
     semOriginal:"Texto original no disponible para este versículo.",
     semComentario:"Aún no hay comentario para este versículo.",
@@ -104,32 +110,42 @@ async function carregarLivro(trad, usfm){
   }
   return est.cacheBiblia[chave];
 }
+/* Comentário do capítulo: Calvino nos 46 livros que ele comentou; nos outros, Matthew Henry.
+   Devolve {versículo: texto, __autor: "calvin"|"henry", __pt?: true} ou null. */
 async function carregarComentario(usfm, cap){
   const pt = est.idioma==="pt";
   const chave = (pt?"pt/":"") + usfm+"/"+cap;
   if(!(chave in est.cacheComent)){
+    const livros = await livrosComentario();
+    const autor = livros.calvin.includes(usfm) ? "calvin" : livros.henry.includes(usfm) ? "henry" : null;
     let base = null, trad = null;
-    try{ base = await json(`data/commentaries/calvin/${usfm}/${cap}.json`); }catch(e){}
-    if(pt){ try{ trad = await json(`data/commentaries/calvin/pt/${usfm}/${cap}.json`); }catch(e){} }
-    est.cacheComent[chave] = base && trad ? Object.assign({}, base, trad) : base;
+    if(autor){
+      try{ base = await json(`data/commentaries/${autor}/${usfm}/${cap}.json`); }catch(e){}
+      if(pt){ try{ trad = await json(`data/commentaries/${autor}/pt/${usfm}/${cap}.json`); }catch(e){} }
+    }
+    const com = base && trad ? Object.assign({}, base, trad) : base;
+    if(com) com.__autor = autor;
+    est.cacheComent[chave] = com;
   }
   return est.cacheComent[chave];
 }
-est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {}; est.calvinLivros = null;
-async function livrosCalvin(){
-  if(!est.calvinLivros){
-    try{ est.calvinLivros = (await json("data/commentaries/calvin/manifest.json")).books; }
-    catch(e){ est.calvinLivros = []; }
+est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {}; est.livrosCom = null;
+async function livrosComentario(){
+  if(!est.livrosCom){
+    const ler = async (a)=>{ try{ return (await json(`data/commentaries/${a}/manifest.json`)).books; }catch(e){ return []; } };
+    const [calvin, henry] = await Promise.all([ler("calvin"), ler("henry")]);
+    est.livrosCom = { calvin, henry };
   }
-  return est.calvinLivros;
+  return est.livrosCom;
 }
+function autorComentario(com, x){ return com && com.__autor === "henry" ? x.autorHenry : x.autorCalvin; }
 function comentarioProximo(com, v){
   if(!com) return null;
   if(com[String(v)]) return { v: v, texto: com[String(v)] };
   let antes = 0, depois = Infinity;
   for(const k of Object.keys(com)){
     const n = +k;
-    if(k === "__pt" || isNaN(n)) continue;
+    if(k.startsWith("__") || isNaN(n)) continue;
     if(n < v && n > antes) antes = n;
     if(n > v && n < depois) depois = n;
   }
@@ -430,7 +446,7 @@ async function acaoVerso(el, v, acao, botao){
     }
   }
   if(acao==="comentario"){
-    const [com, cobertos] = await Promise.all([carregarComentario(est.livro, est.cap), livrosCalvin()]);
+    const com = await carregarComentario(est.livro, est.cap);
     const achado = comentarioProximo(com, v);
     let corpo;
     if(achado){
@@ -438,12 +454,15 @@ async function acaoVerso(el, v, acao, botao){
         ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
       const longo = achado.texto.length > 1400;
       const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
-      corpo = `${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
+      const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
+      corpo = `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
         ${longo ? `<button class="ler-mais">${x.lerMais}</button>` : ""}
-        <p class="fonte">${x.fonte}: João Calvino (1509–1564), domínio público</p>
+        <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
         ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
     } else {
-      corpo = `<p class="comentario-texto">${cobertos.length && !cobertos.includes(est.livro) ? x.semLivroCalvin : x.semComentario}</p>`;
+      const lv = est.livrosCom || {calvin:[], henry:[]};
+      const temLivro = lv.calvin.includes(est.livro) || lv.henry.includes(est.livro);
+      corpo = `<p class="comentario-texto">${temLivro ? x.semComentario : x.semLivroCalvin}</p>`;
     }
     gavetas.innerHTML = gaveta(x.comentario, corpo);
     const lm = gavetas.querySelector(".ler-mais");
@@ -912,7 +931,7 @@ async function atualizarEstudo(v){
   }
   const achado = comentarioProximo(com, v);
   alvoC.innerHTML = achado
-    ? `<p class="lugar-meta" style="margin-top:0">${ref} — João Calvino${achado.v !== v ? ` · ${achado.seguinte ? t().comInicio : t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
+    ? `<p class="lugar-meta" style="margin-top:0">${ref} — ${autorComentario(com, t()).split(" (")[0]}${achado.v !== v ? ` · ${achado.seguinte ? t().comInicio : t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
     : `<p class="estudo-vazio">${t().semComentario}</p>`;
 }
 
