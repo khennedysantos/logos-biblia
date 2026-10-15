@@ -13,7 +13,7 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
-    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher",
+    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
     comRef:"Comentário referente ao v.", comBloco:"(Calvino comenta em blocos de versículos)",
     comInicio:"Neste capítulo, o comentário de Calvino começa no v.",
     semLivroCalvin:"João Calvino não escreveu comentário sobre este livro. Os comentários cobrem 46 dos 66 livros.",
@@ -38,7 +38,7 @@ const UI = {
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
-    tradAuto:"", lerMais:"Read more", lerMenos:"Show less",
+    tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…",
     comRef:"Commentary on v.", comBloco:"(Calvin comments in verse blocks)",
     comInicio:"In this chapter, Calvin's commentary begins at v.",
     semLivroCalvin:"John Calvin did not write a commentary on this book. His commentaries cover 46 of the 66 books.",
@@ -63,7 +63,7 @@ const UI = {
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
-    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar",
+    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…",
     comRef:"Comentario sobre el v.", comBloco:"(Calvino comenta por bloques)",
     comInicio:"En este capítulo, el comentario de Calvino comienza en el v.",
     semLivroCalvin:"Juan Calvino no escribió comentario sobre este libro. Sus comentarios cubren 46 de los 66 libros.",
@@ -95,7 +95,7 @@ function t(){ return UI[est.idioma]; }
 const $ = (id)=>document.getElementById(id);
 
 /* ---------- dados ---------- */
-async function json(url){ const r = await fetch(url); if(!r.ok) throw new Error(url); return r.json(); }
+async function json(url){ const r = await fetch(url.startsWith("data/") ? "/" + url : url); if(!r.ok) throw new Error(url); return r.json(); }
 async function carregarLivro(trad, usfm){
   const chave = trad+"/"+usfm;
   if(!est.cacheBiblia[chave]){
@@ -190,6 +190,25 @@ async function carregarLexico(letra){
   }
   return est.cacheLex[letra];
 }
+function slugLivro(usfm){
+  return infoLivro(usfm).pt.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\s+/g,"-");
+}
+function livroPorSlug(slug){ return est.meta.books.find(b=>slugLivro(b.id)===slug); }
+function urlCapitulo(usfm, cap){ return `/biblia/${slugLivro(usfm)}/${cap}/`; }
+function lerRota(){
+  const m = location.pathname.match(/^\/biblia\/([a-z0-9-]+)\/(\d+)\/?$/);
+  if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { livro: b.id, cap: +m[2] }; }
+  const h = location.hash.match(/^#\/([A-Z0-9]{3})\/(\d+)/);   // links antigos com #
+  if(h && infoLivro(h[1])) return { livro: h[1], cap: +h[2] };
+  return null;
+}
+function atualizarURL(){
+  const url = urlCapitulo(est.livro, est.cap);
+  const primeira = !est.urlPronta;
+  est.urlPronta = true;   // a partir da primeira renderização, cada capítulo novo entra no histórico
+  if(location.pathname === url && !location.hash) return;
+  history[primeira ? "replaceState" : "pushState"]({}, "", url);
+}
 function infoLivro(usfm){ return est.meta.books.find(b=>b.id===usfm); }
 function nomeLivro(usfm){ return infoLivro(usfm)[est.idioma] || infoLivro(usfm).pt; }
 function refStr(usfm, cap, v){ return `${nomeLivro(usfm)} ${cap}:${v}`; }
@@ -250,7 +269,7 @@ async function renderizarCapitulo(){
     atualizarNav();
     $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
     document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
-    location.hash = `#/${est.livro}/${est.cap}`;
+    atualizarURL();
     window.scrollTo({top:0});
     return;
   }
@@ -274,7 +293,7 @@ async function renderizarCapitulo(){
   atualizarNav();
   $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
   document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
-  location.hash = `#/${est.livro}/${est.cap}`;
+  atualizarURL();
   window.scrollTo({top:0});
 }
 function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
@@ -305,7 +324,8 @@ function montarBarra(el){
      <button class="acao" data-acao="comentario">${x.comentario}</button>
      <button class="acao" data-acao="referencias">${x.referencias}</button>
      <button class="acao" data-acao="anotacao">${x.anotacao}</button>
-     <button class="acao" data-acao="copiar">${x.copiar}</button>`;
+     <button class="acao" data-acao="copiar">${x.copiar}</button>
+     <button class="acao" data-acao="compartilhar">${x.compartilhar}</button>`;
   barra.querySelectorAll(".cor").forEach(b=>{
     if(est.marcas[chave]===b.dataset.cor) b.classList.add("sel");
     b.addEventListener("click", ()=>{
@@ -322,6 +342,12 @@ function montarBarra(el){
 async function acaoVerso(el, v, acao, botao){
   const x = t(), chave = `${est.livro}.${est.cap}.${v}`;
   const gavetas = el.querySelector(".gavetas");
+  if(acao==="compartilhar"){
+    const rot = botao.textContent; botao.textContent = x.gerandoImagem;
+    try{ await compartilharVerso(v); } catch(e){ console.warn(e); }
+    botao.textContent = rot;
+    return;
+  }
   if(acao==="copiar"){
     const texto = el.querySelector("p.escritura").innerText.replace(/^\d+\s*/,"").replace(/✎$/,"").trim();
     if(navigator.clipboard) navigator.clipboard.writeText(`"${texto}" — ${refStr(est.livro, est.cap, v)}`).catch(()=>{});
@@ -890,6 +916,67 @@ async function atualizarEstudo(v){
     : `<p class="estudo-vazio">${t().semComentario}</p>`;
 }
 
+/* ---------- compartilhar versículo como imagem ---------- */
+function quebrarLinhas(ctx, texto, largura){
+  const linhas = []; let linha = "";
+  for(const palavra of texto.split(/\s+/)){
+    const teste = linha ? linha + " " + palavra : palavra;
+    if(ctx.measureText(teste).width > largura && linha){ linhas.push(linha); linha = palavra; }
+    else linha = teste;
+  }
+  if(linha) linhas.push(linha);
+  return linhas;
+}
+async function compartilharVerso(v){
+  const livro = await carregarLivro(est.traducao, est.livro);
+  const texto = (livro && livro[est.cap-1] && livro[est.cap-1][v-1]) || "";
+  const ref = refStr(est.livro, est.cap, v);
+  const trad = est.meta.translations.find(tr=>tr.id===est.traducao).name;
+  await Promise.all([document.fonts.load('64px "Cardo"'), document.fonts.load('600 34px "Inter"')]).catch(()=>{});
+  const W = 1080, H = 1350, M = 110;
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const c = cv.getContext("2d");
+  c.fillStyle = "#FAF7F0"; c.fillRect(0, 0, W, H);
+  c.strokeStyle = "#E4DECF"; c.lineWidth = 4; c.strokeRect(40, 40, W-80, H-80);
+  // logotipo: o livro aberto com o ponto de luz (mesmo desenho do ícone do site)
+  c.save(); c.translate(W/2 - 36, 120); c.scale(3, 3);
+  c.strokeStyle = "#8A6A2F"; c.lineWidth = 1.7; c.lineCap = "round"; c.lineJoin = "round";
+  c.stroke(new Path2D("M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"));
+  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#8A6A2F";
+  c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI*2); c.fill(); c.restore();
+  // texto do versículo, com a fonte reduzindo até caber
+  let tam = 66, linhas, alt;
+  do {
+    c.font = `${tam}px "Cardo", Georgia, serif`;
+    linhas = quebrarLinhas(c, `“${texto}”`, W - 2*M);
+    alt = linhas.length * tam * 1.42;
+    tam -= 2;
+  } while(alt > H - 560 && tam > 30);
+  c.fillStyle = "#22293A"; c.textAlign = "center"; c.textBaseline = "middle";
+  let y = (H - alt) / 2 + tam * 0.7 - 20;
+  for(const l of linhas){ c.fillText(l, W/2, y); y += (tam + 2) * 1.42; }
+  c.font = '600 38px "Inter", sans-serif'; c.fillStyle = "#8A6A2F";
+  c.fillText(ref.toUpperCase(), W/2, y + 50);
+  c.font = '400 28px "Inter", sans-serif'; c.fillStyle = "#6B7280";
+  c.fillText(trad, W/2, y + 100);
+  c.font = '700 34px "Cardo", serif'; c.fillStyle = "#22293A";
+  c.fillText("S O L A", W/2, H - 150);
+  c.font = '500 28px "Inter", sans-serif'; c.fillStyle = "#8A6A2F";
+  c.fillText("solabiblia.com.br", W/2, H - 100);
+  const blob = await new Promise(r=>cv.toBlob(r, "image/png"));
+  const nome = `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}.png`;   // sem acento: o Chrome descarta nomes com "ã"
+  const arquivo = new File([blob], nome, { type: "image/png" });
+  const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap);
+  if(navigator.canShare && navigator.canShare({ files: [arquivo] })){
+    await navigator.share({ files: [arquivo], text: `${ref} — ${link}` }).catch(()=>{});
+  } else {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = nome;
+    document.body.appendChild(a); a.click(); a.remove();   // o Chrome só respeita o nome com o link na página
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  }
+}
+
 /* ---------- anotações ---------- */
 function montarNotas(){
   const x = t(), alvo = $("listaNotas");
@@ -964,8 +1051,8 @@ async function iniciar(){
   est.idioma = lerLS("logos_idioma","pt");
   est.traducao = lerLS("logos_trad","blivre");
   est.tema = lerLS("logos_tema", matchMedia("(prefers-color-scheme: dark)").matches ? "escuro":"claro");
-  const m = location.hash.match(/^#\/([A-Z0-9]{3})\/(\d+)/);
-  if(m && infoLivro(m[1])){ est.livro=m[1]; est.cap=+m[2]; }
+  const rota = lerRota();
+  if(rota){ est.livro = rota.livro; est.cap = rota.cap; }
 
   $("selIdioma").value = est.idioma;
   aplicarTextos(); preencherTraducoes(); aplicarTema();
@@ -1019,9 +1106,16 @@ async function iniciar(){
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));
   document.querySelectorAll(".painel").forEach(p=>p.addEventListener("click", (e)=>{ if(e.target===p) p.classList.add("oculto"); }));
-  window.addEventListener("hashchange", ()=>{
-    const h = location.hash.match(/^#\/([A-Z0-9]{3})\/(\d+)/);
-    if(h && infoLivro(h[1]) && (h[1]!==est.livro || +h[2]!==est.cap)){ est.livro=h[1]; est.cap=+h[2]; renderizarCapitulo(); }
+  const seguirRota = ()=>{
+    const r = lerRota();
+    if(r && (r.livro!==est.livro || r.cap!==est.cap)){ est.livro=r.livro; est.cap=r.cap; renderizarCapitulo(); }
+  };
+  window.addEventListener("hashchange", seguirRota);   // links antigos
+  window.addEventListener("popstate", seguirRota);     // botão voltar do navegador
+  const bA = $("btnAjustes");
+  if(bA) bA.addEventListener("click", ()=>{
+    const aberto = document.querySelector(".controles").classList.toggle("aberto");
+    bA.classList.toggle("ativa", aberto);
   });
 }
 iniciar();
