@@ -23,8 +23,9 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   (ex.: `/biblia/joao/3/`, `/biblia/1-corintios/13/`), via `history.pushState`. Links antigos `#/JHN/3`
   ainda funcionam e são convertidos. Dados sempre por caminho absoluto (`/data/...`).
 - `biblia/` — 1.189 páginas estáticas GERADAS (uma por capítulo, com título, descrição e o texto no HTML
-  para o Google). Mais `sitemap.xml`, `robots.txt` e `404.html`. **Sempre que mexer no `index.html`, rode
-  `python3 ferramentas/gerar_paginas.py`** — as páginas são cópias dele. Nunca edite `biblia/` à mão.
+  para o Google). Mais `sitemap.xml`, `robots.txt` e `404.html`. **Sempre que mexer em `index.html`, `app.js` ou
+  `style.css`, rode `python3 ferramentas/gerar_paginas.py`** — as páginas são cópias do index, e ele
+  carimba `?v=<hash>` nos endereços do JS/CSS para o navegador não usar a versão velha em cache. Nunca edite `biblia/` à mão.
 - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` (preview no WhatsApp, 1200×630).
 - `CNAME` — domínio personalizado. **Nunca apagar.**
 - `data/books.json` — cânon (66 livros, ids USFM, nomes pt/en/es) e lista de traduções.

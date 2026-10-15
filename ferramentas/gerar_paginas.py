@@ -3,10 +3,11 @@
 Cada página é o próprio index.html com título, descrição, endereço canônico e o texto do capítulo
 já escritos no HTML. O Google lê o texto direto; para o visitante, o app assume e funciona igual.
 
-RODE DE NOVO SEMPRE QUE O index.html MUDAR (as páginas são cópias dele):
+RODE DE NOVO SEMPRE QUE index.html, app.js OU style.css MUDAREM (as páginas copiam o index.html,
+e o index.html carrega app.js/style.css com a versão no endereço):
     python3 ferramentas/gerar_paginas.py
 """
-import html, json, re, shutil, unicodedata
+import hashlib, html, json, re, shutil, unicodedata
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -26,7 +27,19 @@ def cortar(texto, n=155):
     return texto[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
 
 
+def carimbar_versoes():
+    """Põe ?v=<hash> no style.css e no app.js do index.html: quando o arquivo muda, o endereço muda,
+    e o navegador baixa a versão nova na hora em vez de usar a guardada em cache (10 min no GitHub Pages)."""
+    idx = RAIZ / "index.html"
+    texto = idx.read_text(encoding="utf-8")
+    for arq in ("style.css", "app.js"):
+        h = hashlib.sha1((RAIZ / arq).read_bytes()).hexdigest()[:10]
+        texto = re.sub(rf'"/{re.escape(arq)}(\?v=[0-9a-f]+)?"', f'"/{arq}?v={h}"', texto)
+    idx.write_text(texto, encoding="utf-8")
+
+
 def main():
+    carimbar_versoes()
     modelo = (RAIZ / "index.html").read_text(encoding="utf-8")
     assert "<!--SEO-->" in modelo and "<!--CONTEUDO-->" in modelo, "marcadores ausentes no index.html"
     seo_ini, seo_fim = modelo.index("<!--SEO-->"), modelo.index("<!--/SEO-->") + len("<!--/SEO-->")
