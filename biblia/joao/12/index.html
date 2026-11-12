@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>João 12 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="João 12: Veio, pois, Jesus seis dias antes da páscoa a Betânia, onde estava Lázaro, o que havia morrido, a quem ressuscitara dos mortos. Fizeram-lhe…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/joao/12/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "João", "item": "https://solabiblia.com.br/biblia/joao/"}, {"@type": "ListItem", "position": 3, "name": "João 12", "item": "https://solabiblia.com.br/biblia/joao/12/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">João 12</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">João 12</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,110 +91,173 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">João 12</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>Veio, pois, Jesus seis dias antes da páscoa a Betânia, onde estava Lázaro, o que havia morrido, a quem ressuscitara dos mortos.</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>Fizeram-lhe, pois, ali uma ceia, e Marta servia; e Lázaro era um dos que juntamente com ele estavam sentados à mesa.</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>Tomando então Maria um arrátel de óleo perfumado de nardo puro, de muito preço, ungiu os pés de Jesus, e limpou os pés dele com seus cabelos; e encheu-se a casa do cheiro do óleo perfumado.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>Então disse Judas de Simão Iscariotes, um de seus discípulos, o que o trairia:</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Por que se não vendeu este óleo perfumado por trezentos dinheiros, e se deu aos pobres?</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>E isto disse ele, não pelo cuidado que tivesse dos pobres; mas porque era ladrão, e tinha a bolsa, e trazia o que se lançava nela.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>Disse pois Jesus: Deixa-a; para o dia de meu sepultamento guardou isto.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Porque aos pobres sempre os tendes convosco; porém a mim não me tendes sempre.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>Muita gente dos judeus soube pois, que ele estava ali; e vieram, não somente por causa de Jesus, mas também para verem a Lázaro, a quem ressuscitara dos mortos.</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>E os chefes dos sacerdotes se aconselharam de também matarem a Lázaro,</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>Porque muitos dos judeus iam por causa dele, e criam em Jesus.</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>No dia seguinte, ouvindo uma grande multidão, que viera à festa, que Jesus vinha a Jerusalém,</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>Tomaram ramos de plantas e lhe saíram ao encontro, e clamavam: Hosana! Bendito aquele que vem no nome do Senhor, o Rei de Israel!</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>E Jesus achou um jumentinho, e sentou-se sobre ele, como está escrito:</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>Não temas, ó filha de Sião; eis que teu Rei vem sentado sobre o filhote de uma jumenta.</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>Porém seus discípulos não entenderam isto ao princípio; mas sendo Jesus já glorificado, então se lembraram que isto dele estava escrito, e que isto lhe fizeram.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>A multidão pois, que estava com ele, testemunhava, que a Lázaro chamara da sepultura, e o ressuscitara dos mortos.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>Pelo que também a multidão lhe saiu ao encontro, porque ouvira que fizera este sinal.</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>Disseram pois os fariseus entre si: Vedes que nada aproveitais? Eis que o mundo vai após ele.</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>E havia alguns gregos dos que haviam subido para adorarem na festa.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>Estes pois vieram a Filipe, que era de Betsaida de Galileia, e rogaram-lhe, dizendo: Senhor, queríamos ver a Jesus.</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>Veio Filipe, e disse-o a André; e André então e Filipe o disseram a Jesus.</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>Porém Jesus lhes respondeu, dizendo: Chegada é a hora em que o Filho do homem será glorificado.</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>Em verdade, em verdade vos digo, se o grão de trigo, ao cair na terra, não morrer, ele fica só; porém se morrer, dá muito fruto.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>Quem ama sua vida a perderá; e quem neste mundo odeia sua vida, a guardará para a vida eterna.</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>Se alguém me serve, siga-me; e onde eu estiver, ali estará também meu servo. E se alguém me servir, o Pai o honrará.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>Agora minha alma está perturbada; e que direi? Pai, salva-me desta hora; mas por isso vim a esta hora.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>Pai, glorifica teu Nome. Veio, pois, uma voz do céu, que dizia: E já o tenho glorificado, e outra vez o glorificarei.</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>A multidão pois que ali estava, e a ouviu, dizia que havia sido trovão. Outros diziam: Algum anjo falou com ele.</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>Respondeu Jesus e disse: Esta voz não veio por causa de mim, mas sim por causa de vós.</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>Agora é o juízo deste mundo; agora será lançado fora o príncipe deste mundo.</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>E eu, quando for levantado da terra, trarei todos a mim.</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>(E isto dizia, indicando de que morte ele morreria.)</p></div>
-<div class="verso" data-v="34"><p class="escritura"><sup>34</sup>Respondeu-lhe a multidão: Temos ouvido da Lei que o Cristo permanece para sempre; e como tu dizes que convém que o Filho do homem seja levantado? Quem é este Filho do homem?</p></div>
-<div class="verso" data-v="35"><p class="escritura"><sup>35</sup>Disse-lhes pois Jesus: Ainda por um pouco de tempo a luz está convosco; andai enquanto tendes luz, para que as trevas vos não apanhem. E quem anda em trevas não sabe para onde vai.</p></div>
-<div class="verso" data-v="36"><p class="escritura"><sup>36</sup>Enquanto tendes luz, crede na luz, para que sejais filhos da luz.Estas coisas falou Jesus, e indo-se, escondeu-se deles.</p></div>
-<div class="verso" data-v="37"><p class="escritura"><sup>37</sup>E ainda que perante eles tinha feito tantos sinais, não criam nele.</p></div>
-<div class="verso" data-v="38"><p class="escritura"><sup>38</sup>Para que se cumprisse a palavra do profeta Isaías, que disse: Senhor, quem creu em nossa pregação? E a quem o braço do Senhor foi revelado?</p></div>
-<div class="verso" data-v="39"><p class="escritura"><sup>39</sup>Por isso não podiam crer, porque outra vez Isaías disse:</p></div>
-<div class="verso" data-v="40"><p class="escritura"><sup>40</sup>Os olhos lhes cegou, e o coração lhes endureceu; para não acontecer que vejam dos olhos, e entendam do coração, e se convertam, e eu os cure.</p></div>
-<div class="verso" data-v="41"><p class="escritura"><sup>41</sup>Isto disse Isaías, quando viu sua glória, e falou dele.</p></div>
-<div class="verso" data-v="42"><p class="escritura"><sup>42</sup>Contudo ainda até muitos dos chefes também creram nele; mas não o confessavam por causa dos fariseus; para não serem expulsos da sinagoga.</p></div>
-<div class="verso" data-v="43"><p class="escritura"><sup>43</sup>Porque amavam mais a glória humana do que a glória de Deus.</p></div>
-<div class="verso" data-v="44"><p class="escritura"><sup>44</sup>E exclamou Jesus, e disse: Quem crê em mim, não crê somente em mim, mas também naquele que me enviou.</p></div>
-<div class="verso" data-v="45"><p class="escritura"><sup>45</sup>E quem vê a mim, vê a aquele que me enviou.</p></div>
-<div class="verso" data-v="46"><p class="escritura"><sup>46</sup>Eu sou a luz que vim ao mundo, para que todo aquele que crê em mim, não permaneça em trevas.</p></div>
-<div class="verso" data-v="47"><p class="escritura"><sup>47</sup>E se alguém ouvir minhas palavras, e não crer, eu não o julgo; porque não vim para julgar o mundo, mas sim para salvar o mundo.</p></div>
-<div class="verso" data-v="48"><p class="escritura"><sup>48</sup>Quem me rejeitar e não receber minhas palavras, já tem quem o julgue: a palavra que eu tenho falado, essa o julgará no último dia.</p></div>
-<div class="verso" data-v="49"><p class="escritura"><sup>49</sup>Porque eu não tenho falado de mim mesmo; porém o Pai que me enviou, ele me deu mandamento do que devo dizer, e do que devo falar.</p></div>
-<div class="verso" data-v="50"><p class="escritura"><sup>50</sup>E sei que seu mandamento é vida eterna. Portanto o que eu falo, falo assim como o Pai tem me dito.</p></div>
-<nav class="seo-nav"><a href="/biblia/joao/11/">‹ João 11</a><a href="/biblia/joao/13/">João 13 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Novo Testamento</a> · <a href="/biblia/joao/">Evangelhos e Atos</a></p>
+<h1 class="titulo-cap">João 12</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/joao/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>Veio, pois, Jesus seis dias antes da páscoa a Betânia, onde estava Lázaro, o que havia morrido, a quem ressuscitara dos mortos.</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>Fizeram-lhe, pois, ali uma ceia, e Marta servia; e Lázaro era um dos que juntamente com ele estavam sentados à mesa.</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>Tomando então Maria um arrátel de óleo perfumado de nardo puro, de muito preço, ungiu os pés de Jesus, e limpou os pés dele com seus cabelos; e encheu-se a casa do cheiro do óleo perfumado.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>Então disse Judas de Simão Iscariotes, um de seus discípulos, o que o trairia:</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Por que se não vendeu este óleo perfumado por trezentos dinheiros, e se deu aos pobres?</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>E isto disse ele, não pelo cuidado que tivesse dos pobres; mas porque era ladrão, e tinha a bolsa, e trazia o que se lançava nela.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>Disse pois Jesus: Deixa-a; para o dia de meu sepultamento guardou isto.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Porque aos pobres sempre os tendes convosco; porém a mim não me tendes sempre.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>Muita gente dos judeus soube pois, que ele estava ali; e vieram, não somente por causa de Jesus, mas também para verem a Lázaro, a quem ressuscitara dos mortos.</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>E os chefes dos sacerdotes se aconselharam de também matarem a Lázaro,</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>Porque muitos dos judeus iam por causa dele, e criam em Jesus.</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>No dia seguinte, ouvindo uma grande multidão, que viera à festa, que Jesus vinha a Jerusalém,</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>Tomaram ramos de plantas e lhe saíram ao encontro, e clamavam: Hosana! Bendito aquele que vem no nome do Senhor, o Rei de Israel!</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>E Jesus achou um jumentinho, e sentou-se sobre ele, como está escrito:</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>Não temas, ó filha de Sião; eis que teu Rei vem sentado sobre o filhote de uma jumenta.</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>Porém seus discípulos não entenderam isto ao princípio; mas sendo Jesus já glorificado, então se lembraram que isto dele estava escrito, e que isto lhe fizeram.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>A multidão pois, que estava com ele, testemunhava, que a Lázaro chamara da sepultura, e o ressuscitara dos mortos.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>Pelo que também a multidão lhe saiu ao encontro, porque ouvira que fizera este sinal.</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>Disseram pois os fariseus entre si: Vedes que nada aproveitais? Eis que o mundo vai após ele.</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>E havia alguns gregos dos que haviam subido para adorarem na festa.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>Estes pois vieram a Filipe, que era de Betsaida de Galileia, e rogaram-lhe, dizendo: Senhor, queríamos ver a Jesus.</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>Veio Filipe, e disse-o a André; e André então e Filipe o disseram a Jesus.</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>Porém Jesus lhes respondeu, dizendo: Chegada é a hora em que o Filho do homem será glorificado.</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>Em verdade, em verdade vos digo, se o grão de trigo, ao cair na terra, não morrer, ele fica só; porém se morrer, dá muito fruto.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>Quem ama sua vida a perderá; e quem neste mundo odeia sua vida, a guardará para a vida eterna.</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>Se alguém me serve, siga-me; e onde eu estiver, ali estará também meu servo. E se alguém me servir, o Pai o honrará.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>Agora minha alma está perturbada; e que direi? Pai, salva-me desta hora; mas por isso vim a esta hora.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>Pai, glorifica teu Nome. Veio, pois, uma voz do céu, que dizia: E já o tenho glorificado, e outra vez o glorificarei.</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>A multidão pois que ali estava, e a ouviu, dizia que havia sido trovão. Outros diziam: Algum anjo falou com ele.</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>Respondeu Jesus e disse: Esta voz não veio por causa de mim, mas sim por causa de vós.</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>Agora é o juízo deste mundo; agora será lançado fora o príncipe deste mundo.</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>E eu, quando for levantado da terra, trarei todos a mim.</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>(E isto dizia, indicando de que morte ele morreria.)</p></div>
+<div class="verso" id="v34" data-v="34"><p class="escritura"><sup>34</sup>Respondeu-lhe a multidão: Temos ouvido da Lei que o Cristo permanece para sempre; e como tu dizes que convém que o Filho do homem seja levantado? Quem é este Filho do homem?</p></div>
+<div class="verso" id="v35" data-v="35"><p class="escritura"><sup>35</sup>Disse-lhes pois Jesus: Ainda por um pouco de tempo a luz está convosco; andai enquanto tendes luz, para que as trevas vos não apanhem. E quem anda em trevas não sabe para onde vai.</p></div>
+<div class="verso" id="v36" data-v="36"><p class="escritura"><sup>36</sup>Enquanto tendes luz, crede na luz, para que sejais filhos da luz.Estas coisas falou Jesus, e indo-se, escondeu-se deles.</p></div>
+<div class="verso" id="v37" data-v="37"><p class="escritura"><sup>37</sup>E ainda que perante eles tinha feito tantos sinais, não criam nele.</p></div>
+<div class="verso" id="v38" data-v="38"><p class="escritura"><sup>38</sup>Para que se cumprisse a palavra do profeta Isaías, que disse: Senhor, quem creu em nossa pregação? E a quem o braço do Senhor foi revelado?</p></div>
+<div class="verso" id="v39" data-v="39"><p class="escritura"><sup>39</sup>Por isso não podiam crer, porque outra vez Isaías disse:</p></div>
+<div class="verso" id="v40" data-v="40"><p class="escritura"><sup>40</sup>Os olhos lhes cegou, e o coração lhes endureceu; para não acontecer que vejam dos olhos, e entendam do coração, e se convertam, e eu os cure.</p></div>
+<div class="verso" id="v41" data-v="41"><p class="escritura"><sup>41</sup>Isto disse Isaías, quando viu sua glória, e falou dele.</p></div>
+<div class="verso" id="v42" data-v="42"><p class="escritura"><sup>42</sup>Contudo ainda até muitos dos chefes também creram nele; mas não o confessavam por causa dos fariseus; para não serem expulsos da sinagoga.</p></div>
+<div class="verso" id="v43" data-v="43"><p class="escritura"><sup>43</sup>Porque amavam mais a glória humana do que a glória de Deus.</p></div>
+<div class="verso" id="v44" data-v="44"><p class="escritura"><sup>44</sup>E exclamou Jesus, e disse: Quem crê em mim, não crê somente em mim, mas também naquele que me enviou.</p></div>
+<div class="verso" id="v45" data-v="45"><p class="escritura"><sup>45</sup>E quem vê a mim, vê a aquele que me enviou.</p></div>
+<div class="verso" id="v46" data-v="46"><p class="escritura"><sup>46</sup>Eu sou a luz que vim ao mundo, para que todo aquele que crê em mim, não permaneça em trevas.</p></div>
+<div class="verso" id="v47" data-v="47"><p class="escritura"><sup>47</sup>E se alguém ouvir minhas palavras, e não crer, eu não o julgo; porque não vim para julgar o mundo, mas sim para salvar o mundo.</p></div>
+<div class="verso" id="v48" data-v="48"><p class="escritura"><sup>48</sup>Quem me rejeitar e não receber minhas palavras, já tem quem o julgue: a palavra que eu tenho falado, essa o julgará no último dia.</p></div>
+<div class="verso" id="v49" data-v="49"><p class="escritura"><sup>49</sup>Porque eu não tenho falado de mim mesmo; porém o Pai que me enviou, ele me deu mandamento do que devo dizer, e do que devo falar.</p></div>
+<div class="verso" id="v50" data-v="50"><p class="escritura"><sup>50</sup>E sei que seu mandamento é vida eterna. Portanto o que eu falo, falo assim como o Pai tem me dito.</p></div>
+<nav class="seo-nav"><a href="/biblia/joao/11/">‹ João 11</a><a href="/biblia/joao/13/">João 13 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -189,75 +266,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
-    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
-    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=da2d374419"></script>
+<script src="/app.js?v=c3e43362cd"></script>
 </body>
 </html>

@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marcos 14 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="Marcos 14: E dali a dois dias era a Páscoa, e a festa dos pães sem fermento; e os chefes dos sacerdotes, e os escribas buscavam um meio de prendê-lo…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/marcos/14/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Marcos", "item": "https://solabiblia.com.br/biblia/marcos/"}, {"@type": "ListItem", "position": 3, "name": "Marcos 14", "item": "https://solabiblia.com.br/biblia/marcos/14/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Marcos 14</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Marcos 14</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,132 +91,195 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">Marcos 14</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>E dali a dois dias era a Páscoa, e a festa dos pães sem fermento; e os chefes dos sacerdotes, e os escribas buscavam um meio de prendê-lo através de um engano, e o matarem.</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>Pois diziam: “Não na festa, para que não aconteça tumulto entre o povo.”</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>E estando ele em Betânia, na casa de Simão o Leproso, sentado à mesa, veio uma mulher, que tinha um vaso de alabastro, de óleo perfumado de nardo puro, de muito preço, e quebrando o vaso de alabastro, derramou-o sobre a cabeça dele.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>E houve alguns que em si mesmos se indignaram, e disseram: “Para que foi feito este desperdício do óleo perfumado?</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Porque este óleo perfumado podia ter sido vendido por mais de trezentos denários, e seria dado aos pobres.” E reclamavam contra ela.</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>Porém Jesus disse: “Deixai-a; por que a incomodais? Ela me fez boa obra.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>Porque pobres sempre tendes convosco; e quando quiserdes, podeis lhes fazer bem; porém a mim, nem sempre me tendes.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Esta fez o que podia; adiantou-se para ungir o meu corpo, para a sepultura.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>Em verdade vos digo, que onde quer que em todo o mundo o Evangelho for pregado, também o que esta fez será dito em sua memória.”</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>E Judas Iscariotes, um dos doze, foi aos chefes dos sacerdotes, para o entregar a eles.</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>E eles ouvindo, alegraram-se; e prometeram lhe dar dinheiro; e buscava como o entregaria em tempo oportuno.</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>E o primeiro dia dos pães sem fermento, quando sacrificavam o cordeiro da Páscoa, seus discípulos lhe disseram: “Onde queres que vamos preparar para comerdes a Páscoa?”</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>E mandou dois de seus discípulos, e disse-lhes: “Ide à cidade, e um homem que leva um cântaro de água vos encontrará, a ele segui.</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>E onde quer que ele entrar, dizei ao senhor da casa: O Mestre diz: Onde está o cômodo onde comerei Páscoa com meus discípulos?</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>E ele vos mostrará um grande salão, ornado e preparado; ali fazei os preparativos para nós.”</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>E osdiscípulos saíram, e vieram à cidade, e acharam como havia lhes dito, e prepararam a Páscoa.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>E chegada a tarde, veio com os doze.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>E quando se sentaram à mesa, e comeram, Jesus disse: “Em verdade vos digo, que um de vós, que está comendo comigo, me trairá.”</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>Eles começaram a se entristecer, e a lhe dizer um após outro: “Por acaso sou eu?”</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>Porém ele lhes respondeu: “É um dos doze, o que está molhando a mão comigo no prato.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>Pois em verdade o Filho do homem vai, como está escrito sobre ele; mas ai daquele homem por quem o Filho do homem é traído; bom lhe fosse ao tal homem não haver nascido.”</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>E enquanto eles comiam, Jesus tomou o pão; e bendizendo, partiu-o, deu-lhes, e disse: “Tomai, isto é o meu corpo.”</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>E tomando o copo, e dando graças, deu-lhes; e todos beberam dele.</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>E disse-lhes: “Isto é o meu sangue, o do testamento, que é derramado por muitos.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>Em verdade vos digo, que não beberei mais do fruto da vide, até aquele dia, quando o beber novo no Reino de Deus.”</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>E depois de cantarem um hino, saíram para o monte das Oliveiras.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>E Jesus lhes disse: “Todos vós vos ofendereis; porque está escrito: Ferirei ao pastor, e as ovelhas serão dispersas.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>Mas depois de eu haver ressuscitado, irei adiante de vós para a Galileia.”</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>E Pedro lhe disse: “Ainda que todos se ofendam, porém eu não.”</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>Jesus lhe disse: “Em verdade te digo, que hoje, nesta noite, antes que o galo cante duas vezes, me negarás três vezes.”</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>Mas Pedro, insistindo, dizia: “Ainda que me seja necessário morrer contigo, em maneira nenhuma te negarei.” E todos diziam também da mesma maneira.</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>E vieram ao lugar, cujo nome era Getsêmani, e disse a seus discípulos: “Sentai-vos aqui, enquanto eu oro.”</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>E tomou consigo Pedro, Tiago, e João, e começou a ficar muito apavorado e angustiado.</p></div>
-<div class="verso" data-v="34"><p class="escritura"><sup>34</sup>E disse-lhes: “Minha alma totalmente está triste até a morte; ficai-vos aqui, e vigiai.”</p></div>
-<div class="verso" data-v="35"><p class="escritura"><sup>35</sup>Então ele foi um pouco mais adiante, e prostrou-se em terra. E orou, que se fosse possível, afastasse dele aquela hora.</p></div>
-<div class="verso" data-v="36"><p class="escritura"><sup>36</sup>E disse: “Aba, Pai, todas as coisas te são possíveis; passa de mim este copo; porém não se faça o que eu quero, mas sim o que tu queres.”</p></div>
-<div class="verso" data-v="37"><p class="escritura"><sup>37</sup>Depois veio de volta, e os achou dormindo; e disse a Pedro: “Simão, estás dormindo? Não podes vigiar uma hora?</p></div>
-<div class="verso" data-v="38"><p class="escritura"><sup>38</sup>Vigiai, e orai, para que não entreis em tentação; o espírito em verdade está pronto, mas a carne é fraca.”</p></div>
-<div class="verso" data-v="39"><p class="escritura"><sup>39</sup>E depois que se foi novamente, orou, dizendo as mesmas palavras.</p></div>
-<div class="verso" data-v="40"><p class="escritura"><sup>40</sup>Quando voltou outra vez, achou-os dormindo; porque os olhos deles estavam pesados, e não sabiam o que lhe responder.</p></div>
-<div class="verso" data-v="41"><p class="escritura"><sup>41</sup>E veio a terceira vez, e disse-lhes: “Ainda estais dormindo e descansando? Basta, chegada é a hora. Eis que o Filho do homem é entregue em mãos dos pecadores.</p></div>
-<div class="verso" data-v="42"><p class="escritura"><sup>42</sup>Levantai-vos, vamos; eis que o que me trai está perto.</p></div>
-<div class="verso" data-v="43"><p class="escritura"><sup>43</sup>E logo, enquanto ele ainda estava falando, veio Judas, que era um dos doze, e com ele uma multidão, com espadas e bastões, da parte dos chefes dos sacerdotes, dos escribas, dos anciãos.</p></div>
-<div class="verso" data-v="44"><p class="escritura"><sup>44</sup>E o que o traía lhes tinha dado um sinal comum, dizendo: “Ao que eu beijar, é esse; prendei-o, e levai-o em segurança.”</p></div>
-<div class="verso" data-v="45"><p class="escritura"><sup>45</sup>E quando veio, logo foi-se a ele, e disse-lhe: “Rabi”, e o beijou.</p></div>
-<div class="verso" data-v="46"><p class="escritura"><sup>46</sup>Então o agarraram, e o prenderam.</p></div>
-<div class="verso" data-v="47"><p class="escritura"><sup>47</sup>E um dos que estavam ali presentes puxou a espada, feriu o servo do sumo sacerdote, e cortou-lhe a orelha.</p></div>
-<div class="verso" data-v="48"><p class="escritura"><sup>48</sup>Jesus começou a lhes dizer: “Viestes me prender com espadas e bastões, como se eu fosse um bandido?</p></div>
-<div class="verso" data-v="49"><p class="escritura"><sup>49</sup>Todo dia eu estava convosco no templo, ensinando, e não me prendestes; mas assim se faz para que as Escrituras se cumpram.”</p></div>
-<div class="verso" data-v="50"><p class="escritura"><sup>50</sup>Então todos o deixaram, e fugiram.</p></div>
-<div class="verso" data-v="51"><p class="escritura"><sup>51</sup>E certo rapaz o seguia, envolto num lençol sobre o corpo nu. E o agarraram.</p></div>
-<div class="verso" data-v="52"><p class="escritura"><sup>52</sup>Mas ele largou o lençol, e fugiu nu.</p></div>
-<div class="verso" data-v="53"><p class="escritura"><sup>53</sup>E levaram Jesus ao sumo sacerdote; e ajuntaram-se todos os chefes dos sacerdotes, os anciãos, e os escribas.</p></div>
-<div class="verso" data-v="54"><p class="escritura"><sup>54</sup>E Pedro o seguiu de longe até dentro do pátio do sumo sacerdote, e ficou sentado com os oficiais, esquentando-se ao fogo.</p></div>
-<div class="verso" data-v="55"><p class="escritura"><sup>55</sup>E os chefes dos sacerdotes, e todo o tribunal buscavam algum testemunho contra Jesus, para o matarem, e não o achavam.</p></div>
-<div class="verso" data-v="56"><p class="escritura"><sup>56</sup>Porque muitos davam falso testemunho contra ele, mas os testemunhos não concordavam entre si.</p></div>
-<div class="verso" data-v="57"><p class="escritura"><sup>57</sup>E alguns se levantavam e davam falso testemunho contra ele, dizendo:</p></div>
-<div class="verso" data-v="58"><p class="escritura"><sup>58</sup>“Nós o ouvimos dizer: Eu derrubarei este templo feito por mãos, e em três dias construirei outro feito não por mãos.</p></div>
-<div class="verso" data-v="59"><p class="escritura"><sup>59</sup>E nem assim o testemunho deles era concordante.</p></div>
-<div class="verso" data-v="60"><p class="escritura"><sup>60</sup>Então o sumo sacerdote levantou-se no meio, e perguntou a Jesus: “Não respondes nada? O que estes testemunham contra ti?”</p></div>
-<div class="verso" data-v="61"><p class="escritura"><sup>61</sup>Mas ele ficou calado, e nada respondeu. O sumo sacerdote voltou a lhe perguntar: “És tu o Cristo, o Filho daquele que é Bendito?”</p></div>
-<div class="verso" data-v="62"><p class="escritura"><sup>62</sup>Jesus respondeu: “Eu sou. E vereis o Filho do homem sentado à direita do Poderoso, e vindo com as nuvens do céu.”</p></div>
-<div class="verso" data-v="63"><p class="escritura"><sup>63</sup>E o sumo sacerdote, rasgando suas roupas, disse: “Para que mais necessitamos de testemunhas?</p></div>
-<div class="verso" data-v="64"><p class="escritura"><sup>64</sup>Vós ouvistes a blasfêmia. Que vos parece?” E todos o condenaram como culpado de morte.</p></div>
-<div class="verso" data-v="65"><p class="escritura"><sup>65</sup>E alguns começaram a cuspir nele, e a cobrir o rosto dele; e a dar-lhe de socos, e dizer-lhe: “Profetiza”. E os oficiais o receberam com bofetadas.</p></div>
-<div class="verso" data-v="66"><p class="escritura"><sup>66</sup>E, enquanto Pedro estava no pátio abaixo, veio uma das servas do sumo sacerdote.</p></div>
-<div class="verso" data-v="67"><p class="escritura"><sup>67</sup>Quando ela viu Pedro, que estava sentado esquentando-se, olhou para ele, e disse: “Também tu estavas com Jesus, o Nazareno.”</p></div>
-<div class="verso" data-v="68"><p class="escritura"><sup>68</sup>Mas ele negou, dizendo: “Não o conheço, nem sei o que dizes.”; e saiu para o alpendre.</p></div>
-<div class="verso" data-v="69"><p class="escritura"><sup>69</sup>A serva o viu, e começou a dizer outra vez aos que ali estavam: “Este é um deles”.</p></div>
-<div class="verso" data-v="70"><p class="escritura"><sup>70</sup>Mas ele o negou de novo. E pouco depois, outra vez os que ali estavam disseram a Pedro: “Verdadeiramente tu és um deles; pois também és galileu””.</p></div>
-<div class="verso" data-v="71"><p class="escritura"><sup>71</sup>Então ele começou a amaldiçoar e a jurar, dizendo: “Não conheço esse homem de quem dizeis.”</p></div>
-<div class="verso" data-v="72"><p class="escritura"><sup>72</sup>Imediatamente o galo cantou a segunda vez. E Pedro se lembrou da palavra que Jesus havia lhe dito: “Antes que o galo cante duas vezes, tu me negarás três vezes.” Então ele retirou-se dali e chorou.</p></div>
-<nav class="seo-nav"><a href="/biblia/marcos/13/">‹ Marcos 13</a><a href="/biblia/marcos/15/">Marcos 15 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Novo Testamento</a> · <a href="/biblia/marcos/">Evangelhos e Atos</a></p>
+<h1 class="titulo-cap">Marcos 14</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/marcos/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>E dali a dois dias era a Páscoa, e a festa dos pães sem fermento; e os chefes dos sacerdotes, e os escribas buscavam um meio de prendê-lo através de um engano, e o matarem.</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>Pois diziam: “Não na festa, para que não aconteça tumulto entre o povo.”</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>E estando ele em Betânia, na casa de Simão o Leproso, sentado à mesa, veio uma mulher, que tinha um vaso de alabastro, de óleo perfumado de nardo puro, de muito preço, e quebrando o vaso de alabastro, derramou-o sobre a cabeça dele.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>E houve alguns que em si mesmos se indignaram, e disseram: “Para que foi feito este desperdício do óleo perfumado?</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Porque este óleo perfumado podia ter sido vendido por mais de trezentos denários, e seria dado aos pobres.” E reclamavam contra ela.</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>Porém Jesus disse: “Deixai-a; por que a incomodais? Ela me fez boa obra.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>Porque pobres sempre tendes convosco; e quando quiserdes, podeis lhes fazer bem; porém a mim, nem sempre me tendes.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Esta fez o que podia; adiantou-se para ungir o meu corpo, para a sepultura.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>Em verdade vos digo, que onde quer que em todo o mundo o Evangelho for pregado, também o que esta fez será dito em sua memória.”</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>E Judas Iscariotes, um dos doze, foi aos chefes dos sacerdotes, para o entregar a eles.</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>E eles ouvindo, alegraram-se; e prometeram lhe dar dinheiro; e buscava como o entregaria em tempo oportuno.</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>E o primeiro dia dos pães sem fermento, quando sacrificavam o cordeiro da Páscoa, seus discípulos lhe disseram: “Onde queres que vamos preparar para comerdes a Páscoa?”</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>E mandou dois de seus discípulos, e disse-lhes: “Ide à cidade, e um homem que leva um cântaro de água vos encontrará, a ele segui.</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>E onde quer que ele entrar, dizei ao senhor da casa: O Mestre diz: Onde está o cômodo onde comerei Páscoa com meus discípulos?</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>E ele vos mostrará um grande salão, ornado e preparado; ali fazei os preparativos para nós.”</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>E osdiscípulos saíram, e vieram à cidade, e acharam como havia lhes dito, e prepararam a Páscoa.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>E chegada a tarde, veio com os doze.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>E quando se sentaram à mesa, e comeram, Jesus disse: “Em verdade vos digo, que um de vós, que está comendo comigo, me trairá.”</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>Eles começaram a se entristecer, e a lhe dizer um após outro: “Por acaso sou eu?”</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>Porém ele lhes respondeu: “É um dos doze, o que está molhando a mão comigo no prato.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>Pois em verdade o Filho do homem vai, como está escrito sobre ele; mas ai daquele homem por quem o Filho do homem é traído; bom lhe fosse ao tal homem não haver nascido.”</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>E enquanto eles comiam, Jesus tomou o pão; e bendizendo, partiu-o, deu-lhes, e disse: “Tomai, isto é o meu corpo.”</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>E tomando o copo, e dando graças, deu-lhes; e todos beberam dele.</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>E disse-lhes: “Isto é o meu sangue, o do testamento, que é derramado por muitos.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>Em verdade vos digo, que não beberei mais do fruto da vide, até aquele dia, quando o beber novo no Reino de Deus.”</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>E depois de cantarem um hino, saíram para o monte das Oliveiras.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>E Jesus lhes disse: “Todos vós vos ofendereis; porque está escrito: Ferirei ao pastor, e as ovelhas serão dispersas.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>Mas depois de eu haver ressuscitado, irei adiante de vós para a Galileia.”</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>E Pedro lhe disse: “Ainda que todos se ofendam, porém eu não.”</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>Jesus lhe disse: “Em verdade te digo, que hoje, nesta noite, antes que o galo cante duas vezes, me negarás três vezes.”</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>Mas Pedro, insistindo, dizia: “Ainda que me seja necessário morrer contigo, em maneira nenhuma te negarei.” E todos diziam também da mesma maneira.</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>E vieram ao lugar, cujo nome era Getsêmani, e disse a seus discípulos: “Sentai-vos aqui, enquanto eu oro.”</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>E tomou consigo Pedro, Tiago, e João, e começou a ficar muito apavorado e angustiado.</p></div>
+<div class="verso" id="v34" data-v="34"><p class="escritura"><sup>34</sup>E disse-lhes: “Minha alma totalmente está triste até a morte; ficai-vos aqui, e vigiai.”</p></div>
+<div class="verso" id="v35" data-v="35"><p class="escritura"><sup>35</sup>Então ele foi um pouco mais adiante, e prostrou-se em terra. E orou, que se fosse possível, afastasse dele aquela hora.</p></div>
+<div class="verso" id="v36" data-v="36"><p class="escritura"><sup>36</sup>E disse: “Aba, Pai, todas as coisas te são possíveis; passa de mim este copo; porém não se faça o que eu quero, mas sim o que tu queres.”</p></div>
+<div class="verso" id="v37" data-v="37"><p class="escritura"><sup>37</sup>Depois veio de volta, e os achou dormindo; e disse a Pedro: “Simão, estás dormindo? Não podes vigiar uma hora?</p></div>
+<div class="verso" id="v38" data-v="38"><p class="escritura"><sup>38</sup>Vigiai, e orai, para que não entreis em tentação; o espírito em verdade está pronto, mas a carne é fraca.”</p></div>
+<div class="verso" id="v39" data-v="39"><p class="escritura"><sup>39</sup>E depois que se foi novamente, orou, dizendo as mesmas palavras.</p></div>
+<div class="verso" id="v40" data-v="40"><p class="escritura"><sup>40</sup>Quando voltou outra vez, achou-os dormindo; porque os olhos deles estavam pesados, e não sabiam o que lhe responder.</p></div>
+<div class="verso" id="v41" data-v="41"><p class="escritura"><sup>41</sup>E veio a terceira vez, e disse-lhes: “Ainda estais dormindo e descansando? Basta, chegada é a hora. Eis que o Filho do homem é entregue em mãos dos pecadores.</p></div>
+<div class="verso" id="v42" data-v="42"><p class="escritura"><sup>42</sup>Levantai-vos, vamos; eis que o que me trai está perto.</p></div>
+<div class="verso" id="v43" data-v="43"><p class="escritura"><sup>43</sup>E logo, enquanto ele ainda estava falando, veio Judas, que era um dos doze, e com ele uma multidão, com espadas e bastões, da parte dos chefes dos sacerdotes, dos escribas, dos anciãos.</p></div>
+<div class="verso" id="v44" data-v="44"><p class="escritura"><sup>44</sup>E o que o traía lhes tinha dado um sinal comum, dizendo: “Ao que eu beijar, é esse; prendei-o, e levai-o em segurança.”</p></div>
+<div class="verso" id="v45" data-v="45"><p class="escritura"><sup>45</sup>E quando veio, logo foi-se a ele, e disse-lhe: “Rabi”, e o beijou.</p></div>
+<div class="verso" id="v46" data-v="46"><p class="escritura"><sup>46</sup>Então o agarraram, e o prenderam.</p></div>
+<div class="verso" id="v47" data-v="47"><p class="escritura"><sup>47</sup>E um dos que estavam ali presentes puxou a espada, feriu o servo do sumo sacerdote, e cortou-lhe a orelha.</p></div>
+<div class="verso" id="v48" data-v="48"><p class="escritura"><sup>48</sup>Jesus começou a lhes dizer: “Viestes me prender com espadas e bastões, como se eu fosse um bandido?</p></div>
+<div class="verso" id="v49" data-v="49"><p class="escritura"><sup>49</sup>Todo dia eu estava convosco no templo, ensinando, e não me prendestes; mas assim se faz para que as Escrituras se cumpram.”</p></div>
+<div class="verso" id="v50" data-v="50"><p class="escritura"><sup>50</sup>Então todos o deixaram, e fugiram.</p></div>
+<div class="verso" id="v51" data-v="51"><p class="escritura"><sup>51</sup>E certo rapaz o seguia, envolto num lençol sobre o corpo nu. E o agarraram.</p></div>
+<div class="verso" id="v52" data-v="52"><p class="escritura"><sup>52</sup>Mas ele largou o lençol, e fugiu nu.</p></div>
+<div class="verso" id="v53" data-v="53"><p class="escritura"><sup>53</sup>E levaram Jesus ao sumo sacerdote; e ajuntaram-se todos os chefes dos sacerdotes, os anciãos, e os escribas.</p></div>
+<div class="verso" id="v54" data-v="54"><p class="escritura"><sup>54</sup>E Pedro o seguiu de longe até dentro do pátio do sumo sacerdote, e ficou sentado com os oficiais, esquentando-se ao fogo.</p></div>
+<div class="verso" id="v55" data-v="55"><p class="escritura"><sup>55</sup>E os chefes dos sacerdotes, e todo o tribunal buscavam algum testemunho contra Jesus, para o matarem, e não o achavam.</p></div>
+<div class="verso" id="v56" data-v="56"><p class="escritura"><sup>56</sup>Porque muitos davam falso testemunho contra ele, mas os testemunhos não concordavam entre si.</p></div>
+<div class="verso" id="v57" data-v="57"><p class="escritura"><sup>57</sup>E alguns se levantavam e davam falso testemunho contra ele, dizendo:</p></div>
+<div class="verso" id="v58" data-v="58"><p class="escritura"><sup>58</sup>“Nós o ouvimos dizer: Eu derrubarei este templo feito por mãos, e em três dias construirei outro feito não por mãos.</p></div>
+<div class="verso" id="v59" data-v="59"><p class="escritura"><sup>59</sup>E nem assim o testemunho deles era concordante.</p></div>
+<div class="verso" id="v60" data-v="60"><p class="escritura"><sup>60</sup>Então o sumo sacerdote levantou-se no meio, e perguntou a Jesus: “Não respondes nada? O que estes testemunham contra ti?”</p></div>
+<div class="verso" id="v61" data-v="61"><p class="escritura"><sup>61</sup>Mas ele ficou calado, e nada respondeu. O sumo sacerdote voltou a lhe perguntar: “És tu o Cristo, o Filho daquele que é Bendito?”</p></div>
+<div class="verso" id="v62" data-v="62"><p class="escritura"><sup>62</sup>Jesus respondeu: “Eu sou. E vereis o Filho do homem sentado à direita do Poderoso, e vindo com as nuvens do céu.”</p></div>
+<div class="verso" id="v63" data-v="63"><p class="escritura"><sup>63</sup>E o sumo sacerdote, rasgando suas roupas, disse: “Para que mais necessitamos de testemunhas?</p></div>
+<div class="verso" id="v64" data-v="64"><p class="escritura"><sup>64</sup>Vós ouvistes a blasfêmia. Que vos parece?” E todos o condenaram como culpado de morte.</p></div>
+<div class="verso" id="v65" data-v="65"><p class="escritura"><sup>65</sup>E alguns começaram a cuspir nele, e a cobrir o rosto dele; e a dar-lhe de socos, e dizer-lhe: “Profetiza”. E os oficiais o receberam com bofetadas.</p></div>
+<div class="verso" id="v66" data-v="66"><p class="escritura"><sup>66</sup>E, enquanto Pedro estava no pátio abaixo, veio uma das servas do sumo sacerdote.</p></div>
+<div class="verso" id="v67" data-v="67"><p class="escritura"><sup>67</sup>Quando ela viu Pedro, que estava sentado esquentando-se, olhou para ele, e disse: “Também tu estavas com Jesus, o Nazareno.”</p></div>
+<div class="verso" id="v68" data-v="68"><p class="escritura"><sup>68</sup>Mas ele negou, dizendo: “Não o conheço, nem sei o que dizes.”; e saiu para o alpendre.</p></div>
+<div class="verso" id="v69" data-v="69"><p class="escritura"><sup>69</sup>A serva o viu, e começou a dizer outra vez aos que ali estavam: “Este é um deles”.</p></div>
+<div class="verso" id="v70" data-v="70"><p class="escritura"><sup>70</sup>Mas ele o negou de novo. E pouco depois, outra vez os que ali estavam disseram a Pedro: “Verdadeiramente tu és um deles; pois também és galileu””.</p></div>
+<div class="verso" id="v71" data-v="71"><p class="escritura"><sup>71</sup>Então ele começou a amaldiçoar e a jurar, dizendo: “Não conheço esse homem de quem dizeis.”</p></div>
+<div class="verso" id="v72" data-v="72"><p class="escritura"><sup>72</sup>Imediatamente o galo cantou a segunda vez. E Pedro se lembrou da palavra que Jesus havia lhe dito: “Antes que o galo cante duas vezes, tu me negarás três vezes.” Então ele retirou-se dali e chorou.</p></div>
+<nav class="seo-nav"><a href="/biblia/marcos/13/">‹ Marcos 13</a><a href="/biblia/marcos/15/">Marcos 15 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -211,75 +288,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
-    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
-    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=da2d374419"></script>
+<script src="/app.js?v=c3e43362cd"></script>
 </body>
 </html>

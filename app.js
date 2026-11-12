@@ -5,13 +5,14 @@
 const UI = {
   pt: { idioma:"Idioma", traducao:"Tradução", comparar:"Comparar com…", semComparar:"Sem comparação",
     livros:"Livros", buscar:"Buscar", notas:"Minhas anotações", marcar:"Marcar",
+    cores:{ouro:"ouro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
     lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
-    exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraham, altar, covenant",
+    exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraão, altar, aliança",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
     comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
@@ -26,12 +27,35 @@ const UI = {
     fonte:"Fonte", salvar:"Salvar", cancelar:"Cancelar", excluir:"Excluir", fechar:"Fechar",
     escrevaNota:"Escreva sua reflexão sobre este versículo…",
     semNotas:"Você ainda não tem anotações. Toque em um versículo e escolha “Anotação”.",
-    bibliaToda:"Buscar na Bíblia toda", buscarNoLivro:"Este livro", carregando:"Carregando…",
-    buscando:"Buscando", resultados:"resultado(s)", nadaEncontrado:"Nada encontrado.",
-    digiteBusca:"Digite ao menos 3 letras.", at:"Antigo Testamento", nt:"Novo Testamento",
-    exPlaceholder:"ex.: graça e verdade" },
+    bibliaToda:"Buscar na Bíblia toda", carregando:"Carregando…",
+    buscando:"Buscando…", resultados:"resultado(s)", nadaEncontrado:"Nada encontrado.", mostrando:"mostrando os primeiros",
+    digiteBusca:"Digite ao menos 3 letras, ou uma referência como “João 3:16”.", at:"Antigo Testamento", nt:"Novo Testamento",
+    exPlaceholder:"ex.: graça e verdade, ou João 3:16",
+    contexto:"Contexto", voltar:"Voltar", dia:"Dia", dias:"dias", capitulos:"capítulos", todosCaps:"Todos os capítulos",
+    autor:"Autor", data:"Data", local:"Local", publico:"Público", tema:"Tema", paralelos:"Paralelos",
+    escala:["Criação","Êxodo","Davi","Exílio","Cristo","Igreja"],
+    erroCarregar:"Não foi possível carregar este texto. Verifique a conexão.", tentar:"Tentar de novo",
+    erroIniciar:"Não foi possível carregar o Sola. Verifique a conexão.", recarregar:"Recarregar",
+    heroiSobre:"Sola Scriptura", heroiTitulo:"A Escritura, <em>em profundidade</em>",
+    heroiTexto:"A Bíblia completa com o grego e o hebraico palavra por palavra, léxico de Strong, comentários de Calvino e Matthew Henry, referências cruzadas e atlas. Gratuito, sem anúncios, em português.",
+    heroiCampo:"João 3:16, Sl 23 ou uma palavra", continuar:"Continuar em", comecar:"Começar por João",
+    versoDia:"Versículo do dia",
+    grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos e sapienciais", maiores:"Profetas maiores",
+      menores:"Profetas menores", evangelhos:"Evangelhos e Atos", paulo:"Cartas de Paulo", gerais:"Cartas gerais e Apocalipse"},
+    recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
+      ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
+      ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
+      ["Temas e dicionário","Mais de 5.000 temas de Nave e 3.900 verbetes do dicionário de Easton."],
+      ["Atlas bíblico","1.300 lugares no mapa, com as viagens missionárias de Paulo."],
+      ["Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios."]],
+    sobreLivro:"Sobre o livro", comentarioDe:"Comentário",
+    backup:"Backup", restaurar:"Restaurar", restaurado:"Restaurado deste arquivo:", arquivoInvalido:"Este arquivo não é um backup do Sola.",
+    nAnot:"anotação(ões)", nMarc:"marcação(ões)",
+    offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
+    offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet." },
   en: { idioma:"Language", traducao:"Translation", comparar:"Compare with…", semComparar:"No comparison",
     livros:"Books", buscar:"Search", notas:"My notes", marcar:"Highlight",
+    cores:{ouro:"gold", verde:"green", azul:"blue", rosa:"pink"},
     original:"Original", comentario:"Commentary", anotacao:"Note", copiar:"Copy", copiado:"Copied!",
     grego:"Greek — Textus Receptus", hebraico:"Hebrew — Leningrad Codex",
     lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
@@ -53,12 +77,35 @@ const UI = {
     fonte:"Source", salvar:"Save", cancelar:"Cancel", excluir:"Delete", fechar:"Close",
     escrevaNota:"Write your reflection on this verse…",
     semNotas:"No notes yet. Tap a verse and choose “Note”.",
-    bibliaToda:"Search the whole Bible", buscarNoLivro:"This book", carregando:"Loading…",
-    buscando:"Searching", resultados:"result(s)", nadaEncontrado:"Nothing found.",
-    digiteBusca:"Type at least 3 letters.", at:"Old Testament", nt:"New Testament",
-    exPlaceholder:"e.g. grace and truth" },
+    bibliaToda:"Search the whole Bible", carregando:"Loading…",
+    buscando:"Searching…", resultados:"result(s)", nadaEncontrado:"Nothing found.", mostrando:"showing the first",
+    digiteBusca:"Type at least 3 letters, or a reference such as “John 3:16”.", at:"Old Testament", nt:"New Testament",
+    exPlaceholder:"e.g. grace and truth, or John 3:16",
+    contexto:"Context", voltar:"Back", dia:"Day", dias:"days", capitulos:"chapters", todosCaps:"All chapters",
+    autor:"Author", data:"Date", local:"Place", publico:"Audience", tema:"Theme", paralelos:"Parallels",
+    escala:["Creation","Exodus","David","Exile","Christ","Church"],
+    erroCarregar:"Could not load this text. Check your connection.", tentar:"Try again",
+    erroIniciar:"Could not load Sola. Check your connection.", recarregar:"Reload",
+    heroiSobre:"Sola Scriptura", heroiTitulo:"Scripture, <em>in depth</em>",
+    heroiTexto:"The whole Bible with Greek and Hebrew word by word, Strong's lexicon, commentaries by Calvin and Matthew Henry, cross-references and an atlas. Free, with no ads.",
+    heroiCampo:"John 3:16, Ps 23 or a word", continuar:"Continue in", comecar:"Start with John",
+    versoDia:"Verse of the day",
+    grupos:{pentateuco:"Pentateuch", historicos:"History", poeticos:"Poetry and wisdom", maiores:"Major prophets",
+      menores:"Minor prophets", evangelhos:"Gospels and Acts", paulo:"Paul's letters", gerais:"General letters and Revelation"},
+    recursos:[["Original and Strong","Every Greek and Hebrew word with transliteration, literal gloss and its lexicon entry."],
+      ["Classic commentaries","John Calvin on 47 books and Matthew Henry on another 18, verse by verse."],
+      ["Cross-references","Scripture interprets Scripture: parallel passages for every verse."],
+      ["Topics and dictionary","Over 5,000 topics from Nave and 3,900 entries from Easton's dictionary."],
+      ["Bible atlas","1,300 places on the map, with Paul's missionary journeys."],
+      ["Reading plans","The Bible in a year, the New Testament in 90 days, Psalms and Proverbs."]],
+    sobreLivro:"About the book", comentarioDe:"Commentary",
+    backup:"Backup", restaurar:"Restore", restaurado:"Restored from this file:", arquivoInvalido:"This file is not a Sola backup.",
+    nAnot:"note(s)", nMarc:"highlight(s)",
+    offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
+    offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use." },
   es: { idioma:"Idioma", traducao:"Traducción", comparar:"Comparar con…", semComparar:"Sin comparación",
     livros:"Libros", buscar:"Buscar", notas:"Mis notas", marcar:"Resaltar",
+    cores:{ouro:"oro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentario", anotacao:"Nota", copiar:"Copiar", copiado:"¡Copiado!",
     grego:"Griego — Textus Receptus", hebraico:"Hebreo — Códice de Leningrado",
     lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
@@ -80,44 +127,105 @@ const UI = {
     fonte:"Fuente", salvar:"Guardar", cancelar:"Cancelar", excluir:"Eliminar", fechar:"Cerrar",
     escrevaNota:"Escribe tu reflexión sobre este versículo…",
     semNotas:"Aún no tienes notas. Toca un versículo y elige “Nota”.",
-    bibliaToda:"Buscar en toda la Biblia", buscarNoLivro:"Este libro", carregando:"Cargando…",
-    buscando:"Buscando", resultados:"resultado(s)", nadaEncontrado:"No se encontró nada.",
-    digiteBusca:"Escribe al menos 3 letras.", at:"Antiguo Testamento", nt:"Nuevo Testamento",
-    exPlaceholder:"ej.: gracia y verdad" },
+    bibliaToda:"Buscar en toda la Biblia", carregando:"Cargando…",
+    buscando:"Buscando…", resultados:"resultado(s)", nadaEncontrado:"No se encontró nada.", mostrando:"mostrando los primeros",
+    digiteBusca:"Escribe al menos 3 letras, o una referencia como “Juan 3:16”.", at:"Antiguo Testamento", nt:"Nuevo Testamento",
+    exPlaceholder:"ej.: gracia y verdad, o Juan 3:16",
+    contexto:"Contexto", voltar:"Volver", dia:"Día", dias:"días", capitulos:"capítulos", todosCaps:"Todos los capítulos",
+    autor:"Autor", data:"Fecha", local:"Lugar", publico:"Destinatarios", tema:"Tema", paralelos:"Paralelos",
+    escala:["Creación","Éxodo","David","Exilio","Cristo","Iglesia"],
+    erroCarregar:"No se pudo cargar este texto. Revisa la conexión.", tentar:"Reintentar",
+    erroIniciar:"No se pudo cargar Sola. Revisa la conexión.", recarregar:"Recargar",
+    heroiSobre:"Sola Scriptura", heroiTitulo:"La Escritura, <em>en profundidad</em>",
+    heroiTexto:"La Biblia completa con el griego y el hebreo palabra por palabra, léxico de Strong, comentarios de Calvino y Matthew Henry, referencias cruzadas y atlas. Gratis y sin anuncios.",
+    heroiCampo:"Juan 3:16, Sal 23 o una palabra", continuar:"Continuar en", comecar:"Empezar por Juan",
+    versoDia:"Versículo del día",
+    grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos y sapienciales", maiores:"Profetas mayores",
+      menores:"Profetas menores", evangelhos:"Evangelios y Hechos", paulo:"Cartas de Pablo", gerais:"Cartas generales y Apocalipsis"},
+    recursos:[["Original y Strong","Cada palabra del griego y del hebreo con transliteración, traducción literal y su entrada del léxico."],
+      ["Comentarios clásicos","Juan Calvino en 47 libros y Matthew Henry en otros 18, versículo por versículo."],
+      ["Referencias cruzadas","La Escritura interpreta la Escritura: pasajes paralelos de cada versículo."],
+      ["Temas y diccionario","Más de 5.000 temas de Nave y 3.900 entradas del diccionario de Easton."],
+      ["Atlas bíblico","1.300 lugares en el mapa, con los viajes misioneros de Pablo."],
+      ["Planes de lectura","La Biblia en un año, el Nuevo Testamento en 90 días, Salmos y Proverbios."]],
+    sobreLivro:"Sobre el libro", comentarioDe:"Comentario",
+    backup:"Copia", restaurar:"Restaurar", restaurado:"Restaurado de este archivo:", arquivoInvalido:"Este archivo no es una copia de Sola.",
+    nAnot:"nota(s)", nMarc:"resaltado(s)",
+    offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
+    offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión." },
+};
+const NAV = {
+  pt:{buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
+  en:{buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
+  es:{buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
 };
 const CORES = ["ouro","verde","azul","rosa"];
+/* Os mesmos grupos estão em ferramentas/gerar_paginas.py (página inicial que o Google lê). */
+const GRUPOS = [
+  ["AT","pentateuco",["GEN","EXO","LEV","NUM","DEU"]],
+  ["AT","historicos",["JOS","JDG","RUT","1SA","2SA","1KI","2KI","1CH","2CH","EZR","NEH","EST"]],
+  ["AT","poeticos",["JOB","PSA","PRO","ECC","SNG"]],
+  ["AT","maiores",["ISA","JER","LAM","EZK","DAN"]],
+  ["AT","menores",["HOS","JOL","AMO","OBA","JON","MIC","NAM","HAB","ZEP","HAG","ZEC","MAL"]],
+  ["NT","evangelhos",["MAT","MRK","LUK","JHN","ACT"]],
+  ["NT","paulo",["ROM","1CO","2CO","GAL","EPH","PHP","COL","1TH","2TH","1TI","2TI","TIT","PHM"]],
+  ["NT","gerais",["HEB","JAS","1PE","2PE","1JN","2JN","3JN","JUD","REV"]],
+];
+const VERSOS_DIA = [["PSA",119,105],["JHN",3,16],["ROM",8,28],["PSA",23,1],["ISA",40,31],["PHP",4,6],["PRO",3,5],["MAT",11,28],
+  ["ROM",5,8],["2TI",3,16],["HEB",4,12],["JOS",1,9],["PSA",46,1],["ISA",41,10],["JHN",14,6],["ROM",12,2],["EPH",2,8],["GAL",2,20],
+  ["PSA",19,7],["LAM",3,22],["MIC",6,8],["MAT",6,33],["JHN",1,14],["1JN",4,19],["ROM",1,16],["PSA",1,2],["COL",3,16],["HEB",11,1],
+  ["JAS",1,5],["1PE",1,25],["REV",21,4],["ISA",53,5],["PSA",27,1],["JHN",8,32],["2CO",5,17],["PHP",1,6],["PSA",34,8],["DEU",6,5],
+  ["ROM",11,36],["JHN",17,17]];
+/* abreviações usuais em português, para "jo 3 16", "sl 23", "1co 13" na busca */
+const ABREV = {gn:"GEN",ex:"EXO",lv:"LEV",nm:"NUM",dt:"DEU",js:"JOS",jz:"JDG",rt:"RUT","1sm":"1SA","2sm":"2SA","1rs":"1KI","2rs":"2KI",
+  "1cr":"1CH","2cr":"2CH",ed:"EZR",ne:"NEH",et:"EST",sl:"PSA",sal:"PSA",pv:"PRO",ec:"ECC",ct:"SNG",is:"ISA",jr:"JER",lm:"LAM",ez:"EZK",
+  dn:"DAN",os:"HOS",jl:"JOL",am:"AMO",ob:"OBA",jn:"JON",mq:"MIC",na:"NAM",hc:"HAB",sf:"ZEP",ag:"HAG",zc:"ZEC",ml:"MAL",mt:"MAT",
+  mc:"MRK",lc:"LUK",jo:"JHN",at:"ACT",rm:"ROM","1co":"1CO","2co":"2CO",gl:"GAL",ef:"EPH",fp:"PHP",fl:"PHP",cl:"COL","1ts":"1TH","2ts":"2TH",
+  "1tm":"1TI","2tm":"2TI",tt:"TIT",fm:"PHM",hb:"HEB",tg:"JAS","1pe":"1PE","2pe":"2PE","1jo":"1JN","2jo":"2JN","3jo":"3JN",jd:"JUD",ap:"REV",apoc:"REV"};
+const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no sw.js
 
 /* ---------- estado ---------- */
 const est = {
   meta:null, idioma:"pt", traducao:"blivre", comparar:"",
-  livro:"JHN", cap:1, tema:"claro",
+  vista:"inicio", livro:"JHN", cap:1, alvoV:0, abrir:null, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
-  corrida: lerLS("logos_corrida", false),
-  cacheBiblia:{}, cacheComent:{}, versoAtivo:null, gaveta:null, // {tipo, verso}
+  corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", false), progresso: lerLS("logos_planos", {}),
+  cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{},
+  livrosCom:null, idxTemas:null, idxDic:null, aliasPT:null, planos:null, tempo:null, ctx:null,
+  lugares:null, mapa:null, marcadores:[], viagens:null, camadaViagem:[],
+  versos:[], versoAtivo:null, gaveta:null, buscaModo:"texto", vez:0, vezBusca:0, focoAntes:null,
 };
 function lerLS(k, padrao){ try{ return JSON.parse(localStorage.getItem(k)) ?? padrao; }catch(e){ return padrao; } }
 function gravarLS(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 function t(){ return UI[est.idioma]; }
 const $ = (id)=>document.getElementById(id);
+function esc(s){ return String(s ?? "").replace(/[&<>"']/g, (c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const normStr = (s)=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const emPT = ()=>est.idioma==="pt";
+const ico = (nome)=>`<svg class="ico" aria-hidden="true"><use href="#i-${nome}"/></svg>`;
 
 /* ---------- dados ---------- */
 async function json(url){ const r = await fetch(url.startsWith("data/") ? "/" + url : url); if(!r.ok) throw new Error(url); return r.json(); }
-async function carregarLivro(trad, usfm){
-  const chave = trad+"/"+usfm;
-  if(!est.cacheBiblia[chave]){
-    try{ est.cacheBiblia[chave] = await json(`data/bibles/${trad}/${usfm}.json`); }
-    catch(e){ est.cacheBiblia[chave] = null; }
+/* Guarda no cache o que deu certo; o que falhou (sem rede) pode ser pedido de novo. */
+async function comCache(cache, chave, url){
+  if(!(chave in cache)){
+    try{ cache[chave] = await json(url); }
+    catch(e){ return null; }
   }
-  return est.cacheBiblia[chave];
+  return cache[chave];
 }
-/* Comentário do capítulo: Calvino nos 46 livros que ele comentou; nos outros, Matthew Henry.
+const carregarLivro = (trad, usfm)=>comCache(est.cacheBiblia, trad+"/"+usfm, `data/bibles/${trad}/${usfm}.json`);
+const carregarRefs = (usfm, cap)=>comCache(est.cacheRefs, usfm+"/"+cap, `data/crossrefs/${usfm}/${cap}.json`);
+const carregarInterlinear = (usfm, cap)=>comCache(est.cacheInter, usfm+"/"+cap, `data/interlinear/${usfm}/${cap}.json`);
+const carregarLexico = (letra)=>comCache(est.cacheLex, letra, `data/strongs/${letra}.json`);
+/* Comentário do capítulo: Calvino nos livros que ele comentou; nos outros, Matthew Henry.
    Devolve {versículo: texto, __autor: "calvin"|"henry", __pt?: true} ou null. */
 async function carregarComentario(usfm, cap){
-  const pt = est.idioma==="pt";
+  const pt = emPT();
   const chave = (pt?"pt/":"") + usfm+"/"+cap;
   if(!(chave in est.cacheComent)){
     const livros = await livrosComentario();
-    const autor = livros.calvin.includes(usfm) ? "calvin" : livros.henry.includes(usfm) ? "henry" : null;
+    const autor = autorDoLivro(livros, usfm);
     let base = null, trad = null;
     if(autor){
       try{ base = await json(`data/commentaries/${autor}/${usfm}/${cap}.json`); }catch(e){}
@@ -129,7 +237,6 @@ async function carregarComentario(usfm, cap){
   }
   return est.cacheComent[chave];
 }
-est.cacheInter = {}; est.cacheLex = {}; est.cacheRefs = {}; est.livrosCom = null;
 async function livrosComentario(){
   if(!est.livrosCom){
     const ler = async (a)=>{ try{ return (await json(`data/commentaries/${a}/manifest.json`)).books; }catch(e){ return []; } };
@@ -138,6 +245,7 @@ async function livrosComentario(){
   }
   return est.livrosCom;
 }
+function autorDoLivro(livros, usfm){ return livros.calvin.includes(usfm) ? "calvin" : livros.henry.includes(usfm) ? "henry" : null; }
 function autorComentario(com, x){ return com && com.__autor === "henry" ? x.autorHenry : x.autorCalvin; }
 function comentarioProximo(com, v){
   if(!com) return null;
@@ -153,93 +261,80 @@ function comentarioProximo(com, v){
   if(depois < Infinity) return { v: depois, texto: com[String(depois)], seguinte: true };
   return null;
 }
-est.buscaModo = "texto"; est.cacheTemas = {}; est.cacheDic = {}; est.idxTemas = null; est.idxDic = null; est.aliasPT = null;
 async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
 async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
-async function temaSecao(letra){
-  const k = (est.idioma==="pt"?"pt/":"") + letra;
-  if(!est.cacheTemas[k]){
-    try{ est.cacheTemas[k] = await json(`data/topics/${k}.json`); }
-    catch(e){ est.cacheTemas[k] = await json(`data/topics/${letra}.json`); }
+async function secaoPT(cache, pasta, letra){
+  const k = (emPT()?"pt/":"") + letra;
+  if(!cache[k]){
+    try{ cache[k] = await json(`data/${pasta}/${k}.json`); }
+    catch(e){ cache[k] = await json(`data/${pasta}/${letra}.json`); }
   }
-  return est.cacheTemas[k];
+  return cache[k];
 }
-async function dicLetra(letra){
-  const k = (est.idioma==="pt"?"pt/":"") + letra;
-  if(!est.cacheDic[k]){
-    try{ est.cacheDic[k] = await json(`data/dictionary/${k}.json`); }
-    catch(e){ est.cacheDic[k] = await json(`data/dictionary/${letra}.json`); }
+const temaSecao = (letra)=>secaoPT(est.cacheTemas, "topics", letra);
+const dicLetra = (letra)=>secaoPT(est.cacheDic, "dictionary", letra);
+async function titulos(tipo){
+  if(!(tipo in est.titulosPT)){
+    try{ est.titulosPT[tipo] = await json(`data/${tipo}/titulos_pt.json`); }
+    catch(e){ est.titulosPT[tipo] = {}; }
   }
-  return est.cacheDic[k];
+  return est.titulosPT[tipo];
 }
-const RE_REF = /\b([1-3]?[A-Z]{2,3})\s(\d+):(\d+)(?:-(\d+))?/g;
-function linkarRefs(txt){
-  return esc(txt).replace(RE_REF, (m, l, c, v)=> est.meta.books.find(b=>b.id===l)
-    ? `<span class="tema-ref" data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}:${v}${m.includes("-")?m.slice(m.indexOf("-")):""}</span>` : m);
-}
-function ativarRefs(container){
-  container.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
-    alternarPainel("painelBusca", false); irPara(el.dataset.l, +el.dataset.c);
-  }));
-}
-async function carregarRefs(usfm, cap){
-  const chave = usfm+"/"+cap;
-  if(!(chave in est.cacheRefs)){
-    try{ est.cacheRefs[chave] = await json(`data/crossrefs/${usfm}/${cap}.json`); }
-    catch(e){ est.cacheRefs[chave] = null; }
-  }
-  return est.cacheRefs[chave];
-}
-async function carregarInterlinear(usfm, cap){
-  const chave = usfm+"/"+cap;
-  if(!(chave in est.cacheInter)){
-    try{ est.cacheInter[chave] = await json(`data/interlinear/${usfm}/${cap}.json`); }
-    catch(e){ est.cacheInter[chave] = null; }
-  }
-  return est.cacheInter[chave];
-}
-async function carregarLexico(letra){
-  if(!est.cacheLex[letra]){
-    try{ est.cacheLex[letra] = await json(`data/strongs/${letra}.json`); }
-    catch(e){ est.cacheLex[letra] = null; }
-  }
-  return est.cacheLex[letra];
-}
-function slugLivro(usfm){
-  return infoLivro(usfm).pt.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\s+/g,"-");
-}
-function livroPorSlug(slug){ return est.meta.books.find(b=>slugLivro(b.id)===slug); }
-function urlCapitulo(usfm, cap){ return `/biblia/${slugLivro(usfm)}/${cap}/`; }
-function lerRota(){
-  const m = location.pathname.match(/^\/biblia\/([a-z0-9-]+)\/(\d+)\/?$/);
-  if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { livro: b.id, cap: +m[2] }; }
-  const h = location.hash.match(/^#\/([A-Z0-9]{3})\/(\d+)/);   // links antigos com #
-  if(h && infoLivro(h[1])) return { livro: h[1], cap: +h[2] };
-  return null;
-}
-function atualizarURL(){
-  const url = urlCapitulo(est.livro, est.cap);
-  const primeira = !est.urlPronta;
-  est.urlPronta = true;   // a partir da primeira renderização, cada capítulo novo entra no histórico
-  if(location.pathname === url && !location.hash) return;
-  history[primeira ? "replaceState" : "pushState"]({}, "", url);
-}
+async function contextos(){ if(!est.ctx){ est.ctx = await json("data/context.json"); } return est.ctx; }
+
+/* ---------- livros, endereços e rotas ---------- */
 function infoLivro(usfm){ return est.meta.books.find(b=>b.id===usfm); }
-function nomeLivro(usfm){ return infoLivro(usfm)[est.idioma] || infoLivro(usfm).pt; }
+function nomeLivro(usfm){ const b = infoLivro(usfm); return b ? (b[est.idioma] || b.pt) : usfm; }
 function refStr(usfm, cap, v){ return `${nomeLivro(usfm)} ${cap}:${v}`; }
+function slugLivro(usfm){ return normStr(infoLivro(usfm).pt).replace(/\s+/g,"-"); }
+function livroPorSlug(slug){ return est.meta.books.find(b=>slugLivro(b.id)===slug); }
+function urlLivro(usfm){ return `/biblia/${slugLivro(usfm)}/`; }
+function urlCapitulo(usfm, cap, v){ return `/biblia/${slugLivro(usfm)}/${cap}/` + (v ? "#v"+v : ""); }
+function grupoDe(usfm){ return GRUPOS.find(g=>g[2].includes(usfm)); }
+/* Link para um capítulo ou versículo: é um <a> de verdade (abre em nova aba, funciona sem o app)
+   e, dentro do app, o clique é interceptado em iniciar() para navegar sem recarregar. */
+function linkRef(usfm, cap, v, rotulo, classe){
+  return `<a class="${classe ?? "tema-ref"}" href="${urlCapitulo(usfm, cap, v)}">${rotulo ?? esc(nomeLivro(usfm)+" "+cap+(v ? ":"+v : ""))}</a>`;
+}
+/* Lê um endereço e devolve a rota: {vista:"inicio"} | {vista:"livro",livro} | {vista:"cap",livro,cap,v} | null (não é do app). */
+function rotaDe(caminho, hash){
+  const h = (hash||"").match(/^#\/([A-Z0-9]{3})\/(\d+)(?:\/(\d+))?/);   // links antigos: #/JHN/3
+  if(h && infoLivro(h[1])) return { vista:"cap", livro:h[1], cap:Math.min(Math.max(+h[2],1), infoLivro(h[1]).ch), v:+h[3]||0 };
+  const v = +((hash||"").match(/^#v(\d+)$/)||[])[1] || 0;
+  let m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/(\d+)\/?$/);
+  if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { vista:"cap", livro:b.id, cap:+m[2], v }; }
+  m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/?$/);
+  if(m){ const b = livroPorSlug(m[1]); if(b) return { vista:"livro", livro:b.id }; }
+  return caminho === "/" || caminho === "/index.html" ? { vista:"inicio" } : null;
+}
+function lerRota(){ return rotaDe(location.pathname, location.hash) || { vista:"inicio" }; }   // endereço desconhecido (404): início
+function urlAtual(){
+  return est.vista==="inicio" ? "/" : est.vista==="livro" ? urlLivro(est.livro) : urlCapitulo(est.livro, est.cap, est.alvoV);
+}
+function atualizarURL(substituir){
+  const url = urlAtual();
+  const primeira = !est.urlPronta;
+  est.urlPronta = true;   // a partir da primeira renderização, cada página nova entra no histórico
+  if(location.pathname + location.hash === url) return;
+  history[primeira || substituir ? "replaceState" : "pushState"]({}, "", url);
+}
+function navegar(r, op){
+  est.vista = r.vista;
+  if(r.livro) est.livro = r.livro;
+  if(r.vista==="cap"){ est.cap = r.cap; est.alvoV = r.v || 0; est.abrir = r.abrir || null; }
+  else { est.alvoV = 0; est.abrir = null; }
+  return renderizar(op);
+}
+function irPara(usfm, cap, v, abrir){ return navegar({ vista:"cap", livro:usfm, cap, v, abrir }); }
 
 /* ---------- interface base ---------- */
 function aplicarTextos(){
   const x = t();
-  const NAV = {
-    pt:{buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
-    en:{buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
-    es:{buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
-  }[est.idioma];
+  document.documentElement.lang = est.idioma==="pt" ? "pt-BR" : est.idioma;
   document.querySelectorAll(".navbar [data-nav] [data-label]").forEach(sp=>{
     const chave = sp.parentNode.dataset.nav;
-    if(NAV[chave]) sp.textContent = NAV[chave];
+    if(NAV[est.idioma][chave]) sp.textContent = NAV[est.idioma][chave];
   });
   $("lblIdioma").textContent = x.idioma;
   $("lblTraducao").textContent = x.traducao;
@@ -248,71 +343,207 @@ function aplicarTextos(){
   $("tituloBusca").textContent = x.buscar;
   $("tituloNotas").textContent = x.notas;
   $("lblBibliaToda").textContent = x.bibliaToda;
-  $("campoBusca").placeholder = x.exPlaceholder;
+  $("btnCorrida").title = x.leituraCorrida;
+  document.querySelectorAll(".fechar").forEach(b=>b.setAttribute("aria-label", x.fechar));
+  prepararAbas();
 }
 function preencherTraducoes(){
   const doIdioma = est.meta.translations.filter(tr=>tr.lang===est.idioma);
   if(!doIdioma.find(tr=>tr.id===est.traducao)) est.traducao = doIdioma[0].id;
-  $("selTraducao").innerHTML = doIdioma.map(tr=>`<option value="${tr.id}">${tr.name}</option>`).join("");
+  $("selTraducao").innerHTML = doIdioma.map(tr=>`<option value="${tr.id}">${esc(tr.name)}</option>`).join("");
   $("selTraducao").value = est.traducao;
   const outras = est.meta.translations.filter(tr=>tr.id!==est.traducao);
   $("selComparar").innerHTML = `<option value="">${t().semComparar}</option>` +
-    outras.map(tr=>`<option value="${tr.id}">${tr.name}</option>`).join("");
-  $("selComparar").value = outras.find(tr=>tr.id===est.comparar) ? est.comparar : "";
+    outras.map(tr=>`<option value="${tr.id}">${esc(tr.name)}</option>`).join("");
   if(!outras.find(tr=>tr.id===est.comparar)) est.comparar = "";
+  $("selComparar").value = est.comparar;
+}
+const nomeTraducao = (id)=>est.meta.translations.find(tr=>tr.id===id).name;
+const ornamento = `<div class="ornamento" aria-hidden="true"><i></i></div>`;
+
+/* Desenha a página pedida. op: {substituir} troca o endereço sem criar histórico; {manter} não mexe na rolagem. */
+async function renderizar(op){
+  op = op || {};
+  const x = t();
+  document.body.dataset.vista = est.vista;
+  est.versoAtivo = null; est.gaveta = null;
+  if(est.vista==="inicio"){
+    renderizarInicio();
+    $("lblLivroAtual").textContent = x.livros;
+    document.title = "Sola — Estudo Bíblico";
+  } else if(est.vista==="livro"){
+    await renderizarLivro();
+    $("lblLivroAtual").textContent = nomeLivro(est.livro);
+    document.title = `${nomeLivro(est.livro)} — Sola`;
+  } else {
+    await renderizarCapitulo(op);
+    $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
+    document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
+    gravarLS("logos_ultimo", { livro: est.livro, cap: est.cap });
+  }
+  atualizarURL(op.substituir);
+  if(est.vista!=="cap" && !op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
+  est.pronto = true;
+}
+
+/* ---------- página inicial ---------- */
+function renderizarInicio(){
+  const x = t(), ult = lerLS("logos_ultimo", null);
+  const temUlt = ult && infoLivro(ult.livro) && ult.cap >= 1 && ult.cap <= infoLivro(ult.livro).ch;
+  const icones = ["original","comentario","refs","temas","atlas","planos"];
+  const testamento = (tst)=>`<section class="testamento"><h2>${tst==="AT" ? x.at : x.nt}</h2>${ornamento}
+    <div class="grupos">` + GRUPOS.filter(g=>g[0]===tst).map(g=>
+      `<div class="grupo-livros"><h3>${x.grupos[g[1]]}</h3>` + g[2].map(id=>
+        `<a href="${urlLivro(id)}">${esc(nomeLivro(id))}<span>${infoLivro(id).ch}</span></a>`).join("") + `</div>`).join("") +
+    `</div></section>`;
+  $("leitor").innerHTML = `<div class="inicio">
+    <section class="heroi">
+      <p class="heroi-sobre">${x.heroiSobre}</p>
+      <h1>${x.heroiTitulo}</h1>${ornamento}
+      <p class="heroi-texto">${x.heroiTexto}</p>
+      <form class="heroi-busca" id="formInicio" role="search">
+        <input id="campoInicio" type="search" placeholder="${x.heroiCampo}" aria-label="${x.buscar}" autocomplete="off">
+        <button type="submit">${x.buscar}</button>
+      </form>
+      <div class="heroi-acoes">
+        ${temUlt ? `<a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${ult.cap} ${ico("seta")}</a>` : ""}
+        <a class="${temUlt ? "btn-linha" : "btn-ouro"}" href="${urlCapitulo("JHN", 1)}">${x.comecar}</a>
+      </div>
+    </section>
+    <section class="dia"><p class="rotulo-secao">${x.versoDia}</p><blockquote id="versoDia"></blockquote><span id="versoDiaRef"></span></section>
+    <section class="recursos">` + x.recursos.map((r,i)=>
+      `<button class="recurso" data-recurso="${i}">${ico(icones[i])}<h3>${r[0]}</h3><p>${r[1]}</p></button>`).join("") +
+    `</section>` + testamento("AT") + testamento("NT") + `</div>`;
+  $("formInicio").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const termo = $("campoInicio").value.trim();
+    if(!termo) return;
+    const r = parseRef(termo);
+    if(r) return irPara(r.livro, r.cap, r.v);
+    abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
+  });
+  const acoes = [()=>irPara("JHN",1,1,"original"), ()=>irPara("ROM",8,28,"comentario"), ()=>irPara("JHN",3,16,"referencias"),
+    ()=>abrirBusca("temas"), abrirAtlas, ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); }];
+  document.querySelectorAll(".recurso").forEach(b=>b.addEventListener("click", acoes[+b.dataset.recurso]));
+  // versículo do dia: o mesmo para todos, muda à meia-noite
+  const hoje = new Date(), dia = Math.floor(Date.UTC(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()) / 864e5);
+  const [l, c, v] = VERSOS_DIA[dia % VERSOS_DIA.length];
+  const vez = ++est.vez;
+  carregarLivro(est.traducao, l).then(livro=>{
+    if(vez !== est.vez || !$("versoDia")) return;
+    const texto = livro && livro[c-1] && livro[c-1][v-1];
+    if(!texto) return;
+    $("versoDia").textContent = `“${texto}”`;
+    $("versoDiaRef").innerHTML = linkRef(l, c, v, esc(refStr(l, c, v)), "ref-dia");
+  });
+}
+
+/* ---------- página do livro ---------- */
+async function renderizarLivro(){
+  const x = t(), vez = ++est.vez, info = infoLivro(est.livro), g = grupoDe(est.livro);
+  const idx = est.meta.books.indexOf(info), ant = est.meta.books[idx-1], pro = est.meta.books[idx+1];
+  const [ctx, livros] = await Promise.all([contextos().catch(()=>({})), livrosComentario()]);
+  if(vez !== est.vez) return;
+  const c = ctx[est.livro], autor = autorDoLivro(livros, est.livro);
+  const caps = Array.from({length:info.ch}, (_,i)=>`<a href="${urlCapitulo(est.livro, i+1)}">${i+1}</a>`).join("");
+  $("leitor").innerHTML = `<div class="livro-pagina">
+    <header class="cap-cabeca">
+      <p class="cap-sobre"><a href="/">${info.t==="AT" ? x.at : x.nt}</a> · ${x.grupos[g[1]]}</p>
+      <h1 class="titulo-cap">${esc(nomeLivro(est.livro))}</h1>${ornamento}
+      <p class="sub-cap">${info.ch} ${x.capitulos}${autor ? ` · ${x.comentarioDe}: ${autorComentario({__autor:autor}, x).split(" (")[0]}` : ""}</p>
+    </header>
+    ${c ? `<div class="livro-ficha">${fichaContexto(c)}</div>` : ""}
+    <h2>${x.capitulos}</h2>
+    <nav class="caps" aria-label="${x.capitulos}">${caps}</nav>
+    <div class="livro-vizinhos">
+      ${ant ? `<a href="${urlLivro(ant.id)}">‹ ${esc(nomeLivro(ant.id))}</a>` : "<span></span>"}
+      ${pro ? `<a href="${urlLivro(pro.id)}">${esc(nomeLivro(pro.id))} ›</a>` : "<span></span>"}
+    </div></div>`;
+}
+function fichaContexto(c){
+  const x = t();
+  const par = (c.par||[]).map(([l,ch])=>linkRef(l, ch)).join(" · ");
+  return `<dl class="ctx-grade">
+    <dt>${x.autor}</dt><dd>${esc(c.a)}</dd>
+    <dt>${x.data}</dt><dd>${esc(c.d)}</dd>
+    <dt>${x.local}</dt><dd>${esc(c.l)}</dd>
+    <dt>${x.publico}</dt><dd>${esc(c.p)}</dd>
+    <dt>${x.tema}</dt><dd>${esc(c.t)}</dd>
+    ${par ? `<dt>${x.paralelos}</dt><dd>${par}</dd>` : ""}
+  </dl>
+  <div class="ctx-barra"><i style="left:${+c.pos||0}%"></i></div>
+  <div class="ctx-escala">${x.escala.map(e=>`<span>${e}</span>`).join("")}</div>`;
 }
 
 /* ---------- leitura ---------- */
-async function renderizarCapitulo(){
-  const x = t(), leitor = $("leitor");
-  leitor.innerHTML = `<p class="sub-cap">${x.carregando}</p>`;
+async function renderizarCapitulo(op){
+  const x = t(), leitor = $("leitor"), vez = ++est.vez;
+  const info = infoLivro(est.livro);
+  if(est.cap > info.ch || est.cap < 1) est.cap = 1;
+  leitor.classList.add("carregando");
   const [livro, livroComp] = await Promise.all([
     carregarLivro(est.traducao, est.livro),
     est.comparar ? carregarLivro(est.comparar, est.livro) : null,
   ]);
-  const info = infoLivro(est.livro);
-  if(est.cap > info.ch) est.cap = 1;
-  const versos = livro ? livro[est.cap-1] || [] : [];
-  const versosComp = livroComp ? (livroComp[est.cap-1]||[]) : null;
-  const nomeTrad = est.meta.translations.find(tr=>tr.id===est.traducao).name;
-
-  let html = `<h1 class="titulo-cap escritura">${nomeLivro(est.livro)} ${est.cap}<button class="btn-contexto" onclick="abrirContexto()">Contexto</button></h1>
-    <p class="sub-cap">${nomeTrad}${est.comparar ? " · " + est.meta.translations.find(tr=>tr.id===est.comparar).name : ""}</p>`;
-  if(est.corrida){
-    html += `<p class="escritura corrida">` +
-      versos.filter(Boolean).map(t=>esc(t)).join(" ") + `</p>`;
-    leitor.innerHTML = html;
+  if(vez !== est.vez) return;   // o leitor já pediu outra página enquanto esta carregava
+  leitor.classList.remove("carregando");
+  const g = grupoDe(est.livro);
+  let html = `<header class="cap-cabeca">
+      <p class="cap-sobre"><a href="/">${info.t==="AT" ? x.at : x.nt}</a> · <a href="${urlLivro(est.livro)}">${x.grupos[g[1]]}</a></p>
+      <h1 class="titulo-cap">${esc(nomeLivro(est.livro))} ${est.cap}</h1>${ornamento}
+      <p class="sub-cap"><span>${esc(nomeTraducao(est.traducao))}${est.comparar ? " · " + esc(nomeTraducao(est.comparar)) : ""}</span>
+        <button class="btn-contexto" id="btnCtxCap">${x.contexto}</button>
+        <a class="btn-contexto" href="${urlLivro(est.livro)}">${x.todosCaps}</a></p>
+    </header>`;
+  if(!livro){
+    leitor.innerHTML = html + `<p class="erro-leitura">${x.erroCarregar}<br><br><button class="btn-ouro" id="btnTentar">${x.tentar}</button></p>`;
+    $("btnTentar").addEventListener("click", ()=>renderizar({ manter:true }));
+    $("btnCtxCap").addEventListener("click", abrirContexto);
     atualizarNav();
-    $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
-    document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
-    atualizarURL();
-    window.scrollTo({top:0});
     return;
   }
-  versos.forEach((texto, i)=>{
-    if(!texto && !(versosComp && versosComp[i])) return;
-    const v = i+1, chave = `${est.livro}.${est.cap}.${v}`;
-    const marca = est.marcas[chave] ? " m-"+est.marcas[chave] : "";
-    const temNota = est.notas[chave] ? `<span class="indicadores" title="${t().anotacao}">✎</span>` : "";
-    html += `<div class="verso${marca}" data-v="${v}">
-      <p class="escritura"><sup>${v}</sup>${esc(texto)}${temNota}</p>
-      ${versosComp && versosComp[i] ? `<p class="comparado escritura">${esc(versosComp[i])}</p>` : ""}
-      <div class="barra" role="toolbar"></div>
-      <div class="gavetas"></div>
-    </div>`;
-  });
+  const versos = est.versos = livro[est.cap-1] || [];
+  const versosComp = livroComp ? (livroComp[est.cap-1]||[]) : null;
+  if(est.corrida){
+    html += `<p class="escritura corrida">` + versos.filter(Boolean).map(esc).join(" ") + `</p>`;
+  } else {
+    versos.forEach((texto, i)=>{
+      if(!texto && !(versosComp && versosComp[i])) return;
+      const v = i+1, chave = `${est.livro}.${est.cap}.${v}`;
+      const marca = CORES.includes(est.marcas[chave]) ? " m-"+est.marcas[chave] : "";
+      const temNota = est.notas[chave] ? `<span class="indicadores" title="${x.anotacao}">✎</span>` : "";
+      html += `<div class="verso${marca}" id="v${v}" data-v="${v}" tabindex="0">
+        <p class="escritura"><sup>${v}</sup>${esc(texto)}${temNota}</p>
+        ${versosComp && versosComp[i] ? `<p class="comparado escritura">${esc(versosComp[i])}</p>` : ""}
+        <div class="barra" role="toolbar" aria-label="${esc(refStr(est.livro, est.cap, v))}"></div>
+        <div class="gavetas"></div>
+      </div>`;
+    });
+  }
   leitor.innerHTML = html;
+  $("btnCtxCap").addEventListener("click", abrirContexto);
   leitor.querySelectorAll(".verso").forEach(el=>{
-    el.addEventListener("mouseenter", ()=>ativarVerso(el));
+    // com uma gaveta aberta, passar o mouse por outro versículo não troca o ativo (senão a gaveta fecha sozinha)
+    el.addEventListener("mouseenter", ()=>{ montarBarra(el); if(!est.gaveta) ativarVerso(el); });
+    el.addEventListener("focus", ()=>montarBarra(el));
     el.addEventListener("click", (e)=>{ if(e.target.closest(".barra,.gavetas")) return; ativarVerso(el, true); });
+    el.addEventListener("keydown", (e)=>{
+      if(e.target === el && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); ativarVerso(el, true); }
+    });
   });
   atualizarNav();
-  $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
-  document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
-  atualizarURL();
-  window.scrollTo({top:0});
+  const alvo = est.alvoV && leitor.querySelector(`.verso[data-v="${est.alvoV}"]`);
+  if(alvo) irAoVerso(alvo, est.abrir);
+  else if(!op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
+  est.abrir = null;
 }
-function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+/* Rola até o versículo pedido (busca, referência cruzada, link com #v16), destaca e abre as ferramentas dele. */
+function irAoVerso(el, abrir){
+  el.scrollIntoView({ block:"center", behavior:"instant" });
+  el.classList.remove("destino"); void el.offsetWidth; el.classList.add("destino");
+  ativarVerso(el, true);
+  if(abrir) acaoVerso(el, +el.dataset.v, abrir);
+}
 
 function ativarVerso(el, toque){
   if(est.versoAtivo && est.versoAtivo!==el){ est.versoAtivo.classList.remove("ativo"); fecharGavetas(est.versoAtivo); }
@@ -326,7 +557,7 @@ function ativarVerso(el, toque){
     atualizarEstudo(+el.dataset.v);
   }
 }
-function fecharGavetas(el){ el.querySelector(".gavetas").innerHTML=""; est.gaveta=null; }
+function fecharGavetas(el){ const g = el.querySelector(".gavetas"); if(g) g.innerHTML=""; est.gaveta=null; }
 
 function montarBarra(el){
   const v = +el.dataset.v, chave = `${est.livro}.${est.cap}.${v}`, x = t();
@@ -334,25 +565,70 @@ function montarBarra(el){
   if(barra.dataset.pronta) return;
   barra.dataset.pronta = "1";
   barra.innerHTML =
-    CORES.map(c=>`<button class="cor m-btn-${c}" data-cor="${c}" title="${x.marcar}" style="background:var(--m-${c})"></button>`).join("") +
-    `<span class="sep"></span>
-     <button class="acao" data-acao="original">${x.original}</button>
-     <button class="acao" data-acao="comentario">${x.comentario}</button>
-     <button class="acao" data-acao="referencias">${x.referencias}</button>
-     <button class="acao" data-acao="anotacao">${x.anotacao}</button>
-     <button class="acao" data-acao="copiar">${x.copiar}</button>
-     <button class="acao" data-acao="compartilhar">${x.compartilhar}</button>`;
+    CORES.map(c=>`<button class="cor" data-cor="${c}" title="${x.marcar}: ${x.cores[c]}" aria-label="${x.marcar}: ${x.cores[c]}" style="background:var(--m-${c})"></button>`).join("") +
+    `<span class="sep"></span>` +
+    ["original","comentario","referencias","anotacao","copiar","compartilhar"].map(a=>
+      `<button class="acao" data-acao="${a}">${x[a]}</button>`).join("");
   barra.querySelectorAll(".cor").forEach(b=>{
-    if(est.marcas[chave]===b.dataset.cor) b.classList.add("sel");
+    b.classList.toggle("sel", est.marcas[chave]===b.dataset.cor);
+    b.setAttribute("aria-pressed", est.marcas[chave]===b.dataset.cor);
     b.addEventListener("click", ()=>{
       const c = b.dataset.cor;
       if(est.marcas[chave]===c){ delete est.marcas[chave]; } else { est.marcas[chave]=c; }
       gravarLS("logos_marcas", est.marcas);
-      el.className = "verso ativo" + (est.marcas[chave] ? " m-"+est.marcas[chave] : "");
-      barra.querySelectorAll(".cor").forEach(o=>o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor));
+      CORES.forEach(o=>el.classList.toggle("m-"+o, est.marcas[chave]===o));
+      barra.querySelectorAll(".cor").forEach(o=>{
+        o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
+        o.setAttribute("aria-pressed", est.marcas[chave]===o.dataset.cor);
+      });
     });
   });
   barra.querySelectorAll(".acao").forEach(b=>b.addEventListener("click", ()=>acaoVerso(el, v, b.dataset.acao, b)));
+}
+
+async function copiarTexto(texto){
+  try{ await navigator.clipboard.writeText(texto); return true; }
+  catch(e){   // sem permissão ou navegador antigo: o jeito clássico
+    const ta = document.createElement("textarea");
+    ta.value = texto; ta.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try{ ok = document.execCommand("copy"); }catch(e2){}
+    ta.remove(); return ok;
+  }
+}
+/* Grade palavra por palavra (gaveta "Original" e coluna do modo estudo). */
+function gradeInterlinear(palavras, ehAT){
+  return `<div class="inter-grid" ${ehAT?'dir="rtl"':''}>` + palavras.map(p=>
+    `<button class="inter-palavra" data-strong="${esc(p[2]||"")}">
+       <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
+       <span class="ip-translit">${esc(p[1])}</span>
+       <span class="ip-gloss">${esc(p[3])}</span>
+       <span class="ip-strong">${esc(p[2]||"")}</span>
+     </button>`).join("") + `</div><div class="lex-caixa oculto" aria-live="polite"></div>`;
+}
+function ligarLexico(alvo, completo){
+  const x = t(), caixa = alvo.querySelector(".lex-caixa");
+  alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
+    const strong = btn.dataset.strong;
+    alvo.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
+    if(!strong || (caixa.dataset.atual===strong && !caixa.classList.contains("oculto"))){
+      caixa.classList.add("oculto"); caixa.dataset.atual=""; return;
+    }
+    btn.classList.add("sel");
+    caixa.dataset.atual = strong;
+    caixa.classList.remove("oculto");
+    caixa.innerHTML = `<em>${x.carregando}</em>`;
+    const lex = await carregarLexico(strong[0]);
+    const ent = lex && lex[strong];
+    if(caixa.dataset.atual !== strong) return;
+    if(!ent){ caixa.innerHTML = ""; caixa.classList.add("oculto"); return; }
+    caixa.innerHTML = `
+      <div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
+        <span class="lex-translit">${esc(ent.translit)}</span>
+        <span class="lex-num">${esc(strong)}</span></div>
+      <p class="lex-def">${completo ? `<strong>${x.lexDef}:</strong> ` : ""}${esc((emPT() && ent.defpt) || ent.def)}</p>
+      ${completo && ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
+  }));
 }
 
 async function acaoVerso(el, v, acao, botao){
@@ -365,37 +641,28 @@ async function acaoVerso(el, v, acao, botao){
     return;
   }
   if(acao==="copiar"){
-    const texto = el.querySelector("p.escritura").innerText.replace(/^\d+\s*/,"").replace(/✎$/,"").trim();
-    if(navigator.clipboard) navigator.clipboard.writeText(`"${texto}" — ${refStr(est.livro, est.cap, v)}`).catch(()=>{});
-    const rot = botao.textContent; botao.textContent = x.copiado;
-    setTimeout(()=>{ botao.textContent = rot; }, 1400);
+    const ok = await copiarTexto(`“${est.versos[v-1] || ""}” — ${refStr(est.livro, est.cap, v)} (${nomeTraducao(est.traducao)})`);
+    if(ok && botao){ const rot = botao.textContent; botao.textContent = x.copiado; setTimeout(()=>{ botao.textContent = rot; }, 1400); }
     return;
   }
   if(est.gaveta && est.gaveta.tipo===acao && est.gaveta.verso===v){ fecharGavetas(el); return; }
   est.gaveta = {tipo:acao, verso:v};
+  const aberta = ()=>est.gaveta && est.gaveta.tipo===acao && est.gaveta.verso===v && el.isConnected;
 
   if(acao==="original"){
     const ehAT = infoLivro(est.livro).t==="AT";
     const rotulo = ehAT ? x.hebraico : x.grego;
     const inter = await carregarInterlinear(est.livro, est.cap);
+    if(!aberta()) return;
     const palavras = inter && inter[v-1] && inter[v-1].length ? inter[v-1] : null;
     if(palavras){
-      const grid = palavras.map((p,pi)=>
-        `<button class="inter-palavra" data-pi="${pi}" data-strong="${p[2]||""}">
-           <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
-           <span class="ip-translit">${esc(p[1])}</span>
-           <span class="ip-gloss">${esc(p[3])}</span>
-           <span class="ip-strong">${p[2]||""}</span>
-         </button>`).join("");
       const mss = ehAT ? "" : `<div class="mss-abas">
           <button data-mss="tr">Textus Receptus</button>
           <button data-mss="byz">Bizantino</button>
           <button data-mss="diff">Diferenças</button>
         </div><div class="mss-alvo"></div>`;
-      gavetas.innerHTML = gaveta(rotulo,
-        `<div class="inter-grid" ${ehAT?'dir="rtl"':''}>${grid}</div>
-         <div class="lex-caixa oculto"></div>${mss}
-         <p class="fonte">${x.lexFonte}</p>`);
+      gavetas.innerHTML = gaveta(rotulo, gradeInterlinear(palavras, ehAT) + mss + `<p class="fonte">${x.lexFonte}</p>`);
+      ligarLexico(gavetas, true);
       gavetas.querySelectorAll(".mss-abas button").forEach(b=>b.addEventListener("click", async ()=>{
         const alvo = gavetas.querySelector(".mss-alvo");
         const ativa = b.classList.contains("ativa");
@@ -416,29 +683,9 @@ async function acaoVerso(el, v, acao, botao){
             <p class="mss-texto" lang="grc"><span class="rot">Bizantino</span>${marcar(B,sB)}</p>`;
         }
       }));
-      gavetas.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
-        const caixa = gavetas.querySelector(".lex-caixa");
-        const strong = btn.dataset.strong;
-        gavetas.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
-        if(!strong || caixa.dataset.atual===strong && !caixa.classList.contains("oculto")){
-          caixa.classList.add("oculto"); caixa.dataset.atual=""; return;
-        }
-        btn.classList.add("sel");
-        caixa.dataset.atual = strong;
-        caixa.classList.remove("oculto");
-        caixa.innerHTML = `<em>${x.carregando}</em>`;
-        const lex = await carregarLexico(strong[0]);
-        const ent = lex && lex[strong];
-        if(!ent){ caixa.innerHTML = ""; caixa.classList.add("oculto"); return; }
-        caixa.innerHTML = `
-          <div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
-            <span class="lex-translit">${esc(ent.translit)}</span>
-            <span class="lex-num">${strong}</span></div>
-          <p class="lex-def"><strong>${x.lexDef}:</strong> ${esc((est.idioma==="pt" && ent.defpt) || ent.def)}</p>
-          ${ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
-      }));
     } else {
       const orig = await carregarLivro("orig", est.livro);
+      if(!aberta()) return;
       const texto = orig && orig[est.cap-1] ? orig[est.cap-1][v-1] : "";
       gavetas.innerHTML = gaveta(rotulo,
         texto ? `<p class="original-texto" dir="${ehAT?"rtl":"ltr"}" lang="${ehAT?"he":"grc"}">${esc(texto)}</p>`
@@ -447,6 +694,7 @@ async function acaoVerso(el, v, acao, botao){
   }
   if(acao==="comentario"){
     const com = await carregarComentario(est.livro, est.cap);
+    if(!aberta()) return;
     const achado = comentarioProximo(com, v);
     let corpo;
     if(achado){
@@ -456,49 +704,43 @@ async function acaoVerso(el, v, acao, botao){
       const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
       const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
       corpo = `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
-        ${longo ? `<button class="ler-mais">${x.lerMais}</button>` : ""}
+        ${longo ? `<button class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}
         <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
         ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
     } else {
       const lv = est.livrosCom || {calvin:[], henry:[]};
-      const temLivro = lv.calvin.includes(est.livro) || lv.henry.includes(est.livro);
-      corpo = `<p class="comentario-texto">${temLivro ? x.semComentario : x.semLivroCalvin}</p>`;
+      corpo = `<p class="comentario-texto">${autorDoLivro(lv, est.livro) ? x.semComentario : x.semLivroCalvin}</p>`;
     }
     gavetas.innerHTML = gaveta(x.comentario, corpo);
     const lm = gavetas.querySelector(".ler-mais");
     if(lm) lm.addEventListener("click", ()=>{
-      const txt = gavetas.querySelector(".comentario-texto");
-      const abrir = txt.classList.toggle("recolhido") === false;
+      const abrir = gavetas.querySelector(".comentario-texto").classList.toggle("recolhido") === false;
       lm.textContent = abrir ? x.lerMenos : x.lerMais;
+      lm.setAttribute("aria-expanded", abrir);
     });
   }
   if(acao==="referencias"){
     const refs = await carregarRefs(est.livro, est.cap);
+    if(!aberta()) return;
     const lista = refs ? refs[String(v)] : null;
     if(!lista || !lista.length){
       gavetas.innerHTML = gaveta(x.referencias, `<p class="comentario-texto">${x.semRefs}</p>`);
     } else {
       gavetas.innerHTML = gaveta(x.referencias,
         `<div class="refs">` + lista.map((r,ri)=>{
-          const rot = `${nomeLivro(r[0])} ${r[1]}:${r[2]}${r[3]>r[2] ? "-"+r[3] : ""}`;
-          return `<div class="ref-item" data-ri="${ri}">
-            <button class="ref-ir">${rot}</button>
-            <span class="ref-previa" id="rp-${v}-${ri}"></span></div>`;
+          const rot = esc(`${nomeLivro(r[0])} ${r[1]}:${r[2]}${r[3]>r[2] ? "-"+r[3] : ""}`);
+          return `<div class="ref-item">${linkRef(r[0], r[1], r[2], rot, "ref-ir")}<span class="ref-previa" data-ri="${ri}"></span></div>`;
         }).join("") + `</div><p class="fonte">${x.refFonte}</p>`);
-      gavetas.querySelectorAll(".ref-ir").forEach((b,ri)=>b.addEventListener("click", ()=>{
-        const r = lista[ri]; irPara(r[0], r[1]);
-      }));
       lista.forEach(async (r,ri)=>{
-        const alvo = document.getElementById(`rp-${v}-${ri}`);
         const livro = await carregarLivro(est.traducao, r[0]);
-        if(alvo && livro && livro[r[1]-1] && livro[r[1]-1][r[2]-1])
-          alvo.textContent = livro[r[1]-1][r[2]-1];
+        const alvo = gavetas.querySelector(`.ref-previa[data-ri="${ri}"]`);
+        if(alvo && livro && livro[r[1]-1] && livro[r[1]-1][r[2]-1]) alvo.textContent = livro[r[1]-1][r[2]-1];
       });
     }
   }
   if(acao==="anotacao"){
     gavetas.innerHTML = gaveta(x.anotacao,
-      `<textarea id="campoNota" placeholder="${x.escrevaNota}">${esc(est.notas[chave]||"")}</textarea>
+      `<textarea id="campoNota" placeholder="${x.escrevaNota}" aria-label="${x.anotacao}">${esc(est.notas[chave]||"")}</textarea>
        <div class="acoes">
          <button class="cancelar">${x.cancelar}</button>
          <button class="salvar">${x.salvar}</button>
@@ -509,7 +751,13 @@ async function acaoVerso(el, v, acao, botao){
       if(valor) est.notas[chave] = valor; else delete est.notas[chave];
       gravarLS("logos_notas", est.notas);
       fecharGavetas(el);
-      renderizarCapitulo();
+      // só o sinal de anotação deste versículo muda: a página não é redesenhada (e não pula para o topo)
+      let sinal = el.querySelector(".indicadores");
+      if(valor && !sinal){
+        sinal = document.createElement("span");
+        sinal.className = "indicadores"; sinal.title = x.anotacao; sinal.textContent = "✎";
+        el.querySelector("p.escritura").appendChild(sinal);
+      } else if(!valor && sinal) sinal.remove();
     });
     gavetas.querySelector("#campoNota").focus();
   }
@@ -522,139 +770,178 @@ function gaveta(rotulo, corpo, destaque){
 }
 
 /* ---------- navegação ---------- */
+function vizinhos(){
+  const idx = est.meta.books.findIndex(b=>b.id===est.livro), info = est.meta.books[idx];
+  return {
+    ant: est.cap>1 ? {l:est.livro, c:est.cap-1} : idx>0 ? {l:est.meta.books[idx-1].id, c:est.meta.books[idx-1].ch} : null,
+    pro: est.cap<info.ch ? {l:est.livro, c:est.cap+1} : idx<est.meta.books.length-1 ? {l:est.meta.books[idx+1].id, c:1} : null,
+  };
+}
 function atualizarNav(){
-  const idx = est.meta.books.findIndex(b=>b.id===est.livro);
-  const info = est.meta.books[idx];
-  const ant = est.cap>1 ? {l:est.livro, c:est.cap-1}
-            : idx>0 ? {l:est.meta.books[idx-1].id, c:est.meta.books[idx-1].ch} : null;
-  const pro = est.cap<info.ch ? {l:est.livro, c:est.cap+1}
-            : idx<est.meta.books.length-1 ? {l:est.meta.books[idx+1].id, c:1} : null;
+  const { ant, pro } = vizinhos();
   const bA = $("btnAnterior"), bP = $("btnProximo");
   bA.disabled = !ant; bP.disabled = !pro;
   if(ant){ bA.querySelector("span").textContent = `${nomeLivro(ant.l)} ${ant.c}`; bA.onclick = ()=>irPara(ant.l, ant.c); }
   if(pro){ bP.querySelector("span").textContent = `${nomeLivro(pro.l)} ${pro.c}`; bP.onclick = ()=>irPara(pro.l, pro.c); }
 }
-function irPara(usfm, cap){ est.livro=usfm; est.cap=cap; renderizarCapitulo(); }
 
 function montarListaLivros(){
   const x = t();
   let html = `<div class="grupo">${x.at}</div>`;
   est.meta.books.forEach(b=>{
     if(b.id==="MAT") html += `<div class="grupo">${x.nt}</div>`;
-    html += `<button data-livro="${b.id}">${b[est.idioma]||b.pt}</button>`;
+    html += `<button data-livro="${b.id}">${esc(b[est.idioma]||b.pt)}</button>`;
   });
   $("listaLivros").innerHTML = html;
   $("listaLivros").classList.remove("oculto");
   $("listaCapitulos").classList.add("oculto");
+  $("tituloLivros").textContent = x.livros;
   $("listaLivros").querySelectorAll("button").forEach(btn=>btn.addEventListener("click", ()=>{
     const info = infoLivro(btn.dataset.livro);
     $("listaLivros").classList.add("oculto");
-    const caps = Array.from({length:info.ch},(_,i)=>`<button data-cap="${i+1}">${i+1}</button>`).join("");
-    $("listaCapitulos").innerHTML = caps;
+    $("tituloLivros").textContent = nomeLivro(info.id);
+    $("listaCapitulos").innerHTML = `<button class="voltar-livros">‹ ${x.livros}</button>` +
+      Array.from({length:info.ch},(_,i)=>`<button data-cap="${i+1}">${i+1}</button>`).join("") +
+      `<button class="livro-inteiro">${x.sobreLivro} →</button>`;
     $("listaCapitulos").classList.remove("oculto");
-    $("listaCapitulos").querySelectorAll("button").forEach(cb=>cb.addEventListener("click", ()=>{
+    $("listaCapitulos").querySelector(".voltar-livros").addEventListener("click", montarListaLivros);
+    $("listaCapitulos").querySelector(".livro-inteiro").addEventListener("click", ()=>{
+      alternarPainel("painelLivros", false); navegar({ vista:"livro", livro:info.id });
+    });
+    $("listaCapitulos").querySelectorAll("[data-cap]").forEach(cb=>cb.addEventListener("click", ()=>{
       alternarPainel("painelLivros", false);
       irPara(info.id, +cb.dataset.cap);
     }));
+    const primeiro = $("listaCapitulos").querySelector("[data-cap]");
+    if(primeiro) primeiro.focus();
   }));
 }
 
 /* ---------- busca ---------- */
+/* "João 3:16", "jo 3 16", "1 co 13", "sl 23" -> {livro, cap, v} */
+function parseRef(txt){
+  const cru = txt.trim().toLowerCase();
+  const m = normStr(cru).match(/^([1-3]?\s*[a-z]+(?:\s+[a-z]+)*)\.?\s*(\d+)(?:\s*[:.,\s]\s*(\d+))?(?:\s*-\s*\d+)?$/);
+  if(!m) return null;
+  const nome = m[1].replace(/\s+/g, "");
+  let livro = null;
+  if(/^jó/.test(cru)) livro = infoLivro("JOB");   // sem o acento, "jo" é João
+  if(!livro && ABREV[nome]) livro = infoLivro(ABREV[nome]);
+  const nomes = (b)=>[b.pt, b.en, b.es, b.id].map(n=>normStr(n).replace(/\s+/g, ""));
+  if(!livro) livro = est.meta.books.find(b=>nomes(b).includes(nome));
+  if(!livro && nome.length >= 3) livro = est.meta.books.find(b=>nomes(b).some(n=>n.startsWith(nome)));
+  const cap = +m[2];
+  if(!livro || cap < 1 || cap > livro.ch) return null;
+  return { livro: livro.id, cap, v: +m[3] || 0 };
+}
+/* Marca os termos no texto ignorando acentos e maiúsculas ("graca" destaca "graça"). */
+function destacar(texto, termos){
+  let norm = "";
+  const pos = [];
+  for(let i = 0; i < texto.length; i++){
+    for(const ch of normStr(texto[i])){ norm += ch; pos.push(i); }
+  }
+  const trechos = [];
+  for(const termo of termos){
+    for(let k = norm.indexOf(termo); k !== -1; k = norm.indexOf(termo, k + termo.length))
+      trechos.push([pos[k], pos[k + termo.length - 1] + 1]);
+  }
+  trechos.sort((a,b)=>a[0]-b[0]);
+  let saida = "", fim = 0;
+  for(const [a, b] of trechos){
+    if(a < fim) continue;
+    saida += esc(texto.slice(fim, a)) + "<mark>" + esc(texto.slice(a, b)) + "</mark>";
+    fim = b;
+  }
+  return saida + esc(texto.slice(fim));
+}
 async function buscar(){
   if(est.buscaModo==="temas") return buscarTemas();
   if(est.buscaModo==="dicionario") return buscarDic();
   const x = t(), termo = $("campoBusca").value.trim();
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
+  const ref = parseRef(termo);
+  if(ref){ alternarPainel("painelBusca", false); return irPara(ref.livro, ref.cap, ref.v); }
   if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
-  const norm = (s)=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-  const alvo = norm(termo);
-  const livros = $("chkBibliaToda").checked ? est.meta.books.map(b=>b.id) : [est.livro];
-  let achados = [], n = 0;
-  for(const usfm of livros){
-    n++;
-    if(livros.length>1) status.textContent = `${x.buscando}… ${nomeLivro(usfm)} (${n}/${livros.length})`;
-    const livro = await carregarLivro(est.traducao, usfm);
-    if(!livro) continue;
-    livro.forEach((capversos, ci)=>{
-      capversos.forEach((texto, vi)=>{
-        if(texto && norm(texto).includes(alvo)) achados.push({usfm, cap:ci+1, v:vi+1, texto});
-      });
-    });
-    if(achados.length > 400) break;
-  }
-  status.textContent = achados.length ? `${achados.length} ${x.resultados}` : x.nadaEncontrado;
-  const re = new RegExp("("+termo.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");
-  res.innerHTML = achados.slice(0,400).map((a,i)=>
-    `<div class="res" data-i="${i}"><div class="ref">${refStr(a.usfm,a.cap,a.v)}</div>
-     <p>${esc(a.texto).replace(re,"<mark>$1</mark>")}</p></div>`).join("");
-  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", ()=>{
-    const a = achados[+el.dataset.i];
-    alternarPainel("painelBusca", false);
-    irPara(a.usfm, a.cap);
-  }));
+  const frase = normStr(termo).replace(/\s+/g, " ");
+  const palavras = frase.split(" ").filter(p=>p.length > 1);
+  const ids = $("chkBibliaToda").checked || est.vista==="inicio" ? est.meta.books.map(b=>b.id) : [est.livro];
+  status.textContent = x.buscando;
+  const vez = ++est.vezBusca;
+  const livros = await Promise.all(ids.map(id=>carregarLivro(est.traducao, id)));
+  if(vez !== est.vezBusca) return;
+  const exatos = [], soltos = [];
+  livros.forEach((livro, li)=>{
+    if(!livro) return;
+    livro.forEach((capversos, ci)=>capversos.forEach((texto, vi)=>{
+      if(!texto) return;
+      const n = normStr(texto);
+      if(n.includes(frase)) exatos.push({usfm:ids[li], cap:ci+1, v:vi+1, texto, termos:[frase]});
+      else if(palavras.length > 1 && palavras.every(p=>n.includes(p))) soltos.push({usfm:ids[li], cap:ci+1, v:vi+1, texto, termos:palavras});
+    }));
+  });
+  const achados = exatos.concat(soltos), LIMITE = 300;   // a frase exata vem primeiro; depois, versículos com todas as palavras
+  status.textContent = !achados.length ? x.nadaEncontrado
+    : `${achados.length.toLocaleString(est.idioma)} ${x.resultados}` + (achados.length > LIMITE ? ` — ${x.mostrando} ${LIMITE}` : "");
+  res.innerHTML = achados.slice(0, LIMITE).map(a=>
+    `<a class="res" href="${urlCapitulo(a.usfm, a.cap, a.v)}" style="display:block;text-decoration:none;color:inherit">
+       <div class="ref">${esc(refStr(a.usfm,a.cap,a.v))}</div><p>${destacar(a.texto, a.termos)}</p></a>`).join("");
 }
 
-const normStr = (s)=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-const emPT = ()=>est.idioma==="pt";
-est.titulosPT = {};
-async function titulos(tipo){
-  if(!(tipo in est.titulosPT)){
-    try{ est.titulosPT[tipo] = await json(`data/${tipo}/titulos_pt.json`); }
-    catch(e){ est.titulosPT[tipo] = {}; }
-  }
-  return est.titulosPT[tipo];
-}
 function avisoConteudo(x, temPT){ return !emPT() ? "" : `<p class="aviso-en">${temPT ? x.tradAuto : x.conteudoEN}</p>`; }
 function rotuloDuplo(tit, n){
   return tit[n] && tit[n].toLowerCase() !== n.toLowerCase()
     ? `${esc(tit[n])} <span style="opacity:.55;font-weight:400">(${esc(n)})</span>` : esc(n);
 }
+const RE_REF = /\b([1-3]?[A-Z]{2,3})\s(\d+):(\d+)(?:-(\d+))?/g;
+function linkarRefs(txt){
+  return esc(txt).replace(RE_REF, (m, l, c, v)=> infoLivro(l)
+    ? linkRef(l, +c, +v, esc(`${nomeLivro(l)} ${c}:${v}`) + (m.includes("-") ? m.slice(m.indexOf("-")) : "")) : m);
+}
+/* Lista de verbetes (temas ou dicionário) e, ao escolher um, o conteúdo dele. */
+function listarVerbetes(nomes, tit, abrir){
+  const x = t(), res = $("buscaResultados"), status = $("buscaStatus");
+  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
+  status.textContent = `${nomes.length} ${x.resultados}`;
+  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}" tabindex="0" role="button"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
+  res.querySelectorAll(".res").forEach(el=>{
+    const ir = async ()=>{
+      const nome = nomes[+el.dataset.n];
+      res.innerHTML = `<h3 class="res-titulo">${rotuloDuplo(tit, nome)}</h3>` + await abrir(nome);
+      status.textContent = "";
+    };
+    el.addEventListener("click", ir);
+    el.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ ir(); } });
+  });
+}
 async function buscarTemas(){
   const x = t(), termo = $("campoBusca").value.trim();
-  const res = $("buscaResultados"), status = $("buscaStatus");
-  res.innerHTML = ""; status.textContent = "";
-  if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
+  $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+  if(termo.length < 2){ $("buscaStatus").textContent = x.digiteBusca; return; }
   const [idx, alias, tit] = await Promise.all([idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
   const alvo = normStr(termo);
   const diretos = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo)));
   const viaAlias = Object.entries(alias).filter(([pt])=>normStr(pt).includes(alvo)).map(([,en])=>en);
-  const nomes = [...new Set([...viaAlias, ...diretos])].slice(0, 40);
-  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
-  status.textContent = `${nomes.length} ${x.resultados}`;
-  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
-  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
-    const nome = nomes[+el.dataset.n];
+  listarVerbetes([...new Set([...viaAlias, ...diretos])].slice(0, 40), tit, async (nome)=>{
     const secao = await temaSecao(nome[0].toUpperCase());
-    const linhas = secao[nome] || [];
-    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${rotuloDuplo(tit, nome)}</h3>` +
-      linhas.map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
+    return (secao[nome] || []).map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
       `<p class="fonte">${x.fonteNave}</p>` + avisoConteudo(x, !!secao.__pt);
-    ativarRefs(res);
-  }));
+  });
 }
 async function buscarDic(){
   const x = t(), termo = $("campoBusca").value.trim();
-  const res = $("buscaResultados"), status = $("buscaStatus");
-  res.innerHTML = ""; status.textContent = "";
-  if(termo.length < 2){ status.textContent = x.digiteBusca; return; }
+  $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+  if(termo.length < 2){ $("buscaStatus").textContent = x.digiteBusca; return; }
   const [idx, tit] = await Promise.all([idxDic(), emPT() ? titulos("dictionary") : {}]);
   const alvo = normStr(termo);
-  const nomes = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40);
-  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
-  status.textContent = `${nomes.length} ${x.resultados}`;
-  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
-  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", async ()=>{
-    const nome = nomes[+el.dataset.n];
-    const letra = /[A-Za-z]/.test(nome[0]) ? nome[0].toUpperCase() : "_";
-    const dic = await dicLetra(letra);
-    res.innerHTML = `<h3 class="ref" style="font-size:.85rem">${rotuloDuplo(tit, nome)}</h3>` +
-      (dic[nome]||[]).map(d=>`<p class="dic-def">${esc(d)}</p>`).join("") +
+  listarVerbetes(idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40), tit, async (nome)=>{
+    const dic = await dicLetra(nome[0].toUpperCase());
+    return (dic[nome]||[]).map(d=>`<p class="dic-def">${esc(d)}</p>`).join("") +
       `<p class="fonte">${x.fonteEaston}</p>` + avisoConteudo(x, !!dic.__pt);
-  }));
+  });
 }
 function abrirBusca(modo){
-  prepararAbas();
   alternarPainel("painelBusca", true);
   const alvo = document.querySelector(`.busca-abas .aba[data-modo="${modo}"]`);
   if(alvo) alvo.onclick();
@@ -662,20 +949,21 @@ function abrirBusca(modo){
 }
 function prepararAbas(){
   const x = t();
+  const exemplo = ()=>est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="temas" ? x.exTema : x.exDic;
   document.querySelectorAll(".busca-abas .aba").forEach(b=>{
     b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="temas" ? x.abaTemas : x.abaDic;
     b.onclick = ()=>{
       est.buscaModo = b.dataset.modo;
-      document.querySelectorAll(".busca-abas .aba").forEach(o=>o.classList.toggle("ativa", o===b));
+      document.querySelectorAll(".busca-abas .aba").forEach(o=>{ o.classList.toggle("ativa", o===b); o.setAttribute("aria-selected", o===b); });
       document.querySelector(".busca-escopo").style.display = est.buscaModo==="texto" ? "" : "none";
-      $("campoBusca").placeholder = est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="temas" ? x.exTema : x.exDic;
+      $("campoBusca").placeholder = exemplo();
       $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
     };
   });
+  $("campoBusca").placeholder = exemplo();
 }
 
 /* ---------- planos de leitura ---------- */
-est.planos = null; est.progresso = lerLS("logos_planos", {});
 async function planos(){ if(!est.planos){ est.planos = await json("data/plans.json"); } return est.planos; }
 function pctPlano(pl){
   const pr = est.progresso[pl.id] || {};
@@ -683,34 +971,31 @@ function pctPlano(pl){
   return Math.round(feitos / pl.dias.length * 100);
 }
 async function montarPlanos(planoAberto){
-  const alvo = $("conteudoPlanos");
+  const alvo = $("conteudoPlanos"), x = t();
   const ps = await planos();
   if(!planoAberto){
     alvo.innerHTML = ps.map(pl=>{
       const pct = pctPlano(pl);
-      return `<div class="plano-card" data-id="${pl.id}">
-        <h3>${pl.nome[est.idioma]||pl.nome.pt}</h3>
+      return `<div class="plano-card" data-id="${esc(pl.id)}" tabindex="0" role="button">
+        <h3>${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>
         <div class="plano-barra"><i style="width:${pct}%"></i></div>
-        <div class="plano-pct">${pct}% · ${pl.dias.length} dias</div></div>`;
+        <div class="plano-pct">${pct}% · ${pl.dias.length} ${x.dias}</div></div>`;
     }).join("");
-    alvo.querySelectorAll(".plano-card").forEach(c=>c.addEventListener("click", ()=>montarPlanos(c.dataset.id)));
+    alvo.querySelectorAll(".plano-card").forEach(c=>{
+      c.addEventListener("click", ()=>montarPlanos(c.dataset.id));
+      c.addEventListener("keydown", (e)=>{ if(e.key==="Enter") montarPlanos(c.dataset.id); });
+    });
     return;
   }
-  const pl = ps.find(x=>x.id===planoAberto);
+  const pl = ps.find(p=>p.id===planoAberto);
   const pr = est.progresso[pl.id] || {};
-  let html = `<button class="voltar-planos">‹ ${t().fechar==="Fechar"?"Voltar":"Back"}</button>
-    <h3 style="font-family:'Cardo',serif;margin:.2rem 0 .6rem">${pl.nome[est.idioma]||pl.nome.pt}</h3>`;
-  html += pl.dias.map((caps,i)=>{
-    const links = caps.map(([l,c])=>`<span data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}</span>`).join(", ");
-    return `<div class="dia-linha"><span class="dia-num">Dia ${i+1}</span>
-      <span class="dia-caps">${links}</span>
-      <input type="checkbox" class="dia-check" data-i="${i}" ${pr[i]?"checked":""}></div>`;
-  }).join("");
-  alvo.innerHTML = html;
+  alvo.innerHTML = `<button class="voltar-planos">‹ ${x.voltar}</button>
+    <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
+    pl.dias.map((caps,i)=>
+      `<div class="dia-linha"><span class="dia-num">${x.dia} ${i+1}</span>
+        <span class="dia-caps">${caps.map(([l,c])=>linkRef(l, c, 0, null, "")).join(", ")}</span>
+        <input type="checkbox" class="dia-check" data-i="${i}" aria-label="${x.dia} ${i+1}" ${pr[i]?"checked":""}></div>`).join("");
   alvo.querySelector(".voltar-planos").addEventListener("click", ()=>montarPlanos(null));
-  alvo.querySelectorAll(".dia-caps span").forEach(sp=>sp.addEventListener("click", ()=>{
-    alternarPainel("painelPlanos", false); irPara(sp.dataset.l, +sp.dataset.c);
-  }));
   alvo.querySelectorAll(".dia-check").forEach(ch=>ch.addEventListener("change", ()=>{
     est.progresso[pl.id] = est.progresso[pl.id] || {};
     est.progresso[pl.id][ch.dataset.i] = ch.checked;
@@ -721,106 +1006,62 @@ async function montarPlanos(planoAberto){
 }
 
 /* ---------- linha do tempo ---------- */
-est.tempo = null;
 async function montarTempo(){
   if(!est.tempo){ est.tempo = await json("data/timeline.json"); }
   $("conteudoTempo").innerHTML = est.tempo.eras.map(era=>
     `<div class="era"><h3>${esc(era.nome)}</h3>` + era.eventos.map(ev=>
       `<div class="evento"><span class="data">${esc(ev.d)}</span>
-       <span class="corpo">${esc(ev.t)} — ` +
-       ev.r.map(([l,c])=>`<span class="tema-ref" data-l="${l}" data-c="${c}">${nomeLivro(l)} ${c}</span>`).join(", ") +
+       <span class="corpo">${esc(ev.t)} — ` + ev.r.map(([l,c])=>linkRef(l, c)).join(", ") +
       `</span></div>`).join("") + `</div>`).join("");
-  $("conteudoTempo").querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
-    alternarPainel("painelTempo", false); irPara(el.dataset.l, +el.dataset.c);
-  }));
 }
 
 /* ---------- atlas ---------- */
-est.lugares = null; est.mapa = null; est.marcadores = [];
 function carregarLeaflet(){
-  return new Promise((res)=>{
+  return new Promise((res, rej)=>{
     if(window.L) return res();
     const css = document.createElement("link");
-    css.rel = "stylesheet"; css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    css.rel = "stylesheet"; css.href = "/vendor/leaflet/leaflet.css";
     document.head.appendChild(css);
     const js = document.createElement("script");
-    js.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-    js.onload = ()=>res();
+    js.src = "/vendor/leaflet/leaflet.js";
+    js.onload = ()=>res(); js.onerror = rej;
     document.head.appendChild(js);
   });
 }
 async function abrirAtlas(){
   alternarPainel("painelAtlas", true);
-  await carregarLeaflet();
-  if(!est.lugares){ est.lugares = await json("data/places.json"); }
+  try{
+    await carregarLeaflet();
+    if(!est.lugares){ est.lugares = await json("data/places.json"); }
+  }catch(e){ $("atlasResultados").innerHTML = `<p class="erro-leitura">${t().erroCarregar}</p>`; return; }
   montarViagens();
   if(!est.mapa){
     est.mapa = L.map("mapa").setView([31.77, 35.21], 6);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      { attribution: "© OpenStreetMap", maxZoom: 15 }).addTo(est.mapa);
+      { attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>', maxZoom: 15 }).addTo(est.mapa);
   }
   setTimeout(()=>est.mapa.invalidateSize(), 150);
 }
 function buscarAtlas(){
   const termo = normStr($("campoAtlas").value.trim());
   const res = $("atlasResultados");
-  if(termo.length < 2){ res.innerHTML = ""; return; }
+  if(termo.length < 2 || !est.lugares || !est.mapa){ res.innerHTML = ""; return; }
   const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo))).slice(0, 12);
   const nomeL = (l)=> (emPT() && l.p) || l.n;
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
-  res.innerHTML = achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
-    <p>${l.r.slice(0,6).map(([b,c])=>`<span class="tema-ref" data-l="${b}" data-c="${c}">${nomeLivro(b)} ${c}</span>`).join(" · ")}</p></div>`).join("");
+  res.innerHTML = achados.length ? achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
+    <p>${l.r.slice(0,6).map(([b,c,v])=>linkRef(b, c, v, esc(nomeLivro(b)+" "+c))).join(" · ")}</p></div>`).join("")
+    : `<p class="busca-status">${t().nadaEncontrado}</p>`;
   achados.forEach(l=>{
     const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(nomeL(l)));
     est.marcadores.push(m);
   });
   if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
   res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
-    if(e.target.classList.contains("tema-ref")) return;
+    if(e.target.closest("a")) return;
     mostrarLugar(achados[+el.dataset.i]);
   }));
-  res.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
-    alternarPainel("painelAtlas", false); irPara(el.dataset.l, +el.dataset.c);
-  }));
 }
-
-/* ---------- contexto do livro ---------- */
-est.ctx = null;
-async function abrirContexto(){
-  if(!est.ctx){ est.ctx = await json("data/context.json"); }
-  const c = est.ctx[est.livro];
-  if(!c) return;
-  let painel = $("painelCtx");
-  if(!painel){
-    painel = document.createElement("div");
-    painel.id = "painelCtx"; painel.className = "painel oculto";
-    painel.innerHTML = `<div class="painel-caixa">
-      <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx">✕</button></div>
-      <div id="ctxCorpo"></div></div>`;
-    document.body.appendChild(painel);
-    painel.querySelector(".fechar").addEventListener("click", ()=>painel.classList.add("oculto"));
-    painel.addEventListener("click", (e)=>{ if(e.target===painel) painel.classList.add("oculto"); });
-  }
-  $("ctxTitulo").textContent = nomeLivro(est.livro);
-  const par = (c.par||[]).map(([l,ch])=>`<span class="tema-ref" data-l="${l}" data-c="${ch}">${nomeLivro(l)} ${ch}</span>`).join(" · ");
-  $("ctxCorpo").innerHTML = `<dl class="ctx-grade">
-    <dt>Autor</dt><dd>${esc(c.a)}</dd>
-    <dt>Data</dt><dd>${esc(c.d)}</dd>
-    <dt>Local</dt><dd>${esc(c.l)}</dd>
-    <dt>Público</dt><dd>${esc(c.p)}</dd>
-    <dt>Tema</dt><dd>${esc(c.t)}</dd>
-    ${par ? `<dt>Paralelos</dt><dd>${par}</dd>` : ""}
-  </dl>
-  <div class="ctx-barra"><i style="left:${c.pos}%"></i></div>
-  <div class="ctx-escala"><span>Criação</span><span>Êxodo</span><span>Davi</span><span>Exílio</span><span>Cristo</span><span>Igreja</span></div>`;
-  $("ctxCorpo").querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
-    painel.classList.add("oculto"); irPara(el.dataset.l, +el.dataset.c);
-  }));
-  alternarPainel("painelCtx", true);
-}
-window.abrirContexto = abrirContexto;
-
-/* ---------- atlas: lugar detalhado, distâncias e viagens ---------- */
 const CIDADES_CHAVE = [["Jerusalém",31.7784,35.2354],["Babilônia",32.5364,44.4208],["Roma",41.8919,12.5113],["Éfeso",37.9411,27.3419],["Alexandria",31.2001,29.9187],["Damasco",33.5132,36.2919]];
 function distKm(a1,o1,a2,o2){
   const R=6371, r=Math.PI/180;
@@ -830,31 +1071,27 @@ function distKm(a1,o1,a2,o2){
 }
 function mostrarLugar(l){
   const res = $("atlasResultados");
-  const refs = l.r.map(([b,c,v])=>`<span class="tema-ref" data-l="${b}" data-c="${c}">${nomeLivro(b)} ${c}:${v}</span>`).join(" · ");
+  const refs = l.r.map(([b,c,v])=>linkRef(b, c, v)).join(" · ");
   const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
-  const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase())
+  const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase() && c[0] !== l.p)
     .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
   res.innerHTML = `<div class="lugar-card">
     <h3>${esc((emPT() && l.p) || l.n)}</h3>
-    <p class="lugar-meta">${l.tot} ocorrência(s) na Bíblia
-      · Primeira: <span class="tema-ref" data-l="${primeira[0]}" data-c="${primeira[1]}">${nomeLivro(primeira[0])} ${primeira[1]}:${primeira[2]}</span>
-      · Última: <span class="tema-ref" data-l="${ultima[0]}" data-c="${ultima[1]}">${nomeLivro(ultima[0])} ${ultima[1]}:${ultima[2]}</span></p>
+    <p class="lugar-meta">${+l.tot} ocorrência(s) na Bíblia
+      · Primeira: ${linkRef(primeira[0], primeira[1], primeira[2])}
+      · Última: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>
     <p class="lugar-refs">${refs}</p>
     <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
-    ${l.f ? `<p class="lugar-meta"><a href="${l.f}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
+    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
   </div>`;
-  res.querySelectorAll(".tema-ref").forEach(el=>el.addEventListener("click", ()=>{
-    alternarPainel("painelAtlas", false); irPara(el.dataset.l, +el.dataset.c);
-  }));
   est.mapa.setView([l.la, l.lo], 9);
 }
-est.viagens = null; est.camadaViagem = [];
 async function montarViagens(){
   if(!est.viagens){ est.viagens = await json("data/journeys.json"); }
   const alvo = $("viagens");
   if(alvo.dataset.pronto) return;
   alvo.dataset.pronto = "1";
-  alvo.innerHTML = est.viagens.map(v=>`<button data-v="${v.id}">${v.nome.split(" (")[0]}</button>`).join("");
+  alvo.innerHTML = est.viagens.map(v=>`<button data-v="${esc(v.id)}">${esc(v.nome.split(" (")[0])}</button>`).join("");
   alvo.querySelectorAll("button").forEach(b=>b.addEventListener("click", ()=>{
     const ativa = b.classList.contains("ativa");
     alvo.querySelectorAll("button").forEach(o=>o.classList.remove("ativa"));
@@ -873,8 +1110,7 @@ function desenharViagem(v){
   v.paradas.forEach((p,i)=>{
     const m = L.circleMarker(p[1], {radius:6, color:v.cor, fillColor:v.cor, fillOpacity:.9})
       .addTo(est.mapa)
-      .bindPopup(`<b>${i+1}. ${p[0]}</b><br>` +
-        p[2].map(([b,c,vv])=>`<a href="#/${b}/${c}" onclick="document.getElementById('painelAtlas').classList.add('oculto')">${nomeLivro(b)} ${c}:${vv}</a>`).join(", "));
+      .bindPopup(`<b>${i+1}. ${esc(p[0])}</b><br>` + p[2].map(([b,c,vv])=>linkRef(b, c, vv, null, "")).join(", "));
     est.camadaViagem.push(m);
   });
   est.mapa.fitBounds(L.latLngBounds(pontos).pad(0.15));
@@ -889,50 +1125,45 @@ function desenharViagem(v){
   }, 350);
 }
 
+/* ---------- contexto do livro ---------- */
+async function abrirContexto(){
+  let c = null;
+  try{ c = (await contextos())[est.livro]; }catch(e){}
+  if(!c) return;
+  $("ctxTitulo").textContent = nomeLivro(est.livro);
+  $("ctxCorpo").innerHTML = fichaContexto(c);
+  alternarPainel("painelCtx", true);
+}
+
 /* ---------- modo estudo ---------- */
-est.estudo = lerLS("logos_estudo", false);
 function aplicarEstudo(){
   document.body.classList.toggle("estudo", est.estudo);
   $("colEstudo").classList.toggle("oculto", !est.estudo);
   $("btnEstudo").classList.toggle("ativa", est.estudo);
+  $("btnEstudo").setAttribute("aria-pressed", est.estudo);
 }
 async function atualizarEstudo(v){
   if(!est.estudo || window.innerWidth < 1100) return;
-  const ref = `${nomeLivro(est.livro)} ${est.cap}:${v}`;
+  const x = t(), ref = esc(refStr(est.livro, est.cap, v)), chave = est.livro + est.cap + "." + v;
   const alvoO = $("estudoOriginal"), alvoC = $("estudoComentario");
-  alvoO.innerHTML = `<p class="estudo-vazio">${t().carregando}</p>`;
-  alvoC.innerHTML = `<p class="estudo-vazio">${t().carregando}</p>`;
+  est.estudoAtual = chave;
+  alvoO.innerHTML = alvoC.innerHTML = `<p class="estudo-vazio">${x.carregando}</p>`;
   const ehAT = infoLivro(est.livro).t==="AT";
   const [inter, com] = await Promise.all([carregarInterlinear(est.livro, est.cap), carregarComentario(est.livro, est.cap)]);
+  if(est.estudoAtual !== chave) return;
   const palavras = inter && inter[v-1] ? inter[v-1] : [];
   if(palavras.length){
-    alvoO.innerHTML = `<p class="lugar-meta" style="margin-top:0">${ref}</p>
-      <div class="inter-grid" ${ehAT?'dir="rtl"':''}>` + palavras.map((p,pi)=>
-      `<button class="inter-palavra" data-strong="${p[2]||""}">
-        <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
-        <span class="ip-translit">${esc(p[1])}</span>
-        <span class="ip-gloss">${esc(p[3])}</span>
-        <span class="ip-strong">${p[2]||""}</span></button>`).join("") +
-      `</div><div class="lex-caixa oculto"></div>`;
-    alvoO.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
-      const caixa = alvoO.querySelector(".lex-caixa");
-      const strong = btn.dataset.strong;
-      alvoO.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
-      if(!strong){ caixa.classList.add("oculto"); return; }
-      btn.classList.add("sel"); caixa.classList.remove("oculto");
-      const lex = await carregarLexico(strong[0]);
-      const ent = lex && lex[strong];
-      caixa.innerHTML = ent ? `<div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
-        <span class="lex-translit">${esc(ent.translit)}</span><span class="lex-num">${strong}</span></div>
-        <p class="lex-def">${esc((est.idioma==="pt" && ent.defpt) || ent.def)}</p>` : "";
-    }));
+    alvoO.innerHTML = `<p class="lugar-meta" style="margin-top:0">${ref}</p>` + gradeInterlinear(palavras, ehAT);
+    ligarLexico(alvoO, false);
   } else {
-    alvoO.innerHTML = `<p class="estudo-vazio">${t().semOriginal}</p>`;
+    alvoO.innerHTML = `<p class="estudo-vazio">${x.semOriginal}</p>`;
   }
   const achado = comentarioProximo(com, v);
   alvoC.innerHTML = achado
-    ? `<p class="lugar-meta" style="margin-top:0">${ref} — ${autorComentario(com, t()).split(" (")[0]}${achado.v !== v ? ` · ${achado.seguinte ? t().comInicio : t().comRef} ${achado.v}` : ""}</p><p class="comentario-texto" style="font-size:.82rem">${esc(achado.texto)}</p>`
-    : `<p class="estudo-vazio">${t().semComentario}</p>`;
+    ? `<p class="lugar-meta" style="margin-top:0">${ref} — ${autorComentario(com, x).split(" (")[0]}${achado.v !== v ? ` · ${achado.seguinte ? x.comInicio : x.comRef} ${achado.v}` : ""}</p>
+       <p class="comentario-texto">${esc(achado.texto)}</p>
+       ${est.idioma!=="en" ? `<p class="aviso-idioma">${com.__pt ? x.tradAuto : x.avisoIdiomaComentario}</p>` : ""}`
+    : `<p class="estudo-vazio">${x.semComentario}</p>`;
 }
 
 /* ---------- compartilhar versículo como imagem ---------- */
@@ -947,21 +1178,22 @@ function quebrarLinhas(ctx, texto, largura){
   return linhas;
 }
 async function compartilharVerso(v){
-  const livro = await carregarLivro(est.traducao, est.livro);
-  const texto = (livro && livro[est.cap-1] && livro[est.cap-1][v-1]) || "";
+  const texto = est.versos[v-1] || "";
   const ref = refStr(est.livro, est.cap, v);
-  const trad = est.meta.translations.find(tr=>tr.id===est.traducao).name;
-  await Promise.all([document.fonts.load('64px "Cardo"'), document.fonts.load('600 34px "Inter"')]).catch(()=>{});
-  const W = 1080, H = 1350, M = 110;
+  const trad = nomeTraducao(est.traducao);
+  await Promise.all([document.fonts.load('64px "Cardo"'), document.fonts.load('600 34px "Inter"'), document.fonts.load('600 40px "Cormorant Garamond"')]).catch(()=>{});
+  const W = 1080, H = 1350, M = 120;
   const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
   const c = cv.getContext("2d");
-  c.fillStyle = "#FAF7F0"; c.fillRect(0, 0, W, H);
-  c.strokeStyle = "#E4DECF"; c.lineWidth = 4; c.strokeRect(40, 40, W-80, H-80);
+  const fundo = c.createLinearGradient(0, 0, W, H);
+  fundo.addColorStop(0, "#1B2438"); fundo.addColorStop(1, "#131A2A");
+  c.fillStyle = fundo; c.fillRect(0, 0, W, H);
+  c.strokeStyle = "rgba(217,185,120,.55)"; c.lineWidth = 2; c.strokeRect(44, 44, W-88, H-88);
   // logotipo: o livro aberto com o ponto de luz (mesmo desenho do ícone do site)
-  c.save(); c.translate(W/2 - 36, 120); c.scale(3, 3);
-  c.strokeStyle = "#8A6A2F"; c.lineWidth = 1.7; c.lineCap = "round"; c.lineJoin = "round";
+  c.save(); c.translate(W/2 - 36, 128); c.scale(3, 3);
+  c.strokeStyle = "#D9B978"; c.lineWidth = 1.5; c.lineCap = "round"; c.lineJoin = "round";
   c.stroke(new Path2D("M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"));
-  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#8A6A2F";
+  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#D9B978";
   c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI*2); c.fill(); c.restore();
   // texto do versículo, com a fonte reduzindo até caber
   let tam = 66, linhas, alt;
@@ -970,22 +1202,23 @@ async function compartilharVerso(v){
     linhas = quebrarLinhas(c, `“${texto}”`, W - 2*M);
     alt = linhas.length * tam * 1.42;
     tam -= 2;
-  } while(alt > H - 560 && tam > 30);
-  c.fillStyle = "#22293A"; c.textAlign = "center"; c.textBaseline = "middle";
+  } while(alt > H - 600 && tam > 30);
+  c.fillStyle = "#F1E9D8"; c.textAlign = "center"; c.textBaseline = "middle";
   let y = (H - alt) / 2 + tam * 0.7 - 20;
   for(const l of linhas){ c.fillText(l, W/2, y); y += (tam + 2) * 1.42; }
-  c.font = '600 38px "Inter", sans-serif'; c.fillStyle = "#8A6A2F";
-  c.fillText(ref.toUpperCase(), W/2, y + 50);
-  c.font = '400 28px "Inter", sans-serif'; c.fillStyle = "#6B7280";
-  c.fillText(trad, W/2, y + 100);
-  c.font = '700 34px "Cardo", serif'; c.fillStyle = "#22293A";
-  c.fillText("S O L A", W/2, H - 150);
-  c.font = '500 28px "Inter", sans-serif'; c.fillStyle = "#8A6A2F";
-  c.fillText("solabiblia.com.br", W/2, H - 100);
+  c.fillStyle = "#D9B978"; c.fillRect(W/2 - 40, y + 4, 80, 2);
+  c.font = '600 34px "Inter", sans-serif';
+  c.fillText(ref.toUpperCase(), W/2, y + 62);
+  c.font = '400 26px "Inter", sans-serif'; c.fillStyle = "rgba(241,233,216,.6)";
+  c.fillText(trad, W/2, y + 110);
+  c.font = '600 44px "Cormorant Garamond", "Cardo", serif'; c.fillStyle = "#F1E9D8";
+  c.fillText("S O L A", W/2, H - 158);
+  c.font = '500 26px "Inter", sans-serif'; c.fillStyle = "#D9B978";
+  c.fillText("solabiblia.com.br", W/2, H - 108);
   const blob = await new Promise(r=>cv.toBlob(r, "image/png"));
   const nome = `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}.png`;   // sem acento: o Chrome descarta nomes com "ã"
   const arquivo = new File([blob], nome, { type: "image/png" });
-  const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap);
+  const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap, v);
   if(navigator.canShare && navigator.canShare({ files: [arquivo] })){
     await navigator.share({ files: [arquivo], text: `${ref} — ${link}` }).catch(()=>{});
   } else {
@@ -996,97 +1229,172 @@ async function compartilharVerso(v){
   }
 }
 
-/* ---------- anotações ---------- */
-function montarNotas(){
+/* ---------- anotações e backup ---------- */
+const RE_CHAVE = /^([1-3A-Z][A-Z0-9]{2})\.(\d{1,3})\.(\d{1,3})$/;
+function chaveValida(k){ const m = RE_CHAVE.exec(k); return !!(m && infoLivro(m[1]) && +m[2] >= 1 && +m[2] <= infoLivro(m[1]).ch); }
+/* Tira do que está guardado no navegador qualquer coisa que não seja do Sola (arquivo de backup adulterado ou corrompido). */
+function limparDados(){
+  if(typeof est.marcas !== "object" || !est.marcas) est.marcas = {};
+  if(typeof est.notas !== "object" || !est.notas) est.notas = {};
+  if(typeof est.progresso !== "object" || !est.progresso) est.progresso = {};
+  for(const k of Object.keys(est.marcas)) if(!chaveValida(k) || !CORES.includes(est.marcas[k])) delete est.marcas[k];
+  for(const k of Object.keys(est.notas)) if(!chaveValida(k) || typeof est.notas[k] !== "string") delete est.notas[k];
+}
+function montarNotas(aviso){
   const x = t(), alvo = $("listaNotas");
   let acoes = document.querySelector(".notas-acoes");
   if(!acoes){
     acoes = document.createElement("div");
     acoes.className = "notas-acoes";
-    acoes.innerHTML = `<button id="btnExportar">⬇ Backup</button>
-      <label for="arqImportar">⬆ Restaurar</label>
-      <input type="file" id="arqImportar" accept=".json" style="display:none">`;
+    acoes.innerHTML = `<button id="btnExportar">⬇ <span></span></button>
+      <label for="arqImportar" tabindex="0">⬆ <span></span></label>
+      <input type="file" id="arqImportar" accept=".json,application/json" style="display:none">
+      <p class="fonte" id="notasAviso" role="status"></p>`;
     alvo.parentNode.insertBefore(acoes, alvo);
     acoes.querySelector("#btnExportar").addEventListener("click", ()=>{
       const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, v: 1 };
-      const blob = new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"});
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"}));
       a.download = "sola-backup.json";
-      a.click();
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
     });
+    acoes.querySelector("label").addEventListener("keydown", (e)=>{ if(e.key==="Enter") $("arqImportar").click(); });
     acoes.querySelector("#arqImportar").addEventListener("change", (e)=>{
       const f = e.target.files[0]; if(!f) return;
       const r = new FileReader();
       r.onload = ()=>{
+        let msg = t().arquivoInvalido;
         try{
           const d = JSON.parse(r.result);
-          if(d.marcas) { est.marcas = d.marcas; gravarLS("logos_marcas", est.marcas); }
-          if(d.notas) { est.notas = d.notas; gravarLS("logos_notas", est.notas); }
-          if(d.planos) { est.progresso = d.planos; gravarLS("logos_planos", est.progresso); }
-          montarNotas(); renderizarCapitulo();
-        }catch(err){ alert("Arquivo inválido."); }
+          if(d && typeof d === "object" && (d.marcas || d.notas || d.planos)){
+            // junta com o que já existe neste navegador (não apaga nada); no mesmo versículo vale o do arquivo
+            const nNotas = Object.keys(d.notas || {}).filter(k=>chaveValida(k) && typeof d.notas[k]==="string").length;
+            const nMarcas = Object.keys(d.marcas || {}).filter(k=>chaveValida(k) && CORES.includes(d.marcas[k])).length;
+            Object.assign(est.marcas, d.marcas); Object.assign(est.notas, d.notas);
+            if(d.planos && typeof d.planos === "object") for(const id of Object.keys(d.planos))
+              est.progresso[id] = Object.assign({}, est.progresso[id], d.planos[id]);
+            limparDados();
+            gravarLS("logos_marcas", est.marcas); gravarLS("logos_notas", est.notas); gravarLS("logos_planos", est.progresso);
+            msg = `${t().restaurado} ${nNotas} ${t().nAnot}, ${nMarcas} ${t().nMarc}.`;
+            if(est.vista==="cap") renderizar({ manter:true });
+          }
+        }catch(err){}
+        e.target.value = "";
+        montarNotas(msg);
       };
       r.readAsText(f);
     });
   }
-  const chaves = Object.keys(est.notas);
+  acoes.querySelector("#btnExportar span").textContent = x.backup;
+  acoes.querySelector("label span").textContent = x.restaurar;
+  $("notasAviso").textContent = aviso || "";
+  const ordem = est.meta.books.map(b=>b.id);
+  const chaves = Object.keys(est.notas).filter(chaveValida).sort((a,b)=>{
+    const [la,ca,va] = a.split("."), [lb,cb,vb] = b.split(".");
+    return ordem.indexOf(la)-ordem.indexOf(lb) || ca-cb || va-vb;
+  });
   if(!chaves.length){ alvo.innerHTML = `<p class="vazio">${x.semNotas}</p>`; return; }
   alvo.innerHTML = chaves.map(k=>{
     const [usfm, cap, v] = k.split(".");
     return `<div class="nota" data-k="${k}">
-      <div class="ref"><span>${refStr(usfm,+cap,+v)}</span><button>${x.excluir}</button></div>
+      <div class="ref">${linkRef(usfm, +cap, +v, esc(refStr(usfm,+cap,+v)), "")}<button>${x.excluir}</button></div>
       <p>${esc(est.notas[k])}</p></div>`;
   }).join("");
   alvo.querySelectorAll(".nota").forEach(el=>{
     el.querySelector("button").addEventListener("click", (e)=>{
       e.stopPropagation();
       delete est.notas[el.dataset.k]; gravarLS("logos_notas", est.notas); montarNotas();
+      const [usfm, cap, v] = el.dataset.k.split(".");
+      if(est.vista==="cap" && usfm===est.livro && +cap===est.cap){
+        const sinal = document.querySelector(`.verso[data-v="${v}"] .indicadores`); if(sinal) sinal.remove();
+      }
     });
-    el.addEventListener("click", ()=>{
-      const [usfm, cap] = el.dataset.k.split(".");
-      alternarPainel("painelNotas", false);
-      irPara(usfm, +cap);
-    });
+    el.addEventListener("click", (e)=>{ if(!e.target.closest("a,button")) el.querySelector("a").click(); });
   });
 }
 
+/* ---------- uso sem internet ---------- */
+async function baixarOffline(){
+  const x = t(), status = $("offlineStatus"), btn = $("btnOffline");
+  if(!("caches" in window)){ status.textContent = x.offSem; return; }
+  btn.disabled = true;
+  const urls = est.meta.books.map(b=>`/data/bibles/${est.traducao}/${b.id}.json`)
+    .concat(["/data/books.json","/data/context.json","/data/plans.json","/data/timeline.json","/data/commentaries/calvin/manifest.json","/data/commentaries/henry/manifest.json"]);
+  let feitos = 0, falhas = 0;
+  try{
+    const cache = await caches.open(CACHE_DADOS);
+    for(let i = 0; i < urls.length; i += 6){
+      await Promise.all(urls.slice(i, i+6).map(u=>cache.add(u).then(()=>{ feitos++; }, ()=>{ falhas++; })));
+      status.textContent = `${x.offBaixando} ${feitos}/${urls.length}`;
+    }
+  }catch(e){ falhas++; }
+  status.textContent = falhas ? x.offErro : x.offPronto;
+  btn.disabled = false;
+}
+
 /* ---------- painéis e tema ---------- */
+function painelAberto(){ return document.querySelector(".painel:not(.oculto)"); }
 function alternarPainel(id, abrir){
   const p = $(id);
   const mostrar = abrir!==undefined ? abrir : p.classList.contains("oculto");
+  const antes = est.focoAntes || document.activeElement;
   document.querySelectorAll(".painel").forEach(o=>o.classList.add("oculto"));
-  if(mostrar) p.classList.remove("oculto");
+  document.body.classList.toggle("com-painel", mostrar);
+  if(mostrar){
+    est.focoAntes = antes;
+    p.classList.remove("oculto");
+    const alvo = p.querySelector(".fechar");
+    if(alvo) alvo.focus({ preventScroll:true });
+  } else {
+    est.focoAntes = null;
+    if(antes && antes !== document.body && antes.isConnected) antes.focus({ preventScroll:true });
+  }
 }
+function fecharPaineis(){ const p = painelAberto(); if(p) alternarPainel(p.id, false); }
 function aplicarTema(){
-  document.documentElement.dataset.tema = est.tema==="escuro" ? "escuro" : "claro";
-  $("btnTema").innerHTML = `<svg class="ico"><use href="#i-${est.tema==="escuro"?"sol":"lua"}"/></svg>`;
-  gravarLS("logos_tema", est.tema);
+  const escuro = est.tema==="escuro";
+  document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
+  $("btnTema").innerHTML = ico(escuro ? "sol" : "lua");
+  $("metaTema").content = escuro ? "#0C1019" : "#F7F3EA";
+}
+function avisar(texto, botao, acao){
+  document.querySelectorAll(".aviso-topo").forEach(a=>a.remove());
+  const a = document.createElement("div");
+  a.className = "aviso-topo"; a.setAttribute("role", "alert");
+  a.innerHTML = `<span>${esc(texto)}</span>` + (botao ? `<button>${esc(botao)}</button>` : "");
+  if(botao) a.querySelector("button").addEventListener("click", acao);
+  document.body.appendChild(a);
 }
 
 /* ---------- inicialização ---------- */
 async function iniciar(){
-  est.meta = await json("data/books.json");
-  est.idioma = lerLS("logos_idioma","pt");
+  est.idioma = lerLS("logos_idioma","pt"); if(!UI[est.idioma]) est.idioma = "pt";
+  est.tema = document.documentElement.dataset.tema || "claro";
+  try{ est.meta = await json("data/books.json"); }
+  catch(e){ avisar(t().erroIniciar, t().recarregar, ()=>location.reload()); return; }
   est.traducao = lerLS("logos_trad","blivre");
-  est.tema = lerLS("logos_tema", matchMedia("(prefers-color-scheme: dark)").matches ? "escuro":"claro");
+  if(!est.meta.translations.find(tr=>tr.id===est.traducao)) est.traducao = "blivre";
+  limparDados();
   const rota = lerRota();
-  if(rota){ est.livro = rota.livro; est.cap = rota.cap; }
+  const antigo = /^#\//.test(location.hash) || !rotaDe(location.pathname, "");
 
   $("selIdioma").value = est.idioma;
-  aplicarTextos(); preencherTraducoes(); aplicarTema();
-  await renderizarCapitulo();
+  aplicarTextos(); preencherTraducoes(); aplicarTema(); aplicarEstudo();
+  $("btnCorrida").classList.toggle("ativa", est.corrida);
+  $("btnCorrida").setAttribute("aria-pressed", est.corrida);
+  await navegar(rota, { substituir: antigo });
 
   $("selIdioma").addEventListener("change", (e)=>{
     est.idioma = e.target.value; gravarLS("logos_idioma", est.idioma);
     aplicarTextos(); preencherTraducoes(); gravarLS("logos_trad", est.traducao);
-    renderizarCapitulo();
+    renderizar({ manter:true });
   });
   $("selTraducao").addEventListener("change", (e)=>{
     est.traducao = e.target.value; gravarLS("logos_trad", est.traducao);
-    preencherTraducoes(); renderizarCapitulo();
+    preencherTraducoes(); renderizar({ manter:true });
   });
-  $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizarCapitulo(); });
+  $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizar({ manter:true }); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
   $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
   $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
@@ -1095,46 +1403,82 @@ async function iniciar(){
   $("navAtlas").addEventListener("click", abrirAtlas);
   $("navContexto").addEventListener("click", abrirContexto);
   $("btnNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas"); });
-  $("btnTema").addEventListener("click", ()=>{ est.tema = est.tema==="escuro"?"claro":"escuro"; aplicarTema(); });
-  const bC = $("btnCorrida");
-  if(bC){
-    bC.title = t().leituraCorrida;
-    bC.classList.toggle("ativa", est.corrida);
-    bC.addEventListener("click", ()=>{
-      est.corrida = !est.corrida; gravarLS("logos_corrida", est.corrida);
-      bC.classList.toggle("ativa", est.corrida);
-      renderizarCapitulo();
-    });
-  }
+  $("btnPlanos").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos"); });
+  $("btnTema").addEventListener("click", ()=>{
+    est.tema = est.tema==="escuro" ? "claro" : "escuro"; gravarLS("logos_tema", est.tema); aplicarTema();
+  });
+  $("btnCorrida").addEventListener("click", ()=>{
+    est.corrida = !est.corrida; gravarLS("logos_corrida", est.corrida);
+    $("btnCorrida").classList.toggle("ativa", est.corrida);
+    $("btnCorrida").setAttribute("aria-pressed", est.corrida);
+    renderizar({ manter:true });
+  });
+  $("btnEstudo").addEventListener("click", ()=>{
+    est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
+  });
+  $("btnAjustes").addEventListener("click", ()=>{
+    const aberto = document.querySelector(".controles").classList.toggle("aberto");
+    $("btnAjustes").classList.toggle("ativa", aberto);
+    $("btnAjustes").setAttribute("aria-expanded", aberto);
+  });
+  $("btnOffline").addEventListener("click", baixarOffline);
   document.querySelectorAll("[data-painel]").forEach(a=>a.addEventListener("click", (e)=>{
     e.preventDefault();
     const id = a.dataset.painel;
     if(id==="painelAtlas") return abrirAtlas();
     if(id==="painelPlanos") montarPlanos(null);
     if(id==="painelTempo") montarTempo();
-    alternarPainel(id);
+    if(id==="painelNotas") montarNotas();
+    alternarPainel(id, true);
   }));
-  $("btnPlanos").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos"); });
-  aplicarEstudo();
-  $("btnEstudo").addEventListener("click", ()=>{
-    est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
-  });
   $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
   $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));
-  document.querySelectorAll(".painel").forEach(p=>p.addEventListener("click", (e)=>{ if(e.target===p) p.classList.add("oculto"); }));
-  const seguirRota = ()=>{
-    const r = lerRota();
-    if(r && (r.livro!==est.livro || r.cap!==est.cap)){ est.livro=r.livro; est.cap=r.cap; renderizarCapitulo(); }
-  };
-  window.addEventListener("hashchange", seguirRota);   // links antigos
-  window.addEventListener("popstate", seguirRota);     // botão voltar do navegador
-  const bA = $("btnAjustes");
-  if(bA) bA.addEventListener("click", ()=>{
-    const aberto = document.querySelector(".controles").classList.toggle("aberto");
-    bA.classList.toggle("ativa", aberto);
+  document.querySelectorAll(".painel").forEach(p=>p.addEventListener("click", (e)=>{ if(e.target===p) alternarPainel(p.id, false); }));
+
+  // links internos (/, /biblia/joao/, /biblia/joao/3/#v16) navegam dentro do app, sem recarregar a página
+  document.addEventListener("click", (e)=>{
+    if(e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest("a[href]");
+    if(!a || a.target || a.origin !== location.origin || a.getAttribute("href").startsWith("#")) return;
+    const r = rotaDe(a.pathname, a.hash);
+    if(!r) return;
+    e.preventDefault();
+    fecharPaineis();
+    navegar(r);
   });
+  // botão voltar/avançar do navegador e links antigos com "#/JHN/3"
+  const seguirRota = ()=>{
+    const r = lerRota(), antigoHash = /^#\//.test(location.hash);
+    const mesma = r.vista===est.vista && (r.vista==="inicio" || r.livro===est.livro) && (r.vista!=="cap" || r.cap===est.cap);
+    if(mesma && !antigoHash){
+      const alvo = r.v && document.querySelector(`.verso[data-v="${r.v}"]`);
+      if(alvo){ est.alvoV = r.v; irAoVerso(alvo); }
+      return;
+    }
+    fecharPaineis();
+    navegar(r, { substituir: antigoHash });
+  };
+  window.addEventListener("popstate", seguirRota);
+  window.addEventListener("hashchange", ()=>{ if(/^#\//.test(location.hash)) seguirRota(); });
+
+  document.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape"){
+      if(painelAberto()) return fecharPaineis();
+      if(est.gaveta && est.versoAtivo){ const el = est.versoAtivo; fecharGavetas(el); el.focus({ preventScroll:true }); }
+      return;
+    }
+    if(e.metaKey || e.ctrlKey || e.altKey || painelAberto() || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if(e.key === "/"){ e.preventDefault(); return abrirBusca("texto"); }
+    if(est.vista !== "cap") return;
+    const { ant, pro } = vizinhos();
+    if(e.key === "ArrowLeft" && ant) irPara(ant.l, ant.c);
+    if(e.key === "ArrowRight" && pro) irPara(pro.l, pro.c);
+  });
+
+  if("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost"))
+    navigator.serviceWorker.register("/sw.js").catch(()=>{});
 }
 iniciar();

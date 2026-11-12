@@ -1,0 +1,16 @@
+{
+  "name": "Sola — Estudo Bíblico",
+  "short_name": "Sola",
+  "description": "Bíblia com interlinear grego e hebraico, léxico de Strong, comentários clássicos e referências cruzadas. Gratuito e em português.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F3EA",
+  "theme_color": "#131A2A",
+  "icons": [
+    { "src": "/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icone-mascara-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
