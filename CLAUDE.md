@@ -35,8 +35,10 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
 - `data/strongs/{G,H}.json` — léxico. Campo `def` (inglês) e `defpt` (português, tradução automática revisada).
 - `data/commentaries/calvin/{USFM}/{cap}.json` — Calvino original (inglês), chave = versículo.
   `data/commentaries/calvin/pt/...` — tradução; o app sobrepõe o `pt/` ao original quando o idioma é Português.
-  Calvino não comentou 20 livros (Juízes, Samuel, Reis, Atos, Apocalipse...). O app usa o comentário do
-  versículo anterior (blocos) ou o primeiro do capítulo.
+  Calvino não comentou 20 livros (Juízes, Samuel, Reis, Atos, Apocalipse...). Nesses o app carrega
+  `data/commentaries/henry/` (Matthew Henry, domínio público, baixado por `ferramentas/baixar_henry.py`;
+  18 livros — Cantares não existe na fonte, e 2Sm 23–24 também faltam). Cada pasta tem `manifest.json`
+  com a lista de livros. O app usa o comentário do versículo anterior (blocos) ou o primeiro do capítulo.
 - `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`.
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
@@ -45,6 +47,12 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   com backup/restauração manual em arquivo.
 
 ## Ferramentas de tradução (`ferramentas/tradutor/`)
+
+Dois motores: Argos (rápido, mediano) e NLLB-200 1.3B (`nllb.py`, ~10x mais lento, bem melhor em prosa).
+O NLLB roda no GitHub Actions: `.github/workflows/traduzir.yml` (Actions → "Traduzir (NLLB)" → etapa,
+nº de partes). Divide em N máquinas, junta, grava em `data/.../pt/` e envia ao branch `traducao-<etapa>`
+para virar PR. Se faltar algo, rodar de novo com `retomar` = run id anterior. `lote.py --motor nllb --parte K/N`.
+O `nllb.py` protege marcadores de tópico ("I.", "1.", "(2.)") e devolve "milhas" (o modelo troca por "quilômetros").
 
 Tradução offline e gratuita (modelo Argos en→pt-BR via CTranslate2). `./traduzir_tudo.sh [etapas]` e
 `revisar.py` (refaz trechos com omissão). As pastas `venv/`, `modelo/` e `trabalho/` são locais (gitignore).
