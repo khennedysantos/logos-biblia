@@ -524,7 +524,8 @@ async function renderizarCapitulo(op){
   $("btnCtxCap").addEventListener("click", abrirContexto);
   leitor.querySelectorAll(".verso").forEach(el=>{
     // com uma gaveta aberta, passar o mouse por outro versículo não troca o ativo (senão a gaveta fecha sozinha)
-    el.addEventListener("mouseenter", ()=>{ montarBarra(el); if(!est.gaveta) ativarVerso(el); });
+    // logo depois de chegar por um link, o mouse parado em cima de outro versículo também não rouba o destaque
+    el.addEventListener("mouseenter", ()=>{ montarBarra(el); if(!est.gaveta && Date.now() > (est.semHover||0)) ativarVerso(el); });
     el.addEventListener("focus", ()=>montarBarra(el));
     el.addEventListener("click", (e)=>{ if(e.target.closest(".barra,.gavetas")) return; ativarVerso(el, true); });
     el.addEventListener("keydown", (e)=>{
@@ -539,6 +540,7 @@ async function renderizarCapitulo(op){
 }
 /* Rola até o versículo pedido (busca, referência cruzada, link com #v16), destaca e abre as ferramentas dele. */
 function irAoVerso(el, abrir){
+  est.semHover = Date.now() + 900;
   el.scrollIntoView({ block:"center", behavior:"instant" });
   el.classList.remove("destino"); void el.offsetWidth; el.classList.add("destino");
   ativarVerso(el, true);
@@ -1448,7 +1450,7 @@ async function iniciar(){
     e.preventDefault();
     fecharPaineis();
     navegar(r);
-  });
+  }, true);   // na fase de captura: o mapa (Leaflet) não deixa o clique dos balões chegar ao documento
   // botão voltar/avançar do navegador e links antigos com "#/JHN/3"
   const seguirRota = ()=>{
     const r = lerRota(), antigoHash = /^#\//.test(location.hash);
