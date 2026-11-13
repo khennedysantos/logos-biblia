@@ -1,5 +1,5 @@
 """Prepara e aplica cada etapa da tradução do Sola.
-uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino
+uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
@@ -74,6 +74,41 @@ GLOSAS_FIXAS = {
     "blessed": "bem-aventurado", "Blessed": "Bem-aventurados", "mercy": "misericórdia",
     "repent": "arrependei-vos", "believing": "crendo", "believe": "crer", "believes": "crê",
     "may believe": "creiam", "having believed": "tendo crido", "believed": "creram",
+    # títulos dos salmos e palavras frequentes dos capítulos que entraram com gerar_interlinear_at.py
+    "a poem": "um poema", "the  ascents": "as  subidas", "a miktam": "um mictão", "the  Gittith": "a  Gitite",
+    "the  Ezrachite": "o  ezraíta", "awake  !": "desperta  !", "pay attention  !": "atenta  !",
+    "be exalted  !": "sê exaltado  !", "I cried for help": "clamei por socorro", "may they exult": "exultem",
+    "they shout for joy": "gritam de alegria", "O Most High": "ó Altíssimo",
+    "I will sing praises to": "cantarei louvores a", "we give thanks": "damos graças",
+    "O strength  my": "ó força  minha", "[is] refuge  my": "[é] refúgio  meu", "[is] a helper": "[é] um ajudador",
+    "[are] help  my": "[és] socorro  meu", "he will ransom": "ele resgatará", "may he fulfill": "que ele cumpra",
+    "she has bound": "ela se obrigou", "an obligation": "uma obrigação", "obligation": "obrigação",
+    "vow": "voto", "vow  her": "voto  dela", "he forbade": "ele proibiu", "a prohibition": "uma proibição",
+    "the  rods": "as  varas", "rods": "varas", "camps": "acampamentos", "camps  your": "acampamentos  teus",
+    "we will sacrifice": "sacrificaremos", "a swarm": "um enxame", "lion": "leão", "den  the": "a  cova",
+    "to  den  the": "à  cova", "to  [the] den of": "à  [a] cova de", "and  satraps  the": "e  os  sátrapas",
+    "O Belteshazzar": "ó Beltessazar", "[the] Medes": "[os] medos", "and  [the] Persians": "e  [os] persas",
+    "a watcher": "um vigilante", "and  a holy [one]": "e  um santo", "cut down!": "cortai!",
+    "[the] stump of": "[o] toco de", "[the] birds of": "[as] aves de", "it grew great": "cresceu",
+    "it reached": "alcançou", "and  I will betroth  you": "e  te desposarei", "they are afraid": "eles têm medo",
+    "[the] teeth of": "[os] dentes de", "he has scattered": "ele espalhou", "they scattered": "eles espalharam",
+    "peaks": "picos", "prince of": "príncipe de", "I multiplied": "multipliquei", "[is] much": "[é] muito",
+    "[is] only": "[é] somente", "[those who] love": "[os que] amam", "[those who] speak": "[os que] falam",
+    "they shook": "eles tremeram", "you will abhor": "abominarás", "and  let us serve": "e  sirvamos",
+    # versículos do NT que entraram com corrigir_interlinear_nt.py
+    "Grace [be]": "Graça [seja]", "Christ’s": "de Cristo", "Eternal": "Eterno", "He has reconciled [You]": "Ele [vos] reconciliou",
+    "I am appointed;": "estou posto;", "I have been crucified with;": "fui crucificado com;", "Luke.": "Lucas.",
+    "Philippi": "Filipos", "Phoebe": "Febe", "They were persuaded": "Foram persuadidos", "Timothy": "Timóteo",
+    "[though] having authority": "[embora] tendo autoridade", "[to the] only": "[ao] único", "are proclaiming": "anunciam",
+    "assembly.": "igreja.", "by him,": "por ele,", "capital": "capital", "converts,": "convertidos,", "do greet": "saudai",
+    "equality;": "igualdade;", "having become,": "tendo-se tornado,", "having been found": "tendo sido achado",
+    "having been made known —": "tendo sido dado a conhecer —", "however [are]": "porém [são]", "in times": "em tempos",
+    "is becoming visible": "se torna visível", "kept secret,": "guardado em segredo,", "of Pacatiana.": "da Pacaciana.",
+    "of Phrygia": "da Frígia", "of Titus": "de Tito", "of [the] mystery": "d[o] mistério", "of faith —": "da fé —",
+    "of flame,": "de chama,", "of refreshing": "de refrigério", "of the ages": "dos séculos", "overthrowing": "derrubando",
+    "purely": "com pureza", "selfish ambition": "rivalidade", "shall we pay": "pagaremos", "shall we pay?": "pagaremos?",
+    "there are:": "há:", "they went.": "foram.", "those ones": "aqueles", "to [the] assembly": "à igreja",
+    "to be justified,": "ser justificado,", "to grant": "conceder", "years;": "anos;",
 }
 CONTRACOES = [(r"\b([Ee])m \[o\]", lambda m: "[" + ("N" if m.group(1) == "E" else "n") + "o]"),
               (r"\b([Ee])m \[a\]", lambda m: "[" + ("N" if m.group(1) == "E" else "n") + "a]"),
@@ -205,9 +240,12 @@ def aplicar_dicionario():
     print(f"[dicionario] {len(tr)} definições gravadas em data/dictionary/pt/")
 
 
-# ---------------- comentários de Calvino ----------------
-def preparar_calvino():
-    base = DATA / "commentaries" / "calvin"
+# ---------------- comentários (Calvino e Matthew Henry) ----------------
+NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
+
+
+def preparar_comentario(etapa, pasta):
+    base = DATA / "commentaries" / pasta
     itens = []
     for livro in sorted(p for p in base.iterdir() if p.is_dir() and p.name != "pt"):
         for arq in sorted(livro.glob("*.json"), key=lambda a: int(a.stem)):
@@ -216,17 +254,14 @@ def preparar_calvino():
                     # o número do versículo no início ("16.") vai separado, senão vira "16 anos."
                     corpo = NUM_VERSO.sub("", txt, count=1)
                     itens.append({"id": f"{livro.name}|{arq.stem}|{v}", "texto": corpo})
-    entradas("calvino", itens)
+    entradas(etapa, itens)
 
 
-NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
-
-
-def aplicar_calvino():
-    tr = traducoes("calvino")
+def aplicar_comentario(etapa, pasta):
+    tr = traducoes(etapa)
     if not tr:
-        return print("[calvino] nada traduzido ainda")
-    base = DATA / "commentaries" / "calvin"
+        return print(f"[{etapa}] nada traduzido ainda")
+    base = DATA / "commentaries" / pasta
     por_cap, originais = {}, {}
     for k, v in tr.items():
         livro, cap, verso = k.split("|")
@@ -237,8 +272,14 @@ def aplicar_calvino():
         por_cap.setdefault((livro, cap), {})[verso] = prefixo + v
     for (livro, cap), versos in por_cap.items():
         versos["__pt"] = True
-        gravar(DATA / "commentaries" / "calvin" / "pt" / livro / f"{cap}.json", versos)
-    print(f"[calvino] {len(tr)} blocos em {len(por_cap)} capítulos gravados em data/commentaries/calvin/pt/")
+        gravar(base / "pt" / livro / f"{cap}.json", versos)
+    print(f"[{etapa}] {len(tr)} blocos em {len(por_cap)} capítulos gravados em data/commentaries/{pasta}/pt/")
+
+
+def preparar_calvino(): preparar_comentario("calvino", "calvin")
+def aplicar_calvino(): aplicar_comentario("calvino", "calvin")
+def preparar_henry(): preparar_comentario("henry", "henry")
+def aplicar_henry(): aplicar_comentario("henry", "henry")
 
 
 if __name__ == "__main__":

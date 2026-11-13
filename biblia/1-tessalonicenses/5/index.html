@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1 Tessalonicenses 5 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="1 Tessalonicenses 5: Mas irmãos, acerca dos tempos e das estações, não necessitais de que eu vos escreva; pois vós mesmos bem sabeis que o dia do Senhor…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/1-tessalonicenses/5/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "1 Tessalonicenses", "item": "https://solabiblia.com.br/biblia/1-tessalonicenses/"}, {"@type": "ListItem", "position": 3, "name": "1 Tessalonicenses 5", "item": "https://solabiblia.com.br/biblia/1-tessalonicenses/5/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">1 Tessalonicenses 5</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">1 Tessalonicenses 5</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,88 +91,151 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">1 Tessalonicenses 5</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>Mas irmãos, acerca dos tempos e das estações, não necessitais de que eu vos escreva;</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>pois vós mesmos bem sabeis que o dia do Senhor virá como um ladrão de noite.</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>Quando disserem: “Paz e segurança”, então virá sobre eles repentina destruição, como as dores de parto da grávida, e de maneira nenhuma escaparão.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>Mas vós, irmãos, não estais em trevas, para que aquele dia vos tome de surpresa como um ladrão.</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Todos vós sois filhos da luz e filhos do dia; não somos da noite nem das trevas.</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>Portanto, não durmamos, como os outros; em vez disso, vigiemos e sejamos sóbrios.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>Pois os que dormem, dormem de noite; e os que ficam bêbados embebedam-se de noite.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Mas nós, que somos do dia, sejamos sóbrios, e nos vistamos da couraça da fé e do amor, e do capacete da esperança da salvação.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>Porque Deus não nos destinou para a ira, mas, sim, para obtermos a salvação, por meio do nosso Senhor Jesus Cristo,</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>que morreu por nós, a fim de que, se estivermos vigiando ou dormindo, nós vivamos juntamente com ele.</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>Portanto exortai-vos uns aos outros, e edificai-vos uns aos outros, como já fazeis.</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>Irmãos, nós vos rogamos que reconheçais os que trabalham entre vós, e que lideram sobre vós no Senhor, e vos advertem;</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>e os estimai muito com amor, por causa do trabalho deles. Tende paz entre vós.</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>Rogamo-vos também, irmãos, que advirtais os desordeiros, consoleis os de pouco ânimo, apoieis aos fracos, e tenhais paciência com todos.</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>Tende cuidado para que ninguém retribua o mal com o mal, mas sempre segui o bem, tanto uns com os outros, como com todos.</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>Alegrai-vos sempre.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>Orai sem cessar.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>Agradecei em tudo, pois essa é a vontade de Deus em Cristo Jesus para vós mesmos.</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>Não apagueis o Espírito.</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>Não desprezeis as profecias.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>Examinai tudo, e mantende o que é bom.</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>Não haja entre vós qualquer forma de mal.</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>E o próprio Deus da paz vos santifique em tudo; e que todo o vosso espírito, alma e corpo sejam preservados irrepreensíveis na vinda do nosso Senhor Jesus Cristo.</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>Fiel é aquele que vos chama, e ele também o fará.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>Irmãos, orai por nós.</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>Saudai a todos os irmãos com beijo santo.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>Eu vos mando pelo Senhor que esta carta seja lida a todos os irmãos.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>A graça de nosso Senhor Jesus Cristo seja convosco.</p></div>
-<nav class="seo-nav"><a href="/biblia/1-tessalonicenses/4/">‹ 1 Tessalonicenses 4</a><a href="/biblia/2-tessalonicenses/1/">2 Tessalonicenses 1 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Novo Testamento</a> · <a href="/biblia/1-tessalonicenses/">Cartas de Paulo</a></p>
+<h1 class="titulo-cap">1 Tessalonicenses 5</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/1-tessalonicenses/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>Mas irmãos, acerca dos tempos e das estações, não necessitais de que eu vos escreva;</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>pois vós mesmos bem sabeis que o dia do Senhor virá como um ladrão de noite.</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>Quando disserem: “Paz e segurança”, então virá sobre eles repentina destruição, como as dores de parto da grávida, e de maneira nenhuma escaparão.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>Mas vós, irmãos, não estais em trevas, para que aquele dia vos tome de surpresa como um ladrão.</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Todos vós sois filhos da luz e filhos do dia; não somos da noite nem das trevas.</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>Portanto, não durmamos, como os outros; em vez disso, vigiemos e sejamos sóbrios.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>Pois os que dormem, dormem de noite; e os que ficam bêbados embebedam-se de noite.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Mas nós, que somos do dia, sejamos sóbrios, e nos vistamos da couraça da fé e do amor, e do capacete da esperança da salvação.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>Porque Deus não nos destinou para a ira, mas, sim, para obtermos a salvação, por meio do nosso Senhor Jesus Cristo,</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>que morreu por nós, a fim de que, se estivermos vigiando ou dormindo, nós vivamos juntamente com ele.</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>Portanto exortai-vos uns aos outros, e edificai-vos uns aos outros, como já fazeis.</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>Irmãos, nós vos rogamos que reconheçais os que trabalham entre vós, e que lideram sobre vós no Senhor, e vos advertem;</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>e os estimai muito com amor, por causa do trabalho deles. Tende paz entre vós.</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>Rogamo-vos também, irmãos, que advirtais os desordeiros, consoleis os de pouco ânimo, apoieis aos fracos, e tenhais paciência com todos.</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>Tende cuidado para que ninguém retribua o mal com o mal, mas sempre segui o bem, tanto uns com os outros, como com todos.</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>Alegrai-vos sempre.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>Orai sem cessar.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>Agradecei em tudo, pois essa é a vontade de Deus em Cristo Jesus para vós mesmos.</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>Não apagueis o Espírito.</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>Não desprezeis as profecias.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>Examinai tudo, e mantende o que é bom.</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>Não haja entre vós qualquer forma de mal.</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>E o próprio Deus da paz vos santifique em tudo; e que todo o vosso espírito, alma e corpo sejam preservados irrepreensíveis na vinda do nosso Senhor Jesus Cristo.</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>Fiel é aquele que vos chama, e ele também o fará.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>Irmãos, orai por nós.</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>Saudai a todos os irmãos com beijo santo.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>Eu vos mando pelo Senhor que esta carta seja lida a todos os irmãos.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>A graça de nosso Senhor Jesus Cristo seja convosco.</p></div>
+<nav class="seo-nav"><a href="/biblia/1-tessalonicenses/4/">‹ 1 Tessalonicenses 4</a><a href="/biblia/2-tessalonicenses/1/">2 Tessalonicenses 1 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -167,73 +244,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=cd2024e6fa"></script>
+<script src="/app.js?v=54cf3b0cd6"></script>
 </body>
 </html>

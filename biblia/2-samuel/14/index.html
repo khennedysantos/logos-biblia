@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2 Samuel 14 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="2 Samuel 14: E conhecendo Joabe, filho de Zeruia, que o coração do rei estava por Absalão, Enviou Joabe a Tecoa, e tomou dali uma mulher astuta, e…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/2-samuel/14/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "2 Samuel", "item": "https://solabiblia.com.br/biblia/2-samuel/"}, {"@type": "ListItem", "position": 3, "name": "2 Samuel 14", "item": "https://solabiblia.com.br/biblia/2-samuel/14/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">2 Samuel 14</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">2 Samuel 14</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,93 +91,156 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">2 Samuel 14</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>E conhecendo Joabe, filho de Zeruia, que o coração do rei estava por Absalão,</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>Enviou Joabe a Tecoa, e tomou dali uma mulher astuta, e disse-lhe: Eu te rogo que te enlutes, e te vistas de roupas de luto, e não te unjas com óleo, antes sê como mulher que há muito tempo que traze luto por algum morto;</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>E entrando ao rei, fala com ele desta maneira. E pôs Joabe as palavras em sua boca.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>Entrou, pois, aquela mulher de Tecoa ao rei, e prostrando-se em terra sobre seu rosto fez reverência, e disse: Ó rei, socorre-me!</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>E o rei disse: Que tens? E ela respondeu: Eu à verdade sou uma mulher viúva e meu marido é morto.</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>E tua serva tinha dois filhos e os dois brigaram no campo; e não havendo quem os separasse, feriu o um à outra, e o matou.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>E eis que toda a parentela se levantou contra tua serva, dizendo: Entrega ao que matou a seu irmão, para que lhe façamos morrer pela vida de seu irmão a quem ele matou, e tiremos também o herdeiro. Assim apagarão a brasa que me restou, não deixaram a meu marido nome nem remanescente sobre a terra.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Então o rei disse à mulher: Vai-te à tua casa, que eu mandarei acerca de ti.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>E a mulher de Tecoa disse ao rei: Rei senhor meu, a maldade seja sobre mim e sobre a casa de meu pai; mas o rei e seu trono sem culpa.</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>E o rei disse: Ao que falar contra ti, traze-o a mim, que não te tocará mais.</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>Disse ela então: Rogo-te, ó rei, que te lembres do SENHOR teu Deus, que não deixes ao vingador do sangue aumentar o dano em destruir meu filho. E ele respondeu: Vive o SENHOR, que não cairá nem um cabelo da cabeça de teu filho em terra.</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>E a mulher disse: Rogo-te que fale tua criada uma palavra a meu senhor o rei. E ele disse: Fala.</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>Então a mulher disse: Por que pois pensas tu outro tanto contra o povo de Deus? que falando o rei esta palavra, é como culpado, porquanto o rei não faz voltar a seu fugitivo.</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>Porque de certo morremos, e somos como águas derramadas por terra, que não podem voltar a recolher-se: nem Deus tira a vida, mas sim planeja meio para que seu desviado não seja dele excluído.</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>E que eu vim agora para dizer isto ao rei meu senhor, é porque o povo me pôs medo. Mas tua serva disse: Falarei agora ao rei: talvez ele faça o que sua serva diga.</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>Pois o rei ouvirá, para livrar à sua serva da mão do homem que me quer exterminar a mim, e a meu filho juntamente, da propriedade de Deus.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>Tua serva, pois, disse: Que seja agora a resposta de meu senhor o rei para descanso; pois que meu senhor o rei é como um anjo de Deus para escutar o bem e o mal. Assim o SENHOR teu Deus seja contigo.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>Então ele respondeu, e disse à mulher: Eu te rogo que não me encubras nada do que eu te perguntar. E a mulher disse: Fale meu senhor o rei.</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>E o rei disse: Não foi a mão de Joabe contigo em todas estas coisas? E a mulher respondeu e disse: Vive tua alma, rei senhor meu, que não há que desviar-se à direita nem à esquerda de tudo o que meu senhor o rei falou: porque teu servo Joabe, ele me mandou, e ele pôs na boca de tua serva todas estas palavras.</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>E Joabe, teu servo o fez, modificando a aparência do assunto; mas meu senhor é sábio, conforme a sabedoria de um anjo de Deus, para conhecer o que há na terra.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>Então o rei disse a Joabe: Eis que eu faço isto: vai, e faze voltar ao jovem Absalão.</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>E Joabe se prostrou em terra sobre seu rosto, e fez reverência, e depois que abençoou ao rei, disse: Hoje há entendido teu servo que achei favor em teus olhos, rei senhor meu; pois que fez o rei o que seu servo disse.</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>Levantou-se logo Joabe, e foi a Gesur, e voltou a Absalão a Jerusalém.</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>Mas o rei disse: Vá-se à sua casa, e não veja meu rosto. E voltou-se Absalão à sua casa, e não viu o rosto do rei.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>E não havia em todo Israel homem tão elogiado por sua beleza como Absalão; desde a planta de seu pé até ao topo da cabeça não havia nele defeito.</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>E quando se cortava o cabelo, (o qual fazia ao fim de cada ano, pois lhe incomodava, e por isso se o cortava,) pesava o cabelo de sua cabeça duzentos siclos de peso real.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>E nasceram-lhe a Absalão três filhos, e uma filha que se chamou Tamar, a qual era bela de ver.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>E esteve Absalão por espaço de dois anos em Jerusalém, e não viu a cara do rei.</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>E mandou Absalão por Joabe, para enviá-lo ao rei; mas não quis vir a ele; ele mandou mensagem ainda pela segunda vez, mas não quis vir.</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>Então disse a seus servos: Bem sabeis as terras de Joabe junto a meu lugar, de onde tem suas cevadas; ide, e pegai-lhes fogo; e os servos de Absalão pegaram fogo às terras.</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>Levantou-se, portanto, Joabe, e veio a Absalão à sua casa, e disse-lhe: Por que puseram fogo teus servos a minhas terras?</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>E Absalão respondeu a Joabe: Eis que, eu enviei por ti, dizendo que viesses aqui, a fim de enviar-te eu ao rei a que lhe dissesses: Para que vim de Gesur? Melhor me fora estar ainda lá. Veja eu agora a cara do rei; e se há em mim pecado, mate-me.</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>Veio, pois, Joabe ao rei, e fê-lo saber. Então chamou a Absalão, o qual veio ao rei, e inclinou seu rosto em terra diante do rei: e o rei beijou a Absalão.</p></div>
-<nav class="seo-nav"><a href="/biblia/2-samuel/13/">‹ 2 Samuel 13</a><a href="/biblia/2-samuel/15/">2 Samuel 15 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Antigo Testamento</a> · <a href="/biblia/2-samuel/">Históricos</a></p>
+<h1 class="titulo-cap">2 Samuel 14</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/2-samuel/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>E conhecendo Joabe, filho de Zeruia, que o coração do rei estava por Absalão,</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>Enviou Joabe a Tecoa, e tomou dali uma mulher astuta, e disse-lhe: Eu te rogo que te enlutes, e te vistas de roupas de luto, e não te unjas com óleo, antes sê como mulher que há muito tempo que traze luto por algum morto;</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>E entrando ao rei, fala com ele desta maneira. E pôs Joabe as palavras em sua boca.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>Entrou, pois, aquela mulher de Tecoa ao rei, e prostrando-se em terra sobre seu rosto fez reverência, e disse: Ó rei, socorre-me!</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>E o rei disse: Que tens? E ela respondeu: Eu à verdade sou uma mulher viúva e meu marido é morto.</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>E tua serva tinha dois filhos e os dois brigaram no campo; e não havendo quem os separasse, feriu o um à outra, e o matou.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>E eis que toda a parentela se levantou contra tua serva, dizendo: Entrega ao que matou a seu irmão, para que lhe façamos morrer pela vida de seu irmão a quem ele matou, e tiremos também o herdeiro. Assim apagarão a brasa que me restou, não deixaram a meu marido nome nem remanescente sobre a terra.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Então o rei disse à mulher: Vai-te à tua casa, que eu mandarei acerca de ti.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>E a mulher de Tecoa disse ao rei: Rei senhor meu, a maldade seja sobre mim e sobre a casa de meu pai; mas o rei e seu trono sem culpa.</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>E o rei disse: Ao que falar contra ti, traze-o a mim, que não te tocará mais.</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>Disse ela então: Rogo-te, ó rei, que te lembres do SENHOR teu Deus, que não deixes ao vingador do sangue aumentar o dano em destruir meu filho. E ele respondeu: Vive o SENHOR, que não cairá nem um cabelo da cabeça de teu filho em terra.</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>E a mulher disse: Rogo-te que fale tua criada uma palavra a meu senhor o rei. E ele disse: Fala.</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>Então a mulher disse: Por que pois pensas tu outro tanto contra o povo de Deus? que falando o rei esta palavra, é como culpado, porquanto o rei não faz voltar a seu fugitivo.</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>Porque de certo morremos, e somos como águas derramadas por terra, que não podem voltar a recolher-se: nem Deus tira a vida, mas sim planeja meio para que seu desviado não seja dele excluído.</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>E que eu vim agora para dizer isto ao rei meu senhor, é porque o povo me pôs medo. Mas tua serva disse: Falarei agora ao rei: talvez ele faça o que sua serva diga.</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>Pois o rei ouvirá, para livrar à sua serva da mão do homem que me quer exterminar a mim, e a meu filho juntamente, da propriedade de Deus.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>Tua serva, pois, disse: Que seja agora a resposta de meu senhor o rei para descanso; pois que meu senhor o rei é como um anjo de Deus para escutar o bem e o mal. Assim o SENHOR teu Deus seja contigo.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>Então ele respondeu, e disse à mulher: Eu te rogo que não me encubras nada do que eu te perguntar. E a mulher disse: Fale meu senhor o rei.</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>E o rei disse: Não foi a mão de Joabe contigo em todas estas coisas? E a mulher respondeu e disse: Vive tua alma, rei senhor meu, que não há que desviar-se à direita nem à esquerda de tudo o que meu senhor o rei falou: porque teu servo Joabe, ele me mandou, e ele pôs na boca de tua serva todas estas palavras.</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>E Joabe, teu servo o fez, modificando a aparência do assunto; mas meu senhor é sábio, conforme a sabedoria de um anjo de Deus, para conhecer o que há na terra.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>Então o rei disse a Joabe: Eis que eu faço isto: vai, e faze voltar ao jovem Absalão.</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>E Joabe se prostrou em terra sobre seu rosto, e fez reverência, e depois que abençoou ao rei, disse: Hoje há entendido teu servo que achei favor em teus olhos, rei senhor meu; pois que fez o rei o que seu servo disse.</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>Levantou-se logo Joabe, e foi a Gesur, e voltou a Absalão a Jerusalém.</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>Mas o rei disse: Vá-se à sua casa, e não veja meu rosto. E voltou-se Absalão à sua casa, e não viu o rosto do rei.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>E não havia em todo Israel homem tão elogiado por sua beleza como Absalão; desde a planta de seu pé até ao topo da cabeça não havia nele defeito.</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>E quando se cortava o cabelo, (o qual fazia ao fim de cada ano, pois lhe incomodava, e por isso se o cortava,) pesava o cabelo de sua cabeça duzentos siclos de peso real.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>E nasceram-lhe a Absalão três filhos, e uma filha que se chamou Tamar, a qual era bela de ver.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>E esteve Absalão por espaço de dois anos em Jerusalém, e não viu a cara do rei.</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>E mandou Absalão por Joabe, para enviá-lo ao rei; mas não quis vir a ele; ele mandou mensagem ainda pela segunda vez, mas não quis vir.</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>Então disse a seus servos: Bem sabeis as terras de Joabe junto a meu lugar, de onde tem suas cevadas; ide, e pegai-lhes fogo; e os servos de Absalão pegaram fogo às terras.</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>Levantou-se, portanto, Joabe, e veio a Absalão à sua casa, e disse-lhe: Por que puseram fogo teus servos a minhas terras?</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>E Absalão respondeu a Joabe: Eis que, eu enviei por ti, dizendo que viesses aqui, a fim de enviar-te eu ao rei a que lhe dissesses: Para que vim de Gesur? Melhor me fora estar ainda lá. Veja eu agora a cara do rei; e se há em mim pecado, mate-me.</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>Veio, pois, Joabe ao rei, e fê-lo saber. Então chamou a Absalão, o qual veio ao rei, e inclinou seu rosto em terra diante do rei: e o rei beijou a Absalão.</p></div>
+<nav class="seo-nav"><a href="/biblia/2-samuel/13/">‹ 2 Samuel 13</a><a href="/biblia/2-samuel/15/">2 Samuel 15 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -172,73 +249,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=cd2024e6fa"></script>
+<script src="/app.js?v=54cf3b0cd6"></script>
 </body>
 </html>

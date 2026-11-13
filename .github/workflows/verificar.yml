@@ -1,0 +1,35 @@
+# Confere cada envio antes (e depois) de ir ao ar: o JavaScript tem que estar válido, os dados íntegros
+# e as páginas geradas (biblia/, index.html, sitemap, sw.js) em dia com o gerador.
+# Não publica nada — o site continua saindo do branch main pelo GitHub Pages.
+name: Verificar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: JavaScript válido
+        run: node --check app.js && node --check sw.js
+      - name: Dados íntegros
+        run: python3 ferramentas/validar_dados.py
+      - name: Páginas geradas em dia
+        run: |
+          python3 ferramentas/gerar_paginas.py
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::As páginas geradas estão desatualizadas. Rode: python3 ferramentas/gerar_paginas.py e envie o resultado."
+            git status --short | head -20
+            exit 1
+          fi

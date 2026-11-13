@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1 Samuel 25 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="1 Samuel 25: E morreu Samuel, e juntou-se todo Israel, e o choraram, e o sepultaram em sua casa em Ramá. E levantou-se Davi, e se foi ao deserto de Parã.…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/1-samuel/25/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "1 Samuel", "item": "https://solabiblia.com.br/biblia/1-samuel/"}, {"@type": "ListItem", "position": 3, "name": "1 Samuel 25", "item": "https://solabiblia.com.br/biblia/1-samuel/25/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">1 Samuel 25</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">1 Samuel 25</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,104 +91,167 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">1 Samuel 25</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>E morreu Samuel, e juntou-se todo Israel, e o choraram, e o sepultaram em sua casa em Ramá. E levantou-se Davi, e se foi ao deserto de Parã.</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>E em Maom havia um homem que tinha sua riqueza no Carmelo, o qual era muito rico, que tinha três mil ovelhas e mil cabras. E aconteceu achar-se tosquiando suas ovelhas no Carmelo.</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>O nome daquele homem era Nabal, e o nome de sua mulher, Abigail. E era aquela mulher de bom entendimento e de boa aparência; mas o homem era duro e de maus feitos; e era da linhagem de Calebe.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>E ouviu Davi no deserto que Nabal tosquiava suas ovelhas.</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Então enviou Davi dez criados, e disse-lhes: Subi ao Carmelo, e ide a Nabal, e saudai-lhe em meu nome.</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>E dizei-lhe assim: Que vivas e seja paz a ti, e paz à tua família, e paz a tudo quanto tens.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>Há pouco soube que tens tosquiadores. Agora, aos pastores teus que estiveram conosco, nunca lhes maltratamos, nem lhes faltou algo em todo aquele tempo que estiveram no Carmelo.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Pergunta a teus criados, que eles te dirão. Portanto que estes criados achem favor em teus olhos, pois viemos em um bom dia; rogo-te que dês o que tiveres à mão a teus servos, e a teu filho Davi.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>E quando chegaram os criados de Davi, disseram a Nabal todas estas palavras em nome de Davi, e se calaram.</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>E Nabal respondeu aos criados de Davi, e disse: Quem é Davi? e quem é o filho de Jessé? Muitos servos há hoje que fogem de seus senhores.</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>Tomarei eu agora meu pão, minha água, e minha carne que matei para meus tosquiadores, e a darei a homens que não sei de onde são?</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>E virando-se os criados de Davi, voltaram por seu caminho, e vieram e disseram a Davi todas estas palavras.</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>Então Davi disse a seus homens: Cinja-se cada um sua espada. E cingiu-se cada um sua espada: também Davi cingiu sua espada; e subiram atrás Davi como quatrocentos homens, e deixaram duzentos com a bagagem.</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>E um dos criados deu aviso a Abigail mulher de Nabal, dizendo: Eis que Davi enviou mensageiros do deserto que saudassem a nosso amo, e ele os insultou.</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>Mas aqueles homens nos foram muito bons, e nunca nos maltrataram, nem nenhuma coisa nos faltou em todo aquele tempo que convivido com eles, enquanto estivemos no campo.</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>Eles nos foram por muro de dia e de noite, todos os dias que estivemos com eles apascentando as ovelhas.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>Agora, pois, entende e olha o que farás, porque o mal está de todo decidido contra nosso amo e contra toda sua casa: pois ele é um homem tão mau, que não há quem podia falar-lhe.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>Então Abigail tomou logo duzentos pães, e dois odres de vinho, e cinco ovelhas guisadas, e cinco medidas de grão tostado, e cem cachos de uvas passas, e duzentos pães de figos secos, e carregou-o em asnos;</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>E disse a seus criados: Ide diante de mim, que eu vos seguirei logo. E nada declarou a seu marido Nabal.</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>E sentando-se sobre um asno desceu por uma parte secreta do monte, e eis que Davi e os seus que vinham de frente a ela, e ela lhes foi ao encontro.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>E Davi havia dito: Certamente em vão guardei tudo o que este tem no deserto, sem que nada lhe tenha faltado de tudo quanto é seu; e ele me devolveu mal por bem.</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>Assim faça Deus, e assim acrescente aos inimigos de Davi, que daqui à amanhã não tenho de deixar de tudo o que for seu nem ainda macho.</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>E quando Abigail viu a Davi, desceu prontamente do asno, e prostrando-se diante de Davi sobre seu rosto, inclinou-se à terra;</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>E lançou-se a seus pés, e disse: Senhor meu, sobre mim seja o pecado; mas rogo-te fale tua serva em teus ouvidos, e ouve as palavras de tua serva.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>Não ponha agora meu senhor seu coração a aquele homem grosseiro, a Nabal; porque conforme seu nome, assim é. O se chama Nabal, e a loucura está com ele: mas eu tua serva não vi os criados de meu senhor, os quais tu enviaste.</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>Agora, pois, senhor meu, vive o SENHOR e vive tua alma, que o SENHOR te impediu que viesses a derramar sangue, e vingar-te por tua própria mão. Sejam, pois, como Nabal teus inimigos, e todos os que procuram mal contra meu senhor.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>E agora esta bênção que tua serva trouxe a meu senhor, seja dada aos criados que seguem a meu senhor.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>E eu te rogo que perdoes a tua serva esta ofensa; pois o SENHOR de certo fará casa firme a meu senhor, porquanto meu senhor faz as guerras do SENHOR, e mal não se achou em ti em teus dias.</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>Bem que alguém se tenha levantado a perseguir-te e atentar à tua vida, contudo, a alma de meu senhor será ligada no feixe dos que vivem com o SENHOR Deus teu, e ele atirará a alma de teus inimigos como de uma funda.</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>E acontecerá que quando o SENHOR fizer com meu senhor conforme todo aquele bem que falou de ti, e te mandar que sejas chefe sobre Israel,</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>Então, senhor meu, não te será isto em tropeço e turbação de coração, o que tenhas derramado sangue sem causa, ou que meu senhor se tenha vingado por si mesmo. Guarde-se, pois, meu senhor, e quando o SENHOR fizer bem a meu senhor, lembra-te de tua serva.</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>E disse Davi a Abigail: Bendito seja o SENHOR Deus de Israel, que te enviou para que hoje me encontrasses;</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>E bendito seja teu bom-senso, e bendita tu, que me impediste hoje de ir derramar sangue, e de vingar-me por minha própria mão:</p></div>
-<div class="verso" data-v="34"><p class="escritura"><sup>34</sup>Porque, vive o SENHOR Deus de Israel que me defendeu de fazer-te mal, que se não te houvesses apressado em vir ao meu encontro, daqui a amanhã não lhe restaria a Nabal macho.</p></div>
-<div class="verso" data-v="35"><p class="escritura"><sup>35</sup>E recebeu Davi de sua mão o que lhe havia trazido, e disse-lhe: Sobe em paz à tua casa, e olha que ouvi tua voz, e te atendi.</p></div>
-<div class="verso" data-v="36"><p class="escritura"><sup>36</sup>E Abigail se veio a Nabal, e eis que ele tinha banquete em sua casa como banquete de rei: e o coração de Nabal estava alegre nele, e estava muito embriagado; pelo que ela não lhe declarou pouco nem muito, até que veio o dia seguinte.</p></div>
-<div class="verso" data-v="37"><p class="escritura"><sup>37</sup>Porém à manhã, quando o vinho havia saído de Nabal, referiu-lhe sua mulher aquelas coisas; e se lhe amorteceu o coração, e ficou como pedra.</p></div>
-<div class="verso" data-v="38"><p class="escritura"><sup>38</sup>E passados dez dias o SENHOR feriu a Nabal, e morreu.</p></div>
-<div class="verso" data-v="39"><p class="escritura"><sup>39</sup>E logo que Davi ouviu que Nabal era morto, disse: Bendito seja o SENHOR que julgou a causa de minha afronta recebida da mão de Nabal, e preservou do mal a seu servo; e o SENHOR devolveu a malícia de Nabal sobre sua própria cabeça. Depois enviou Davi a falar a Abigail, para tomá-la por sua mulher.</p></div>
-<div class="verso" data-v="40"><p class="escritura"><sup>40</sup>E os criados de Davi vieram a Abigail no Carmelo, e falaram com ela, dizendo: Davi nos enviou a ti, para tomar-te por sua mulher.</p></div>
-<div class="verso" data-v="41"><p class="escritura"><sup>41</sup>E ela se levantou, e inclinou seu rosto à terra, dizendo: Eis que tua serva, para que seja serva que lave os pés dos servos de meu senhor.</p></div>
-<div class="verso" data-v="42"><p class="escritura"><sup>42</sup>E levantando-se logo Abigail com cinco moças que a seguiam, montou-se em um asno, e seguiu os mensageiros de Davi, e foi sua mulher.</p></div>
-<div class="verso" data-v="43"><p class="escritura"><sup>43</sup>Também tomou Davi a Ainoã de Jezreel, e ambas foram suas mulheres.</p></div>
-<div class="verso" data-v="44"><p class="escritura"><sup>44</sup>Porque Saul havia dado sua filha Mical mulher de Davi, a Palti filho de Laís, que era de Galim.</p></div>
-<nav class="seo-nav"><a href="/biblia/1-samuel/24/">‹ 1 Samuel 24</a><a href="/biblia/1-samuel/26/">1 Samuel 26 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Antigo Testamento</a> · <a href="/biblia/1-samuel/">Históricos</a></p>
+<h1 class="titulo-cap">1 Samuel 25</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/1-samuel/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>E morreu Samuel, e juntou-se todo Israel, e o choraram, e o sepultaram em sua casa em Ramá. E levantou-se Davi, e se foi ao deserto de Parã.</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>E em Maom havia um homem que tinha sua riqueza no Carmelo, o qual era muito rico, que tinha três mil ovelhas e mil cabras. E aconteceu achar-se tosquiando suas ovelhas no Carmelo.</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>O nome daquele homem era Nabal, e o nome de sua mulher, Abigail. E era aquela mulher de bom entendimento e de boa aparência; mas o homem era duro e de maus feitos; e era da linhagem de Calebe.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>E ouviu Davi no deserto que Nabal tosquiava suas ovelhas.</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Então enviou Davi dez criados, e disse-lhes: Subi ao Carmelo, e ide a Nabal, e saudai-lhe em meu nome.</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>E dizei-lhe assim: Que vivas e seja paz a ti, e paz à tua família, e paz a tudo quanto tens.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>Há pouco soube que tens tosquiadores. Agora, aos pastores teus que estiveram conosco, nunca lhes maltratamos, nem lhes faltou algo em todo aquele tempo que estiveram no Carmelo.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Pergunta a teus criados, que eles te dirão. Portanto que estes criados achem favor em teus olhos, pois viemos em um bom dia; rogo-te que dês o que tiveres à mão a teus servos, e a teu filho Davi.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>E quando chegaram os criados de Davi, disseram a Nabal todas estas palavras em nome de Davi, e se calaram.</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>E Nabal respondeu aos criados de Davi, e disse: Quem é Davi? e quem é o filho de Jessé? Muitos servos há hoje que fogem de seus senhores.</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>Tomarei eu agora meu pão, minha água, e minha carne que matei para meus tosquiadores, e a darei a homens que não sei de onde são?</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>E virando-se os criados de Davi, voltaram por seu caminho, e vieram e disseram a Davi todas estas palavras.</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>Então Davi disse a seus homens: Cinja-se cada um sua espada. E cingiu-se cada um sua espada: também Davi cingiu sua espada; e subiram atrás Davi como quatrocentos homens, e deixaram duzentos com a bagagem.</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>E um dos criados deu aviso a Abigail mulher de Nabal, dizendo: Eis que Davi enviou mensageiros do deserto que saudassem a nosso amo, e ele os insultou.</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>Mas aqueles homens nos foram muito bons, e nunca nos maltrataram, nem nenhuma coisa nos faltou em todo aquele tempo que convivido com eles, enquanto estivemos no campo.</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>Eles nos foram por muro de dia e de noite, todos os dias que estivemos com eles apascentando as ovelhas.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>Agora, pois, entende e olha o que farás, porque o mal está de todo decidido contra nosso amo e contra toda sua casa: pois ele é um homem tão mau, que não há quem podia falar-lhe.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>Então Abigail tomou logo duzentos pães, e dois odres de vinho, e cinco ovelhas guisadas, e cinco medidas de grão tostado, e cem cachos de uvas passas, e duzentos pães de figos secos, e carregou-o em asnos;</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>E disse a seus criados: Ide diante de mim, que eu vos seguirei logo. E nada declarou a seu marido Nabal.</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>E sentando-se sobre um asno desceu por uma parte secreta do monte, e eis que Davi e os seus que vinham de frente a ela, e ela lhes foi ao encontro.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>E Davi havia dito: Certamente em vão guardei tudo o que este tem no deserto, sem que nada lhe tenha faltado de tudo quanto é seu; e ele me devolveu mal por bem.</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>Assim faça Deus, e assim acrescente aos inimigos de Davi, que daqui à amanhã não tenho de deixar de tudo o que for seu nem ainda macho.</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>E quando Abigail viu a Davi, desceu prontamente do asno, e prostrando-se diante de Davi sobre seu rosto, inclinou-se à terra;</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>E lançou-se a seus pés, e disse: Senhor meu, sobre mim seja o pecado; mas rogo-te fale tua serva em teus ouvidos, e ouve as palavras de tua serva.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>Não ponha agora meu senhor seu coração a aquele homem grosseiro, a Nabal; porque conforme seu nome, assim é. O se chama Nabal, e a loucura está com ele: mas eu tua serva não vi os criados de meu senhor, os quais tu enviaste.</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>Agora, pois, senhor meu, vive o SENHOR e vive tua alma, que o SENHOR te impediu que viesses a derramar sangue, e vingar-te por tua própria mão. Sejam, pois, como Nabal teus inimigos, e todos os que procuram mal contra meu senhor.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>E agora esta bênção que tua serva trouxe a meu senhor, seja dada aos criados que seguem a meu senhor.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>E eu te rogo que perdoes a tua serva esta ofensa; pois o SENHOR de certo fará casa firme a meu senhor, porquanto meu senhor faz as guerras do SENHOR, e mal não se achou em ti em teus dias.</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>Bem que alguém se tenha levantado a perseguir-te e atentar à tua vida, contudo, a alma de meu senhor será ligada no feixe dos que vivem com o SENHOR Deus teu, e ele atirará a alma de teus inimigos como de uma funda.</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>E acontecerá que quando o SENHOR fizer com meu senhor conforme todo aquele bem que falou de ti, e te mandar que sejas chefe sobre Israel,</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>Então, senhor meu, não te será isto em tropeço e turbação de coração, o que tenhas derramado sangue sem causa, ou que meu senhor se tenha vingado por si mesmo. Guarde-se, pois, meu senhor, e quando o SENHOR fizer bem a meu senhor, lembra-te de tua serva.</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>E disse Davi a Abigail: Bendito seja o SENHOR Deus de Israel, que te enviou para que hoje me encontrasses;</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>E bendito seja teu bom-senso, e bendita tu, que me impediste hoje de ir derramar sangue, e de vingar-me por minha própria mão:</p></div>
+<div class="verso" id="v34" data-v="34"><p class="escritura"><sup>34</sup>Porque, vive o SENHOR Deus de Israel que me defendeu de fazer-te mal, que se não te houvesses apressado em vir ao meu encontro, daqui a amanhã não lhe restaria a Nabal macho.</p></div>
+<div class="verso" id="v35" data-v="35"><p class="escritura"><sup>35</sup>E recebeu Davi de sua mão o que lhe havia trazido, e disse-lhe: Sobe em paz à tua casa, e olha que ouvi tua voz, e te atendi.</p></div>
+<div class="verso" id="v36" data-v="36"><p class="escritura"><sup>36</sup>E Abigail se veio a Nabal, e eis que ele tinha banquete em sua casa como banquete de rei: e o coração de Nabal estava alegre nele, e estava muito embriagado; pelo que ela não lhe declarou pouco nem muito, até que veio o dia seguinte.</p></div>
+<div class="verso" id="v37" data-v="37"><p class="escritura"><sup>37</sup>Porém à manhã, quando o vinho havia saído de Nabal, referiu-lhe sua mulher aquelas coisas; e se lhe amorteceu o coração, e ficou como pedra.</p></div>
+<div class="verso" id="v38" data-v="38"><p class="escritura"><sup>38</sup>E passados dez dias o SENHOR feriu a Nabal, e morreu.</p></div>
+<div class="verso" id="v39" data-v="39"><p class="escritura"><sup>39</sup>E logo que Davi ouviu que Nabal era morto, disse: Bendito seja o SENHOR que julgou a causa de minha afronta recebida da mão de Nabal, e preservou do mal a seu servo; e o SENHOR devolveu a malícia de Nabal sobre sua própria cabeça. Depois enviou Davi a falar a Abigail, para tomá-la por sua mulher.</p></div>
+<div class="verso" id="v40" data-v="40"><p class="escritura"><sup>40</sup>E os criados de Davi vieram a Abigail no Carmelo, e falaram com ela, dizendo: Davi nos enviou a ti, para tomar-te por sua mulher.</p></div>
+<div class="verso" id="v41" data-v="41"><p class="escritura"><sup>41</sup>E ela se levantou, e inclinou seu rosto à terra, dizendo: Eis que tua serva, para que seja serva que lave os pés dos servos de meu senhor.</p></div>
+<div class="verso" id="v42" data-v="42"><p class="escritura"><sup>42</sup>E levantando-se logo Abigail com cinco moças que a seguiam, montou-se em um asno, e seguiu os mensageiros de Davi, e foi sua mulher.</p></div>
+<div class="verso" id="v43" data-v="43"><p class="escritura"><sup>43</sup>Também tomou Davi a Ainoã de Jezreel, e ambas foram suas mulheres.</p></div>
+<div class="verso" id="v44" data-v="44"><p class="escritura"><sup>44</sup>Porque Saul havia dado sua filha Mical mulher de Davi, a Palti filho de Laís, que era de Galim.</p></div>
+<nav class="seo-nav"><a href="/biblia/1-samuel/24/">‹ 1 Samuel 24</a><a href="/biblia/1-samuel/26/">1 Samuel 26 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -183,73 +260,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=cd2024e6fa"></script>
+<script src="/app.js?v=54cf3b0cd6"></script>
 </body>
 </html>

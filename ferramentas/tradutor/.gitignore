@@ -2,3 +2,4 @@ venv/
 modelo/
 trabalho/
 __pycache__/
+modelo-nllb/

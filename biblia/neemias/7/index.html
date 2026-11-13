@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Neemias 7 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="Neemias 7: Sucedeu, pois, que, quando o muro já havia sido edificado, e já tinha posto as portas, e sido estabelecidos os porteiros, os cantores e os…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/neemias/7/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Neemias", "item": "https://solabiblia.com.br/biblia/neemias/"}, {"@type": "ListItem", "position": 3, "name": "Neemias 7", "item": "https://solabiblia.com.br/biblia/neemias/7/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Neemias 7</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Neemias 7</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,133 +91,196 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">Neemias 7</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>Sucedeu, pois, que, quando o muro já havia sido edificado, e já tinha posto as portas, e sido estabelecidos os porteiros, os cantores e os Levitas,</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>Mandei o meu irmão Hanani, e Hananias, chefe do palácio de Jerusalém (porque era um homem fiel e temente a Deus, mais que muitos),</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>E disse-lhes: Não se abram as portas de Jerusalém até que o sol aqueça; e enquanto ainda estiverem presentes, fechem as portas, e as trancai. E ponham-se guardas dos moradores de Jerusalém, cada um em sua guarda, e cada um diante de sua casa.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>E a cidade era espaçosa e grande, porém pouca gente havia dentro dela, e as casas ainda não haviam sido reconstruídas.</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Então Deus pôs em meu coração que juntasse os nobres, os oficiais, e o povo, para que fossem registrados pela ordem de suas genealogias; e achei o livro da genealogia dos que haviam subido antes, e achei nele escrito o seguinte:</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>Estes são os filhos da província que subiram do cativeiro, dos que foram levados por Nabucodonosor, rei de Babilônia, e que voltaram a Jerusalém e a Judá, cada um à sua cidade;</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>Os quais vieram com Zorobabel, Jesua, Neemias, Azarias, Raamias, Naamani, Mardoqueu, Bilsã, Misperete, Bigvai, Neum, Baaná. Este é o número dos homens do povo de Israel:</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>Os filhos de Parós, dois mil cento e setenta e dois;</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>Os filhos de Sefatias, trezentos e setenta e dois;</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>Os filhos de Ara, seiscentos e cinquenta e dois;</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>Os filhos de Paate-Moabe, dos filhos de Jesua e de Joabe, dois mil oitocentos e dezoito;</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>Os filhos de Elão, mil duzentos e cinquenta e quatro;</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>Os filhos de Zatu, oitocentos e quarenta e cinco;</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>Os filhos de Zacai, setecentos e sessenta;</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>Os filhos de Binui, seiscentos e quarenta e oito;</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>Os filhos de Bebai, seiscentos e vinte e oito;</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>Os filhos de Azgade, dois mil seiscentos e vinte e dois;</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>Os filhos de Adonicão, seiscentos e sessenta e sete;</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>Os filhos de Bigvai, dois mil e sessenta e sete;</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>Os filhos de Adim, seiscentos e cinquenta e cinco;</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>Os filhos de Ater, de Ezequias, noventa e oito;</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>Os filhos de Hasum, trezentos e vinte e oito;</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>Os filhos de Bezai, trezentos e vinte e quatro;</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>Os filhos de Harife, cento e doze;</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>Os filhos de Gibeom, noventa e cinco;</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>Os homens de Belém e de Netofá, cento e oitenta e oito;</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>Os homens de Anatote, cento e vinte e oito;</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>Os homens de Bete-Azmavete, quarenta e dois;</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>Os homens de Quiriate-Jearim, Cefira e Beerote, setecentos e quarenta e três;</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>Os homens de Ramá e de Geba, seiscentos e vinte e um;</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>Os homens de Micmás, cento e vinte e dois;</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>Os homens de Betel e de Ai, cento e vinte e três;</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>Os homens da outra Nebo, cinquenta e dois;</p></div>
-<div class="verso" data-v="34"><p class="escritura"><sup>34</sup>Os filhos do outro Elão, mil duzentos e cinquenta e quatro;</p></div>
-<div class="verso" data-v="35"><p class="escritura"><sup>35</sup>Os filhos de Harim, trezentos e vinte;</p></div>
-<div class="verso" data-v="36"><p class="escritura"><sup>36</sup>Os filhos de Jericó, trezentos e quarenta e cinco;</p></div>
-<div class="verso" data-v="37"><p class="escritura"><sup>37</sup>Os filhos de Lode, de Hadide, e Ono, setecentos vinte e um;</p></div>
-<div class="verso" data-v="38"><p class="escritura"><sup>38</sup>Os filhos de Senaá, três mil novecentos e trinta.</p></div>
-<div class="verso" data-v="39"><p class="escritura"><sup>39</sup>Os sacerdotes: os filhos de Jedaías, da casa de Jesua, novecentos e setenta e três;</p></div>
-<div class="verso" data-v="40"><p class="escritura"><sup>40</sup>Os filhos de Imer, mil e cinquenta e dois;</p></div>
-<div class="verso" data-v="41"><p class="escritura"><sup>41</sup>Os filhos de Pasur, mil duzentos quarenta e sete;</p></div>
-<div class="verso" data-v="42"><p class="escritura"><sup>42</sup>Os filhos de Harim, mil dez e sete.</p></div>
-<div class="verso" data-v="43"><p class="escritura"><sup>43</sup>Os levitas: os filhos de Jesua, de Cadmiel, dos filhos de Hodeva, setenta e quatro.</p></div>
-<div class="verso" data-v="44"><p class="escritura"><sup>44</sup>Os cantores: os filhos de Asafe, cento e quarenta e oito.</p></div>
-<div class="verso" data-v="45"><p class="escritura"><sup>45</sup>Os porteiros: os filhos de Salum, os filhos de Ater, os filhos de Talmom, os filhos de Acube, os filhos de Hatita, os filhos de Sobai, cento e trinta e oito.</p></div>
-<div class="verso" data-v="46"><p class="escritura"><sup>46</sup>Os servos do templo: os filhos de Zia, os filhos de Hasufa, os filhos de Tabaote,</p></div>
-<div class="verso" data-v="47"><p class="escritura"><sup>47</sup>Os filhos de Queros, os filhos de Sia, os filhos de Padom,</p></div>
-<div class="verso" data-v="48"><p class="escritura"><sup>48</sup>Os filhos de Lebana, os filhos de Hagaba, os filhos de Salmai,</p></div>
-<div class="verso" data-v="49"><p class="escritura"><sup>49</sup>Os filhos de Hanã, os filhos de Gidel, os filhos de Gaar,</p></div>
-<div class="verso" data-v="50"><p class="escritura"><sup>50</sup>Os filhos de Reaías, os filhos de Rezim, os filhos de Necoda,</p></div>
-<div class="verso" data-v="51"><p class="escritura"><sup>51</sup>Os filhos de Gazão, os filhos de Uzá, os filhos de Paseia,</p></div>
-<div class="verso" data-v="52"><p class="escritura"><sup>52</sup>Os filhos de Besai, os filhos de Meunim, os filhos de Nefusesim,</p></div>
-<div class="verso" data-v="53"><p class="escritura"><sup>53</sup>Os filhos de Baquebuque, os filhos de Hacufa, os filhos de Harur,</p></div>
-<div class="verso" data-v="54"><p class="escritura"><sup>54</sup>Os filhos de Baslite, os filhos de Meída, os filhos de Harsa,</p></div>
-<div class="verso" data-v="55"><p class="escritura"><sup>55</sup>Os filhos de Barcos, os filhos de Sísera, os filhos de Tamá,</p></div>
-<div class="verso" data-v="56"><p class="escritura"><sup>56</sup>Os filhos de Nesias, os filhos de Hatifa.</p></div>
-<div class="verso" data-v="57"><p class="escritura"><sup>57</sup>Os filhos dos servos de Salomão: os filhos de Sotai, os filhos de Soferete, os filhos de Perida,</p></div>
-<div class="verso" data-v="58"><p class="escritura"><sup>58</sup>Os filhos de Jaala, os filhos de Darcom, os filhos de Gidel,</p></div>
-<div class="verso" data-v="59"><p class="escritura"><sup>59</sup>Os filhos de Sefatias, os filhos de Hatil, os filhos de Poquerete-Hazebaim, os filhos de Amom.</p></div>
-<div class="verso" data-v="60"><p class="escritura"><sup>60</sup>Todos os servos do templo, e filhos dos servos de Salomão, trezentos e noventa e dois.</p></div>
-<div class="verso" data-v="61"><p class="escritura"><sup>61</sup>Também estes subiram de Tel-Melá, Tel-Harsa, Querube, Adom, e Imer, porém não puderam mostrar a casa de seus pais, nem sua linhagem, se eram de Israel:</p></div>
-<div class="verso" data-v="62"><p class="escritura"><sup>62</sup>Os filhos de Delaías, os filhos de Tobias, os filhos de Necoda, seiscentos e quarenta e dois.</p></div>
-<div class="verso" data-v="63"><p class="escritura"><sup>63</sup>E dos sacerdotes: os filhos de Habaías, os filhos de Coz, os filhos de Barzilai, o qual tomara mulher das filhas de Barzilai, o gileadita, e chamou-se pelo nome delas.</p></div>
-<div class="verso" data-v="64"><p class="escritura"><sup>64</sup>Estes buscaram seu registro de genealogias, porém não se achou; por isso, como impuros, foram excluídos do sacerdócio.</p></div>
-<div class="verso" data-v="65"><p class="escritura"><sup>65</sup>E o governador lhes disse que não comessem das coisas mais santas, até que houvesse sacerdote com Urim e Tumim.</p></div>
-<div class="verso" data-v="66"><p class="escritura"><sup>66</sup>Toda esta congregação junta era quarenta e dois mil trezentos e sessenta,</p></div>
-<div class="verso" data-v="67"><p class="escritura"><sup>67</sup>Exceto seus servos e suas servas, que eram sete mil trezentos e trinta e sete; e tinham duzentos e quarenta e cinco cantores e cantoras.</p></div>
-<div class="verso" data-v="68"><p class="escritura"><sup>68</sup>Seus cavalos, setecentos e trinta e seis; seus mulos, duzentos e quarenta e cinco;</p></div>
-<div class="verso" data-v="69"><p class="escritura"><sup>69</sup>Os camelos, quatrocentos e trinta e cinco; asnos, seis mil setecentos e vinte.</p></div>
-<div class="verso" data-v="70"><p class="escritura"><sup>70</sup>E alguns dos chefes das famílias fizeram doações para a obra. O governador deu para o tesouro mil dracmas de ouro, cinquenta bacias, e quinhentas trinta vestes sacerdotais.</p></div>
-<div class="verso" data-v="71"><p class="escritura"><sup>71</sup>E alguns dos chefes das famílias deram para o tesouro da obra, vinte mil dracmas de ouro, e duas mil e duzentas libras de prata.</p></div>
-<div class="verso" data-v="72"><p class="escritura"><sup>72</sup>E o que o resto do povo deu foi vinte mil dracmas de ouro, duas mil libras de prata, e sessenta e sete vestes sacerdotais.</p></div>
-<div class="verso" data-v="73"><p class="escritura"><sup>73</sup>E os sacerdotes, os Levitas, e os porteiros, os cantores, os do povo, os servos do templo, e todo Israel, habitaram em suas cidades.E vindo o mês sétimo, estando os filhos de Israel em suas cidades,</p></div>
-<nav class="seo-nav"><a href="/biblia/neemias/6/">‹ Neemias 6</a><a href="/biblia/neemias/8/">Neemias 8 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Antigo Testamento</a> · <a href="/biblia/neemias/">Históricos</a></p>
+<h1 class="titulo-cap">Neemias 7</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/neemias/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>Sucedeu, pois, que, quando o muro já havia sido edificado, e já tinha posto as portas, e sido estabelecidos os porteiros, os cantores e os Levitas,</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>Mandei o meu irmão Hanani, e Hananias, chefe do palácio de Jerusalém (porque era um homem fiel e temente a Deus, mais que muitos),</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>E disse-lhes: Não se abram as portas de Jerusalém até que o sol aqueça; e enquanto ainda estiverem presentes, fechem as portas, e as trancai. E ponham-se guardas dos moradores de Jerusalém, cada um em sua guarda, e cada um diante de sua casa.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>E a cidade era espaçosa e grande, porém pouca gente havia dentro dela, e as casas ainda não haviam sido reconstruídas.</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Então Deus pôs em meu coração que juntasse os nobres, os oficiais, e o povo, para que fossem registrados pela ordem de suas genealogias; e achei o livro da genealogia dos que haviam subido antes, e achei nele escrito o seguinte:</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>Estes são os filhos da província que subiram do cativeiro, dos que foram levados por Nabucodonosor, rei de Babilônia, e que voltaram a Jerusalém e a Judá, cada um à sua cidade;</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>Os quais vieram com Zorobabel, Jesua, Neemias, Azarias, Raamias, Naamani, Mardoqueu, Bilsã, Misperete, Bigvai, Neum, Baaná. Este é o número dos homens do povo de Israel:</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>Os filhos de Parós, dois mil cento e setenta e dois;</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>Os filhos de Sefatias, trezentos e setenta e dois;</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>Os filhos de Ara, seiscentos e cinquenta e dois;</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>Os filhos de Paate-Moabe, dos filhos de Jesua e de Joabe, dois mil oitocentos e dezoito;</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>Os filhos de Elão, mil duzentos e cinquenta e quatro;</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>Os filhos de Zatu, oitocentos e quarenta e cinco;</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>Os filhos de Zacai, setecentos e sessenta;</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>Os filhos de Binui, seiscentos e quarenta e oito;</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>Os filhos de Bebai, seiscentos e vinte e oito;</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>Os filhos de Azgade, dois mil seiscentos e vinte e dois;</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>Os filhos de Adonicão, seiscentos e sessenta e sete;</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>Os filhos de Bigvai, dois mil e sessenta e sete;</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>Os filhos de Adim, seiscentos e cinquenta e cinco;</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>Os filhos de Ater, de Ezequias, noventa e oito;</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>Os filhos de Hasum, trezentos e vinte e oito;</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>Os filhos de Bezai, trezentos e vinte e quatro;</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>Os filhos de Harife, cento e doze;</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>Os filhos de Gibeom, noventa e cinco;</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>Os homens de Belém e de Netofá, cento e oitenta e oito;</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>Os homens de Anatote, cento e vinte e oito;</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>Os homens de Bete-Azmavete, quarenta e dois;</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>Os homens de Quiriate-Jearim, Cefira e Beerote, setecentos e quarenta e três;</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>Os homens de Ramá e de Geba, seiscentos e vinte e um;</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>Os homens de Micmás, cento e vinte e dois;</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>Os homens de Betel e de Ai, cento e vinte e três;</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>Os homens da outra Nebo, cinquenta e dois;</p></div>
+<div class="verso" id="v34" data-v="34"><p class="escritura"><sup>34</sup>Os filhos do outro Elão, mil duzentos e cinquenta e quatro;</p></div>
+<div class="verso" id="v35" data-v="35"><p class="escritura"><sup>35</sup>Os filhos de Harim, trezentos e vinte;</p></div>
+<div class="verso" id="v36" data-v="36"><p class="escritura"><sup>36</sup>Os filhos de Jericó, trezentos e quarenta e cinco;</p></div>
+<div class="verso" id="v37" data-v="37"><p class="escritura"><sup>37</sup>Os filhos de Lode, de Hadide, e Ono, setecentos vinte e um;</p></div>
+<div class="verso" id="v38" data-v="38"><p class="escritura"><sup>38</sup>Os filhos de Senaá, três mil novecentos e trinta.</p></div>
+<div class="verso" id="v39" data-v="39"><p class="escritura"><sup>39</sup>Os sacerdotes: os filhos de Jedaías, da casa de Jesua, novecentos e setenta e três;</p></div>
+<div class="verso" id="v40" data-v="40"><p class="escritura"><sup>40</sup>Os filhos de Imer, mil e cinquenta e dois;</p></div>
+<div class="verso" id="v41" data-v="41"><p class="escritura"><sup>41</sup>Os filhos de Pasur, mil duzentos quarenta e sete;</p></div>
+<div class="verso" id="v42" data-v="42"><p class="escritura"><sup>42</sup>Os filhos de Harim, mil dez e sete.</p></div>
+<div class="verso" id="v43" data-v="43"><p class="escritura"><sup>43</sup>Os levitas: os filhos de Jesua, de Cadmiel, dos filhos de Hodeva, setenta e quatro.</p></div>
+<div class="verso" id="v44" data-v="44"><p class="escritura"><sup>44</sup>Os cantores: os filhos de Asafe, cento e quarenta e oito.</p></div>
+<div class="verso" id="v45" data-v="45"><p class="escritura"><sup>45</sup>Os porteiros: os filhos de Salum, os filhos de Ater, os filhos de Talmom, os filhos de Acube, os filhos de Hatita, os filhos de Sobai, cento e trinta e oito.</p></div>
+<div class="verso" id="v46" data-v="46"><p class="escritura"><sup>46</sup>Os servos do templo: os filhos de Zia, os filhos de Hasufa, os filhos de Tabaote,</p></div>
+<div class="verso" id="v47" data-v="47"><p class="escritura"><sup>47</sup>Os filhos de Queros, os filhos de Sia, os filhos de Padom,</p></div>
+<div class="verso" id="v48" data-v="48"><p class="escritura"><sup>48</sup>Os filhos de Lebana, os filhos de Hagaba, os filhos de Salmai,</p></div>
+<div class="verso" id="v49" data-v="49"><p class="escritura"><sup>49</sup>Os filhos de Hanã, os filhos de Gidel, os filhos de Gaar,</p></div>
+<div class="verso" id="v50" data-v="50"><p class="escritura"><sup>50</sup>Os filhos de Reaías, os filhos de Rezim, os filhos de Necoda,</p></div>
+<div class="verso" id="v51" data-v="51"><p class="escritura"><sup>51</sup>Os filhos de Gazão, os filhos de Uzá, os filhos de Paseia,</p></div>
+<div class="verso" id="v52" data-v="52"><p class="escritura"><sup>52</sup>Os filhos de Besai, os filhos de Meunim, os filhos de Nefusesim,</p></div>
+<div class="verso" id="v53" data-v="53"><p class="escritura"><sup>53</sup>Os filhos de Baquebuque, os filhos de Hacufa, os filhos de Harur,</p></div>
+<div class="verso" id="v54" data-v="54"><p class="escritura"><sup>54</sup>Os filhos de Baslite, os filhos de Meída, os filhos de Harsa,</p></div>
+<div class="verso" id="v55" data-v="55"><p class="escritura"><sup>55</sup>Os filhos de Barcos, os filhos de Sísera, os filhos de Tamá,</p></div>
+<div class="verso" id="v56" data-v="56"><p class="escritura"><sup>56</sup>Os filhos de Nesias, os filhos de Hatifa.</p></div>
+<div class="verso" id="v57" data-v="57"><p class="escritura"><sup>57</sup>Os filhos dos servos de Salomão: os filhos de Sotai, os filhos de Soferete, os filhos de Perida,</p></div>
+<div class="verso" id="v58" data-v="58"><p class="escritura"><sup>58</sup>Os filhos de Jaala, os filhos de Darcom, os filhos de Gidel,</p></div>
+<div class="verso" id="v59" data-v="59"><p class="escritura"><sup>59</sup>Os filhos de Sefatias, os filhos de Hatil, os filhos de Poquerete-Hazebaim, os filhos de Amom.</p></div>
+<div class="verso" id="v60" data-v="60"><p class="escritura"><sup>60</sup>Todos os servos do templo, e filhos dos servos de Salomão, trezentos e noventa e dois.</p></div>
+<div class="verso" id="v61" data-v="61"><p class="escritura"><sup>61</sup>Também estes subiram de Tel-Melá, Tel-Harsa, Querube, Adom, e Imer, porém não puderam mostrar a casa de seus pais, nem sua linhagem, se eram de Israel:</p></div>
+<div class="verso" id="v62" data-v="62"><p class="escritura"><sup>62</sup>Os filhos de Delaías, os filhos de Tobias, os filhos de Necoda, seiscentos e quarenta e dois.</p></div>
+<div class="verso" id="v63" data-v="63"><p class="escritura"><sup>63</sup>E dos sacerdotes: os filhos de Habaías, os filhos de Coz, os filhos de Barzilai, o qual tomara mulher das filhas de Barzilai, o gileadita, e chamou-se pelo nome delas.</p></div>
+<div class="verso" id="v64" data-v="64"><p class="escritura"><sup>64</sup>Estes buscaram seu registro de genealogias, porém não se achou; por isso, como impuros, foram excluídos do sacerdócio.</p></div>
+<div class="verso" id="v65" data-v="65"><p class="escritura"><sup>65</sup>E o governador lhes disse que não comessem das coisas mais santas, até que houvesse sacerdote com Urim e Tumim.</p></div>
+<div class="verso" id="v66" data-v="66"><p class="escritura"><sup>66</sup>Toda esta congregação junta era quarenta e dois mil trezentos e sessenta,</p></div>
+<div class="verso" id="v67" data-v="67"><p class="escritura"><sup>67</sup>Exceto seus servos e suas servas, que eram sete mil trezentos e trinta e sete; e tinham duzentos e quarenta e cinco cantores e cantoras.</p></div>
+<div class="verso" id="v68" data-v="68"><p class="escritura"><sup>68</sup>Seus cavalos, setecentos e trinta e seis; seus mulos, duzentos e quarenta e cinco;</p></div>
+<div class="verso" id="v69" data-v="69"><p class="escritura"><sup>69</sup>Os camelos, quatrocentos e trinta e cinco; asnos, seis mil setecentos e vinte.</p></div>
+<div class="verso" id="v70" data-v="70"><p class="escritura"><sup>70</sup>E alguns dos chefes das famílias fizeram doações para a obra. O governador deu para o tesouro mil dracmas de ouro, cinquenta bacias, e quinhentas trinta vestes sacerdotais.</p></div>
+<div class="verso" id="v71" data-v="71"><p class="escritura"><sup>71</sup>E alguns dos chefes das famílias deram para o tesouro da obra, vinte mil dracmas de ouro, e duas mil e duzentas libras de prata.</p></div>
+<div class="verso" id="v72" data-v="72"><p class="escritura"><sup>72</sup>E o que o resto do povo deu foi vinte mil dracmas de ouro, duas mil libras de prata, e sessenta e sete vestes sacerdotais.</p></div>
+<div class="verso" id="v73" data-v="73"><p class="escritura"><sup>73</sup>E os sacerdotes, os Levitas, e os porteiros, os cantores, os do povo, os servos do templo, e todo Israel, habitaram em suas cidades.E vindo o mês sétimo, estando os filhos de Israel em suas cidades,</p></div>
+<nav class="seo-nav"><a href="/biblia/neemias/6/">‹ Neemias 6</a><a href="/biblia/neemias/8/">Neemias 8 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -212,73 +289,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=cd2024e6fa"></script>
+<script src="/app.js?v=54cf3b0cd6"></script>
 </body>
 </html>

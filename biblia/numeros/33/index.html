@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Números 33 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="Números 33: Estas são as jornadas dos filhos de Israel, os quais saíram da terra do Egito por seus esquadrões, sob a condução de Moisés e Arão. E Moisés…">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=5897067dc8">
+<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#FAF7F0">
+<link rel="manifest" href="/manifest.webmanifest">
+<!--SEO-->
 <link rel="canonical" href="https://solabiblia.com.br/biblia/numeros/33/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sola">
@@ -24,8 +29,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sola", "item": "https://solabiblia.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Números", "item": "https://solabiblia.com.br/biblia/numeros/"}, {"@type": "ListItem", "position": 3, "name": "Números 33", "item": "https://solabiblia.com.br/biblia/numeros/33/"}]}</script>
+<!--/SEO-->
 </head>
-<body>
+<body data-vista="cap">
+<a class="pular" href="#leitor">Pular para o texto</a>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
@@ -42,10 +50,16 @@
 <symbol id="i-lua" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
 <symbol id="i-ajustes" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></symbol>
+<symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-original" viewBox="0 0 24 24"><path d="M4 20l5-14 5 14M6 15h6"/><path d="M16 9c3 0 4 2 4 5v6M20 13c-3 0-5 1-5 3.500s3 3.500 5 1"/></symbol>
+<symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+<symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
+<symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Números 33</span></button>
-  <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Números 33</span></button>
+  <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
@@ -58,9 +72,9 @@
     <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
   </nav>
   <div class="topo-acoes">
-    <button id="btnAjustes" class="btn-icone so-mobile" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
+    <button id="btnAjustes" class="btn-icone" aria-label="Idioma e tradução"><svg class="ico"><use href="#i-ajustes"/></svg></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
-    <button id="btnTema" class="btn-icone" aria-label="Alternar tema"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
   </div>
 </header>
 
@@ -77,116 +91,179 @@
 </div>
 
 <div id="areaLeitura" class="area-leitura">
-  <main id="leitor" class="leitor"><h1 class="titulo-cap escritura">Números 33</h1>
-<p class="sub-cap">Bíblia Livre</p>
-<div class="verso" data-v="1"><p class="escritura"><sup>1</sup>Estas são as jornadas dos filhos de Israel, os quais saíram da terra do Egito por seus esquadrões, sob a condução de Moisés e Arão.</p></div>
-<div class="verso" data-v="2"><p class="escritura"><sup>2</sup>E Moisés escreveu suas saídas conforme suas jornadas por ordem do SENHOR. Estas, pois, são suas jornadas conforme suas partidas.</p></div>
-<div class="verso" data-v="3"><p class="escritura"><sup>3</sup>De Ramessés partiram no mês primeiro, aos quinze dias do mês primeiro: no segundo dia da páscoa saíram os filhos de Israel com mão alta, à vista de todos os egípcios.</p></div>
-<div class="verso" data-v="4"><p class="escritura"><sup>4</sup>Estavam enterrando os egípcios os que o SENHOR havia matado deles, a todo primogênito; havendo o SENHOR feito também juízos em seus deuses.</p></div>
-<div class="verso" data-v="5"><p class="escritura"><sup>5</sup>Partiram, pois, os filhos de Israel de Ramessés, e assentaram acampamento em Sucote.</p></div>
-<div class="verso" data-v="6"><p class="escritura"><sup>6</sup>E partindo de Sucote, assentaram em Etã, que está ao extremo do deserto.</p></div>
-<div class="verso" data-v="7"><p class="escritura"><sup>7</sup>E partindo de Etã, voltaram sobre Pi-Hairote, que está diante de Baal-Zefom, e assentaram diante de Migdol.</p></div>
-<div class="verso" data-v="8"><p class="escritura"><sup>8</sup>E partindo de Pi-Hairote, passaram por meio do mar ao deserto, e andaram caminho de três dias pelo deserto de Etã, e assentaram em Mara.</p></div>
-<div class="verso" data-v="9"><p class="escritura"><sup>9</sup>E partindo de Mara, vieram a Elim, de onde havia doze fontes de águas, e setenta palmeiras; e assentaram ali.</p></div>
-<div class="verso" data-v="10"><p class="escritura"><sup>10</sup>E partidos de Elim, assentaram junto ao mar Vermelho.</p></div>
-<div class="verso" data-v="11"><p class="escritura"><sup>11</sup>E partidos do mar Vermelho, assentaram no deserto de Sim.</p></div>
-<div class="verso" data-v="12"><p class="escritura"><sup>12</sup>E partidos do deserto de Sim, assentaram em Dofca.</p></div>
-<div class="verso" data-v="13"><p class="escritura"><sup>13</sup>E partidos de Dofca, assentaram em Alus.</p></div>
-<div class="verso" data-v="14"><p class="escritura"><sup>14</sup>E partidos de Alus, assentaram em Refidim, onde o povo não teve águas para beber.</p></div>
-<div class="verso" data-v="15"><p class="escritura"><sup>15</sup>E partidos de Refidim, assentaram no deserto de Sinai.</p></div>
-<div class="verso" data-v="16"><p class="escritura"><sup>16</sup>E partidos do deserto de Sinai, assentaram em Quibrote-Taavá.</p></div>
-<div class="verso" data-v="17"><p class="escritura"><sup>17</sup>E partidos de Quibrote-Taavá, assentaram em Hazerote.</p></div>
-<div class="verso" data-v="18"><p class="escritura"><sup>18</sup>E partidos de Hazerote, assentaram em Ritmá.</p></div>
-<div class="verso" data-v="19"><p class="escritura"><sup>19</sup>E partidos de Ritmá, assentaram em Rimom-Perez.</p></div>
-<div class="verso" data-v="20"><p class="escritura"><sup>20</sup>E partidos de Rimom-Perez, assentaram em Libna.</p></div>
-<div class="verso" data-v="21"><p class="escritura"><sup>21</sup>E partidos de Libna, assentaram em Rissa.</p></div>
-<div class="verso" data-v="22"><p class="escritura"><sup>22</sup>E partidos de Rissa, assentaram em Queelata,</p></div>
-<div class="verso" data-v="23"><p class="escritura"><sup>23</sup>E partidos de Queelata, assentaram no monte de Séfer.</p></div>
-<div class="verso" data-v="24"><p class="escritura"><sup>24</sup>E partidos do monte de Séfer, assentaram em Harada.</p></div>
-<div class="verso" data-v="25"><p class="escritura"><sup>25</sup>E partidos de Harada, assentaram em Maquelote.</p></div>
-<div class="verso" data-v="26"><p class="escritura"><sup>26</sup>E partidos de Maquelote, assentaram em Taate.</p></div>
-<div class="verso" data-v="27"><p class="escritura"><sup>27</sup>E partidos de Taate, assentaram em Tera.</p></div>
-<div class="verso" data-v="28"><p class="escritura"><sup>28</sup>E partidos de Tera, assentaram em Mitca.</p></div>
-<div class="verso" data-v="29"><p class="escritura"><sup>29</sup>E partidos de Mitca, assentaram em Hasmona.</p></div>
-<div class="verso" data-v="30"><p class="escritura"><sup>30</sup>E partidos de Hasmona, assentaram em Moserote.</p></div>
-<div class="verso" data-v="31"><p class="escritura"><sup>31</sup>E partidos de Moserote, assentaram em Bene-Jaacã.</p></div>
-<div class="verso" data-v="32"><p class="escritura"><sup>32</sup>E partidos de Bene-Jaacã, assentaram em Hor-Gidgade.</p></div>
-<div class="verso" data-v="33"><p class="escritura"><sup>33</sup>E partidos de Hor-Gidgade, assentaram em Jotbatá.</p></div>
-<div class="verso" data-v="34"><p class="escritura"><sup>34</sup>E partidos de Jotbatá, assentaram em Abrona.</p></div>
-<div class="verso" data-v="35"><p class="escritura"><sup>35</sup>E partidos de Abrona, assentaram em Eziom-Geber.</p></div>
-<div class="verso" data-v="36"><p class="escritura"><sup>36</sup>E partidos de Eziom-Geber, assentaram no deserto de Zim, que é Cades.</p></div>
-<div class="verso" data-v="37"><p class="escritura"><sup>37</sup>E partidos de Cades, assentaram no monte de Hor, na extremidade do país de Edom.</p></div>
-<div class="verso" data-v="38"><p class="escritura"><sup>38</sup>E subiu Arão o sacerdote ao monte de Hor, conforme o dito do SENHOR, e ali morreu aos quarenta anos da saída dos filhos de Israel da terra do Egito, no mês quinto, no primeiro dia do mês.</p></div>
-<div class="verso" data-v="39"><p class="escritura"><sup>39</sup>E era Arão de idade de cento e vinte e três anos, quando morreu no monte de Hor.</p></div>
-<div class="verso" data-v="40"><p class="escritura"><sup>40</sup>E o cananeu, rei de Arade, que habitava ao sul na terra de Canaã, ouviu como haviam vindo os filhos de Israel.</p></div>
-<div class="verso" data-v="41"><p class="escritura"><sup>41</sup>E partidos do monte de Hor, assentaram em Zalmona.</p></div>
-<div class="verso" data-v="42"><p class="escritura"><sup>42</sup>E partidos de Zalmona, assentaram em Punom.</p></div>
-<div class="verso" data-v="43"><p class="escritura"><sup>43</sup>E partidos de Punom, assentaram em Obote.</p></div>
-<div class="verso" data-v="44"><p class="escritura"><sup>44</sup>E partidos de Obote, assentaram em Ijé-Abarim; no termo de Moabe.</p></div>
-<div class="verso" data-v="45"><p class="escritura"><sup>45</sup>E partidos de Ijé-Abarim, assentaram em Dibom-Gade.</p></div>
-<div class="verso" data-v="46"><p class="escritura"><sup>46</sup>E partidos de Dibom-Gade, assentaram em Almom-Diblataim.</p></div>
-<div class="verso" data-v="47"><p class="escritura"><sup>47</sup>E partidos de Almom-Diblataim, assentaram nos montes de Abarim, diante de Nebo.</p></div>
-<div class="verso" data-v="48"><p class="escritura"><sup>48</sup>E partidos dos montes de Abarim, assentaram nos campos de Moabe, junto ao Jordão de Jericó.</p></div>
-<div class="verso" data-v="49"><p class="escritura"><sup>49</sup>Finalmente assentaram junto ao Jordão, desde Bete-Jesimote até Abel-Sitim, nos campos de Moabe.</p></div>
-<div class="verso" data-v="50"><p class="escritura"><sup>50</sup>E falou o SENHOR a Moisés nos campos de Moabe junto ao Jordão de Jericó, dizendo:</p></div>
-<div class="verso" data-v="51"><p class="escritura"><sup>51</sup>Fala aos filhos de Israel, e dize-lhes: Quando houverdes passado o Jordão à terra de Canaã,</p></div>
-<div class="verso" data-v="52"><p class="escritura"><sup>52</sup>Expulsareis a todos os moradores do país de diante de vós, e destruireis todas suas imagens esculpidas, e todas suas imagens de fundição, e arruinareis todos os seus altos;</p></div>
-<div class="verso" data-v="53"><p class="escritura"><sup>53</sup>E expulsareis os moradores da terra, e habitareis nela; porque eu a dei a vós para que a possuais.</p></div>
-<div class="verso" data-v="54"><p class="escritura"><sup>54</sup>E herdareis a terra por sortes por vossas famílias: aos muitos dareis muito por sua herança, e aos poucos dareis menos por herança sua: onde lhe sair a sorte, ali a terá cada um: pelas tribos de vossos pais herdareis.</p></div>
-<div class="verso" data-v="55"><p class="escritura"><sup>55</sup>E se não expulsardes os moradores do país de diante de vós, sucederá que os que deixardes deles serão por aguilhões em vossos olhos, e por espinhos em vossos lados, e vos afligirão sobre a terra em que vós habitardes.</p></div>
-<div class="verso" data-v="56"><p class="escritura"><sup>56</sup>Será também, que farei a vós como eu pensei fazer a eles.</p></div>
-<nav class="seo-nav"><a href="/biblia/numeros/32/">‹ Números 32</a><a href="/biblia/numeros/34/">Números 34 ›</a></nav></main>
-  <aside id="colEstudo" class="col-estudo oculto">
+  <main id="leitor" class="leitor" tabindex="-1"><!--CONTEUDO--><header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Antigo Testamento</a> · <a href="/biblia/numeros/">Pentateuco</a></p>
+<h1 class="titulo-cap">Números 33</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+<p class="sub-cap"><span>Bíblia Livre</span> <a class="btn-contexto" href="/biblia/numeros/">Todos os capítulos</a></p>
+</header>
+<div class="verso" id="v1" data-v="1"><p class="escritura"><sup>1</sup>Estas são as jornadas dos filhos de Israel, os quais saíram da terra do Egito por seus esquadrões, sob a condução de Moisés e Arão.</p></div>
+<div class="verso" id="v2" data-v="2"><p class="escritura"><sup>2</sup>E Moisés escreveu suas saídas conforme suas jornadas por ordem do SENHOR. Estas, pois, são suas jornadas conforme suas partidas.</p></div>
+<div class="verso" id="v3" data-v="3"><p class="escritura"><sup>3</sup>De Ramessés partiram no mês primeiro, aos quinze dias do mês primeiro: no segundo dia da páscoa saíram os filhos de Israel com mão alta, à vista de todos os egípcios.</p></div>
+<div class="verso" id="v4" data-v="4"><p class="escritura"><sup>4</sup>Estavam enterrando os egípcios os que o SENHOR havia matado deles, a todo primogênito; havendo o SENHOR feito também juízos em seus deuses.</p></div>
+<div class="verso" id="v5" data-v="5"><p class="escritura"><sup>5</sup>Partiram, pois, os filhos de Israel de Ramessés, e assentaram acampamento em Sucote.</p></div>
+<div class="verso" id="v6" data-v="6"><p class="escritura"><sup>6</sup>E partindo de Sucote, assentaram em Etã, que está ao extremo do deserto.</p></div>
+<div class="verso" id="v7" data-v="7"><p class="escritura"><sup>7</sup>E partindo de Etã, voltaram sobre Pi-Hairote, que está diante de Baal-Zefom, e assentaram diante de Migdol.</p></div>
+<div class="verso" id="v8" data-v="8"><p class="escritura"><sup>8</sup>E partindo de Pi-Hairote, passaram por meio do mar ao deserto, e andaram caminho de três dias pelo deserto de Etã, e assentaram em Mara.</p></div>
+<div class="verso" id="v9" data-v="9"><p class="escritura"><sup>9</sup>E partindo de Mara, vieram a Elim, de onde havia doze fontes de águas, e setenta palmeiras; e assentaram ali.</p></div>
+<div class="verso" id="v10" data-v="10"><p class="escritura"><sup>10</sup>E partidos de Elim, assentaram junto ao mar Vermelho.</p></div>
+<div class="verso" id="v11" data-v="11"><p class="escritura"><sup>11</sup>E partidos do mar Vermelho, assentaram no deserto de Sim.</p></div>
+<div class="verso" id="v12" data-v="12"><p class="escritura"><sup>12</sup>E partidos do deserto de Sim, assentaram em Dofca.</p></div>
+<div class="verso" id="v13" data-v="13"><p class="escritura"><sup>13</sup>E partidos de Dofca, assentaram em Alus.</p></div>
+<div class="verso" id="v14" data-v="14"><p class="escritura"><sup>14</sup>E partidos de Alus, assentaram em Refidim, onde o povo não teve águas para beber.</p></div>
+<div class="verso" id="v15" data-v="15"><p class="escritura"><sup>15</sup>E partidos de Refidim, assentaram no deserto de Sinai.</p></div>
+<div class="verso" id="v16" data-v="16"><p class="escritura"><sup>16</sup>E partidos do deserto de Sinai, assentaram em Quibrote-Taavá.</p></div>
+<div class="verso" id="v17" data-v="17"><p class="escritura"><sup>17</sup>E partidos de Quibrote-Taavá, assentaram em Hazerote.</p></div>
+<div class="verso" id="v18" data-v="18"><p class="escritura"><sup>18</sup>E partidos de Hazerote, assentaram em Ritmá.</p></div>
+<div class="verso" id="v19" data-v="19"><p class="escritura"><sup>19</sup>E partidos de Ritmá, assentaram em Rimom-Perez.</p></div>
+<div class="verso" id="v20" data-v="20"><p class="escritura"><sup>20</sup>E partidos de Rimom-Perez, assentaram em Libna.</p></div>
+<div class="verso" id="v21" data-v="21"><p class="escritura"><sup>21</sup>E partidos de Libna, assentaram em Rissa.</p></div>
+<div class="verso" id="v22" data-v="22"><p class="escritura"><sup>22</sup>E partidos de Rissa, assentaram em Queelata,</p></div>
+<div class="verso" id="v23" data-v="23"><p class="escritura"><sup>23</sup>E partidos de Queelata, assentaram no monte de Séfer.</p></div>
+<div class="verso" id="v24" data-v="24"><p class="escritura"><sup>24</sup>E partidos do monte de Séfer, assentaram em Harada.</p></div>
+<div class="verso" id="v25" data-v="25"><p class="escritura"><sup>25</sup>E partidos de Harada, assentaram em Maquelote.</p></div>
+<div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>E partidos de Maquelote, assentaram em Taate.</p></div>
+<div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>E partidos de Taate, assentaram em Tera.</p></div>
+<div class="verso" id="v28" data-v="28"><p class="escritura"><sup>28</sup>E partidos de Tera, assentaram em Mitca.</p></div>
+<div class="verso" id="v29" data-v="29"><p class="escritura"><sup>29</sup>E partidos de Mitca, assentaram em Hasmona.</p></div>
+<div class="verso" id="v30" data-v="30"><p class="escritura"><sup>30</sup>E partidos de Hasmona, assentaram em Moserote.</p></div>
+<div class="verso" id="v31" data-v="31"><p class="escritura"><sup>31</sup>E partidos de Moserote, assentaram em Bene-Jaacã.</p></div>
+<div class="verso" id="v32" data-v="32"><p class="escritura"><sup>32</sup>E partidos de Bene-Jaacã, assentaram em Hor-Gidgade.</p></div>
+<div class="verso" id="v33" data-v="33"><p class="escritura"><sup>33</sup>E partidos de Hor-Gidgade, assentaram em Jotbatá.</p></div>
+<div class="verso" id="v34" data-v="34"><p class="escritura"><sup>34</sup>E partidos de Jotbatá, assentaram em Abrona.</p></div>
+<div class="verso" id="v35" data-v="35"><p class="escritura"><sup>35</sup>E partidos de Abrona, assentaram em Eziom-Geber.</p></div>
+<div class="verso" id="v36" data-v="36"><p class="escritura"><sup>36</sup>E partidos de Eziom-Geber, assentaram no deserto de Zim, que é Cades.</p></div>
+<div class="verso" id="v37" data-v="37"><p class="escritura"><sup>37</sup>E partidos de Cades, assentaram no monte de Hor, na extremidade do país de Edom.</p></div>
+<div class="verso" id="v38" data-v="38"><p class="escritura"><sup>38</sup>E subiu Arão o sacerdote ao monte de Hor, conforme o dito do SENHOR, e ali morreu aos quarenta anos da saída dos filhos de Israel da terra do Egito, no mês quinto, no primeiro dia do mês.</p></div>
+<div class="verso" id="v39" data-v="39"><p class="escritura"><sup>39</sup>E era Arão de idade de cento e vinte e três anos, quando morreu no monte de Hor.</p></div>
+<div class="verso" id="v40" data-v="40"><p class="escritura"><sup>40</sup>E o cananeu, rei de Arade, que habitava ao sul na terra de Canaã, ouviu como haviam vindo os filhos de Israel.</p></div>
+<div class="verso" id="v41" data-v="41"><p class="escritura"><sup>41</sup>E partidos do monte de Hor, assentaram em Zalmona.</p></div>
+<div class="verso" id="v42" data-v="42"><p class="escritura"><sup>42</sup>E partidos de Zalmona, assentaram em Punom.</p></div>
+<div class="verso" id="v43" data-v="43"><p class="escritura"><sup>43</sup>E partidos de Punom, assentaram em Obote.</p></div>
+<div class="verso" id="v44" data-v="44"><p class="escritura"><sup>44</sup>E partidos de Obote, assentaram em Ijé-Abarim; no termo de Moabe.</p></div>
+<div class="verso" id="v45" data-v="45"><p class="escritura"><sup>45</sup>E partidos de Ijé-Abarim, assentaram em Dibom-Gade.</p></div>
+<div class="verso" id="v46" data-v="46"><p class="escritura"><sup>46</sup>E partidos de Dibom-Gade, assentaram em Almom-Diblataim.</p></div>
+<div class="verso" id="v47" data-v="47"><p class="escritura"><sup>47</sup>E partidos de Almom-Diblataim, assentaram nos montes de Abarim, diante de Nebo.</p></div>
+<div class="verso" id="v48" data-v="48"><p class="escritura"><sup>48</sup>E partidos dos montes de Abarim, assentaram nos campos de Moabe, junto ao Jordão de Jericó.</p></div>
+<div class="verso" id="v49" data-v="49"><p class="escritura"><sup>49</sup>Finalmente assentaram junto ao Jordão, desde Bete-Jesimote até Abel-Sitim, nos campos de Moabe.</p></div>
+<div class="verso" id="v50" data-v="50"><p class="escritura"><sup>50</sup>E falou o SENHOR a Moisés nos campos de Moabe junto ao Jordão de Jericó, dizendo:</p></div>
+<div class="verso" id="v51" data-v="51"><p class="escritura"><sup>51</sup>Fala aos filhos de Israel, e dize-lhes: Quando houverdes passado o Jordão à terra de Canaã,</p></div>
+<div class="verso" id="v52" data-v="52"><p class="escritura"><sup>52</sup>Expulsareis a todos os moradores do país de diante de vós, e destruireis todas suas imagens esculpidas, e todas suas imagens de fundição, e arruinareis todos os seus altos;</p></div>
+<div class="verso" id="v53" data-v="53"><p class="escritura"><sup>53</sup>E expulsareis os moradores da terra, e habitareis nela; porque eu a dei a vós para que a possuais.</p></div>
+<div class="verso" id="v54" data-v="54"><p class="escritura"><sup>54</sup>E herdareis a terra por sortes por vossas famílias: aos muitos dareis muito por sua herança, e aos poucos dareis menos por herança sua: onde lhe sair a sorte, ali a terá cada um: pelas tribos de vossos pais herdareis.</p></div>
+<div class="verso" id="v55" data-v="55"><p class="escritura"><sup>55</sup>E se não expulsardes os moradores do país de diante de vós, sucederá que os que deixardes deles serão por aguilhões em vossos olhos, e por espinhos em vossos lados, e vos afligirão sobre a terra em que vós habitardes.</p></div>
+<div class="verso" id="v56" data-v="56"><p class="escritura"><sup>56</sup>Será também, que farei a vós como eu pensei fazer a eles.</p></div>
+<nav class="seo-nav"><a href="/biblia/numeros/32/">‹ Números 32</a><a href="/biblia/numeros/34/">Números 34 ›</a></nav><!--/CONTEUDO--></main>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
     <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
     <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
   </aside>
 </div>
 
-<nav class="rodape-nav">
+<nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
 </nav>
 
-<!-- Painel de livros -->
-<div id="painelLivros" class="painel oculto">
+<div id="painelLivros" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloLivros">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloLivros">Livros</h2><button class="fechar" data-fecha="painelLivros" aria-label="Fechar">✕</button></div>
     <div id="listaLivros" class="lista-livros"></div>
     <div id="listaCapitulos" class="lista-capitulos oculto"></div>
   </div>
 </div>
 
-<!-- Painel de busca -->
-<div id="painelBusca" class="painel oculto">
+<div id="painelBusca" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloBusca">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca">✕</button></div>
-    <div class="busca-abas">
-      <button data-modo="texto" class="aba ativa">Texto</button>
-      <button data-modo="temas" class="aba">Temas</button>
-      <button data-modo="dicionario" class="aba">Dicionário</button>
+    <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
+    <div class="busca-abas" role="tablist">
+      <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="temas" class="aba" role="tab">Temas</button>
+      <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
     <div class="busca-linha">
-      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade">
-      <button id="btnBuscar">⌕</button>
+      <input id="campoBusca" type="search" placeholder="ex.: graça e verdade, ou João 3:16" aria-label="O que buscar">
+      <button id="btnBuscar" aria-label="Buscar"><svg class="ico"><use href="#i-busca"/></svg></button>
     </div>
-    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda"> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
-    <div id="buscaStatus" class="busca-status"></div>
+    <label class="busca-escopo"><input type="checkbox" id="chkBibliaToda" checked> <span id="lblBibliaToda">Buscar na Bíblia toda</span></label>
+    <div id="buscaStatus" class="busca-status" role="status"></div>
     <div id="buscaResultados" class="busca-resultados"></div>
   </div>
 </div>
 
-<!-- Painel de anotações -->
-<div id="painelNotas" class="painel oculto">
+<div id="painelNotas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloNotas">
   <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas">✕</button></div>
+    <div class="painel-cabeca"><h2 id="tituloNotas">Minhas anotações</h2><button class="fechar" data-fecha="painelNotas" aria-label="Fechar">✕</button></div>
     <div id="listaNotas"></div>
+  </div>
+</div>
+
+<div id="painelPlanos" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloPlanos">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos" aria-label="Fechar">✕</button></div>
+    <div id="conteudoPlanos"></div>
+  </div>
+</div>
+<div id="painelTempo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloTempo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloTempo">Linha do tempo</h2><button class="fechar" data-fecha="painelTempo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoTempo"></div>
+  </div>
+</div>
+<div id="painelAtlas" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloAtlas">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloAtlas">Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas" aria-label="Fechar">✕</button></div>
+    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
+    <div id="viagens" class="mss-abas"></div>
+    <div id="atlasResultados" class="busca-resultados"></div>
+    <div id="mapa"></div>
+    <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: © colaboradores do OpenStreetMap</p>
+  </div>
+</div>
+<div id="painelCtx" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="ctxTitulo">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="ctxTitulo"></h2><button class="fechar" data-fecha="painelCtx" aria-label="Fechar">✕</button></div>
+    <div id="ctxCorpo"></div>
+  </div>
+</div>
+<div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
+    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
+    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
+    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
+    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
+    navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
+    nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
+    (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <h3 class="painel-sub">Ler sem internet</h3>
+    <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
+    Bíblia inteira na tradução atual, mesmo sem sinal:</p>
+    <button id="btnOffline" class="btn-ouro"><svg class="ico"><use href="#i-baixar"/></svg> <span>Baixar a Bíblia para este aparelho</span></button>
+    <p id="offlineStatus" class="fonte" role="status"></p>
+  </div>
+</div>
+<div id="painelFontes" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloFontes">
+  <div class="painel-caixa">
+    <div class="painel-cabeca"><h2 id="tituloFontes">Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes" aria-label="Fechar">✕</button></div>
+    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
+    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
+    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
+    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
+    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
+    via CCEL/CrossWire. Nos livros que Calvino não comentou, comentário de Matthew Henry (1706) —
+    domínio público, via Free Use Bible API (bible.helloao.org). Traduções automáticas feitas offline
+    com Argos Translate e NLLB-200 (Meta, licença CC BY-NC, uso não comercial). Referências cruzadas:
+    openbible.info, licença CC-BY. Dicionário de Easton (1897) e Nave's Topical Bible (1897) — domínio público.</p>
+    <p class="painel-texto">Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License).
+    Mapa: Leaflet (BSD) com imagens © colaboradores do OpenStreetMap.</p>
   </div>
 </div>
 
 <footer class="rodape">
   <div class="rodape-grade">
     <div>
-      <div class="marca"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></div>
+      <a class="marca" href="/"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
       <p class="rodape-frase">Estudo bíblico profundo, gratuito e em português:
       Bíblia completa, interlinear grego e hebraico, léxico de Strong,
       comentários clássicos e referências cruzadas.</p>
@@ -195,73 +272,29 @@
       <h3>Sobre</h3>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
+      <a href="#" data-painel="painelSobre">Ler sem internet</a>
       <a href="mailto:contato@exemplo.com">Contato</a>
     </div>
     <div>
       <h3>Recursos</h3>
-      <a href="#/JHN/1">Ler a Bíblia</a>
+      <a href="/">Todos os livros</a>
+      <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
-      <a href="#" data-painel="painelBusca">Busca</a>
     </div>
     <div>
       <h3>Comunidade</h3>
-      <a href="#" rel="noopener">Instagram (em breve)</a>
-      <a href="#" rel="noopener">YouTube (em breve)</a>
-      <a href="#" rel="noopener">Apoiar o projeto (em breve)</a>
+      <span class="em-breve">Instagram · em breve</span>
+      <span class="em-breve">YouTube · em breve</span>
+      <span class="em-breve">Apoiar o projeto · em breve</span>
     </div>
   </div>
-  <p class="rodape-legal">Textos bíblicos e comentários de domínio público ·
+  <p class="rodape-legal"><em>Sola Scriptura</em> · Textos bíblicos e comentários de domínio público ·
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<div id="painelPlanos" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2 id="tituloPlanos">Planos de leitura</h2><button class="fechar" data-fecha="painelPlanos">✕</button></div>
-    <div id="conteudoPlanos"></div>
-  </div>
-</div>
-<div id="painelTempo" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Linha do tempo</h2><button class="fechar" data-fecha="painelTempo">✕</button></div>
-    <div id="conteudoTempo"></div>
-  </div>
-</div>
-<div id="painelAtlas" class="painel oculto">
-  <div class="painel-caixa painel-larga">
-    <div class="painel-cabeca"><h2>Atlas bíblico</h2><button class="fechar" data-fecha="painelAtlas">✕</button></div>
-    <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto"><button id="btnAtlasBuscar">⌕</button></div>
-    <div id="viagens" class="mss-abas" style="margin:.6rem 0 0"></div>
-    <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
-    <p class="fonte" style="margin-top:.5rem">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: OpenStreetMap</p>
-  </div>
-</div>
-<div id="painelSobre" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre">✕</button></div>
-    <p class="painel-texto">O Sola nasceu para preencher uma lacuna: não existia uma
-    ferramenta de estudo bíblico profundo em português — com originais, interlinear,
-    léxico e comentários clássicos — gratuita e aberta. Todo o conteúdo vem de fontes
-    de domínio público ou licenças abertas, e o site não tem anúncios nem fins comerciais.</p>
-    <p class="painel-texto">Suas marcações e anotações ficam guardadas apenas no seu
-    navegador — nada é enviado a servidores.</p>
-  </div>
-</div>
-<div id="painelFontes" class="painel oculto">
-  <div class="painel-caixa">
-    <div class="painel-cabeca"><h2>Fontes e licenças</h2><button class="fechar" data-fecha="painelFontes">✕</button></div>
-    <p class="painel-texto">Bíblia Livre, King James Version (1769) e Reina-Valera Antigua —
-    domínio público, via scrollmapper/bible_databases. Grego (Textus Receptus) e Hebraico
-    (Códice de Leningrado) — domínio público. Interlinear e marcação morfológica:
-    STEPBible/Tyndale House de Cambridge, licença CC BY. Léxico de Strong (1890) —
-    domínio público, via Open Scriptures. Comentários de João Calvino — domínio público,
-    via CCEL/CrossWire. Referências cruzadas: openbible.info, licença CC-BY.</p>
-  </div>
-</div>
-
-<script src="/app.js?v=cd2024e6fa"></script>
+<script src="/app.js?v=54cf3b0cd6"></script>
 </body>
 </html>
