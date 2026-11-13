@@ -66,6 +66,8 @@ Dois motores: Argos (rápido, mediano) e NLLB-200 1.3B (`nllb.py`, ~10x mais len
 O NLLB roda no GitHub Actions: `.github/workflows/traduzir.yml` (Actions → "Traduzir (NLLB)" → etapa,
 nº de partes). Divide em N máquinas, junta, grava em `data/.../pt/` e envia ao branch `traducao-<etapa>`
 para virar PR. Se faltar algo, rodar de novo com `retomar` = run id anterior. `lote.py --motor nllb --parte K/N`.
+A etapa `glosas` do mesmo workflow usa o Argos (palavras soltas, 1 máquina, poucos minutos): é o
+`traduzir_tudo.sh glosas` sem precisar de computador (ele usa Windows 11 agora, sem ambiente Linux).
 O `nllb.py` protege marcadores de tópico ("I.", "1.", "(2.)") e devolve "milhas" (o modelo troca por "quilômetros").
 
 Glosas do interlinear: `ferramentas/glosas_pt.json` é o dicionário inglês→português, e `GLOSAS_FIXAS` em
