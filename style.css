@@ -96,6 +96,13 @@ a{color:var(--ouro)}
 .navbar button:hover,.navbar button.ativa{color:var(--tinta)}
 .navbar button:hover::after,.navbar button.ativa::after{transform:scaleX(1)}
 @media (max-width:1099px){.so-desktop{display:none!important}}
+/* celular: o nome do livro manda. A palavra "Sola" só aparece se couber na linha; senão fica só o símbolo
+   (ela cai para uma segunda linha escondida). Sem isso, "Salmos 23" já empurrava os botões para baixo. */
+@media (max-width:560px){
+  .topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;flex-wrap:wrap;justify-content:center;
+    align-content:flex-start;height:1.45rem;overflow:hidden}
+  .btn-livros{max-width:calc(100vw - 13rem)}
+}
 /* barra única só quando todos os botões cabem; abaixo disso a navbar vai para a segunda linha */
 @media (min-width:1500px){
   .topo{flex-wrap:nowrap;padding-bottom:.65rem}
