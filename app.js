@@ -52,7 +52,19 @@ const UI = {
     backup:"Backup", restaurar:"Restaurar", restaurado:"Restaurado deste arquivo:", arquivoInvalido:"Este arquivo não é um backup do Sola.",
     nAnot:"anotação(ões)", nMarc:"marcação(ões)",
     offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
-    offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet." },
+    offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet.",
+    meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
+    diasSeguidos:"dia(s) seguidos", nNotasRot:"anotações", nMarcasRot:"versículos marcados", progLivros:"Progresso por livro",
+    marcacoes:"Versículos marcados", semMarcas:"Nenhum versículo marcado ainda. Toque em um versículo e escolha uma cor.", verTodas:"Ver todas",
+    planosTit:"Planos de leitura", semLeitura:"Marque os capítulos como lidos ao terminar e acompanhe aqui o seu progresso.",
+    contaLocal:"Seu estudo fica guardado só neste aparelho. Para levar a outro, use Backup e Restaurar em “Minhas anotações”.",
+    contaTitulo:"Continue em qualquer aparelho", contaTexto:"Entre para guardar anotações, marcações, capítulos lidos e planos na sua conta. É gratuito e opcional.",
+    entrarGoogle:"Entrar com Google", entrarEmail:"Receber link por e-mail", linkEnviado:"Enviamos um link de acesso para", seuEmail:"seu e-mail",
+    sair:"Sair", sincAgora:"Sincronizar agora", sincIndo:"Sincronizando…", sincOk:"Tudo guardado na sua conta",
+    sincErro:"Sem conexão com a conta: o que você fizer fica neste aparelho e sobe depois", entrou:"Você entrou como", erroConta:"Não foi possível conectar à conta agora. Tente de novo.",
+    contaOutra:"Este aparelho tem o estudo de outra conta. Trocar pelo estudo da conta em que você entrou agora? O que ainda não tinha sido sincronizado da outra conta será perdido.",
+    excluirConta:"Excluir minha conta", excluirConfirma:"Excluir a sua conta e tudo o que está guardado nela no servidor? Isso não pode ser desfeito. O que está neste aparelho continua aqui.",
+    contaExcluida:"Conta excluída. O que estava neste aparelho continua aqui." },
   en: { idioma:"Language", traducao:"Translation", comparar:"Compare with…", semComparar:"No comparison",
     livros:"Books", buscar:"Search", notas:"My notes", marcar:"Highlight",
     cores:{ouro:"gold", verde:"green", azul:"blue", rosa:"pink"},
@@ -102,7 +114,19 @@ const UI = {
     backup:"Backup", restaurar:"Restore", restaurado:"Restored from this file:", arquivoInvalido:"This file is not a Sola backup.",
     nAnot:"note(s)", nMarc:"highlight(s)",
     offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
-    offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use." },
+    offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use.",
+    meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
+    diasSeguidos:"day(s) in a row", nNotasRot:"notes", nMarcasRot:"highlighted verses", progLivros:"Progress by book",
+    marcacoes:"Highlighted verses", semMarcas:"No highlighted verses yet. Tap a verse and pick a colour.", verTodas:"See all",
+    planosTit:"Reading plans", semLeitura:"Mark chapters as read when you finish them and follow your progress here.",
+    contaLocal:"Your study is stored on this device only. To move it, use Backup and Restore under “My notes”.",
+    contaTitulo:"Pick up on any device", contaTexto:"Sign in to keep your notes, highlights, chapters read and plans in your account. Free and optional.",
+    entrarGoogle:"Sign in with Google", entrarEmail:"Email me a link", linkEnviado:"We sent a sign-in link to", seuEmail:"your email",
+    sair:"Sign out", sincAgora:"Sync now", sincIndo:"Syncing…", sincOk:"Everything is saved to your account",
+    sincErro:"Cannot reach your account: changes stay on this device and upload later", entrou:"Signed in as", erroConta:"Could not reach the account right now. Try again.",
+    contaOutra:"This device holds another account's study. Replace it with the study from the account you just signed in to? Anything not yet synced from the other account will be lost.",
+    excluirConta:"Delete my account", excluirConfirma:"Delete your account and everything stored in it on the server? This cannot be undone. What is on this device stays here.",
+    contaExcluida:"Account deleted. What was on this device is still here." },
   es: { idioma:"Idioma", traducao:"Traducción", comparar:"Comparar con…", semComparar:"Sin comparación",
     livros:"Libros", buscar:"Buscar", notas:"Mis notas", marcar:"Resaltar",
     cores:{ouro:"oro", verde:"verde", azul:"azul", rosa:"rosa"},
@@ -152,12 +176,24 @@ const UI = {
     backup:"Copia", restaurar:"Restaurar", restaurado:"Restaurado de este archivo:", arquivoInvalido:"Este archivo no es una copia de Sola.",
     nAnot:"nota(s)", nMarc:"resaltado(s)",
     offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
-    offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión." },
+    offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión.",
+    meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
+    diasSeguidos:"día(s) seguidos", nNotasRot:"notas", nMarcasRot:"versículos resaltados", progLivros:"Progreso por libro",
+    marcacoes:"Versículos resaltados", semMarcas:"Aún no hay versículos resaltados. Toca un versículo y elige un color.", verTodas:"Ver todas",
+    planosTit:"Planes de lectura", semLeitura:"Marca los capítulos como leídos al terminar y sigue aquí tu progreso.",
+    contaLocal:"Tu estudio se guarda solo en este dispositivo. Para llevarlo a otro, usa Copia y Restaurar en “Mis notas”.",
+    contaTitulo:"Continúa en cualquier dispositivo", contaTexto:"Entra para guardar notas, resaltados, capítulos leídos y planes en tu cuenta. Gratis y opcional.",
+    entrarGoogle:"Entrar con Google", entrarEmail:"Recibir enlace por correo", linkEnviado:"Enviamos un enlace de acceso a", seuEmail:"tu correo",
+    sair:"Salir", sincAgora:"Sincronizar ahora", sincIndo:"Sincronizando…", sincOk:"Todo guardado en tu cuenta",
+    sincErro:"Sin conexión con la cuenta: los cambios quedan en este dispositivo y se suben después", entrou:"Entraste como", erroConta:"No se pudo conectar con la cuenta ahora. Inténtalo de nuevo.",
+    contaOutra:"Este dispositivo tiene el estudio de otra cuenta. ¿Cambiarlo por el de la cuenta con la que acabas de entrar? Lo que no se había sincronizado de la otra cuenta se perderá.",
+    excluirConta:"Eliminar mi cuenta", excluirConfirma:"¿Eliminar tu cuenta y todo lo guardado en ella en el servidor? No se puede deshacer. Lo que está en este dispositivo sigue aquí.",
+    contaExcluida:"Cuenta eliminada. Lo que estaba en este dispositivo sigue aquí." },
 };
 const NAV = {
-  pt:{buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
-  en:{buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
-  es:{buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
 };
 const CORES = ["ouro","verde","azul","rosa"];
 /* Os mesmos grupos estão em ferramentas/gerar_paginas.py (página inicial que o Google lê). */
@@ -183,6 +219,10 @@ const ABREV = {gn:"GEN",ex:"EXO",lv:"LEV",nm:"NUM",dt:"DEU",js:"JOS",jz:"JDG",rt
   mc:"MRK",lc:"LUK",jo:"JHN",at:"ACT",rm:"ROM","1co":"1CO","2co":"2CO",gl:"GAL",ef:"EPH",fp:"PHP",fl:"PHP",cl:"COL","1ts":"1TH","2ts":"2TH",
   "1tm":"1TI","2tm":"2TI",tt:"TIT",fm:"PHM",hb:"HEB",tg:"JAS","1pe":"1PE","2pe":"2PE","1jo":"1JN","2jo":"2JN","3jo":"3JN",jd:"JUD",ap:"REV",apoc:"REV"};
 const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no sw.js
+/* Contas (opcionais): endereço e chave pública ("publishable"/anon) do projeto no Supabase — ver ferramentas/supabase.sql.
+   Com `url` vazio nada de conta aparece e o site funciona como sempre, só neste aparelho.
+   `google` e `email` ligam cada forma de entrar (o link por e-mail exige SMTP próprio configurado no Supabase). */
+const CONTA = { url:"", chave:"", google:true, email:false };
 
 /* ---------- estado ---------- */
 const est = {
@@ -190,6 +230,9 @@ const est = {
   vista:"inicio", livro:"JHN", cap:1, alvoV:0, abrir:null, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
   corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", false), progresso: lerLS("logos_planos", {}),
+  lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
+  sinc: Object.assign({ pend:{}, cursor:null, conta:null, ultima:0 }, lerLS("logos_sinc", null)),   // o que falta subir para a conta
+  sb:null, sessao:null, sincEstado:"",
   cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{},
   livrosCom:null, idxTemas:null, idxDic:null, aliasPT:null, planos:null, tempo:null, ctx:null,
   lugares:null, mapa:null, marcadores:[], viagens:null, camadaViagem:[],
@@ -324,7 +367,7 @@ function navegar(r, op){
   if(r.livro) est.livro = r.livro;
   if(r.vista==="cap"){ est.cap = r.cap; est.alvoV = r.v || 0; est.abrir = r.abrir || null; }
   else { est.alvoV = 0; est.abrir = null; }
-  return renderizar(op);
+  return renderizar(Object.assign({ nav:true }, op));
 }
 function irPara(usfm, cap, v, abrir){ return navegar({ vista:"cap", livro:usfm, cap, v, abrir }); }
 
@@ -361,7 +404,8 @@ function preencherTraducoes(){
 const nomeTraducao = (id)=>est.meta.translations.find(tr=>tr.id===id).name;
 const ornamento = `<div class="ornamento" aria-hidden="true"><i></i></div>`;
 
-/* Desenha a página pedida. op: {substituir} troca o endereço sem criar histórico; {manter} não mexe na rolagem. */
+/* Desenha a página pedida. op: {substituir} troca o endereço sem criar histórico; {manter} não mexe na rolagem;
+   {nav} = a pessoa navegou até aqui (vem de navegar()), e não um redesenho da mesma página. */
 async function renderizar(op){
   op = op || {};
   const x = t();
@@ -379,7 +423,13 @@ async function renderizar(op){
     await renderizarCapitulo(op);
     $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
     document.title = `${nomeLivro(est.livro)} ${est.cap} — Sola`;
-    gravarLS("logos_ultimo", { livro: est.livro, cap: est.cap });
+    // "onde parei" só muda quando a pessoa vai a um capítulo, não quando a tela é redesenhada (senão um aparelho
+    // parado numa página desfaria o "continuar" que acabou de chegar de outro aparelho)
+    const ult = lerLS("logos_ultimo", null);
+    if(op.nav && (!ult || ult.livro !== est.livro || ult.cap !== est.cap)){
+      gravarLS("logos_ultimo", { livro: est.livro, cap: est.cap });
+      tocar("estado", "ultimo");
+    }
   }
   atualizarURL(op.substituir);
   if(est.vista!=="cap" && !op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
@@ -391,6 +441,7 @@ function renderizarInicio(){
   const x = t(), ult = lerLS("logos_ultimo", null);
   const temUlt = ult && infoLivro(ult.livro) && ult.cap >= 1 && ult.cap <= infoLivro(ult.livro).ch;
   const icones = ["original","comentario","refs","temas","atlas","planos"];
+  const resumo = resumoEstudo(), nLidos = resumo.lidos;
   const testamento = (tst)=>`<section class="testamento"><h2>${tst==="AT" ? x.at : x.nt}</h2>${ornamento}
     <div class="grupos">` + GRUPOS.filter(g=>g[0]===tst).map(g=>
       `<div class="grupo-livros"><h3>${x.grupos[g[1]]}</h3>` + g[2].map(id=>
@@ -409,6 +460,7 @@ function renderizarInicio(){
         ${temUlt ? `<a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${ult.cap} ${ico("seta")}</a>` : ""}
         <a class="${temUlt ? "btn-linha" : "btn-ouro"}" href="${urlCapitulo("JHN", 1)}">${x.comecar}</a>
       </div>
+      ${nLidos ? `<p class="heroi-estudo"><button id="btnEstudoInicio">${ico("pessoa")} ${x.meuEstudo}: ${nLidos} ${nLidos === 1 ? x.capLido1 : x.capsLidos}${resumo.seq > 1 ? ` · ${resumo.seq} ${x.diasSeguidos}` : ""}</button></p>` : ""}
     </section>
     <section class="dia"><p class="rotulo-secao">${x.versoDia}</p><blockquote id="versoDia"></blockquote><span id="versoDiaRef"></span></section>
     <section class="recursos">` + x.recursos.map((r,i)=>
@@ -422,6 +474,7 @@ function renderizarInicio(){
     if(r) return irPara(r.livro, r.cap, r.v);
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
+  if($("btnEstudoInicio")) $("btnEstudoInicio").addEventListener("click", abrirMeuEstudo);
   const acoes = [()=>irPara("JHN",1,1,"original"), ()=>irPara("ROM",8,28,"comentario"), ()=>irPara("JHN",3,16,"referencias"),
     ()=>abrirBusca("temas"), abrirAtlas, ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); }];
   document.querySelectorAll(".recurso").forEach(b=>b.addEventListener("click", acoes[+b.dataset.recurso]));
@@ -445,7 +498,7 @@ async function renderizarLivro(){
   const [ctx, livros] = await Promise.all([contextos().catch(()=>({})), livrosComentario()]);
   if(vez !== est.vez) return;
   const c = ctx[est.livro], autor = autorDoLivro(livros, est.livro);
-  const caps = Array.from({length:info.ch}, (_,i)=>`<a href="${urlCapitulo(est.livro, i+1)}">${i+1}</a>`).join("");
+  const caps = Array.from({length:info.ch}, (_,i)=>`<a href="${urlCapitulo(est.livro, i+1)}"${foiLido(est.livro, i+1) ? ` class="lido" title="${x.lido}"` : ""}>${i+1}</a>`).join("");
   $("leitor").innerHTML = `<div class="livro-pagina">
     <header class="cap-cabeca">
       <p class="cap-sobre"><a href="/">${info.t==="AT" ? x.at : x.nt}</a> · ${x.grupos[g[1]]}</p>
@@ -520,7 +573,9 @@ async function renderizarCapitulo(op){
       </div>`;
     });
   }
-  leitor.innerHTML = html;
+  leitor.innerHTML = html + botaoLido();
+  ligarBotaoLido();
+  if(est.capAberto !== est.livro + "." + est.cap){ est.capAberto = est.livro + "." + est.cap; est.capAbertoEm = Date.now(); }
   $("btnCtxCap").addEventListener("click", abrirContexto);
   leitor.querySelectorAll(".verso").forEach(el=>{
     // com uma gaveta aberta, passar o mouse por outro versículo não troca o ativo (senão a gaveta fecha sozinha)
@@ -577,7 +632,7 @@ function montarBarra(el){
     b.addEventListener("click", ()=>{
       const c = b.dataset.cor;
       if(est.marcas[chave]===c){ delete est.marcas[chave]; } else { est.marcas[chave]=c; }
-      gravarLS("logos_marcas", est.marcas);
+      gravarLS("logos_marcas", est.marcas); tocar("marca", chave);
       CORES.forEach(o=>el.classList.toggle("m-"+o, est.marcas[chave]===o));
       barra.querySelectorAll(".cor").forEach(o=>{
         o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
@@ -751,7 +806,7 @@ async function acaoVerso(el, v, acao, botao){
     gavetas.querySelector(".salvar").addEventListener("click", ()=>{
       const valor = gavetas.querySelector("#campoNota").value.trim();
       if(valor) est.notas[chave] = valor; else delete est.notas[chave];
-      gravarLS("logos_notas", est.notas);
+      gravarLS("logos_notas", est.notas); tocar("nota", chave);
       fecharGavetas(el);
       // só o sinal de anotação deste versículo muda: a página não é redesenhada (e não pula para o topo)
       let sinal = el.querySelector(".indicadores");
@@ -761,7 +816,8 @@ async function acaoVerso(el, v, acao, botao){
         el.querySelector("p.escritura").appendChild(sinal);
       } else if(!valor && sinal) sinal.remove();
     });
-    gavetas.querySelector("#campoNota").focus();
+    gavetas.querySelector("#campoNota").focus({ preventScroll:true });
+    gavetas.firstElementChild.scrollIntoView({ block:"nearest" });   // a gaveta inteira à vista, com os botões fora da barra de baixo
   }
   const fechaBtn = gavetas.querySelector(".rotulo button");
   if(fechaBtn) fechaBtn.addEventListener("click", ()=>fecharGavetas(el));
@@ -784,7 +840,7 @@ function atualizarNav(){
   const bA = $("btnAnterior"), bP = $("btnProximo");
   bA.disabled = !ant; bP.disabled = !pro;
   if(ant){ bA.querySelector("span").textContent = `${nomeLivro(ant.l)} ${ant.c}`; bA.onclick = ()=>irPara(ant.l, ant.c); }
-  if(pro){ bP.querySelector("span").textContent = `${nomeLivro(pro.l)} ${pro.c}`; bP.onclick = ()=>irPara(pro.l, pro.c); }
+  if(pro){ bP.querySelector("span").textContent = `${nomeLivro(pro.l)} ${pro.c}`; bP.onclick = ()=>{ leuAoAvancar(); irPara(pro.l, pro.c); }; }
 }
 
 function montarListaLivros(){
@@ -803,7 +859,7 @@ function montarListaLivros(){
     $("listaLivros").classList.add("oculto");
     $("tituloLivros").textContent = nomeLivro(info.id);
     $("listaCapitulos").innerHTML = `<button class="voltar-livros">‹ ${x.livros}</button>` +
-      Array.from({length:info.ch},(_,i)=>`<button data-cap="${i+1}">${i+1}</button>`).join("") +
+      Array.from({length:info.ch},(_,i)=>`<button data-cap="${i+1}"${foiLido(info.id, i+1) ? ' class="lido"' : ""}>${i+1}</button>`).join("") +
       `<button class="livro-inteiro">${x.sobreLivro} →</button>`;
     $("listaCapitulos").classList.remove("oculto");
     $("listaCapitulos").querySelector(".voltar-livros").addEventListener("click", montarListaLivros);
@@ -1001,7 +1057,7 @@ async function montarPlanos(planoAberto){
   alvo.querySelectorAll(".dia-check").forEach(ch=>ch.addEventListener("change", ()=>{
     est.progresso[pl.id] = est.progresso[pl.id] || {};
     est.progresso[pl.id][ch.dataset.i] = ch.checked;
-    gravarLS("logos_planos", est.progresso);
+    gravarLS("logos_planos", est.progresso); tocar("plano", pl.id + "." + ch.dataset.i);
   }));
   const primeiro = pl.dias.findIndex((_,i)=>!pr[i]);
   if(primeiro > 3){ const el = alvo.querySelectorAll(".dia-linha")[primeiro]; if(el) el.scrollIntoView({block:"center"}); }
@@ -1239,6 +1295,9 @@ function limparDados(){
   if(typeof est.marcas !== "object" || !est.marcas) est.marcas = {};
   if(typeof est.notas !== "object" || !est.notas) est.notas = {};
   if(typeof est.progresso !== "object" || !est.progresso) est.progresso = {};
+  if(typeof est.lidos !== "object" || !est.lidos) est.lidos = {};
+  for(const k of Object.keys(est.lidos)) if(!capValido(k) || !(+est.lidos[k] > 0)) delete est.lidos[k];
+  if(typeof est.sinc.pend !== "object" || !est.sinc.pend) est.sinc.pend = {};
   for(const k of Object.keys(est.marcas)) if(!chaveValida(k) || !CORES.includes(est.marcas[k])) delete est.marcas[k];
   for(const k of Object.keys(est.notas)) if(!chaveValida(k) || typeof est.notas[k] !== "string") delete est.notas[k];
 }
@@ -1278,6 +1337,10 @@ function montarNotas(aviso){
               est.progresso[id] = Object.assign({}, est.progresso[id], d.planos[id]);
             limparDados();
             gravarLS("logos_marcas", est.marcas); gravarLS("logos_notas", est.notas); gravarLS("logos_planos", est.progresso);
+            // o que veio do arquivo conta como alteração feita agora (sobe para a conta)
+            Object.keys(d.notas || {}).forEach(k=>{ if(k in est.notas) tocar("nota", k); });
+            Object.keys(d.marcas || {}).forEach(k=>{ if(k in est.marcas) tocar("marca", k); });
+            DADOS.plano.chaves().forEach(k=>tocar("plano", k));
             msg = `${t().restaurado} ${nNotas} ${t().nAnot}, ${nMarcas} ${t().nMarc}.`;
             if(est.vista==="cap") renderizar({ manter:true });
           }
@@ -1306,7 +1369,7 @@ function montarNotas(aviso){
   alvo.querySelectorAll(".nota").forEach(el=>{
     el.querySelector("button").addEventListener("click", (e)=>{
       e.stopPropagation();
-      delete est.notas[el.dataset.k]; gravarLS("logos_notas", est.notas); montarNotas();
+      delete est.notas[el.dataset.k]; gravarLS("logos_notas", est.notas); tocar("nota", el.dataset.k); montarNotas();
       const [usfm, cap, v] = el.dataset.k.split(".");
       if(est.vista==="cap" && usfm===est.livro && +cap===est.cap){
         const sinal = document.querySelector(`.verso[data-v="${v}"] .indicadores`); if(sinal) sinal.remove();
@@ -1335,6 +1398,304 @@ async function baixarOffline(){
   btn.disabled = false;
 }
 
+/* ---------- registro de estudo: capítulos lidos ---------- */
+const RE_CAP = /^([1-3A-Z][A-Z0-9]{2})\.(\d{1,3})$/;
+function capValido(k){ const m = RE_CAP.exec(k); return !!(m && infoLivro(m[1]) && +m[2] >= 1 && +m[2] <= infoLivro(m[1]).ch); }
+function foiLido(usfm, cap){ return (usfm + "." + cap) in est.lidos; }
+function marcarLido(usfm, cap, lido){
+  const k = usfm + "." + cap;
+  if(lido) est.lidos[k] = Date.now(); else delete est.lidos[k];
+  gravarLS("logos_lidos", est.lidos); tocar("lido", k);
+}
+/* Quem avança para o próximo capítulo depois de um tempo razoável na página leu o capítulo. */
+function leuAoAvancar(){
+  if(est.vista === "cap" && !foiLido(est.livro, est.cap) && Date.now() - (est.capAbertoEm || Date.now()) > 20000)
+    marcarLido(est.livro, est.cap, true);
+}
+function botaoLido(){
+  const x = t(), lido = foiLido(est.livro, est.cap);
+  return `<div class="fim-cap"><button id="btnLido" class="btn-lido${lido ? " feito" : ""}" aria-pressed="${lido}">${ico("feito")} <span>${lido ? x.lido : x.lidoMarcar}</span></button></div>`;
+}
+function ligarBotaoLido(){
+  const b = $("btnLido");
+  if(b) b.addEventListener("click", ()=>{
+    marcarLido(est.livro, est.cap, !foiLido(est.livro, est.cap));
+    b.parentNode.outerHTML = botaoLido(); ligarBotaoLido();
+  });
+}
+const diaLocal = (d)=>{ d = new Date(d); return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); };
+function resumoEstudo(){
+  const porLivro = {};
+  for(const k of Object.keys(est.lidos)){ const l = k.split(".")[0]; porLivro[l] = (porLivro[l] || 0) + 1; }
+  const total = est.meta.books.reduce((n, b)=>n + b.ch, 0);
+  const lidos = Object.keys(est.lidos).length;
+  // sequência: dias seguidos com leitura, terminando hoje ou ontem
+  const dias = new Set(Object.values(est.lidos).map(diaLocal));
+  const d = new Date(); let seq = 0;
+  if(!dias.has(diaLocal(d))) d.setDate(d.getDate() - 1);
+  while(dias.has(diaLocal(d))){ seq++; d.setDate(d.getDate() - 1); }
+  return { porLivro, total, lidos, seq, notas: Object.keys(est.notas).length, marcas: Object.keys(est.marcas).length };
+}
+const ordemRef = (a, b)=>{
+  const [la, ca, va] = a.split("."), [lb, cb, vb] = b.split("."), o = est.meta.books;
+  return o.findIndex(x=>x.id===la) - o.findIndex(x=>x.id===lb) || ca - cb || va - vb;
+};
+
+/* ---------- painel "Meu estudo" ---------- */
+async function montarMeuEstudo(){
+  const x = t(), r = resumoEstudo(), alvo = $("conteudoEstudo");
+  const ult = lerLS("logos_ultimo", null);
+  const pct = r.total ? Math.round(r.lidos / r.total * 1000) / 10 : 0;
+  const livros = (tst)=>est.meta.books.filter(b=>b.t===tst).map(b=>{
+    const n = r.porLivro[b.id] || 0;
+    return `<a class="lv${n >= b.ch ? " cheio" : ""}" href="${urlLivro(b.id)}" style="--p:${Math.round(n / b.ch * 100)}%"><span>${esc(nomeLivro(b.id))}</span><small>${n}/${b.ch}</small></a>`;
+  }).join("");
+  const marcas = Object.keys(est.marcas).filter(chaveValida).sort(ordemRef);
+  const notas = Object.keys(est.notas).filter(chaveValida).sort(ordemRef);
+  let planosHTML = "";
+  try{ planosHTML = (await planos()).map(pl=>{ const p = pctPlano(pl); return p ? `<div class="plano-linha"><span>${esc(pl.nome[est.idioma]||pl.nome.pt)}</span><div class="plano-barra"><i style="width:${p}%"></i></div><small>${p}%</small></div>` : ""; }).join(""); }catch(e){}
+  alvo.innerHTML = contaHTML() + `
+    <div class="estudo-numeros">
+      <div class="num largo"><b>${r.lidos.toLocaleString(est.idioma)}</b><span>${x.de} ${r.total.toLocaleString(est.idioma)} ${x.capsLidos} · ${pct.toLocaleString(est.idioma)}%</span>
+        <div class="plano-barra"><i style="width:${pct}%"></i></div></div>
+      <div class="num">${ico("chama")}<b>${r.seq}</b><span>${x.diasSeguidos}</span></div>
+      <div class="num"><b>${r.notas}</b><span>${x.nNotasRot}</span></div>
+      <div class="num"><b>${r.marcas}</b><span>${x.nMarcasRot}</span></div>
+    </div>
+    ${ult && infoLivro(ult.livro) ? `<p class="estudo-continuar"><a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${+ult.cap} ${ico("seta")}</a></p>` : ""}
+    <h3 class="estudo-sub">${x.progLivros}</h3>
+    ${r.lidos ? "" : `<p class="fonte">${x.semLeitura}</p>`}
+    <p class="rotulo-secao pequeno">${x.at}</p><div class="lvs">${livros("AT")}</div>
+    <p class="rotulo-secao pequeno">${x.nt}</p><div class="lvs">${livros("NT")}</div>
+    ${planosHTML ? `<h3 class="estudo-sub">${x.planosTit}</h3>${planosHTML}` : ""}
+    <h3 class="estudo-sub">${x.marcacoes}</h3>
+    ${marcas.length ? `<div class="marcas-lista">` + marcas.slice(0, 120).map(k=>{ const [l, c, v] = k.split("."); return linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "m-chip m-" + est.marcas[k]); }).join("") + `</div>` : `<p class="fonte">${x.semMarcas}</p>`}
+    <h3 class="estudo-sub">${x.notas}</h3>
+    ${notas.length ? notas.slice(0, 4).map(k=>{ const [l, c, v] = k.split("."); return `<p class="nota-curta">${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")} ${esc(est.notas[k].slice(0, 140))}${est.notas[k].length > 140 ? "…" : ""}</p>`; }).join("") : ""}
+    <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas} · ${x.backup}</button></p>
+    ${est.sessao ? `<p class="estudo-rodape"><button class="link-discreto" id="btnExcluirConta">${x.excluirConta}</button></p>` : ""}`;
+  $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
+  ligarConta();
+}
+function abrirMeuEstudo(){ montarMeuEstudo(); alternarPainel("painelEstudo", true); }
+
+/* ---------- conta: entrar, sair, excluir ---------- */
+const temConta = ()=>!!(CONTA.url && CONTA.chave);
+function carregarScript(src){
+  return new Promise((res, rej)=>{
+    const js = document.createElement("script");
+    js.src = src; js.onload = res; js.onerror = ()=>rej(new Error(src));
+    document.head.appendChild(js);
+  });
+}
+/* O cliente do Supabase (220 KB) só é carregado quando faz falta: sessão guardada, volta do login ou clique em "Entrar". */
+async function clienteConta(){
+  if(!temConta()) return null;
+  if(!est.sb){
+    if(!window.supabase) await carregarScript("/vendor/supabase/supabase.js");
+    est.sb = window.supabase.createClient(CONTA.url, CONTA.chave,
+      { auth:{ flowType:"pkce", persistSession:true, autoRefreshToken:true, detectSessionInUrl:true, storageKey:"sola-conta" } });
+    // fora do retorno de chamada: a biblioteca não deixa chamar o próprio Supabase de dentro dele
+    est.sb.auth.onAuthStateChange((evento, sessao)=>{ setTimeout(()=>aoMudarSessao(sessao), 0); });
+  }
+  return est.sb;
+}
+function contaHTML(){
+  const x = t();
+  if(!temConta()) return `<p class="conta-local">${x.contaLocal}</p>`;
+  if(!est.sessao) return `<div class="conta-caixa">
+      <div><h3>${ico("nuvem")} ${x.contaTitulo}</h3><p>${x.contaTexto}</p></div>
+      <div class="conta-acoes">
+        ${CONTA.google ? `<button class="btn-ouro" id="btnGoogle">${x.entrarGoogle}</button>` : ""}
+        ${CONTA.email ? `<form id="formEmail"><input type="email" required autocomplete="email" placeholder="${x.seuEmail}" aria-label="${x.seuEmail}"><button class="btn-linha">${x.entrarEmail}</button></form>` : ""}
+      </div>
+      <p class="fonte" id="contaAviso" role="status"></p></div>`;
+  const u = est.sessao.user, nome = (u.user_metadata && (u.user_metadata.full_name || u.user_metadata.name)) || u.email || "";
+  return `<div class="conta-caixa logada">
+      <div class="conta-quem"><span class="conta-letra" aria-hidden="true">${esc((nome[0] || "?").toUpperCase())}</span>
+        <div><strong>${esc(nome)}</strong><span id="sincEstado" role="status">${textoSinc()}</span></div></div>
+      <div class="conta-acoes"><button class="btn-linha" id="btnSincAgora">${x.sincAgora}</button><button class="btn-linha" id="btnSair">${x.sair}</button></div>
+      <p class="fonte" id="contaAviso" role="status"></p></div>`;
+}
+function textoSinc(){
+  const x = t();
+  if(est.sincEstado === "indo") return x.sincIndo;
+  if(est.sincEstado === "erro") return x.sincErro;
+  return est.sinc.ultima ? `${x.sincOk} · ${new Date(est.sinc.ultima).toLocaleTimeString(est.idioma, { hour:"2-digit", minute:"2-digit" })}` : "";
+}
+function estadoSinc(e){ est.sincEstado = e; const el = $("sincEstado"); if(el) el.textContent = textoSinc(); }
+function avisoConta(texto){ const el = $("contaAviso"); if(el) el.textContent = texto; }
+function ligarConta(){
+  const x = t(), em = (id, f)=>{ const el = $(id); if(el) el.addEventListener("click", f); };
+  const entrar = async (como)=>{
+    try{
+      const sb = await clienteConta();
+      try{ sessionStorage.setItem("sola_volta", location.pathname + location.hash); }catch(e){}
+      const { error } = await como(sb);
+      if(error) throw error;
+    }catch(e){ console.warn("conta", e); avisoConta(x.erroConta); }
+  };
+  em("btnGoogle", ()=>entrar(sb=>sb.auth.signInWithOAuth({ provider:"google", options:{ redirectTo: location.origin + "/" } })));
+  const fe = $("formEmail");
+  if(fe) fe.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const email = fe.querySelector("input").value.trim();
+    await entrar(sb=>sb.auth.signInWithOtp({ email, options:{ emailRedirectTo: location.origin + "/" } }));
+    if(!$("contaAviso").textContent) avisoConta(`${x.linkEnviado} ${email}.`);
+  });
+  em("btnSincAgora", ()=>sincronizar());
+  em("btnSair", async ()=>{
+    await sincronizar();                       // sobe o que faltava antes de sair
+    try{ await est.sb.auth.signOut(); }catch(e){}
+  });
+  em("btnExcluirConta", async ()=>{
+    if(!confirm(x.excluirConfirma)) return;
+    try{
+      const { error } = await est.sb.rpc("apagar_conta");
+      if(error) throw error;
+      est.sinc = { pend:{}, cursor:null, conta:null, ultima:0 }; gravarLS("logos_sinc", est.sinc);
+      try{ await est.sb.auth.signOut({ scope:"local" }); }catch(e){}
+      est.sessao = null; await montarMeuEstudo(); avisar(x.contaExcluida, null, null, 7000);
+    }catch(e){ console.warn("conta", e); avisoConta(x.erroConta); }
+  });
+}
+function temDadosLocais(){ return Object.keys(DADOS).some(tp=>tp !== "estado" && DADOS[tp].chaves().length); }
+async function aoMudarSessao(sessao){
+  const antes = est.sessao && est.sessao.user.id, agora = sessao && sessao.user && sessao.user.id;
+  est.sessao = sessao && sessao.user ? sessao : null;
+  if(agora && agora !== antes){
+    const s = est.sinc;
+    if(s.conta && s.conta !== agora){
+      // este aparelho tem o estudo de outra conta: não se mistura; a pessoa decide
+      if(temDadosLocais() && !confirm(t().contaOutra)){ est.sessao = null; try{ await est.sb.auth.signOut(); }catch(e){} return; }
+      for(const tp of Object.keys(DADOS)) if(tp !== "estado"){ DADOS[tp].chaves().forEach(k=>DADOS[tp].por(k, null)); DADOS[tp].salvar(); }
+      try{ localStorage.removeItem("logos_ultimo"); }catch(e){}
+      s.pend = {}; s.cursor = null;
+    } else if(!s.conta){
+      // primeira vez neste aparelho: o que já existe aqui entra na conta (no mesmo item, vale o mais recente)
+      for(const tp of Object.keys(DADOS)) for(const k of DADOS[tp].chaves()) if(!s.pend[tp + "|" + k]) s.pend[tp + "|" + k] = 1;
+      s.cursor = null;
+    }
+    s.conta = agora; gravarLS("logos_sinc", s);
+    await sincronizar();
+    atualizarTelas(new Set(Object.keys(DADOS)));   // inclusive quando o aparelho foi esvaziado para a outra conta
+  }
+  if(!$("painelEstudo").classList.contains("oculto")) montarMeuEstudo();
+}
+
+/* ---------- sincronização ---------- */
+/* Cada tipo de dado do usuário: quais itens existem neste aparelho, como ler um item e como gravá-lo.
+   No servidor cada item é uma linha (tipo, chave, valor, apagado, ts); ts = quando foi alterado, no relógio de quem alterou. */
+const partir = (k)=>{ const i = k.lastIndexOf("."); return [k.slice(0, i), k.slice(i + 1)]; };
+const DADOS = {
+  nota:  { chaves:()=>Object.keys(est.notas), ler:(k)=>k in est.notas ? { t: est.notas[k] } : null,
+           por:(k, v)=>{ if(v && typeof v.t === "string" && chaveValida(k)) est.notas[k] = v.t.slice(0, 20000); else delete est.notas[k]; },
+           salvar:()=>gravarLS("logos_notas", est.notas) },
+  marca: { chaves:()=>Object.keys(est.marcas), ler:(k)=>k in est.marcas ? { c: est.marcas[k] } : null,
+           por:(k, v)=>{ if(v && CORES.includes(v.c) && chaveValida(k)) est.marcas[k] = v.c; else delete est.marcas[k]; },
+           salvar:()=>gravarLS("logos_marcas", est.marcas) },
+  plano: { chaves:()=>Object.keys(est.progresso).flatMap(id=>Object.keys(est.progresso[id] || {}).filter(d=>est.progresso[id][d]).map(d=>id + "." + d)),
+           ler:(k)=>{ const [id, d] = partir(k); return est.progresso[id] && est.progresso[id][d] ? { f: true } : null; },
+           por:(k, v)=>{ const [id, d] = partir(k); if(!/^[\w-]{1,30}$/.test(id) || !/^\d{1,4}$/.test(d)) return;
+             est.progresso[id] = est.progresso[id] || {}; if(v && v.f) est.progresso[id][d] = true; else delete est.progresso[id][d]; },
+           salvar:()=>gravarLS("logos_planos", est.progresso) },
+  lido:  { chaves:()=>Object.keys(est.lidos), ler:(k)=>k in est.lidos ? { em: est.lidos[k] } : null,
+           por:(k, v)=>{ if(v && +v.em > 0 && capValido(k)) est.lidos[k] = +v.em; else delete est.lidos[k]; },
+           salvar:()=>gravarLS("logos_lidos", est.lidos) },
+  estado:{ chaves:()=>lerLS("logos_ultimo", null) ? ["ultimo"] : [], ler:(k)=>k === "ultimo" ? lerLS("logos_ultimo", null) : null,
+           por:(k, v)=>{ if(k === "ultimo" && v && infoLivro(v.livro) && capValido(v.livro + "." + v.cap)) gravarLS("logos_ultimo", { livro: v.livro, cap: +v.cap }); },
+           salvar:()=>{} },
+};
+/* Anota que um item mudou agora. Funciona sem conta também: quando a pessoa entrar, sobe com a hora certa. */
+function tocar(tipo, chave){
+  est.sinc.pend[tipo + "|" + chave] = Date.now();
+  gravarLS("logos_sinc", est.sinc);
+  agendarSinc();
+}
+function agendarSinc(ms){
+  if(!est.sessao) return;
+  clearTimeout(est.timerSinc);
+  est.timerSinc = setTimeout(sincronizar, ms ?? 2500);
+}
+async function sincronizar(){
+  if(!est.sessao || !est.sb) return;
+  if(est.sincronizando){ est.sincDeNovo = true; return; }
+  est.sincronizando = true; est.sincDeNovo = false;
+  clearTimeout(est.timerSinc);
+  estadoSinc("indo");
+  const s = est.sinc, uid = est.sessao.user.id, mudou = new Set();
+  try{
+    // 1. traz o que mudou na conta desde a última vez; no mesmo item, vale a alteração mais recente
+    let cursor = s.cursor;
+    for(let de = 0; ; de += 1000){
+      let q = est.sb.from("itens").select("tipo,chave,valor,apagado,ts,atualizado_em");
+      if(s.cursor) q = q.gte("atualizado_em", s.cursor);
+      const { data, error } = await q.order("atualizado_em").order("tipo").order("chave").range(de, de + 999);
+      if(error) throw error;
+      for(const r of data){
+        const d = DADOS[r.tipo], k = r.tipo + "|" + r.chave;
+        if(!d) continue;
+        if(!(s.pend[k] > +r.ts)){
+          const antes = JSON.stringify(d.ler(r.chave));
+          d.por(r.chave, r.apagado ? null : r.valor);
+          if(JSON.stringify(d.ler(r.chave)) !== antes) mudou.add(r.tipo);
+          delete s.pend[k];
+        }
+        if(!cursor || r.atualizado_em > cursor) cursor = r.atualizado_em;
+      }
+      if(data.length < 1000) break;
+    }
+    mudou.forEach(tp=>DADOS[tp].salvar());
+    // 2. sobe o que mudou aqui (item que não existe mais aqui sobe como apagado)
+    const envio = Object.keys(s.pend).map(k=>{
+      const i = k.indexOf("|"), tipo = k.slice(0, i), chave = k.slice(i + 1);
+      if(!DADOS[tipo]){ delete s.pend[k]; return null; }
+      const valor = DADOS[tipo].ler(chave);
+      return { user_id: uid, tipo, chave, valor, apagado: valor === null, ts: s.pend[k] };
+    }).filter(Boolean);
+    for(let i = 0; i < envio.length; i += 500){
+      const lote = envio.slice(i, i + 500);
+      const { error } = await est.sb.from("itens").upsert(lote, { onConflict:"user_id,tipo,chave" });
+      if(error) throw error;
+      for(const r of lote){ const k = r.tipo + "|" + r.chave; if(s.pend[k] === r.ts) delete s.pend[k]; }
+    }
+    s.cursor = cursor; s.conta = uid; s.ultima = Date.now();
+    estadoSinc("ok");
+  }catch(e){ console.warn("sincronização", e); estadoSinc("erro"); }
+  gravarLS("logos_sinc", s);
+  est.sincronizando = false;
+  if(mudou.size) atualizarTelas(mudou);
+  if(est.sincDeNovo) agendarSinc(600);
+}
+/* Chegou coisa de outro aparelho: redesenha o que está à vista, sem atrapalhar quem está escrevendo. */
+function atualizarTelas(tipos){
+  if(!est.pronto) return;
+  if(!$("painelEstudo").classList.contains("oculto")) montarMeuEstudo();
+  if(!$("painelNotas").classList.contains("oculto")) montarNotas();
+  if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) || est.gaveta) return;
+  const mexeu = (...l)=>l.some(tp=>tipos.has(tp));
+  if(est.vista === "inicio" ? mexeu("estado", "lido") : est.vista === "livro" ? mexeu("lido") : mexeu("nota", "marca", "lido"))
+    renderizar({ manter:true });
+}
+/* No início: liga a conta se a pessoa já estava dentro ou se está voltando da tela de login. */
+async function iniciarConta(){
+  if(!temConta()) return;
+  $("sobreConta").classList.remove("oculto");
+  const voltando = /[?&](code|error|error_description)=/.test(location.search) || /(access_token|error_description)=/.test(location.hash);
+  let guardada = false;
+  try{ guardada = !!localStorage.getItem("sola-conta"); }catch(e){}
+  if(!voltando && !guardada) return;
+  try{
+    const sb = await clienteConta();
+    const { data } = await sb.auth.getSession();   // se está voltando do login, é aqui que o código vira sessão
+    if(data && data.session && !est.sessao) await aoMudarSessao(data.session);
+    if(voltando && est.sessao){
+      const u = est.sessao.user;
+      avisar(`${t().entrou} ${u.email || ""}`, null, null, 5000);
+    }
+  }catch(e){ console.warn("conta", e); }
+}
+
 /* ---------- painéis e tema ---------- */
 function painelAberto(){ return document.querySelector(".painel:not(.oculto)"); }
 function alternarPainel(id, abrir){
@@ -1360,13 +1721,14 @@ function aplicarTema(){
   $("btnTema").innerHTML = ico(escuro ? "sol" : "lua");
   $("metaTema").content = escuro ? "#0C1019" : "#F7F3EA";
 }
-function avisar(texto, botao, acao){
+function avisar(texto, botao, acao, some){
   document.querySelectorAll(".aviso-topo").forEach(a=>a.remove());
   const a = document.createElement("div");
   a.className = "aviso-topo"; a.setAttribute("role", "alert");
   a.innerHTML = `<span>${esc(texto)}</span>` + (botao ? `<button>${esc(botao)}</button>` : "");
   if(botao) a.querySelector("button").addEventListener("click", acao);
   document.body.appendChild(a);
+  if(some) setTimeout(()=>a.remove(), some);
 }
 
 /* ---------- inicialização ---------- */
@@ -1385,7 +1747,17 @@ async function iniciar(){
   aplicarTextos(); preencherTraducoes(); aplicarTema(); aplicarEstudo();
   $("btnCorrida").classList.toggle("ativa", est.corrida);
   $("btnCorrida").setAttribute("aria-pressed", est.corrida);
-  await navegar(rota, { substituir: antigo });
+  // voltando da tela de login: primeiro a sessão (o código está no endereço), depois a página em que a pessoa estava
+  const voltaLogin = temConta() && /[?&](code|error)=/.test(location.search);
+  if(voltaLogin){
+    await iniciarConta();
+    if(/[?&](code|error)=/.test(location.search)) history.replaceState({}, "", location.pathname);   // sobra do login no endereço
+  }
+  let volta = null;
+  try{ volta = voltaLogin && sessionStorage.getItem("sola_volta"); sessionStorage.removeItem("sola_volta"); }catch(e){}
+  const rotaVolta = volta && rotaDe(volta.split("#")[0], volta.includes("#") ? volta.slice(volta.indexOf("#")) : "");
+  await navegar(rotaVolta || rota, { substituir: antigo || !!rotaVolta });
+  if(!voltaLogin) iniciarConta();
 
   $("selIdioma").addEventListener("change", (e)=>{
     est.idioma = e.target.value; gravarLS("logos_idioma", est.idioma);
@@ -1398,6 +1770,7 @@ async function iniciar(){
   });
   $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizar({ manter:true }); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
+  $("btnMeuEstudo").addEventListener("click", abrirMeuEstudo);
   $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
   $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
   $("navDic").addEventListener("click", ()=>abrirBusca("dicionario"));
@@ -1431,6 +1804,7 @@ async function iniciar(){
     if(id==="painelPlanos") montarPlanos(null);
     if(id==="painelTempo") montarTempo();
     if(id==="painelNotas") montarNotas();
+    if(id==="painelEstudo") montarMeuEstudo();
     alternarPainel(id, true);
   }));
   $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
@@ -1477,8 +1851,12 @@ async function iniciar(){
     if(est.vista !== "cap") return;
     const { ant, pro } = vizinhos();
     if(e.key === "ArrowLeft" && ant) irPara(ant.l, ant.c);
-    if(e.key === "ArrowRight" && pro) irPara(pro.l, pro.c);
+    if(e.key === "ArrowRight" && pro){ leuAoAvancar(); irPara(pro.l, pro.c); }
   });
+
+  // outro aparelho pode ter mudado algo: confere ao voltar para a aba e ao recuperar a conexão
+  document.addEventListener("visibilitychange", ()=>{ if(!document.hidden && Date.now() - est.sinc.ultima > 30000) agendarSinc(300); });
+  window.addEventListener("online", ()=>agendarSinc(300));
 
   if("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost"))
     navigator.serviceWorker.register("/sw.js").catch(()=>{});

@@ -12,7 +12,7 @@ if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matche
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=6d1ad3531f">
+<link rel="stylesheet" href="/style.css?v=72658bc91e">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -56,11 +56,16 @@ document.documentElement.dataset.tema=t;</script>
 <symbol id="i-comentario" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
 <symbol id="i-refs" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1"/><path d="M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/></symbol>
 <symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+<symbol id="i-pessoa" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.400 3.600-7 8-7s8 2.600 8 7"/></symbol>
+<symbol id="i-feito" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></symbol>
+<symbol id="i-nuvem" viewBox="0 0 24 24"><path d="M7 18a4.500 4.500 0 0 1-.500-9A6 6 0 0 1 18 10.500 3.800 3.800 0 0 1 17.500 18z"/></symbol>
+<symbol id="i-chama" viewBox="0 0 24 24"><path d="M12 3c1 3.500 5 5.500 5 10a5 5 0 0 1-10 0c0-1.800.800-3 1.800-4 .200 1.500 1 2.300 1.700 2.500C10 9 10.500 5.500 12 3z"/></symbol>
 </svg>
 <header class="topo">
   <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Apocalipse 10</span></button>
   <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <nav class="navbar" aria-label="Recursos">
+    <button id="btnMeuEstudo" data-nav="meu"><svg class="ico"><use href="#i-pessoa"/></svg><span data-label>Meu estudo</span></button>
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
     <button id="navDic" data-nav="dicionario"><svg class="ico"><use href="#i-dicionario"/></svg><span data-label>Dicionário</span></button>
@@ -180,6 +185,12 @@ document.documentElement.dataset.tema=t;</script>
     <div id="ctxCorpo"></div>
   </div>
 </div>
+<div id="painelEstudo" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloEstudo">
+  <div class="painel-caixa painel-larga">
+    <div class="painel-cabeca"><h2 id="tituloEstudo">Meu estudo</h2><button class="fechar" data-fecha="painelEstudo" aria-label="Fechar">✕</button></div>
+    <div id="conteudoEstudo"></div>
+  </div>
+</div>
 <div id="painelSobre" class="painel oculto" role="dialog" aria-modal="true" aria-labelledby="tituloSobre">
   <div class="painel-caixa">
     <div class="painel-cabeca"><h2 id="tituloSobre">Sobre o projeto</h2><button class="fechar" data-fecha="painelSobre" aria-label="Fechar">✕</button></div>
@@ -191,6 +202,11 @@ document.documentElement.dataset.tema=t;</script>
     navegador — nada é enviado a servidores. O site não usa cookies, contadores de visita
     nem fontes de terceiros; a única coisa que vem de fora são as imagens do mapa
     (OpenStreetMap), e só quando você abre o Atlas.</p>
+    <p class="painel-texto oculto" id="sobreConta">Criar conta é opcional. Se você entrar, suas anotações,
+    marcações, capítulos lidos e planos passam a ser guardados também no servidor do Sola (Supabase),
+    ligados ao seu e-mail, só para aparecerem nos seus outros aparelhos. Ninguém mais tem acesso, nada é
+    vendido nem usado para anúncios, e você pode excluir a conta com todos os dados quando quiser, em
+    “Meu estudo”.</p>
     <h3 class="painel-sub">Ler sem internet</h3>
     <p class="painel-texto">Os capítulos que você abre ficam guardados no aparelho. Para ter a
     Bíblia inteira na tradução atual, mesmo sem sinal:</p>
@@ -237,6 +253,7 @@ document.documentElement.dataset.tema=t;</script>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
       <a href="#" data-painel="painelTempo">Linha do tempo</a>
       <a href="#" data-painel="painelAtlas">Atlas bíblico</a>
+      <a href="#" data-painel="painelEstudo">Meu estudo</a>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
     </div>
     <div>
@@ -250,6 +267,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script src="/app.js?v=54cf3b0cd6"></script>
+<script src="/app.js?v=3cc0c89f41"></script>
 </body>
 </html>

@@ -57,8 +57,15 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
   `data/timeline.json`, `data/plans.json`.
-- Dados do usuário (marcações, notas, progresso dos planos) ficam só no localStorage do navegador,
-  com backup/restauração manual em arquivo.
+- Dados do usuário (marcações, notas, planos, capítulos lidos `logos_lidos`, "onde parei" `logos_ultimo`) ficam
+  no localStorage do navegador, com backup/restauração manual em arquivo. O painel "Meu estudo" (progresso
+  por livro, dias seguidos, marcações) funciona só com isso, sem conta.
+- Contas (opcionais, Supabase): `CONTA` no topo do `app.js`; com `url` vazio tudo de conta fica escondido.
+  O cliente (`vendor/supabase/supabase.js`, 220 KB) só é carregado se houver sessão guardada, volta do login
+  ou clique em "Entrar". Uma tabela só (`itens`, em `ferramentas/supabase.sql`, com RLS). Sincronização em
+  `sincronizar()`: o aparelho é a fonte, `tocar(tipo, chave)` anota cada alteração em `est.sinc.pend`, e no
+  mesmo item vale o `ts` mais recente (apagar também é alteração). `DADOS` descreve cada tipo (nota, marca,
+  plano, lido, estado). Passo a passo de configuração e detalhes em `ferramentas/CONTAS.md`.
 
 ## Ferramentas de tradução (`ferramentas/tradutor/`)
 
@@ -86,7 +93,13 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
   390, 1280 e 1600.
 - `node --check app.js` depois de qualquer edição no JS; `python3 ferramentas/validar_dados.py` depois de mexer em `data/`.
 - Nos testes com Playwright, use `serviceWorkers: 'block'` no contexto, senão o service worker responde no
-  lugar das rotas simuladas.
+  lugar das rotas simuladas; e `reducedMotion: 'reduce'`, senão a rolagem suave faz cliques falharem ao acaso.
+- Para testar contas sem Supabase: interceptar `/vendor/supabase/supabase.js` com um cliente falso (mesma
+  interface: `auth.getSession/onAuthStateChange/signInWithOAuth/signOut`, `from().select().gte().order().range()`,
+  `upsert`, `rpc`) e trocar `CONTA` na resposta do `app.js`. Variáveis `const` do app (`est`) são visíveis em
+  `page.evaluate`, mas não em `window.est`.
+- No celular (≤560px) a barra do versículo fica no fluxo, entre o texto e a gaveta: flutuando ela cobria o
+  botão Salvar. `font-variant-numeric:lining-nums` no `body` é obrigatório: sem ele o "1" da Cormorant parece "I".
 - Visual: cores e fontes são variáveis no topo do `style.css` (marfim, azul-noite, ouro envelhecido; títulos em
   Cormorant Garamond, Escritura em Cardo, interface em Inter). `.verso > p` é só o texto do versículo — o que
   está dentro das gavetas tem estilo próprio. Textos da interface ficam no objeto `UI` (pt/en/es).
@@ -113,8 +126,10 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Qualidade da tradução de Calvino/Easton: o caminho gratuito é o workflow "Traduzir (NLLB)" (já usado no
   Henry). A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
   antigo foi removido (gravava por cima dos originais) — seria preciso um novo que leia `trabalho/<etapa>.json`.
-- Glosas do interlinear ainda em inglês ou truncadas (~3.000 palavras nos capítulos recuperados do AT, mais
-  ~800 antigas como "and  you will do"): `./traduzir_tudo.sh glosas` no notebook dele resolve.
+- Contas: falta ele criar o projeto no Supabase e o login do Google (`ferramentas/CONTAS.md`) e mandar a URL e
+  a chave publishable; aí preencher `CONTA` e testar de verdade (login e RLS nunca rodaram contra um projeto real).
+- Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
+  `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
 - Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).
 - Inglês e espanhol: a interface está traduzida, mas atlas (rótulos do cartão do lugar), linha do tempo e
   fichas de contexto têm conteúdo só em português.
