@@ -60,7 +60,8 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
 - Dados do usuário (marcações, notas, planos, capítulos lidos `logos_lidos`, "onde parei" `logos_ultimo`) ficam
   no localStorage do navegador, com backup/restauração manual em arquivo. O painel "Meu estudo" (progresso
   por livro, dias seguidos, marcações) funciona só com isso, sem conta.
-- Contas (opcionais, Supabase): `CONTA` no topo do `app.js`; com `url` vazio tudo de conta fica escondido.
+- Contas (opcionais, Supabase): `CONTA` no topo do `app.js`; com `url` vazio, ou com `google` e `email`
+  desligados, tudo de conta fica escondido.
   O cliente (`vendor/supabase/supabase.js`, 220 KB) só é carregado se houver sessão guardada, volta do login
   ou clique em "Entrar". Uma tabela só (`itens`, em `ferramentas/supabase.sql`, com RLS). Sincronização em
   `sincronizar()`: o aparelho é a fonte, `tocar(tipo, chave)` anota cada alteração em `est.sinc.pend`, e no
@@ -126,8 +127,11 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Qualidade da tradução de Calvino/Easton: o caminho gratuito é o workflow "Traduzir (NLLB)" (já usado no
   Henry). A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
   antigo foi removido (gravava por cima dos originais) — seria preciso um novo que leia `trabalho/<etapa>.json`.
-- Contas: falta ele criar o projeto no Supabase e o login do Google (`ferramentas/CONTAS.md`) e mandar a URL e
-  a chave publishable; aí preencher `CONTA` e testar de verdade (login e RLS nunca rodaram contra um projeto real).
+- Contas: o projeto no Supabase existe e `CONTA` já tem o endereço e a chave pública, mas `google:false` mantém
+  tudo escondido. Falta ele configurar o login do Google (`ferramentas/CONTAS.md`, passo 3) e confirmar que rodou
+  o `supabase.sql`; aí trocar para `google:true` e testar de verdade (login e RLS nunca rodaram contra o projeto
+  real). O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co` e `solabiblia.com.br`:
+  sessões iniciadas nele conseguem conferir o projeto e o site publicado; no ambiente Default ficam bloqueados.
 - Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
   `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
 - Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).

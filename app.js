@@ -220,9 +220,10 @@ const ABREV = {gn:"GEN",ex:"EXO",lv:"LEV",nm:"NUM",dt:"DEU",js:"JOS",jz:"JDG",rt
   "1tm":"1TI","2tm":"2TI",tt:"TIT",fm:"PHM",hb:"HEB",tg:"JAS","1pe":"1PE","2pe":"2PE","1jo":"1JN","2jo":"2JN","3jo":"3JN",jd:"JUD",ap:"REV",apoc:"REV"};
 const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no sw.js
 /* Contas (opcionais): endereço e chave pública ("publishable"/anon) do projeto no Supabase — ver ferramentas/supabase.sql.
-   Com `url` vazio nada de conta aparece e o site funciona como sempre, só neste aparelho.
-   `google` e `email` ligam cada forma de entrar (o link por e-mail exige SMTP próprio configurado no Supabase). */
-const CONTA = { url:"", chave:"", google:true, email:false };
+   `google` e `email` ligam cada forma de entrar (o link por e-mail exige SMTP próprio configurado no Supabase).
+   Com `url` vazio, ou com as duas formas desligadas, nada de conta aparece e o site funciona como sempre,
+   só neste aparelho. O Google fica desligado até o provedor estar configurado no painel do Supabase. */
+const CONTA = { url:"https://rxmxxuyqvetbkjfilayc.supabase.co", chave:"sb_publishable_l4W4kfy9e24ajcdxKNtGFA_yIBhqbY-", google:false, email:false };
 
 /* ---------- estado ---------- */
 const est = {
@@ -1480,7 +1481,7 @@ async function montarMeuEstudo(){
 function abrirMeuEstudo(){ montarMeuEstudo(); alternarPainel("painelEstudo", true); }
 
 /* ---------- conta: entrar, sair, excluir ---------- */
-const temConta = ()=>!!(CONTA.url && CONTA.chave);
+const temConta = ()=>!!(CONTA.url && CONTA.chave && (CONTA.google || CONTA.email));
 function carregarScript(src){
   return new Promise((res, rej)=>{
     const js = document.createElement("script");

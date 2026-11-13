@@ -1,7 +1,9 @@
 # Contas no Sola — como ligar
 
-O site já tem todo o código de contas, mas ele fica **desligado** até existir um projeto no Supabase.
-Enquanto isso nada de "Entrar" aparece e tudo funciona como sempre, só no aparelho da pessoa.
+O site já tem todo o código de contas. O projeto no Supabase existe (`rxmxxuyqvetbkjfilayc`, endereço e chave
+pública já estão em `CONTA`, no `app.js`), mas as contas ficam **desligadas** enquanto `google` e `email`
+estiverem `false` — nada de "Entrar" aparece e tudo funciona como sempre, só no aparelho da pessoa.
+Falta o passo 3 (login do Google); depois dele, trocar `google:false` por `google:true`.
 
 O que a conta faz: guarda anotações, marcações, capítulos lidos, planos e "onde parei" na nuvem, para a
 pessoa continuar em qualquer aparelho. Sem conta, o "Meu estudo" continua funcionando, só local.
@@ -42,7 +44,7 @@ usa a inicial do nome.
 No começo do `app.js`:
 
 ```js
-const CONTA = { url:"https://xxxx.supabase.co", chave:"sb_publishable_...", google:true, email:false };
+const CONTA = { url:"https://rxmxxuyqvetbkjfilayc.supabase.co", chave:"sb_publishable_...", google:true, email:false };
 ```
 
 Depois `python3 ferramentas/gerar_paginas.py`, commit e push. (Ou mande a URL e a chave publishable para o
