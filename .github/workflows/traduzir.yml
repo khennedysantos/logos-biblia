@@ -1,4 +1,6 @@
-# Tradução en->pt com o NLLB-200 1.3B (Meta), de graça, nas máquinas do GitHub.
+# Tradução en->pt de graça, nas máquinas do GitHub: NLLB-200 1.3B (Meta) para a prosa (Henry, Calvino,
+# dicionário, temas) e Argos para as glosas do interlinear (palavras soltas; é o mesmo modelo do
+# ferramentas/tradutor/traduzir_tudo.sh, então dispensa rodar qualquer coisa no computador).
 # O trabalho é dividido em N partes que rodam ao mesmo tempo (repositório público = minutos ilimitados).
 # Ao fim, o resultado é gravado em data/.../pt/ e enviado para o branch "traducao-<etapa>",
 # para ser revisado e juntado ao main por pull request.
@@ -14,10 +16,10 @@ on:
       etapa:
         description: "O que traduzir"
         type: choice
-        options: [henry, calvino, dicionario, temas]
+        options: [henry, calvino, dicionario, temas, glosas]
         default: henry
       partes:
-        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40)"
+        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40, glosas 1)"
         default: "20"
       retomar:
         description: "Opcional: número (run id) de uma execução anterior para continuar dela"
@@ -29,7 +31,11 @@ permissions:
 
 env:
   MODELO: JustFrederik/nllb-200-distilled-1.3B-ct2-int8
+  MODELO_ARGOS: https://argos-net.com/v1/translate-en_pb-1_9.argosmodel
   ETAPA: ${{ inputs.etapa }}
+  MOTOR: ${{ inputs.etapa == 'glosas' && 'argos' || 'nllb' }}
+  PASTA_MODELO: ${{ inputs.etapa == 'glosas' && 'modelo-argos' || 'modelo-nllb' }}
+  CACHE_MODELO: ${{ inputs.etapa == 'glosas' && 'argos-en_pb-1_9-v1' || 'nllb-1.3B-int8-v1' }}
 
 jobs:
   preparar:
@@ -45,14 +51,20 @@ jobs:
         id: cache
         uses: actions/cache@v4
         with:
-          path: modelo-nllb
-          key: nllb-1.3B-int8-v1
+          path: ${{ env.PASTA_MODELO }}
+          key: ${{ env.CACHE_MODELO }}
       - name: Baixar modelo
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          pip install -q huggingface_hub
-          python -c "from huggingface_hub import snapshot_download as d; d('$MODELO', local_dir='modelo-nllb')"
-          ls -la modelo-nllb
+          if [ "$MOTOR" = argos ]; then
+            curl -L --fail --retry 3 -o modelo.zip "$MODELO_ARGOS"
+            unzip -q modelo.zip -d modelo_tmp
+            mv modelo_tmp/*/ "$PASTA_MODELO"
+          else
+            pip install -q huggingface_hub
+            python -c "from huggingface_hub import snapshot_download as d; d('$MODELO', local_dir='$PASTA_MODELO')"
+          fi
+          ls -la "$PASTA_MODELO"
       - name: Traduções de uma execução anterior
         if: inputs.retomar != ''
         env: { GH_TOKEN: "${{ github.token }}" }
@@ -106,8 +118,8 @@ jobs:
       - run: pip install -q ctranslate2 sentencepiece
       - uses: actions/cache/restore@v4
         with:
-          path: modelo-nllb
-          key: nllb-1.3B-int8-v1
+          path: ${{ env.PASTA_MODELO }}
+          key: ${{ env.CACHE_MODELO }}
           fail-on-cache-miss: true
       - uses: actions/download-artifact@v4
         with: { name: entrada, path: entrada }
@@ -117,7 +129,7 @@ jobs:
           # para antes do limite de 6 h do GitHub, para que o que já foi feito seja guardado
           timeout 335m python ferramentas/tradutor/lote.py \
             "entrada/$ETAPA.json" "saida/parte-${{ matrix.parte }}.json" \
-            modelo-nllb --motor nllb --parte "${{ matrix.parte }}/${{ inputs.partes }}" --bloco 200 --max-car 15000 || true
+            "$PASTA_MODELO" --motor "$MOTOR" --parte "${{ matrix.parte }}/${{ inputs.partes }}" --bloco 200 --max-car 15000 || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -161,6 +173,8 @@ jobs:
               + ("\nRode de novo com **retomar = ${{ github.run_id }}** para terminar.\n" if faltam else ""))
           EOF
           python etapas.py aplicar "$ETAPA"
+      - name: Conferir os dados
+        run: python ferramentas/validar_dados.py
       - uses: actions/upload-artifact@v4
         with:
           name: traducao-${{ inputs.etapa }}
@@ -171,6 +185,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "traducao-$ETAPA"
-          git add data
-          git commit -q -m "Tradução automática (NLLB-200 1.3B): $ETAPA" || { echo "nada mudou"; exit 0; }
+          git add data ferramentas/glosas_pt.json
+          git commit -q -m "Tradução automática ($MOTOR): $ETAPA" || { echo "nada mudou"; exit 0; }
           git push -f origin "traducao-$ETAPA"

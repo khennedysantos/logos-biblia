@@ -20,6 +20,9 @@ GitHub Pages a partir da raiz do branch `main`. Custo de operação: zero.
 - Página inicial, uma página por livro e uma por capítulo já escritas em HTML para o Google
   (`/biblia/joao/`, `/biblia/joao/3/`), e link direto para o versículo (`/biblia/joao/3/#v16`).
 - Funciona sem internet depois da primeira visita (service worker) e pode ser instalado no celular.
+- "Meu estudo": capítulos lidos, progresso por livro, dias seguidos e versículos marcados.
+- Contas opcionais (Supabase) para continuar em qualquer aparelho — desligadas até o projeto ser criado;
+  veja `ferramentas/CONTAS.md`.
 
 ## Como mexer
 

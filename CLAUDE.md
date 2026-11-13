@@ -31,6 +31,9 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   — as páginas são cópias do index, e ele carimba `?v=<hash>` nos endereços do JS/CSS e a `VERSAO` do `sw.js`.
   Nunca edite `biblia/` à mão. Rodar duas vezes não muda nada; o workflow `verificar.yml` reprova o envio se
   as páginas estiverem desatualizadas, se `node --check` falhar ou se `ferramentas/validar_dados.py` achar erro.
+- `privacidade/` — página de texto avulsa (sem o app), também GERADA: o conteúdo fica em
+  `ferramentas/paginas/privacidade.html` e cada arquivo dessa pasta vira `/nome/`. Atualize a data no topo
+  do texto quando mudar o que o site guarda. O link dela está no cadastro do login do Google (Branding).
 - `sw.js` + `manifest.webmanifest` — uso sem internet (PWA). Páginas: rede primeiro, e sem rede a página
   inicial guardada (o app lê o endereço). `/data/`: responde do cache `sola-dados-v1` e atualiza por trás.
   O botão "Baixar a Bíblia" (painel Sobre) guarda a tradução inteira nesse mesmo cache.
@@ -57,8 +60,16 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
   `data/timeline.json`, `data/plans.json`.
-- Dados do usuário (marcações, notas, progresso dos planos) ficam só no localStorage do navegador,
-  com backup/restauração manual em arquivo.
+- Dados do usuário (marcações, notas, planos, capítulos lidos `logos_lidos`, "onde parei" `logos_ultimo`) ficam
+  no localStorage do navegador, com backup/restauração manual em arquivo. O painel "Meu estudo" (progresso
+  por livro, dias seguidos, marcações) funciona só com isso, sem conta.
+- Contas (opcionais, Supabase): `CONTA` no topo do `app.js`; com `url` vazio, ou com `google` e `email`
+  desligados, tudo de conta fica escondido.
+  O cliente (`vendor/supabase/supabase.js`, 220 KB) só é carregado se houver sessão guardada, volta do login
+  ou clique em "Entrar". Uma tabela só (`itens`, em `ferramentas/supabase.sql`, com RLS). Sincronização em
+  `sincronizar()`: o aparelho é a fonte, `tocar(tipo, chave)` anota cada alteração em `est.sinc.pend`, e no
+  mesmo item vale o `ts` mais recente (apagar também é alteração). `DADOS` descreve cada tipo (nota, marca,
+  plano, lido, estado). Passo a passo de configuração e detalhes em `ferramentas/CONTAS.md`.
 
 ## Ferramentas de tradução (`ferramentas/tradutor/`)
 
@@ -66,6 +77,8 @@ Dois motores: Argos (rápido, mediano) e NLLB-200 1.3B (`nllb.py`, ~10x mais len
 O NLLB roda no GitHub Actions: `.github/workflows/traduzir.yml` (Actions → "Traduzir (NLLB)" → etapa,
 nº de partes). Divide em N máquinas, junta, grava em `data/.../pt/` e envia ao branch `traducao-<etapa>`
 para virar PR. Se faltar algo, rodar de novo com `retomar` = run id anterior. `lote.py --motor nllb --parte K/N`.
+A etapa `glosas` do mesmo workflow usa o Argos (palavras soltas, 1 máquina, poucos minutos): é o
+`traduzir_tudo.sh glosas` sem precisar de computador (ele usa Windows 11 agora, sem ambiente Linux).
 O `nllb.py` protege marcadores de tópico ("I.", "1.", "(2.)") e devolve "milhas" (o modelo troca por "quilômetros").
 
 Glosas do interlinear: `ferramentas/glosas_pt.json` é o dicionário inglês→português, e `GLOSAS_FIXAS` em
@@ -84,7 +97,13 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
   390, 1280 e 1600.
 - `node --check app.js` depois de qualquer edição no JS; `python3 ferramentas/validar_dados.py` depois de mexer em `data/`.
 - Nos testes com Playwright, use `serviceWorkers: 'block'` no contexto, senão o service worker responde no
-  lugar das rotas simuladas.
+  lugar das rotas simuladas; e `reducedMotion: 'reduce'`, senão a rolagem suave faz cliques falharem ao acaso.
+- Para testar contas sem Supabase: interceptar `/vendor/supabase/supabase.js` com um cliente falso (mesma
+  interface: `auth.getSession/onAuthStateChange/signInWithOAuth/signOut`, `from().select().gte().order().range()`,
+  `upsert`, `rpc`) e trocar `CONTA` na resposta do `app.js`. Variáveis `const` do app (`est`) são visíveis em
+  `page.evaluate`, mas não em `window.est`.
+- No celular (≤560px) a barra do versículo fica no fluxo, entre o texto e a gaveta: flutuando ela cobria o
+  botão Salvar. `font-variant-numeric:lining-nums` no `body` é obrigatório: sem ele o "1" da Cormorant parece "I".
 - Visual: cores e fontes são variáveis no topo do `style.css` (marfim, azul-noite, ouro envelhecido; títulos em
   Cormorant Garamond, Escritura em Cardo, interface em Inter). `.verso > p` é só o texto do versículo — o que
   está dentro das gavetas tem estilo próprio. Textos da interface ficam no objeto `UI` (pt/en/es).
@@ -111,8 +130,12 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Qualidade da tradução de Calvino/Easton: o caminho gratuito é o workflow "Traduzir (NLLB)" (já usado no
   Henry). A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
   antigo foi removido (gravava por cima dos originais) — seria preciso um novo que leia `trabalho/<etapa>.json`.
-- Glosas do interlinear ainda em inglês ou truncadas (~3.000 palavras nos capítulos recuperados do AT, mais
-  ~800 antigas como "and  you will do"): `./traduzir_tudo.sh glosas` no notebook dele resolve.
+- Contas: ligadas (`google:true`) contra o projeto `rxmxxuyqvetbkjfilayc`. O login real e as regras do banco (RLS)
+  só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
+  para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
+  e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
+- Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
+  `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
 - Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).
 - Inglês e espanhol: a interface está traduzida, mas atlas (rótulos do cartão do lugar), linha do tempo e
   fichas de contexto têm conteúdo só em português.
