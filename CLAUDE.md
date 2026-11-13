@@ -130,11 +130,10 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
 - Qualidade da tradução de Calvino/Easton: o caminho gratuito é o workflow "Traduzir (NLLB)" (já usado no
   Henry). A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
   antigo foi removido (gravava por cima dos originais) — seria preciso um novo que leia `trabalho/<etapa>.json`.
-- Contas: o projeto no Supabase existe e `CONTA` já tem o endereço e a chave pública, mas `google:false` mantém
-  tudo escondido. Falta ele configurar o login do Google (`ferramentas/CONTAS.md`, passo 3) e confirmar que rodou
-  o `supabase.sql`; aí trocar para `google:true` e testar de verdade (login e RLS nunca rodaram contra o projeto
-  real). O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co` e `solabiblia.com.br`:
-  sessões iniciadas nele conseguem conferir o projeto e o site publicado; no ambiente Default ficam bloqueados.
+- Contas: ligadas (`google:true`) contra o projeto `rxmxxuyqvetbkjfilayc`. O login real e as regras do banco (RLS)
+  só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
+  para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
+  e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
 - Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
   `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
 - Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).

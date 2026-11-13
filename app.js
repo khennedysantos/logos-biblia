@@ -223,7 +223,7 @@ const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no sw.js
    `google` e `email` ligam cada forma de entrar (o link por e-mail exige SMTP próprio configurado no Supabase).
    Com `url` vazio, ou com as duas formas desligadas, nada de conta aparece e o site funciona como sempre,
    só neste aparelho. O Google fica desligado até o provedor estar configurado no painel do Supabase. */
-const CONTA = { url:"https://rxmxxuyqvetbkjfilayc.supabase.co", chave:"sb_publishable_l4W4kfy9e24ajcdxKNtGFA_yIBhqbY-", google:false, email:false };
+const CONTA = { url:"https://rxmxxuyqvetbkjfilayc.supabase.co", chave:"sb_publishable_l4W4kfy9e24ajcdxKNtGFA_yIBhqbY-", google:true, email:false };
 
 /* ---------- estado ---------- */
 const est = {

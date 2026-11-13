@@ -1,9 +1,9 @@
 # Contas no Sola — como ligar
 
-O site já tem todo o código de contas. O projeto no Supabase existe (`rxmxxuyqvetbkjfilayc`, endereço e chave
-pública já estão em `CONTA`, no `app.js`), mas as contas ficam **desligadas** enquanto `google` e `email`
-estiverem `false` — nada de "Entrar" aparece e tudo funciona como sempre, só no aparelho da pessoa.
-Falta o passo 3 (login do Google); depois dele, trocar `google:false` por `google:true`.
+O projeto no Supabase existe (`rxmxxuyqvetbkjfilayc`) e o login com Google está ligado (`google:true` em `CONTA`,
+no `app.js`). Para desligar tudo de conta de uma vez — por exemplo, se o login parar de funcionar — basta voltar
+para `google:false`: nada de "Entrar" aparece e o site funciona como sempre, só no aparelho da pessoa.
+Os passos abaixo ficam como registro de como foi configurado.
 
 O que a conta faz: guarda anotações, marcações, capítulos lidos, planos e "onde parei" na nuvem, para a
 pessoa continuar em qualquer aparelho. Sem conta, o "Meu estudo" continua funcionando, só local.
