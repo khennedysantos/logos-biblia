@@ -122,8 +122,35 @@ def ajusta_glosa(g):
     return g
 
 
+def glosa_confiavel(en, pt):
+    """O tradutor automático inventa quando recebe uma palavra solta ("wares" vira "O que é isso?").
+    Glosa com cara de invenção fica em inglês, que é melhor do que português errado."""
+    if not pt or parece_pt(en):                                  # entrada que já estava (meio) em português
+        return False
+    if ("?" in pt) != ("?" in en) or ("..." in pt and "..." not in en):
+        return False
+    if re.search(r'["“”]', pt) and not re.search(r'["“”]', en):
+        return False
+    if pt.isupper() and not en.isupper() and len(pt) > 3:
+        return False
+    if re.search(r"\b(\w{3,}),? \1\b", pt, re.I) and not re.search(r"\b(\w{3,}),? \1\b", en, re.I):   # "advogado, advogado"
+        return False
+    if ("*" in pt and "*" not in en) or len(pt) > 3 * len(en) + 10:
+        return False
+    return True
+
+
+def arruma_glosa(en, pt):
+    if (en[:1].islower() or en.startswith("I ")) and pt[:1].isupper() and not pt[1:2].isupper():
+        pt = pt[0].lower() + pt[1:]
+    return pt.rstrip(".") if not en.rstrip().endswith(".") else pt
+
+
 def aplicar_glosas():
-    tr = traducoes("glosas")
+    bruto = traducoes("glosas")
+    tr = {en: arruma_glosa(en, pt) for en, pt in bruto.items() if glosa_confiavel(en, pt)}
+    if bruto:
+        print(f"[glosas] {len(tr)} traduções aceitas, {len(bruto) - len(tr)} recusadas (ficam em inglês)")
     tr.update(GLOSAS_FIXAS)
     n = 0
     for arq in (DATA / "interlinear").glob("*/*.json"):
