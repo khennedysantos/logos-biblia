@@ -544,3 +544,11 @@ body.com-painel{overflow:hidden}
 .estudo-rodape{margin:1.6rem 0 0;padding-top:1rem;border-top:1px solid var(--borda);text-align:right}
 .link-discreto{border:0;background:none;color:var(--suave);font-size:.72rem;text-decoration:underline;cursor:pointer}
 .link-discreto:hover{color:#B3261E}
+
+/* ---------- páginas de texto (privacidade) ---------- */
+.texto-pagina{max-width:42rem;margin:0 auto;padding:0 1.1rem 4rem;font-size:.98rem;line-height:1.75}
+.texto-pagina h2{font-family:var(--titulo);font-weight:600;font-size:1.6rem;line-height:1.2;margin:2.2rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--borda)}
+.texto-pagina ul{padding-left:1.2rem}
+.texto-pagina li{margin:.35rem 0}
+.texto-data{font-size:.72rem;letter-spacing:.06em;color:var(--suave);text-align:center;margin:-.6rem 0 2rem}
+.texto-voltar{text-align:center;margin-top:2.6rem}

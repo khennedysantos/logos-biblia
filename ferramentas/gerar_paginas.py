@@ -172,6 +172,46 @@ def pagina_capitulo(b, cap, versos, nome_trad, grupo, anterior, proximo):
     return "\n".join(corpo)
 
 
+def pagina_de_texto(modelo, arq):
+    """Página de texto avulsa (privacidade): HTML próprio, sem o app. O conteúdo fica em ferramentas/paginas/."""
+    corpo = arq.read_text(encoding="utf-8")
+    titulo = re.search(r"<!-- titulo: (.*?) -->", corpo).group(1)
+    desc = re.search(r"<!-- descricao: (.*?) -->", corpo).group(1)
+    corpo = re.sub(r"<!-- (titulo|descricao): .*? -->\n", "", corpo)
+    estilo = re.search(r'<link rel="stylesheet" href="(/style\.css[^"]*)">', modelo).group(1)
+    tema = re.search(r"<script>/\* tema antes.*?</script>", modelo, re.S).group(0)
+    url = f"{SITE}/{arq.stem}/"
+    logo = ('<svg class="ico ico-marca" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/>'
+            '<path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></svg>')
+    return url, f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{e(titulo)} — Sola</title>
+<meta name="description" content="{e(desc)}">
+<meta name="theme-color" content="#F7F3EA">
+{tema}
+<link rel="stylesheet" href="{estilo}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="{url}">
+</head>
+<body data-vista="texto">
+<header class="topo"><a class="marca" href="/" aria-label="Sola — página inicial">{logo}<span class="nome">Sola</span></a></header>
+<main class="texto-pagina">
+<header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Sola</a></p>
+<h1 class="titulo-cap">{e(titulo)}</h1>{ORNAMENTO}
+</header>
+{corpo}
+<p class="texto-voltar"><a class="btn-ouro" href="/">Voltar ao Sola</a></p>
+</main>
+<footer class="rodape"><p class="rodape-legal"><em>Sola Scriptura</em> · Estudo bíblico gratuito e em português · <a href="/" style="display:inline">solabiblia.com.br</a></p></footer>
+</body>
+</html>
+"""
+
+
 def main():
     carimbar_versoes()
     meta = ler("data/books.json")
@@ -232,6 +272,14 @@ def main():
         destino = RAIZ / "biblia" / s / str(cap) / "index.html"
         destino.parent.mkdir(parents=True, exist_ok=True)
         destino.write_text(pagina, encoding="utf-8")
+
+    # páginas de texto avulsas (cada arquivo de ferramentas/paginas/ vira /nome/)
+    for arq in sorted((RAIZ / "ferramentas" / "paginas").glob("*.html")):
+        url, pagina = pagina_de_texto(modelo, arq)
+        destino = RAIZ / arq.stem / "index.html"
+        destino.parent.mkdir(exist_ok=True)
+        destino.write_text(pagina, encoding="utf-8")
+        urls.append(url)
 
     # 404: o próprio app (endereços desconhecidos abrem na página inicial), fora do Google
     erro = modelo.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)

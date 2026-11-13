@@ -31,6 +31,9 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   — as páginas são cópias do index, e ele carimba `?v=<hash>` nos endereços do JS/CSS e a `VERSAO` do `sw.js`.
   Nunca edite `biblia/` à mão. Rodar duas vezes não muda nada; o workflow `verificar.yml` reprova o envio se
   as páginas estiverem desatualizadas, se `node --check` falhar ou se `ferramentas/validar_dados.py` achar erro.
+- `privacidade/` — página de texto avulsa (sem o app), também GERADA: o conteúdo fica em
+  `ferramentas/paginas/privacidade.html` e cada arquivo dessa pasta vira `/nome/`. Atualize a data no topo
+  do texto quando mudar o que o site guarda. O link dela está no cadastro do login do Google (Branding).
 - `sw.js` + `manifest.webmanifest` — uso sem internet (PWA). Páginas: rede primeiro, e sem rede a página
   inicial guardada (o app lê o endereço). `/data/`: responde do cache `sola-dados-v1` e atualiza por trás.
   O botão "Baixar a Bíblia" (painel Sobre) guarda a tradução inteira nesse mesmo cache.
