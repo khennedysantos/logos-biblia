@@ -64,7 +64,14 @@ const UI = {
     sincErro:"Sem conexão com a conta: o que você fizer fica neste aparelho e sobe depois", entrou:"Você entrou como", erroConta:"Não foi possível conectar à conta agora. Tente de novo.",
     contaOutra:"Este aparelho tem o estudo de outra conta. Trocar pelo estudo da conta em que você entrou agora? O que ainda não tinha sido sincronizado da outra conta será perdido.",
     excluirConta:"Excluir minha conta", excluirConfirma:"Excluir a sua conta e tudo o que está guardado nela no servidor? Isso não pode ser desfeito. O que está neste aparelho continua aqui.",
-    contaExcluida:"Conta excluída. O que estava neste aparelho continua aqui." },
+    contaExcluida:"Conta excluída. O que estava neste aparelho continua aqui.",
+    abaEstudo:"Estudo", abaPerfil:"Perfil", visitante:"Visitante", visitanteTexto:"Sem conta: seu estudo fica só neste aparelho.",
+    desde:"No Sola desde", preferencias:"Preferências", temaRot:"Aparência", claro:"Claro", escuro:"Escuro",
+    seusDados:"Seus dados", lerOffline:"Ler sem internet", privacidade:"Privacidade", faixaTexto:"Entre para guardar seu estudo.",
+    vantagens:["Anotações e versículos marcados em todos os seus aparelhos","Capítulos lidos e planos de leitura sempre em dia","Continue exatamente de onde parou"],
+    conviteSobre:"Seu estudo, sempre com você", agoraNao:"Agora não",
+    convites:{nota:"Sua anotação está só neste aparelho", marca:"Suas marcações estão só neste aparelho", lido:"Guarde o seu progresso", padrao:"Continue de onde parou"},
+    conviteTexto:"Entre com o Google para guardar anotações, marcações e capítulos lidos e continuar em qualquer aparelho. É gratuito." },
   en: { idioma:"Language", traducao:"Translation", comparar:"Compare with…", semComparar:"No comparison",
     livros:"Books", buscar:"Search", notas:"My notes", marcar:"Highlight",
     cores:{ouro:"gold", verde:"green", azul:"blue", rosa:"pink"},
@@ -126,7 +133,14 @@ const UI = {
     sincErro:"Cannot reach your account: changes stay on this device and upload later", entrou:"Signed in as", erroConta:"Could not reach the account right now. Try again.",
     contaOutra:"This device holds another account's study. Replace it with the study from the account you just signed in to? Anything not yet synced from the other account will be lost.",
     excluirConta:"Delete my account", excluirConfirma:"Delete your account and everything stored in it on the server? This cannot be undone. What is on this device stays here.",
-    contaExcluida:"Account deleted. What was on this device is still here." },
+    contaExcluida:"Account deleted. What was on this device is still here.",
+    abaEstudo:"Study", abaPerfil:"Profile", visitante:"Guest", visitanteTexto:"No account: your study stays on this device only.",
+    desde:"On Sola since", preferencias:"Preferences", temaRot:"Appearance", claro:"Light", escuro:"Dark",
+    seusDados:"Your data", lerOffline:"Read offline", privacidade:"Privacy", faixaTexto:"Sign in to keep your study.",
+    vantagens:["Notes and highlighted verses on all your devices","Chapters read and reading plans always up to date","Pick up exactly where you left off"],
+    conviteSobre:"Your study, always with you", agoraNao:"Not now",
+    convites:{nota:"Your note is on this device only", marca:"Your highlights are on this device only", lido:"Keep your progress", padrao:"Pick up where you left off"},
+    conviteTexto:"Sign in with Google to keep your notes, highlights and chapters read, and continue on any device. It's free." },
   es: { idioma:"Idioma", traducao:"Traducción", comparar:"Comparar con…", semComparar:"Sin comparación",
     livros:"Libros", buscar:"Buscar", notas:"Mis notas", marcar:"Resaltar",
     cores:{ouro:"oro", verde:"verde", azul:"azul", rosa:"rosa"},
@@ -188,7 +202,14 @@ const UI = {
     sincErro:"Sin conexión con la cuenta: los cambios quedan en este dispositivo y se suben después", entrou:"Entraste como", erroConta:"No se pudo conectar con la cuenta ahora. Inténtalo de nuevo.",
     contaOutra:"Este dispositivo tiene el estudio de otra cuenta. ¿Cambiarlo por el de la cuenta con la que acabas de entrar? Lo que no se había sincronizado de la otra cuenta se perderá.",
     excluirConta:"Eliminar mi cuenta", excluirConfirma:"¿Eliminar tu cuenta y todo lo guardado en ella en el servidor? No se puede deshacer. Lo que está en este dispositivo sigue aquí.",
-    contaExcluida:"Cuenta eliminada. Lo que estaba en este dispositivo sigue aquí." },
+    contaExcluida:"Cuenta eliminada. Lo que estaba en este dispositivo sigue aquí.",
+    abaEstudo:"Estudio", abaPerfil:"Perfil", visitante:"Invitado", visitanteTexto:"Sin cuenta: tu estudio queda solo en este dispositivo.",
+    desde:"En Sola desde", preferencias:"Preferencias", temaRot:"Apariencia", claro:"Claro", escuro:"Oscuro",
+    seusDados:"Tus datos", lerOffline:"Leer sin conexión", privacidade:"Privacidad", faixaTexto:"Entra para guardar tu estudio.",
+    vantagens:["Notas y versículos resaltados en todos tus dispositivos","Capítulos leídos y planes de lectura siempre al día","Continúa exactamente donde lo dejaste"],
+    conviteSobre:"Tu estudio, siempre contigo", agoraNao:"Ahora no",
+    convites:{nota:"Tu nota está solo en este dispositivo", marca:"Tus resaltados están solo en este dispositivo", lido:"Guarda tu progreso", padrao:"Continúa donde lo dejaste"},
+    conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
   pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
@@ -430,6 +451,8 @@ async function renderizar(op){
     if(op.nav && (!ult || ult.livro !== est.livro || ult.cap !== est.cap)){
       gravarLS("logos_ultimo", { livro: est.livro, cap: est.cap });
       tocar("estado", "ultimo");
+      est.capsVisita = (est.capsVisita || 0) + 1;
+      if(est.capsVisita >= 3) convidar("padrao");   // terceiro capítulo da visita
     }
   }
   atualizarURL(op.substituir);
@@ -475,7 +498,7 @@ function renderizarInicio(){
     if(r) return irPara(r.livro, r.cap, r.v);
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
-  if($("btnEstudoInicio")) $("btnEstudoInicio").addEventListener("click", abrirMeuEstudo);
+  if($("btnEstudoInicio")) $("btnEstudoInicio").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
   const acoes = [()=>irPara("JHN",1,1,"original"), ()=>irPara("ROM",8,28,"comentario"), ()=>irPara("JHN",3,16,"referencias"),
     ()=>abrirBusca("temas"), abrirAtlas, ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); }];
   document.querySelectorAll(".recurso").forEach(b=>b.addEventListener("click", acoes[+b.dataset.recurso]));
@@ -634,6 +657,7 @@ function montarBarra(el){
       const c = b.dataset.cor;
       if(est.marcas[chave]===c){ delete est.marcas[chave]; } else { est.marcas[chave]=c; }
       gravarLS("logos_marcas", est.marcas); tocar("marca", chave);
+      if(est.marcas[chave]) convidar("marca");
       CORES.forEach(o=>el.classList.toggle("m-"+o, est.marcas[chave]===o));
       barra.querySelectorAll(".cor").forEach(o=>{
         o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
@@ -816,6 +840,7 @@ async function acaoVerso(el, v, acao, botao){
         sinal.className = "indicadores"; sinal.title = x.anotacao; sinal.textContent = "✎";
         el.querySelector("p.escritura").appendChild(sinal);
       } else if(!valor && sinal) sinal.remove();
+      if(valor) convidar("nota");
     });
     gavetas.querySelector("#campoNota").focus({ preventScroll:true });
     gavetas.firstElementChild.scrollIntoView({ block:"nearest" });   // a gaveta inteira à vista, com os botões fora da barra de baixo
@@ -1302,6 +1327,43 @@ function limparDados(){
   for(const k of Object.keys(est.marcas)) if(!chaveValida(k) || !CORES.includes(est.marcas[k])) delete est.marcas[k];
   for(const k of Object.keys(est.notas)) if(!chaveValida(k) || typeof est.notas[k] !== "string") delete est.notas[k];
 }
+function exportarBackup(){
+  const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, lidos: est.lidos, v: 2 };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"}));
+  a.download = "sola-backup.json";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+}
+/* Junta o arquivo com o que já existe neste navegador (não apaga nada); no mesmo item vale o do arquivo. */
+function importarBackup(arquivo, feito){
+  const r = new FileReader();
+  r.onload = ()=>{
+    let msg = t().arquivoInvalido;
+    try{
+      const d = JSON.parse(r.result);
+      if(d && typeof d === "object" && (d.marcas || d.notas || d.planos || d.lidos)){
+        const nNotas = Object.keys(d.notas || {}).filter(k=>chaveValida(k) && typeof d.notas[k]==="string").length;
+        const nMarcas = Object.keys(d.marcas || {}).filter(k=>chaveValida(k) && CORES.includes(d.marcas[k])).length;
+        Object.assign(est.marcas, d.marcas); Object.assign(est.notas, d.notas);
+        if(d.lidos && typeof d.lidos === "object") Object.assign(est.lidos, d.lidos);
+        if(d.planos && typeof d.planos === "object") for(const id of Object.keys(d.planos))
+          est.progresso[id] = Object.assign({}, est.progresso[id], d.planos[id]);
+        limparDados();
+        gravarLS("logos_marcas", est.marcas); gravarLS("logos_notas", est.notas); gravarLS("logos_planos", est.progresso); gravarLS("logos_lidos", est.lidos);
+        // o que veio do arquivo conta como alteração feita agora (sobe para a conta)
+        Object.keys(d.notas || {}).forEach(k=>{ if(k in est.notas) tocar("nota", k); });
+        Object.keys(d.marcas || {}).forEach(k=>{ if(k in est.marcas) tocar("marca", k); });
+        Object.keys(d.lidos || {}).forEach(k=>{ if(k in est.lidos) tocar("lido", k); });
+        DADOS.plano.chaves().forEach(k=>tocar("plano", k));
+        msg = `${t().restaurado} ${nNotas} ${t().nAnot}, ${nMarcas} ${t().nMarc}.`;
+        if(est.vista==="cap") renderizar({ manter:true });
+      }
+    }catch(err){}
+    feito(msg);
+  };
+  r.readAsText(arquivo);
+}
 function montarNotas(aviso){
   const x = t(), alvo = $("listaNotas");
   let acoes = document.querySelector(".notas-acoes");
@@ -1313,43 +1375,11 @@ function montarNotas(aviso){
       <input type="file" id="arqImportar" accept=".json,application/json" style="display:none">
       <p class="fonte" id="notasAviso" role="status"></p>`;
     alvo.parentNode.insertBefore(acoes, alvo);
-    acoes.querySelector("#btnExportar").addEventListener("click", ()=>{
-      const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, v: 1 };
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"}));
-      a.download = "sola-backup.json";
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
-    });
+    acoes.querySelector("#btnExportar").addEventListener("click", exportarBackup);
     acoes.querySelector("label").addEventListener("keydown", (e)=>{ if(e.key==="Enter") $("arqImportar").click(); });
     acoes.querySelector("#arqImportar").addEventListener("change", (e)=>{
       const f = e.target.files[0]; if(!f) return;
-      const r = new FileReader();
-      r.onload = ()=>{
-        let msg = t().arquivoInvalido;
-        try{
-          const d = JSON.parse(r.result);
-          if(d && typeof d === "object" && (d.marcas || d.notas || d.planos)){
-            // junta com o que já existe neste navegador (não apaga nada); no mesmo versículo vale o do arquivo
-            const nNotas = Object.keys(d.notas || {}).filter(k=>chaveValida(k) && typeof d.notas[k]==="string").length;
-            const nMarcas = Object.keys(d.marcas || {}).filter(k=>chaveValida(k) && CORES.includes(d.marcas[k])).length;
-            Object.assign(est.marcas, d.marcas); Object.assign(est.notas, d.notas);
-            if(d.planos && typeof d.planos === "object") for(const id of Object.keys(d.planos))
-              est.progresso[id] = Object.assign({}, est.progresso[id], d.planos[id]);
-            limparDados();
-            gravarLS("logos_marcas", est.marcas); gravarLS("logos_notas", est.notas); gravarLS("logos_planos", est.progresso);
-            // o que veio do arquivo conta como alteração feita agora (sobe para a conta)
-            Object.keys(d.notas || {}).forEach(k=>{ if(k in est.notas) tocar("nota", k); });
-            Object.keys(d.marcas || {}).forEach(k=>{ if(k in est.marcas) tocar("marca", k); });
-            DADOS.plano.chaves().forEach(k=>tocar("plano", k));
-            msg = `${t().restaurado} ${nNotas} ${t().nAnot}, ${nMarcas} ${t().nMarc}.`;
-            if(est.vista==="cap") renderizar({ manter:true });
-          }
-        }catch(err){}
-        e.target.value = "";
-        montarNotas(msg);
-      };
-      r.readAsText(f);
+      importarBackup(f, (msg)=>{ e.target.value = ""; montarNotas(msg); });
     });
   }
   acoes.querySelector("#btnExportar span").textContent = x.backup;
@@ -1407,6 +1437,7 @@ function marcarLido(usfm, cap, lido){
   const k = usfm + "." + cap;
   if(lido) est.lidos[k] = Date.now(); else delete est.lidos[k];
   gravarLS("logos_lidos", est.lidos); tocar("lido", k);
+  if(lido) convidar("lido");
 }
 /* Quem avança para o próximo capítulo depois de um tempo razoável na página leu o capítulo. */
 function leuAoAvancar(){
@@ -1445,6 +1476,14 @@ const ordemRef = (a, b)=>{
 /* ---------- painel "Meu estudo" ---------- */
 async function montarMeuEstudo(){
   const x = t(), r = resumoEstudo(), alvo = $("conteudoEstudo");
+  document.querySelectorAll("#abasEstudo .aba").forEach(b=>{
+    const minha = b.dataset.aba === est.abaEstudo;
+    b.textContent = b.dataset.aba === "perfil" ? x.abaPerfil : x.abaEstudo;
+    b.classList.toggle("ativa", minha); b.setAttribute("aria-selected", minha);
+    b.onclick = ()=>{ est.abaEstudo = b.dataset.aba; montarMeuEstudo(); };
+  });
+  $("tituloEstudo").textContent = est.abaEstudo === "perfil" ? x.abaPerfil : x.meuEstudo;
+  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); return; }
   const ult = lerLS("logos_ultimo", null);
   const pct = r.total ? Math.round(r.lidos / r.total * 1000) / 10 : 0;
   const livros = (tst)=>est.meta.books.filter(b=>b.t===tst).map(b=>{
@@ -1455,7 +1494,7 @@ async function montarMeuEstudo(){
   const notas = Object.keys(est.notas).filter(chaveValida).sort(ordemRef);
   let planosHTML = "";
   try{ planosHTML = (await planos()).map(pl=>{ const p = pctPlano(pl); return p ? `<div class="plano-linha"><span>${esc(pl.nome[est.idioma]||pl.nome.pt)}</span><div class="plano-barra"><i style="width:${p}%"></i></div><small>${p}%</small></div>` : ""; }).join(""); }catch(e){}
-  alvo.innerHTML = contaHTML() + `
+  alvo.innerHTML = faixaConta() + `
     <div class="estudo-numeros">
       <div class="num largo"><b>${r.lidos.toLocaleString(est.idioma)}</b><span>${x.de} ${r.total.toLocaleString(est.idioma)} ${x.capsLidos} · ${pct.toLocaleString(est.idioma)}%</span>
         <div class="plano-barra"><i style="width:${pct}%"></i></div></div>
@@ -1473,12 +1512,90 @@ async function montarMeuEstudo(){
     ${marcas.length ? `<div class="marcas-lista">` + marcas.slice(0, 120).map(k=>{ const [l, c, v] = k.split("."); return linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "m-chip m-" + est.marcas[k]); }).join("") + `</div>` : `<p class="fonte">${x.semMarcas}</p>`}
     <h3 class="estudo-sub">${x.notas}</h3>
     ${notas.length ? notas.slice(0, 4).map(k=>{ const [l, c, v] = k.split("."); return `<p class="nota-curta">${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")} ${esc(est.notas[k].slice(0, 140))}${est.notas[k].length > 140 ? "…" : ""}</p>`; }).join("") : ""}
-    <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas} · ${x.backup}</button></p>
-    ${est.sessao ? `<p class="estudo-rodape"><button class="link-discreto" id="btnExcluirConta">${x.excluirConta}</button></p>` : ""}`;
+    <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas}</button></p>`;
   $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
-  ligarConta();
+  if($("faixaEntrar")) $("faixaEntrar").addEventListener("click", ()=>{ est.abaEstudo = "perfil"; montarMeuEstudo(); });
 }
-function abrirMeuEstudo(){ montarMeuEstudo(); alternarPainel("painelEstudo", true); }
+function abrirMeuEstudo(aba){ est.abaEstudo = aba === "perfil" ? "perfil" : "estudo"; montarMeuEstudo(); alternarPainel("painelEstudo", true); }
+/* Na aba Estudo, a conta aparece só como uma faixa: o convite para entrar ou o estado da sincronização. */
+function faixaConta(){
+  const x = t();
+  if(!temConta()) return `<p class="conta-local">${x.contaLocal}</p>`;
+  if(!est.sessao) return `<button class="faixa-conta" id="faixaEntrar">${ico("nuvem")}<span><strong>${x.contaTitulo}.</strong> ${x.faixaTexto}</span>${ico("seta")}</button>`;
+  return `<p class="faixa-sinc">${ico("nuvem")} <span id="sincEstado" role="status">${textoSinc()}</span></p>`;
+}
+const nomeUsuario = (u)=>(u.user_metadata && (u.user_metadata.full_name || u.user_metadata.name)) || u.email || "";
+
+/* ---------- aba Perfil: conta, preferências e dados ---------- */
+function perfilHTML(){
+  const x = t(), u = est.sessao && est.sessao.user;
+  const nome = u ? nomeUsuario(u) : x.visitante;
+  const desde = u && u.created_at ? new Date(u.created_at).toLocaleDateString(est.idioma, { month:"long", year:"numeric" }) : "";
+  let conta = "";
+  if(!temConta()) conta = `<p class="conta-local">${x.contaLocal}</p>`;
+  else if(!u) conta = `<div class="conta-caixa">
+      <div><h3>${ico("nuvem")} ${x.contaTitulo}</h3><p>${x.contaTexto}</p>
+        <ul class="conta-vantagens">${x.vantagens.map(v=>`<li>${ico("feito")} ${v}</li>`).join("")}</ul></div>
+      <div class="conta-acoes">
+        ${CONTA.google ? `<button class="btn-ouro" id="btnGoogle">${x.entrarGoogle}</button>` : ""}
+        ${CONTA.email ? `<form id="formEmail"><input type="email" required autocomplete="email" placeholder="${x.seuEmail}" aria-label="${x.seuEmail}"><button class="btn-linha">${x.entrarEmail}</button></form>` : ""}
+      </div>
+      <p class="fonte" id="contaAviso" role="status"></p></div>`;
+  else conta = `<div class="conta-acoes"><button class="btn-linha" id="btnSincAgora">${x.sincAgora}</button><button class="btn-linha" id="btnSair">${x.sair}</button></div>
+      <p class="fonte" id="contaAviso" role="status"></p>`;
+  return `<div class="perfil-topo">
+      <span class="conta-letra grande" aria-hidden="true">${u ? esc((nome[0] || "?").toUpperCase()) : ico("pessoa")}</span>
+      <div><strong class="perfil-nome">${esc(nome)}</strong>
+        ${u ? `<span>${esc(u.email || "")}</span>${desde ? `<span>${x.desde} ${esc(desde)}</span>` : ""}<span id="sincEstado" role="status">${textoSinc()}</span>`
+            : `<span>${x.visitanteTexto}</span>`}</div>
+    </div>
+    ${conta}
+    <h3 class="estudo-sub">${x.preferencias}</h3>
+    <div class="prefs">
+      <label><span>${x.idioma}</span><select data-espelho="selIdioma"></select></label>
+      <label><span>${x.traducao}</span><select data-espelho="selTraducao"></select></label>
+      <label><span>${x.comparar}</span><select data-espelho="selComparar"></select></label>
+      <div class="pref-linha"><span>${x.temaRot}</span><div class="seg" role="group" aria-label="${x.temaRot}">
+        <button data-tema="claro" aria-pressed="${est.tema !== "escuro"}">${ico("sol")} ${x.claro}</button>
+        <button data-tema="escuro" aria-pressed="${est.tema === "escuro"}">${ico("lua")} ${x.escuro}</button></div></div>
+      <label class="pref-linha"><span>${x.leituraCorrida}</span><input type="checkbox" id="prefCorrida" ${est.corrida ? "checked" : ""}></label>
+    </div>
+    <h3 class="estudo-sub">${x.seusDados}</h3>
+    <div class="conta-acoes">
+      <button class="btn-linha" id="perfilBackup">⬇ ${x.backup}</button>
+      <label class="btn-linha" for="perfilArq" tabindex="0">⬆ ${x.restaurar}</label>
+      <input type="file" id="perfilArq" accept=".json,application/json" style="display:none">
+      <button class="btn-linha" id="perfilOffline">${ico("baixar")} ${x.lerOffline}</button>
+    </div>
+    <p class="fonte" id="perfilAviso" role="status"></p>
+    <p class="estudo-rodape"><a href="/privacidade/">${x.privacidade}</a>${u ? ` · <button class="link-discreto" id="btnExcluirConta">${x.excluirConta}</button>` : ""}</p>`;
+}
+function ligarPerfil(){
+  // os seletores do perfil espelham os da barra de leitura: mudar aqui é mudar lá
+  document.querySelectorAll("#conteudoEstudo select[data-espelho]").forEach(sel=>{
+    const orig = $(sel.dataset.espelho);
+    sel.innerHTML = orig.innerHTML; sel.value = orig.value;
+    sel.addEventListener("change", ()=>{ orig.value = sel.value; orig.dispatchEvent(new Event("change")); montarMeuEstudo(); });
+  });
+  document.querySelectorAll("#conteudoEstudo .seg button").forEach(b=>b.addEventListener("click", ()=>{
+    est.tema = b.dataset.tema; gravarLS("logos_tema", est.tema); aplicarTema(); montarMeuEstudo();
+  }));
+  $("prefCorrida").addEventListener("change", ()=>$("btnCorrida").click());
+  $("perfilBackup").addEventListener("click", exportarBackup);
+  document.querySelector('label[for="perfilArq"]').addEventListener("keydown", (e)=>{ if(e.key==="Enter") $("perfilArq").click(); });
+  $("perfilArq").addEventListener("change", (e)=>{
+    const f = e.target.files[0]; if(!f) return;
+    importarBackup(f, (msg)=>{ e.target.value = ""; $("perfilAviso").textContent = msg; });
+  });
+  $("perfilOffline").addEventListener("click", ()=>alternarPainel("painelSobre", true));
+}
+/* O botão de perfil no topo mostra a inicial de quem entrou. */
+function atualizarBotaoPerfil(){
+  const u = est.sessao && est.sessao.user, b = $("btnPerfil");
+  b.innerHTML = u ? `<span class="conta-letra mini" aria-hidden="true">${esc((nomeUsuario(u)[0] || "?").toUpperCase())}</span>` : ico("pessoa");
+  b.title = u ? nomeUsuario(u) : t().abaPerfil;
+  b.setAttribute("aria-label", b.title);
+}
 
 /* ---------- conta: entrar, sair, excluir ---------- */
 const temConta = ()=>!!(CONTA.url && CONTA.chave && (CONTA.google || CONTA.email));
@@ -1501,23 +1618,6 @@ async function clienteConta(){
   }
   return est.sb;
 }
-function contaHTML(){
-  const x = t();
-  if(!temConta()) return `<p class="conta-local">${x.contaLocal}</p>`;
-  if(!est.sessao) return `<div class="conta-caixa">
-      <div><h3>${ico("nuvem")} ${x.contaTitulo}</h3><p>${x.contaTexto}</p></div>
-      <div class="conta-acoes">
-        ${CONTA.google ? `<button class="btn-ouro" id="btnGoogle">${x.entrarGoogle}</button>` : ""}
-        ${CONTA.email ? `<form id="formEmail"><input type="email" required autocomplete="email" placeholder="${x.seuEmail}" aria-label="${x.seuEmail}"><button class="btn-linha">${x.entrarEmail}</button></form>` : ""}
-      </div>
-      <p class="fonte" id="contaAviso" role="status"></p></div>`;
-  const u = est.sessao.user, nome = (u.user_metadata && (u.user_metadata.full_name || u.user_metadata.name)) || u.email || "";
-  return `<div class="conta-caixa logada">
-      <div class="conta-quem"><span class="conta-letra" aria-hidden="true">${esc((nome[0] || "?").toUpperCase())}</span>
-        <div><strong>${esc(nome)}</strong><span id="sincEstado" role="status">${textoSinc()}</span></div></div>
-      <div class="conta-acoes"><button class="btn-linha" id="btnSincAgora">${x.sincAgora}</button><button class="btn-linha" id="btnSair">${x.sair}</button></div>
-      <p class="fonte" id="contaAviso" role="status"></p></div>`;
-}
 function textoSinc(){
   const x = t();
   if(est.sincEstado === "indo") return x.sincIndo;
@@ -1526,23 +1626,26 @@ function textoSinc(){
 }
 function estadoSinc(e){ est.sincEstado = e; const el = $("sincEstado"); if(el) el.textContent = textoSinc(); }
 function avisoConta(texto){ const el = $("contaAviso"); if(el) el.textContent = texto; }
+/* Guarda onde a pessoa estava e manda para o login; devolve false se não deu (sem rede, por exemplo). */
+async function entrar(como){
+  try{
+    const sb = await clienteConta();
+    try{ sessionStorage.setItem("sola_volta", location.pathname + location.hash); }catch(e){}
+    const { error } = await como(sb);
+    if(error) throw error;
+    return true;
+  }catch(e){ console.warn("conta", e); return false; }
+}
+const entrarGoogle = ()=>entrar(sb=>sb.auth.signInWithOAuth({ provider:"google", options:{ redirectTo: location.origin + "/" } }));
 function ligarConta(){
   const x = t(), em = (id, f)=>{ const el = $(id); if(el) el.addEventListener("click", f); };
-  const entrar = async (como)=>{
-    try{
-      const sb = await clienteConta();
-      try{ sessionStorage.setItem("sola_volta", location.pathname + location.hash); }catch(e){}
-      const { error } = await como(sb);
-      if(error) throw error;
-    }catch(e){ console.warn("conta", e); avisoConta(x.erroConta); }
-  };
-  em("btnGoogle", ()=>entrar(sb=>sb.auth.signInWithOAuth({ provider:"google", options:{ redirectTo: location.origin + "/" } })));
+  em("btnGoogle", async ()=>{ if(!await entrarGoogle()) avisoConta(x.erroConta); });
   const fe = $("formEmail");
   if(fe) fe.addEventListener("submit", async (e)=>{
     e.preventDefault();
     const email = fe.querySelector("input").value.trim();
-    await entrar(sb=>sb.auth.signInWithOtp({ email, options:{ emailRedirectTo: location.origin + "/" } }));
-    if(!$("contaAviso").textContent) avisoConta(`${x.linkEnviado} ${email}.`);
+    const ok = await entrar(sb=>sb.auth.signInWithOtp({ email, options:{ emailRedirectTo: location.origin + "/" } }));
+    avisoConta(ok ? `${x.linkEnviado} ${email}.` : x.erroConta);
   });
   em("btnSincAgora", ()=>sincronizar());
   em("btnSair", async ()=>{
@@ -1581,7 +1684,50 @@ async function aoMudarSessao(sessao){
     await sincronizar();
     atualizarTelas(new Set(Object.keys(DADOS)));   // inclusive quando o aparelho foi esvaziado para a outra conta
   }
+  atualizarBotaoPerfil();
+  if(est.sessao && est.fecharConvite) est.fecharConvite(false);
   if(!$("painelEstudo").classList.contains("oculto")) montarMeuEstudo();
+}
+
+/* ---------- convite para entrar na conta ---------- */
+/* Um cartão discreto, no máximo uma vez por visita, em momentos em que a conta ajuda de verdade (a pessoa acabou
+   de anotar, marcar ou ler). "Agora não" adia por dias, cada vez mais: 3, 7, 30, 90. */
+const CONVITE_ESPERA = [3, 7, 30, 90];
+function podeConvidar(){
+  if(!temConta() || !CONTA.google || est.sessao || est.fecharConvite || painelAberto() || navigator.onLine === false) return false;
+  try{ if(localStorage.getItem("sola-conta") || sessionStorage.getItem("sola_convidou")) return false; }catch(e){ return false; }
+  const c = lerLS("logos_convite", null);
+  return !c || Date.now() > c.ate;
+}
+function convidar(motivo){
+  if(!podeConvidar()) return;
+  clearTimeout(est.timerConvite);
+  est.timerConvite = setTimeout(()=>{
+    if(podeConvidar() && !est.gaveta && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) mostrarConvite(motivo);
+  }, 1500);
+}
+function mostrarConvite(motivo){
+  const x = t(), el = document.createElement("aside");
+  el.className = "convite"; el.id = "convite";
+  el.setAttribute("role", "dialog"); el.setAttribute("aria-labelledby", "conviteTit");
+  el.innerHTML = `<button class="fechar" aria-label="${x.fechar}">✕</button>
+    <p class="heroi-sobre">${x.conviteSobre}</p>
+    <h3 id="conviteTit">${x.convites[motivo] || x.convites.padrao}</h3>
+    <p>${x.conviteTexto}</p>
+    <div class="convite-acoes"><button class="btn-ouro" id="conviteEntrar">${x.entrarGoogle}</button><button id="conviteDepois">${x.agoraNao}</button></div>
+    <p class="fonte" id="conviteAviso" role="status"></p>`;
+  document.body.appendChild(el);
+  try{ sessionStorage.setItem("sola_convidou", "1"); }catch(e){}
+  est.fecharConvite = (adiar)=>{
+    el.remove(); est.fecharConvite = null;
+    if(adiar){
+      const n = ((lerLS("logos_convite", null) || {}).n || 0) + 1;
+      gravarLS("logos_convite", { n, ate: Date.now() + CONVITE_ESPERA[Math.min(n, CONVITE_ESPERA.length) - 1] * 864e5 });
+    }
+  };
+  el.querySelector(".fechar").addEventListener("click", ()=>est.fecharConvite(true));
+  $("conviteDepois").addEventListener("click", ()=>est.fecharConvite(true));
+  $("conviteEntrar").addEventListener("click", async ()=>{ if(!await entrarGoogle()) $("conviteAviso").textContent = x.erroConta; });
 }
 
 /* ---------- sincronização ---------- */
@@ -1771,7 +1917,7 @@ async function iniciar(){
   });
   $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizar({ manter:true }); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
-  $("btnMeuEstudo").addEventListener("click", abrirMeuEstudo);
+  $("btnMeuEstudo").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
   $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
   $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
   $("navDic").addEventListener("click", ()=>abrirBusca("dicionario"));
@@ -1792,11 +1938,8 @@ async function iniciar(){
   $("btnEstudo").addEventListener("click", ()=>{
     est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
   });
-  $("btnAjustes").addEventListener("click", ()=>{
-    const aberto = document.querySelector(".controles").classList.toggle("aberto");
-    $("btnAjustes").classList.toggle("ativa", aberto);
-    $("btnAjustes").setAttribute("aria-expanded", aberto);
-  });
+  $("btnPerfil").addEventListener("click", ()=>abrirMeuEstudo("perfil"));
+  atualizarBotaoPerfil();
   $("btnOffline").addEventListener("click", baixarOffline);
   document.querySelectorAll("[data-painel]").forEach(a=>a.addEventListener("click", (e)=>{
     e.preventDefault();
@@ -1805,7 +1948,7 @@ async function iniciar(){
     if(id==="painelPlanos") montarPlanos(null);
     if(id==="painelTempo") montarTempo();
     if(id==="painelNotas") montarNotas();
-    if(id==="painelEstudo") montarMeuEstudo();
+    if(id==="painelEstudo"){ est.abaEstudo = "estudo"; montarMeuEstudo(); }
     alternarPainel(id, true);
   }));
   $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
@@ -1844,6 +1987,7 @@ async function iniciar(){
   document.addEventListener("keydown", (e)=>{
     if(e.key === "Escape"){
       if(painelAberto()) return fecharPaineis();
+      if(est.fecharConvite) return est.fecharConvite(true);
       if(est.gaveta && est.versoAtivo){ const el = est.versoAtivo; fecharGavetas(el); el.focus({ preventScroll:true }); }
       return;
     }

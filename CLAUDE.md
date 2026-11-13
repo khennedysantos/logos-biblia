@@ -70,6 +70,13 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   `sincronizar()`: o aparelho é a fonte, `tocar(tipo, chave)` anota cada alteração em `est.sinc.pend`, e no
   mesmo item vale o `ts` mais recente (apagar também é alteração). `DADOS` descreve cada tipo (nota, marca,
   plano, lido, estado). Passo a passo de configuração e detalhes em `ferramentas/CONTAS.md`.
+- Painel "Meu estudo" tem duas abas (`est.abaEstudo`): Estudo (números, progresso, marcações) e Perfil (conta,
+  preferências, backup, privacidade, excluir conta). O botão de perfil no topo (`#btnPerfil`, inicial do nome de
+  quem entrou) abre direto no Perfil; substituiu o antigo botão de ajustes. Os seletores do Perfil espelham os da
+  barra `.controles`, que só aparece na leitura em tela larga.
+- Convite para entrar (`convidar(motivo)` / `mostrarConvite`): cartão no canto, no máximo uma vez por visita,
+  depois de anotar, marcar, marcar capítulo lido ou abrir o 3º capítulo. "Agora não" adia 3, 7, 30 e 90 dias
+  (`logos_convite`). Não aparece para quem está logado, sem rede ou com painel aberto.
 
 ## Ferramentas de tradução (`ferramentas/tradutor/`)
 

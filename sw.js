@@ -1,6 +1,6 @@
 /* Sola — service worker: deixa o site abrir e os capítulos já lidos funcionarem sem internet.
    A linha VERSAO é carimbada por ferramentas/gerar_paginas.py a cada mudança no app. */
-const VERSAO = "be7be787a2";
+const VERSAO = "dcab5c894f";
 const CACHE_APP = "sola-app-" + VERSAO;
 const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no app.js (botão "Baixar a Bíblia")
 const BASE = ["/", "/data/books.json", "/favicon.svg", "/manifest.webmanifest",

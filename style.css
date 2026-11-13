@@ -112,13 +112,9 @@ a{color:var(--ouro)}
   appearance:none;-webkit-appearance:none;cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,var(--ouro) 50%),linear-gradient(135deg,var(--ouro) 50%,transparent 50%);
   background-position:calc(100% - 1rem) 52%,calc(100% - .7rem) 52%;background-size:.3rem .3rem;background-repeat:no-repeat}
-/* fora da leitura (início, página do livro) e no celular, ficam atrás do botão de ajustes */
-body:not([data-vista="cap"]) .controles:not(.aberto){display:none}
-body[data-vista="cap"] #btnAjustes{display:none}
-@media (max-width:700px){
-  .controles:not(.aberto){display:none}
-  body[data-vista="cap"] #btnAjustes{display:inline-flex}
-}
+/* a barra só aparece na leitura, em telas largas; em qualquer lugar, os mesmos seletores estão na aba Perfil */
+body:not([data-vista="cap"]) .controles{display:none}
+@media (max-width:700px){.controles{display:none}}
 body:not([data-vista="cap"]) #btnCorrida,body:not([data-vista="cap"]) .rodape-nav,
 body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstudo{display:none}
 
@@ -552,3 +548,55 @@ body.com-painel{overflow:hidden}
 .texto-pagina li{margin:.35rem 0}
 .texto-data{font-size:.72rem;letter-spacing:.06em;color:var(--suave);text-align:center;margin:-.6rem 0 2rem}
 .texto-voltar{text-align:center;margin-top:2.6rem}
+
+/* ---------- aba Perfil ---------- */
+#abasEstudo{margin:-.2rem 0 1.1rem}
+.faixa-conta{display:flex;align-items:center;gap:.8rem;width:100%;text-align:left;border:1px solid var(--fio);border-left:3px solid var(--ouro-vivo);
+  background:var(--papel);border-radius:.8rem;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.84rem;line-height:1.45;cursor:pointer;transition:border-color .2s}
+.faixa-conta:hover{border-color:var(--ouro)}
+.faixa-conta span{flex:1}
+.faixa-conta .ico{color:var(--ouro);font-size:1.1rem}
+.faixa-sinc{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--suave);margin:0 0 1rem}
+.faixa-sinc .ico{color:var(--ouro-vivo)}
+.perfil-topo{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.perfil-topo > div{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.perfil-topo span{font-size:.76rem;color:var(--suave);word-break:break-word}
+.perfil-nome{font-family:var(--titulo);font-weight:600;font-size:1.6rem;line-height:1.15}
+.conta-letra.grande{width:4.2rem;height:4.2rem;font-size:2.2rem}
+.conta-letra.grande .ico{font-size:1.7rem;color:var(--papel)}
+.conta-letra.mini{width:1.55rem;height:1.55rem;font-size:.95rem}
+.conta-vantagens{list-style:none;margin:.7rem 0 0;padding:0;display:grid;gap:.35rem;font-size:.82rem;line-height:1.5}
+.conta-vantagens li{display:flex;gap:.5rem;align-items:baseline}
+.conta-vantagens .ico{color:var(--ouro);flex:0 0 auto;transform:translateY(.12em)}
+.prefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.8rem 1rem}
+.prefs label,.pref-linha{display:flex;flex-direction:column;gap:.35rem;font-size:.6rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--suave)}
+.prefs select{font-size:.86rem;padding:.5rem .7rem;border-radius:.7rem;border:1px solid var(--borda);background:var(--papel);color:var(--tinta);
+  text-transform:none;letter-spacing:0;font-weight:400;width:100%}
+.prefs label.pref-linha{flex-direction:row;align-items:center;justify-content:space-between;gap:.8rem;cursor:pointer;
+  border:1px solid var(--borda);border-radius:.7rem;padding:.55rem .7rem;align-self:end;background:var(--papel)}
+.prefs input[type="checkbox"]{width:1.1rem;height:1.1rem;accent-color:var(--ouro)}
+.seg{display:flex;border:1px solid var(--borda);border-radius:.7rem;overflow:hidden;background:var(--papel)}
+.seg button{flex:1;border:0;background:none;padding:.5rem .6rem;font-size:.8rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  text-transform:none;letter-spacing:0;font-weight:500;color:var(--suave)}
+.seg button[aria-pressed="true"]{background:var(--ouro);color:var(--papel);font-weight:600}
+.estudo-rodape a{font-size:.72rem;color:var(--suave)}
+label.btn-linha{cursor:pointer}
+
+/* ---------- convite para entrar na conta ---------- */
+.convite{position:fixed;right:1rem;bottom:5.4rem;z-index:40;width:min(23rem,calc(100vw - 2rem));color:var(--marfim);
+  background:radial-gradient(22rem 9rem at 50% -30%,rgba(217,185,120,.24),transparent 70%),linear-gradient(160deg,var(--noite-2),var(--noite));
+  border:1px solid rgba(217,185,120,.45);border-radius:1.1rem;padding:1.1rem 1.2rem 1rem;box-shadow:var(--sombra-alta);
+  animation:subir .45s cubic-bezier(.2,.8,.2,1)}
+:root:not([data-tema="escuro"]) .convite{--noite:#131A2A;--noite-2:#1B2438}
+.convite .heroi-sobre{margin:0 0 .45rem;font-size:.56rem;letter-spacing:.3em}
+.convite h3{font-family:var(--titulo);font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 1.6rem .4rem 0}
+.convite p{margin:0;font-size:.82rem;line-height:1.55;color:rgba(241,233,216,.78)}
+.convite .fechar{position:absolute;top:.5rem;right:.5rem;color:rgba(241,233,216,.6)}
+.convite .fechar:hover{color:var(--marfim);border-color:rgba(241,233,216,.3)}
+.convite-acoes{display:flex;align-items:center;gap:.9rem;margin-top:.9rem;flex-wrap:wrap}
+.convite .btn-ouro{background:var(--ouro-noite);color:#131A2A}
+#conviteDepois{border:0;background:none;color:rgba(241,233,216,.7);font-size:.8rem;cursor:pointer;padding:.3rem .2rem}
+#conviteDepois:hover{color:var(--marfim);text-decoration:underline}
+.convite .fonte{color:rgba(241,233,216,.7)}
+@media (max-width:560px){.convite{left:1rem;right:1rem;width:auto}}
+body:not([data-vista="cap"]) .convite{bottom:1.2rem}
