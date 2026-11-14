@@ -56,6 +56,14 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   `data/commentaries/henry/` (Matthew Henry, domínio público, baixado por `ferramentas/baixar_henry.py`;
   18 livros — Cantares não existe na fonte, e 2Sm 23–24 também faltam). Cada pasta tem `manifest.json`
   com a lista de livros. O app usa o comentário do versículo anterior (blocos) ou o primeiro do capítulo.
+- `data/palavras/` — palavras-chave sublinhadas no texto (só na Bíblia Livre). GERADO por
+  `ferramentas/gerar_palavras.py`, que é também onde as notas são escritas à mão: `lema(strong, tradução, formas,
+  nota)` sublinha a palavra na primeira vez em que aparece em cada capítulo; `contexto("PSA.51.10", "H1254", nota)`
+  é a nota própria de um versículo. O script acha a palavra no interlinear e a forma em português no versículo, e
+  recusa nota de contexto cujo Strong não esteja no versículo (proteção contra número errado). `indice.json` traz
+  as palavras e notas gerais; `{LIVRO}.json` traz capítulo → versículo → `[início, fim, strong, nota?]`.
+  No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferência `logos_chave`
+  no Perfil. Não aparece na leitura contínua nem nas outras traduções.
 - `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`.
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
@@ -121,6 +129,10 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
   `page.evaluate`, mas não em `window.est`.
 - No celular (≤560px) a palavra "Sola" do topo só aparece se couber ao lado do nome do livro (senão fica só o
   símbolo): `.topo .marca` quebra a linha por dentro e esconde a sobra. Teste o topo com "1 Tessalonicenses 5".
+- No celular, qualquer coisa que mude o foco ou o versículo ativo no meio de um toque desloca o texto (a barra
+  do versículo está no fluxo) e o clique cai em outro lugar. Por isso a palavra-chave não recebe foco pelo toque
+  (`mousedown` com `preventDefault`) e o `mouseenter` não ativa o versículo quando o dedo está nela. Não use
+  `resize` para fechar coisas: no celular ele dispara ao rolar.
 - No celular (≤560px) a barra do versículo fica no fluxo, entre o texto e a gaveta: flutuando ela cobria o
   botão Salvar. `font-variant-numeric:lining-nums` no `body` é obrigatório: sem ele o "1" da Cormorant parece "I".
 - Visual: cores e fontes são variáveis no topo do `style.css` (marfim, azul-noite, ouro envelhecido; títulos em
@@ -153,6 +165,10 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
   só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
   para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
   e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
+- Palavras-chave: 123 palavras originais e 83 notas de contexto, escritas pelo Claude e ainda NÃO revisadas pelo
+  Khennedy (são afirmações teológicas com o nome do site: ele precisa ler). Cobrem 851 dos 1.189 capítulos, mas
+  nota própria de versículo só nas passagens mais conhecidas; ampliar é acrescentar `contexto(...)` no script.
+  `--relatorio` mostra, por palavra, onde a forma em português não foi encontrada.
 - Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou
   "possa têm", "is believing" virou "é acreditar", "In" virou "[Não]" em João 1:1. Como o inglês se perde depois
   de aplicado, corrigir exige regerar o interlinear da fonte (STEPBible) com as entradas novas em `GLOSAS_FIXAS`.

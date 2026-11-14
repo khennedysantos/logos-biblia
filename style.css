@@ -233,6 +233,33 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
 .lex-translit{font-style:italic;color:var(--suave);font-size:.82rem}
 .lex-num{margin-left:auto;color:var(--ouro);font-weight:700;font-size:.66rem;letter-spacing:.08em}
 .lex-def{font-size:.84rem;line-height:1.6;margin:.25rem 0}
+
+/* ---------- palavras-chave sublinhadas e o cartão delas ---------- */
+.chave{text-decoration:underline;text-decoration-color:var(--ouro);text-decoration-thickness:1.5px;
+  text-underline-offset:.24em;text-decoration-skip-ink:none;cursor:pointer;border-radius:.25rem;
+  transition:background .2s;-webkit-tap-highlight-color:transparent}
+.chave:hover,.chave.aberta{background:color-mix(in srgb,var(--ouro-vivo) 24%,transparent)}
+.cartao-palavra{position:absolute;z-index:45;width:min(23rem,calc(100vw - 1.5rem));padding:.95rem 1.05rem .85rem;
+  background:var(--painel);color:var(--tinta);border:1px solid var(--ouro-vivo);border-radius:var(--raio);
+  box-shadow:var(--sombra-alta);font-family:var(--ui);animation:cartao-sobe .18s ease-out}
+@keyframes cartao-sobe{from{opacity:0;transform:translateY(6px)}}
+.cartao-palavra .lex-topo{margin-bottom:.15rem;padding-right:1.9rem}
+.cartao-palavra .lex-lemma{font-size:1.7rem;line-height:1.25}
+.cartao-palavra .lex-num{margin-left:0}
+.cartao-palavra .fechar{position:absolute;top:.45rem;right:.45rem}
+.cartao-palavra .cp-trad{margin:0 0 .2rem;font-family:var(--titulo);font-weight:600;font-size:1.35rem;line-height:1.2}
+.cp-trad span{display:block;font-family:var(--ui);font-weight:600;font-size:.56rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--suave);margin-bottom:.1rem}
+.cartao-palavra h4{margin:.8rem 0 .2rem;font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+.cartao-palavra p{margin:0;font-size:.86rem;line-height:1.6}
+.cp-pe{display:flex;align-items:center;justify-content:space-between;gap:.6rem 1rem;flex-wrap:wrap;margin-top:.9rem;
+  padding-top:.7rem;border-top:1px solid var(--borda)}
+.cp-pe .btn-linha{font-size:.74rem;padding:.4rem .8rem}
+.cp-pe .fonte{margin:0;font-size:.66rem}
+@media (max-width:560px){
+  .cartao-palavra{position:fixed;left:.75rem;right:.75rem;bottom:.75rem;width:auto;max-height:70vh;overflow:auto}
+}
+@media (prefers-reduced-motion:reduce){.cartao-palavra{animation:none}}
 .mss-abas{display:flex;gap:.35rem;margin-top:.8rem;flex-wrap:wrap}
 .mss-abas button{border:1px solid var(--borda);background:transparent;color:var(--suave);border-radius:999px;
   padding:.32rem .8rem;font-size:.66rem;font-weight:500;letter-spacing:.04em;cursor:pointer}
