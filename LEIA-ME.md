@@ -11,6 +11,8 @@ GitHub Pages a partir da raiz do branch `main`. Custo de operação: zero.
   (inglês) e Reina-Valera Antigua (espanhol), com comparação lado a lado.
 - **Interlinear palavra por palavra** do grego (NT) e do hebraico (AT): transliteração, glosa em
   português e número de Strong; um toque abre o verbete do léxico (14.197 entradas).
+- **Palavras-chave sublinhadas**: um toque mostra a palavra original, a tradução e por que ela pesa
+  naquele versículo (notas de estudo próprias do Sola).
 - **Comentários**: João Calvino (47 livros) e Matthew Henry (18 livros), em português por tradução
   automática, sempre com o aviso na tela.
 - **Referências cruzadas**, **temas** (Nave), **dicionário** (Easton), **atlas** com as viagens de
@@ -60,6 +62,7 @@ Os detalhes de cada arquivo de dados e as decisões do projeto estão em `CLAUDE
 - `validar_dados.py` — confere a integridade de `data/`.
 - `gerar_interlinear_at.py` e `corrigir_interlinear_nt.py` — interlinear a partir da STEPBible, na
   numeração de versículos das nossas traduções.
+- `gerar_palavras.py` — as palavras-chave sublinhadas e suas notas (o texto das notas fica nele).
 - `gerar_crossrefs.py`, `baixar_henry.py` — referências cruzadas e comentário de Matthew Henry.
 - `tradutor/traduzir_tudo.sh [glosas temas dicionario calvino]` — tradução offline com o Argos.
   Para o NLLB (melhor em prosa), aba Actions → "Traduzir (NLLB)".

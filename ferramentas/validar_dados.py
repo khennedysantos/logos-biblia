@@ -80,6 +80,32 @@ def main():
                 if l not in ids:
                     erros.append(f"plans.json: livro desconhecido {l}")
 
+    # palavras-chave sublinhadas: posições dentro do versículo da Bíblia Livre, sem sobreposição, com palavra no índice
+    indice = ler(DATA / "palavras" / "indice.json")
+    sublinhadas = 0
+    if indice:
+        for arq in (DATA / "palavras").glob("*.json"):
+            if arq.stem != "indice" and arq.stem not in indice["livros"]:
+                erros.append(f"palavras/{arq.name}: não está no índice")
+        for i in indice["livros"]:
+            texto, do_livro = ler(DATA / "bibles" / "blivre" / f"{i}.json") or [], ler(DATA / "palavras" / f"{i}.json") or {}
+            for cap, versos in do_livro.items():
+                for v, marcas in versos.items():
+                    try:
+                        verso = texto[int(cap) - 1][int(v) - 1]
+                    except (IndexError, ValueError):
+                        erros.append(f"palavras/{i} {cap}:{v}: versículo não existe na Bíblia Livre")
+                        continue
+                    fim = 0
+                    for m in marcas:
+                        sublinhadas += 1
+                        if not (fim <= m[0] < m[1] <= len(verso)) or not verso[m[0]:m[1]].strip():
+                            erros.append(f"palavras/{i} {cap}:{v}: posição {m[:2]} fora do versículo ou sobreposta")
+                        if m[2] not in indice["lemas"]:
+                            erros.append(f"palavras/{i} {cap}:{v}: {m[2]} não está no índice")
+                        fim = m[1]
+        avisos.append(f"{sublinhadas} palavras-chave sublinhadas")
+
     if sem_lexico > palavras * 0.002:
         erros.append(f"{sem_lexico} palavras do interlinear apontam para um Strong que não está no léxico")
     elif sem_lexico:

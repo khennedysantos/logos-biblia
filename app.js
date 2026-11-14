@@ -11,6 +11,8 @@ const UI = {
     lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
+    prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
+    chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", chaveDica:"palavra-chave: ver o original e a explicação",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraão, altar, aliança",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
@@ -80,6 +82,8 @@ const UI = {
     lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
     referencias:"Cross-refs", semRefs:"No cross-references for this verse.", refFonte:"Cross-references: openbible.info (CC-BY)",
     leituraCorrida:"Continuous reading",
+    prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
+    chaveVer:"See the verse in the original", chaveFonte:"Sola study note", chaveDica:"key word: see the original and the explanation",
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
@@ -149,6 +153,8 @@ const UI = {
     lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referencias", semRefs:"Sin referencias para este versículo.", refFonte:"Referencias: openbible.info (CC-BY)",
     leituraCorrida:"Lectura continua",
+    prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
+    chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", chaveDica:"palabra clave: ver el original y la explicación",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
@@ -253,6 +259,7 @@ const est = {
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
   corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", false), progresso: lerLS("logos_planos", {}),
   lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
+  chave: lerLS("logos_chave", true), cachePalavras:{}, palavrasCap:null,  // palavras-chave sublinhadas no texto
   sinc: Object.assign({ pend:{}, cursor:null, conta:null, ultima:0 }, lerLS("logos_sinc", null)),   // o que falta subir para a conta
   sb:null, sessao:null, sincEstado:"",
   cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{},
@@ -280,6 +287,16 @@ async function comCache(cache, chave, url){
   return cache[chave];
 }
 const carregarLivro = (trad, usfm)=>comCache(est.cacheBiblia, trad+"/"+usfm, `data/bibles/${trad}/${usfm}.json`);
+/* Palavras-chave sublinhadas (data/palavras, gerado por ferramentas/gerar_palavras.py). As posições valem para o
+   texto da Bíblia Livre, então só aparecem nela. O índice traz as palavras originais, as notas gerais e os livros
+   que têm arquivo; cada livro: {capítulo: {versículo: [[início, fim, strong, nota de contexto?]]}}. */
+async function carregarPalavras(usfm, cap){
+  if(!est.chave || est.traducao !== "blivre" || est.corrida) return null;
+  const idx = await comCache(est.cachePalavras, "indice", "data/palavras/indice.json");
+  if(!idx || !idx.livros.includes(usfm)) return null;
+  const livro = await comCache(est.cachePalavras, usfm, `data/palavras/${usfm}.json`);
+  return (livro && livro[cap]) || null;
+}
 const carregarRefs = (usfm, cap)=>comCache(est.cacheRefs, usfm+"/"+cap, `data/crossrefs/${usfm}/${cap}.json`);
 const carregarInterlinear = (usfm, cap)=>comCache(est.cacheInter, usfm+"/"+cap, `data/interlinear/${usfm}/${cap}.json`);
 const carregarLexico = (letra)=>comCache(est.cacheLex, letra, `data/strongs/${letra}.json`);
@@ -432,6 +449,7 @@ async function renderizar(op){
   op = op || {};
   const x = t();
   document.body.dataset.vista = est.vista;
+  fecharPalavra();
   est.versoAtivo = null; est.gaveta = null;
   if(est.vista==="inicio"){
     renderizarInicio();
@@ -558,9 +576,10 @@ async function renderizarCapitulo(op){
   const info = infoLivro(est.livro);
   if(est.cap > info.ch || est.cap < 1) est.cap = 1;
   leitor.classList.add("carregando");
-  const [livro, livroComp] = await Promise.all([
+  const [livro, livroComp, palavras] = await Promise.all([
     carregarLivro(est.traducao, est.livro),
     est.comparar ? carregarLivro(est.comparar, est.livro) : null,
+    carregarPalavras(est.livro, est.cap),
   ]);
   if(vez !== est.vez) return;   // o leitor já pediu outra página enquanto esta carregava
   leitor.classList.remove("carregando");
@@ -580,6 +599,7 @@ async function renderizarCapitulo(op){
     return;
   }
   const versos = est.versos = livro[est.cap-1] || [];
+  est.palavrasCap = palavras;
   const versosComp = livroComp ? (livroComp[est.cap-1]||[]) : null;
   if(est.corrida){
     html += `<p class="escritura corrida">` + versos.filter(Boolean).map(esc).join(" ") + `</p>`;
@@ -590,7 +610,7 @@ async function renderizarCapitulo(op){
       const marca = CORES.includes(est.marcas[chave]) ? " m-"+est.marcas[chave] : "";
       const temNota = est.notas[chave] ? `<span class="indicadores" title="${x.anotacao}">✎</span>` : "";
       html += `<div class="verso${marca}" id="v${v}" data-v="${v}" tabindex="0">
-        <p class="escritura"><sup>${v}</sup>${esc(texto)}${temNota}</p>
+        <p class="escritura"><sup>${v}</sup>${textoVerso(texto, palavras && palavras[v], v)}${temNota}</p>
         ${versosComp && versosComp[i] ? `<p class="comparado escritura">${esc(versosComp[i])}</p>` : ""}
         <div class="barra" role="toolbar" aria-label="${esc(refStr(est.livro, est.cap, v))}"></div>
         <div class="gavetas"></div>
@@ -604,11 +624,27 @@ async function renderizarCapitulo(op){
   leitor.querySelectorAll(".verso").forEach(el=>{
     // com uma gaveta aberta, passar o mouse por outro versículo não troca o ativo (senão a gaveta fecha sozinha)
     // logo depois de chegar por um link, o mouse parado em cima de outro versículo também não rouba o destaque
-    el.addEventListener("mouseenter", ()=>{ montarBarra(el); if(!est.gaveta && Date.now() > (est.semHover||0)) ativarVerso(el); });
+    el.addEventListener("mouseenter", (e)=>{
+      montarBarra(el);
+      // no toque, o navegador manda este evento antes do clique: se o dedo está numa palavra-chave, ativar o
+      // versículo aqui mexeria na página e o clique cairia fora da palavra
+      if(matchMedia("(hover:none)").matches && (document.elementFromPoint(e.clientX, e.clientY) || el).closest(".chave")) return;
+      if(!est.gaveta && Date.now() > (est.semHover||0)) ativarVerso(el);
+    });
     el.addEventListener("focus", ()=>montarBarra(el));
-    el.addEventListener("click", (e)=>{ if(e.target.closest(".barra,.gavetas")) return; ativarVerso(el, true); });
+    // tocar numa palavra-chave não leva o foco para ela: no celular a barra do versículo que tinha o foco sumiria
+    // no meio do toque, o texto subiria e o clique cairia em outro lugar (pelo teclado, Tab continua chegando nela)
+    el.addEventListener("mousedown", (e)=>{ if(e.target.closest(".chave")) e.preventDefault(); });
+    el.addEventListener("click", (e)=>{
+      if(e.target.closest(".barra,.gavetas")) return;
+      const chave = e.target.closest(".chave");
+      if(chave) return abrirPalavra(chave);          // palavra-chave: abre o cartão dela, sem mexer no versículo
+      ativarVerso(el, true);
+    });
     el.addEventListener("keydown", (e)=>{
-      if(e.target === el && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); ativarVerso(el, true); }
+      if(e.key !== "Enter" && e.key !== " ") return;
+      if(e.target === el){ e.preventDefault(); ativarVerso(el, true); }
+      else if(e.target.classList.contains("chave")){ e.preventDefault(); abrirPalavra(e.target, true); }
     });
   });
   atualizarNav();
@@ -616,6 +652,64 @@ async function renderizarCapitulo(op){
   if(alvo) irAoVerso(alvo, est.abrir);
   else if(!op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
   est.abrir = null;
+}
+/* Texto do versículo com as palavras-chave sublinhadas. */
+function textoVerso(texto, marcas, v){
+  if(!marcas) return esc(texto);
+  let html = "", pos = 0;
+  marcas.forEach((m, i)=>{
+    if(m[0] < pos || m[1] > texto.length) return;    // arquivo fora de sincronia com o texto: fica sem sublinhado
+    html += esc(texto.slice(pos, m[0])) +
+      `<span class="chave" role="button" tabindex="0" aria-haspopup="dialog" data-v="${v}" data-i="${i}">${esc(texto.slice(m[0], m[1]))}</span>`;
+    pos = m[1];
+  });
+  return html + esc(texto.slice(pos));
+}
+function fecharPalavra(devolverFoco){
+  const c = $("cartaoPalavra");
+  if(!c) return false;
+  const dona = document.querySelector(".chave.aberta");
+  c.remove();
+  if(dona){ dona.classList.remove("aberta"); if(devolverFoco) dona.focus({ preventScroll:true }); }
+  return true;
+}
+/* Cartão da palavra-chave: a palavra original, a tradução e por que ela pesa naquele versículo. */
+function abrirPalavra(el, peloTeclado){
+  const jaAberta = el.classList.contains("aberta");
+  fecharPalavra();
+  if(jaAberta) return;
+  const idx = est.cachePalavras.indice, doVerso = est.palavrasCap && est.palavrasCap[el.dataset.v];
+  const m = doVerso && doVerso[+el.dataset.i], lema = idx && m && idx.lemas[m[2]];
+  if(!lema) return;
+  const x = t(), heb = m[2][0] === "H", verso = el.closest(".verso");
+  const c = document.createElement("aside");
+  c.id = "cartaoPalavra"; c.className = "cartao-palavra";
+  c.setAttribute("role", "dialog"); c.setAttribute("aria-label", `${el.textContent} — ${lema.pt}`);
+  c.innerHTML = `
+    <div class="lex-topo"><span class="escritura lex-lemma" ${heb ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(lema.o)}</span>
+      <span class="lex-translit">${esc(lema.t)}</span><span class="lex-num">${esc(m[2])}</span>
+      <button class="fechar" aria-label="${x.fechar}">×</button></div>
+    <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
+    ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
+    ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
+    <div class="cp-pe"><button class="btn-linha" id="cpOriginal">${ico("original")} ${x.chaveVer}</button><span class="fonte">${x.chaveFonte}</span></div>`;
+  document.body.appendChild(c);
+  el.classList.add("aberta");
+  const r = el.getBoundingClientRect(), alt = c.offsetHeight;
+  if(matchMedia("(max-width:560px)").matches){
+    // no celular o cartão fica preso embaixo: se ele cobriria a palavra, a página sobe um pouco
+    const sobra = r.bottom + 16 - (innerHeight - alt - 12);
+    if(sobra > 0) window.scrollBy({ top: sobra, behavior:"instant" });
+  } else {
+    const cabeAbaixo = r.bottom + alt + 18 < innerHeight || r.top - alt - 12 < document.querySelector(".topo").getBoundingClientRect().bottom;
+    c.style.left = Math.max(12, Math.min(r.left, innerWidth - c.offsetWidth - 24)) + scrollX + "px";
+    c.style.top = (cabeAbaixo ? r.bottom + 10 : r.top - alt - 10) + scrollY + "px";
+    const passa = c.getBoundingClientRect().bottom + 12 - innerHeight;      // não coube inteiro na tela: a página sobe
+    if(passa > 0) window.scrollBy({ top: passa, behavior:"instant" });
+  }
+  c.querySelector(".fechar").addEventListener("click", (e)=>fecharPalavra(e.detail === 0));   // só o teclado devolve o foco à palavra
+  $("cpOriginal").addEventListener("click", ()=>{ fecharPalavra(); irAoVerso(verso, "original"); });
+  if(peloTeclado) c.querySelector(".fechar").focus({ preventScroll:true });   // quem veio pelo teclado continua nele
 }
 /* Rola até o versículo pedido (busca, referência cruzada, link com #v16), destaca e abre as ferramentas dele. */
 function irAoVerso(el, abrir){
@@ -1417,6 +1511,10 @@ async function baixarOffline(){
   btn.disabled = true;
   const urls = est.meta.books.map(b=>`/data/bibles/${est.traducao}/${b.id}.json`)
     .concat(["/data/books.json","/data/context.json","/data/plans.json","/data/timeline.json","/data/commentaries/calvin/manifest.json","/data/commentaries/henry/manifest.json"]);
+  if(est.traducao === "blivre"){     // as palavras-chave sublinhadas acompanham a Bíblia Livre
+    const idx = await comCache(est.cachePalavras, "indice", "data/palavras/indice.json");
+    if(idx) urls.push("/data/palavras/indice.json", ...idx.livros.map(l=>`/data/palavras/${l}.json`));
+  }
   let feitos = 0, falhas = 0;
   try{
     const cache = await caches.open(CACHE_DADOS);
@@ -1559,6 +1657,7 @@ function perfilHTML(){
         <button data-tema="claro" aria-pressed="${est.tema !== "escuro"}">${ico("sol")} ${x.claro}</button>
         <button data-tema="escuro" aria-pressed="${est.tema === "escuro"}">${ico("lua")} ${x.escuro}</button></div></div>
       <label class="pref-linha"><span>${x.leituraCorrida}</span><input type="checkbox" id="prefCorrida" ${est.corrida ? "checked" : ""}></label>
+      <label class="pref-linha"><span>${x.prefChave}</span><input type="checkbox" id="prefChave" ${est.chave ? "checked" : ""}></label>
     </div>
     <h3 class="estudo-sub">${x.seusDados}</h3>
     <div class="conta-acoes">
@@ -1581,6 +1680,10 @@ function ligarPerfil(){
     est.tema = b.dataset.tema; gravarLS("logos_tema", est.tema); aplicarTema(); montarMeuEstudo();
   }));
   $("prefCorrida").addEventListener("change", ()=>$("btnCorrida").click());
+  $("prefChave").addEventListener("change", (e)=>{
+    est.chave = e.target.checked; gravarLS("logos_chave", est.chave);
+    if(est.vista === "cap") renderizar({ manter:true });
+  });
   $("perfilBackup").addEventListener("click", exportarBackup);
   document.querySelector('label[for="perfilArq"]').addEventListener("keydown", (e)=>{ if(e.key==="Enter") $("perfilArq").click(); });
   $("perfilArq").addEventListener("change", (e)=>{
@@ -1984,9 +2087,11 @@ async function iniciar(){
   window.addEventListener("popstate", seguirRota);
   window.addEventListener("hashchange", ()=>{ if(/^#\//.test(location.hash)) seguirRota(); });
 
+  document.addEventListener("click", (e)=>{ if(!e.target.closest("#cartaoPalavra,.chave")) fecharPalavra(); });
   document.addEventListener("keydown", (e)=>{
     if(e.key === "Escape"){
       if(painelAberto()) return fecharPaineis();
+      if(fecharPalavra(true)) return;
       if(est.fecharConvite) return est.fecharConvite(true);
       if(est.gaveta && est.versoAtivo){ const el = est.versoAtivo; fecharGavetas(el); el.focus({ preventScroll:true }); }
       return;
