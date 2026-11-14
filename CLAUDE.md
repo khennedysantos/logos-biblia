@@ -70,6 +70,13 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   `sincronizar()`: o aparelho é a fonte, `tocar(tipo, chave)` anota cada alteração em `est.sinc.pend`, e no
   mesmo item vale o `ts` mais recente (apagar também é alteração). `DADOS` descreve cada tipo (nota, marca,
   plano, lido, estado). Passo a passo de configuração e detalhes em `ferramentas/CONTAS.md`.
+- Painel "Meu estudo" tem duas abas (`est.abaEstudo`): Estudo (números, progresso, marcações) e Perfil (conta,
+  preferências, backup, privacidade, excluir conta). O botão de perfil no topo (`#btnPerfil`, inicial do nome de
+  quem entrou) abre direto no Perfil; substituiu o antigo botão de ajustes. Os seletores do Perfil espelham os da
+  barra `.controles`, que só aparece na leitura em tela larga.
+- Convite para entrar (`convidar(motivo)` / `mostrarConvite`): cartão no canto, no máximo uma vez por visita,
+  depois de anotar, marcar, marcar capítulo lido ou abrir o 3º capítulo. "Agora não" adia 3, 7, 30 e 90 dias
+  (`logos_convite`). Não aparece para quem está logado, sem rede ou com painel aberto.
 
 ## Ferramentas de tradução (`ferramentas/tradutor/`)
 
@@ -90,6 +97,16 @@ Qualidade: boa no Strong e nos títulos; legível mas com tropeços em Calvino e
 sempre mostra "Tradução automática". O modelo omite texto em listas longas e não conhece inglês arcaico;
 o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem curtas demais.
 
+## Vídeo de apresentação (`ferramentas/video/`)
+
+Vídeo vertical (1080×1920, 30 qps, ~33 s) para ele postar. Tudo gerado, sem editor de vídeo:
+`capturar.cjs` fotografa o site em tamanho de celular (grava em `telas/`, com `medidas.js`), `video.html` é a
+animação (uma linha do tempo só, função `trilha(alvo, propriedade, [[segundo, valor], ...])`; aberta no
+navegador ela toca sozinha) e `renderizar.cjs` fotografa quadro a quadro e junta com o ffmpeg em
+`saida/sola-apresentacao.mp4` (`--fotos 2,13.5` só confere instantes). Precisa do site servido
+(`SITE=http://localhost:8000`), do Playwright e do ffmpeg. `telas/`, `quadros/` e `saida/` ficam fora do git.
+O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas ruins ("amado", "possa têm").
+
 ## Como trabalhar neste repositório
 
 - Teste antes de publicar: `python3 -m http.server` na raiz e Playwright com
@@ -102,6 +119,8 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
   interface: `auth.getSession/onAuthStateChange/signInWithOAuth/signOut`, `from().select().gte().order().range()`,
   `upsert`, `rpc`) e trocar `CONTA` na resposta do `app.js`. Variáveis `const` do app (`est`) são visíveis em
   `page.evaluate`, mas não em `window.est`.
+- No celular (≤560px) a palavra "Sola" do topo só aparece se couber ao lado do nome do livro (senão fica só o
+  símbolo): `.topo .marca` quebra a linha por dentro e esconde a sobra. Teste o topo com "1 Tessalonicenses 5".
 - No celular (≤560px) a barra do versículo fica no fluxo, entre o texto e a gaveta: flutuando ela cobria o
   botão Salvar. `font-variant-numeric:lining-nums` no `body` é obrigatório: sem ele o "1" da Cormorant parece "I".
 - Visual: cores e fontes são variáveis no topo do `style.css` (marfim, azul-noite, ouro envelhecido; títulos em
@@ -134,6 +153,9 @@ o tradutor já moderniza ("thou", "ass") e refaz em pedaços frases que saem cur
   só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
   para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
   e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
+- Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou
+  "possa têm", "is believing" virou "é acreditar", "In" virou "[Não]" em João 1:1. Como o inglês se perde depois
+  de aplicado, corrigir exige regerar o interlinear da fonte (STEPBible) com as entradas novas em `GLOSAS_FIXAS`.
 - Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
   `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
 - Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).
