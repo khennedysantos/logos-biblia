@@ -63,12 +63,15 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
     é a nota própria de um versículo. O script acha a palavra no interlinear e a forma em português no versículo, e
     recusa nota de contexto cujo Strong não esteja no versículo (proteção contra número errado).
   - vocabulário (traço pontilhado): palavras difíceis, antigas ou técnicas (côvado, éfode, holocausto, filisteus,
-    porquanto...), escritas em `ferramentas/vocabulario.py` com `t(palavra, formas, significado, nota, s=(strongs),
+    porquanto...), palavras que mudaram de sentido (aborrecer, constranger, príncipe, alma, dote), deuses vizinhos,
+    meses hebraicos, títulos (Faraó, Herodes, SENHOR dos exércitos) e expressões ("descansou com seus pais"),
+    escritas em `ferramentas/vocabulario.py` com `t(palavra, formas, significado, nota, s=(strongs),
     exige)`. `exige=True` só sublinha onde o Strong está no versículo — use quando a palavra tem outro sentido
     ("funda" arma × "cova funda"; "dízimas" medida × dízimo; "Selá" nome × pausa dos Salmos). Entra depois das
     palavras-chave, sem sobrepor e sem repetir no capítulo uma palavra que já é palavra-chave nele. Máximo de 5
-    marcas por versículo (3 de vocabulário). `--relatorio` mostra onde cada termo caiu e quantas vezes o Strong
-    confirmou: porcentagem baixa costuma ser sentido errado.
+    marcas por versículo (3 de vocabulário). Duas entradas sem `exige` não podem casar a mesma forma: a segunda
+    sublinharia a mesma palavra mais adiante no capítulo com outro sentido. `--relatorio` mostra onde cada termo
+    caiu e quantas vezes o Strong confirmou: porcentagem baixa costuma ser sentido errado. Leva cerca de 75 s.
   `indice.json` traz `lemas`, `termos`, `orig` (lema do Strong citado pelo vocabulário) e `livros`; `{LIVRO}.json`
   traz capítulo → versículo → `[início, fim, "H1254", nota?]` ou `[início, fim, "v:covado", strong?]`.
   No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferências `logos_chave` e
@@ -175,10 +178,14 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
   para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
   e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
 - Palavras-chave: 124 palavras originais e 83 notas de contexto, escritas pelo Claude e ainda NÃO revisadas pelo
-  Khennedy (são afirmações teológicas com o nome do site: ele precisa ler). Vocabulário: 201 termos (3.705
-  sublinhados), também escritos pelo Claude e não revisados; as medidas e pesos são aproximados ("cerca de"). Cobrem 851 dos 1.189 capítulos, mas
+  Khennedy (são afirmações teológicas com o nome do site: ele precisa ler). Cobrem 851 dos 1.189 capítulos, mas
   nota própria de versículo só nas passagens mais conhecidas; ampliar é acrescentar `contexto(...)` no script.
   `--relatorio` mostra, por palavra, onde a forma em português não foi encontrada.
+- Vocabulário: 701 termos (10.056 sublinhados, cerca de 8 por capítulo), também escritos pelo Claude e não
+  revisados; as medidas e pesos são aproximados ("cerca de"). Os que ele mais precisa ler: os de teologia (anjo do
+  SENHOR, alma, presbítero e bispo, Filho do Homem, santos, Renovo) e os de sentido sexual (conhecer, descobrir a
+  nudez, sodomitas). A Bíblia Livre já é modernizada ("outrossim", "debalde", "mister" nem aparecem): a lista de
+  palavras difíceis praticamente se esgota aqui, e ampliar mais seria sublinhar palavras comuns.
 - Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou
   "possa têm", "is believing" virou "é acreditar", "In" virou "[Não]" em João 1:1. Como o inglês se perde depois
   de aplicado, corrigir exige regerar o interlinear da fonte (STEPBible) com as entradas novas em `GLOSAS_FIXAS`.

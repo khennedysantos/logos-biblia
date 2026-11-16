@@ -32,7 +32,7 @@ pelo vocabulário) e "livros". Rode de novo sempre que mexer aqui, em vocabulari
 uso:  python3 ferramentas/gerar_palavras.py              (grava data/palavras/)
       python3 ferramentas/gerar_palavras.py --relatorio   (não grava; mostra a cobertura de cada palavra)
 """
-import collections, json, re, shutil, sys, unicodedata
+import bisect, collections, json, re, shutil, sys, unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -669,43 +669,55 @@ def main():
                 marcas[i] = feitos
                 total += len(feitos)
 
-            # 2ª camada: vocabulário, nos espaços que sobraram
+            # 2ª camada: vocabulário, nos espaços que sobraram. Cada termo é procurado uma vez no capítulo inteiro
+            # (versículos separados por quebra de linha, que nenhuma forma atravessa) e os achados vão para o versículo.
+            textos = [versos[i] if i < len(versos) and versos[i] else "" for i in range(len(inter))]
+            inicios, pos = [], 0
+            for tx in textos:
+                inicios.append(pos)
+                pos += len(tx) + 1
+            texto_cap = "\n".join(textos)
+            achados_cap = collections.defaultdict(list)          # versículo → [(ordem do termo, início, fim, texto)]
+            for k, tm in enumerate(TERMOS):
+                for m in tm["re"].finditer(texto_cap):
+                    i = bisect.bisect_right(inicios, m.start()) - 1
+                    a, f = m.start() - inicios[i], m.end() - inicios[i]
+                    if f <= len(textos[i]):
+                        achados_cap[i].append((k, a, f, m.group(0)))
             voc_no_cap = set()
             for i, palavras in enumerate(inter):
-                texto = versos[i] if i < len(versos) else ""
-                if not texto:
+                if not textos[i] or i not in achados_cap:
                     continue
                 feitos, n_voc = marcas.setdefault(i, []), 0
                 strongs = {p[2] for p in palavras if p[2]}
-                for tm in TERMOS:
+                ja_visto, contados = set(), set()
+                for k, a, f, txt in sorted(achados_cap[i]):
+                    tm = TERMOS[k]
                     if len(feitos) >= MAX_POR_VERSO or n_voc >= MAX_VOC_POR_VERSO:
                         break
-                    if tm["id"] in voc_no_cap and not relatorio:
+                    if k in ja_visto:
                         continue
                     presentes = [s for s in tm["s"] if s in strongs]
                     if tm["exige"] and not presentes:
                         continue
-                    for m in tm["re"].finditer(texto):
-                        if relatorio:
-                            voc_achados[tm["id"]] += 1
-                            if tm["id"] in voc_no_cap:
-                                break
-                        a = m.span()
-                        if any(a[0] < o[1] and o[0] < a[1] for o in feitos):
-                            continue
-                        if m.group(0).lower() in textos_chave:   # já é palavra-chave neste capítulo
-                            break
-                        feitos.append([a[0], a[1], tm["id"]] + presentes[:1])
-                        voc_no_cap.add(tm["id"])
-                        voc_marcados[tm["id"]] += 1
-                        voc_original[tm["id"]] += bool(presentes)
-                        if len(voc_exemplos[tm["id"]]) < 3:
-                            voc_exemplos[tm["id"]].append(f"{b['id']} {cap}:{i + 1} “{m.group(0)}”")
-                        for s in presentes[:1]:
-                            orig[s] = [lexico[s[0]][s]["lemma"], lexico[s[0]][s]["translit"]]
-                        n_voc += 1
-                        total_voc += 1
-                        break
+                    if relatorio and k not in contados:
+                        voc_achados[tm["id"]] += 1
+                        contados.add(k)
+                    if tm["id"] in voc_no_cap or any(a < o[1] and o[0] < f for o in feitos):
+                        continue
+                    ja_visto.add(k)                                  # só a primeira forma livre de cada termo conta
+                    if txt.lower() in textos_chave:                  # já é palavra-chave neste capítulo
+                        continue
+                    feitos.append([a, f, tm["id"]] + presentes[:1])
+                    voc_no_cap.add(tm["id"])
+                    voc_marcados[tm["id"]] += 1
+                    voc_original[tm["id"]] += bool(presentes)
+                    if len(voc_exemplos[tm["id"]]) < 3:
+                        voc_exemplos[tm["id"]].append(f"{b['id']} {cap}:{i + 1} “{txt}”")
+                    for s in presentes[:1]:
+                        orig[s] = [lexico[s[0]][s]["lemma"], lexico[s[0]][s]["translit"]]
+                    n_voc += 1
+                    total_voc += 1
 
             for i, feitos in marcas.items():
                 if feitos:
@@ -725,7 +737,7 @@ def main():
             print(f"{s:6} {l['pt'][:28]:28} aparece {vistos[s]:4}  sublinhada {marcados[s]:4}" + ("" if l["nota"] else "  (só contexto)"))
             for p in perdidos.get(s, []):
                 print("         sem forma em " + p)
-        print("\nVOCABULÁRIO (achada = vezes em que a forma aparece; com original = sublinhadas com o Strong no versículo)")
+        print("\nVOCABULÁRIO (achada = versículos em que a forma aparece; com original = sublinhadas com o Strong no versículo)")
         for tm in TERMOS:
             n = voc_marcados[tm["id"]]
             pct = f"{100 * voc_original[tm['id']] / n:3.0f}%" if n and tm["s"] else "   -"
