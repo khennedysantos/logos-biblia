@@ -168,7 +168,10 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
   padding:.3rem .5rem;box-shadow:var(--sombra);z-index:10;
   opacity:0;transform:translateY(4px);pointer-events:none;transition:opacity .18s ease,transform .18s ease}
 .barra:empty{display:none}
-.verso:hover .barra,.verso.ativo .barra,.verso:focus-within .barra{opacity:1;transform:none;pointer-events:auto}
+/* foco só mostra a barra quando veio do teclado: com clique, o versículo clicado guardava o foco e a barra dele
+   ficava aberta junto com a do versículo seguinte (o :has fica numa regra à parte: navegador sem ele ignora só ela) */
+.verso:hover .barra,.verso.ativo .barra,.verso:focus-visible .barra{opacity:1;transform:none;pointer-events:auto}
+.verso:has(:focus-visible) .barra{opacity:1;transform:none;pointer-events:auto}
 .barra .cor{width:1.05rem;height:1.05rem;border-radius:50%;border:1px solid var(--fio);cursor:pointer;padding:0}
 .barra .cor.sel{box-shadow:0 0 0 2px var(--painel),0 0 0 3.5px var(--ouro)}
 .barra .sep{width:1px;height:1rem;background:var(--borda);margin:0 .2rem}
@@ -183,7 +186,8 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
   /* no celular a barra entra no fluxo, entre o texto e a gaveta: flutuando, ela cobria o botão Salvar da anotação */
   .barra{position:static;display:none;opacity:1;transform:none;pointer-events:auto;flex-wrap:wrap;
     margin:.55rem 0 .25rem;border-radius:1rem;box-shadow:none;background:var(--papel)}
-  .verso.ativo .barra:not(:empty),.verso:focus-within .barra:not(:empty){display:flex}
+  .verso.ativo .barra:not(:empty),.verso:focus-visible .barra:not(:empty){display:flex}
+  .verso:has(:focus-visible) .barra:not(:empty){display:flex}
   .verso.barra-baixo{padding-top:.4rem}
 }
 
