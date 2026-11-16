@@ -13,8 +13,9 @@ GitHub Pages a partir da raiz do branch `main`. Custo de operação: zero.
   português e número de Strong; um toque abre o verbete do léxico (14.197 entradas).
 - **Palavras-chave sublinhadas**: um toque mostra a palavra original, a tradução e por que ela pesa
   naquele versículo (notas de estudo próprias do Sola).
-- **Vocabulário**: palavras difíceis ou antigas (côvado, éfode, holocausto, filisteus, porquanto…) aparecem
-  com traço pontilhado; um toque mostra o significado em português de hoje.
+- **Vocabulário**: mais de 700 palavras difíceis, antigas ou que mudaram de sentido (côvado, éfode,
+  holocausto, filisteus, porquanto, aborrecer, Faraó, Sião…) aparecem com traço pontilhado; um toque mostra o
+  significado em português de hoje.
 - **Comentários**: João Calvino (47 livros) e Matthew Henry (18 livros), em português por tradução
   automática, sempre com o aviso na tela.
 - **Referências cruzadas**, **temas** (Nave), **dicionário** (Easton), **atlas** com as viagens de
