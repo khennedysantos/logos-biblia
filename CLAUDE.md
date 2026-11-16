@@ -56,14 +56,23 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   `data/commentaries/henry/` (Matthew Henry, domínio público, baixado por `ferramentas/baixar_henry.py`;
   18 livros — Cantares não existe na fonte, e 2Sm 23–24 também faltam). Cada pasta tem `manifest.json`
   com a lista de livros. O app usa o comentário do versículo anterior (blocos) ou o primeiro do capítulo.
-- `data/palavras/` — palavras-chave sublinhadas no texto (só na Bíblia Livre). GERADO por
-  `ferramentas/gerar_palavras.py`, que é também onde as notas são escritas à mão: `lema(strong, tradução, formas,
-  nota)` sublinha a palavra na primeira vez em que aparece em cada capítulo; `contexto("PSA.51.10", "H1254", nota)`
-  é a nota própria de um versículo. O script acha a palavra no interlinear e a forma em português no versículo, e
-  recusa nota de contexto cujo Strong não esteja no versículo (proteção contra número errado). `indice.json` traz
-  as palavras e notas gerais; `{LIVRO}.json` traz capítulo → versículo → `[início, fim, strong, nota?]`.
-  No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferência `logos_chave`
-  no Perfil. Não aparece na leitura contínua nem nas outras traduções.
+- `data/palavras/` — palavras sublinhadas no texto (só na Bíblia Livre), em duas camadas, GERADAS por
+  `ferramentas/gerar_palavras.py`:
+  - palavras-chave (traço cheio dourado): as notas são escritas no próprio script. `lema(strong, tradução, formas,
+    nota)` sublinha a palavra na primeira vez em que aparece em cada capítulo; `contexto("PSA.51.10", "H1254", nota)`
+    é a nota própria de um versículo. O script acha a palavra no interlinear e a forma em português no versículo, e
+    recusa nota de contexto cujo Strong não esteja no versículo (proteção contra número errado).
+  - vocabulário (traço pontilhado): palavras difíceis, antigas ou técnicas (côvado, éfode, holocausto, filisteus,
+    porquanto...), escritas em `ferramentas/vocabulario.py` com `t(palavra, formas, significado, nota, s=(strongs),
+    exige)`. `exige=True` só sublinha onde o Strong está no versículo — use quando a palavra tem outro sentido
+    ("funda" arma × "cova funda"; "dízimas" medida × dízimo; "Selá" nome × pausa dos Salmos). Entra depois das
+    palavras-chave, sem sobrepor e sem repetir no capítulo uma palavra que já é palavra-chave nele. Máximo de 5
+    marcas por versículo (3 de vocabulário). `--relatorio` mostra onde cada termo caiu e quantas vezes o Strong
+    confirmou: porcentagem baixa costuma ser sentido errado.
+  `indice.json` traz `lemas`, `termos`, `orig` (lema do Strong citado pelo vocabulário) e `livros`; `{LIVRO}.json`
+  traz capítulo → versículo → `[início, fim, "H1254", nota?]` ou `[início, fim, "v:covado", strong?]`.
+  No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferências `logos_chave` e
+  `logos_voc` no Perfil. Não aparece na leitura contínua nem nas outras traduções.
 - `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`.
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
@@ -165,8 +174,9 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
   só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
   para `google:false` esconde tudo. O ambiente de nuvem "logos-biblia" libera `rxmxxuyqvetbkjfilayc.supabase.co`
   e `solabiblia.com.br`: sessões iniciadas nele conseguem conferir o projeto e o site publicado; no Default não.
-- Palavras-chave: 123 palavras originais e 83 notas de contexto, escritas pelo Claude e ainda NÃO revisadas pelo
-  Khennedy (são afirmações teológicas com o nome do site: ele precisa ler). Cobrem 851 dos 1.189 capítulos, mas
+- Palavras-chave: 124 palavras originais e 83 notas de contexto, escritas pelo Claude e ainda NÃO revisadas pelo
+  Khennedy (são afirmações teológicas com o nome do site: ele precisa ler). Vocabulário: 201 termos (3.705
+  sublinhados), também escritos pelo Claude e não revisados; as medidas e pesos são aproximados ("cerca de"). Cobrem 851 dos 1.189 capítulos, mas
   nota própria de versículo só nas passagens mais conhecidas; ampliar é acrescentar `contexto(...)` no script.
   `--relatorio` mostra, por palavra, onde a forma em português não foi encontrada.
 - Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou

@@ -13,6 +13,7 @@ const UI = {
     leituraCorrida:"Leitura contínua",
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
     chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", chaveDica:"palavra-chave: ver o original e a explicação",
+    prefVoc:"Significado das palavras difíceis", vocSig:"Significado", vocOrig:"No original", vocFonte:"Vocabulário do Sola",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
     exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraão, altar, aliança",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
@@ -84,6 +85,7 @@ const UI = {
     leituraCorrida:"Continuous reading",
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
     chaveVer:"See the verse in the original", chaveFonte:"Sola study note", chaveDica:"key word: see the original and the explanation",
+    prefVoc:"Meaning of hard words", vocSig:"Meaning", vocOrig:"In the original", vocFonte:"Sola glossary",
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     conteudoEN:"Content in the original English.",
@@ -155,6 +157,7 @@ const UI = {
     leituraCorrida:"Lectura continua",
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
     chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", chaveDica:"palabra clave: ver el original y la explicación",
+    prefVoc:"Significado de palabras difíciles", vocSig:"Significado", vocOrig:"En el original", vocFonte:"Vocabulario de Sola",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     conteudoEN:"Contenido en el inglés original.",
@@ -259,7 +262,8 @@ const est = {
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
   corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", false), progresso: lerLS("logos_planos", {}),
   lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
-  chave: lerLS("logos_chave", true), cachePalavras:{}, palavrasCap:null,  // palavras-chave sublinhadas no texto
+  chave: lerLS("logos_chave", true), voc: lerLS("logos_voc", true),       // as duas camadas de palavras sublinhadas
+  cachePalavras:{}, palavrasCap:null,
   sinc: Object.assign({ pend:{}, cursor:null, conta:null, ultima:0 }, lerLS("logos_sinc", null)),   // o que falta subir para a conta
   sb:null, sessao:null, sincEstado:"",
   cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{},
@@ -287,11 +291,12 @@ async function comCache(cache, chave, url){
   return cache[chave];
 }
 const carregarLivro = (trad, usfm)=>comCache(est.cacheBiblia, trad+"/"+usfm, `data/bibles/${trad}/${usfm}.json`);
-/* Palavras-chave sublinhadas (data/palavras, gerado por ferramentas/gerar_palavras.py). As posições valem para o
-   texto da Bíblia Livre, então só aparecem nela. O índice traz as palavras originais, as notas gerais e os livros
-   que têm arquivo; cada livro: {capítulo: {versículo: [[início, fim, strong, nota de contexto?]]}}. */
+/* Palavras sublinhadas (data/palavras, gerado por ferramentas/gerar_palavras.py). As posições valem para o texto da
+   Bíblia Livre, então só aparecem nela. Duas camadas: palavras-chave [início, fim, "H1254", nota de contexto?] e
+   vocabulário [início, fim, "v:covado", strong?]. O índice traz "lemas", "termos", "orig" e os livros com arquivo. */
+const ehVoc = (m)=>String(m[2]).startsWith("v:");
 async function carregarPalavras(usfm, cap){
-  if(!est.chave || est.traducao !== "blivre" || est.corrida) return null;
+  if((!est.chave && !est.voc) || est.traducao !== "blivre" || est.corrida) return null;
   const idx = await comCache(est.cachePalavras, "indice", "data/palavras/indice.json");
   if(!idx || !idx.livros.includes(usfm)) return null;
   const livro = await comCache(est.cachePalavras, usfm, `data/palavras/${usfm}.json`);
@@ -659,8 +664,9 @@ function textoVerso(texto, marcas, v){
   let html = "", pos = 0;
   marcas.forEach((m, i)=>{
     if(m[0] < pos || m[1] > texto.length) return;    // arquivo fora de sincronia com o texto: fica sem sublinhado
+    if(ehVoc(m) ? !est.voc : !est.chave) return;     // camada desligada no Perfil
     html += esc(texto.slice(pos, m[0])) +
-      `<span class="chave" role="button" tabindex="0" aria-haspopup="dialog" data-v="${v}" data-i="${i}">${esc(texto.slice(m[0], m[1]))}</span>`;
+      `<span class="chave${ehVoc(m) ? " voc" : ""}" role="button" tabindex="0" aria-haspopup="dialog" data-v="${v}" data-i="${i}">${esc(texto.slice(m[0], m[1]))}</span>`;
     pos = m[1];
   });
   return html + esc(texto.slice(pos));
@@ -679,20 +685,37 @@ function abrirPalavra(el, peloTeclado){
   fecharPalavra();
   if(jaAberta) return;
   const idx = est.cachePalavras.indice, doVerso = est.palavrasCap && est.palavrasCap[el.dataset.v];
-  const m = doVerso && doVerso[+el.dataset.i], lema = idx && m && idx.lemas[m[2]];
+  const m = doVerso && doVerso[+el.dataset.i], voc = m && ehVoc(m);
+  const lema = idx && m && (voc ? idx.termos && idx.termos[m[2]] : idx.lemas[m[2]]);
   if(!lema) return;
-  const x = t(), heb = m[2][0] === "H", verso = el.closest(".verso");
+  const x = t(), verso = el.closest(".verso");
+  const original = (num, o, t)=>`<span class="escritura lex-lemma" ${num[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(o)}</span>
+      <span class="lex-translit">${esc(t)}</span><span class="lex-num">${esc(num)}</span>`;
+  const botaoOriginal = `<button class="btn-linha" id="cpOriginal">${ico("original")} ${x.chaveVer}</button>`;
   const c = document.createElement("aside");
-  c.id = "cartaoPalavra"; c.className = "cartao-palavra";
-  c.setAttribute("role", "dialog"); c.setAttribute("aria-label", `${el.textContent} — ${lema.pt}`);
-  c.innerHTML = `
-    <div class="lex-topo"><span class="escritura lex-lemma" ${heb ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(lema.o)}</span>
-      <span class="lex-translit">${esc(lema.t)}</span><span class="lex-num">${esc(m[2])}</span>
-      <button class="fechar" aria-label="${x.fechar}">×</button></div>
-    <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
-    ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
-    ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
-    <div class="cp-pe"><button class="btn-linha" id="cpOriginal">${ico("original")} ${x.chaveVer}</button><span class="fonte">${x.chaveFonte}</span></div>`;
+  c.id = "cartaoPalavra"; c.className = "cartao-palavra" + (voc ? " voc" : "");
+  c.setAttribute("role", "dialog");
+  if(voc){
+    // vocabulário: a palavra em português, o que ela quer dizer e, quando o versículo confirma, a palavra original
+    const o = m[3] && idx.orig && idx.orig[m[3]];
+    c.setAttribute("aria-label", `${el.textContent} — ${lema.s}`);
+    c.innerHTML = `
+      <div class="voc-topo"><span class="voc-palavra">${esc(lema.p || el.textContent)}</span>
+        <button class="fechar" aria-label="${x.fechar}">×</button></div>
+      <h4>${x.vocSig}</h4><p class="voc-sig">${esc(lema.s)}</p>
+      ${lema.n ? `<p class="voc-nota">${esc(lema.n)}</p>` : ""}
+      ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${original(m[3], o[0], o[1])}</div>` : ""}
+      <div class="cp-pe">${o ? botaoOriginal : ""}<span class="fonte">${x.vocFonte}</span></div>`;
+  } else {
+    c.setAttribute("aria-label", `${el.textContent} — ${lema.pt}`);
+    c.innerHTML = `
+      <div class="lex-topo">${original(m[2], lema.o, lema.t)}
+        <button class="fechar" aria-label="${x.fechar}">×</button></div>
+      <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
+      ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
+      ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
+      <div class="cp-pe">${botaoOriginal}<span class="fonte">${x.chaveFonte}</span></div>`;
+  }
   document.body.appendChild(c);
   el.classList.add("aberta");
   const r = el.getBoundingClientRect(), alt = c.offsetHeight;
@@ -708,7 +731,7 @@ function abrirPalavra(el, peloTeclado){
     if(passa > 0) window.scrollBy({ top: passa, behavior:"instant" });
   }
   c.querySelector(".fechar").addEventListener("click", (e)=>fecharPalavra(e.detail === 0));   // só o teclado devolve o foco à palavra
-  $("cpOriginal").addEventListener("click", ()=>{ fecharPalavra(); irAoVerso(verso, "original"); });
+  if($("cpOriginal")) $("cpOriginal").addEventListener("click", ()=>{ fecharPalavra(); irAoVerso(verso, "original"); });
   if(peloTeclado) c.querySelector(".fechar").focus({ preventScroll:true });   // quem veio pelo teclado continua nele
 }
 /* Rola até o versículo pedido (busca, referência cruzada, link com #v16), destaca e abre as ferramentas dele. */
@@ -1658,6 +1681,7 @@ function perfilHTML(){
         <button data-tema="escuro" aria-pressed="${est.tema === "escuro"}">${ico("lua")} ${x.escuro}</button></div></div>
       <label class="pref-linha"><span>${x.leituraCorrida}</span><input type="checkbox" id="prefCorrida" ${est.corrida ? "checked" : ""}></label>
       <label class="pref-linha"><span>${x.prefChave}</span><input type="checkbox" id="prefChave" ${est.chave ? "checked" : ""}></label>
+      <label class="pref-linha"><span>${x.prefVoc}</span><input type="checkbox" id="prefVoc" ${est.voc ? "checked" : ""}></label>
     </div>
     <h3 class="estudo-sub">${x.seusDados}</h3>
     <div class="conta-acoes">
@@ -1680,10 +1704,11 @@ function ligarPerfil(){
     est.tema = b.dataset.tema; gravarLS("logos_tema", est.tema); aplicarTema(); montarMeuEstudo();
   }));
   $("prefCorrida").addEventListener("change", ()=>$("btnCorrida").click());
-  $("prefChave").addEventListener("change", (e)=>{
-    est.chave = e.target.checked; gravarLS("logos_chave", est.chave);
-    if(est.vista === "cap") renderizar({ manter:true });
-  });
+  [["prefChave", "chave", "logos_chave"], ["prefVoc", "voc", "logos_voc"]].forEach(([id, campo, chaveLS])=>
+    $(id).addEventListener("change", (e)=>{
+      est[campo] = e.target.checked; gravarLS(chaveLS, est[campo]);
+      if(est.vista === "cap") renderizar({ manter:true });
+    }));
   $("perfilBackup").addEventListener("click", exportarBackup);
   document.querySelector('label[for="perfilArq"]').addEventListener("keydown", (e)=>{ if(e.key==="Enter") $("perfilArq").click(); });
   $("perfilArq").addEventListener("change", (e)=>{

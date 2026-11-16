@@ -239,6 +239,9 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
   text-underline-offset:.24em;text-decoration-skip-ink:none;cursor:pointer;border-radius:.25rem;
   transition:background .2s;-webkit-tap-highlight-color:transparent}
 .chave:hover,.chave.aberta{background:color-mix(in srgb,var(--ouro-vivo) 24%,transparent)}
+/* vocabulário: traço pontilhado, mais discreto que o da palavra-chave */
+.chave.voc{text-decoration-style:dotted;text-decoration-thickness:2px;text-underline-offset:.26em;
+  text-decoration-color:color-mix(in srgb,var(--ouro-vivo) 75%,var(--suave))}
 .cartao-palavra{position:absolute;z-index:45;width:min(23rem,calc(100vw - 1.5rem));padding:.95rem 1.05rem .85rem;
   background:var(--painel);color:var(--tinta);border:1px solid var(--ouro-vivo);border-radius:var(--raio);
   box-shadow:var(--sombra-alta);font-family:var(--ui);animation:cartao-sobe .18s ease-out}
@@ -252,6 +255,15 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
   text-transform:uppercase;color:var(--suave);margin-bottom:.1rem}
 .cartao-palavra h4{margin:.8rem 0 .2rem;font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
 .cartao-palavra p{margin:0;font-size:.86rem;line-height:1.6}
+.voc-topo{display:flex;align-items:baseline;padding-right:1.9rem;margin-bottom:.1rem}
+.voc-palavra{font-family:var(--titulo);font-weight:600;font-size:1.55rem;line-height:1.15}
+.cartao-palavra.voc h4{margin-top:.45rem}
+.cartao-palavra .voc-sig{font-size:.92rem;line-height:1.55}
+.cartao-palavra .voc-nota{margin-top:.5rem;color:var(--suave)}
+.voc-orig{display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem .55rem;margin-top:.75rem;padding-top:.6rem;
+  border-top:1px dashed var(--borda)}
+.voc-orig .lex-lemma{font-size:1.3rem}
+.voc-rot{font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
 .cp-pe{display:flex;align-items:center;justify-content:space-between;gap:.6rem 1rem;flex-wrap:wrap;margin-top:.9rem;
   padding-top:.7rem;border-top:1px solid var(--borda)}
 .cp-pe .btn-linha{font-size:.74rem;padding:.4rem .8rem}

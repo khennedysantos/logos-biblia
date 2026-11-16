@@ -1,7 +1,11 @@
-"""Palavras-chave sublinhadas no texto (data/palavras/).
+"""Palavras sublinhadas no texto (data/palavras/).
 
-No capítulo, algumas palavras da Bíblia Livre aparecem sublinhadas; um toque abre um cartão com a palavra
-original (hebraico ou grego), a tradução e uma nota curta dizendo por que ela pesa ali.
+No capítulo, algumas palavras da Bíblia Livre aparecem sublinhadas; um toque abre um cartão. São duas camadas:
+- palavras-chave (traço cheio): a palavra original (hebraico ou grego), a tradução e uma nota curta dizendo por
+  que ela pesa ali. As notas ficam neste arquivo.
+- vocabulário (traço pontilhado): palavras difíceis, antigas ou técnicas do português da Bíblia Livre, com o
+  sentido de hoje. As definições ficam em ferramentas/vocabulario.py. Entram depois das palavras-chave, sem
+  sobrepor nenhuma e sem repetir no capítulo uma palavra que já é palavra-chave nele.
 
 Tudo o que o site mostra sai deste arquivo, escrito à mão:
 
@@ -18,20 +22,27 @@ O script acha a palavra original no interlinear (data/interlinear) e a correspon
 texto da Bíblia Livre. Se o número de Strong não estiver no versículo, ou a forma em português não for
 encontrada, o contexto() é recusado com erro: é a proteção contra número ou referência errados.
 
-Saída: data/palavras/indice.json (as palavras originais e as notas gerais) e data/palavras/{LIVRO}.json
-(capítulo → versículo → [início, fim, strong, nota de contexto]; início e fim contam caracteres do
-versículo na Bíblia Livre). Rode de novo sempre que mexer aqui ou no texto da Bíblia Livre.
+Saída: data/palavras/indice.json e data/palavras/{LIVRO}.json (capítulo → versículo → lista de marcas; início e
+fim contam caracteres do versículo na Bíblia Livre):
+  palavra-chave  [início, fim, "H1254", nota de contexto?]
+  vocabulário    [início, fim, "v:covado", strong?]   (o strong, quando vem, está no versículo: o cartão mostra o original)
+O índice traz "lemas" (palavras-chave), "termos" (vocabulário), "orig" (lema e transliteração dos números citados
+pelo vocabulário) e "livros". Rode de novo sempre que mexer aqui, em vocabulario.py ou no texto da Bíblia Livre.
 
 uso:  python3 ferramentas/gerar_palavras.py              (grava data/palavras/)
       python3 ferramentas/gerar_palavras.py --relatorio   (não grava; mostra a cobertura de cada palavra)
 """
-import collections, json, re, shutil, sys
+import collections, json, re, shutil, sys, unicodedata
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from vocabulario import TERMOS                                  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parent.parent
 DATA = RAIZ / "data"
 SAIDA = DATA / "palavras"
-MAX_POR_VERSO = 5
+MAX_POR_VERSO = 5        # marcas por versículo, somando as duas camadas
+MAX_VOC_POR_VERSO = 3    # das quais, no máximo, de vocabulário
 
 LEMAS, CONTEXTOS = {}, {}
 
@@ -269,6 +280,9 @@ lema("G728", "penhor, garantia", r"penhor|garantia",
 lema("G859", "perdão, remissão", r"perdão|remissão",
      "Soltar, mandar embora, cancelar uma dívida. O perdão bíblico não finge que a dívida não existia: "
      "alguém arcou com ela (Mateus 26:28).")
+lema("G3957", "Páscoa", r"páscoas?",
+     "A festa que lembrava a libertação do Egito, celebrada com o cordeiro (Êxodo 12). Jesus morreu na Páscoa e fez "
+     "da última ceia pascal a Ceia do Senhor; Paulo o chama de “nossa páscoa”, o cordeiro sacrificado (1 Coríntios 5:7).")
 lema("G1694", "Emanuel", r"emanuel",
      "“Deus conosco”, em hebraico. Mateus abre o evangelho com esse nome e o fecha com a promessa "
      "“eu estou convosco todos os dias” (28:20).")
@@ -562,6 +576,24 @@ def padrao(formas):
     return re.compile(r"(?<![\w-])(?:" + formas + r")(?!\w)", re.I)     # "lava-me" e "contou-lhe" valem
 
 
+def slug(texto):
+    t = unicodedata.normalize("NFD", texto.lower())
+    return re.sub(r"[^a-z0-9]+", "-", "".join(c for c in t if not unicodedata.combining(c))).strip("-")
+
+
+def preparar_termos(lexico):
+    ids = set()
+    for tm in TERMOS:
+        assert tm["palavra"] or tm["id"], f"termo sem palavra nem id: {tm['formas']}"
+        tm["id"] = "v:" + (tm["id"] or slug(tm["palavra"]))
+        assert tm["id"] not in ids, f"{tm['id']} repetido em vocabulario.py"
+        ids.add(tm["id"])
+        for s in tm["s"]:
+            assert s in lexico[s[0]], f"{tm['id']}: {s} não existe no léxico"
+        assert not tm["exige"] or tm["s"], f"{tm['id']}: exige=True sem números de Strong"
+        tm["re"] = padrao(tm["formas"])
+
+
 def main():
     relatorio = "--relatorio" in sys.argv
     livros = ler(DATA / "books.json")["books"]
@@ -572,12 +604,16 @@ def main():
     for (ref, s, n), c in CONTEXTOS.items():
         assert s in LEMAS, f"contexto {ref}: falta lema({s!r}, ...)"
         c["re"] = padrao(c["formas"]) if c["formas"] else LEMAS[s]["re"]
+    preparar_termos(lexico)
 
     usados, erros = set(), []
     vistos = collections.Counter()        # vezes em que a palavra original aparece
     marcados = collections.Counter()      # vezes em que foi sublinhada
     perdidos = collections.defaultdict(list)
-    total, n_caps, saida = 0, 0, {}
+    voc_achados, voc_marcados, voc_original = collections.Counter(), collections.Counter(), collections.Counter()
+    voc_exemplos = collections.defaultdict(list)
+    orig = {}
+    total, total_voc, n_caps, saida = 0, 0, 0, {}
     for b in livros:
         texto_livro = ler(DATA / "bibles" / "blivre" / f"{b['id']}.json")
         for cap in range(1, b["ch"] + 1):
@@ -585,6 +621,9 @@ def main():
             if not arq.exists():
                 continue
             inter, versos, ja_no_cap, do_cap = ler(arq), texto_livro[cap - 1], set(), {}
+            marcas, textos_chave = {}, set()
+
+            # 1ª camada: palavras-chave
             for i, palavras in enumerate(inter):
                 texto = versos[i] if i < len(versos) else ""
                 if not texto:
@@ -625,10 +664,52 @@ def main():
                     ocupados.append(alvo)
                     ja_no_cap.add(s)
                     marcados[s] += 1
+                    textos_chave.add(texto[alvo[0]:alvo[1]].lower())
                     feitos.append([alvo[0], alvo[1], s] + ([c["nota"]] if c else []))
+                marcas[i] = feitos
+                total += len(feitos)
+
+            # 2ª camada: vocabulário, nos espaços que sobraram
+            voc_no_cap = set()
+            for i, palavras in enumerate(inter):
+                texto = versos[i] if i < len(versos) else ""
+                if not texto:
+                    continue
+                feitos, n_voc = marcas.setdefault(i, []), 0
+                strongs = {p[2] for p in palavras if p[2]}
+                for tm in TERMOS:
+                    if len(feitos) >= MAX_POR_VERSO or n_voc >= MAX_VOC_POR_VERSO:
+                        break
+                    if tm["id"] in voc_no_cap and not relatorio:
+                        continue
+                    presentes = [s for s in tm["s"] if s in strongs]
+                    if tm["exige"] and not presentes:
+                        continue
+                    for m in tm["re"].finditer(texto):
+                        if relatorio:
+                            voc_achados[tm["id"]] += 1
+                            if tm["id"] in voc_no_cap:
+                                break
+                        a = m.span()
+                        if any(a[0] < o[1] and o[0] < a[1] for o in feitos):
+                            continue
+                        if m.group(0).lower() in textos_chave:   # já é palavra-chave neste capítulo
+                            break
+                        feitos.append([a[0], a[1], tm["id"]] + presentes[:1])
+                        voc_no_cap.add(tm["id"])
+                        voc_marcados[tm["id"]] += 1
+                        voc_original[tm["id"]] += bool(presentes)
+                        if len(voc_exemplos[tm["id"]]) < 3:
+                            voc_exemplos[tm["id"]].append(f"{b['id']} {cap}:{i + 1} “{m.group(0)}”")
+                        for s in presentes[:1]:
+                            orig[s] = [lexico[s[0]][s]["lemma"], lexico[s[0]][s]["translit"]]
+                        n_voc += 1
+                        total_voc += 1
+                        break
+
+            for i, feitos in marcas.items():
                 if feitos:
-                    do_cap[str(i + 1)] = sorted(feitos)
-                    total += len(feitos)
+                    do_cap[str(i + 1)] = sorted(feitos, key=lambda f: f[0])
             if do_cap:
                 saida.setdefault(b["id"], {})[str(cap)] = do_cap
                 n_caps += 1
@@ -644,16 +725,25 @@ def main():
             print(f"{s:6} {l['pt'][:28]:28} aparece {vistos[s]:4}  sublinhada {marcados[s]:4}" + ("" if l["nota"] else "  (só contexto)"))
             for p in perdidos.get(s, []):
                 print("         sem forma em " + p)
+        print("\nVOCABULÁRIO (achada = vezes em que a forma aparece; com original = sublinhadas com o Strong no versículo)")
+        for tm in TERMOS:
+            n = voc_marcados[tm["id"]]
+            pct = f"{100 * voc_original[tm['id']] / n:3.0f}%" if n and tm["s"] else "   -"
+            print(f"{tm['id'][2:]:24} achada {voc_achados[tm['id']]:5}  sublinhada {n:4}  com original {pct}  "
+                  + "; ".join(voc_exemplos[tm["id"]]))
     else:
         shutil.rmtree(SAIDA, ignore_errors=True)
-        for livro, do_livro in saida.items():          # um arquivo por livro: {capítulo: {versículo: [[início, fim, strong, nota?]]}}
+        for livro, do_livro in saida.items():          # um arquivo por livro: {capítulo: {versículo: [marcas]}}
             gravar(SAIDA / f"{livro}.json", do_livro)
         gravar(SAIDA / "indice.json", {                 # o que o cartão mostra de cada palavra, e que livros têm arquivo
             "lemas": {s: {"o": lexico[s[0]][s]["lemma"], "t": lexico[s[0]][s]["translit"], "pt": l["pt"],
                           **({"nota": l["nota"]} if l["nota"] else {})} for s, l in LEMAS.items() if marcados[s]},
+            "termos": {tm["id"]: {k: v for k, v in (("p", tm["palavra"]), ("s", tm["significado"]), ("n", tm["nota"])) if v}
+                       for tm in TERMOS if voc_marcados[tm["id"]]},
+            "orig": dict(sorted(orig.items())),
             "livros": list(saida)})
-    print(f"{total} palavras sublinhadas em {n_caps} capítulos de {len(saida)} livros; "
-          f"{len(LEMAS)} palavras originais, {len(CONTEXTOS)} notas de contexto")
+    print(f"{total} palavras-chave e {total_voc} de vocabulário sublinhadas em {n_caps} capítulos de {len(saida)} "
+          f"livros; {len(LEMAS)} palavras originais, {len(CONTEXTOS)} notas de contexto, {len(TERMOS)} termos")
 
 
 if __name__ == "__main__":
