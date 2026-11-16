@@ -552,10 +552,11 @@ body.com-painel{overflow:hidden}
 .btn-lido:hover{border-color:var(--ouro);color:var(--ouro)}
 .btn-lido.feito{background:var(--ouro);border-color:var(--ouro);color:var(--papel);font-weight:600}
 .caps a.lido,.lista-capitulos button.lido{background:color-mix(in srgb,var(--ouro-vivo) 20%,var(--painel));border-color:var(--ouro-vivo);color:var(--ouro)}
-.heroi-estudo{margin:1.1rem 0 0}
-.heroi-estudo button{border:0;background:none;color:rgba(241,233,216,.7);font-size:.76rem;letter-spacing:.04em;cursor:pointer;
+.heroi-estudo,.heroi-ajuda{margin:1.1rem 0 0}
+.heroi-ajuda+.heroi-estudo{margin-top:.3rem}
+.heroi-estudo button,.heroi-ajuda button{border:0;background:none;color:rgba(241,233,216,.7);font-size:.76rem;letter-spacing:.04em;cursor:pointer;
   display:inline-flex;align-items:center;gap:.4rem}
-.heroi-estudo button:hover{color:var(--ouro-noite)}
+.heroi-estudo button:hover,.heroi-ajuda button:hover{color:var(--ouro-noite)}
 .conta-local{font-size:.8rem;color:var(--suave);line-height:1.6;margin:0 0 1.1rem}
 .conta-caixa{border:1px solid var(--borda);border-top:2px solid var(--ouro-vivo);border-radius:var(--raio);background:var(--papel);
   padding:1rem 1.1rem;margin-bottom:1.2rem;display:grid;gap:.8rem}
@@ -660,3 +661,13 @@ label.btn-linha{cursor:pointer}
 .convite .fonte{color:rgba(241,233,216,.7)}
 @media (max-width:560px){.convite{left:1rem;right:1rem;width:auto}}
 body:not([data-vista="cap"]) .convite{bottom:1.2rem}
+
+/* Como usar */
+.ajuda-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.7rem;margin:.6rem 0 .4rem}
+.ajuda-item{display:flex;gap:.75rem;align-items:flex-start;border:1px solid var(--borda);border-radius:.6rem;padding:.85rem .9rem;background:var(--painel)}
+.ajuda-item>.ico{flex:0 0 auto;font-size:1.15rem;color:var(--ouro);margin-top:.15rem}
+.ajuda-item h4{font-family:var(--titulo);font-weight:600;font-size:1.12rem;margin:0 0 .2rem;line-height:1.25}
+.ajuda-item p{margin:0;font-size:.82rem;line-height:1.6;color:var(--suave)}
+.ajuda-ir{margin-top:.5rem;border:0;background:none;padding:0;font-size:.74rem;font-weight:600;letter-spacing:.04em;color:var(--ouro);
+  cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+.ajuda-ir:hover{text-decoration:underline}

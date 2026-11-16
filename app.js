@@ -227,10 +227,138 @@ const UI = {
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
-  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",estudo:"Modo estudo"},
-  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",estudo:"Study mode"},
-  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",estudo:"Modo estudio"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Modo estudo"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study mode"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Modo estudio"}
 };
+/* Guia "Como usar": grupos → [ação, ícone, título, texto]. A ação (mesma nos três idiomas) está em ACOES_AJUDA. */
+const AJUDA = {
+  pt:{ titulo:"Como usar o Sola", experimentar:"Experimentar",
+    intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função.",
+    grupos:[
+      ["Ler a Bíblia", [
+        ["livros","livro","Escolher livro e capítulo","Toque no nome do livro no alto da tela. Também dá para digitar uma referência na busca ou na página inicial, como “Jo 3:16” ou “Sl 23”. Para mudar de capítulo, use as setas no rodapé (no computador, as setas ← → do teclado)."],
+        ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, em Perfil."],
+        ["corrida","corrida","Leitura contínua","O botão de linhas no alto junta os versículos num texto corrido, como num livro, sem números no meio."],
+        ["tema","lua","Tema claro e escuro","O botão da lua (ou do sol) troca as cores. A escolha fica guardada no aparelho."],
+        ["modoEstudo","estudo","Modo estudo","Só no computador: abre uma coluna ao lado do texto com o original e o comentário do versículo em que você toca, sem tirar os olhos da leitura."],
+        ["lido","feito","Marcar capítulo como lido","No fim de cada capítulo há o botão “Marcar capítulo como lido”. Os capítulos lidos aparecem marcados na lista e contam no seu progresso."]]],
+      ["Estudar um versículo", [
+        ["original","original","Original e Strong","Toque num versículo e escolha “Original”: cada palavra do grego ou do hebraico aparece com a transliteração e a tradução literal. Toque na palavra para abrir o verbete do léxico de Strong."],
+        ["comentario","comentario","Comentário","“Comentário” mostra João Calvino no versículo (em 47 livros) ou Matthew Henry, nos livros que Calvino não comentou."],
+        ["referencias","refs","Referências cruzadas","“Referências” traz as passagens que falam do mesmo assunto: a Escritura interpretando a Escritura."],
+        ["palavras","temas","Palavras sublinhadas","Na Bíblia Livre, o traço dourado cheio marca palavras-chave: toque para ver a palavra original e por que ela importa ali. O traço pontilhado explica palavras difíceis ou antigas. As duas camadas podem ser desligadas em Perfil."],
+        ["contexto","contexto","Contexto do livro","O botão “Contexto” mostra autor, data, local, destinatários, tema e passagens paralelas do livro que você está lendo."]]],
+      ["Pesquisar", [
+        ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto. A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
+        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e as doutrinas da fé reformada, como Trindade, pedobatismo e os cinco pontos do calvinismo, cada uma com os versículos em que se apoia."],
+        ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
+        ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
+        ["atlas","atlas","Atlas","Mais de 1.300 lugares bíblicos no mapa e as viagens missionárias de Paulo."]]],
+      ["Seu estudo", [
+        ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
+        ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
+        ["planos","planos","Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios e outros. O Sola lembra em que dia você está."],
+        ["meu","progresso","Meu estudo","Seu progresso por livro, os dias seguidos de leitura e as marcações. Funciona sem conta."],
+        ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
+        ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
+  en:{ titulo:"How to use Sola", experimentar:"Try it",
+    intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature.",
+    grupos:[
+      ["Reading", [
+        ["livros","livro","Choose a book and chapter","Tap the book name at the top. You can also type a reference in search or on the home page, like “John 3:16”. To change chapters, use the arrows at the bottom (on a computer, the ← → keys)."],
+        ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, in Profile."],
+        ["corrida","corrida","Continuous reading","The lines button at the top joins the verses into running text, like a book."],
+        ["tema","lua","Light and dark theme","The moon (or sun) button switches colors. Your choice is saved on this device."],
+        ["modoEstudo","estudo","Study mode","Computer only: a column next to the text shows the original and the commentary for the verse you tap."],
+        ["lido","feito","Mark a chapter as read","At the end of each chapter there is a “Mark chapter as read” button. Read chapters are marked in the list and count toward your progress."]]],
+      ["Studying a verse", [
+        ["original","original","Original and Strong","Tap a verse and choose “Original”: every Greek or Hebrew word with transliteration and a literal gloss. Tap a word to open its Strong’s lexicon entry."],
+        ["comentario","comentario","Commentary","“Commentary” shows John Calvin on the verse (47 books) or Matthew Henry where Calvin did not comment."],
+        ["referencias","refs","Cross-references","“References” lists passages on the same subject: Scripture interpreting Scripture."],
+        ["palavras","temas","Underlined words","In the Bíblia Livre, a solid gold line marks key words: tap to see the original word and why it matters. A dotted line explains hard or old words. Both layers can be turned off in Profile (Portuguese only)."],
+        ["contexto","contexto","Book context","The “Context” button shows author, date, place, audience, theme and parallels for the book you are reading."]]],
+      ["Searching", [
+        ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book. Exact phrases come first."],
+        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and the doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
+        ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
+        ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
+        ["atlas","atlas","Atlas","Over 1,300 Bible places on the map and Paul’s missionary journeys."]]],
+      ["Your study", [
+        ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
+        ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
+        ["planos","planos","Reading plans","The Bible in a year, the New Testament in 90 days, Psalms and Proverbs and more. Sola remembers your day."],
+        ["meu","progresso","My study","Your progress by book, reading streak and highlights. Works without an account."],
+        ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
+        ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
+  es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
+    intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función.",
+    grupos:[
+      ["Leer la Biblia", [
+        ["livros","livro","Elegir libro y capítulo","Toca el nombre del libro arriba. También puedes escribir una referencia en la búsqueda o en el inicio, como “Juan 3:16”. Para cambiar de capítulo, usa las flechas de abajo (en la computadora, las teclas ← →)."],
+        ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en Perfil."],
+        ["corrida","corrida","Lectura continua","El botón de líneas arriba une los versículos en texto corrido, como un libro."],
+        ["tema","lua","Tema claro y oscuro","El botón de la luna (o del sol) cambia los colores. La elección queda guardada en el dispositivo."],
+        ["modoEstudo","estudo","Modo estudio","Solo en la computadora: una columna junto al texto muestra el original y el comentario del versículo que tocas."],
+        ["lido","feito","Marcar capítulo como leído","Al final de cada capítulo está el botón “Marcar capítulo como leído”. Los capítulos leídos aparecen marcados y cuentan en tu progreso."]]],
+      ["Estudiar un versículo", [
+        ["original","original","Original y Strong","Toca un versículo y elige “Original”: cada palabra del griego o del hebreo con transliteración y traducción literal. Toca la palabra para abrir el léxico de Strong."],
+        ["comentario","comentario","Comentario","“Comentario” muestra a Juan Calvino (47 libros) o a Matthew Henry donde Calvino no comentó."],
+        ["referencias","refs","Referencias cruzadas","“Referencias” muestra pasajes sobre el mismo tema: la Escritura interpreta la Escritura."],
+        ["palavras","temas","Palabras subrayadas","En la Bíblia Livre, la línea dorada marca palabras clave y la punteada explica palabras difíciles (en portugués). Se pueden desactivar en Perfil."],
+        ["contexto","contexto","Contexto del libro","El botón “Contexto” muestra autor, fecha, lugar, destinatarios, tema y paralelos del libro."]]],
+      ["Buscar", [
+        ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto. La frase exacta aparece primero."],
+        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y las doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
+        ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
+        ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
+        ["atlas","atlas","Atlas","Más de 1.300 lugares bíblicos en el mapa y los viajes misioneros de Pablo."]]],
+      ["Tu estudio", [
+        ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
+        ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
+        ["planos","planos","Planes de lectura","La Biblia en un año, el Nuevo Testamento en 90 días, Salmos y Proverbios y más. Sola recuerda tu día."],
+        ["meu","progresso","Mi estudio","Tu progreso por libro, los días seguidos de lectura y los resaltados. Funciona sin cuenta."],
+        ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
+        ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
+};
+const ACOES_AJUDA = {
+  livros: ()=>{ montarListaLivros(); alternarPainel("painelLivros", true); },
+  traducoes: ()=>innerWidth > 560 ? irPara("JHN", 1, 1) : abrirMeuEstudo("perfil"),
+  corrida: ()=>irPara("PSA", 23),
+  tema: ()=>{ est.tema = est.tema==="escuro" ? "claro" : "escuro"; gravarLS("logos_tema", est.tema); aplicarTema(); },
+  modoEstudo: ()=>{ fecharPaineis(); est.estudo = true; gravarLS("logos_estudo", true); aplicarEstudo(); if(est.vista!=="cap") irPara("JHN", 1, 1); },
+  lido: ()=>irPara("PSA", 23),
+  original: ()=>irPara("JHN", 1, 1, "original"),
+  comentario: ()=>irPara("ROM", 8, 28, "comentario"),
+  referencias: ()=>irPara("JHN", 3, 16, "referencias"),
+  palavras: ()=>irPara("PSA", 51, 10),
+  contexto: ()=>abrirContexto(),
+  buscar: ()=>abrirBusca("texto"),
+  temas: ()=>abrirBusca("temas"),
+  dicionario: ()=>abrirBusca("dicionario"),
+  tempo: ()=>{ montarTempo(); alternarPainel("painelTempo", true); },
+  atlas: ()=>abrirAtlas(),
+  marcar: ()=>irPara("JHN", 3, 16),
+  notas: ()=>{ montarNotas(); alternarPainel("painelNotas", true); },
+  planos: ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); },
+  meu: ()=>abrirMeuEstudo("estudo"),
+  conta: ()=>abrirMeuEstudo("perfil"),
+  offline: ()=>alternarPainel("painelSobre", true),
+};
+function montarAjuda(){
+  const a = AJUDA[est.idioma] || AJUDA.pt;
+  $("tituloAjuda").textContent = a.titulo;
+  $("conteudoAjuda").innerHTML = `<p class="painel-texto">${a.intro}</p>` + a.grupos.map(([g, itens])=>
+    `<h3 class="painel-sub">${g}</h3><div class="ajuda-grade">` + itens.map(([acao, icone, tit, txt])=>
+      `<div class="ajuda-item">${ico(icone)}<div><h4>${tit}</h4><p>${txt}</p>` +
+      (ACOES_AJUDA[acao] ? `<button class="ajuda-ir" data-acao="${acao}">${a.experimentar} ${ico("seta")}</button>` : "") +
+      `</div></div>`).join("") + `</div>`).join("");
+  $("conteudoAjuda").querySelectorAll(".ajuda-ir").forEach(b=>b.addEventListener("click", ()=>{
+    alternarPainel("painelAjuda", false);
+    ACOES_AJUDA[b.dataset.acao]();
+  }));
+}
+function abrirAjuda(){ montarAjuda(); alternarPainel("painelAjuda", true); }
 const CORES = ["ouro","verde","azul","rosa"];
 /* Os mesmos grupos estão em ferramentas/gerar_paginas.py (página inicial que o Google lê). */
 const GRUPOS = [
@@ -517,6 +645,7 @@ function renderizarInicio(){
         ${temUlt ? `<a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${ult.cap} ${ico("seta")}</a>` : ""}
         <a class="${temUlt ? "btn-linha" : "btn-ouro"}" href="${urlCapitulo("JHN", 1)}">${x.comecar}</a>
       </div>
+      <p class="heroi-ajuda"><button id="btnAjudaInicio">${ico("ajuda")} ${(AJUDA[est.idioma] || AJUDA.pt).titulo}</button></p>
       ${nLidos ? `<p class="heroi-estudo"><button id="btnEstudoInicio">${ico("pessoa")} ${x.meuEstudo}: ${nLidos} ${nLidos === 1 ? x.capLido1 : x.capsLidos}${resumo.seq > 1 ? ` · ${resumo.seq} ${x.diasSeguidos}` : ""}</button></p>` : ""}
     </section>
     <section class="dia"><p class="rotulo-secao">${x.versoDia}</p><blockquote id="versoDia"></blockquote><span id="versoDiaRef"></span></section>
@@ -532,6 +661,7 @@ function renderizarInicio(){
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
   if($("btnEstudoInicio")) $("btnEstudoInicio").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
+  $("btnAjudaInicio").addEventListener("click", abrirAjuda);
   const acoes = [()=>irPara("JHN",1,1,"original"), ()=>irPara("ROM",8,28,"comentario"), ()=>irPara("JHN",3,16,"referencias"),
     ()=>abrirBusca("temas"), abrirAtlas, ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); }];
   document.querySelectorAll(".recurso").forEach(b=>b.addEventListener("click", acoes[+b.dataset.recurso]));
@@ -2088,6 +2218,7 @@ async function iniciar(){
   $("navTempo").addEventListener("click", ()=>{ montarTempo(); alternarPainel("painelTempo"); });
   $("navAtlas").addEventListener("click", abrirAtlas);
   $("navContexto").addEventListener("click", abrirContexto);
+  $("navAjuda").addEventListener("click", abrirAjuda);
   $("btnNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas"); });
   $("btnPlanos").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos"); });
   $("btnTema").addEventListener("click", ()=>{
@@ -2112,6 +2243,7 @@ async function iniciar(){
     if(id==="painelPlanos") montarPlanos(null);
     if(id==="painelTempo") montarTempo();
     if(id==="painelNotas") montarNotas();
+    if(id==="painelAjuda") montarAjuda();
     if(id==="painelEstudo"){ est.abaEstudo = "estudo"; montarMeuEstudo(); }
     alternarPainel(id, true);
   }));

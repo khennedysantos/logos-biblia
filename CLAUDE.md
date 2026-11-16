@@ -101,6 +101,10 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   preferências, backup, privacidade, excluir conta). O botão de perfil no topo (`#btnPerfil`, inicial do nome de
   quem entrou) abre direto no Perfil; substituiu o antigo botão de ajustes. Os seletores do Perfil espelham os da
   barra `.controles`, que só aparece na leitura em tela larga.
+- Painel "Como usar" (`#painelAjuda`): aberto pelo botão "Como usar" da barra de navegação, pelo link na página
+  inicial (`#btnAjudaInicio`) e no rodapé. O conteúdo fica no objeto `AJUDA` (pt/en/es: grupos → itens
+  `[ação, ícone, título, texto]`), montado por `montarAjuda()`; o botão "Experimentar" de cada item chama
+  `ACOES_AJUDA[ação]`. Funcionalidade nova no site: acrescente o item em `AJUDA` (nas três línguas) e a ação.
 - Convite para entrar (`convidar(motivo)` / `mostrarConvite`): cartão no canto, no máximo uma vez por visita,
   depois de anotar, marcar, marcar capítulo lido ou abrir o 3º capítulo. "Agora não" adia 3, 7, 30 e 90 dias
   (`logos_convite`). Não aparece para quem está logado, sem rede ou com painel aberto.
