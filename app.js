@@ -15,7 +15,9 @@ const UI = {
     chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", chaveDica:"palavra-chave: ver o original e a explicação",
     prefVoc:"Significado das palavras difíceis", vocSig:"Significado", vocOrig:"No original", vocFonte:"Vocabulário do Sola",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
-    exTema:"ex.: fé, aliança, justificação", exDic:"ex.: Abraão, altar, aliança",
+    exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
+    doutSelo:"Doutrina reformada", doutLista:"Doutrinas da fé reformada — ou digite um tema", doutMais:"continua no capítulo",
+    doutFonte:"Síntese do Sola a partir da Confissão de Fé de Westminster e dos seus textos de prova. Texto bíblico: Bíblia Livre.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
     comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
@@ -88,6 +90,8 @@ const UI = {
     prefVoc:"Meaning of hard words", vocSig:"Meaning", vocOrig:"In the original", vocFonte:"Sola glossary",
     abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
     exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
+    doutSelo:"Reformed doctrine", doutLista:"Reformed doctrines — or type a topic", doutMais:"continues in the chapter",
+    doutFonte:"Summary by Sola based on the Westminster Confession of Faith and its proof texts (in Portuguese). Bible text: Bíblia Livre.",
     conteudoEN:"Content in the original English.",
     tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…",
     comRef:"Commentary on v.", comBloco:"(the commentary covers a block of verses)",
@@ -160,6 +164,8 @@ const UI = {
     prefVoc:"Significado de palabras difíciles", vocSig:"Significado", vocOrig:"En el original", vocFonte:"Vocabulario de Sola",
     abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
     exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
+    doutSelo:"Doctrina reformada", doutLista:"Doctrinas reformadas — o escribe un tema", doutMais:"continúa en el capítulo",
+    doutFonte:"Síntesis de Sola basada en la Confesión de Fe de Westminster y sus textos de prueba (en portugués). Texto bíblico: Bíblia Livre.",
     conteudoEN:"Contenido en el inglés original.",
     tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…",
     comRef:"Comentario sobre el v.", comBloco:"(el comentario abarca un bloque de versículos)",
@@ -266,7 +272,7 @@ const est = {
   cachePalavras:{}, palavrasCap:null,
   sinc: Object.assign({ pend:{}, cursor:null, conta:null, ultima:0 }, lerLS("logos_sinc", null)),   // o que falta subir para a conta
   sb:null, sessao:null, sincEstado:"",
-  cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{},
+  cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{}, doutrinas:null,
   livrosCom:null, idxTemas:null, idxDic:null, aliasPT:null, planos:null, tempo:null, ctx:null,
   lugares:null, mapa:null, marcadores:[], viagens:null, camadaViagem:[],
   versos:[], versoAtivo:null, gaveta:null, buscaModo:"texto", vez:0, vezBusca:0, focoAntes:null,
@@ -349,6 +355,10 @@ function comentarioProximo(com, v){
   return null;
 }
 async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/topics/index.json"); } return est.idxTemas; }
+async function doutrinas(){
+  if(!est.doutrinas){ try{ est.doutrinas = await json("data/topics/doutrinas.json"); }catch(e){ est.doutrinas = []; } }
+  return est.doutrinas;
+}
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
 async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
 async function secaoPT(cache, pasta, letra){
@@ -1100,35 +1110,60 @@ function linkarRefs(txt){
   return esc(txt).replace(RE_REF, (m, l, c, v)=> infoLivro(l)
     ? linkRef(l, +c, +v, esc(`${nomeLivro(l)} ${c}:${v}`) + (m.includes("-") ? m.slice(m.indexOf("-")) : "")) : m);
 }
-/* Lista de verbetes (temas ou dicionário) e, ao escolher um, o conteúdo dele. */
-function listarVerbetes(nomes, tit, abrir){
+/* Lista de resultados ({html, titulo, abrir}) e, ao escolher um, o conteúdo dele. */
+function listarItens(itens){
   const x = t(), res = $("buscaResultados"), status = $("buscaStatus");
-  if(!nomes.length){ status.textContent = x.nadaEncontrado; return; }
-  status.textContent = `${nomes.length} ${x.resultados}`;
-  res.innerHTML = nomes.map((n,i)=>`<div class="res" data-n="${i}" tabindex="0" role="button"><div class="ref">${rotuloDuplo(tit, n)}</div></div>`).join("");
+  if(!itens.length){ status.textContent = x.nadaEncontrado; return; }
+  status.textContent = `${itens.length} ${x.resultados}`;
+  res.innerHTML = itens.map((it,i)=>`<div class="res" data-n="${i}" tabindex="0" role="button"><div class="ref">${it.html}</div></div>`).join("");
   res.querySelectorAll(".res").forEach(el=>{
     const ir = async ()=>{
-      const nome = nomes[+el.dataset.n];
-      res.innerHTML = `<h3 class="res-titulo">${rotuloDuplo(tit, nome)}</h3>` + await abrir(nome);
+      const it = itens[+el.dataset.n];
+      res.innerHTML = `<h3 class="res-titulo">${it.titulo}</h3>` + await it.abrir();
       status.textContent = "";
     };
     el.addEventListener("click", ir);
     el.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ ir(); } });
   });
 }
+function listarVerbetes(nomes, tit, abrir){
+  listarItens(nomes.map(n=>({ html: rotuloDuplo(tit, n), titulo: rotuloDuplo(tit, n), abrir: ()=>abrir(n) })));
+}
+/* Doutrina reformada: resumo, fonte confessional e os versículos em que se apoia, com o texto (até 3 por trecho). */
+function htmlDoutrina(d){
+  const x = t();
+  const refs = (lista)=>lista.map(([l, c, a, b, tx])=>{
+    const rot = esc(`${nomeLivro(l)} ${c}:${a}${b !== a ? "-" + b : ""}`);
+    const corpo = tx.length === 1 ? esc(tx[0])
+      : tx.slice(0, 3).map((v, i)=>`<sup>${a + i}</sup>${esc(v)}`).join(" ") + (tx.length > 3 ? ` <span class="dout-mais">… ${x.doutMais}</span>` : "");
+    return `<div class="dout-ref">${linkRef(l, c, a, rot)}<p>${corpo}</p></div>`;
+  }).join("");
+  return `<p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p><p class="dout-resumo">${esc(d.r)}</p>` +
+    d.sec.map(s=>`<h4 class="dout-sec">${esc(s.t)}</h4>${refs(s.v)}`).join("") + `<p class="fonte">${x.doutFonte}</p>`;
+}
+const itemDoutrina = (d)=>({ html: `${esc(d.t)} <span class="dout-tag">${t().doutSelo}</span>`, titulo: esc(d.t), abrir: async ()=>htmlDoutrina(d) });
+const RE_DOUT_GERAL = /reformad|doutrin|westminster|presbiterian|confiss|catecism|calvin/;
 async function buscarTemas(){
   const x = t(), termo = $("campoBusca").value.trim();
   $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
-  if(termo.length < 2){ $("buscaStatus").textContent = x.digiteBusca; return; }
+  const douts = await doutrinas();
+  if(termo.length < 2){
+    if(douts.length){ listarItens(douts.map(itemDoutrina)); $("buscaStatus").textContent = x.doutLista; }
+    else $("buscaStatus").textContent = x.digiteBusca;
+    return;
+  }
   const [idx, alias, tit] = await Promise.all([idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
-  const alvo = normStr(termo);
+  const alvo = normStr(termo), geral = RE_DOUT_GERAL.test(alvo);
+  const dz = douts.filter(d=>geral || normStr(d.t).includes(alvo) || d.s.some(s=>normStr(s).includes(alvo)));
   const diretos = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo)));
   const viaAlias = Object.entries(alias).filter(([pt])=>normStr(pt).includes(alvo)).map(([,en])=>en);
-  listarVerbetes([...new Set([...viaAlias, ...diretos])].slice(0, 40), tit, async (nome)=>{
-    const secao = await temaSecao(nome[0].toUpperCase());
-    return (secao[nome] || []).map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
-      `<p class="fonte">${x.fonteNave}</p>` + avisoConteudo(x, !!secao.__pt);
-  });
+  const nave = [...new Set([...viaAlias, ...diretos])].slice(0, 40).map(nome=>({
+    html: rotuloDuplo(tit, nome), titulo: rotuloDuplo(tit, nome), abrir: async ()=>{
+      const secao = await temaSecao(nome[0].toUpperCase());
+      return (secao[nome] || []).map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
+        `<p class="fonte">${x.fonteNave}</p>` + avisoConteudo(x, !!secao.__pt);
+    }}));
+  listarItens([...dz.map(itemDoutrina), ...nave]);
 }
 async function buscarDic(){
   const x = t(), termo = $("campoBusca").value.trim();
@@ -1159,6 +1194,7 @@ function prepararAbas(){
       document.querySelector(".busca-escopo").style.display = est.buscaModo==="texto" ? "" : "none";
       $("campoBusca").placeholder = exemplo();
       $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+      if(est.buscaModo==="temas" && !$("campoBusca").value.trim()) buscarTemas();
     };
   });
   $("campoBusca").placeholder = exemplo();
