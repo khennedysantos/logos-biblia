@@ -101,7 +101,12 @@ def main():
                         sublinhadas += 1
                         if not (fim <= m[0] < m[1] <= len(verso)) or not verso[m[0]:m[1]].strip():
                             erros.append(f"palavras/{i} {cap}:{v}: posição {m[:2]} fora do versículo ou sobreposta")
-                        if m[2] not in indice["lemas"]:
+                        if str(m[2]).startswith("v:"):         # vocabulário: [início, fim, "v:id", strong?]
+                            if m[2] not in indice.get("termos", {}):
+                                erros.append(f"palavras/{i} {cap}:{v}: {m[2]} não está no índice")
+                            if len(m) > 3 and m[3] not in indice.get("orig", {}):
+                                erros.append(f"palavras/{i} {cap}:{v}: {m[3]} sem a palavra original no índice")
+                        elif m[2] not in indice["lemas"]:
                             erros.append(f"palavras/{i} {cap}:{v}: {m[2]} não está no índice")
                         fim = m[1]
         avisos.append(f"{sublinhadas} palavras-chave sublinhadas")
