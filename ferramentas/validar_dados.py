@@ -73,6 +73,19 @@ def main():
                     erros.append(f"{tipo}/{pasta}{letra}.json não existe")
     for nome in ("context.json", "plans.json", "timeline.json", "places.json", "journeys.json"):
         ler(DATA / nome)
+
+    # doutrinas reformadas (busca de Temas): cada referência existe e o texto guardado é o da Bíblia Livre
+    textos_bl = {}
+    for d in ler(DATA / "topics" / "doutrinas.json") or []:
+        for s in d["sec"]:
+            for l, c, a, b, tx in s["v"]:
+                if l not in textos_bl:
+                    textos_bl[l] = ler(DATA / "bibles" / "blivre" / f"{l}.json") or []
+                caps = textos_bl[l]
+                if not (1 <= c <= len(caps) and 1 <= a <= b <= len(caps[c - 1])):
+                    erros.append(f"doutrinas.json {d['id']}: {l} {c}:{a}-{b} não existe")
+                elif caps[c - 1][a - 1:b] != tx:
+                    erros.append(f"doutrinas.json {d['id']}: texto de {l} {c}:{a}-{b} desatualizado (rode gerar_doutrinas.py)")
     ids = {b["id"] for b in livros}
     for plano in ler(DATA / "plans.json") or []:
         for dia in plano["dias"]:

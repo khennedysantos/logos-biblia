@@ -77,6 +77,13 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferências `logos_chave` e
   `logos_voc` no Perfil. Não aparece na leitura contínua nem nas outras traduções.
 - `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`.
+- `data/topics/doutrinas.json` — doutrinas da fé reformada (pedobatismo, Trindade, TULIP, cinco solas, governo
+  presbiteriano...) que aparecem primeiro na busca de Temas, com selo "Doutrina reformada": resumo, fonte (CFW,
+  Catecismos) e os versículos de prova agrupados, com o texto da Bíblia Livre já embutido. Escritas em
+  `ferramentas/doutrinas.py` (`D(id, título, sinônimos, fonte, resumo, [(seção, "GEN 17:7; ACT 2:38-39")])`);
+  `python3 ferramentas/gerar_doutrinas.py` confere as referências e grava o JSON (`--texto` imprime tudo para revisar).
+  `validar_dados.py` reprova se o texto guardado ficar diferente da Bíblia Livre. Com o campo vazio, a aba Temas
+  lista todas; buscar "reformada", "westminster", "calvinismo" etc. também lista todas.
 - `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
   `data/timeline.json`, `data/plans.json`.
@@ -186,6 +193,9 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
   SENHOR, alma, presbítero e bispo, Filho do Homem, santos, Renovo) e os de sentido sexual (conhecer, descobrir a
   nudez, sodomitas). A Bíblia Livre já é modernizada ("outrossim", "debalde", "mister" nem aparecem): a lista de
   palavras difíceis praticamente se esgota aqui, e ampliar mais seria sublinhar palavras comuns.
+- Doutrinas reformadas: 50 temas (514 referências), escritos pelo Claude a partir da CFW e dos seus textos de prova,
+  ainda NÃO revisados pelo Khennedy. Ficaram de fora, de propósito, pontos em que reformados divergem entre si
+  (cessacionismo, milênio, salmodia exclusiva); acrescentar é só escrever `D(...)`.
 - Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou
   "possa têm", "is believing" virou "é acreditar", "In" virou "[Não]" em João 1:1. Como o inglês se perde depois
   de aplicado, corrigir exige regerar o interlinear da fonte (STEPBible) com as entradas novas em `GLOSAS_FIXAS`.

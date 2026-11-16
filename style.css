@@ -367,6 +367,16 @@ mark,.mss-texto mark{background:var(--m-ouro);color:inherit;border-radius:.2rem;
 .dic-def{font-size:.9rem;line-height:1.7;margin:.5rem 0}
 .aviso-en{font-size:.68rem;color:var(--suave);font-style:italic;margin-top:.5rem}
 .res-titulo{font-family:var(--titulo);font-weight:600;font-size:1.35rem;margin:.6rem 0 .3rem}
+.dout-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ouro);
+  border:1px solid currentColor;border-radius:999px;padding:.05rem .45rem;margin-left:.35rem;vertical-align:.1em;white-space:nowrap}
+.dout-selo{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ouro);margin:.1rem 0 .7rem;line-height:1.5}
+.dout-resumo{font-size:.92rem;line-height:1.7;margin:0 0 .6rem}
+.dout-sec{font-family:var(--titulo);font-size:1.1rem;font-weight:600;margin:1.1rem 0 .2rem}
+.dout-ref{padding:.45rem 0;border-bottom:1px solid var(--borda)}
+.dout-ref a{font-size:.72rem;font-weight:700;letter-spacing:.04em}
+.dout-ref p{margin:.2rem 0 0;font-family:var(--escritura);font-size:1rem;line-height:1.55}
+.dout-ref sup{font-family:var(--ui);font-size:.58rem;font-weight:700;color:var(--ouro);margin:0 .25rem 0 .1rem}
+.dout-mais{font-family:var(--ui);font-size:.72rem;font-style:italic;color:var(--suave)}
 
 /* anotações */
 .notas-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:.9rem}

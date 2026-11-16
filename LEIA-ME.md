@@ -18,6 +18,9 @@ GitHub Pages a partir da raiz do branch `main`. Custo de operação: zero.
   significado em português de hoje.
 - **Comentários**: João Calvino (47 livros) e Matthew Henry (18 livros), em português por tradução
   automática, sempre com o aviso na tela.
+- **Doutrinas reformadas** na busca de Temas: batismo infantil, Trindade, os cinco pontos do calvinismo,
+  as cinco solas, governo presbiteriano e outras 45, cada uma com resumo, a referência na Confissão de
+  Westminster e os versículos em que se apoia.
 - **Referências cruzadas**, **temas** (Nave), **dicionário** (Easton), **atlas** com as viagens de
   Paulo, **linha do tempo**, **planos de leitura** e ficha de **contexto** de cada livro.
 - Marcações em quatro cores, anotações, copiar e compartilhar versículo como imagem. Tudo fica só no
