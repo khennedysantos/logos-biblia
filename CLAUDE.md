@@ -54,7 +54,16 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   (`nomes_pt.py` grava `nomes_pt.json`, Strong → nome na grafia da Bíblia Livre; "Yahweh" vira SENHOR), verbos com
   concordância quebrada (retraduzidos pelo NLLB na etapa "verbos" do workflow, numa moldura tirada da gramática:
   "sent" 3P → "they sent" → "enviaram"), concordância pela gramática (`GRAMATICA`) e termos que ficaram em inglês
-  (`TABELA`). Rodar de novo não muda nada. Glosa nova errada: acrescente em `GRAMATICA` ou `TABELA` e rode `aplicar`.
+  (`TABELA`). Segunda rodada, no mesmo script: `glosas_revisao.py` (`REVISAO`: as ~2.000 glosas mais frequentes lidas
+  com o inglês ao lado; a chave pode limitar à gramática, `("praise", "HVpv")`, e o valor pode depender da pessoa,
+  `{"2S": "sobe", "2P": "subi"}`); sufixo hebraico remontado parte por parte (preposição + `substantivos_pt.json` +
+  pronome pela gramática: "mão  dele", "olhos  teus", "terra  vossa", "a  ele", "<obj.>  nós"; 3ª pessoa é
+  dele/dela/deles/delas); artigo grego concordando com o gênero e o número da palavra portuguesa ("a palavra", "as
+  obras", "da vida"; antes "of the" virava "fazer"), pelo léxico de gênero tirado da Bíblia Livre (`lexico()`);
+  formas (`conjugar.py`): "você" → tu/vós com o verbo conjugado, "eu têm falado" → "eu falei", "eu vou cortar" →
+  "eu cortarei", imperativo ("buscar" → "busca"/"buscai"), adjetivo plural ("os pobre" → "os pobres"), maiúscula
+  indevida. O `aplicar` repete as etapas até nada mudar, então rodar de novo não muda nada. Glosa nova errada:
+  acrescente em `REVISAO` (ou `GRAMATICA`/`TABELA`) e rode `aplicar` (~1 min).
 - `data/strongs/{G,H}.json` — léxico. Campo `def` (inglês) e `defpt` (português, tradução automática revisada).
 - `data/commentaries/calvin/{USFM}/{cap}.json` — Calvino original (inglês), chave = versículo.
   `data/commentaries/calvin/pt/...` — tradução; o app sobrepõe o `pt/` ao original quando o idioma é Português.
@@ -223,10 +232,11 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
 - Doutrinas reformadas: 50 temas (514 referências), escritos pelo Claude a partir da CFW e dos seus textos de prova,
   ainda NÃO revisados pelo Khennedy. Ficaram de fora, de propósito, pontos em que reformados divergem entre si
   (cessacionismo, milênio, salmodia exclusiva); acrescentar é só escrever `D(...)`.
-- Glosas do interlinear: corrigidas por `corrigir_glosas.py` (19.704 nomes, 5.351 verbos, 750 pela gramática, 831
-  termos). Ainda há: artigo e possessivo que não concordam com o gênero da palavra portuguesa ("libertação meu"; só
-  "a Palavra" de João 1 foi tratado), adjetivo plural com glosa no singular, alguns verbos que o NLLB errou ("I
-  gathered" → "eu percebi") e 327 nomes raros duvidosos que ficaram em inglês (`nomes_pt.py --relatorio`).
+- Glosas do interlinear: duas rodadas em `corrigir_glosas.py` (a segunda mexeu em 110 mil das 447 mil palavras: artigos,
+  sufixos hebraicos, tu/vós, revisão das ~2.000 mais frequentes). Ainda há: glosas raras com erro de sentido do Argos
+  (Rute 1:16 "Vou alojar", "as pessoas serão minhas"), cerca de 150 "você" com verbo que o script não reconhece,
+  substantivo hebraico com sufixo fora de `substantivos_pt.json` (8% dessas palavras: só a concordância foi acertada)
+  e 327 nomes raros duvidosos em inglês (`nomes_pt.py --relatorio`). Ampliar é acrescentar em `REVISAO`.
 - Atlas: 1.240 dos 1.335 lugares com nome em português; os outros são quase todos de fora da Bíblia (Eridu, Punt).
 - Inglês e espanhol: a interface está traduzida, mas atlas (rótulos do cartão do lugar), linha do tempo e
   fichas de contexto têm conteúdo só em português.
