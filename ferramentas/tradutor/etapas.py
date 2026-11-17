@@ -249,7 +249,8 @@ def arquivos_dic():
 EASTON = {
     "Gen": "GEN", "Ge": "GEN", "Ex": "EXO", "Exod": "EXO", "Lev": "LEV", "Num": "NUM", "Nu": "NUM", "Deut": "DEU",
     "Josh": "JOS", "Judg": "JDG", "Judge": "JDG", "Ruth": "RUT", "1 Sam": "1SA", "2 Sam": "2SA", "1 Kings": "1KI",
-    "2 Kings": "2KI", "2 King": "2KI", "1 Chr": "1CH", "2 Chr": "2CH", "1 Chron": "1CH", "2 Chron": "2CH",
+    "2 Kings": "2KI", "2 King": "2KI", "1 Chr": "1CH", "2 Chr": "2CH", "1 Chron": "1CH", "2 Chron": "2CH", "1 Ch": "1CH",
+    "2 Ch": "2CH",
     "Ezra": "EZR", "Neh": "NEH", "Esther": "EST", "Esth": "EST", "Job": "JOB", "Ps": "PSA", "Psalm": "PSA",
     "Psalms": "PSA", "Prov": "PRO", "Eccl": "ECC", "Eccles": "ECC", "Cant": "SNG", "Song of Sol": "SNG",
     "Isa": "ISA", "Jer": "JER", "Lam": "LAM", "Ezek": "EZK", "Exek": "EZK", "Dan.": "DAN", "Hos": "HOS",
@@ -297,13 +298,21 @@ def refs_usfm(texto):
     return "".join(saida)
 
 
+def limpa_easton(texto):
+    """Sujeiras da fonte que atrapalham o tradutor: aspas com barra (\\"), número de link do site antigo
+    ("[357]ALOES") e aspas de fechamento separadas da frase ('seguidores. "', que fazia o modelo inventar texto)."""
+    texto = texto.replace('\\"', '"')
+    texto = re.sub(r"\[\d+\](?=[A-Z])", "", texto)
+    return re.sub(r'(?<=[.!?,;])\s+"(?=\s|\)|$)', '"', texto)
+
+
 def preparar_dicionario():
     itens = []
     for arq in arquivos_dic():
         for termo, defs in ler(arq).items():
             for i, d in enumerate(defs):
                 if d.strip():
-                    itens.append({"id": f"{arq.stem}|{termo}|{i}", "texto": refs_usfm(d)})
+                    itens.append({"id": f"{arq.stem}|{termo}|{i}", "texto": refs_usfm(limpa_easton(d))})
     entradas("dicionario", itens)
 
 
