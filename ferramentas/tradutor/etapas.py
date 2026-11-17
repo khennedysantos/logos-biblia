@@ -1,5 +1,5 @@
 """Prepara e aplica cada etapa da tradução do Sola.
-uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry
+uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry|verbos
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
@@ -166,6 +166,25 @@ def aplicar_glosas():
     mapa.update(tr)
     gravar(SITE / "ferramentas" / "glosas_pt.json", mapa)
     print(f"[glosas] {n} palavras atualizadas no interlinear")
+
+
+# ---------------- verbos do interlinear ----------------
+# A lista (frases verbais quebradas, já com a moldura tirada da gramática) é feita por
+# ferramentas/corrigir_glosas.py preparar; a tradução volta para entradas/verbos_pt.json e é aplicada por
+# ferramentas/corrigir_glosas.py aplicar, que precisa da fonte da STEPBible (não existe no GitHub Actions).
+ENTRADAS = AQUI / "entradas"
+
+
+def preparar_verbos():
+    entradas("verbos", ler(ENTRADAS / "verbos.json"))
+
+
+def aplicar_verbos():
+    tr = traducoes("verbos")
+    if not tr:
+        return print("[verbos] nada traduzido ainda")
+    (ENTRADAS / "verbos_pt.json").write_text(json.dumps(tr, ensure_ascii=False, indent=0), encoding="utf-8")
+    print(f"[verbos] {len(tr)} frases em tradutor/entradas/verbos_pt.json: aplique com ferramentas/corrigir_glosas.py aplicar")
 
 
 # ---------------- temas (Nave) ----------------

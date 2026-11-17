@@ -1,5 +1,5 @@
 # Tradução en->pt de graça, nas máquinas do GitHub: NLLB-200 1.3B (Meta) para a prosa (Henry, Calvino,
-# dicionário, temas) e Argos para as glosas do interlinear (palavras soltas; é o mesmo modelo do
+# dicionário, temas) e os verbos do interlinear (ferramentas/corrigir_glosas.py), e Argos para as glosas do interlinear (palavras soltas; é o mesmo modelo do
 # ferramentas/tradutor/traduzir_tudo.sh, então dispensa rodar qualquer coisa no computador).
 # O trabalho é dividido em N partes que rodam ao mesmo tempo (repositório público = minutos ilimitados).
 # Ao fim, o resultado é gravado em data/.../pt/ e enviado para o branch "traducao-<etapa>",
@@ -18,10 +18,10 @@ on:
       etapa:
         description: "O que traduzir"
         type: choice
-        options: [henry, calvino, dicionario, temas, glosas]
+        options: [henry, calvino, dicionario, temas, glosas, verbos]
         default: henry
       partes:
-        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40, glosas 1)"
+        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40, dicionário 10, glosas 1, verbos 2)"
         default: "20"
       retomar:
         description: "Opcional: número (run id) de uma execução anterior para continuar dela"
@@ -194,6 +194,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "traducao-$ETAPA"
-          git add data ferramentas/glosas_pt.json
+          git add data ferramentas/glosas_pt.json ferramentas/tradutor/entradas
           git commit -q -m "Tradução automática ($MOTOR): $ETAPA" || { echo "nada mudou"; exit 0; }
           git push -f origin "traducao-$ETAPA"

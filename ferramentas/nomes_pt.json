@@ -1,0 +1,10302 @@
+{
+"G10": [
+"Abiud",
+"Abiúde"
+],
+"G1003": [
+"Boaz",
+"Boaz"
+],
+"G1007": [
+"Bosor",
+"Bosor"
+],
+"G1042": [
+"Gabbatha",
+"Gabatá"
+],
+"G1045": [
+"Gad",
+"Gade"
+],
+"G1048": [
+"Gaza",
+"Gaza"
+],
+"G1050": [
+"Gaius",
+"Gaio"
+],
+"G1053": [
+"Galatia",
+"Galácia"
+],
+"G1056": [
+"Galilee",
+"Galileia"
+],
+"G1058": [
+"Gallio",
+"Gálio"
+],
+"G1059": [
+"Gamaliel",
+"Gamaliel"
+],
+"G1066": [
+"Gideon",
+"Gideão"
+],
+"G1068": [
+"Gethsemane",
+"Getsêmani"
+],
+"G107": [
+"Azor",
+"Azor"
+],
+"G108": [
+"Azotus",
+"Azoto"
+],
+"G1082": [
+"Gennesaret",
+"Genesaré"
+],
+"G11": [
+"Abraham",
+"Abraão"
+],
+"G1115": [
+"Golgotha",
+"Gólgota"
+],
+"G1116": [
+"Gomorrah",
+"Gomorra"
+],
+"G1136": [
+"Gog",
+"Gogue"
+],
+"G1138": [
+"David",
+"Davi"
+],
+"G1148": [
+"Dalmanutha",
+"Dalmanuta"
+],
+"G1149": [
+"Dalmatia",
+"Dalmácia"
+],
+"G1152": [
+"Damaris",
+"Dâmaris"
+],
+"G1153": [
+"Damascenes",
+"Damasco"
+],
+"G1154": [
+"Damascus",
+"Damasco"
+],
+"G1158": [
+"Daniel",
+"Daniel"
+],
+"G116": [
+"Athens",
+"Atenas"
+],
+"G1179": [
+"Decapolis",
+"Decápolis"
+],
+"G1190": [
+"Derbe",
+"Derbe"
+],
+"G1191": [
+"Derbe",
+"Derbe"
+],
+"G1214": [
+"Demas",
+"Demas"
+],
+"G1216": [
+"Demetrius",
+"Demétrio"
+],
+"G125": [
+"Egypt",
+"Egito"
+],
+"G13": [
+"Agabus",
+"Ágabo"
+],
+"G132": [
+"Aeneas",
+"Enéas"
+],
+"G1324": [
+"Didymus",
+"Dídimo"
+],
+"G1354": [
+"Dionysius",
+"Dionísio"
+],
+"G1361": [
+"Diotrephes",
+"Diótrefes"
+],
+"G1393": [
+"Dorcas",
+"Dorcas"
+],
+"G1409": [
+"Drusilla",
+"Drusila"
+],
+"G1443": [
+"Heber",
+"Éber"
+],
+"G1478": [
+"Hezekiah",
+"Ezequias"
+],
+"G1638": [
+"Olives",
+"Oliveiras"
+],
+"G1648": [
+"Eleazar",
+"Eleazar"
+],
+"G1662": [
+"Eliakim",
+"Eliaquim"
+],
+"G1663": [
+"Eliezer",
+"Eliézer"
+],
+"G1664": [
+"Eliud",
+"Eliúde"
+],
+"G1665": [
+"Elizabeth",
+"Isabel"
+],
+"G1666": [
+"Elisha",
+"Eliseu"
+],
+"G1678": [
+"Elmadam",
+"Elmodã"
+],
+"G1681": [
+"Elymas",
+"Elimas"
+],
+"G1695": [
+"Emmaus",
+"Emaús"
+],
+"G1800": [
+"Enosh",
+"Enos"
+],
+"G1802": [
+"Enoch",
+"Enoque"
+],
+"G184": [
+"Akeldama",
+"Aceldama"
+],
+"G1866": [
+"Epenetus",
+"Epêneto"
+],
+"G1889": [
+"Epaphras",
+"Epafras"
+],
+"G1891": [
+"Epaphroditus",
+"Epafrodito"
+],
+"G2": [
+"Aaron",
+"Arão"
+],
+"G2037": [
+"Erastus",
+"Erasto"
+],
+"G2061": [
+"Hermogenes",
+"Hermógenes"
+],
+"G2069": [
+"Esli",
+"Esli"
+],
+"G207": [
+"Aquila",
+"Áquila"
+],
+"G2074": [
+"Hezron",
+"Esrom"
+],
+"G2096": [
+"Eve",
+"Eva"
+],
+"G2103": [
+"Eubulus",
+"Êubulo"
+],
+"G2131": [
+"Eunice",
+"Eunice"
+],
+"G2136": [
+"Euodia",
+"Evódia"
+],
+"G2161": [
+"Eutychus",
+"Êutico"
+],
+"G2166": [
+"Euphrates",
+"Eufrates"
+],
+"G2181": [
+"Ephesus",
+"Éfeso"
+],
+"G2187": [
+"Ephraim",
+"Efraim"
+],
+"G2194": [
+"Zebulun",
+"Zebulom"
+],
+"G2195": [
+"Zacchaeus",
+"Zaqueu"
+],
+"G2196": [
+"Zerah",
+"Zerá"
+],
+"G2197": [
+"Zechariah",
+"Zacarias"
+],
+"G2199": [
+"Zebedee",
+"Zebedeu"
+],
+"G2211": [
+"Zenas",
+"Zenas"
+],
+"G2216": [
+"Zerubbabel",
+"Zorobabel"
+],
+"G223": [
+"Alexander",
+"Alexandre"
+],
+"G2242": [
+"Heli",
+"Eli"
+],
+"G2243": [
+"Elijah",
+"Elias"
+],
+"G2262": [
+"Er",
+"Er"
+],
+"G2264": [
+"Herod",
+"Herodes"
+],
+"G2266": [
+"Herodias",
+"Herodias"
+],
+"G2267": [
+"Herodion",
+"Herodião"
+],
+"G2268": [
+"Isaiah",
+"Isaías"
+],
+"G2269": [
+"Esau",
+"Esaú"
+],
+"G2280": [
+"Thaddaeus",
+"Tadeu"
+],
+"G2283": [
+"Tamar",
+"Tamar"
+],
+"G2291": [
+"Terah",
+"Terá"
+],
+"G2321": [
+"Theophilus",
+"Teófilo"
+],
+"G2332": [
+"Thessalonica",
+"Tessalônica"
+],
+"G2333": [
+"Theudas",
+"Teudas"
+],
+"G2363": [
+"Thyatira",
+"Tiatira"
+],
+"G2381": [
+"Thomas",
+"Tomé"
+],
+"G2383": [
+"Jairus",
+"Jairo"
+],
+"G2384": [
+"Jacob",
+"Jacó"
+],
+"G2385": [
+"James",
+"Tiago"
+],
+"G2387": [
+"Jambres",
+"Jambres"
+],
+"G2388": [
+"Jannai",
+"Janai"
+],
+"G2389": [
+"Jannes",
+"Janes"
+],
+"G2391": [
+"Jared",
+"Jarede"
+],
+"G2394": [
+"Jason",
+"Jasão"
+],
+"G2401": [
+"Idumea",
+"Idumeia"
+],
+"G2403": [
+"Jezebel",
+"Jezabel"
+],
+"G2408": [
+"Jeremiah",
+"Jeremias"
+],
+"G2410": [
+"Jericho",
+"Jericó"
+],
+"G2414": [
+"Jerusalem",
+"Jerusalém"
+],
+"G2415": [
+"Jerusalem",
+"Jerusalém"
+],
+"G2419": [
+"Jerusalem",
+"Jerusalém"
+],
+"G2421": [
+"Jesse",
+"Jessé"
+],
+"G2422": [
+"Jephthah",
+"Jefté"
+],
+"G2423": [
+"Jeconiah",
+"Jeconias"
+],
+"G2424": [
+"Jesus",
+"Jesus"
+],
+"G2430": [
+"Iconium",
+"Icônio"
+],
+"G2437": [
+"Illyricum",
+"Ilírico"
+],
+"G2445": [
+"Joppa",
+"Jope"
+],
+"G2446": [
+"Jordan",
+"Jordão"
+],
+"G2448": [
+"Judah",
+"Judá"
+],
+"G2449": [
+"Judea",
+"Judeia"
+],
+"G2455": [
+"Judas",
+"Judas"
+],
+"G2456": [
+"Julia",
+"Júlia"
+],
+"G2457": [
+"Julius",
+"Júlio"
+],
+"G2458": [
+"Junia",
+"Júnia"
+],
+"G2459": [
+"Justus",
+"Justo"
+],
+"G2464": [
+"Isaac",
+"Isaque"
+],
+"G2466": [
+"Isaachar",
+"Issacar"
+],
+"G2469": [
+"Iscariot",
+"Iscariotes"
+],
+"G2474": [
+"Israel",
+"Israel"
+],
+"G2482": [
+"Italy",
+"Itália"
+],
+"G2488": [
+"Jotham",
+"Jotão"
+],
+"G2489": [
+"Joanna",
+"Joana"
+],
+"G2490": [
+"Joannen",
+"Joanã"
+],
+"G2491": [
+"John",
+"João"
+],
+"G2492": [
+"Job",
+"Jó"
+],
+"G2493": [
+"Joel",
+"Joel"
+],
+"G2494": [
+"Jonam",
+"Jonã"
+],
+"G2495": [
+"Jonah",
+"Jonas"
+],
+"G2497": [
+"Jorim",
+"Jorim"
+],
+"G2498": [
+"Jehoshaphat",
+"Josafá"
+],
+"G2500": [
+"Joses",
+"José"
+],
+"G2501": [
+"Joseph",
+"José"
+],
+"G2502": [
+"Josiah",
+"Josias"
+],
+"G2533": [
+"Caiaphas",
+"Caifás"
+],
+"G2535": [
+"Cain",
+"Caim"
+],
+"G2536": [
+"Cainan",
+"Cainã"
+],
+"G2542": [
+"Caesarea",
+"Cesareia"
+],
+"G256": [
+"Alphaeus",
+"Alfeu"
+],
+"G2580": [
+"Cana",
+"Caná"
+],
+"G2584": [
+"Capernaum",
+"Cafarnaum"
+],
+"G2587": [
+"Cappadocia",
+"Capadócia"
+],
+"G2591": [
+"Carpus",
+"Carpo"
+],
+"G2747": [
+"Cenchrea",
+"Cencreia"
+],
+"G2748": [
+"Kidron",
+"Cedrom"
+],
+"G2786": [
+"Cephas",
+"Cefas"
+],
+"G2791": [
+"Cilicia",
+"Cilícia"
+],
+"G2797": [
+"Kish",
+"Quis"
+],
+"G28": [
+"Hagar",
+"Agar"
+],
+"G2802": [
+"Cauda",
+"Clauda"
+],
+"G2803": [
+"Claudia",
+"Cláudia"
+],
+"G2804": [
+"Claudius",
+"Cláudio"
+],
+"G2810": [
+"Cleopas",
+"Cleofas"
+],
+"G2815": [
+"Clement",
+"Clemente"
+],
+"G2832": [
+"Clopas",
+"Cleofas"
+],
+"G2834": [
+"Cnidus",
+"Cnido"
+],
+"G284": [
+"Amminadab",
+"Aminadabe"
+],
+"G2857": [
+"Colossae",
+"Colossos"
+],
+"G2879": [
+"Korah",
+"Coré"
+],
+"G2882": [
+"Corinth",
+"Corinto"
+],
+"G2883": [
+"Cornelius",
+"Cornélio"
+],
+"G2890": [
+"Quartus",
+"Quarto"
+],
+"G2898": [
+"Skull",
+"Gólgota"
+],
+"G291": [
+"Ampliatus",
+"Amplíato"
+],
+"G2913": [
+"Crescens",
+"Crescente"
+],
+"G2914": [
+"Crete",
+"Creta"
+],
+"G2921": [
+"Crispus",
+"Crispo"
+],
+"G295": [
+"Amphipolis",
+"Anfípolis"
+],
+"G2954": [
+"Cyprus",
+"Chipre"
+],
+"G2957": [
+"Cyrene",
+"Cirene"
+],
+"G2958": [
+"Quirinius",
+"Quirino"
+],
+"G2972": [
+"Cos",
+"Cós"
+],
+"G2973": [
+"Cosam",
+"Cosã"
+],
+"G2976": [
+"Lazarus",
+"Lázaro"
+],
+"G2984": [
+"Lamech",
+"Lameque"
+],
+"G2993": [
+"Laodicea",
+"Laodiceia"
+],
+"G2996": [
+"Lasea",
+"Laseia"
+],
+"G301": [
+"Amos",
+"Amós"
+],
+"G3017": [
+"Levi",
+"Levi"
+],
+"G3033": [
+"Libya",
+"Líbia"
+],
+"G3044": [
+"Linus",
+"Lino"
+],
+"G3065": [
+"Luke",
+"Lucas"
+],
+"G3066": [
+"Lucius",
+"Lúcio"
+],
+"G3069": [
+"Lydda",
+"Lida"
+],
+"G3070": [
+"Lydia",
+"Lídia"
+],
+"G3071": [
+"Lycaonia",
+"Licaônia"
+],
+"G3078": [
+"Lysanias",
+"Lisânias"
+],
+"G3079": [
+"Lysias",
+"Lísias"
+],
+"G3082": [
+"Lystra",
+"Listra"
+],
+"G3090": [
+"Lois",
+"Loide"
+],
+"G3091": [
+"Lot",
+"Ló"
+],
+"G3092": [
+"Maath",
+"Maate"
+],
+"G3093": [
+"Magadan",
+"Magadã"
+],
+"G3098": [
+"Magog",
+"Magogue"
+],
+"G3099": [
+"Midian",
+"Midiã"
+],
+"G3104": [
+"Menna",
+"Mená"
+],
+"G3109": [
+"Macedonia",
+"Macedônia"
+],
+"G3124": [
+"Malchus",
+"Malco"
+],
+"G3127": [
+"Manaen",
+"Manaem"
+],
+"G3128": [
+"Manasseh",
+"Manassés"
+],
+"G3136": [
+"Martha",
+"Marta"
+],
+"G3137": [
+"Mary",
+"Maria"
+],
+"G3138": [
+"Mark",
+"Marcos"
+],
+"G3156": [
+"Matthew",
+"Mateus"
+],
+"G3157": [
+"Matthan",
+"Matã"
+],
+"G3158": [
+"Matthat",
+"Matate"
+],
+"G3159": [
+"Matthias",
+"Matias"
+],
+"G3160": [
+"Mattatha",
+"Matatá"
+],
+"G3161": [
+"Mattathias",
+"Matatias"
+],
+"G3190": [
+"Melea",
+"Meleá"
+],
+"G3194": [
+"Malta",
+"Malta"
+],
+"G3197": [
+"Melchi",
+"Melqui"
+],
+"G3198": [
+"Melchizedek",
+"Melquisedeque"
+],
+"G3318": [
+"Mesopotamia",
+"Mesopotâmia"
+],
+"G3399": [
+"Miletus",
+"Mileto"
+],
+"G3412": [
+"Mitylene",
+"Mitilene"
+],
+"G3413": [
+"Michael",
+"Miguel"
+],
+"G3416": [
+"Mnason",
+"Mnáson"
+],
+"G3460": [
+"Myra",
+"Mira"
+],
+"G3465": [
+"Mysia",
+"Mísia"
+],
+"G3475": [
+"Moses",
+"Moisés"
+],
+"G3476": [
+"Nahshon",
+"Naassom"
+],
+"G3477": [
+"Naggai",
+"Nagai"
+],
+"G3478": [
+"Nazareth",
+"Nazaré"
+],
+"G3481": [
+"Nathan",
+"Natã"
+],
+"G3482": [
+"Nathanael",
+"Natanael"
+],
+"G3484": [
+"Nain",
+"Naim"
+],
+"G3486": [
+"Nahum",
+"Naum"
+],
+"G3488": [
+"Narcissus",
+"Narciso"
+],
+"G3493": [
+"Nahor",
+"Naor"
+],
+"G3497": [
+"Naaman",
+"Naamã"
+],
+"G3508": [
+"Naphtali",
+"Naftali"
+],
+"G3517": [
+"Nereus",
+"Nereu"
+],
+"G3518": [
+"Neri",
+"Neri"
+],
+"G3526": [
+"Niger",
+"Níger"
+],
+"G3527": [
+"Nicanor",
+"Nicanor"
+],
+"G3530": [
+"Nicodemus",
+"Nicodemos"
+],
+"G3532": [
+"Nicolas",
+"Nicolão"
+],
+"G3533": [
+"Nicopolis",
+"Nicópolis"
+],
+"G3564": [
+"Nympha",
+"Ninfa"
+],
+"G3575": [
+"Noah",
+"Noé"
+],
+"G3604": [
+"Uzziah",
+"Uzias"
+],
+"G3652": [
+"Olympas",
+"Olimpas"
+],
+"G367": [
+"Ananias",
+"Ananias"
+],
+"G3682": [
+"Onesimus",
+"Onésimo"
+],
+"G3683": [
+"Onesiphorus",
+"Onesíforo"
+],
+"G3735": [
+"Mount",
+"Oliveiras"
+],
+"G3773": [
+"Urbanus",
+"Urbano"
+],
+"G3774": [
+"Uriah",
+"Urias"
+],
+"G3828": [
+"Pamphylia",
+"Panfília"
+],
+"G3937": [
+"Parmenas",
+"Parmenas"
+],
+"G3959": [
+"Patara",
+"Pátara"
+],
+"G3963": [
+"Patmos",
+"Patmos"
+],
+"G3969": [
+"Patrobas",
+"Pátrobas"
+],
+"G3972": [
+"Paul",
+"Paulo"
+],
+"G3974": [
+"Paphos",
+"Pafo"
+],
+"G4010": [
+"Pergamum",
+"Pérgamo"
+],
+"G4011": [
+"Perga",
+"Perges"
+],
+"G406": [
+"Andrew",
+"André"
+],
+"G4069": [
+"Persis",
+"Pérside"
+],
+"G4074": [
+"Peter",
+"Pedro"
+],
+"G408": [
+"Andronicus",
+"Andrônico"
+],
+"G4091": [
+"Pilate",
+"Pilatos"
+],
+"G4099": [
+"Pisidia",
+"Pisídia"
+],
+"G4172": [
+"Polis",
+"Neápolis"
+],
+"G4193": [
+"Pontus",
+"Ponto"
+],
+"G4194": [
+"Pontius",
+"Pilatos"
+],
+"G4195": [
+"Pontus",
+"Ponto"
+],
+"G4196": [
+"Publius",
+"Públio"
+],
+"G4201": [
+"Porcius",
+"Pórcio"
+],
+"G4223": [
+"Puteoli",
+"Putéoli"
+],
+"G4227": [
+"Pudens",
+"Pudente"
+],
+"G4252": [
+"Priscilla",
+"Priscila"
+],
+"G4402": [
+"Prochorus",
+"Prócoro"
+],
+"G4424": [
+"Ptolemais",
+"Ptolemaida"
+],
+"G4460": [
+"Rahab",
+"Raabe"
+],
+"G4471": [
+"Ramah",
+"Ramá"
+],
+"G4477": [
+"Rahab",
+"Raabe"
+],
+"G4478": [
+"Rachel",
+"Raquel"
+],
+"G4479": [
+"Rebecca",
+"Rebeca"
+],
+"G4484": [
+"Rhegium",
+"Régio"
+],
+"G4488": [
+"Rhesa",
+"Resa"
+],
+"G4497": [
+"Rehoboam",
+"Roboão"
+],
+"G4498": [
+"Rhoda",
+"Rode"
+],
+"G4499": [
+"Rhodes",
+"Rodes"
+],
+"G4502": [
+"Reuben",
+"Rúben"
+],
+"G4503": [
+"Ruth",
+"Rute"
+],
+"G4504": [
+"Rufus",
+"Rufo"
+],
+"G451": [
+"Anna",
+"Ana"
+],
+"G4516": [
+"Rome",
+"Roma"
+],
+"G452": [
+"Annas",
+"Anás"
+],
+"G4524": [
+"Zadok",
+"Sadoque"
+],
+"G4527": [
+"Sala",
+"Salá"
+],
+"G4528": [
+"Shealtiel",
+"Salatiel"
+],
+"G4529": [
+"Salamis",
+"Salamina"
+],
+"G4530": [
+"Salim",
+"Salim"
+],
+"G4532": [
+"Salem",
+"Salém"
+],
+"G4533": [
+"Salmon",
+"Salmom"
+],
+"G4534": [
+"Salmone",
+"Salmone"
+],
+"G4539": [
+"Salome",
+"Salomé"
+],
+"G4540": [
+"Samaria",
+"Samaria"
+],
+"G4543": [
+"Samothrace",
+"Samotrácia"
+],
+"G4544": [
+"Samos",
+"Samos"
+],
+"G4545": [
+"Samuel",
+"Samuel"
+],
+"G4549": [
+"Saul",
+"Saulo"
+],
+"G4551": [
+"Sapphira",
+"Safira"
+],
+"G4554": [
+"Sardis",
+"Sardes"
+],
+"G4558": [
+"Zarephath",
+"Sarepta"
+],
+"G4562": [
+"Serug",
+"Serugue"
+],
+"G4564": [
+"Sarah",
+"Sara"
+],
+"G4565": [
+"Sharon",
+"Sarona"
+],
+"G4569": [
+"Saul",
+"Saulo"
+],
+"G4581": [
+"Seleucia",
+"Selêucia"
+],
+"G4584": [
+"Semein",
+"Semei"
+],
+"G4588": [
+"Sergius",
+"Sérgio"
+],
+"G4589": [
+"Seth",
+"Sete"
+],
+"G4590": [
+"Shem",
+"Sem"
+],
+"G4605": [
+"Sidon",
+"Sidom"
+],
+"G4609": [
+"Silas",
+"Silas"
+],
+"G4610": [
+"Silvanus",
+"Silvano"
+],
+"G4611": [
+"Siloam",
+"Siloé"
+],
+"G4613": [
+"Simon",
+"Simão"
+],
+"G4614": [
+"Sinai",
+"Sinai"
+],
+"G4622": [
+"Zion",
+"Sião"
+],
+"G4630": [
+"Sceva",
+"Ceva"
+],
+"G4667": [
+"Smyrna",
+"Esmirna"
+],
+"G4670": [
+"Sodom",
+"Sodoma"
+],
+"G4672": [
+"Solomon",
+"Salomão"
+],
+"G4677": [
+"Susanna",
+"Susana"
+],
+"G4720": [
+"Stachys",
+"Estáquis"
+],
+"G4734": [
+"Stephanas",
+"Estéfanas"
+],
+"G4736": [
+"Stephen",
+"Estêvão"
+],
+"G4826": [
+"Simeon",
+"Simeão"
+],
+"G490": [
+"Antioch",
+"Antioquia"
+],
+"G493": [
+"Antipas",
+"Antipas"
+],
+"G494": [
+"Antipatris",
+"Antipátride"
+],
+"G4941": [
+"Syntyche",
+"Síntique"
+],
+"G4946": [
+"Syracuse",
+"Siracusa"
+],
+"G4947": [
+"Syria",
+"Síria"
+],
+"G4965": [
+"Sychar",
+"Sicar"
+],
+"G4966": [
+"Shechem",
+"Siquém"
+],
+"G4986": [
+"Sopater",
+"Sópater"
+],
+"G4988": [
+"Sosthenes",
+"Sóstenes"
+],
+"G4989": [
+"Sosipater",
+"Sosípatro"
+],
+"G5000": [
+"Tabitha",
+"Tabita"
+],
+"G5018": [
+"Tarsus",
+"Tarso"
+],
+"G5019": [
+"Tarsus",
+"Tarso"
+],
+"G5061": [
+"Tertullus",
+"Tértulo"
+],
+"G5085": [
+"Tiberias",
+"Tibérias"
+],
+"G5086": [
+"Tiberius",
+"Tibério"
+],
+"G5095": [
+"Timothy",
+"Timóteo"
+],
+"G5096": [
+"Timon",
+"Timom"
+],
+"G5103": [
+"Titus",
+"Tito"
+],
+"G5117": [
+"Place",
+"Gólgota"
+],
+"G5161": [
+"Trophimus",
+"Trófimo"
+],
+"G5170": [
+"Tryphena",
+"Trifena"
+],
+"G5173": [
+"Tryphosa",
+"Trifosa"
+],
+"G5174": [
+"Troas",
+"Trôade"
+],
+"G5175": [
+"Trogyllium",
+"Trogílio"
+],
+"G5181": [
+"Tyrannus",
+"Tirano"
+],
+"G5184": [
+"Tyre",
+"Tiro"
+],
+"G5190": [
+"Tychicus",
+"Tíquico"
+],
+"G5211": [
+"Hymenaeus",
+"Himeneu"
+],
+"G5323": [
+"Phanuel",
+"Fanuel"
+],
+"G5344": [
+"Felix",
+"Félix"
+],
+"G5347": [
+"Festus",
+"Festo"
+],
+"G5359": [
+"Philadelphia",
+"Filadélfia"
+],
+"G5372": [
+"Philetus",
+"Fileto"
+],
+"G5375": [
+"Philippi",
+"Filipos"
+],
+"G5376": [
+"Philip",
+"Filipe"
+],
+"G5378": [
+"Philologus",
+"Filólogo"
+],
+"G5393": [
+"Phlegon",
+"Flegonte"
+],
+"G5402": [
+"Phoebe",
+"Febe"
+],
+"G5403": [
+"Phoenicia",
+"Fenícia"
+],
+"G5405": [
+"Phoenix",
+"Fênix"
+],
+"G5415": [
+"Fortunatus",
+"Fortunato"
+],
+"G5435": [
+"Phrygia",
+"Frígia"
+],
+"G5436": [
+"Phygelus",
+"Fígelo"
+],
+"G5477": [
+"Canaan",
+"Canaã"
+],
+"G5488": [
+"Haran",
+"Harã"
+],
+"G5508": [
+"Chios",
+"Quios"
+],
+"G5514": [
+"Chloe",
+"Cloé"
+],
+"G5523": [
+"Chorazin",
+"Corazim"
+],
+"G5529": [
+"Chuza",
+"Cuza"
+],
+"G559": [
+"Apelles",
+"Apeles"
+],
+"G5601": [
+"Obed",
+"Obede"
+],
+"G5617": [
+"Hosea",
+"Oseias"
+],
+"G6": [
+"Abel",
+"Abel"
+],
+"G6002": [
+"Admin",
+"Admin"
+],
+"G6043": [
+"Joda",
+"Jodá"
+],
+"G6044": [
+"Josech",
+"Joseque"
+],
+"G6095": [
+"Arni",
+"Arni"
+],
+"G624": [
+"Apollonia",
+"Apolônia"
+],
+"G625": [
+"Apollos",
+"Apolo"
+],
+"G67": [
+"Agrippa",
+"Agripa"
+],
+"G675": [
+"Appius",
+"Ápio"
+],
+"G682": [
+"Apphia",
+"Ápia"
+],
+"G688": [
+"Arabia",
+"Arábia"
+],
+"G7": [
+"Abijah",
+"Abias"
+],
+"G702": [
+"Aretas",
+"Aretas"
+],
+"G707": [
+"Arimathea",
+"Arimateia"
+],
+"G708": [
+"Aristarchus",
+"Aristarco"
+],
+"G711": [
+"Aristobulus",
+"Aristóbulo"
+],
+"G717": [
+"Armageddon",
+"Armagedom"
+],
+"G734": [
+"Artemas",
+"Artemas"
+],
+"G742": [
+"Arphaxad",
+"Arfaxade"
+],
+"G745": [
+"Archelaus",
+"Arquelau"
+],
+"G76": [
+"Adam",
+"Adão"
+],
+"G760": [
+"Asaph",
+"Asa"
+],
+"G768": [
+"Asher",
+"Aser"
+],
+"G773": [
+"Asia",
+"Ásia"
+],
+"G78": [
+"Addi",
+"Adi"
+],
+"G789": [
+"Assos",
+"Assôs"
+],
+"G799": [
+"Asyncritus",
+"Asíncrito"
+],
+"G8": [
+"Abiathar",
+"Abiatar"
+],
+"G825": [
+"Attalia",
+"Atália"
+],
+"G828": [
+"Augustus",
+"Augusto"
+],
+"G882": [
+"Achaia",
+"Acaia"
+],
+"G883": [
+"Achaicus",
+"Acaico"
+],
+"G885": [
+"Achim",
+"Aquim"
+],
+"G897": [
+"Babylon",
+"Babilônia"
+],
+"G9": [
+"Abilene",
+"Abilene"
+],
+"G903": [
+"Balaam",
+"Balaão"
+],
+"G912": [
+"Barabbas",
+"Barrabás"
+],
+"G913": [
+"Barak",
+"Baraque"
+],
+"G914": [
+"Berekiah",
+"Baraquias"
+],
+"G918": [
+"Bartholomew",
+"Bartolomeu"
+],
+"G919": [
+"Bar-Jesus",
+"Barjesus"
+],
+"G921": [
+"Barnabas",
+"Barnabé"
+],
+"G923": [
+"Barsabbas",
+"Barsabás"
+],
+"G924": [
+"Bartimaeus",
+"Bartimeu"
+],
+"G958": [
+"Benjamin",
+"Benjamim"
+],
+"G959": [
+"Bernice",
+"Berenice"
+],
+"G960": [
+"Berea",
+"Bereia"
+],
+"G963": [
+"Bethany",
+"Betânia"
+],
+"G964": [
+"Bethzatha",
+"Betesda"
+],
+"G965": [
+"Bethlehem",
+"Belém"
+],
+"G966": [
+"Bethsaida",
+"Betsaida"
+],
+"G967": [
+"Bethphage",
+"Betfagé"
+],
+"G978": [
+"Bithynia",
+"Bitínia"
+],
+"G986": [
+"Blastus",
+"Blasto"
+],
+"G99": [
+"Adriatic",
+"Adriático"
+],
+"G993": [
+"Boanerges",
+"Boanerges"
+],
+"H1007": [
+"Beth",
+"Bete-Áven"
+],
+"H1008": [
+"Beth-",
+"Betel"
+],
+"H1020": [
+"Beth",
+"Bete-Jesimote"
+],
+"H1026": [
+"Beth",
+"Bete-Arabá"
+],
+"H1031": [
+"Beth",
+"Bete-Hogla"
+],
+"H1032": [
+"Beth",
+"Bete-Horom"
+],
+"H1035": [
+"Beth-",
+"Belém"
+],
+"H1036": [
+"Leaphrah",
+"Bete-Le-Afra"
+],
+"H1047": [
+"Beth",
+"Bete-Peor"
+],
+"H1049": [
+"Beth",
+"Bete-Zur"
+],
+"H1052": [
+"Beth",
+"Bete-Seã"
+],
+"H1053": [
+"Beth",
+"Bete-Semes"
+],
+"H1064": [
+"Becorath",
+"Becorate"
+],
+"H1066": [
+"Bokim",
+"Boquim"
+],
+"H1071": [
+"Beker",
+"Bequer"
+],
+"H1074": [
+"Bocheru",
+"Bocru"
+],
+"H1075": [
+"Bicri",
+"Bicri"
+],
+"H1078": [
+"Bel",
+"Bel"
+],
+"H1081": [
+"Baladan",
+"Baladã"
+],
+"H1083": [
+"Bilgah",
+"Bilga"
+],
+"H1084": [
+"Bilgai",
+"Bilgai"
+],
+"H1085": [
+"Bildad",
+"Bildade"
+],
+"H1088": [
+"Balah",
+"Balá"
+],
+"H1090": [
+"Bilhah",
+"Bila"
+],
+"H1092": [
+"Bilhan",
+"Bilã"
+],
+"H1095": [
+"Belteshazzar",
+"Beltessazar"
+],
+"H1096": [
+"Belteshazzar",
+"Beltessazar"
+],
+"H110": [
+"Adbeel",
+"Adbeel"
+],
+"H1106": [
+"Bela",
+"Belá"
+],
+"H1109": [
+"Balaam",
+"Balaão"
+],
+"H111": [
+"Hadad",
+"Hadade"
+],
+"H1111": [
+"Balak",
+"Balaque"
+],
+"H1112": [
+"Belshazzar",
+"Belsazar"
+],
+"H1113": [
+"Belshazzar",
+"Belsazar"
+],
+"H1114": [
+"Bilshan",
+"Bilsã"
+],
+"H1118": [
+"Bimhal",
+"Bimal"
+],
+"H112": [
+"Iddo",
+"Ido"
+],
+"H1120": [
+"Bamoth",
+"Bamote"
+],
+"H1122": [
+"Ben",
+"Bene"
+],
+"H1125": [
+"Abinadab",
+"Ben-Abinadabe"
+],
+"H1127": [
+"Geber",
+"Ben-Geber"
+],
+"H1128": [
+"Deker",
+"Ben-Dequer"
+],
+"H1130": [
+"Ben",
+"Ben-Hadade"
+],
+"H1131": [
+"Binnui",
+"Binui"
+],
+"H1137": [
+"Bani",
+"Bani"
+],
+"H1138": [
+"Bunni",
+"Buni"
+],
+"H114": [
+"Addon",
+"Adom"
+],
+"H1141": [
+"Benaiah",
+"Benaia"
+],
+"H1142": [
+"Bene-",
+"Bene-Jaacã"
+],
+"H1144": [
+"Benjamin",
+"Benjamim"
+],
+"H1148": [
+"Beninu",
+"Beninu"
+],
+"H115": [
+"Adoraim",
+"Adoraim"
+],
+"H1150": [
+"Binea",
+"Bineá"
+],
+"H1151": [
+"Ben-",
+"Ben-Ami"
+],
+"H1152": [
+"Besodeiah",
+"Besodias"
+],
+"H1153": [
+"Besai",
+"Besai"
+],
+"H1160": [
+"Beor",
+"Beor"
+],
+"H1162": [
+"Boaz",
+"Boaz"
+],
+"H1168": [
+"Baal",
+"Baal"
+],
+"H1171": [
+"Baal",
+"Baal-Gade"
+],
+"H1173": [
+"Baalah",
+"Baalá"
+],
+"H1175": [
+"Bealoth",
+"Bealote"
+],
+"H1177": [
+"Baal-",
+"Baal-Hanã"
+],
+"H118": [
+"Adalia",
+"Adalia"
+],
+"H1182": [
+"Beeliada",
+"Beeliada"
+],
+"H1183": [
+"Bealiah",
+"Bealias"
+],
+"H1185": [
+"Baalis",
+"Baalis"
+],
+"H1186": [
+"Baal",
+"Baal-Meom"
+],
+"H1187": [
+"Baal",
+"Baal-Peor"
+],
+"H1189": [
+"Baal-",
+"Baal-Zefom"
+],
+"H1191": [
+"Baalath",
+"Baalate"
+],
+"H1192": [
+"Baalath",
+"Baalate-Beer"
+],
+"H1194": [
+"Beon",
+"Beom"
+],
+"H1195": [
+"Baana",
+"Baaná"
+],
+"H1196": [
+"Baanah",
+"Baaná"
+],
+"H1199": [
+"Baara",
+"Baara"
+],
+"H1201": [
+"Baasha",
+"Baasa"
+],
+"H1202": [
+"Baaseiah",
+"Baaseias"
+],
+"H1209": [
+"Bezai",
+"Bezai"
+],
+"H121": [
+"Adam",
+"Adão"
+],
+"H1212": [
+"Bezalel",
+"Bezalel"
+],
+"H1218": [
+"Bozkath",
+"Bozcate"
+],
+"H1221": [
+"Bezer",
+"Bezer"
+],
+"H1224": [
+"Bozrah",
+"Bozra"
+],
+"H1227": [
+"Bakbuk",
+"Baquebuque"
+],
+"H1229": [
+"Bakbukiah",
+"Bacbuquias"
+],
+"H123": [
+"Edom",
+"Edom"
+],
+"H1230": [
+"Bakbakkar",
+"Baquebacar"
+],
+"H1231": [
+"Bukki",
+"Buqui"
+],
+"H1232": [
+"Bukkiah",
+"Buquias"
+],
+"H1256": [
+"Beraiah",
+"Beraías"
+],
+"H126": [
+"Admah",
+"Admá"
+],
+"H1260": [
+"Bered",
+"Berede"
+],
+"H1263": [
+"Baruch",
+"Baruque"
+],
+"H1268": [
+"Berothai",
+"Berota"
+],
+"H1269": [
+"Birzaith",
+"Bizarvite"
+],
+"H1271": [
+"Barzillai",
+"Barzilai"
+],
+"H1275": [
+"Beri",
+"Beri"
+],
+"H128": [
+"Adamah",
+"Adama"
+],
+"H1282": [
+"Bariah",
+"Bariá"
+],
+"H1283": [
+"Beriah",
+"Berias"
+],
+"H1286": [
+"Berith",
+"Berite"
+],
+"H1292": [
+"Barakel",
+"Baraquel"
+],
+"H1294": [
+"Berachah",
+"Beraca"
+],
+"H1296": [
+"Berekiah",
+"Berequias"
+],
+"H1301": [
+"Barak",
+"Baraque"
+],
+"H1302": [
+"Barkos",
+"Barcos"
+],
+"H1306": [
+"Birsha",
+"Birsa"
+],
+"H1308": [
+"Besor",
+"Besor"
+],
+"H131": [
+"Adummim",
+"Adumim"
+],
+"H1312": [
+"Bishlam",
+"Bislão"
+],
+"H1315": [
+"Basemath",
+"Basemate"
+],
+"H1316": [
+"Bashan",
+"Basã"
+],
+"H1328": [
+"Bethuel",
+"Betuel"
+],
+"H1329": [
+"Bethul",
+"Betul"
+],
+"H133": [
+"Admatha",
+"Adamata"
+],
+"H1332": [
+"Bithiah",
+"Bitias"
+],
+"H1339": [
+"Bath-",
+"Bate-Seba"
+],
+"H1345": [
+"Geuel",
+"Guel"
+],
+"H1359": [
+"Gob",
+"Gobe"
+],
+"H136": [
+"Lord",
+"Senhor"
+],
+"H137": [
+"Adoni-",
+"Adoni-Bezeque"
+],
+"H1373": [
+"Gabbai",
+"Gabai"
+],
+"H1374": [
+"Gebim",
+"Gebim"
+],
+"H138": [
+"Adonijah",
+"Adonias"
+],
+"H1380": [
+"Gebal",
+"Gebal"
+],
+"H1381": [
+"Gebal",
+"Gebal"
+],
+"H1387": [
+"Geba",
+"Geba"
+],
+"H1388": [
+"Gibea",
+"Gibeá"
+],
+"H139": [
+"Adoni-",
+"Adoni-Zedeque"
+],
+"H1390": [
+"Gibeah",
+"Gibeá"
+],
+"H1391": [
+"Gibeon",
+"Gibeão"
+],
+"H1394": [
+"Gibeah",
+"Gibeá"
+],
+"H1398": [
+"Geber",
+"Geber"
+],
+"H140": [
+"Adonikam",
+"Adonicão"
+],
+"H1402": [
+"Gibbar",
+"Gibar"
+],
+"H1403": [
+"Gabriel",
+"Gabriel"
+],
+"H1405": [
+"Gibbethon",
+"Gibetom"
+],
+"H141": [
+"Adoniram",
+"Adonirão"
+],
+"H1410": [
+"Gad",
+"Gade"
+],
+"H1412": [
+"Gudgodah",
+"Gudgodá"
+],
+"H1419": [
+"Haggedolim",
+"Gedolim"
+],
+"H1424": [
+"Gadi",
+"Gadi"
+],
+"H1426": [
+"Gaddi",
+"Gadi"
+],
+"H1427": [
+"Gaddiel",
+"Gadiel"
+],
+"H143": [
+"Adar",
+"Adar"
+],
+"H1435": [
+"Giddel",
+"Gidel"
+],
+"H1436": [
+"Gedaliah",
+"Gedalias"
+],
+"H1437": [
+"Giddalti",
+"Gidalti"
+],
+"H1439": [
+"Gideon",
+"Gideão"
+],
+"H144": [
+"Adar",
+"Adar"
+],
+"H1440": [
+"Gidom",
+"Gidom"
+],
+"H1441": [
+"Gideoni",
+"Gideoni"
+],
+"H1445": [
+"Geder",
+"Geder"
+],
+"H1446": [
+"Gedor",
+"Gedor"
+],
+"H1450": [
+"Gederoth",
+"Gederote"
+],
+"H146": [
+"Addar",
+"Adar"
+],
+"H1463": [
+"Gog",
+"Gogue"
+],
+"H1470": [
+"Gozan",
+"Gozã"
+],
+"H1474": [
+"Golan",
+"Golã"
+],
+"H1476": [
+"Guni",
+"Guni"
+],
+"H1483": [
+"Gur",
+"Gur"
+],
+"H1495": [
+"Gazez",
+"Gazez"
+],
+"H1502": [
+"Gazzam",
+"Gazão"
+],
+"H1507": [
+"Gezer",
+"Gezer"
+],
+"H151": [
+"Adoram",
+"Adorão"
+],
+"H1514": [
+"Gaham",
+"Gaã"
+],
+"H1515": [
+"Gahar",
+"Gaar"
+],
+"H152": [
+"Adrammelech",
+"Adrameleque"
+],
+"H1520": [
+"Giah",
+"Gia"
+],
+"H1521": [
+"Gihon",
+"Giom"
+],
+"H1522": [
+"Gehazi",
+"Geazi"
+],
+"H1527": [
+"Ginath",
+"Ginate"
+],
+"H1529": [
+"Geshan",
+"Gesã"
+],
+"H1533": [
+"Gilboa",
+"Gilboa"
+],
+"H1537": [
+"Gilgal",
+"Gilgal"
+],
+"H154": [
+"Edrei",
+"Edrei"
+],
+"H1542": [
+"Giloh",
+"Gilo"
+],
+"H1551": [
+"Galilee",
+"Galileia"
+],
+"H1553": [
+"Geliloth",
+"Gelilote"
+],
+"H1554": [
+"Gallim",
+"Galim"
+],
+"H1555": [
+"Goliath",
+"Golias"
+],
+"H1559": [
+"Galal",
+"Galal"
+],
+"H1567": [
+"Galeed",
+"Galeede"
+],
+"H1568": [
+"Gilead",
+"Gileade"
+],
+"H1577": [
+"Gamul",
+"Gamul"
+],
+"H1579": [
+"Gimzo",
+"Ginzo"
+],
+"H1582": [
+"Gemalli",
+"Gemali"
+],
+"H1583": [
+"Gamaliel",
+"Gamaliel"
+],
+"H1586": [
+"Gomer",
+"Gômer"
+],
+"H1587": [
+"Gemariah",
+"Gemarias"
+],
+"H1592": [
+"Genubath",
+"Genubate"
+],
+"H1599": [
+"Ginnethon",
+"Ginetom"
+],
+"H1601": [
+"Goah",
+"Goa"
+],
+"H1603": [
+"Gaal",
+"Gaal"
+],
+"H1608": [
+"Gaash",
+"Gaás"
+],
+"H1609": [
+"Gatam",
+"Gatã"
+],
+"H161": [
+"Ohad",
+"Oade"
+],
+"H1617": [
+"Gera",
+"Gera"
+],
+"H1619": [
+"Gareb",
+"Garebe"
+],
+"H163": [
+"Ahava",
+"Aava"
+],
+"H1630": [
+"Gerizim",
+"Gerizim"
+],
+"H164": [
+"Ehud",
+"Eúde"
+],
+"H1642": [
+"Gerar",
+"Gerar"
+],
+"H1647": [
+"Gershom",
+"Gérson"
+],
+"H1648": [
+"Gershon",
+"Gérson"
+],
+"H1650": [
+"Geshur",
+"Gesur"
+],
+"H1654": [
+"Geshem",
+"Gesém"
+],
+"H1657": [
+"Goshen",
+"Gósen"
+],
+"H1658": [
+"Gishpa",
+"Gispa"
+],
+"H1661": [
+"Gath",
+"Gate"
+],
+"H1664": [
+"Gittaim",
+"Gitaim"
+],
+"H1667": [
+"Gath",
+"Gate-Rimom"
+],
+"H1673": [
+"Doeg",
+"Doegue"
+],
+"H1683": [
+"Deborah",
+"Débora"
+],
+"H1688": [
+"Debir",
+"Debir"
+],
+"H1689": [
+"Diblah",
+"Dibla"
+],
+"H169": [
+"Ohel",
+"Oel"
+],
+"H1691": [
+"Diblaim",
+"Diblaim"
+],
+"H170": [
+"Oholah",
+"Oolá"
+],
+"H1704": [
+"Dibri",
+"Dribi"
+],
+"H1705": [
+"Daberath",
+"Daberate"
+],
+"H1708": [
+"Dabbesheth",
+"Dabesete"
+],
+"H171": [
+"Oholiab",
+"Aoliabe"
+],
+"H1712": [
+"Dagon",
+"Dagom"
+],
+"H1719": [
+"Dedan",
+"Dedã"
+],
+"H172": [
+"Oholibah",
+"Oolibá"
+],
+"H1721": [
+"Rodanim",
+"Dodanim"
+],
+"H173": [
+"Oholibamah",
+"Oolibama"
+],
+"H1732": [
+"David",
+"Davi"
+],
+"H1734": [
+"Dodo",
+"Dodô"
+],
+"H1735": [
+"Dodavahu",
+"Dodava"
+],
+"H1737": [
+"Dodai",
+"Dodai"
+],
+"H1746": [
+"Dumah",
+"Dumá"
+],
+"H175": [
+"Aaron",
+"Arão"
+],
+"H1756": [
+"Dor",
+"Dor"
+],
+"H1757": [
+"Dura",
+"Dura"
+],
+"H1769": [
+"Dibon",
+"Dibom"
+],
+"H177": [
+"Uel",
+"Uel"
+],
+"H1775": [
+"Dimon",
+"Dimom"
+],
+"H1776": [
+"Dimonah",
+"Dimona"
+],
+"H1783": [
+"Dinah",
+"Diná"
+],
+"H1787": [
+"Dishon",
+"Disom"
+],
+"H1789": [
+"Dishan",
+"Disã"
+],
+"H179": [
+"Obil",
+"Obil"
+],
+"H1806": [
+"Delaiah",
+"Delaías"
+],
+"H1807": [
+"Delilah",
+"Dalila"
+],
+"H1810": [
+"Dilean",
+"Dileã"
+],
+"H1813": [
+"Dalphon",
+"Dalfom"
+],
+"H1829": [
+"Dimnah",
+"Dimna"
+],
+"H1834": [
+"Damascus",
+"Damasco"
+],
+"H1835": [
+"Dan",
+"Dã"
+],
+"H1837": [
+"Dannah",
+"Dana"
+],
+"H1838": [
+"Dinhabah",
+"Dinabá"
+],
+"H1840": [
+"Daniel",
+"Daniel"
+],
+"H1841": [
+"Daniel",
+"Daniel"
+],
+"H1845": [
+"Deuel",
+"Deuel"
+],
+"H1850": [
+"Dophka",
+"Dofca"
+],
+"H1853": [
+"Diklah",
+"Dicla"
+],
+"H186": [
+"Uzai",
+"Uzai"
+],
+"H1862": [
+"Darda",
+"Darda"
+],
+"H1867": [
+"Darius",
+"Dario"
+],
+"H1868": [
+"Darius",
+"Dario"
+],
+"H187": [
+"Uzal",
+"Uzal"
+],
+"H1873": [
+"Dara",
+"Darda"
+],
+"H1874": [
+"Darkon",
+"Darcom"
+],
+"H1885": [
+"Dathan",
+"Datã"
+],
+"H1886": [
+"Dothan",
+"Dotã"
+],
+"H189": [
+"Evi",
+"Evi"
+],
+"H1893": [
+"Abel",
+"Abel"
+],
+"H1896": [
+"Hegai",
+"Hegai"
+],
+"H1904": [
+"Hagar",
+"Agar"
+],
+"H1905": [
+"Hagri",
+"Hagri"
+],
+"H1908": [
+"Hadad",
+"Hadade"
+],
+"H1909": [
+"Hadadezer",
+"Hadadezer"
+],
+"H1912": [
+"India",
+"Índia"
+],
+"H1913": [
+"Hadoram",
+"Adorão"
+],
+"H1914": [
+"Hiddai",
+"Hidai"
+],
+"H1919": [
+"Hadassah",
+"Hadassa"
+],
+"H1924": [
+"Hadar",
+"Hadar"
+],
+"H1928": [
+"Hadadezer",
+"Hadadezer"
+],
+"H1936": [
+"Hod",
+"Hode"
+],
+"H1938": [
+"Hodaviah",
+"Hodavias"
+],
+"H1940": [
+"Hodiah",
+"Hodias"
+],
+"H1941": [
+"Hodiah",
+"Hodias"
+],
+"H195": [
+"Ulai",
+"Ulai"
+],
+"H1950": [
+"Homam",
+"Homã"
+],
+"H1953": [
+"Hoshama",
+"Hosama"
+],
+"H1954": [
+"Hoshea",
+"Oseias"
+],
+"H1955": [
+"Hoshaiah",
+"Hosaías"
+],
+"H1956": [
+"Hothir",
+"Hotir"
+],
+"H1967": [
+"Hemam",
+"Hemã"
+],
+"H1968": [
+"Heman",
+"Hemã"
+],
+"H198": [
+"Ulam",
+"Ulão"
+],
+"H1985": [
+"Hillel",
+"Hilel"
+],
+"H1987": [
+"Helem",
+"Helém"
+],
+"H1990": [
+"Ham",
+"Hã"
+],
+"H1996": [
+"Gog",
+"Gogue"
+],
+"H1997": [
+"Hamonah",
+"Hamoná"
+],
+"H2001": [
+"Haman",
+"Hamã"
+],
+"H201": [
+"Omar",
+"Omar"
+],
+"H2011": [
+"Hinnom",
+"Hinom"
+],
+"H2012": [
+"Hena",
+"Hena"
+],
+"H2023": [
+"Hor",
+"Hor"
+],
+"H2024": [
+"Hara",
+"Hara"
+],
+"H2036": [
+"Horam",
+"Horão"
+],
+"H2037": [
+"Harum",
+"Harum"
+],
+"H2038": [
+"Harmon",
+"Harmom"
+],
+"H2039": [
+"Haran",
+"Harã"
+],
+"H2041": [
+"Destruction",
+"Destruição"
+],
+"H2044": [
+"Hashem",
+"Hasém"
+],
+"H2047": [
+"Hathach",
+"Hatá"
+],
+"H2052": [
+"Waheb",
+"Vaebe"
+],
+"H2055": [
+"Vaizatha",
+"Vaisata"
+],
+"H2057": [
+"Vaniah",
+"Vanias"
+],
+"H2058": [
+"Vopshi",
+"Vofsi"
+],
+"H206": [
+"Aven",
+"Áven"
+],
+"H2060": [
+"Vashti",
+"Vasti"
+],
+"H2062": [
+"Zeeb",
+"Zeebe"
+],
+"H2066": [
+"Zabad",
+"Zabade"
+],
+"H2067": [
+"Zabdi",
+"Zabdi"
+],
+"H2068": [
+"Zabdiel",
+"Zabdiel"
+],
+"H2069": [
+"Zebadiah",
+"Zebadias"
+],
+"H207": [
+"Ono",
+"Ono"
+],
+"H2071": [
+"Zabud",
+"Zabude"
+],
+"H2074": [
+"Zebulun",
+"Zebulom"
+],
+"H2078": [
+"Zebah",
+"Zeba"
+],
+"H2079": [
+"Zabbai",
+"Zabai"
+],
+"H208": [
+"Onam",
+"Onã"
+],
+"H2080": [
+"Zebudah",
+"Zebida"
+],
+"H2081": [
+"Zebina",
+"Zebina"
+],
+"H2083": [
+"Zebul",
+"Zebul"
+],
+"H209": [
+"Onan",
+"Onã"
+],
+"H2099": [
+"Ziv",
+"Zife"
+],
+"H21": [
+"Abi",
+"Abi"
+],
+"H210": [
+"Uphaz",
+"Ufaz"
+],
+"H2105": [
+"Zoheth",
+"Zoete"
+],
+"H211": [
+"Ophir",
+"Ofir"
+],
+"H2117": [
+"Zaza",
+"Zaza"
+],
+"H2120": [
+"Zoheleth",
+"Zoelete"
+],
+"H2124": [
+"Ziza",
+"Ziza"
+],
+"H2125": [
+"Zina",
+"Zina"
+],
+"H2127": [
+"Zia",
+"Zia"
+],
+"H2128": [
+"Ziph",
+"Zife"
+],
+"H2133": [
+"Zethan",
+"Zetã"
+],
+"H2139": [
+"Zaccur",
+"Zacur"
+],
+"H2140": [
+"Zaccai",
+"Zacai"
+],
+"H2144": [
+"Zeker",
+"Zequer"
+],
+"H2147": [
+"Zikri",
+"Zicri"
+],
+"H2148": [
+"Zechariah",
+"Zacarias"
+],
+"H2153": [
+"Zilpah",
+"Zilpa"
+],
+"H2155": [
+"Zimmah",
+"Zima"
+],
+"H2160": [
+"Zemirah",
+"Zemira"
+],
+"H2174": [
+"Zimri",
+"Zinri"
+],
+"H218": [
+"Ur",
+"Ur"
+],
+"H2182": [
+"Zanoah",
+"Zanoa"
+],
+"H2190": [
+"Zaavan",
+"Zaavã"
+],
+"H22": [
+"Abiel",
+"Abiel"
+],
+"H2202": [
+"Ziphron",
+"Zifrom"
+],
+"H221": [
+"Uri",
+"Uri"
+],
+"H2216": [
+"Zerubbabel",
+"Zorobabel"
+],
+"H2218": [
+"Zered",
+"Zerede"
+],
+"H222": [
+"Uriel",
+"Uriel"
+],
+"H2226": [
+"Zerah",
+"Zerá"
+],
+"H2228": [
+"Zerahiah",
+"Zeraías"
+],
+"H223": [
+"Uriah",
+"Urias"
+],
+"H2238": [
+"Zeresh",
+"Zeres"
+],
+"H2240": [
+"Zattu",
+"Zatu"
+],
+"H2241": [
+"Zetham",
+"Zetã"
+],
+"H2242": [
+"Zethar",
+"Zetar"
+],
+"H2246": [
+"Hobab",
+"Hobabe"
+],
+"H2249": [
+"Habor",
+"Habor"
+],
+"H2262": [
+"Habazziniah",
+"Habazinias"
+],
+"H2265": [
+"Habakkuk",
+"Habacuque"
+],
+"H2268": [
+"Heber",
+"Héber"
+],
+"H2275": [
+"Hebron",
+"Hebrom"
+],
+"H2285": [
+"Hagab",
+"Hagabe"
+],
+"H2286": [
+"Hagabah",
+"Hagaba"
+],
+"H229": [
+"Ezbai",
+"Ezbai"
+],
+"H2291": [
+"Haggi",
+"Hagi"
+],
+"H2292": [
+"Haggai",
+"Ageu"
+],
+"H2293": [
+"Haggiah",
+"Hagias"
+],
+"H2294": [
+"Haggith",
+"Hagite"
+],
+"H2295": [
+"Hoglah",
+"Hogla"
+],
+"H23": [
+"Abiasaph",
+"Abiasafe"
+],
+"H2301": [
+"Hadad",
+"Hadade"
+],
+"H2307": [
+"Hadid",
+"Hadide"
+],
+"H2311": [
+"Hadlai",
+"Hadlai"
+],
+"H2313": [
+"Tigris",
+"Tigre"
+],
+"H2317": [
+"Hadrach",
+"Hadraque"
+],
+"H2321": [
+"Hodesh",
+"Hodes"
+],
+"H2322": [
+"Hadashah",
+"Hadasa"
+],
+"H2327": [
+"Hobah",
+"Hobá"
+],
+"H2332": [
+"Eve",
+"Eva"
+],
+"H2334": [
+"Jair",
+"Jair"
+],
+"H2341": [
+"Havilah",
+"Havilá"
+],
+"H2343": [
+"Hul",
+"Hul"
+],
+"H2354": [
+"Hur",
+"Hur"
+],
+"H2359": [
+"Huri",
+"Huri"
+],
+"H2360": [
+"Hurai",
+"Hurai"
+],
+"H2361": [
+"Huram",
+"Hirão"
+],
+"H2362": [
+"Hauran",
+"Haurã"
+],
+"H2364": [
+"Hushah",
+"Husá"
+],
+"H2365": [
+"Hushai",
+"Husai"
+],
+"H2366": [
+"Hushim",
+"Husim"
+],
+"H2367": [
+"Husham",
+"Husão"
+],
+"H2369": [
+"Hotham",
+"Hotão"
+],
+"H237": [
+"Ezel",
+"Ezel"
+],
+"H2371": [
+"Hazael",
+"Hazael"
+],
+"H2375": [
+"Hazo",
+"Hazo"
+],
+"H2381": [
+"Haziel",
+"Haziel"
+],
+"H2383": [
+"Hezion",
+"Heziom"
+],
+"H2387": [
+"Hezir",
+"Hezir"
+],
+"H2395": [
+"Hizki",
+"Hizqui"
+],
+"H2396": [
+"Hezekiah",
+"Ezequias"
+],
+"H2407": [
+"Hattush",
+"Hatus"
+],
+"H2410": [
+"Hatita",
+"Hatita"
+],
+"H2411": [
+"Hattil",
+"Hatil"
+],
+"H2412": [
+"Hatipha",
+"Hatifa"
+],
+"H2419": [
+"Hiel",
+"Hiel"
+],
+"H2431": [
+"Helam",
+"Helã"
+],
+"H2432": [
+"Hilez",
+"Hilém"
+],
+"H2437": [
+"Hirah",
+"Hira"
+],
+"H2438": [
+"Hiram",
+"Hirão"
+],
+"H244": [
+"Ozni",
+"Ozni"
+],
+"H2444": [
+"Hakilah",
+"Haquilá"
+],
+"H2446": [
+"Hacaliah",
+"Hacalias"
+],
+"H245": [
+"Azaniah",
+"Azanias"
+],
+"H2453": [
+"Hacmonite",
+"Hacmoni"
+],
+"H2458": [
+"Helah",
+"Helá"
+],
+"H2460": [
+"Heleb",
+"Helebe"
+],
+"H2462": [
+"Helbah",
+"Helba"
+],
+"H2463": [
+"Helbon",
+"Helbom"
+],
+"H2466": [
+"Heled",
+"Helede"
+],
+"H2468": [
+"Huldah",
+"Hulda"
+],
+"H2469": [
+"Heldai",
+"Heldai"
+],
+"H2473": [
+"Holon",
+"Holom"
+],
+"H2477": [
+"Halah",
+"Hala"
+],
+"H2478": [
+"Halhul",
+"Halul"
+],
+"H2482": [
+"Hali",
+"Hali"
+],
+"H2494": [
+"Helem",
+"Helem"
+],
+"H2497": [
+"Helon",
+"Helom"
+],
+"H2501": [
+"Heleph",
+"Helefe"
+],
+"H2503": [
+"Helez",
+"Helez"
+],
+"H2507": [
+"Helek",
+"Heleque"
+],
+"H2517": [
+"Helkai",
+"Helcai"
+],
+"H2518": [
+"Hilkiah",
+"Hilquias"
+],
+"H2520": [
+"Helkath",
+"Helcate"
+],
+"H2526": [
+"Ham",
+"Cam"
+],
+"H2536": [
+"Hammuel",
+"Hamuel"
+],
+"H2537": [
+"Hamutal",
+"Hamutal"
+],
+"H2538": [
+"Hamul",
+"Hamul"
+],
+"H2540": [
+"Hammon",
+"Hamom"
+],
+"H2544": [
+"Hamor",
+"Hamor"
+],
+"H2547": [
+"Humtah",
+"Hunta"
+],
+"H256": [
+"Ahab",
+"Acabe"
+],
+"H2574": [
+"Hamath",
+"Hamate"
+],
+"H2575": [
+"Hammath",
+"Hamate"
+],
+"H2576": [
+"Hammoth",
+"Hamote-Dor"
+],
+"H2578": [
+"Hamath",
+"Hamate"
+],
+"H2579": [
+"Hamath-",
+"Hamate"
+],
+"H2582": [
+"Henadad",
+"Henadade"
+],
+"H2584": [
+"Hannah",
+"Ana"
+],
+"H2585": [
+"Enoch",
+"Enoque"
+],
+"H2586": [
+"Hanun",
+"Hanum"
+],
+"H2592": [
+"Hanniel",
+"Haniel"
+],
+"H26": [
+"Abigail",
+"Abigail"
+],
+"H2601": [
+"Hanamel",
+"Hanameel"
+],
+"H2605": [
+"Hanan",
+"Hanã"
+],
+"H2607": [
+"Hanani",
+"Hanani"
+],
+"H2608": [
+"Hananiah",
+"Hananias"
+],
+"H2609": [
+"Hanes",
+"Hanes"
+],
+"H261": [
+"Ehud",
+"Eúde"
+],
+"H2615": [
+"Hannathon",
+"Hanatom"
+],
+"H2619": [
+"Hasadiah",
+"Hasadias"
+],
+"H2621": [
+"Hosah",
+"Hosa"
+],
+"H2647": [
+"Huppah",
+"Hupá"
+],
+"H265": [
+"Ahoah",
+"Aoá"
+],
+"H2650": [
+"Huppim",
+"Hupim"
+],
+"H2652": [
+"Hophni",
+"Hofni"
+],
+"H2657": [
+"Hephzi-",
+"Hefzibá"
+],
+"H2660": [
+"Hepher",
+"Héfer"
+],
+"H2663": [
+"Hapharaim",
+"Hafaraim"
+],
+"H267": [
+"Ahumai",
+"Aumai"
+],
+"H2674": [
+"Hazor",
+"Hazor"
+],
+"H2675": [
+"Hazor",
+"Hazor"
+],
+"H2693": [
+"Hazar",
+"Hazar-Gada"
+],
+"H2694": [
+"Hazer-",
+"Hazer"
+],
+"H2695": [
+"Hezro",
+"Hezro"
+],
+"H2696": [
+"Hezron",
+"Hezrom"
+],
+"H2698": [
+"Hazeroth",
+"Hazerote"
+],
+"H27": [
+"Abidan",
+"Abidã"
+],
+"H2700": [
+"Hazarmaveth",
+"Hazarmavé"
+],
+"H2701": [
+"Hazar",
+"Hazar-Susa"
+],
+"H2704": [
+"Hazar",
+"Hazar-Enã"
+],
+"H2705": [
+"Hazar",
+"Hazar-Sual"
+],
+"H2709": [
+"Hakupha",
+"Hacufa"
+],
+"H271": [
+"Ahaz",
+"Acaz"
+],
+"H2712": [
+"Hukok",
+"Hucoque"
+],
+"H2722": [
+"Horeb",
+"Horebe"
+],
+"H2726": [
+"Harbona",
+"Harbona"
+],
+"H2732": [
+"Haradah",
+"Harada"
+],
+"H2739": [
+"Harumaph",
+"Harumafe"
+],
+"H274": [
+"Ahaziah",
+"Acazias"
+],
+"H2743": [
+"Haruz",
+"Haruz"
+],
+"H2744": [
+"Harhur",
+"Harur"
+],
+"H2745": [
+"Harhas",
+"Harás"
+],
+"H2753": [
+"Hori",
+"Hori"
+],
+"H2756": [
+"Hariph",
+"Harife"
+],
+"H276": [
+"Ahuzzah",
+"Auzate"
+],
+"H2765": [
+"Horem",
+"Horém"
+],
+"H2766": [
+"Harim",
+"Harim"
+],
+"H2767": [
+"Hormah",
+"Hormá"
+],
+"H2768": [
+"Hermon",
+"Hermom"
+],
+"H2771": [
+"Haran",
+"Harã"
+],
+"H2773": [
+"Horonaim",
+"Horonaim"
+],
+"H2774": [
+"Harnepher",
+"Harnefer"
+],
+"H2776": [
+"Heres",
+"Heres"
+],
+"H278": [
+"Ehi",
+"Eí"
+],
+"H2780": [
+"Hareph",
+"Harefe"
+],
+"H279": [
+"Ahiam",
+"Aião"
+],
+"H2792": [
+"Heresh",
+"Heres"
+],
+"H2793": [
+"Horesh",
+"Davi"
+],
+"H2797": [
+"Harsha",
+"Harsa"
+],
+"H28": [
+"Abida",
+"Abida"
+],
+"H2800": [
+"Harosheth",
+"Harosete"
+],
+"H2802": [
+"Hereth",
+"Herete"
+],
+"H2806": [
+"Hashbaddanah",
+"Hasbadana"
+],
+"H2807": [
+"Hashubah",
+"Hasubá"
+],
+"H2809": [
+"Heshbon",
+"Hesbom"
+],
+"H281": [
+"Ahijah",
+"Aías"
+],
+"H2811": [
+"Hashabiah",
+"Hasabias"
+],
+"H2812": [
+"Hashabnah",
+"Hasabna"
+],
+"H2813": [
+"Hashabneiah",
+"Hasbaneias"
+],
+"H2815": [
+"Hasshub",
+"Hassube"
+],
+"H2817": [
+"Hasupha",
+"Hasufa"
+],
+"H282": [
+"Ahihud",
+"Aiúde"
+],
+"H2828": [
+"Hashum",
+"Hasum"
+],
+"H2829": [
+"Heshmon",
+"Hesmom"
+],
+"H283": [
+"Ahio",
+"Aiô"
+],
+"H2832": [
+"Hashmoneh",
+"Hasmona"
+],
+"H284": [
+"Ahihud",
+"Aiúde"
+],
+"H2845": [
+"Heth",
+"Hete"
+],
+"H285": [
+"Ahitub",
+"Aitube"
+],
+"H2855": [
+"Hethlon",
+"Hetlom"
+],
+"H286": [
+"Ahilud",
+"Ailude"
+],
+"H2867": [
+"Hathath",
+"Hatate"
+],
+"H287": [
+"Ahimoth",
+"Aimote"
+],
+"H2870": [
+"Tabeel",
+"Tabeel"
+],
+"H2875": [
+"Tebah",
+"Tebá"
+],
+"H288": [
+"Ahimelech",
+"Aimeleque"
+],
+"H2880": [
+"Tibhath",
+"Tibate"
+],
+"H2882": [
+"Tebaliah",
+"Tebalias"
+],
+"H2884": [
+"Tabbaoth",
+"Tabaote"
+],
+"H2886": [
+"Tabrimmon",
+"Tabrimom"
+],
+"H2887": [
+"Tebeth",
+"Tebete"
+],
+"H2888": [
+"Tabbath",
+"Tabate"
+],
+"H289": [
+"Ahiman",
+"Aimã"
+],
+"H2897": [
+"Tob",
+"Tobe"
+],
+"H29": [
+"Abijah",
+"Abias"
+],
+"H290": [
+"Ahimaaz",
+"Aimaás"
+],
+"H2900": [
+"Tobiah",
+"Tobias"
+],
+"H292": [
+"Ahinadab",
+"Ainadabe"
+],
+"H2923": [
+"Telaim",
+"Telaim"
+],
+"H2928": [
+"Telem",
+"Telém"
+],
+"H2929": [
+"Talmon",
+"Talmom"
+],
+"H293": [
+"Ahinoam",
+"Ainoã"
+],
+"H294": [
+"Ahisamach",
+"Aisamaque"
+],
+"H295": [
+"Ahiezer",
+"Aiezer"
+],
+"H2955": [
+"Taphath",
+"Tafate"
+],
+"H296": [
+"Ahikam",
+"Aicã"
+],
+"H297": [
+"Ahiram",
+"Airã"
+],
+"H2970": [
+"Jaazaniah",
+"Jazanias"
+],
+"H2971": [
+"Jair",
+"Jair"
+],
+"H2977": [
+"Josiah",
+"Josias"
+],
+"H2979": [
+"Jeatherai",
+"Jeaterai"
+],
+"H2982": [
+"Jebus",
+"Jebus"
+],
+"H2984": [
+"Ibhar",
+"Ibar"
+],
+"H2985": [
+"Jabin",
+"Jabim"
+],
+"H2989": [
+"Jabal",
+"Jabal"
+],
+"H299": [
+"Ahira",
+"Aira"
+],
+"H2991": [
+"Ibleam",
+"Ibleão"
+],
+"H2995": [
+"Jabneel",
+"Jabneel"
+],
+"H2996": [
+"Jabneh",
+"Jabné"
+],
+"H2997": [
+"Ibneiah",
+"Ibneias"
+],
+"H2998": [
+"Ibnijah",
+"Ibneias"
+],
+"H2999": [
+"Jabbok",
+"Jaboque"
+],
+"H30": [
+"Abihu",
+"Abiú"
+],
+"H300": [
+"Ahishahar",
+"Aisaar"
+],
+"H3000": [
+"Jeberekiah",
+"Jeberequias"
+],
+"H3003": [
+"Jabesh",
+"Jabes"
+],
+"H3008": [
+"Igal",
+"Igal"
+],
+"H301": [
+"Ahishar",
+"Aisar"
+],
+"H3011": [
+"Jogbehah",
+"Jogbeá"
+],
+"H3012": [
+"Igdaliah",
+"Jigdalias"
+],
+"H3017": [
+"Jagur",
+"Jagur"
+],
+"H302": [
+"Ahithophel",
+"Aitofel"
+],
+"H3020": [
+"Jogli",
+"Jogli"
+],
+"H303": [
+"Ahlab",
+"Alabe"
+],
+"H3030": [
+"Idalah",
+"Idala"
+],
+"H3031": [
+"Idbash",
+"Idbás"
+],
+"H3035": [
+"Iddo",
+"Ido"
+],
+"H3036": [
+"Jadon",
+"Jadom"
+],
+"H3037": [
+"Jaddua",
+"Jadua"
+],
+"H3038": [
+"Jeduthun",
+"Jedutum"
+],
+"H304": [
+"Ahlai",
+"Alai"
+],
+"H3040": [
+"Jedidah",
+"Jedida"
+],
+"H3041": [
+"Jedidiah",
+"Jedidias"
+],
+"H3042": [
+"Jedaiah",
+"Jedaías"
+],
+"H3043": [
+"Jediael",
+"Jediael"
+],
+"H3044": [
+"Jidlaph",
+"Jidlafe"
+],
+"H3047": [
+"Jada",
+"Jada"
+],
+"H3048": [
+"Jedaiah",
+"Jedaías"
+],
+"H3050": [
+"Yahweh",
+"JAH"
+],
+"H3055": [
+"Jehud",
+"Jeúde"
+],
+"H3056": [
+"Jahdai",
+"Jadai"
+],
+"H3058": [
+"Jehu",
+"Jeú"
+],
+"H3059": [
+"Jehoahaz",
+"Jeoacaz"
+],
+"H3060": [
+"Jehoash",
+"Joás"
+],
+"H3061": [
+"Judah",
+"Judá"
+],
+"H3063": [
+"Judah",
+"Judá"
+],
+"H3065": [
+"Jehudi",
+"Jeudi"
+],
+"H3067": [
+"Judith",
+"Judite"
+],
+"H3068": [
+"Yahweh",
+"SENHOR"
+],
+"H3069": [
+"Yahweh",
+"DEUS"
+],
+"H307": [
+"Ecbatana",
+"Ecbatana"
+],
+"H3075": [
+"Jehozabad",
+"Jozabade"
+],
+"H3076": [
+"Jehohanan",
+"Joanã"
+],
+"H3077": [
+"Jehoiada",
+"Joiada"
+],
+"H3078": [
+"Jehoiachin",
+"Joaquim"
+],
+"H3079": [
+"Jehoiakim",
+"Jeoaquim"
+],
+"H308": [
+"Ahasbai",
+"Aasbai"
+],
+"H3080": [
+"Jehoiarib",
+"Jeoiaribe"
+],
+"H3081": [
+"Jehucal",
+"Jucal"
+],
+"H3082": [
+"Jonadab",
+"Jonadabe"
+],
+"H3083": [
+"Jonathan",
+"Jônatas"
+],
+"H3084": [
+"Joseph",
+"José"
+],
+"H3085": [
+"Jehoaddah",
+"Jeoada"
+],
+"H3086": [
+"Jehoaddan",
+"Jeoadã"
+],
+"H3087": [
+"Jehozadak",
+"Jeozadaque"
+],
+"H3088": [
+"Jehoram",
+"Jeorão"
+],
+"H3089": [
+"Jehosheba",
+"Jeoseba"
+],
+"H3090": [
+"Jehoshabeath",
+"Jeosebate"
+],
+"H3091": [
+"Joshua",
+"Josué"
+],
+"H3092": [
+"Jehoshaphat",
+"Josafá"
+],
+"H3094": [
+"Jehallelel",
+"Jealelel"
+],
+"H3096": [
+"Jahaz",
+"Jaza"
+],
+"H3097": [
+"Joab",
+"Joabe"
+],
+"H3098": [
+"Joah",
+"Joá"
+],
+"H3099": [
+"Jehoahaz",
+"Jeoacaz"
+],
+"H31": [
+"Abihud",
+"Abiúde"
+],
+"H3100": [
+"Joel",
+"Joel"
+],
+"H3101": [
+"Joash",
+"Joás"
+],
+"H3103": [
+"Jobab",
+"Jobabe"
+],
+"H3106": [
+"Jubal",
+"Jubal"
+],
+"H3107": [
+"Jozabad",
+"Jozabade"
+],
+"H3109": [
+"Joha",
+"Joá"
+],
+"H3110": [
+"Johanan",
+"Joanã"
+],
+"H3111": [
+"Joiada",
+"Joiada"
+],
+"H3112": [
+"Jehoiachin",
+"Joaquim"
+],
+"H3113": [
+"Joiakim",
+"Joiaquim"
+],
+"H3114": [
+"Joiarib",
+"Joiaribe"
+],
+"H3115": [
+"Jochebed",
+"Joquebede"
+],
+"H3116": [
+"Jucal",
+"Jucal"
+],
+"H3120": [
+"Javan",
+"Javã"
+],
+"H3122": [
+"Jonadab",
+"Jonadabe"
+],
+"H3124": [
+"Jonah",
+"Jonas"
+],
+"H3129": [
+"Jonathan",
+"Jônatas"
+],
+"H313": [
+"Aher",
+"Aer"
+],
+"H3130": [
+"Joseph",
+"José"
+],
+"H3131": [
+"Josiphiah",
+"Josifias"
+],
+"H3132": [
+"Joelah",
+"Joela"
+],
+"H3133": [
+"Joed",
+"Joede"
+],
+"H3134": [
+"Joezer",
+"Joezer"
+],
+"H3135": [
+"Joash",
+"Joás"
+],
+"H3136": [
+"Jozadak",
+"Jozadaque"
+],
+"H3137": [
+"Jokim",
+"Joquim"
+],
+"H3139": [
+"Jorah",
+"Jora"
+],
+"H3140": [
+"Jorai",
+"Jorai"
+],
+"H3141": [
+"Joram",
+"Jorão"
+],
+"H3142": [
+"Jushab-",
+"Jusabe-Hesede"
+],
+"H3143": [
+"Joshibiah",
+"Josibias"
+],
+"H3144": [
+"Joshah",
+"Josias"
+],
+"H3145": [
+"Joshaviah",
+"Josavias"
+],
+"H3146": [
+"Joshaphat",
+"Josafá"
+],
+"H3147": [
+"Jotham",
+"Jotão"
+],
+"H3149": [
+"Jeziel",
+"Jeziel"
+],
+"H315": [
+"Ahrah",
+"Aará"
+],
+"H3151": [
+"Jaziz",
+"Jaziz"
+],
+"H3152": [
+"Izliah",
+"Izlias"
+],
+"H3157": [
+"Jezreel",
+"Jezreel"
+],
+"H316": [
+"Aharhel",
+"Aarel"
+],
+"H3160": [
+"Hubbah",
+"Jeubá"
+],
+"H3163": [
+"Jahdo",
+"Jado"
+],
+"H3164": [
+"Jahdiel",
+"Jadiel"
+],
+"H3165": [
+"Jehdeiah",
+"Jedias"
+],
+"H3166": [
+"Jahaziel",
+"Jaaziel"
+],
+"H3167": [
+"Jahzeiah",
+"Jazeias"
+],
+"H3168": [
+"Ezekiel",
+"Ezequiel"
+],
+"H3169": [
+"Hezekiah",
+"Ezequias"
+],
+"H3170": [
+"Jahzerah",
+"Jazera"
+],
+"H3171": [
+"Jehiel",
+"Jeiel"
+],
+"H3174": [
+"Jehiah",
+"Jeías"
+],
+"H3177": [
+"Jahleel",
+"Jaleel"
+],
+"H3181": [
+"Jahmai",
+"Jamai"
+],
+"H3183": [
+"Jahzeel",
+"Jazeel"
+],
+"H3185": [
+"Jahziel",
+"Jaziel"
+],
+"H3189": [
+"Jahath",
+"Jaate"
+],
+"H3192": [
+"Jotbah",
+"Jotbá"
+],
+"H3193": [
+"Jotbathah",
+"Jotbatá"
+],
+"H3194": [
+"Juttah",
+"Jutá"
+],
+"H3195": [
+"Jetur",
+"Jetur"
+],
+"H3199": [
+"Jakin",
+"Jaquim"
+],
+"H32": [
+"Abihail",
+"Abiail"
+],
+"H3203": [
+"Jecholiah",
+"Jecolias"
+],
+"H3204": [
+"Jeconiah",
+"Jeconias"
+],
+"H3210": [
+"Jalon",
+"Jalom"
+],
+"H3223": [
+"Jemuel",
+"Jemuel"
+],
+"H3224": [
+"Jemimah",
+"Jemima"
+],
+"H3226": [
+"Jamin",
+"Jamim"
+],
+"H3229": [
+"Imlah",
+"Inlá"
+],
+"H3230": [
+"Jamlech",
+"Janleque"
+],
+"H3234": [
+"Imna",
+"Imná"
+],
+"H3236": [
+"Imrah",
+"Inra"
+],
+"H3239": [
+"Janoah",
+"Janoa"
+],
+"H3241": [
+"Janum",
+"Janim"
+],
+"H325": [
+"Ahasuerus",
+"Assuero"
+],
+"H3252": [
+"Iscah",
+"Iscá"
+],
+"H3253": [
+"Ismachiah",
+"Ismaquias"
+],
+"H3258": [
+"Jabez",
+"Jabez"
+],
+"H3260": [
+"Iddo",
+"Ido"
+],
+"H3262": [
+"Jeuel",
+"Jeuel"
+],
+"H3263": [
+"Jeuz",
+"Jeús"
+],
+"H3265": [
+"Jair",
+"Jair"
+],
+"H3266": [
+"Jeush",
+"Jeús"
+],
+"H3269": [
+"Jaaziah",
+"Jaazias"
+],
+"H3270": [
+"Jazer",
+"Jazer"
+],
+"H3273": [
+"Jeiel",
+"Jeiel"
+],
+"H3275": [
+"Jakan",
+"Jacã"
+],
+"H3278": [
+"Jael",
+"Jael"
+],
+"H3279": [
+"Jaala",
+"Jaala"
+],
+"H3281": [
+"Jalam",
+"Jalão"
+],
+"H3285": [
+"Janai",
+"Janai"
+],
+"H329": [
+"Atad",
+"Atade"
+],
+"H3290": [
+"Jacob",
+"Jacó"
+],
+"H3291": [
+"Jaakobah",
+"Jaacobá"
+],
+"H3292": [
+"Jaakan",
+"Jaacã"
+],
+"H3293": [
+"Jaar",
+"Jaar"
+],
+"H3294": [
+"Jarah",
+"Jará"
+],
+"H3297": [
+"Jearim",
+"Jearim"
+],
+"H3298": [
+"Jaareshiah",
+"Jaaresias"
+],
+"H3299": [
+"Jaasai",
+"Jaasai"
+],
+"H3300": [
+"Jaasiel",
+"Jaasiel"
+],
+"H3301": [
+"Iphdeiah",
+"Ifdeias"
+],
+"H3305": [
+"Joppa",
+"Jope"
+],
+"H3309": [
+"Japhia",
+"Jafia"
+],
+"H3310": [
+"Japhlet",
+"Jaflete"
+],
+"H3312": [
+"Jephunneh",
+"Jefoné"
+],
+"H3315": [
+"Japheth",
+"Jafé"
+],
+"H3316": [
+"Jephthah",
+"Jefté"
+],
+"H3317": [
+"Iphtah",
+"Iftá-El"
+],
+"H3324": [
+"Izhar",
+"Izar"
+],
+"H3327": [
+"Isaac",
+"Isaque"
+],
+"H333": [
+"Ater",
+"Ater"
+],
+"H3337": [
+"Jezer",
+"Jezer"
+],
+"H3343": [
+"Jekabzeel",
+"Jecabzeel"
+],
+"H3347": [
+"Jokdeam",
+"Jocdeão"
+],
+"H3348": [
+"Jakeh",
+"Jaque"
+],
+"H3354": [
+"Jekuthiel",
+"Jecutiel"
+],
+"H3355": [
+"Joktan",
+"Joctã"
+],
+"H3356": [
+"Jakim",
+"Jaquim"
+],
+"H3359": [
+"Jekamiah",
+"Jecamias"
+],
+"H3360": [
+"Jekameam",
+"Jecameão"
+],
+"H3361": [
+"Jokmeam",
+"Jocmeão"
+],
+"H3362": [
+"Jokneam",
+"Jocneão"
+],
+"H3370": [
+"Jokshan",
+"Jocsã"
+],
+"H3371": [
+"Joktheel",
+"Jocteel"
+],
+"H3375": [
+"Yiron",
+"Irom"
+],
+"H3378": [
+"Jerub-Baal",
+"Jerubaal"
+],
+"H3379": [
+"Jeroboam",
+"Jeroboão"
+],
+"H3380": [
+"Jerub-Besheth",
+"Jerubusete"
+],
+"H3382": [
+"Jared",
+"Jarede"
+],
+"H3383": [
+"Jordan",
+"Jordão"
+],
+"H3385": [
+"Jeruel",
+"Jeruel"
+],
+"H3386": [
+"Jaroah",
+"Jaroa"
+],
+"H3388": [
+"Jerusha",
+"Jerusa"
+],
+"H3389": [
+"Jerusalem",
+"Jerusalém"
+],
+"H3390": [
+"Jerusalem",
+"Jerusalém"
+],
+"H3392": [
+"Jerah",
+"Jerá"
+],
+"H3395": [
+"Jeroham",
+"Jeroão"
+],
+"H3396": [
+"Jerahmeel",
+"Jerameel"
+],
+"H3398": [
+"Jarha",
+"Jará"
+],
+"H3400": [
+"Jeriel",
+"Jeriel"
+],
+"H3402": [
+"Jarib",
+"Jaribe"
+],
+"H3403": [
+"Jeribai",
+"Jeribai"
+],
+"H3404": [
+"Jeriah",
+"Jerias"
+],
+"H3405": [
+"Jericho",
+"Jericó"
+],
+"H3406": [
+"Jerimoth",
+"Jeremote"
+],
+"H3408": [
+"Jerioth",
+"Jeriote"
+],
+"H3412": [
+"Jarmuth",
+"Jarmute"
+],
+"H3413": [
+"Jeremai",
+"Jeremai"
+],
+"H3414": [
+"Jeremiah",
+"Jeremias"
+],
+"H3416": [
+"Irpeel",
+"Irpeel"
+],
+"H3421": [
+"Jorkeam",
+"Jorqueão"
+],
+"H3428": [
+"Jeshebeab",
+"Jesebeabe"
+],
+"H3431": [
+"Ishbah",
+"Isbá"
+],
+"H3434": [
+"Jashobeam",
+"Jasobeão"
+],
+"H3436": [
+"Joshbekashah",
+"Josbecasa"
+],
+"H3437": [
+"Jashub",
+"Jasube"
+],
+"H3438": [
+"Ishvah",
+"Isvi"
+],
+"H3439": [
+"Jeshohaiah",
+"Jesoaías"
+],
+"H3440": [
+"Ishvi",
+"Isvi"
+],
+"H3442": [
+"Jeshua",
+"Jesua"
+],
+"H3443": [
+"Jeshua",
+"Jesuá"
+],
+"H3446": [
+"Isaac",
+"Isaque"
+],
+"H3448": [
+"Jesse",
+"Jessé"
+],
+"H3449": [
+"Isshiah",
+"Issias"
+],
+"H345": [
+"Aiah",
+"Aiá"
+],
+"H3450": [
+"Jesimiel",
+"Jesimiel"
+],
+"H3454": [
+"Jeshishai",
+"Jesisai"
+],
+"H3457": [
+"Ishma",
+"Isma"
+],
+"H3458": [
+"Ishmael",
+"Ismael"
+],
+"H3460": [
+"Ishmaiah",
+"Ismaías"
+],
+"H3461": [
+"Ishmerai",
+"Ismerai"
+],
+"H3464": [
+"Jashen",
+"Jásen"
+],
+"H3466": [
+"Jeshanah",
+"Jesana"
+],
+"H3469": [
+"Ishi",
+"Isi"
+],
+"H347": [
+"Job",
+"Jó"
+],
+"H3470": [
+"Isaiah",
+"Isaías"
+],
+"H3472": [
+"Ishpah",
+"Ispa"
+],
+"H3473": [
+"Ishpan",
+"Ispã"
+],
+"H3475": [
+"Jesher",
+"Jeser"
+],
+"H3478": [
+"Israel",
+"Israel"
+],
+"H3479": [
+"Israel",
+"Israel"
+],
+"H348": [
+"Jezebel",
+"Jezabel"
+],
+"H3480": [
+"Jesharelah",
+"Jesarela"
+],
+"H3484": [
+"Jeshurun",
+"Jesurum"
+],
+"H3485": [
+"Issachar",
+"Issacar"
+],
+"H3492": [
+"Jattir",
+"Jatir"
+],
+"H3494": [
+"Ithlah",
+"Itla"
+],
+"H3495": [
+"Ithmah",
+"Itma"
+],
+"H3496": [
+"Jathniel",
+"Jatniel"
+],
+"H3497": [
+"Ithnan",
+"Itnã"
+],
+"H350": [
+"Ichabod",
+"Icabode"
+],
+"H3500": [
+"Jether",
+"Jéter"
+],
+"H3503": [
+"Jethro",
+"Jetro"
+],
+"H3506": [
+"Ithran",
+"Itrã"
+],
+"H3507": [
+"Ithream",
+"Itreão"
+],
+"H3509": [
+"Jetheth",
+"Jetete"
+],
+"H3521": [
+"Cabul",
+"Cabul"
+],
+"H3522": [
+"Cabbon",
+"Cabom"
+],
+"H3529": [
+"Kebar",
+"Quebar"
+],
+"H3540": [
+"Kedorlaomer",
+"Quedorlaomer"
+],
+"H356": [
+"Elon",
+"Elom"
+],
+"H3560": [
+"Kun",
+"Cum"
+],
+"H3562": [
+"Konaniah",
+"Conanias"
+],
+"H3566": [
+"Cyrus",
+"Ciro"
+],
+"H3567": [
+"Cyrus",
+"Ciro"
+],
+"H3568": [
+"Cush",
+"Cuxe"
+],
+"H3569": [
+"Cushi",
+"Cuxi"
+],
+"H357": [
+"Aijalon",
+"Aijalom"
+],
+"H3570": [
+"Cushi",
+"Cusi"
+],
+"H3572": [
+"Cushan",
+"Cusã"
+],
+"H3573": [
+"Cushan-",
+"Cusã-Risataim"
+],
+"H3575": [
+"Cuthah",
+"Cuta"
+],
+"H3578": [
+"Kozeba",
+"Cozeba"
+],
+"H3579": [
+"Cozbi",
+"Cosbi"
+],
+"H3580": [
+"Kezib",
+"Quezibe"
+],
+"H359": [
+"Elath",
+"Elate"
+],
+"H3592": [
+"Kidon",
+"Quidom"
+],
+"H3594": [
+"Kiyyun",
+"Quium"
+],
+"H36": [
+"Abitub",
+"Abitube"
+],
+"H3609": [
+"Kileab",
+"Quileabe"
+],
+"H3612": [
+"Caleb",
+"Calebe"
+],
+"H3613": [
+"Caleb",
+"Calebe"
+],
+"H362": [
+"Elim",
+"Elim"
+],
+"H3620": [
+"Kelub",
+"Quelube"
+],
+"H3621": [
+"Celubai",
+"Quelubai"
+],
+"H3622": [
+"Keluhi",
+"Queluí"
+],
+"H3625": [
+"Calah",
+"Calá"
+],
+"H3626": [
+"Col-",
+"Col-Hozé"
+],
+"H3630": [
+"Kilion",
+"Quiliom"
+],
+"H3633": [
+"Kalkol",
+"Calcol"
+],
+"H3636": [
+"Kelal",
+"Quelal"
+],
+"H3638": [
+"Chilmad",
+"Quilmade"
+],
+"H3641": [
+"Calneh",
+"Calné"
+],
+"H3643": [
+"Kimham",
+"Quimã"
+],
+"H3645": [
+"Chemosh",
+"Camos"
+],
+"H3656": [
+"Canneh",
+"Cané"
+],
+"H3659": [
+"Coniah",
+"Conias"
+],
+"H3662": [
+"Kenani",
+"Quenai"
+],
+"H3663": [
+"Kenaniah",
+"Quenanias"
+],
+"H3667": [
+"Canaan",
+"Canaã"
+],
+"H3668": [
+"Kenaanah",
+"Quenaaná"
+],
+"H3672": [
+"Kinnereth",
+"Quinerete"
+],
+"H3686": [
+"Kesil",
+"Quesil"
+],
+"H3691": [
+"Kislev",
+"Quisleu"
+],
+"H3692": [
+"Chislon",
+"Quislom"
+],
+"H3693": [
+"Kesalon",
+"Quesalom"
+],
+"H3694": [
+"Kesulloth",
+"Quesulote"
+],
+"H3696": [
+"Kisloth",
+"Quislote-Tabor"
+],
+"H37": [
+"Abital",
+"Abital"
+],
+"H3703": [
+"Casiphia",
+"Casifia"
+],
+"H3716": [
+"Kephirah",
+"Quefira"
+],
+"H372": [
+"Iezer",
+"Jezer"
+],
+"H3731": [
+"Caphtor",
+"Caftor"
+],
+"H3743": [
+"Kerub",
+"Querube"
+],
+"H3747": [
+"Kerith",
+"Querite"
+],
+"H3751": [
+"Carchemish",
+"Carquemis"
+],
+"H3752": [
+"Carcas",
+"Carcas"
+],
+"H3756": [
+"Carmi",
+"Carmi"
+],
+"H3760": [
+"Carmel",
+"Carmelo"
+],
+"H3763": [
+"Keran",
+"Querã"
+],
+"H3777": [
+"Kesed",
+"Quésede"
+],
+"H3778": [
+"Chaldeans",
+"caldeus"
+],
+"H378": [
+"Ish-",
+"Is-Bosete"
+],
+"H379": [
+"Ishhod",
+"Isode"
+],
+"H3794": [
+"Kittim",
+"Quitim"
+],
+"H3798": [
+"Kitlish",
+"Quitilis"
+],
+"H38": [
+"Abijam",
+"Abião"
+],
+"H3810": [
+"Lo",
+"Lo-Debar"
+],
+"H3812": [
+"Leah",
+"Lia"
+],
+"H3815": [
+"Lael",
+"Lael"
+],
+"H3822": [
+"Lebaoth",
+"Lebaote"
+],
+"H3829": [
+"Lebonah",
+"Lebona"
+],
+"H3837": [
+"Laban",
+"Labão"
+],
+"H3838": [
+"Lebanah",
+"Lebana"
+],
+"H384": [
+"Ithiel",
+"Itiel"
+],
+"H3841": [
+"Libnah",
+"Libna"
+],
+"H3844": [
+"Lebanon",
+"Líbano"
+],
+"H3845": [
+"Libni",
+"Libni"
+],
+"H385": [
+"Ithamar",
+"Itamar"
+],
+"H3850": [
+"Lod",
+"Lode"
+],
+"H3855": [
+"Lahad",
+"Laade"
+],
+"H3865": [
+"Lud",
+"Lude"
+],
+"H387": [
+"Ethan",
+"Etã"
+],
+"H3870": [
+"Luz",
+"Luz"
+],
+"H3872": [
+"Luhith",
+"Luíte"
+],
+"H3873": [
+"Hallohesh",
+"Haloés"
+],
+"H3876": [
+"Lot",
+"Ló"
+],
+"H3877": [
+"Lotan",
+"Lotã"
+],
+"H3878": [
+"Levi",
+"Levi"
+],
+"H3881": [
+"Levi",
+"Levi"
+],
+"H3895": [
+"Lehi",
+"Leí"
+],
+"H3896": [
+"Lehi",
+"Leí"
+],
+"H39": [
+"Abimael",
+"Abimael"
+],
+"H390": [
+"Akkad",
+"Acade"
+],
+"H3902": [
+"Lahmi",
+"Lami"
+],
+"H3903": [
+"Lahmas",
+"Laamás"
+],
+"H3919": [
+"Laish",
+"Laís"
+],
+"H392": [
+"Aczib",
+"Aczibe"
+],
+"H3922": [
+"Lecah",
+"Leca"
+],
+"H3923": [
+"Lachish",
+"Laquis"
+],
+"H3927": [
+"Lemuel",
+"Lemuel"
+],
+"H3929": [
+"Lamech",
+"Lameque"
+],
+"H3935": [
+"Laadah",
+"Lada"
+],
+"H3936": [
+"Ladan",
+"Ladã"
+],
+"H3941": [
+"Lappidoth",
+"Lapidote"
+],
+"H3946": [
+"Lakkum",
+"Lacum"
+],
+"H3949": [
+"Likhi",
+"Liqui"
+],
+"H3959": [
+"Leshem",
+"Lesém"
+],
+"H3962": [
+"Lasha",
+"Lasa"
+],
+"H397": [
+"Achish",
+"Aquis"
+],
+"H40": [
+"Abimelech",
+"Abimeleque"
+],
+"H4006": [
+"Mibhar",
+"Mibar"
+],
+"H4012": [
+"Mebunnai",
+"Mebunai"
+],
+"H4014": [
+"Mibzar",
+"Mibzar"
+],
+"H4017": [
+"Mibsam",
+"Mibsão"
+],
+"H4019": [
+"Magbish",
+"Magbis"
+],
+"H4023": [
+"Megiddo",
+"Megido"
+],
+"H4024": [
+"Migdol",
+"Migdol"
+],
+"H4025": [
+"Magdiel",
+"Magdiel"
+],
+"H4027": [
+"Migdal",
+"Migdal-Ele"
+],
+"H4028": [
+"Migdal",
+"Migdal-Gade"
+],
+"H4029": [
+"Migdal",
+"Migdal-Eder"
+],
+"H4031": [
+"Magog",
+"Magogue"
+],
+"H4047": [
+"Magpiash",
+"Magpias"
+],
+"H4051": [
+"Migron",
+"Migrom"
+],
+"H4068": [
+"Madon",
+"Madom"
+],
+"H407": [
+"Acshaph",
+"Acsafe"
+],
+"H4074": [
+"Media",
+"Média"
+],
+"H4080": [
+"Midian",
+"Midiã"
+],
+"H4081": [
+"Middin",
+"Midim"
+],
+"H4086": [
+"Madmen",
+"Madmém"
+],
+"H4088": [
+"Madmenah",
+"Madmena"
+],
+"H4089": [
+"Madmannah",
+"Madmana"
+],
+"H4091": [
+"Medan",
+"Medã"
+],
+"H4099": [
+"Hammedatha",
+"Hamedata"
+],
+"H41": [
+"Abinadab",
+"Abinadabe"
+],
+"H4104": [
+"Mehuman",
+"Meumã"
+],
+"H4105": [
+"Mehetabel",
+"Meetabel"
+],
+"H4111": [
+"Mahalalel",
+"Maalalel"
+],
+"H4121": [
+"Maharai",
+"Maarai"
+],
+"H4124": [
+"Moab",
+"Moabe"
+],
+"H4137": [
+"Moladah",
+"Moladá"
+],
+"H414": [
+"Ela",
+"Elá"
+],
+"H4140": [
+"Molid",
+"Molide"
+],
+"H4149": [
+"Moseroth",
+"Moserote"
+],
+"H4153": [
+"Moadiah",
+"Moadias"
+],
+"H4158": [
+"Mephaath",
+"Mefaate"
+],
+"H4162": [
+"Moza",
+"Moza"
+],
+"H4176": [
+"Moreh",
+"Moré"
+],
+"H4179": [
+"Moriah",
+"Moriá"
+],
+"H4182": [
+"Moresheth",
+"Moresete-Gate"
+],
+"H4187": [
+"Mushi",
+"Musi"
+],
+"H419": [
+"Eldad",
+"Eldade"
+],
+"H4199": [
+"Mizzah",
+"Mizá"
+],
+"H42": [
+"Abinoam",
+"Abinoão"
+],
+"H420": [
+"Eldaah",
+"Elda"
+],
+"H4235": [
+"Mahol",
+"Maol"
+],
+"H4238": [
+"Mahazioth",
+"Maaziote"
+],
+"H4240": [
+"Mehida",
+"Meída"
+],
+"H4243": [
+"Mehir",
+"Maquir"
+],
+"H4244": [
+"Mahlah",
+"Maalá"
+],
+"H4248": [
+"Mahlon",
+"Malom"
+],
+"H4249": [
+"Mahli",
+"Mali"
+],
+"H425": [
+"Elah",
+"Elá"
+],
+"H4258": [
+"Mahalath",
+"Maalate"
+],
+"H4266": [
+"Mahanaim",
+"Maanaim"
+],
+"H4271": [
+"Mahseiah",
+"Maasias"
+],
+"H4287": [
+"Mahath",
+"Maate"
+],
+"H43": [
+"Ebiasaph",
+"Ebiasafe"
+],
+"H4308": [
+"Matred",
+"Matrede"
+],
+"H4311": [
+"Medeba",
+"Medeba"
+],
+"H4312": [
+"Medad",
+"Medade"
+],
+"H4316": [
+"Mica",
+"Mica"
+],
+"H4317": [
+"Michael",
+"Micael"
+],
+"H4318": [
+"Micah",
+"Mica"
+],
+"H4320": [
+"Micaiah",
+"Micaías"
+],
+"H4321": [
+"Micaiah",
+"Micaías"
+],
+"H4322": [
+"Micaiah",
+"Micaia"
+],
+"H4324": [
+"Michal",
+"Mical"
+],
+"H4326": [
+"Mijamin",
+"Miamim"
+],
+"H4331": [
+"Mesha",
+"Messa"
+],
+"H4332": [
+"Mishael",
+"Misael"
+],
+"H4333": [
+"Mishael",
+"Misael"
+],
+"H4335": [
+"Meshach",
+"Mesaque"
+],
+"H4336": [
+"Meshach",
+"Mesaque"
+],
+"H4338": [
+"Mesha",
+"Messa"
+],
+"H4343": [
+"Machbenah",
+"Macbena"
+],
+"H4344": [
+"Machbannai",
+"Macbanai"
+],
+"H435": [
+"Elul",
+"Elul"
+],
+"H4352": [
+"Maki",
+"Maqui"
+],
+"H4353": [
+"Makir",
+"Maquir"
+],
+"H4363": [
+"Micmash",
+"Micmás"
+],
+"H4366": [
+"Micmethath",
+"Micmetá"
+],
+"H4367": [
+"Machnadebai",
+"Macnadbai"
+],
+"H4368": [
+"Meconah",
+"Meconá"
+],
+"H4375": [
+"Machpelah",
+"Macpela"
+],
+"H438": [
+"Allon",
+"Alom"
+],
+"H4381": [
+"Mikri",
+"Micri"
+],
+"H44": [
+"Abiezer",
+"Abiezer"
+],
+"H4401": [
+"Malachi",
+"Malaquias"
+],
+"H4409": [
+"Malluch",
+"Maluque"
+],
+"H4413": [
+"Mallothi",
+"Maloti"
+],
+"H442": [
+"Alush",
+"Alus"
+],
+"H4424": [
+"Melatiah",
+"Melatias"
+],
+"H4428": [
+"Milcom",
+"Malcã"
+],
+"H4429": [
+"Melech",
+"Meleque"
+],
+"H443": [
+"Elzabad",
+"Elzabade"
+],
+"H4432": [
+"Molech",
+"Moloque"
+],
+"H4435": [
+"Milcah",
+"Milca"
+],
+"H4439": [
+"Malkiel",
+"Malquiel"
+],
+"H4441": [
+"Malkijah",
+"Malquias"
+],
+"H4442": [
+"Melchi-",
+"Melquisedeque"
+],
+"H4443": [
+"Malkiram",
+"Malquirão"
+],
+"H4444": [
+"Malki-",
+"Malquisua"
+],
+"H4445": [
+"Milcom",
+"Milcom"
+],
+"H4447": [
+"Hammoleketh",
+"Hamolequete"
+],
+"H445": [
+"Elhanan",
+"Elanã"
+],
+"H446": [
+"Eliab",
+"Eliabe"
+],
+"H4462": [
+"Memucan",
+"Memucã"
+],
+"H447": [
+"Eliel",
+"Eliel"
+],
+"H4471": [
+"Mamre",
+"Manre"
+],
+"H448": [
+"Eliathah",
+"Eliata"
+],
+"H449": [
+"Elidad",
+"Elidade"
+],
+"H4495": [
+"Manoah",
+"Manoá"
+],
+"H450": [
+"Eliada",
+"Eliada"
+],
+"H4505": [
+"Menahem",
+"Menaém"
+],
+"H4506": [
+"Manahath",
+"Manaate"
+],
+"H4508": [
+"Minni",
+"Mini"
+],
+"H4509": [
+"Miniamin",
+"Miniamim"
+],
+"H4511": [
+"Minnith",
+"Minite"
+],
+"H4519": [
+"Manasseh",
+"Manassés"
+],
+"H452": [
+"Elijah",
+"Elias"
+],
+"H453": [
+"Elihu",
+"Eliú"
+],
+"H4532": [
+"Massah",
+"Massá"
+],
+"H454": [
+"Elioenai",
+"Elioenai"
+],
+"H455": [
+"Eliahba",
+"Eliaba"
+],
+"H4558": [
+"Mispar",
+"Mispar"
+],
+"H4559": [
+"Mispereth",
+"Misperete"
+],
+"H456": [
+"Elihoreph",
+"Eliorefe"
+],
+"H4572": [
+"Maadai",
+"Maadai"
+],
+"H4573": [
+"Moadiah",
+"Maadias"
+],
+"H458": [
+"Elimelech",
+"Elimeleque"
+],
+"H4582": [
+"Maoch",
+"Maoque"
+],
+"H4584": [
+"Maon",
+"Maom"
+],
+"H4587": [
+"Meonothai",
+"Meonotai"
+],
+"H4590": [
+"Maaziah",
+"Maazias"
+],
+"H4597": [
+"Maai",
+"Maai"
+],
+"H460": [
+"Eliasaph",
+"Eliasafe"
+],
+"H4601": [
+"Maacah",
+"Maaca"
+],
+"H461": [
+"Eliezer",
+"Eliézer"
+],
+"H4619": [
+"Maaz",
+"Maaz"
+],
+"H463": [
+"Eliam",
+"Eliã"
+],
+"H4632": [
+"Mearah",
+"Meara"
+],
+"H4638": [
+"Maarath",
+"Maarate"
+],
+"H464": [
+"Eliphaz",
+"Elifaz"
+],
+"H4640": [
+"Maasai",
+"Masai"
+],
+"H4641": [
+"Maaseiah",
+"Maaseias"
+],
+"H4644": [
+"Memphis",
+"Mênfis"
+],
+"H4648": [
+"Mephibosheth",
+"Mefibosete"
+],
+"H465": [
+"Eliphal",
+"Elifal"
+],
+"H466": [
+"Eliphelehu",
+"Elifeleu"
+],
+"H467": [
+"Eliphelet",
+"Elifelete"
+],
+"H468": [
+"Elizur",
+"Elizur"
+],
+"H4681": [
+"Mozah",
+"Moza"
+],
+"H469": [
+"Elizaphan",
+"Elisafã"
+],
+"H4693": [
+"Egypt",
+"Egito"
+],
+"H470": [
+"Elika",
+"Elica"
+],
+"H4708": [
+"Mizpah",
+"Mispá"
+],
+"H4709": [
+"Mizpah",
+"Mispá"
+],
+"H471": [
+"Eliakim",
+"Eliaquim"
+],
+"H4714": [
+"Egypt",
+"Egito"
+],
+"H4719": [
+"Makkedah",
+"Maquedá"
+],
+"H472": [
+"Elisheba",
+"Eliseba"
+],
+"H4722": [
+"Makheloth",
+"Maquelote"
+],
+"H473": [
+"Elishah",
+"Elisá"
+],
+"H4732": [
+"Mikloth",
+"Miclote"
+],
+"H4737": [
+"Mikneiah",
+"Micneias"
+],
+"H4739": [
+"Makaz",
+"Macaz"
+],
+"H474": [
+"Elishua",
+"Elisua"
+],
+"H475": [
+"Eliashib",
+"Eliasibe"
+],
+"H4757": [
+"Merodach-",
+"Merodaque-Baladã"
+],
+"H476": [
+"Elishama",
+"Elisama"
+],
+"H4762": [
+"Mareshah",
+"Maressa"
+],
+"H4764": [
+"Merab",
+"Merabe"
+],
+"H477": [
+"Elisha",
+"Eliseu"
+],
+"H4778": [
+"Mered",
+"Merede"
+],
+"H478": [
+"Elishaphat",
+"Elisafate"
+],
+"H4782": [
+"Mordecai",
+"Mardoqueu"
+],
+"H4785": [
+"Marah",
+"Mara"
+],
+"H4789": [
+"Meroz",
+"Meroz"
+],
+"H4792": [
+"Merom",
+"Merom"
+],
+"H4796": [
+"Maroth",
+"Marote"
+],
+"H48": [
+"Abiram",
+"Abirão"
+],
+"H4809": [
+"Meribah",
+"Meribá"
+],
+"H4812": [
+"Meraioth",
+"Meraiote"
+],
+"H4813": [
+"Miriam",
+"Miriã"
+],
+"H4821": [
+"Mirmah",
+"Mirma"
+],
+"H4822": [
+"Meremoth",
+"Meremote"
+],
+"H4825": [
+"Meres",
+"Meres"
+],
+"H4831": [
+"Maralah",
+"Maralá"
+],
+"H4847": [
+"Merari",
+"Merari"
+],
+"H4848": [
+"Merarite",
+"Merari"
+],
+"H4850": [
+"Merathaim",
+"Merataim"
+],
+"H4851": [
+"Mash",
+"Mas"
+],
+"H4852": [
+"Mesha",
+"Messa"
+],
+"H4854": [
+"Massa",
+"Massá"
+],
+"H486": [
+"Almodad",
+"Almodá"
+],
+"H4861": [
+"Mishal",
+"Misal"
+],
+"H487": [
+"Alammelech",
+"Alameleque"
+],
+"H4872": [
+"Moses",
+"Moisés"
+],
+"H4873": [
+"Moses",
+"Moisés"
+],
+"H4877": [
+"Meshobab",
+"Mesobabe"
+],
+"H4898": [
+"Meshezabel",
+"Mesezabel"
+],
+"H49": [
+"Abishag",
+"Abisague"
+],
+"H4902": [
+"Meshech",
+"Meseque"
+],
+"H4913": [
+"Mashal",
+"Masal"
+],
+"H4918": [
+"Meshullam",
+"Mesulão"
+],
+"H4919": [
+"Meshillemoth",
+"Mesilemote"
+],
+"H4920": [
+"Meshelemiah",
+"Meselemias"
+],
+"H4921": [
+"Meshillemith",
+"Mesilemite"
+],
+"H4922": [
+"Meshullemeth",
+"Mesulemete"
+],
+"H4925": [
+"Mishmannah",
+"Mismana"
+],
+"H4927": [
+"Mishma",
+"Misma"
+],
+"H493": [
+"Elnaam",
+"Elnaão"
+],
+"H4936": [
+"Misham",
+"Misã"
+],
+"H494": [
+"Elnathan",
+"Elnatã"
+],
+"H495": [
+"Ellasar",
+"Elasar"
+],
+"H4957": [
+"Masrekah",
+"Masreca"
+],
+"H496": [
+"Elead",
+"Eleade"
+],
+"H4968": [
+"Methuselah",
+"Matusalém"
+],
+"H497": [
+"Eleadah",
+"Eleada"
+],
+"H4977": [
+"Mattan",
+"Matã"
+],
+"H498": [
+"Eluzai",
+"Eluzai"
+],
+"H4982": [
+"Mattenai",
+"Matenai"
+],
+"H4983": [
+"Mattaniah",
+"Matanias"
+],
+"H4989": [
+"Mithcah",
+"Mitca"
+],
+"H499": [
+"Eleazar",
+"Eleazar"
+],
+"H4990": [
+"Mithredath",
+"Mitridate"
+],
+"H4992": [
+"Mattattah",
+"Matatá"
+],
+"H4993": [
+"Mattithiah",
+"Matitias"
+],
+"H4996": [
+"Thebes",
+"Nô"
+],
+"H5": [
+"Abagtha",
+"Abagta"
+],
+"H50": [
+"Abishua",
+"Abisua"
+],
+"H500": [
+"Elealeh",
+"Eleale"
+],
+"H501": [
+"Eleasah",
+"Eleasá"
+],
+"H5011": [
+"Nob",
+"Nobe"
+],
+"H5015": [
+"Nebo",
+"Nebo"
+],
+"H5018": [
+"Nebuzaradan",
+"Nebuzaradã"
+],
+"H5019": [
+"Nebuchadnezzar",
+"Nabucodonosor"
+],
+"H5020": [
+"Nebuchadnezzar",
+"Nabucodonosor"
+],
+"H5022": [
+"Naboth",
+"Nabote"
+],
+"H5025": [
+"Nobah",
+"Noba"
+],
+"H5026": [
+"Nibhaz",
+"Nibaz"
+],
+"H5028": [
+"Nebat",
+"Nebate"
+],
+"H5032": [
+"Nebaioth",
+"Nebaiote"
+],
+"H5037": [
+"Nabal",
+"Nabal"
+],
+"H5041": [
+"Neballat",
+"Nebalate"
+],
+"H5044": [
+"Nibshan",
+"Nibsã"
+],
+"H5045": [
+"Negev",
+"Neguebe"
+],
+"H5052": [
+"Nogah",
+"Nogá"
+],
+"H507": [
+"Haeleph",
+"Elefe"
+],
+"H5070": [
+"Nadab",
+"Nadabe"
+],
+"H5072": [
+"Nedabiah",
+"Nedabias"
+],
+"H508": [
+"Elpaal",
+"Elpaal"
+],
+"H5096": [
+"Nahalal",
+"Naalal"
+],
+"H51": [
+"Abishur",
+"Abisur"
+],
+"H5109": [
+"Nebai",
+"Nebai"
+],
+"H511": [
+"Elkanah",
+"Elcana"
+],
+"H5113": [
+"Nod",
+"Node"
+],
+"H5114": [
+"Nodab",
+"Nodabe"
+],
+"H5119": [
+"Nohah",
+"Noá"
+],
+"H5121": [
+"Naioth",
+"Naiote"
+],
+"H5126": [
+"Nun",
+"Num"
+],
+"H513": [
+"Eltolad",
+"Eltolade"
+],
+"H514": [
+"Eltekeh",
+"Elteque"
+],
+"H5146": [
+"Noah",
+"Noé"
+],
+"H5147": [
+"Nahbi",
+"Nabi"
+],
+"H5149": [
+"Nehum",
+"Neum"
+],
+"H515": [
+"Eltekon",
+"Eltecom"
+],
+"H5151": [
+"Nahum",
+"Naum"
+],
+"H5152": [
+"Nahor",
+"Naor"
+],
+"H5160": [
+"Nahaliel",
+"Naaliel"
+],
+"H5163": [
+"Naham",
+"Naã"
+],
+"H5166": [
+"Nehemiah",
+"Neemias"
+],
+"H5167": [
+"Nahamani",
+"Naamani"
+],
+"H5171": [
+"Naharai",
+"Naarai"
+],
+"H5176": [
+"Nahash",
+"Naás"
+],
+"H5177": [
+"Nahshon",
+"Naassom"
+],
+"H5179": [
+"Nehushta",
+"Neusta"
+],
+"H5180": [
+"Nehushtan",
+"Neustã"
+],
+"H5184": [
+"Nahath",
+"Naate"
+],
+"H5196": [
+"Netaim",
+"Netaim"
+],
+"H5199": [
+"Netophah",
+"Netofá"
+],
+"H52": [
+"Abishai",
+"Abisai"
+],
+"H5210": [
+"Nineveh",
+"Nínive"
+],
+"H5212": [
+"Nisan",
+"Nisã"
+],
+"H522": [
+"Ammah",
+"Amá"
+],
+"H5224": [
+"Necho",
+"Neco"
+],
+"H5225": [
+"Nacon",
+"Nacom"
+],
+"H5241": [
+"Nemuel",
+"Nemuel"
+],
+"H5247": [
+"Nimrah",
+"Ninra"
+],
+"H5248": [
+"Nimrod",
+"Ninrode"
+],
+"H5249": [
+"Nimrim",
+"Ninrim"
+],
+"H5250": [
+"Nimshi",
+"Ninsi"
+],
+"H526": [
+"Amon",
+"Amom"
+],
+"H5268": [
+"Nisroch",
+"Nisroque"
+],
+"H5269": [
+"Neah",
+"Neá"
+],
+"H5270": [
+"Noah",
+"Noa"
+],
+"H5272": [
+"Neiel",
+"Neiel"
+],
+"H5277": [
+"Naam",
+"Naã"
+],
+"H5279": [
+"Naamah",
+"Naamá"
+],
+"H528": [
+"Amon",
+"Amom"
+],
+"H5281": [
+"Naomi",
+"Noemi"
+],
+"H5283": [
+"Naaman",
+"Naamã"
+],
+"H5292": [
+"Naarah",
+"Naará"
+],
+"H5293": [
+"Naarai",
+"Naarai"
+],
+"H5294": [
+"Neariah",
+"Nearias"
+],
+"H5295": [
+"Naaran",
+"Naarã"
+],
+"H5297": [
+"Memphis",
+"Mênfis"
+],
+"H5298": [
+"Nepheg",
+"Nefegue"
+],
+"H53": [
+"Absalom",
+"Absalão"
+],
+"H5300": [
+"Nephissim",
+"Nefusesim"
+],
+"H5302": [
+"Nophah",
+"Nofá"
+],
+"H5304": [
+"Nephussim",
+"Nefusim"
+],
+"H5305": [
+"Naphish",
+"Nafis"
+],
+"H531": [
+"Amoz",
+"Amoz"
+],
+"H5318": [
+"Nephtoah",
+"Neftoa"
+],
+"H532": [
+"Ami",
+"Ami"
+],
+"H5321": [
+"Naphtali",
+"Naftali"
+],
+"H5334": [
+"Nezib",
+"Nezibe"
+],
+"H5335": [
+"Neziah",
+"Nesias"
+],
+"H5353": [
+"Nekoda",
+"Necoda"
+],
+"H5369": [
+"Ner",
+"Ner"
+],
+"H5370": [
+"Nergal",
+"Nergal"
+],
+"H5374": [
+"Neriah",
+"Nerias"
+],
+"H538": [
+"Amam",
+"Amã"
+],
+"H54": [
+"Abiathar",
+"Abiatar"
+],
+"H5416": [
+"Nathan",
+"Natã"
+],
+"H5417": [
+"Nethanel",
+"Natanael"
+],
+"H5418": [
+"Nethaniah",
+"Netanias"
+],
+"H5444": [
+"Sibbecai",
+"Sibecai"
+],
+"H5453": [
+"Sibraim",
+"Sibraim"
+],
+"H5454": [
+"Sabta",
+"Sabtá"
+],
+"H5455": [
+"Sabteca",
+"Sabtecá"
+],
+"H5467": [
+"Sodom",
+"Sodoma"
+],
+"H5471": [
+"So",
+"Sô"
+],
+"H5476": [
+"Sodi",
+"Sodi"
+],
+"H5479": [
+"Sotai",
+"Sotai"
+],
+"H5485": [
+"Susi",
+"Susi"
+],
+"H549": [
+"Amana",
+"Amaná"
+],
+"H5492": [
+"Suphah",
+"Sufa"
+],
+"H5495": [
+"Sur",
+"Sur"
+],
+"H550": [
+"Amnon",
+"Amnom"
+],
+"H5510": [
+"Sivan",
+"Sivã"
+],
+"H5511": [
+"Sihon",
+"Seom"
+],
+"H5512": [
+"Sin",
+"Sim"
+],
+"H5514": [
+"Sinai",
+"Sinai"
+],
+"H5515": [
+"Sinim",
+"Sinim"
+],
+"H5516": [
+"Sisera",
+"Sísera"
+],
+"H5517": [
+"Siaha",
+"Sia"
+],
+"H5522": [
+"Sikkuth",
+"Sicute"
+],
+"H5523": [
+"Succoth",
+"Sucote"
+],
+"H5527": [
+"Secacah",
+"Secacá"
+],
+"H5538": [
+"Silla",
+"Sila"
+],
+"H5540": [
+"Seled",
+"Selede"
+],
+"H5543": [
+"Sallu",
+"Salu"
+],
+"H5555": [
+"Hammahlekoth",
+"Selá-Hamalecote"
+],
+"H557": [
+"Amzi",
+"Anzi"
+],
+"H5570": [
+"Senaah",
+"Senaá"
+],
+"H5571": [
+"Sanballat",
+"Sambalate"
+],
+"H5573": [
+"Seneh",
+"Sené"
+],
+"H5576": [
+"Sennacherib",
+"Senaqueribe"
+],
+"H5578": [
+"Sansannah",
+"Sansana"
+],
+"H558": [
+"Amaziah",
+"Amazias"
+],
+"H5581": [
+"Sismai",
+"Sismai"
+],
+"H5593": [
+"Saph",
+"Safe"
+],
+"H5598": [
+"Sippai",
+"Sipai"
+],
+"H5611": [
+"Sephar",
+"Sefar"
+],
+"H5614": [
+"Sepharad",
+"Sefarade"
+],
+"H5617": [
+"Sepharvaim",
+"Sefarvaim"
+],
+"H5623": [
+"Sargon",
+"Sargom"
+],
+"H5624": [
+"Sered",
+"Serede"
+],
+"H5626": [
+"Sirah",
+"Sirá"
+],
+"H5639": [
+"Sethur",
+"Setur"
+],
+"H564": [
+"Immer",
+"Imer"
+],
+"H5644": [
+"Sithri",
+"Sitri"
+],
+"H5651": [
+"Ebed",
+"Ebede"
+],
+"H5653": [
+"Abda",
+"Abda"
+],
+"H5654": [
+"Obed-",
+"Obede-Edom"
+],
+"H5658": [
+"Abdon",
+"Abdom"
+],
+"H566": [
+"Imri",
+"Inri"
+],
+"H5660": [
+"Abdi",
+"Abdi"
+],
+"H5661": [
+"Abdiel",
+"Abdiel"
+],
+"H5662": [
+"Obadiah",
+"Obadias"
+],
+"H5663": [
+"Ebed",
+"Ebede-Meleque"
+],
+"H5664": [
+"Abed-",
+"Abednego"
+],
+"H5665": [
+"Abed-",
+"Abednego"
+],
+"H5677": [
+"Eber",
+"Héber"
+],
+"H568": [
+"Amariah",
+"Amarias"
+],
+"H5681": [
+"Ibri",
+"Ibri"
+],
+"H5682": [
+"Abarim",
+"Abarim"
+],
+"H5683": [
+"Ebron",
+"Hebrom"
+],
+"H5684": [
+"Abronah",
+"Abrona"
+],
+"H569": [
+"Amraphel",
+"Anrafel"
+],
+"H5698": [
+"Eglah",
+"Eglá"
+],
+"H5700": [
+"Eglon",
+"Eglom"
+],
+"H5711": [
+"Adah",
+"Ada"
+],
+"H5714": [
+"Iddo",
+"Ido"
+],
+"H5717": [
+"Adiel",
+"Adiel"
+],
+"H5718": [
+"Adaiah",
+"Adaías"
+],
+"H5720": [
+"Adin",
+"Adim"
+],
+"H5721": [
+"Adina",
+"Adina"
+],
+"H5722": [
+"Adino",
+"Adino"
+],
+"H5723": [
+"Adithaim",
+"Aditaim"
+],
+"H5724": [
+"Adlai",
+"Adlai"
+],
+"H5725": [
+"Adullam",
+"Adulão"
+],
+"H5729": [
+"Eden",
+"Éden"
+],
+"H573": [
+"Amittai",
+"Amitai"
+],
+"H5731": [
+"Eden",
+"Éden"
+],
+"H5733": [
+"Adna",
+"Adna"
+],
+"H5734": [
+"Adnach",
+"Adna"
+],
+"H5735": [
+"Adadah",
+"Adada"
+],
+"H5738": [
+"Eder",
+"Eder"
+],
+"H5740": [
+"Eder",
+"Éder"
+],
+"H5741": [
+"Adriel",
+"Adriel"
+],
+"H5744": [
+"Obed",
+"Obede"
+],
+"H5745": [
+"Obal",
+"Obal"
+],
+"H5747": [
+"Og",
+"Ogue"
+],
+"H5752": [
+"Oded",
+"Obede"
+],
+"H5755": [
+"Ivvah",
+"Iva"
+],
+"H5762": [
+"Avith",
+"Avite"
+],
+"H5778": [
+"Ephai",
+"Efai"
+],
+"H5780": [
+"Uz",
+"Uz"
+],
+"H5793": [
+"Uthai",
+"Utai"
+],
+"H5798": [
+"Uzzah",
+"Uzá"
+],
+"H5802": [
+"Azbuk",
+"Azbuque"
+],
+"H5803": [
+"Azgad",
+"Azgade"
+],
+"H5804": [
+"Gaza",
+"Gaza"
+],
+"H5806": [
+"Azubah",
+"Azuba"
+],
+"H5809": [
+"Azzur",
+"Azur"
+],
+"H5811": [
+"Azaz",
+"Azaz"
+],
+"H5812": [
+"Azaziah",
+"Azazias"
+],
+"H5813": [
+"Uzzi",
+"Uzi"
+],
+"H5814": [
+"Uzzia",
+"Uzia"
+],
+"H5815": [
+"Aziel",
+"Aziel"
+],
+"H5816": [
+"Uzziel",
+"Uziel"
+],
+"H5818": [
+"Uzziah",
+"Uzias"
+],
+"H5819": [
+"Aziza",
+"Aziza"
+],
+"H5820": [
+"Azmaveth",
+"Azmavete"
+],
+"H5821": [
+"Azzan",
+"Azã"
+],
+"H5825": [
+"Azekah",
+"Azeca"
+],
+"H5829": [
+"Ezer",
+"Ézer"
+],
+"H583": [
+"Enosh",
+"Enos"
+],
+"H5830": [
+"Ezra",
+"Esdras"
+],
+"H5831": [
+"Ezra",
+"Esdras"
+],
+"H5832": [
+"Azarel",
+"Azareel"
+],
+"H5834": [
+"Ezrah",
+"Ezra"
+],
+"H5836": [
+"Ezri",
+"Ezri"
+],
+"H5837": [
+"Azriel",
+"Azriel"
+],
+"H5838": [
+"Azariah",
+"Azarias"
+],
+"H5839": [
+"Azariah",
+"Azarias"
+],
+"H5840": [
+"Azrikam",
+"Azricão"
+],
+"H5851": [
+"Atarah",
+"Atara"
+],
+"H5852": [
+"Ataroth",
+"Atarote"
+],
+"H5853": [
+"Ataroth",
+"Atarote-Adar"
+],
+"H5854": [
+"Atroth",
+"Atarote"
+],
+"H5857": [
+"Ai",
+"Ai"
+],
+"H5858": [
+"Ebal",
+"Ebal"
+],
+"H5859": [
+"Ijon",
+"Ijom"
+],
+"H5862": [
+"Etam",
+"Etã"
+],
+"H5864": [
+"Iim",
+"Iim"
+],
+"H5866": [
+"Ilai",
+"Ilai"
+],
+"H5867": [
+"Elam",
+"Elão"
+],
+"H5871": [
+"Ain",
+"Aim"
+],
+"H5872": [
+"En",
+"En-Gedi"
+],
+"H5873": [
+"En",
+"En-Ganim"
+],
+"H5874": [
+"En-",
+"En-Dor"
+],
+"H588": [
+"Anaharath",
+"Anaarate"
+],
+"H5881": [
+"Enan",
+"Enã"
+],
+"H5883": [
+"En",
+"Rogel"
+],
+"H5891": [
+"Ephah",
+"Efá"
+],
+"H5893": [
+"Ir",
+"Ir"
+],
+"H5896": [
+"Ira",
+"Ira"
+],
+"H5897": [
+"Irad",
+"Irade"
+],
+"H59": [
+"Abel",
+"Abel"
+],
+"H5900": [
+"Iru",
+"Iru"
+],
+"H5901": [
+"Iri",
+"Iri"
+],
+"H5907": [
+"Achbor",
+"Acbor"
+],
+"H5910": [
+"Acco",
+"Aco"
+],
+"H5911": [
+"Achor",
+"Acor"
+],
+"H5912": [
+"Achan",
+"Acã"
+],
+"H5915": [
+"Achsah",
+"Acsa"
+],
+"H5917": [
+"Achar",
+"Acar"
+],
+"H5918": [
+"Ocran",
+"Ocrã"
+],
+"H5925": [
+"Ulla",
+"Ula"
+],
+"H5941": [
+"Eli",
+"Eli"
+],
+"H5960": [
+"Almon",
+"Almom"
+],
+"H5964": [
+"Alemeth",
+"Alemete"
+],
+"H5981": [
+"Umah",
+"Umá"
+],
+"H5983": [
+"Ammon",
+"Amom"
+],
+"H5986": [
+"Amos",
+"Amós"
+],
+"H5987": [
+"Amok",
+"Amoque"
+],
+"H5988": [
+"Ammiel",
+"Amiel"
+],
+"H5989": [
+"Ammihud",
+"Amiúde"
+],
+"H5990": [
+"Ammizabad",
+"Amizabade"
+],
+"H5992": [
+"Amminadab",
+"Aminadabe"
+],
+"H5996": [
+"Ammishaddai",
+"Amisadai"
+],
+"H6000": [
+"Amal",
+"Amal"
+],
+"H6002": [
+"Amalek",
+"Amaleque"
+],
+"H6007": [
+"Amasiah",
+"Amasias"
+],
+"H6008": [
+"Amad",
+"Amade"
+],
+"H6017": [
+"Gomorrah",
+"Gomorra"
+],
+"H6018": [
+"Omri",
+"Onri"
+],
+"H6019": [
+"Amram",
+"Anrão"
+],
+"H6021": [
+"Amasa",
+"Amasa"
+],
+"H6022": [
+"Amasai",
+"Amasai"
+],
+"H6024": [
+"Anab",
+"Anabe"
+],
+"H6034": [
+"Anah",
+"Aná"
+],
+"H6036": [
+"Anub",
+"Anube"
+],
+"H6042": [
+"Unni",
+"Uni"
+],
+"H6043": [
+"Anaiah",
+"Anaías"
+],
+"H6044": [
+"Anim",
+"Anim"
+],
+"H6046": [
+"Anem",
+"Aném"
+],
+"H6054": [
+"Anani",
+"Anani"
+],
+"H6055": [
+"Ananiah",
+"Ananias"
+],
+"H6063": [
+"Aner",
+"Aner"
+],
+"H6067": [
+"Anath",
+"Anate"
+],
+"H6068": [
+"Anathoth",
+"Anatote"
+],
+"H6070": [
+"Anthothijah",
+"Antotias"
+],
+"H6077": [
+"Ophel",
+"Ofel"
+],
+"H6078": [
+"Ophni",
+"Ofni"
+],
+"H6081": [
+"Epher",
+"Efer"
+],
+"H6084": [
+"Ophrah",
+"Ofra"
+],
+"H6085": [
+"Ephron",
+"Efrom"
+],
+"H609": [
+"Asa",
+"Asa"
+],
+"H6100": [
+"Ezion",
+"Eziom-Geber"
+],
+"H6111": [
+"Azmon",
+"Azmom"
+],
+"H6126": [
+"Akkub",
+"Acube"
+],
+"H6130": [
+"Akan",
+"Acã"
+],
+"H6134": [
+"Eker",
+"Equer"
+],
+"H6138": [
+"Ekron",
+"Ecrom"
+],
+"H6142": [
+"Ikkesh",
+"Iques"
+],
+"H6144": [
+"Ar",
+"Ar"
+],
+"H6147": [
+"Er",
+"Er"
+],
+"H6152": [
+"Arabia",
+"Arábia"
+],
+"H6154": [
+"Arab",
+"Arábia"
+],
+"H6159": [
+"Oreb",
+"Orebe"
+],
+"H6160": [
+"Arabah",
+"Arabá"
+],
+"H6166": [
+"Arad",
+"Arade"
+],
+"H617": [
+"Assir",
+"Assir"
+],
+"H6177": [
+"Aroer",
+"Aroer"
+],
+"H6179": [
+"Eri",
+"Eri"
+],
+"H619": [
+"Asnah",
+"Asná"
+],
+"H6197": [
+"Eran",
+"Erã"
+],
+"H62": [
+"Abel",
+"Abel"
+],
+"H620": [
+"Osnappar",
+"Asnapar"
+],
+"H6204": [
+"Orpah",
+"Orfa"
+],
+"H621": [
+"Asenath",
+"Azenate"
+],
+"H6214": [
+"Asahel",
+"Asael"
+],
+"H6215": [
+"Esau",
+"Esaú"
+],
+"H6220": [
+"Ashvath",
+"Asvate"
+],
+"H6221": [
+"Asiel",
+"Asiel"
+],
+"H6222": [
+"Asaiah",
+"Asaías"
+],
+"H6228": [
+"Ashan",
+"Asã"
+],
+"H623": [
+"Asaph",
+"Asafe"
+],
+"H6230": [
+"Esek",
+"Eseque"
+],
+"H6232": [
+"Eshek",
+"Eseque"
+],
+"H6252": [
+"Ashtaroth",
+"Astarote"
+],
+"H6253": [
+"Astarte",
+"Astarote"
+],
+"H6262": [
+"Attai",
+"Atai"
+],
+"H6269": [
+"Athach",
+"Atace"
+],
+"H6270": [
+"Athlai",
+"Atlai"
+],
+"H6271": [
+"Athaliah",
+"Atalia"
+],
+"H6273": [
+"Othni",
+"Otni"
+],
+"H6274": [
+"Othniel",
+"Otniel"
+],
+"H6281": [
+"Ether",
+"Eter"
+],
+"H6290": [
+"Paran",
+"Parã"
+],
+"H6295": [
+"Pagiel",
+"Pagiel"
+],
+"H630": [
+"Aspatha",
+"Aspata"
+],
+"H6300": [
+"Pedahel",
+"Pedael"
+],
+"H6301": [
+"Pedahzur",
+"Pedazur"
+],
+"H6303": [
+"Padon",
+"Padom"
+],
+"H6305": [
+"Pedaiah",
+"Pedaías"
+],
+"H6307": [
+"Paddan",
+"Padã-Arã"
+],
+"H6312": [
+"Puah",
+"Issacar"
+],
+"H6316": [
+"Put",
+"Pute"
+],
+"H6317": [
+"Putiel",
+"Putiel"
+],
+"H6318": [
+"Potiphar",
+"Potifar"
+],
+"H6319": [
+"Poti-",
+"Potífera"
+],
+"H6322": [
+"Pul",
+"Pul"
+],
+"H6326": [
+"Puah",
+"Puá"
+],
+"H6334": [
+"Poratha",
+"Porata"
+],
+"H634": [
+"Esar-",
+"Esar-Hadom"
+],
+"H635": [
+"Esther",
+"Ester"
+],
+"H6355": [
+"Pahath-",
+"Paate-Moabe"
+],
+"H6367": [
+"Pi-",
+"Pi-Hairote"
+],
+"H6369": [
+"Phicol",
+"Ficol"
+],
+"H6372": [
+"Phinehas",
+"Fineias"
+],
+"H6373": [
+"Pinon",
+"Pinom"
+],
+"H6376": [
+"Pishon",
+"Pisom"
+],
+"H6377": [
+"Pithon",
+"Pitom"
+],
+"H6389": [
+"Peleg",
+"Pelegue"
+],
+"H6394": [
+"Pildash",
+"Pildas"
+],
+"H6396": [
+"Pallu",
+"Palu"
+],
+"H6401": [
+"Pilha",
+"Pílea"
+],
+"H6404": [
+"Pelet",
+"Pelete"
+],
+"H6406": [
+"Palti",
+"Palti"
+],
+"H6408": [
+"Piltai",
+"Piltai"
+],
+"H6409": [
+"Paltiel",
+"Paltiel"
+],
+"H641": [
+"Ephod",
+"Éfode"
+],
+"H6410": [
+"Pelatiah",
+"Pelatias"
+],
+"H6411": [
+"Pelaiah",
+"Pelaías"
+],
+"H6420": [
+"Palal",
+"Palal"
+],
+"H6421": [
+"Pelaliah",
+"Pelalias"
+],
+"H6429": [
+"Philistia",
+"Filístia"
+],
+"H6431": [
+"Peleth",
+"Pelete"
+],
+"H6439": [
+"Penuel",
+"Peniel"
+],
+"H6444": [
+"Peninnah",
+"Penina"
+],
+"H6449": [
+"Pisgah",
+"Pisga"
+],
+"H6454": [
+"Paseah",
+"Paseia"
+],
+"H6457": [
+"Pasach",
+"Pasaque"
+],
+"H6462": [
+"Pispah",
+"Pispa"
+],
+"H6465": [
+"Peor",
+"Peor"
+],
+"H6469": [
+"Peullethai",
+"Peuletai"
+],
+"H647": [
+"Aphiah",
+"Afia"
+],
+"H6474": [
+"Paarai",
+"Paarai"
+],
+"H6483": [
+"Happizzez",
+"Hapises"
+],
+"H6489": [
+"Pekod",
+"Pecode"
+],
+"H649": [
+"Appaim",
+"Apaim"
+],
+"H6492": [
+"Pekah",
+"Peca"
+],
+"H6494": [
+"Pekahiah",
+"Pecaías"
+],
+"H65": [
+"Abel",
+"Abel-Meolá"
+],
+"H6502": [
+"Piram",
+"Pirã"
+],
+"H6511": [
+"Parah",
+"Pará"
+],
+"H6513": [
+"Purah",
+"Pura"
+],
+"H6515": [
+"Paruah",
+"Parua"
+],
+"H6516": [
+"Parvaim",
+"Parvaim"
+],
+"H6534": [
+"Parmashta",
+"Farmasta"
+],
+"H6535": [
+"Parnach",
+"Parnaque"
+],
+"H6539": [
+"Persia",
+"Pérsia"
+],
+"H654": [
+"Ephlal",
+"Eflal"
+],
+"H6548": [
+"Hophra",
+"Ofra"
+],
+"H6551": [
+"Parosh",
+"Parós"
+],
+"H6552": [
+"Pirathon",
+"Piratom"
+],
+"H6554": [
+"Pharpar",
+"Farpar"
+],
+"H6557": [
+"Perez",
+"Perez"
+],
+"H6559": [
+"Perazim",
+"Perazim"
+],
+"H6560": [
+"Perez",
+"Perez-Uzá"
+],
+"H6570": [
+"Peresh",
+"Perez"
+],
+"H6577": [
+"Parshandatha",
+"Parsandata"
+],
+"H6578": [
+"Euphrates",
+"Eufrates"
+],
+"H6583": [
+"Pashhur",
+"Pasur"
+],
+"H6602": [
+"Pethuel",
+"Petuel"
+],
+"H6604": [
+"Pethor",
+"Petor"
+],
+"H6611": [
+"Pethahiah",
+"Petaías"
+],
+"H6619": [
+"Pithom",
+"Pitom"
+],
+"H6624": [
+"Pathros",
+"Patros"
+],
+"H663": [
+"Aphek",
+"Afeque"
+],
+"H6630": [
+"Zaanan",
+"Zaanã"
+],
+"H6636": [
+"Zeboiim",
+"Zeboim"
+],
+"H664": [
+"Aphekah",
+"Afeca"
+],
+"H6644": [
+"Zibia",
+"Zíbia"
+],
+"H6645": [
+"Zibiah",
+"Zíbia"
+],
+"H6649": [
+"Zibeon",
+"Zibeão"
+],
+"H6650": [
+"Zeboim",
+"Zeboim"
+],
+"H6657": [
+"Zedad",
+"Zedade"
+],
+"H6659": [
+"Zadok",
+"Zadoque"
+],
+"H6661": [
+"Ziddim",
+"Zidim"
+],
+"H6667": [
+"Zedekiah",
+"Zedequias"
+],
+"H6678": [
+"Zobah",
+"Zobá"
+],
+"H6686": [
+"Zuar",
+"Zuar"
+],
+"H6689": [
+"Zuph",
+"Zufe"
+],
+"H669": [
+"Ephraim",
+"Efraim"
+],
+"H6690": [
+"Zophah",
+"Zofa"
+],
+"H6691": [
+"Zophar",
+"Zofar"
+],
+"H6698": [
+"Zur",
+"Zur"
+],
+"H6700": [
+"Zuriel",
+"Zuriel"
+],
+"H6701": [
+"Zurishaddai",
+"Zurisadai"
+],
+"H6714": [
+"Zohar",
+"Zoar"
+],
+"H6717": [
+"Ziba",
+"Ziba"
+],
+"H672": [
+"Ephrathah",
+"Efrata"
+],
+"H6721": [
+"Sidon",
+"Sidom"
+],
+"H6726": [
+"Zion",
+"Sião"
+],
+"H6727": [
+"Ziha",
+"Zia"
+],
+"H6730": [
+"Zior",
+"Zior"
+],
+"H6732": [
+"Ziz",
+"Ziz"
+],
+"H6741": [
+"Zillah",
+"Zilá"
+],
+"H6753": [
+"Hazelelponi",
+"Hazelelponi"
+],
+"H6756": [
+"Zalmon",
+"Salmom"
+],
+"H6758": [
+"Zalmonah",
+"Zalmona"
+],
+"H6759": [
+"Zalmunna",
+"Zalmuna"
+],
+"H6764": [
+"Zalaph",
+"Zalafe"
+],
+"H6765": [
+"Zelophehad",
+"Zelofeade"
+],
+"H6766": [
+"Zelzah",
+"Zelza"
+],
+"H6768": [
+"Zelek",
+"Zeleque"
+],
+"H6769": [
+"Zillethai",
+"Ziletai"
+],
+"H6787": [
+"Zemaraim",
+"Zemaraim"
+],
+"H6790": [
+"Zin",
+"Zim"
+],
+"H6799": [
+"Zenan",
+"Zenã"
+],
+"H6811": [
+"Zair",
+"Seir"
+],
+"H6814": [
+"Zoan",
+"Zoã"
+],
+"H6815": [
+"Zaanannim",
+"Zaanim"
+],
+"H682": [
+"Azel",
+"Azel"
+],
+"H6820": [
+"Zoar",
+"Zoar"
+],
+"H6827": [
+"Zephon",
+"Zefom"
+],
+"H6829": [
+"Zaphon",
+"Zafom"
+],
+"H683": [
+"Azaliah",
+"Azalias"
+],
+"H6834": [
+"Zippor",
+"Zipor"
+],
+"H684": [
+"Ozem",
+"Ozém"
+],
+"H6846": [
+"Zephaniah",
+"Sofonias"
+],
+"H6855": [
+"Zipporah",
+"Zípora"
+],
+"H6857": [
+"Zephath",
+"Zefate"
+],
+"H6859": [
+"Zephathah",
+"Zefatá"
+],
+"H6860": [
+"Ziklag",
+"Ziclague"
+],
+"H6863": [
+"Zer",
+"Zer"
+],
+"H6865": [
+"Tyre",
+"Tiro"
+],
+"H6868": [
+"Zeredah",
+"Zeredá"
+],
+"H687": [
+"Ezer",
+"Eser"
+],
+"H6870": [
+"Zeruiah",
+"Zeruia"
+],
+"H6872": [
+"Zeror",
+"Zeror"
+],
+"H6874": [
+"Zeri",
+"Zeri"
+],
+"H6881": [
+"Zorah",
+"Zorá"
+],
+"H6886": [
+"Zarephath",
+"Sarepta"
+],
+"H6888": [
+"Zererah",
+"Zererá"
+],
+"H6889": [
+"Zereth",
+"Zerete"
+],
+"H6890": [
+"Zereth",
+"Zerete-Saar"
+],
+"H6891": [
+"Zarethan",
+"Zaretã"
+],
+"H690": [
+"Ara",
+"Ara"
+],
+"H6909": [
+"Kabzeel",
+"Cabzeel"
+],
+"H6911": [
+"Kibzaim",
+"Quibzaim"
+],
+"H6914": [
+"Kibroth",
+"Quibrote-Hataavá"
+],
+"H692": [
+"Areli",
+"Areli"
+],
+"H6929": [
+"Kedemah",
+"Quedemá"
+],
+"H6932": [
+"Kedemoth",
+"Quedemote"
+],
+"H6934": [
+"Kadmiel",
+"Cadmiel"
+],
+"H6938": [
+"Kedar",
+"Quedar"
+],
+"H6939": [
+"Kidron",
+"Cedrom"
+],
+"H694": [
+"Arab",
+"Arabe"
+],
+"H6943": [
+"Kedesh",
+"Quedes"
+],
+"H6946": [
+"Kadesh",
+"Cades"
+],
+"H6947": [
+"Kadesh",
+"Cades-Barneia"
+],
+"H6954": [
+"Kehelathah",
+"Queelata"
+],
+"H6955": [
+"Kohath",
+"Coate"
+],
+"H6964": [
+"Kolaiah",
+"Colaías"
+],
+"H6970": [
+"Koa",
+"Coa"
+],
+"H6976": [
+"Hakkoz",
+"Coz"
+],
+"H6981": [
+"Kore",
+"Coré"
+],
+"H6984": [
+"Kushaiah",
+"Cusaías"
+],
+"H6989": [
+"Keturah",
+"Quetura"
+],
+"H6997": [
+"Hakkatan",
+"Catã"
+],
+"H700": [
+"Arubboth",
+"Arubote"
+],
+"H7003": [
+"Kitron",
+"Quitrom"
+],
+"H7005": [
+"Kattah",
+"Catate"
+],
+"H7014": [
+"Cain",
+"Caim"
+],
+"H7016": [
+"Kinah",
+"Quiná"
+],
+"H7018": [
+"Kenan",
+"Cainã"
+],
+"H7024": [
+"Kir",
+"Quir"
+],
+"H7025": [
+"Kir",
+"Quir"
+],
+"H7026": [
+"Keros",
+"Queros"
+],
+"H7027": [
+"Kish",
+"Quis"
+],
+"H7028": [
+"Kishon",
+"Quisom"
+],
+"H7029": [
+"Kishi",
+"Quisi"
+],
+"H7040": [
+"Kallai",
+"Calai"
+],
+"H7042": [
+"Kelita",
+"Quelita"
+],
+"H7055": [
+"Kemuel",
+"Quemuel"
+],
+"H7056": [
+"Kamon",
+"Camom"
+],
+"H7071": [
+"Kanah",
+"Caná"
+],
+"H7073": [
+"Kenaz",
+"Quenaz"
+],
+"H7079": [
+"Kenath",
+"Quenate"
+],
+"H7084": [
+"Keilah",
+"Queila"
+],
+"H709": [
+"Argob",
+"Argobe"
+],
+"H7103": [
+"Keziah",
+"Quézia"
+],
+"H714": [
+"Ard",
+"Arde"
+],
+"H7141": [
+"Korah",
+"Coré"
+],
+"H7143": [
+"Kareah",
+"Careá"
+],
+"H715": [
+"Ardon",
+"Ardom"
+],
+"H7152": [
+"Kerioth",
+"Queriote"
+],
+"H7153": [
+"Kiriath",
+"Quiriate-Arba"
+],
+"H7155": [
+"Kiriath-",
+"Quiriate-Huzote"
+],
+"H7156": [
+"Kiriathaim",
+"Quiriataim"
+],
+"H7157": [
+"Kiriath",
+"Quiriate-Jearim"
+],
+"H7158": [
+"Kiriath",
+"Quiriate-Sefer"
+],
+"H7161": [
+"Karnaim",
+"Carnaim"
+],
+"H7163": [
+"Keren-",
+"Quéren-Hapuque"
+],
+"H7173": [
+"Karka",
+"Carca"
+],
+"H7174": [
+"Karkor",
+"Carcor"
+],
+"H7178": [
+"Kartan",
+"Cartã"
+],
+"H719": [
+"Arvad",
+"Arvade"
+],
+"H7191": [
+"Kishion",
+"Quisiom"
+],
+"H72": [
+"Eben-",
+"Ebenézer"
+],
+"H720": [
+"Arod",
+"Arodi"
+],
+"H7204": [
+"Haroeh",
+"Haroé"
+],
+"H7205": [
+"Reuben",
+"Rúben"
+],
+"H7208": [
+"Reumah",
+"Reumá"
+],
+"H7211": [
+"Reaiah",
+"Reaías"
+],
+"H7216": [
+"Ramoth",
+"Ramote"
+],
+"H722": [
+"Arodi",
+"Arodi"
+],
+"H7220": [
+"Rosh",
+"Rôs"
+],
+"H7237": [
+"Rabbah",
+"Rabá"
+],
+"H7245": [
+"Rabbith",
+"Rabite"
+],
+"H7247": [
+"Riblah",
+"Ribla"
+],
+"H725": [
+"Arumah",
+"Aruma"
+],
+"H7254": [
+"Reba",
+"Reba"
+],
+"H7259": [
+"Rebekah",
+"Rebeca"
+],
+"H7274": [
+"Rogelim",
+"Rogelim"
+],
+"H7276": [
+"Regem",
+"Regém"
+],
+"H7278": [
+"Regem-",
+"Regém-Meleque"
+],
+"H728": [
+"Araunah",
+"Araúna"
+],
+"H7288": [
+"Raddai",
+"Radai"
+],
+"H7293": [
+"Rahab",
+"Raabe"
+],
+"H7294": [
+"Rahab",
+"Raabe"
+],
+"H7303": [
+"Rohgah",
+"Roga"
+],
+"H7316": [
+"Rumah",
+"Ruma"
+],
+"H7320": [
+"Romamti-",
+"Romanti-Ezer"
+],
+"H7327": [
+"Ruth",
+"Rute"
+],
+"H733": [
+"Arah",
+"Ara"
+],
+"H7331": [
+"Rezon",
+"Rezom"
+],
+"H7340": [
+"Rehob",
+"Reobe"
+],
+"H7343": [
+"Rahab",
+"Raabe"
+],
+"H7344": [
+"Rehoboth",
+"Reobote"
+],
+"H7345": [
+"Rehabiah",
+"Reabias"
+],
+"H7346": [
+"Rehoboam",
+"Roboão"
+],
+"H7348": [
+"Rehum",
+"Reum"
+],
+"H7354": [
+"Rachel",
+"Raquel"
+],
+"H7380": [
+"Ribai",
+"Ribai"
+],
+"H7384": [
+"Diphath",
+"Rifate"
+],
+"H7394": [
+"Rechab",
+"Recabe"
+],
+"H7397": [
+"Recah",
+"Reca"
+],
+"H74": [
+"Abner",
+"Abner"
+],
+"H740": [
+"Ariel",
+"Ariel"
+],
+"H7403": [
+"Racal",
+"Racal"
+],
+"H7410": [
+"Ram",
+"Rão"
+],
+"H7414": [
+"Ramah",
+"Ramá"
+],
+"H7417": [
+"Rimmon",
+"Rimom"
+],
+"H7418": [
+"Ramoth",
+"Ramote"
+],
+"H7422": [
+"Ramiah",
+"Ramias"
+],
+"H7425": [
+"Remaliah",
+"Remalias"
+],
+"H743": [
+"Aridatha",
+"Aridata"
+],
+"H7432": [
+"Remeth",
+"Remete"
+],
+"H7433": [
+"Ramoth",
+"Ramote"
+],
+"H7436": [
+"Ramathaim",
+"Ramataim"
+],
+"H7441": [
+"Rinnah",
+"Rina"
+],
+"H7446": [
+"Rissah",
+"Rissa"
+],
+"H7449": [
+"Resen",
+"Resém"
+],
+"H745": [
+"Arieh",
+"Arié"
+],
+"H746": [
+"Arioch",
+"Arioque"
+],
+"H7466": [
+"Reu",
+"Reú"
+],
+"H7467": [
+"Reuel",
+"Reuel"
+],
+"H7472": [
+"Rei",
+"Reí"
+],
+"H7484": [
+"Raamah",
+"Raamá"
+],
+"H7485": [
+"Raamiah",
+"Raamias"
+],
+"H7486": [
+"Rameses",
+"Ramessés"
+],
+"H7497": [
+"Raphah",
+"Rafa"
+],
+"H7498": [
+"Rapha",
+"Rafa"
+],
+"H7501": [
+"Rephael",
+"Rafael"
+],
+"H7505": [
+"Raphu",
+"Rafu"
+],
+"H7506": [
+"Rephah",
+"Refa"
+],
+"H7508": [
+"Rephidim",
+"Refidim"
+],
+"H7509": [
+"Rephaiah",
+"Refaías"
+],
+"H751": [
+"Erech",
+"Ereque"
+],
+"H7525": [
+"Rizia",
+"Rizia"
+],
+"H7526": [
+"Rezin",
+"Rezim"
+],
+"H7530": [
+"Rezeph",
+"Rezefe"
+],
+"H7532": [
+"Rizpah",
+"Rispa"
+],
+"H7542": [
+"Rakkon",
+"Racom"
+],
+"H7552": [
+"Rekem",
+"Requém"
+],
+"H7557": [
+"Rakkath",
+"Racate"
+],
+"H7566": [
+"Resheph",
+"Resefe"
+],
+"H7575": [
+"Rithmah",
+"Ritmá"
+],
+"H758": [
+"Aram",
+"Arã"
+],
+"H7586": [
+"Saul",
+"Saul"
+],
+"H7594": [
+"Sheal",
+"Seal"
+],
+"H7597": [
+"Shealtiel",
+"Sealtiel"
+],
+"H7598": [
+"Shealtiel",
+"Sealtiel"
+],
+"H7609": [
+"Sheerah",
+"Seerá"
+],
+"H7614": [
+"Sheba",
+"Sabá"
+],
+"H7619": [
+"Shebuel",
+"Sebuel"
+],
+"H7627": [
+"Shebat",
+"Sebate"
+],
+"H7629": [
+"Shobi",
+"Sobi"
+],
+"H763": [
+"Aram",
+"Arã"
+],
+"H7630": [
+"Shobai",
+"Sobai"
+],
+"H7634": [
+"Sakia",
+"Saquias"
+],
+"H764": [
+"Armoni",
+"Armoni"
+],
+"H7643": [
+"Sibmah",
+"Sibma"
+],
+"H7644": [
+"Shebna",
+"Sebna"
+],
+"H7645": [
+"Shebaniah",
+"Sebanias"
+],
+"H7652": [
+"Sheba",
+"Seba"
+],
+"H7656": [
+"Shibah",
+"Seba"
+],
+"H7669": [
+"Sheber",
+"Seber"
+],
+"H7671": [
+"Shebarim",
+"Sebarim"
+],
+"H7678": [
+"Shabbethai",
+"Sabetai"
+],
+"H7681": [
+"Shageh",
+"Sage"
+],
+"H7687": [
+"Segub",
+"Segube"
+],
+"H769": [
+"Arnon",
+"Arnom"
+],
+"H77": [
+"Ebez",
+"Ebes"
+],
+"H7706": [
+"Almighty",
+"Todo-Poderoso"
+],
+"H7707": [
+"Shedeur",
+"Sedeur"
+],
+"H7708": [
+"Siddim",
+"Sidim"
+],
+"H771": [
+"Ornan",
+"Ornã"
+],
+"H7714": [
+"Shadrach",
+"Sadraque"
+],
+"H7715": [
+"Shadrach",
+"Sadraque"
+],
+"H7719": [
+"Shoham",
+"Soão"
+],
+"H7724": [
+"Sheva",
+"Seva"
+],
+"H7727": [
+"Shobab",
+"Sobabe"
+],
+"H7731": [
+"Shobach",
+"Sobaque"
+],
+"H7732": [
+"Shobal",
+"Sobal"
+],
+"H7733": [
+"Shobek",
+"Sobeque"
+],
+"H774": [
+"Arpad",
+"Arpade"
+],
+"H7744": [
+"Shuah",
+"Suá"
+],
+"H7746": [
+"Shuhah",
+"Suá"
+],
+"H7748": [
+"Shuham",
+"Suã"
+],
+"H775": [
+"Arphaxad",
+"Arfaxade"
+],
+"H7755": [
+"Socoh",
+"Socó"
+],
+"H7763": [
+"Shomer",
+"Somer"
+],
+"H7764": [
+"Shuni",
+"Suni"
+],
+"H7766": [
+"Shunem",
+"Suném"
+],
+"H777": [
+"Arza",
+"Arsa"
+],
+"H7770": [
+"Shua",
+"Sua"
+],
+"H7772": [
+"Shoa",
+"Soa"
+],
+"H7774": [
+"Shua",
+"Suá"
+],
+"H7777": [
+"Shual",
+"Sual"
+],
+"H7780": [
+"Shophach",
+"Sofaque"
+],
+"H7793": [
+"Shur",
+"Sur"
+],
+"H7796": [
+"Sorek",
+"Soreque"
+],
+"H7798": [
+"Shavsha",
+"Sausa"
+],
+"H78": [
+"Ibzan",
+"Ibsã"
+],
+"H780": [
+"Ararat",
+"Ararate"
+],
+"H7800": [
+"Susa",
+"Susã"
+],
+"H7803": [
+"Shuthelah",
+"Sutela"
+],
+"H783": [
+"Artaxerxes",
+"Artaxerxes"
+],
+"H7831": [
+"Shahazayim",
+"Saazima"
+],
+"H7841": [
+"Shechariah",
+"Searias"
+],
+"H7842": [
+"Shaharaim",
+"Saaraim"
+],
+"H7851": [
+"Shittim",
+"Sitim"
+],
+"H7856": [
+"Sitnah",
+"Sitna"
+],
+"H7861": [
+"Shirtai",
+"Sitrai"
+],
+"H7865": [
+"Siyon",
+"Sião"
+],
+"H7866": [
+"Shion",
+"Siom"
+],
+"H7877": [
+"Shiza",
+"Siza"
+],
+"H788": [
+"Ashbel",
+"Asbel"
+],
+"H7883": [
+"Shihor",
+"Sior"
+],
+"H7886": [
+"Shiloh",
+"Siló"
+],
+"H7887": [
+"Shiloh",
+"Siló"
+],
+"H7894": [
+"Shisha",
+"Sisa"
+],
+"H7895": [
+"Shishak",
+"Sisaque"
+],
+"H790": [
+"Eshban",
+"Esbã"
+],
+"H792": [
+"Eshbaal",
+"Esbaal"
+],
+"H7927": [
+"Shechem",
+"Siquém"
+],
+"H7928": [
+"Shechem",
+"Siquém"
+],
+"H7935": [
+"Shecaniah",
+"Secanias"
+],
+"H7940": [
+"Sakar",
+"Sacar"
+],
+"H7942": [
+"Shikkeron",
+"Sicrom"
+],
+"H795": [
+"Ashdod",
+"Asdode"
+],
+"H7956": [
+"Shelah",
+"Selá"
+],
+"H7967": [
+"Shallum",
+"Salum"
+],
+"H7968": [
+"Shallun",
+"Salum"
+],
+"H7974": [
+"Shelah",
+"Salá"
+],
+"H7975": [
+"Shiloah",
+"Siloé"
+],
+"H7977": [
+"Shilhi",
+"Sili"
+],
+"H7978": [
+"Shilhim",
+"Silim"
+],
+"H7996": [
+"Shalleketh",
+"Salequete"
+],
+"H8004": [
+"Salem",
+"Salém"
+],
+"H8006": [
+"Shillem",
+"Silém"
+],
+"H8007": [
+"Salma",
+"Salma"
+],
+"H8009": [
+"Salmah",
+"Salmom"
+],
+"H8010": [
+"Solomon",
+"Salomão"
+],
+"H8012": [
+"Salmon",
+"Salmom"
+],
+"H8013": [
+"Shelomoth",
+"Selomote"
+],
+"H8014": [
+"Shalmai",
+"Salmai"
+],
+"H8015": [
+"Shelomi",
+"Selomi"
+],
+"H8017": [
+"Shelumiel",
+"Selumiel"
+],
+"H8018": [
+"Shelemiah",
+"Selemias"
+],
+"H8019": [
+"Shelomith",
+"Selomite"
+],
+"H8020": [
+"Shalman",
+"Salmã"
+],
+"H8022": [
+"Shalmaneser",
+"Salmaneser"
+],
+"H8026": [
+"Sheleph",
+"Salefe"
+],
+"H8028": [
+"Shelesh",
+"Seles"
+],
+"H8030": [
+"Shilshah",
+"Silsa"
+],
+"H8035": [
+"Shem",
+"Sem"
+],
+"H8037": [
+"Shamma",
+"Samá"
+],
+"H8038": [
+"Shemeber",
+"Semeber"
+],
+"H8039": [
+"Shimeah",
+"Simeia"
+],
+"H804": [
+"Assyria",
+"Assíria"
+],
+"H8043": [
+"Shimeam",
+"Simeia"
+],
+"H8044": [
+"Shamgar",
+"Sangar"
+],
+"H8048": [
+"Shammah",
+"Samá"
+],
+"H8049": [
+"Shamhuth",
+"Samute"
+],
+"H8050": [
+"Samuel",
+"Samuel"
+],
+"H8051": [
+"Shammua",
+"Samua"
+],
+"H8054": [
+"Shammoth",
+"Samote"
+],
+"H806": [
+"Ashhur",
+"Asur"
+],
+"H8060": [
+"Shammai",
+"Samai"
+],
+"H8061": [
+"Shemida",
+"Semida"
+],
+"H8069": [
+"Shamir",
+"Samir"
+],
+"H807": [
+"Ashima",
+"Asima"
+],
+"H8070": [
+"Shemiramoth",
+"Semiramote"
+],
+"H8072": [
+"Samlah",
+"Samlá"
+],
+"H8087": [
+"Shema",
+"Sema"
+],
+"H8090": [
+"Shema",
+"Sema"
+],
+"H8091": [
+"Shama",
+"Sama"
+],
+"H8092": [
+"Shimea",
+"Simeia"
+],
+"H8093": [
+"Shimeah",
+"Simeia"
+],
+"H8095": [
+"Simeon",
+"Simeão"
+],
+"H8096": [
+"Shimei",
+"Simei"
+],
+"H8098": [
+"Shemaiah",
+"Semaías"
+],
+"H8100": [
+"Shimeath",
+"Simeate"
+],
+"H8106": [
+"Shemer",
+"Semer"
+],
+"H8110": [
+"Shimron",
+"Sinrom"
+],
+"H8111": [
+"Samaria",
+"Samaria"
+],
+"H8113": [
+"Shimri",
+"Sinri"
+],
+"H8114": [
+"Shemariah",
+"Semarias"
+],
+"H8115": [
+"Samaria",
+"Samaria"
+],
+"H8119": [
+"Shimrath",
+"Sinrate"
+],
+"H812": [
+"Eshcol",
+"Escol"
+],
+"H8123": [
+"Samson",
+"Sansão"
+],
+"H8124": [
+"Shimshai",
+"Sinsai"
+],
+"H8125": [
+"Shamsherai",
+"Sanserai"
+],
+"H813": [
+"Ashkenaz",
+"Asquenaz"
+],
+"H8134": [
+"Shinab",
+"Sinabe"
+],
+"H8137": [
+"Shenazzar",
+"Senazar"
+],
+"H8149": [
+"Senir",
+"Senir"
+],
+"H8152": [
+"Shinar",
+"Sinear"
+],
+"H8165": [
+"Seir",
+"Seir"
+],
+"H8167": [
+"Seirah",
+"Seirá"
+],
+"H8169": [
+"Shaalbim",
+"Saalbim"
+],
+"H8174": [
+"Shaaph",
+"Saafe"
+],
+"H8187": [
+"Sheariah",
+"Searias"
+],
+"H8188": [
+"Seorim",
+"Seorim"
+],
+"H8189": [
+"Shaaraim",
+"Saaraim"
+],
+"H8190": [
+"Shaashgaz",
+"Saasgaz"
+],
+"H8197": [
+"Shephuphan",
+"Sefufá"
+],
+"H8202": [
+"Shaphat",
+"Safate"
+],
+"H8203": [
+"Shephatiah",
+"Sefatias"
+],
+"H8204": [
+"Shiphtan",
+"Siftã"
+],
+"H8206": [
+"Shuppim",
+"Supim"
+],
+"H8208": [
+"Shaphir",
+"Safir"
+],
+"H8221": [
+"Shepham",
+"Sefã"
+],
+"H8224": [
+"Siphmoth",
+"Sifmote"
+],
+"H8227": [
+"Shaphan",
+"Safã"
+],
+"H823": [
+"Ashnah",
+"Asná"
+],
+"H8234": [
+"Shapher",
+"Séfer"
+],
+"H8236": [
+"Shiphrah",
+"Sifrá"
+],
+"H824": [
+"Eshan",
+"Esã"
+],
+"H8272": [
+"Sharezer",
+"Sarezer"
+],
+"H8274": [
+"Sherebiah",
+"Serebias"
+],
+"H828": [
+"Ashpenaz",
+"Aspenaz"
+],
+"H8283": [
+"Sarah",
+"Sara"
+],
+"H8286": [
+"Serug",
+"Serugue"
+],
+"H8287": [
+"Sharuhen",
+"Saruém"
+],
+"H8289": [
+"Sharon",
+"Sarom"
+],
+"H8294": [
+"Serah",
+"Sera"
+],
+"H8297": [
+"Sarai",
+"Sarai"
+],
+"H8301": [
+"Sarid",
+"Saride"
+],
+"H8303": [
+"Sirion",
+"Sírion"
+],
+"H8304": [
+"Seraiah",
+"Seraías"
+],
+"H831": [
+"Ashkelon",
+"Asquelom"
+],
+"H8315": [
+"Saraph",
+"Sarafe"
+],
+"H8329": [
+"Sheresh",
+"Seres"
+],
+"H8339": [
+"Sheshbazzar",
+"Sesbazar"
+],
+"H8340": [
+"Sheshbazzar",
+"Sesbazar"
+],
+"H8344": [
+"Sheshai",
+"Sesai"
+],
+"H8347": [
+"Sheshach",
+"Sesaque"
+],
+"H8348": [
+"Sheshan",
+"Sesã"
+],
+"H8349": [
+"Shashak",
+"Sasaque"
+],
+"H8352": [
+"Seth",
+"Sete"
+],
+"H836": [
+"Asher",
+"Aser"
+],
+"H8369": [
+"Shethar",
+"Setar"
+],
+"H8370": [
+"Shethar-",
+"Setar-Bozenai"
+],
+"H8390": [
+"Tarea",
+"Tareia"
+],
+"H8396": [
+"Tabor",
+"Tabor"
+],
+"H840": [
+"Asarel",
+"Asareel"
+],
+"H8402": [
+"Tibni",
+"Tibni"
+],
+"H8404": [
+"Taberah",
+"Taberá"
+],
+"H8405": [
+"Thebez",
+"Tebes"
+],
+"H8407": [
+"Tiglath-",
+"Tiglate-Pileser"
+],
+"H841": [
+"Asarelah",
+"Asarela"
+],
+"H8412": [
+"Tadmor",
+"Tadmor"
+],
+"H8413": [
+"Tidal",
+"Tidal"
+],
+"H8422": [
+"Tubal",
+"Tubal"
+],
+"H8423": [
+"Tubal-",
+"Tubalcaim"
+],
+"H8425": [
+"Togarmah",
+"Togarma"
+],
+"H8430": [
+"Toah",
+"Toá"
+],
+"H8434": [
+"Tolad",
+"Tolade"
+],
+"H8436": [
+"Tilon",
+"Tilom"
+],
+"H8439": [
+"Tola",
+"Tolá"
+],
+"H844": [
+"Asriel",
+"Asriel"
+],
+"H8459": [
+"Tohu",
+"Toú"
+],
+"H8465": [
+"Tahan",
+"Taã"
+],
+"H8468": [
+"Tehinnah",
+"Teína"
+],
+"H847": [
+"Eshtaol",
+"Estaol"
+],
+"H8471": [
+"Tahpanhes",
+"Tafnes"
+],
+"H8472": [
+"Tahpenes",
+"Tafnes"
+],
+"H8475": [
+"Tahrea",
+"Tareia"
+],
+"H8477": [
+"Tahash",
+"Taás"
+],
+"H8480": [
+"Tahath",
+"Taate"
+],
+"H8487": [
+"Teman",
+"Temã"
+],
+"H8493": [
+"Tiria",
+"Tíria"
+],
+"H8494": [
+"Tiras",
+"Tiras"
+],
+"H85": [
+"Abraham",
+"Abraão"
+],
+"H850": [
+"Eshton",
+"Estom"
+],
+"H8507": [
+"Tochen",
+"Toquém"
+],
+"H851": [
+"Eshtemoa",
+"Estemoa"
+],
+"H8515": [
+"Telassar",
+"Telassar"
+],
+"H8520": [
+"Telah",
+"Telá"
+],
+"H8526": [
+"Talmai",
+"Talmai"
+],
+"H8542": [
+"Tammuz",
+"Tamuz"
+],
+"H8553": [
+"Timnah",
+"Timna"
+],
+"H8555": [
+"Timna",
+"Timna"
+],
+"H8556": [
+"Timnath",
+"Efraim"
+],
+"H8559": [
+"Tamar",
+"Tamar"
+],
+"H856": [
+"Ethbaal",
+"Etbaal"
+],
+"H8576": [
+"Tanhumeth",
+"Tanumete"
+],
+"H8577": [
+"Dragons",
+"Dragão"
+],
+"H8583": [
+"Toi",
+"Davi"
+],
+"H8590": [
+"Taanach",
+"Taanaque"
+],
+"H8599": [
+"Tappuah",
+"Tapua"
+],
+"H8603": [
+"Tophel",
+"Tofel"
+],
+"H8607": [
+"Tiphsah",
+"Tifsa"
+],
+"H8612": [
+"Topheth",
+"Tofete"
+],
+"H8616": [
+"Tikvah",
+"Ticvá"
+],
+"H8620": [
+"Tekoa",
+"Tecoa"
+],
+"H863": [
+"Ittai",
+"Itai"
+],
+"H8634": [
+"Taralah",
+"Tarala"
+],
+"H864": [
+"Etham",
+"Etã"
+],
+"H8640": [
+"Tirhakah",
+"Tiraca"
+],
+"H8646": [
+"Terah",
+"Terá"
+],
+"H8647": [
+"Tirhanah",
+"Tiraná"
+],
+"H8656": [
+"Tirzah",
+"Tirsa"
+],
+"H8657": [
+"Teresh",
+"Teres"
+],
+"H8659": [
+"Tarshish",
+"Társis"
+],
+"H8662": [
+"Tartak",
+"Tartaque"
+],
+"H867": [
+"Ethni",
+"Etni"
+],
+"H8674": [
+"Tattenai",
+"Tatenai"
+],
+"H869": [
+"Ethnan",
+"Etnã"
+],
+"H87": [
+"Abram",
+"Abrão"
+],
+"H871": [
+"Atharim",
+"Atarim"
+],
+"H876": [
+"Beer",
+"Beer"
+],
+"H88": [
+"Oboth",
+"Obote"
+],
+"H880": [
+"Beerah",
+"Beera"
+],
+"H881": [
+"Beeroth",
+"Beerote"
+],
+"H882": [
+"Beeri",
+"Beeri"
+],
+"H883": [
+"Beer",
+"Beer"
+],
+"H884": [
+"Beer",
+"Berseba"
+],
+"H89": [
+"Agee",
+"Agé"
+],
+"H893": [
+"Bebai",
+"Bebai"
+],
+"H894": [
+"Babylon",
+"Babilônia"
+],
+"H895": [
+"Babylon",
+"Babilônia"
+],
+"H90": [
+"Agag",
+"Agague"
+],
+"H902": [
+"Bigvai",
+"Bigvai"
+],
+"H904": [
+"Bigthan",
+"Bigtã"
+],
+"H911": [
+"Bedad",
+"Bedade"
+],
+"H917": [
+"Bedan",
+"Bedã"
+],
+"H920": [
+"Bidkar",
+"Bidcar"
+],
+"H932": [
+"Bohan",
+"Boã"
+],
+"H938": [
+"Buz",
+"Buz"
+],
+"H94": [
+"Agur",
+"Agur"
+],
+"H941": [
+"Buzi",
+"Buzi"
+],
+"H942": [
+"Bavvai",
+"Bavai"
+],
+"H945": [
+"Bul",
+"Bul"
+],
+"H946": [
+"Bunah",
+"Buna"
+],
+"H949": [
+"Bozez",
+"Bozez"
+],
+"H964": [
+"Biziothiah",
+"Biziotiá"
+],
+"H966": [
+"Bezek",
+"Bezeque"
+],
+"H97": [
+"Eglaim",
+"Eglaim"
+],
+"H980": [
+"Bahurim",
+"Baurim"
+],
+"H984": [
+"Betah",
+"Betá"
+],
+"H991": [
+"Beten",
+"Béten"
+],
+"H993": [
+"Betonim",
+"Betonim"
+]
+}
