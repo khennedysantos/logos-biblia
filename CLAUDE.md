@@ -100,7 +100,14 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
 - Painel "Meu estudo" tem duas abas (`est.abaEstudo`): Estudo (números, progresso, marcações) e Perfil (conta,
   preferências, backup, privacidade, excluir conta). O botão de perfil no topo (`#btnPerfil`, inicial do nome de
   quem entrou) abre direto no Perfil; substituiu o antigo botão de ajustes. Os seletores do Perfil espelham os da
-  barra `.controles`, que só aparece na leitura em tela larga.
+  barra `.controles`, que só aparece na leitura em tela larga (acima de 700 px); no celular eles também ficam no "Mais".
+- Barra de recursos (`.navbar`) e menu "Mais" (`#navMais` / `#menuMais`): `ajustarNav()` esconde (classe `nav-fora`)
+  os últimos botões que não cabem na linha e mostra o "Mais", que lista os escondidos. A ordem do HTML é a
+  prioridade (Como usar é o primeiro a sair). Recalcula por `ResizeObserver` na própria barra, ao trocar de tela ou
+  de idioma e quando as fontes carregam — nunca por `resize`. Onde a barra `.controles` está escondida, o menu traz
+  também os seletores de idioma, tradução e comparação. No celular cabem Meu estudo, Buscar e Temas (a partir de
+  360 px). Cabeçalho numa linha só a partir de 1500 px; na leitura, só a partir de 1850 px (Contexto, Modo estudo e
+  "1 Tessalonicenses 5" não cabem antes). Botão novo na barra: é só pôr no lugar certo da ordem.
 - Painel "Como usar" (`#painelAjuda`): aberto pelo botão "Como usar" da barra de navegação, pelo link na página
   inicial (`#btnAjudaInicio`) e no rodapé. O conteúdo fica no objeto `AJUDA` (pt/en/es: grupos → itens
   `[ação, ícone, título, texto]`), montado por `montarAjuda()`; o botão "Experimentar" de cada item chama
