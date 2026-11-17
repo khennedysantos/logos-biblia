@@ -1,5 +1,5 @@
 # Tradução en->pt de graça, nas máquinas do GitHub: NLLB-200 1.3B (Meta) para a prosa (Henry, Calvino,
-# dicionário, temas) e Argos para as glosas do interlinear (palavras soltas; é o mesmo modelo do
+# dicionário, temas) e os verbos do interlinear (ferramentas/corrigir_glosas.py), e Argos para as glosas do interlinear (palavras soltas; é o mesmo modelo do
 # ferramentas/tradutor/traduzir_tudo.sh, então dispensa rodar qualquer coisa no computador).
 # O trabalho é dividido em N partes que rodam ao mesmo tempo (repositório público = minutos ilimitados).
 # Ao fim, o resultado é gravado em data/.../pt/ e enviado para o branch "traducao-<etapa>",
@@ -8,6 +8,8 @@
 # Rodar: aba Actions -> "Traduzir (NLLB)" -> Run workflow.
 # Se alguma parte não terminar a tempo, rode de novo com "retomar" = número da execução anterior:
 # ele aproveita o que já foi traduzido e faz só o que falta.
+# Antes de uma etapa inteira, dá para testar com "amostra" = N: traduz só N trechos, numa máquina, mostra no log o
+# inglês e a tradução (sem e com a proteção das referências, ferramentas/tradutor/teste_refs.py) e não grava nada.
 name: Traduzir (NLLB)
 
 on:
@@ -16,13 +18,16 @@ on:
       etapa:
         description: "O que traduzir"
         type: choice
-        options: [henry, calvino, dicionario, temas, glosas]
+        options: [henry, calvino, dicionario, temas, glosas, verbos]
         default: henry
       partes:
-        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40, glosas 1)"
+        description: "Em quantas máquinas dividir (20 rodam juntas; Henry 20, Calvino 40, dicionário 10, glosas 1, verbos 2)"
         default: "20"
       retomar:
         description: "Opcional: número (run id) de uma execução anterior para continuar dela"
+        default: ""
+      amostra:
+        description: "Opcional: só testar N trechos (mostra no log, não grava nada)"
         default: ""
 
 permissions:
@@ -98,7 +103,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - id: m
-        run: python -c "print('matriz=' + str(list(range(int('${{ inputs.partes }}')))))" >> "$GITHUB_OUTPUT"
+        run: python -c "print('matriz=' + str(list(range(1 if '${{ inputs.amostra }}' else int('${{ inputs.partes }}')))))" >> "$GITHUB_OUTPUT"
 
   traduzir:
     needs: preparar
@@ -123,7 +128,11 @@ jobs:
           fail-on-cache-miss: true
       - uses: actions/download-artifact@v4
         with: { name: entrada, path: entrada }
+      - name: Amostra (teste, não grava nada)
+        if: inputs.amostra != ''
+        run: python ferramentas/tradutor/teste_refs.py "entrada/$ETAPA.json" "$PASTA_MODELO" "${{ inputs.amostra }}"
       - name: Traduzir parte ${{ matrix.parte }}
+        if: inputs.amostra == ''
         run: |
           mkdir -p saida
           # para antes do limite de 6 h do GitHub, para que o que já foi feito seja guardado
@@ -140,7 +149,7 @@ jobs:
 
   juntar:
     needs: [preparar, traduzir]
-    if: always() && needs.preparar.result == 'success'
+    if: always() && needs.preparar.result == 'success' && inputs.amostra == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -185,6 +194,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "traducao-$ETAPA"
-          git add data ferramentas/glosas_pt.json
+          git add data ferramentas/glosas_pt.json ferramentas/tradutor/entradas
           git commit -q -m "Tradução automática ($MOTOR): $ETAPA" || { echo "nada mudou"; exit 0; }
           git push -f origin "traducao-$ETAPA"

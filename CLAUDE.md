@@ -49,6 +49,12 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   (títulos dos Salmos, Gn 32, Nm 17, Jl 3, Ml 4) e o grego em ~50; a STEPBible traz as duas numerações e
   `ferramentas/gerar_interlinear_at.py` / `corrigir_interlinear_nt.py` escolhem a certa (a fonte fica em
   `ferramentas/fontes/`, fora do git). No AT o Strong é o da raiz; palavra feita só de prefixo/sufixo fica sem número.
+  As glosas são revisadas por `ferramentas/corrigir_glosas.py` (`preparar` / `aplicar`): `stepbible.py` alinha cada
+  palavra do site com a da fonte (447.704 palavras), que traz a glosa inglesa e a gramática. Corrige nomes próprios
+  (`nomes_pt.py` grava `nomes_pt.json`, Strong → nome na grafia da Bíblia Livre; "Yahweh" vira SENHOR), verbos com
+  concordância quebrada (retraduzidos pelo NLLB na etapa "verbos" do workflow, numa moldura tirada da gramática:
+  "sent" 3P → "they sent" → "enviaram"), concordância pela gramática (`GRAMATICA`) e termos que ficaram em inglês
+  (`TABELA`). Rodar de novo não muda nada. Glosa nova errada: acrescente em `GRAMATICA` ou `TABELA` e rode `aplicar`.
 - `data/strongs/{G,H}.json` — léxico. Campo `def` (inglês) e `defpt` (português, tradução automática revisada).
 - `data/commentaries/calvin/{USFM}/{cap}.json` — Calvino original (inglês), chave = versículo.
   `data/commentaries/calvin/pt/...` — tradução; o app sobrepõe o `pt/` ao original quando o idioma é Português.
@@ -76,7 +82,10 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   traz capítulo → versículo → `[início, fim, "H1254", nota?]` ou `[início, fim, "v:covado", strong?]`.
   No app: `carregarPalavras`, `textoVerso`, `abrirPalavra` (cartão `#cartaoPalavra`); preferências `logos_chave` e
   `logos_voc` no Perfil. Não aparece na leitura contínua nem nas outras traduções.
-- `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`.
+- `data/dictionary/` (Easton) e `data/topics/` (Nave): originais + `pt/` (tradução) + `titulos_pt.json`. No Easton em
+  português as referências estão no formato dos dados ("GEN 3:15; GEN 4:1"), convertidas por `refs_usfm` (etapas.py)
+  antes da tradução; `linkarRefs` (app.js) transforma em link essas referências, as só de capítulo ("ISA 53") e as
+  continuações da mesma lista ("1TI 1:4; 4:7"), no dicionário e nos Temas.
 - `data/topics/doutrinas.json` — doutrinas da fé reformada (pedobatismo, Trindade, TULIP, cinco solas, governo
   presbiteriano...) que aparecem primeiro na busca de Temas, com selo "Doutrina reformada": resumo, fonte (CFW,
   Catecismos) e os versículos de prova agrupados, com o texto da Bíblia Livre já embutido. Escritas em
@@ -84,7 +93,9 @@ Site 100% estático (HTML + CSS + JS puro, sem build), servido pelo GitHub Pages
   `python3 ferramentas/gerar_doutrinas.py` confere as referências e grava o JSON (`--texto` imprime tudo para revisar).
   `validar_dados.py` reprova se o texto guardado ficar diferente da Bíblia Livre. Com o campo vazio, a aba Temas
   lista todas; buscar "reformada", "westminster", "calvinismo" etc. também lista todas.
-- `data/places.json` — atlas; campo `p` = nome em português. `data/journeys.json` — viagens de Paulo.
+- `data/places.json` — atlas; campo `p` = nome em português, gerado por `ferramentas/gerar_atlas_pt.py` (o nome do
+  Strong do lugar em `nomes_pt.json`, ou a expressão do texto: "monte das Oliveiras"; portas e construções em
+  `MANUAL`). `data/journeys.json` — viagens de Paulo.
 - `data/crossrefs/` (openbible.info), `data/context.json` (fichas dos 66 livros, escritas à mão),
   `data/timeline.json`, `data/plans.json`.
 - Dados do usuário (marcações, notas, planos, capítulos lidos `logos_lidos`, "onde parei" `logos_ultimo`) ficam
@@ -124,7 +135,12 @@ nº de partes). Divide em N máquinas, junta, grava em `data/.../pt/` e envia ao
 para virar PR. Se faltar algo, rodar de novo com `retomar` = run id anterior. `lote.py --motor nllb --parte K/N`.
 A etapa `glosas` do mesmo workflow usa o Argos (palavras soltas, 1 máquina, poucos minutos): é o
 `traduzir_tudo.sh glosas` sem precisar de computador (ele usa Windows 11 agora, sem ambiente Linux).
-O `nllb.py` protege marcadores de tópico ("I.", "1.", "(2.)") e devolve "milhas" (o modelo troca por "quilômetros").
+O `nllb.py` protege marcadores de tópico ("I.", "1.", "(2.)"), devolve "milhas" (o modelo troca por "quilômetros") e
+protege referências no formato USFM ("GEN 3:15"): cada grupo vira só os números durante a tradução e volta ao lugar
+(sem isso, "JOS" virava "JOSÉ"). Antes de uma etapa inteira, rode o workflow com `amostra` = N: traduz N trechos, com e
+sem a proteção, mostra no log e não grava nada (`teste_refs.py`). O robô do Actions não consegue criar o branch
+`traducao-<etapa>` se o arquivo do workflow mudou depois do commit em que a execução começou: aí rode de novo com
+`retomar` = número da execução (aproveita tudo o que já foi traduzido).
 
 Glosas do interlinear: `ferramentas/glosas_pt.json` é o dicionário inglês→português, e `GLOSAS_FIXAS` em
 `etapas.py` são as revisadas à mão (têm prioridade). `python3 etapas.py aplicar glosas` reaplica as duas.
@@ -188,8 +204,8 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
 
 - E-mail de contato no rodapé ainda é `contato@exemplo.com`.
 - Ele precisa cadastrar o site no Google Search Console e enviar o `sitemap.xml` (só ele pode, é conta dele).
-- Qualidade da tradução de Calvino/Easton: o caminho gratuito é o workflow "Traduzir (NLLB)" (já usado no
-  Henry). A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
+- Calvino (PR #7), Henry e Easton já foram traduzidos pelo NLLB; Nave (Temas) ainda é do Argos, mas é quase só
+  títulos curtos. A Batch API da Anthropic (~US$ 45, uma vez) daria mais qualidade, se ele decidir pagar; o script
   antigo foi removido (gravava por cima dos originais) — seria preciso um novo que leia `trabalho/<etapa>.json`.
 - Contas: ligadas (`google:true`) contra o projeto `rxmxxuyqvetbkjfilayc`. O login real e as regras do banco (RLS)
   só foram testados por ele, no navegador; daqui só rodou o teste com servidor falso. Se o login quebrar, voltar
@@ -207,12 +223,11 @@ O interlinear do vídeo é João 1:14 e Salmo 23:1 porque João 3:16 tem glosas 
 - Doutrinas reformadas: 50 temas (514 referências), escritos pelo Claude a partir da CFW e dos seus textos de prova,
   ainda NÃO revisados pelo Khennedy. Ficaram de fora, de propósito, pontos em que reformados divergem entre si
   (cessacionismo, milênio, salmodia exclusiva); acrescentar é só escrever `D(...)`.
-- Glosas erradas que o filtro aceitou: "loved" virou "amado" (40 vezes, devia ser "amou"), "may have" virou
-  "possa têm", "is believing" virou "é acreditar", "In" virou "[Não]" em João 1:1. Como o inglês se perde depois
-  de aplicado, corrigir exige regerar o interlinear da fonte (STEPBible) com as entradas novas em `GLOSAS_FIXAS`.
-- Glosas do interlinear: ~900 palavras ainda em inglês ou truncadas (as que o Argos traduziu mal e o filtro
-  `glosa_confiavel` recusou, mais antigas como "and  you will do"). Corrigir à mão em `GLOSAS_FIXAS`.
-- Só 372 dos 1.335 lugares do atlas têm nome em português (`p` em `data/places.json`).
+- Glosas do interlinear: corrigidas por `corrigir_glosas.py` (19.704 nomes, 5.351 verbos, 750 pela gramática, 831
+  termos). Ainda há: artigo e possessivo que não concordam com o gênero da palavra portuguesa ("libertação meu"; só
+  "a Palavra" de João 1 foi tratado), adjetivo plural com glosa no singular, alguns verbos que o NLLB errou ("I
+  gathered" → "eu percebi") e 327 nomes raros duvidosos que ficaram em inglês (`nomes_pt.py --relatorio`).
+- Atlas: 1.240 dos 1.335 lugares com nome em português; os outros são quase todos de fora da Bíblia (Eridu, Punt).
 - Inglês e espanhol: a interface está traduzida, mas atlas (rótulos do cartão do lugar), linha do tempo e
   fichas de contexto têm conteúdo só em português.
 - Publicação pelo GitHub Actions (em vez de commitar `biblia/`, 35 MB): exige ele trocar a origem do Pages

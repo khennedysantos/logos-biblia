@@ -1,5 +1,5 @@
 """Prepara e aplica cada etapa da tradução do Sola.
-uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry
+uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry|verbos
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
@@ -168,6 +168,25 @@ def aplicar_glosas():
     print(f"[glosas] {n} palavras atualizadas no interlinear")
 
 
+# ---------------- verbos do interlinear ----------------
+# A lista (frases verbais quebradas, já com a moldura tirada da gramática) é feita por
+# ferramentas/corrigir_glosas.py preparar; a tradução volta para entradas/verbos_pt.json e é aplicada por
+# ferramentas/corrigir_glosas.py aplicar, que precisa da fonte da STEPBible (não existe no GitHub Actions).
+ENTRADAS = AQUI / "entradas"
+
+
+def preparar_verbos():
+    entradas("verbos", ler(ENTRADAS / "verbos.json"))
+
+
+def aplicar_verbos():
+    tr = traducoes("verbos")
+    if not tr:
+        return print("[verbos] nada traduzido ainda")
+    (ENTRADAS / "verbos_pt.json").write_text(json.dumps(tr, ensure_ascii=False, indent=0), encoding="utf-8")
+    print(f"[verbos] {len(tr)} frases em tradutor/entradas/verbos_pt.json: aplique com ferramentas/corrigir_glosas.py aplicar")
+
+
 # ---------------- temas (Nave) ----------------
 def arquivos_temas():
     return [a for a in sorted((DATA / "topics").glob("*.json"))
@@ -244,13 +263,75 @@ def arquivos_dic():
             if a.name not in ("index.json", "titulos_pt.json")]
 
 
+# Referências do Easton ("Prov. 1:9; 3:22; Ps. 45:2") viram códigos USFM ("PRO 1:9; PRO 3:22; PSA 45:2") antes da
+# tradução: o nllb.py as protege (o Argos tinha transformado "Ps." em "S.") e o app as mostra como links.
+EASTON = {
+    "Gen": "GEN", "Ge": "GEN", "Ex": "EXO", "Exod": "EXO", "Lev": "LEV", "Num": "NUM", "Nu": "NUM", "Deut": "DEU",
+    "Josh": "JOS", "Judg": "JDG", "Judge": "JDG", "Ruth": "RUT", "1 Sam": "1SA", "2 Sam": "2SA", "1 Kings": "1KI",
+    "2 Kings": "2KI", "2 King": "2KI", "1 Chr": "1CH", "2 Chr": "2CH", "1 Chron": "1CH", "2 Chron": "2CH", "1 Ch": "1CH",
+    "2 Ch": "2CH",
+    "Ezra": "EZR", "Neh": "NEH", "Esther": "EST", "Esth": "EST", "Job": "JOB", "Ps": "PSA", "Psalm": "PSA",
+    "Psalms": "PSA", "Prov": "PRO", "Eccl": "ECC", "Eccles": "ECC", "Cant": "SNG", "Song of Sol": "SNG",
+    "Isa": "ISA", "Jer": "JER", "Lam": "LAM", "Ezek": "EZK", "Exek": "EZK", "Dan.": "DAN", "Hos": "HOS",
+    "Joel": "JOL", "Amos": "AMO", "Obad": "OBA", "Jonah": "JON", "Micah": "MIC", "Mic": "MIC", "Nahum": "NAM",
+    "Nah": "NAM", "Hab": "HAB", "Zeph": "ZEP", "Hag": "HAG", "Zech": "ZEC", "Mal": "MAL", "Matt": "MAT",
+    "Mat": "MAT", "Mark": "MRK", "Luke": "LUK", "John": "JHN", "Acts": "ACT", "Act": "ACT", "Rom": "ROM",
+    "1 Cor": "1CO", "2 Cor": "2CO", "Gal": "GAL", "Eph": "EPH", "Phil": "PHP", "Col": "COL", "1 Thess": "1TH",
+    "1 Thes": "1TH", "2 Thess": "2TH", "1 Tim": "1TI", "2 Tim": "2TI", "Titus": "TIT", "Philem": "PHM",
+    "Philemon": "PHM", "Heb": "HEB", "James": "JAS", "Jas": "JAS", "1 Pet": "1PE", "2 Pet": "2PE", "1 John": "1JN",
+    "2 John": "2JN", "3 John": "3JN", "Jude": "JUD", "Rev": "REV",
+}
+UM_CAPITULO = {"OBA", "PHM", "2JN", "3JN", "JUD"}   # "Jude 14" é o versículo 14
+# "10:6, 13, 14": a lista de versículos para antes de outro livro numerado ("9:48, 1 Sam. 13:20")
+_NUM_REF = r"\d+(?::\d+)?(?:[-–]\d+(?::\d+)?)?(?:,\s?\d+(?:[-–]\d+)?(?!\s?[A-Z]))*"
+# "Dan" só com ponto: sem ele é a tribo
+RE_EASTON = re.compile(r"(?<![\w.])(" + "|".join(re.escape(n) for n in sorted(EASTON, key=len, reverse=True))
+                       + r")\.?\s(" + _NUM_REF + r")(?!\d|:\d)")
+RE_CONTINUA = re.compile(r";\s?(" + _NUM_REF + r")(?!\d|:\d)")
+
+
+def ref_usfm(cod, num):
+    num = num.replace("–", "-")
+    if cod in UM_CAPITULO and ":" not in num:
+        num = "1:" + num
+    return f"{cod} {num}"
+
+
+def refs_usfm(texto):
+    """"(Prov. 1:9; 3:22; Ps. 45:2)" -> "(PRO 1:9; PRO 3:22; PSA 45:2)". O "; 3:22" logo depois é do mesmo livro."""
+    saida, i = [], 0
+    for m in RE_EASTON.finditer(texto):
+        if m.start() < i:
+            continue
+        cod = EASTON[m.group(1)]
+        saida += [texto[i:m.start()], ref_usfm(cod, m.group(2))]
+        j = m.end()
+        while (c := RE_CONTINUA.match(texto, j)) and not RE_EASTON.match(texto, c.start(1)):
+            depois = texto[c.end():c.end() + 2]
+            if ":" not in c.group(1) and re.match(r"\s[a-z]", depois):   # "; 2 vols." não é referência
+                break
+            saida.append("; " + ref_usfm(cod, c.group(1)))
+            j = c.end()
+        i = j
+    saida.append(texto[i:])
+    return "".join(saida)
+
+
+def limpa_easton(texto):
+    """Sujeiras da fonte que atrapalham o tradutor: aspas com barra (\\"), número de link do site antigo
+    ("[357]ALOES") e aspas de fechamento separadas da frase ('seguidores. "', que fazia o modelo inventar texto)."""
+    texto = texto.replace('\\"', '"')
+    texto = re.sub(r"\[\d+\](?=[A-Z])", "", texto)
+    return re.sub(r'(?<=[.!?,;])\s+"(?=\s|\)|$)', '"', texto)
+
+
 def preparar_dicionario():
     itens = []
     for arq in arquivos_dic():
         for termo, defs in ler(arq).items():
             for i, d in enumerate(defs):
                 if d.strip():
-                    itens.append({"id": f"{arq.stem}|{termo}|{i}", "texto": d})
+                    itens.append({"id": f"{arq.stem}|{termo}|{i}", "texto": refs_usfm(limpa_easton(d))})
     entradas("dicionario", itens)
 
 
