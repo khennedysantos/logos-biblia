@@ -227,18 +227,18 @@ const UI = {
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
-  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Modo estudo"},
-  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study mode"},
-  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Modo estudio"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Modo estudo",mais:"Mais",prefs:"Tradução e idioma"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study mode",mais:"More",prefs:"Translation and language"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Modo estudio",mais:"Más",prefs:"Traducción e idioma"}
 };
 /* Guia "Como usar": grupos → [ação, ícone, título, texto]. A ação (mesma nos três idiomas) está em ACOES_AJUDA. */
 const AJUDA = {
   pt:{ titulo:"Como usar o Sola", experimentar:"Experimentar",
-    intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função.",
+    intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função. No celular, o que não cabe na barra do alto fica no botão “Mais”.",
     grupos:[
       ["Ler a Bíblia", [
         ["livros","livro","Escolher livro e capítulo","Toque no nome do livro no alto da tela. Também dá para digitar uma referência na busca ou na página inicial, como “Jo 3:16” ou “Sl 23”. Para mudar de capítulo, use as setas no rodapé (no computador, as setas ← → do teclado)."],
-        ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, em Perfil."],
+        ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, no botão “Mais” (ou no Perfil)."],
         ["corrida","corrida","Leitura contínua","O botão de linhas no alto junta os versículos num texto corrido, como num livro, sem números no meio."],
         ["tema","lua","Tema claro e escuro","O botão da lua (ou do sol) troca as cores. A escolha fica guardada no aparelho."],
         ["modoEstudo","estudo","Modo estudo","Só no computador: abre uma coluna ao lado do texto com o original e o comentário do versículo em que você toca, sem tirar os olhos da leitura."],
@@ -263,11 +263,11 @@ const AJUDA = {
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
-    intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature.",
+    intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature. On a phone, whatever does not fit in the top bar is under “More”.",
     grupos:[
       ["Reading", [
         ["livros","livro","Choose a book and chapter","Tap the book name at the top. You can also type a reference in search or on the home page, like “John 3:16”. To change chapters, use the arrows at the bottom (on a computer, the ← → keys)."],
-        ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, in Profile."],
+        ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, under “More” (or in Profile)."],
         ["corrida","corrida","Continuous reading","The lines button at the top joins the verses into running text, like a book."],
         ["tema","lua","Light and dark theme","The moon (or sun) button switches colors. Your choice is saved on this device."],
         ["modoEstudo","estudo","Study mode","Computer only: a column next to the text shows the original and the commentary for the verse you tap."],
@@ -292,11 +292,11 @@ const AJUDA = {
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
-    intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función.",
+    intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función. En el celular, lo que no cabe en la barra de arriba está en “Más”.",
     grupos:[
       ["Leer la Biblia", [
         ["livros","livro","Elegir libro y capítulo","Toca el nombre del libro arriba. También puedes escribir una referencia en la búsqueda o en el inicio, como “Juan 3:16”. Para cambiar de capítulo, usa las flechas de abajo (en la computadora, las teclas ← →)."],
-        ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en Perfil."],
+        ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en el botón “Más” (o en Perfil)."],
         ["corrida","corrida","Lectura continua","El botón de líneas arriba une los versículos en texto corrido, como un libro."],
         ["tema","lua","Tema claro y oscuro","El botón de la luna (o del sol) cambia los colores. La elección queda guardada en el dispositivo."],
         ["modoEstudo","estudo","Modo estudio","Solo en la computadora: una columna junto al texto muestra el original y el comentario del versículo que tocas."],
@@ -323,7 +323,7 @@ const AJUDA = {
 };
 const ACOES_AJUDA = {
   livros: ()=>{ montarListaLivros(); alternarPainel("painelLivros", true); },
-  traducoes: ()=>innerWidth > 560 ? irPara("JHN", 1, 1) : abrirMeuEstudo("perfil"),
+  traducoes: ()=>innerWidth > 700 ? irPara("JHN", 1, 1) : abrirMais(),   // no celular os seletores ficam no "Mais"
   corrida: ()=>irPara("PSA", 23),
   tema: ()=>{ est.tema = est.tema==="escuro" ? "claro" : "escuro"; gravarLS("logos_tema", est.tema); aplicarTema(); },
   modoEstudo: ()=>{ fecharPaineis(); est.estudo = true; gravarLS("logos_estudo", true); aplicarEstudo(); if(est.vista!=="cap") irPara("JHN", 1, 1); },
@@ -571,6 +571,7 @@ function aplicarTextos(){
   $("btnCorrida").title = x.leituraCorrida;
   document.querySelectorAll(".fechar").forEach(b=>b.setAttribute("aria-label", x.fechar));
   prepararAbas();
+  ajustarNav();
 }
 function preencherTraducoes(){
   const doIdioma = est.meta.translations.filter(tr=>tr.lang===est.idioma);
@@ -592,6 +593,8 @@ async function renderizar(op){
   op = op || {};
   const x = t();
   document.body.dataset.vista = est.vista;
+  if(!op.manter) fecharMais();   // mesma página (tradução, idioma): o menu "Mais" continua aberto
+  ajustarNav();                  // Contexto e Modo estudo só existem na leitura: muda o que cabe na barra
   fecharPalavra();
   est.versoAtivo = null; est.gaveta = null;
   if(est.vista==="inicio"){
@@ -2156,6 +2159,69 @@ function alternarPainel(id, abrir){
   }
 }
 function fecharPaineis(){ const p = painelAberto(); if(p) alternarPainel(p.id, false); }
+
+/* ---------- barra de recursos: o que não cabe na linha vai para o menu "Mais" ----------
+   Vale em qualquer largura e idioma (no celular cabem dois ou três itens). A ordem do HTML é a prioridade: os
+   últimos saem primeiro. Onde a barra de seletores (.controles) não aparece (celular), o menu traz também os
+   seletores de idioma, tradução e comparação, espelhando os da barra como os do Perfil. Recalcula quando a barra
+   muda de largura, não em "resize" (no celular ele dispara ao rolar). */
+const itensNav = ()=>[...document.querySelectorAll(".navbar button[data-nav]:not(#navMais)")];
+const controlesOcultos = ()=>!document.querySelector(".controles").getClientRects().length;
+function ajustarNav(){
+  const nav = document.querySelector(".navbar"), mais = $("navMais");
+  if(!nav.clientWidth) return;
+  const itens = itensNav();
+  itens.forEach(b=>b.classList.remove("nav-fora"));
+  mais.classList.add("oculto");
+  if(nav.scrollWidth > nav.clientWidth + 1){
+    mais.classList.remove("oculto");
+    const visiveis = itens.filter(b=>b.getClientRects().length);
+    for(let i = visiveis.length - 1; i > 0 && nav.scrollWidth > nav.clientWidth + 1; i--) visiveis[i].classList.add("nav-fora");
+  }
+  if(!$("menuMais").classList.contains("oculto")){
+    if(mais.classList.contains("oculto")) fecharMais(); else { montarMais(); posicionarMais(); }
+  }
+}
+function montarMais(){
+  const x = t(), menu = $("menuMais");
+  const seletor = (id, rot)=>`<label><span>${rot}</span><select data-espelho="${id}">${$(id).innerHTML}</select></label>`;
+  const html = itensNav().filter(b=>b.classList.contains("nav-fora")).map(b=>
+    `<button type="button" data-alvo="${b.id}"${b.classList.contains("ativa") ? ` class="ativa"` : ""}${
+      b.hasAttribute("aria-pressed") ? ` aria-pressed="${b.getAttribute("aria-pressed")}"` : ""}>${b.innerHTML}</button>`).join("") +
+    (controlesOcultos() ? `<hr><div class="prefs menu-prefs" role="group" aria-label="${(NAV[est.idioma] || NAV.pt).prefs}">` +
+      seletor("selIdioma", x.idioma) + seletor("selTraducao", x.traducao) + seletor("selComparar", x.comparar) + `</div>` : "");
+  // refazer só quando algo mudou: assim o seletor que acabou de ser usado continua com o foco
+  if(est.htmlMais !== html){
+    menu.innerHTML = est.htmlMais = html;
+    menu.querySelectorAll("select[data-espelho]").forEach(sel=>sel.addEventListener("change", ()=>{
+      const orig = $(sel.dataset.espelho);
+      orig.value = sel.value; orig.dispatchEvent(new Event("change"));
+    }));
+  }
+  menu.querySelectorAll("select[data-espelho]").forEach(sel=>{ sel.value = $(sel.dataset.espelho).value; });
+}
+function posicionarMais(){
+  const menu = $("menuMais"), b = $("navMais").getBoundingClientRect(), topo = document.querySelector(".topo").getBoundingClientRect();
+  menu.style.top = (b.bottom - topo.top + 4) + "px";
+  menu.style.right = Math.max(8, topo.right - b.right) + "px";
+  menu.style.maxHeight = Math.max(160, innerHeight - b.bottom - 16) + "px";
+}
+function abrirMais(peloTeclado){
+  montarMais();
+  $("menuMais").classList.remove("oculto");
+  $("navMais").setAttribute("aria-expanded", "true");
+  $("navMais").classList.add("ativa");
+  posicionarMais();
+  if(peloTeclado){ const b = $("menuMais").querySelector("button"); if(b) b.focus(); }
+}
+function fecharMais(devolverFoco){
+  if($("menuMais").classList.contains("oculto")) return false;
+  $("menuMais").classList.add("oculto");
+  $("navMais").setAttribute("aria-expanded", "false");
+  $("navMais").classList.remove("ativa");
+  if(devolverFoco) $("navMais").focus({ preventScroll:true });
+  return true;
+}
 function aplicarTema(){
   const escuro = est.tema==="escuro";
   document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
@@ -2234,6 +2300,19 @@ async function iniciar(){
     est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
   });
   $("btnPerfil").addEventListener("click", ()=>abrirMeuEstudo("perfil"));
+  $("navMais").addEventListener("click", (e)=>{
+    if(!fecharMais()) abrirMais(e.detail === 0);   // detail 0: Enter ou espaço
+  });
+  $("menuMais").addEventListener("click", (e)=>{
+    const b = e.target.closest("button[data-alvo]");
+    if(!b) return;
+    fecharMais(b === document.activeElement);   // pelo teclado, o foco volta ao "Mais" quando o painel fechar
+    $(b.dataset.alvo).click();
+  });
+  // fecha ao tocar fora; "pointerdown" porque o Safari do iPhone não manda "click" de toque em área sem ação
+  document.addEventListener("pointerdown", (e)=>{ if(!e.target.closest("#menuMais,#navMais")) fecharMais(); });
+  if(window.ResizeObserver) new ResizeObserver(()=>ajustarNav()).observe(document.querySelector(".navbar"));
+  if(document.fonts){ document.fonts.ready.then(ajustarNav); document.fonts.addEventListener("loadingdone", ajustarNav); }
   atualizarBotaoPerfil();
   $("btnOffline").addEventListener("click", baixarOffline);
   document.querySelectorAll("[data-painel]").forEach(a=>a.addEventListener("click", (e)=>{
@@ -2283,6 +2362,7 @@ async function iniciar(){
   document.addEventListener("click", (e)=>{ if(!e.target.closest("#cartaoPalavra,.chave")) fecharPalavra(); });
   document.addEventListener("keydown", (e)=>{
     if(e.key === "Escape"){
+      if(fecharMais(true)) return;
       if(painelAberto()) return fecharPaineis();
       if(fecharPalavra(true)) return;
       if(est.fecharConvite) return est.fecharConvite(true);
