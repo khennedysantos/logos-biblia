@@ -77,7 +77,7 @@ def nome_no_verso(strong, en, texto, cs, mapa):
     geral = mapa.get(strong, [None, None])[1]
     if geral and (geral in cs or geral in texto):
         return geral
-    melhor = max(cs, key=lambda c: semelhanca(en, c), default=None)
+    melhor = max(sorted(cs), key=lambda c: semelhanca(en, c), default=None)
     if melhor and not melhor.isupper() and semelhanca(en, melhor) >= 0.8:
         return melhor
     return geral
@@ -111,7 +111,7 @@ def composto(partes, texto, cs, mapa, conta):
     """Nome de duas palavras na fonte ("Beer-" + "sheba"): o nome da Bíblia Livre ("Berseba") dividido entre elas."""
     ens = [re.sub(r"^.*?\s{2,}", "", w.en).strip(" ,.;:") for w, _ in partes]
     inteiro = ens[0].rstrip("-") + "-" + "-".join(e.lstrip("-") for e in ens[1:])
-    alvo = max(cs, key=lambda c: semelhanca(inteiro, c), default=None)
+    alvo = max(sorted(cs), key=lambda c: semelhanca(inteiro, c), default=None)
     if not alvo or semelhanca(inteiro, alvo) < 0.6:
         geral = mapa.get(partes[0][0].strong, [None, None])[1]
         if not geral or semelhanca(inteiro, geral) < 0.6:
@@ -227,24 +227,49 @@ def preparar():
     print(f"{len(itens)} frases verbais para o NLLB gravadas em {(ENTRADAS / 'verbos.json').relative_to(RAIZ)}")
 
 
+GERUNDIO = {"ar": "ando", "er": "endo", "ir": "indo", "or": "ondo"}
+
+
+def limpa_nllb(pt, frase, en):
+    """Vícios do modelo: o "you all" que a moldura pôs vira "todos"/"tudo"; "estava a fazer" (português de
+    Portugal) vira "estava fazendo"; "Já ouvimos" (o modelo acrescenta "já"); "rezar" vira "orar"."""
+    pt = pt.strip().rstrip(".")
+    if "you all" in frase and "all" not in en.lower():
+        pt = re.sub(r"\s*\b(?:todos|todas|tudo)\b", "", pt).strip()
+    if "already" not in en.lower():
+        pt = re.sub(r"(?i)^já\s+", "", pt)
+    pt = re.sub(r"\b((?i:est(?:ou|á|ás|ava|avas|ávamos|avam|ão|amos|ive|eve|ivemos|iveram|ivesse|eja|ejam|ar|ará|arão|aria|ais|áis))\s+)a\s+([a-zà-ú]*?)(ar|er|ir|or)\b",
+                lambda m: m.group(1) + m.group(2) + GERUNDIO[m.group(3)], pt)
+    if not re.search(r"\b(?:say|said|tell|told)\b", en):
+        pt = re.sub(r"\b(ouvi|ouviu|ouvimos|ouviram|ouviste|ouvistes)\s+(?:dizer|falar)\b", r"\1", pt)   # "ouvi dizer"
+    if re.search(r"\bcall", en):
+        pt = re.sub(r"\blig(uei|ou|aram|ar|amos|a|am|ando)\b", lambda m: "cham" + {"uei": "ei"}.get(m.group(1), m.group(1)), pt)
+    pt = re.sub(r"\s*[:!?.,;]+$", "", pt) if re.search(r"[:!?.,;]$", pt) and not re.search(r"[!?]", en) else pt
+    return re.sub(r"\brez(ar|a|am|em|e|ou|aram|ando|arão|ará|ai)\b", r"or\1", pt)
+
+
 def corrigir_verbos(palavras, conta):
     arq = ENTRADAS / "verbos_pt.json"
     if not arq.exists():
         return print("(verbos: ainda sem a tradução do NLLB em tradutor/entradas/verbos_pt.json)")
     tr = json.loads(arq.read_text(encoding="utf-8"))
     for w, p in palavras:
-        if not verbo_ruim(w, p[3]):
+        if not verbo_ruim(w, p[3]) or da_gramatica(w):
             continue
         prefixo, frase, moldura = entrada_verbo(w)
-        pt = (tr.get(frase) or "").strip().rstrip(".")
+        pt = limpa_nllb(tr.get(frase) or "", frase, w.en)
         if moldura:
             pt = TIRAR[moldura].sub("", pt, count=1)
+        if w.en.startswith("I ") and pt[:1].isupper():
+            pt = pt[0].lower() + pt[1:]                            # "Eu matei": como as outras glosas, minúsculo
         if not pt or re.search(r"[A-Za-z]{3,}", pt) and not re.search(r"[ãõáéíóúâêôçà]|\b(?:e|de|que|se|o|a)\b", pt) \
                 and pt.lower() in w.en.lower():
             continue                                        # o modelo devolveu o inglês: fica como está
         if w.en[:1].islower() and not pt[:2].isupper():
             pt = pt[0].lower() + pt[1:]
-        novo = (prefixo + "  " if prefixo else "") + pt + pontuacao_final(w.en)
+        fim = pontuacao_final(w.en)
+        pt = re.sub(r"\s*[!?]+$", "", pt) if fim and re.search(r"[!?]$", pt) else pt
+        novo = (prefixo + "  " if prefixo else "") + pt + fim
         if novo != p[3]:
             conta["verbos"][(w.en, p[3], novo)] += 1
             p[3] = novo
@@ -269,8 +294,19 @@ NAO_FLEXIONA = {"deserto", "quatro", "como", "dízimo", "lucro", "descanso", "fe
                 "cinco", "dentro", "fora", "pouco"}
 
 
+def da_gramatica(w):
+    return any(w.en.strip(" ,.;:") == en and w.gram.startswith(gram) for en, gram in GRAMATICA)
+
+
 def corrigir_gramatica(palavras, conta):
-    for w, p in palavras:
+    for i, (w, p) in enumerate(palavras):
+        # João 1: "ὁ λόγος" é "a Palavra" (o artigo grego é masculino, a palavra portuguesa é feminina)
+        if w.gram.startswith("T-") and p[3] in ("o", "<o>") and i + 1 < len(palavras) \
+                and palavras[i + 1][0][:3] == w[:3] and palavras[i + 1][1][3].startswith("Palavra"):
+            novo = p[3].replace("o", "a")
+            conta["gramatica"][(w.en, p[3], novo)] += 1
+            p[3] = novo
+            continue
         g, novo = p[3], None
         for (en, gram), pt in GRAMATICA.items():
             if w.en.strip(" ,.;:") == en and w.gram.startswith(gram):
@@ -290,18 +326,134 @@ def corrigir_gramatica(palavras, conta):
 
 
 # ---------------------------------------------------------------- 4. tabela (o que ficou em inglês)
-TABELA = {}
+# Glosa inglesa (sem a pontuação final) -> português. Só troca onde a glosa ainda é o inglês (ou parece inglês).
+TABELA = {
+    # termos e transliterações (a forma da Bíblia Livre)
+    "Selah": "Selá", "Sela": "Selá", "acacia": "acácia", "Sabbath": "sábado", "shekels": "siclos", "manna": "maná",
+    "aha!": "ah!", "Aha!": "Ah!", "Ha!": "Ah!", "ha": "ah", "mat": "esteira", "animal[s]": "animal[is]", "citi[es]": "cidade[s]",
+    "gospel": "evangelho", "olive": "oliveira", "loops": "laçadas", "private": "particular", "fury": "fúria",
+    "custom": "costume", "Leviathan": "Leviatã", "stadia": "estádios", "branch": "ramo", "splinter": "cisco",
+    "cors": "coros", "cor[s] of": "coro[s] de", "Praetorium": "Pretório", "fin": "barbatana", "gerah[s]": "gera[s]",
+    "reed": "cana", "curd<s>": "coalhada<s>", "denarii": "denários", "colt": "jumentinho", "Zebub": "Zebube",
+    "Millo": "Milo", "Artemis": "Ártemis", "trigon": "trígono", "wadis": "ribeiros", "Hosanna": "Hosana",
+    "Hosanna!": "Hosana!", "tashcheth": "tasquite", "Havvoth": "Havote", "hewing": "lavrando", "elder": "ancião",
+    "Ephesian": "efésio", "cud": "ruminação", "copper": "cobre", "leanness": "magreza", "destroyers": "destruidores",
+    "flint": "pederneira", "Magi": "magos", "Shoshannim": "Sosanim", "brimstone": "enxofre", "pit": "cova",
+    "alamoth": "alamote", "alumoth": "alamote", "gentiles": "gentios", "Tyrian": "tírio", "lavers": "pias",
+    "jaminites": "jaminitas", "jaminite": "jaminita", "dim": "escuro", "chance": "acaso", "Thessalonica": "Tessalônica",
+    "Deacons": "Diáconos", "design": "propósito", "Berachah": "Beraca", "Lair": "covil", "lodges": "pousadas",
+    "led": "conduzido", "stern": "popa", "host": "hospedeiro", "sycamores": "sicômoros", "teqel": "tequel",
+    "Anak": "Anaque", "hyssop": "hissopo", "sashes": "faixas", "palm": "palmeira", "Meribath": "Meribá",
+    "Meribah": "Meribá", "Abba": "Aba", "Zaphon": "Zafom", "herbage": "erva", "calamus": "cálamo", "Ramath": "Ramá",
+    "saris": "oficial", "fowlers": "passarinheiros", "encamp": "acampar", "Rabboni": "Raboni", "chaff": "palha",
+    "Abaddon": "Abadom", "Orion": "Órion", "Anakites": "anaquins", "rampart": "baluarte", "eczema": "sarna",
+    "lepta": "leptos", "lepton": "lepto", "ax": "machado", "lake": "lago", "grainfields": "searas",
+    "Gerasenes": "gerasenos", "Gadarenes": "gadarenos", "lema": "lamá", "sabachthani": "sabactâni",
+    "requite": "retribuir", "eduth": "edute", "Jeduthun": "Jedutum", "jasper": "jaspe", "fawns": "filhotes",
+    "Shimeathites": "simeatitas", "Harashim": "Harasim", "leavens": "fermenta", "commits": "comete",
+    "proverb[s]": "provérbio[s]", "Ziphites": "zifeus", "Ashtaroth": "Astarote", "holily": "santamente",
+    "Sukkites": "suquitas", "slings": "fundas", "castings": "fundições", "algum<s>": "sândalo<s>",
+    "levity": "leviandade", "thorugh": "através de", "strikes": "fere", "race": "corrida", "Corinthians": "coríntios",
+    "snuffers": "espevitadeiras", "capture": "captura", "carousal": "farra", "blots": "manchas", "continue": "continuai",
+    "Basshebeth": "Bassebete", "Ahoah": "Aoá", "coppersmith": "latoeiro", "homestead": "herdade", "Ago": "atrás",
+    "Cyrenian": "cireneu", "incited": "incitou", "Python": "píton", "Awoken": "desperto", "Grecian": "grego",
+    "babbler": "tagarela", "Areopagite": "areopagita", "Asiarchs": "asiarcas", "Parthians": "partos", "Medes": "medos",
+    "elderhood": "presbitério", "spearmen": "lanceiros", "tackle": "aparelho", "amiss": "mal",
+    "Alexandrian": "alexandrino", "Alexandrians": "alexandrinos", "Colonnade": "pórtico", "Freedmen": "libertos",
+    "Rephan": "Renfã", "Hellenists": "helenistas", "Scythian": "cita", "flake-like": "em flocos", "stacte": "estoraque",
+    "boughs": "ramos", "bough[s]": "ramo[s]", "Bamah": "Bamá", "Sabeans": "sabeus", "kindle": "acender",
+    "topaz": "topázio", "terebinth": "terebinto", "Evident": "evidente", "carousing": "orgias", "seahs": "medidas",
+    "seahs of": "medidas de", "mandrakes": "mandrágoras", "gopher": "gofer", "shiggionoth": "sigionote",
+    "Partakers": "participantes", "Levitical": "levítico", "bowmen": "flecheiros", "roomy": "espaçoso",
+    "cliffs": "penhascos", "beryl": "berilo", "mire": "lodo", "elm": "olmeiro", "brushwood<s>": "graveto<s>",
+    "bridling": "refreando", "Shibboleth": "Chibolete", "Sibboleth": "Sibolete", "Lehi": "Leí", "tawny": "fulvo",
+    "Shemesh": "Semes", "bristly": "eriçado", "vipers": "víboras", "sandal": "sandália", "shepherd": "pastor",
+    "morsel": "bocado", "litras": "libras", "metretae": "metretas", "soudarion": "lenço", "Clay": "barro",
+    "Behemoth": "Beemote", "purslane": "beldroega", "marsh": "pântano", "tread": "pisar", "autumnal": "outonal",
+    "crimson": "carmesim", "graves": "sepulturas", "assarion": "asse", "Yoke": "jugo", "manger": "manjedoura",
+    "hills": "colinas", "rebuking": "repreendendo", "tablet": "tábua", "brow": "topo", "bier": "esquife",
+    "Immanuel": "Emanuel", "didrachmas": "didracmas", "foreman": "mordomo", "dill": "endro", "mill": "moinho",
+    "gall": "fel", "meek": "manso", "kodranten!": "quadrante!", "net-casting": "lançando a rede", "Eloi": "Eloí",
+    "Talitha": "Talita", "koum!": "cumi!", "Syrophoenician": "siro-fenícia", "Ephphatha!": "Efatá!", "usury": "usura",
+    "Sophereth": "Soferete", "myrtle": "murta", "homers": "ômeres", "Cushite": "cuxita", "lodge": "pousar",
+    "Zophim": "Zofim", "soda": "salitre", "reprove": "repreender", "counsel<s>": "conselho<s>", "flash": "relâmpago",
+    "extol": "exaltai", "Mahalath": "Maalate", "Machalath": "Maalate", "evil deeds": "más obras", "plotted": "tramou",
+    "in <the>  prosperiti<es>": "em <as>  prosperidade<s>", "voluntariness<es>": "voluntariedade<s>",
+    "repetition[s]": "repetição[ões]", "Higgaion": "Higaiom", "golden": "dourado", "harping": "tocando harpa",
+    "swung": "brandiu", "citron": "tuia", "sardonyx": "sardônica", "sardius": "sárdio", "jacinth": "jacinto",
+    "choenixes": "medidas", "Lamb!": "Cordeiro!", "censer": "incensário", "Wormwood": "Absinto", "leads": "leva",
+    "nard": "nardo", "Cretans": "cretenses", "Cretan": "cretense", "sorrel": "alazão", "dappled": "malhado",
+    "¿  I": "¿  eu", "Temeni": "Temeni", "Haahashtari": "Haastari", "Jehieli": "Jeieli", "will": "vontade",
+    # glosas hebraicas em partes (sufixo possessivo depois do nome) e perguntas que ficaram em inglês
+    "palm  my": "palma  minha", "palm  his": "palma  sua", "palm  the": "a  palma", "rod  his": "vara  sua",
+    "rods  their": "varas  suas", "net  my": "rede  minha", "nest  its": "ninho  seu", "edge  its": "borda  sua",
+    "boughs  its": "ramos  seus", "chambers  its": "câmaras  suas", "grain  his": "grão  seu", "prime  my": "vigor  meu",
+    "jaw  its": "queixada  sua", "jaws  my": "queixadas  minhas", "halter  its": "cabresto  seu",
+    "sneezing<s>  its": "espirro<s>  seus", "moustache  his": "bigode  seu", "acquaintances  my": "conhecidos  meus",
+    "nostril[s]  your": "narina[s]  tuas", "work<s>  my": "obra<s>  minhas", "community  your": "comunidade  tua",
+    "myrrh  my": "mirra  minha", "O rock  my": "ó rocha  minha", "from  sanctuari<es>  your": "de  santuário<s>  teus",
+    "bowls of": "tigelas de", "treasuring up": "entesourando", "interest of": "juro de", "<into>  dung": "<em>  esterco",
+    "Mizpah of": "Mispa de", "<of> [which] not": "<de> [que] não", "<into>  guilt": "<em>  culpa",
+    "has he come out": "saiu ele", "money of": "dinheiro de", "[will] delay": "[vai] tardar", "he reckon": "ele considera",
+    "are you speaking": "estás falando", "did they steal  you": "roubaram-te", "has it been taken away": "foi tirado",
+    "did you treat with contempt  me": "desprezaste-me", "and  <obj.>  [the] [one] living of": "e  <obj.>  [o] [que] vive de",
+    "did you sign": "assinaste", "¿  was he able": "¿  pôde ele", "[one who] is wounded of": "[o que] é ferido de",
+    "grinding [it]": "moendo [-o]", "will he lie down": "deitar-se-á", "[one who] slays": "[o que] mata",
+    "knead [it]": "amassai [-a]", "and  it be[longs]": "e  pertence", "<in>  [the] sinew of": "<em>  [o] tendão de",
+    "<into>  burning": "<para>  queima", "[one who] rejoices": "[o que] se alegra", "<into>  a burning of": "<em>  queima de",
+    "will you restrain yourself": "conter-te-ás", "<the>  hired": "<o>  contratado", "[the] land of  <towards>": "[a] terra de  <para>",
+    "and  [the] land of  <towards>": "e  [a] terra de  <para>", "<in>  [the] thickets of": "<em>  [os] matagais de",
+    "will it speak": "falará", "¿  will you play": "¿  brincarás", "has he uncovered": "descobriu ele",
+    "has he opened": "abriu ele", "<into>  seven": "<em>  sete", "rule over": "dominar", "heard [it]": "ouviram [isso]",
+    "At the pledging": "No penhor", "In [the] fourth": "[No] quarto", "[one who] scatters": "[o que] espalha",
+    "cub of": "filhote de", "<the>  wares": "<as>  mercadorias", "<obj.>[about]": "<obj.>[sobre]",
+    "<the>  feeble": "<os>  fracos", "¿  will they finish": "¿  terminarão", "<the>  debris": "<o>  entulho",
+    "[will] meat": "[será] carne", "beaten out of": "batido de", "<into>  consuming": "<para>  consumir",
+    "and  to  [the] obligation of": "e  a  [a] obrigação de", "[will] snatch up": "[vai] arrebatar",
+    "they take pleasure in": "eles se agradam de", "[are] he": "[é] ele", "will he lead  me": "guiar-me-á",
+    "[one who] he pants": "[o que] ofega", "will you forget  me": "esquecer-me-ás", "will you hide": "esconderás",
+    "[the] desires of": "[os] desejos de", "[one who] recognizes": "[o que] reconhece", "and  [the] request of": "e  [o] pedido de",
+    "have you forsaken  me": "desamparaste-me", "<in>  [the] troubles of": "<em>  [as] angústias de",
+    "from  [the] hostility of": "de  [a] hostilidade de", "have you forgotten  me": "esqueceste-me",
+    "will he search out": "esquadrinhará", "rich [ones] of": "ricos de", "desirous of": "desejoso de",
+    "a miscarriage of": "um aborto de", "will you attack": "atacareis", "<the>  pushed down": "<o>  derrubado",
+    "things of": "coisas de", "thousands of": "milhares de", "heavens of": "céus de", "may I be delivered": "seja eu livrado",
+    "[one who] is at peace with  me": "[o que] está em paz comigo", "¿  has it come to an end": "¿  acabou",
+    "¿  has he forgotten": "¿  esqueceu", "has he shut off": "encerrou ele", "[is] wounding  my": "[é] ferida  minha",
+    "have you smoked": "fumegaste", "have you broken down": "derrubaste", "will they give thanks to?  you": "darão graças a?  ti",
+    "¿  will it be known": "¿  será conhecido", "receiving [it]": "recebendo [-o]", "obtained [it]": "obtido [-o]",
+    "cleaving to": "apegando-se a", "it is like": "é semelhante",
+}
+SO_INGLES = set("""the and of to he she they you will is are was were have has had his her their my your who which that it
+be not for with from on by at we shall may let been being this these those them him us does did all out up into upon over
+said says saying what when where there then than but or if so its our whom whose would could should might must""".split())
+
+
+def parece_ingles(g, en):
+    if g.strip() == en.strip():
+        return True
+    pal = re.findall(r"[A-Za-z]+", g)
+    return bool(pal) and sum(x.lower() in SO_INGLES for x in pal) >= max(1, len(pal) // 2)
 
 
 def corrigir_tabela(palavras, conta):
     for w, p in palavras:
-        pt = TABELA.get(w.en)
-        if pt is None or p[3] == pt:
+        fim = pontuacao_final(w.en) if w.en.strip() not in TABELA else ""
+        chave = w.en.strip()[:len(w.en.strip()) - len(fim)] if fim else w.en.strip()
+        pt = TABELA.get(chave)
+        if pt is None or not parece_ingles(p[3], w.en) and p[3] not in ('"Tows of"', '"Ned its"', '"Boughs its"', "No concurso",
+                                                                         "No quarto...", "remain over", "moagem [it]",
+                                                                         "amassar [it]", "ouvimos [it]", "recebendo [it].",
+                                                                         "obtidos [it];", '"Cleaving to"', "treasing up",
+                                                                         "♪Into> esterco", "# # Into # # Culpa #", "[ Will] atraso",
+                                                                         "[ Will] carne", "[ Will] pegar", "[Into] queimando",
+                                                                         "[Into> sete", "[Into] consumindo", "<the<br>contratado",
+                                                                         "mirrrh my", "Mizpah of"):
             continue
-        if p[3] != w.en and not re.search(r"[A-Za-z]{3}", p[3]):
-            continue
-        conta["tabela"][(w.en, p[3], pt)] += 1
-        p[3] = pt
+        novo = pt + fim
+        if novo != p[3]:
+            conta["tabela"][(w.en, p[3], novo)] += 1
+            p[3] = novo
 
 
 # ----------------------------------------------------------------
@@ -315,8 +467,8 @@ def aplicar():
     conta = {k: collections.Counter() for k in ("nomes", "verbos", "gramatica", "tabela")}
     corrigir_nomes(palavras, textos, cand, mapa, conta)
     corrigir_verbos(palavras, conta)
-    corrigir_gramatica(palavras, conta)
     corrigir_tabela(palavras, conta)
+    corrigir_gramatica(palavras, conta)
     mudados = [k for k, v in caps.items() if json.dumps(v, ensure_ascii=False) != antes[k]]
     if not conferir:
         for livro, cap in mudados:

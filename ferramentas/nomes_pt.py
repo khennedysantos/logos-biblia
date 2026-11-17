@@ -88,7 +88,7 @@ def escolher(en, versos, cand):
     if not df:
         return None
     pont = {c: df[c] / n + 0.35 * semelhanca(en, c) for c in df}
-    ordem = sorted(pont, key=pont.get, reverse=True)
+    ordem = sorted(sorted(pont), key=pont.get, reverse=True)   # ordem alfabética nos empates: sempre o mesmo
     seg = pont[ordem[1]] if len(ordem) > 1 else 0
     return ordem[0], df[ordem[0]] / n, semelhanca(en, ordem[0]), pont[ordem[0]] - seg
 
