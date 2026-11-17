@@ -1238,10 +1238,23 @@ function rotuloDuplo(tit, n){
   return tit[n] && tit[n].toLowerCase() !== n.toLowerCase()
     ? `${esc(tit[n])} <span style="opacity:.55;font-weight:400">(${esc(n)})</span>` : esc(n);
 }
-const RE_REF = /\b([1-3]?[A-Z]{2,3})\s(\d+):(\d+)(?:-(\d+))?/g;
+/* Referências no formato dos dados (Nave e Easton traduzido): "GEN 3:15", "TIT 1:7,14", "ISA 53", "PSA 23, 24",
+   "1TI 1:4; 4:7". Cada uma vira link; depois de uma referência, "; 4:7" é do mesmo livro, e o livro repetido logo em
+   seguida não é escrito de novo ("Ezequiel 29:10; 30:6"). Número solto no texto ("40 dias") fica como está. */
+const RE_REF = /(?:\b([1-3]?[A-Z]{2,3}) )?(\d+)(?::(\d+))?((?:[-–]\d+(?::\d+)?)?(?:, ?\d+(?:[-–]\d+)?(?![\dA-Z]))*)/g;
 function linkarRefs(txt){
-  return esc(txt).replace(RE_REF, (m, l, c, v)=> infoLivro(l)
-    ? linkRef(l, +c, +v, esc(`${nomeLivro(l)} ${c}:${v}`) + (m.includes("-") ? m.slice(m.indexOf("-")) : "")) : m);
+  const s = String(txt ?? "");
+  let saida = "", fim = 0, livro = null;
+  for(const m of s.matchAll(RE_REF)){
+    const [todo, cod, c, v, resto] = m;
+    const seguida = livro && /^\s*;\s*$/.test(s.slice(fim, m.index));
+    const l = cod ? (infoLivro(cod) ? cod : null) : (seguida ? livro : null);
+    if(!l || +c < 1 || +c > infoLivro(l).ch){ if(cod) livro = null; continue; }
+    const nome = cod && !(seguida && cod === livro) ? esc(nomeLivro(l)) + " " : "";
+    saida += esc(s.slice(fim, m.index)) + linkRef(l, +c, +v || 0, nome + c + (v ? ":" + v : "") + esc(resto));
+    fim = m.index + todo.length; livro = l;
+  }
+  return saida + esc(s.slice(fim));
 }
 /* Lista de resultados ({html, titulo, abrir}) e, ao escolher um, o conteúdo dele. */
 function listarItens(itens){
@@ -1306,7 +1319,7 @@ async function buscarDic(){
   const alvo = normStr(termo);
   listarVerbetes(idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40), tit, async (nome)=>{
     const dic = await dicLetra(nome[0].toUpperCase());
-    return (dic[nome]||[]).map(d=>`<p class="dic-def">${esc(d)}</p>`).join("") +
+    return (dic[nome]||[]).map(d=>`<p class="dic-def">${linkarRefs(d)}</p>`).join("") +
       `<p class="fonte">${x.fonteEaston}</p>` + avisoConteudo(x, !!dic.__pt);
   });
 }

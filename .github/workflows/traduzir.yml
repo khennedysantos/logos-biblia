@@ -8,6 +8,8 @@
 # Rodar: aba Actions -> "Traduzir (NLLB)" -> Run workflow.
 # Se alguma parte não terminar a tempo, rode de novo com "retomar" = número da execução anterior:
 # ele aproveita o que já foi traduzido e faz só o que falta.
+# Antes de uma etapa inteira, dá para testar com "amostra" = N: traduz só N trechos, numa máquina, mostra no log o
+# inglês e a tradução (sem e com a proteção das referências, ferramentas/tradutor/teste_refs.py) e não grava nada.
 name: Traduzir (NLLB)
 
 on:
@@ -23,6 +25,9 @@ on:
         default: "20"
       retomar:
         description: "Opcional: número (run id) de uma execução anterior para continuar dela"
+        default: ""
+      amostra:
+        description: "Opcional: só testar N trechos (mostra no log, não grava nada)"
         default: ""
 
 permissions:
@@ -98,7 +103,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - id: m
-        run: python -c "print('matriz=' + str(list(range(int('${{ inputs.partes }}')))))" >> "$GITHUB_OUTPUT"
+        run: python -c "print('matriz=' + str(list(range(1 if '${{ inputs.amostra }}' else int('${{ inputs.partes }}')))))" >> "$GITHUB_OUTPUT"
 
   traduzir:
     needs: preparar
@@ -123,7 +128,11 @@ jobs:
           fail-on-cache-miss: true
       - uses: actions/download-artifact@v4
         with: { name: entrada, path: entrada }
+      - name: Amostra (teste, não grava nada)
+        if: inputs.amostra != ''
+        run: python ferramentas/tradutor/teste_refs.py "entrada/$ETAPA.json" "$PASTA_MODELO" "${{ inputs.amostra }}"
       - name: Traduzir parte ${{ matrix.parte }}
+        if: inputs.amostra == ''
         run: |
           mkdir -p saida
           # para antes do limite de 6 h do GitHub, para que o que já foi feito seja guardado
@@ -140,7 +149,7 @@ jobs:
 
   juntar:
     needs: [preparar, traduzir]
-    if: always() && needs.preparar.result == 'success'
+    if: always() && needs.preparar.result == 'success' && inputs.amostra == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

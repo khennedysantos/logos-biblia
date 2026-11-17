@@ -65,12 +65,88 @@ def aspas_curvas(pt):
     return pt.replace('"', "”")
 
 
+# Referências no formato USFM ("PRO 1:9; PSA 45:2", que o etapas.py prepara no Easton). O modelo traduziria os
+# códigos que são palavras (JOB, ACT, MAL, AMO, EST). Antes da tradução cada grupo vira só os números ("1:9; 45:2"),
+# que o modelo copia; depois, os números voltam a ser o grupo. Se o modelo mexer neles, o grupo vai para o fim do
+# texto: a referência nunca se perde.
+USFM = set("""GEN EXO LEV NUM DEU JOS JDG RUT 1SA 2SA 1KI 2KI 1CH 2CH EZR NEH EST JOB PSA PRO ECC SNG ISA JER LAM EZK
+DAN HOS JOL AMO OBA JON MIC NAM HAB ZEP HAG ZEC MAL MAT MRK LUK JHN ACT ROM 1CO 2CO GAL EPH PHP COL 1TH 2TH 1TI 2TI
+TIT PHM HEB JAS 1PE 2PE 1JN 2JN 3JN JUD REV""".split())
+# "JDG 9:48, 1SA 13:20, 21": a lista de versículos para antes de outro livro numerado
+RE_UNIDADE = re.compile(r"\b([1-3]?[A-Z]{2,3}) \d+(?::\d+)?(?:-\d+(?::\d+)?)?(?:, ?\d+(?:-\d+)?(?![\dA-Z]))*")
+
+
+def esqueleto(grupo):
+    return re.sub(r"\b[1-3]?[A-Z]{2,3} ", "", grupo)
+
+
+def padrao_esqueleto(esq):
+    """Os mesmos números na mesma ordem; espaços e separadores podem mudar ("1:9; 3:22" ~ "1:9, 3:22")."""
+    p = "".join(re.escape(x) if x.isdigit() else r"\s*[,;]\s*" if x in ",;" else r"\s*[-–]\s*" if x == "-"
+                else r"\s*:\s*" if x == ":" else r"\s*" for x in re.findall(r"\d+|\S|\s+", esq))
+    return re.compile(r"(?<![\d:])" + p + r"(?![\d])")
+
+
+def protege_refs(texto):
+    """Troca cada grupo de referências pelos seus números. Devolve o texto e, para cada grupo, (grupo, qual
+    ocorrência daqueles números no texto ele é, quantas há): o Easton também tem números soltos ("(21:8, 9)",
+    quando o livro é o do verbete), e o grupo tem de voltar exatamente para o lugar dele."""
+    grupos = []
+    for m in RE_UNIDADE.finditer(texto):
+        if m.group(1) not in USFM:
+            continue
+        if grupos and re.fullmatch(r"[;,] ?", texto[grupos[-1][1]:m.start()]):
+            grupos[-1][1] = m.end()
+        else:
+            grupos.append([m.start(), m.end()])
+    saida, pos, inicios, tam = [], 0, [], 0
+    for ini, fim in grupos:
+        antes = texto[pos:ini]
+        tam += len(antes)
+        inicios.append(tam)
+        esq = esqueleto(texto[ini:fim])
+        saida += [antes, esq]
+        tam += len(esq)
+        pos = fim
+    prot = "".join(saida) + texto[pos:]
+    itens = []
+    for (ini, fim), onde in zip(grupos, inicios):
+        g = texto[ini:fim]
+        ocorr = [m.start() for m in padrao_esqueleto(esqueleto(g)).finditer(prot)]
+        itens.append((g, ocorr.index(onde) if onde in ocorr else -1, len(ocorr)))
+    return prot, itens
+
+
+def restaura_refs(pt, itens):
+    """Põe cada grupo de volta no lugar dos seus números (a mesma ocorrência que era no inglês). Se o modelo mudou
+    os números, usa o primeiro lugar livre depois do último grupo; se nem isso, o grupo vai para o fim do texto.
+    Devolve o texto e quantos grupos foram para o fim."""
+    usados, perdidos, ult = [], [], 0
+    livre = lambda m: all(m.end() <= a or m.start() >= b for a, b, _ in usados)
+    for g, ordem, total in itens:
+        ms = list(padrao_esqueleto(esqueleto(g)).finditer(pt))
+        m = ms[ordem] if len(ms) == total and 0 <= ordem < len(ms) else None
+        if m is None or not livre(m):
+            m = next((x for x in ms if x.start() >= ult and livre(x)), None)
+        if m:
+            usados.append((m.start(), m.end(), g))
+            ult = m.end()
+        else:
+            perdidos.append(g)
+    for a, b, g in sorted(usados, reverse=True):
+        pt = pt[:a] + g + pt[b:]
+    if perdidos:
+        pt = pt.rstrip() + " (" + "; ".join(perdidos) + ")"
+    return pt, len(perdidos)
+
+
 class NLLB:
     def __init__(self, pasta, threads=0, beam=4):
         pasta = Path(pasta)
         self.tr = ctranslate2.Translator(str(pasta), device="cpu", compute_type="int8", intra_threads=threads)
         self.sp = spm.SentencePieceProcessor(model_file=str(pasta / "sentencepiece.bpe.model"))
         self.beam = beam
+        self.refs = [0, 0]   # grupos de referências protegidos / que foram parar no fim do texto
 
     def _lote(self, frases):
         unk = self.sp.unk_id()
@@ -129,7 +205,20 @@ class NLLB:
             pt = re.sub(r"(?<=\S) - (?=\S)", " — ", pt)
         return aspas_curvas(pt)
 
-    def traduzir(self, textos):
+    def traduzir(self, textos, proteger_refs=True):
+        grupos = None
+        if proteger_refs:
+            pares = [protege_refs(t or "") for t in textos]
+            textos, grupos = [p[0] for p in pares], [p[1] for p in pares]
+        saida = self._traduzir(textos)
+        if grupos:
+            for i, g in enumerate(grupos):
+                if g:
+                    saida[i], perdidos = restaura_refs(saida[i], g)
+                    self.refs[0] += len(g); self.refs[1] += perdidos
+        return saida
+
+    def _traduzir(self, textos):
         # cada texto vira uma sequência de pedaços: ("R", "II.") é marcador de tópico e ("L", frase) é latim,
         # mantidos como estão; ("T", n) é a frase n da fila de tradução
         planos, fila = [], []
