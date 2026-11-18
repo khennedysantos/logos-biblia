@@ -73,6 +73,14 @@ h2{font:600 1.4rem/1.2 var(--titulo);margin:2rem 0 .6rem;padding-top:1.1rem;bord
 [data-tema="escuro"] .lex-abrir{color:#171613}
 .fonte{margin-top:2rem;color:var(--suave);font-size:.78rem}
 
+/* dicionário (Easton) e temas (Nave) */
+.acv-def{font:400 1.1rem/1.65 var(--escritura);margin:.9rem 0}
+.acv-linhas{list-style:none;padding:0;margin:1rem 0}
+.acv-linhas li{padding:.55rem 0;border-bottom:1px solid var(--borda);line-height:1.6}
+.acv-original{margin-top:1.6rem;padding:.7rem 1rem;border:1px solid var(--borda);border-radius:.4rem;background:var(--painel);
+  color:var(--tinta-2);font-size:.9rem}
+.acv-original summary{cursor:pointer;font-weight:600;color:var(--suave)}
+
 .lex-lista{list-style:none;padding:0;margin:.8rem 0;columns:2 18rem;column-gap:2rem}
 .lex-lista li{break-inside:avoid;padding:.3rem 0;border-bottom:1px dotted var(--borda);font-size:.9rem}
 .lex-lista a{text-decoration:none}

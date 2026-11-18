@@ -1,5 +1,6 @@
 """Gera as páginas estáticas do Sola: a página inicial (dentro do index.html), uma página por livro
-(/biblia/joao/), uma por capítulo (/biblia/joao/3/), as do léxico de Strong (/lexico/..., em paginas_lexico.py),
+(/biblia/joao/), uma por capítulo (/biblia/joao/3/), as do léxico de Strong (/lexico/..., em paginas_lexico.py), as do dicionário e dos temas (/dicionario/, /temas/,
+em paginas_acervo.py),
 o sitemap.xml, o robots.txt e o 404.html.
 
 Cada página é o próprio index.html com título, descrição, endereço canônico e o conteúdo já escritos
@@ -288,6 +289,10 @@ def main():
     from paginas_lexico import gerar as gerar_lexico
     lexico = gerar_lexico(RAIZ, SITE, livros, slug, cortar, cabeca_seo)
     urls += lexico
+    # dicionário de Easton e temas de Nave: mesmo esquema (ferramentas/paginas_acervo.py)
+    from paginas_acervo import gerar as gerar_acervo
+    acervo = gerar_acervo(RAIZ, SITE, livros, slug, cortar, cabeca_seo)
+    urls += acervo
 
     # 404: o próprio app (endereços desconhecidos abrem na página inicial), fora do Google
     erro = modelo.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)
@@ -298,7 +303,7 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}\n</urlset>\n',
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
-    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(lexico)} do léxico, "
+    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(lexico)} do léxico, {len(acervo)} do dicionário e dos temas, "
           f"sitemap com {len(urls)} endereços, robots.txt e 404.html")
 
 
