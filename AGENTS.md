@@ -2,7 +2,7 @@
 
 Este documento é a **fonte única de verdade** para agentes de IA (Antigravity, Claude Code, Codex, Cursor e similares) que trabalham neste repositório.
 
-Mantenedor: **Khennedy** (presbiteriano reformado, formado em ADS). Comunique-se sempre em **português brasileiro**, de forma direta, clara e sem rodeios.
+Mantenedor: **Khennedy** (presbiteriano reformado, formado em ADS; usa **Windows 11** sem ambiente Linux local, com Firefox/Chrome). Comunique-se sempre em **português brasileiro**, de forma direta, clara e sem rodeios.
 
 ---
 
@@ -182,10 +182,13 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
     - *Vocabulário* (traço pontilhado): definido em `ferramentas/vocabulario.py` via `t(palavra, formas, significado, nota, s=(strongs), exige)`. `exige=True` restringe o sublinhado aos versículos que contêm aquele Strong (evita falsos positivos de homônimos como *"funda"* arma × *"cova funda"*). Máximo de 5 marcas por versículo (até 3 de vocabulário), sem sobrepor palavras-chave. Use `--relatorio` para auditar cobertura e confirmação de Strong.
   - **Comentários (`data/commentaries/`)**: Calvino cobre 47 livros; nos livros restantes entra Matthew Henry (`18` livros, baixado por `baixar_henry.py`; Cantares e 2Sm 23–24 não existem na fonte). Quando o idioma da interface é Português, o app sobrepõe `pt/{USFM}/{cap}.json` ao original inglês e resolve comentários em bloco buscando o versículo anterior ou o primeiro do capítulo.
   - **Dicionário, Temas e Doutrinas (`data/dictionary/`, `data/topics/`)**: em Easton/Nave traduzidos, as referências ficam no padrão USFM (`GEN 3:15; 4:1`) convertidas por `refs_usfm` (`etapas.py`) e transformadas em links clicáveis por `linkarRefs` (`app.js`). Já `data/topics/doutrinas.json` traz as 50 doutrinas reformadas escritas em `ferramentas/doutrinas.py` e geradas por `python3 ferramentas/gerar_doutrinas.py` (`--texto` imprime tudo para leitura; `validar_dados.py` confere se os versículos batem exatamente com a Bíblia Livre).
-- **Funcionamento do pipeline `ferramentas/tradutor/`**:
+- **Funcionamento e qualidade do pipeline `ferramentas/tradutor/`**:
   - `nllb.py` protege marcadores de estrutura (`I.`, `1.`, `(2.)`), preserva `"milhas"` (evitando conversão indevida para `"quilômetros"`) e mascara referências USFM (`GEN 3:15`) durante a inferência para que abreviações como `JOS` não virem `"JOSÉ"`.
-  - Antes de disparar uma etapa grande no workflow `.github/workflows/traduzir.yml`, é possível rodar com `amostra = N` (executa `teste_refs.py` no log sem gravar nada). Se uma execução atingir o tempo limite de 6h do GitHub, basta disparar novamente passando `retomar = <run_id>` (inclusive se o arquivo do workflow tiver mudado durante a execução anterior).
-  - Para glosas do interlinear, `GLOSAS_FIXAS` em `etapas.py` tem prioridade sobre `ferramentas/glosas_pt.json`; `python3 etapas.py aplicar glosas` reaplica ambos.
+  - Antes de disparar uma etapa grande no workflow `.github/workflows/traduzir.yml`, é possível rodar com `amostra = N` (executa `teste_refs.py` no log sem gravar nada). Se uma execução atingir o tempo limite de 6h do GitHub — ou se o robô não conseguir criar a branch `traducao-<etapa>` porque o arquivo do workflow mudou após o commit inicial — basta disparar novamente passando `retomar = <run_id>` (reaproveita tudo o que já foi traduzido).
+  - A etapa `glosas` do workflow usa o Argos em 1 máquina (poucos minutos): equivale ao `traduzir_tudo.sh glosas` sem exigir ambiente Linux local no computador do mantenedor (Windows 11). Para glosas do interlinear, `GLOSAS_FIXAS` em `etapas.py` tem prioridade sobre `ferramentas/glosas_pt.json`; `python3 etapas.py aplicar glosas` reaplica ambos.
+  - **Qualidade e limitações conhecidas dos modelos**: boa no Strong e nos títulos; legível, mas ainda com tropeços em prosa densa como Calvino e Easton — por isso o site sempre exibe o aviso transparente de *"Tradução automática"*. Os modelos tendem a omitir texto em listas longas e desconhecem inglês arcaico; o pipeline já moderniza termos arcaicos (`"thou"`, `"ass"` etc.) e fatia/retrabalha frases que saem curtas demais (`revisar.py` refaz trechos com omissão).
+- **Vídeo de apresentação (`ferramentas/video/`)**:
+  - Gera vídeo vertical (`1080×1920`, 30 qps, ~33 s) sem editor externo: `capturar.cjs` fotografa o site mobile em `SITE=http://localhost:8000`, `video.html` anima numa linha do tempo única (`trilha(...)`) e `renderizar.cjs` junta quadro a quadro com `ffmpeg` em `saida/sola-apresentacao.mp4` (`--fotos 2,13.5` confere instantes). Usa João 1:14 e Salmo 23:1 no interlinear (evitando João 3:16 por glosas imperfeitas).
 
 ---
 
@@ -214,7 +217,7 @@ git status --short
   - Passe `serviceWorkers: 'block'` na criação do contexto (caso contrário o `sw.js` intercepta rotas simuladas e serve cache antigo) e `reducedMotion: 'reduce'` (evita falhas intermitentes de clique causadas por rolagem suave). Se estiver em container com Chromium pré-instalado em `/opt/pw-browsers/chromium`, passe `executablePath`.
   - Confira ausência de erros no console e inspecione nos dois temas (**claro** e **escuro**) e nas larguras **`390`**, **`1280`** e **`1600`** px.
   - Para testar contas sem bater no Supabase real, intercepte `/vendor/supabase/supabase.js` devolvendo um cliente simulado (`auth.getSession/onAuthStateChange/signInWithOAuth/signOut`, `from().select().gte().order().range()`, `upsert`, `rpc`) e ajuste `CONTA` na resposta interceptada de `app.js` (nota: variáveis `const` de topo como `est` são acessíveis em `page.evaluate`, mas não em `window.est`).
-- Antes de encerrar qualquer tarefa, confira com `git status` se todos os arquivos novos ou regenerados entraram no controle de versão. Ao orientar testes manuais após o merge na `main`, lembre que o GitHub Pages leva ~2 minutos para publicar e pode exigir `Ctrl+Shift+R` no navegador.
+- Em clones rasos, antes de enviar branch, rode `git fetch origin main` e faça rebase se necessário. Confira sempre com `git status` se todos os arquivos novos ou regenerados entraram no repositório. Ao orientar testes manuais após o merge na `main`, lembre que o GitHub Pages leva ~2 minutos para publicar e pode exigir `Ctrl+Shift+R` no navegador.
 
 ---
 
@@ -247,11 +250,11 @@ git status --short
 ## 7. Estado atual e pendências conhecidas
 
 - **Contato e indexação**: o e-mail no rodapé ainda está como `contato@exemplo.com`; o cadastro no Google Search Console e envio do `sitemap.xml` dependem da conta pessoal do mantenedor.
-- **Traduções automáticas**: Calvino, Matthew Henry e Dicionário de Easton já estão traduzidos com NLLB-200; Nave (Temas) ainda usa tradução do Argos (composta quase só de títulos curtos).
+- **Traduções automáticas e opção futura paga**: Calvino (PR #7), Matthew Henry e Dicionário de Easton já foram traduzidos com NLLB-200; Nave (Temas) ainda usa tradução do Argos (mas é quase só títulos curtos). Usar a **Batch API da Anthropic** (~US$ 45, custo único) daria qualidade superior se o mantenedor decidir pagar no futuro; o script antigo para isso foi removido porque **gravava por cima dos arquivos originais** — caso retomado, será preciso escrever um script novo que leia `trabalho/<etapa>.json` e grave apenas em `pt/`.
 - **Revisão teológica pendente pelo mantenedor**:
   - *Palavras-chave* (`124` lemas e `83` notas de contexto em `851` capítulos), *Vocabulário* (`701` termos / `10.056` ocorrências, especialmente termos teológicos e expressões de sentido sensível) e *Doutrinas reformadas* (`50` temas / `514` referências; pontos de divergência interna reformada como milênio, cessacionismo e salmodia exclusiva ficaram de fora de propósito) foram redigidos por IA e aguardam leitura/revisão autoral do Khennedy.
 - **Refinamentos residuais nos dados**:
   - *Glosas do interlinear*: após duas grandes rodadas em `corrigir_glosas.py`, restam poucos casos raros de sentido do Argos, ~150 ocorrências de `"você"` com verbos fora da tabela, ~8% de substantivos hebraicos com sufixo fora de `substantivos_pt.json` e `327` nomes próprios raros (`nomes_pt.py --relatorio`). Para corrigir glosas pontuais, adicione em `REVISAO` (`glosas_revisao.py`) e rode `aplicar`.
   - *Atlas e idiomas*: `1.240` de `1.335` lugares têm nome em português; interface suporta `pt`/`en`/`es`, mas rótulos internos do Atlas, linha do tempo e fichas de contexto estão apenas em português.
-- **Contas Supabase**: ativas (`google: true`) apontando para o projeto `rxmxxuyqvetbkjfilayc`; em caso de falha de autenticação, mudar `google: false` em `CONTA` oculta imediatamente a funcionalidade.
+- **Contas Supabase e ambiente de nuvem do Claude Code**: contas ativas (`google: true`) contra o projeto `rxmxxuyqvetbkjfilayc` (login real e RLS testados pelo mantenedor no navegador; em ambiente de agente usa-se servidor falso nos testes, e mudar `google: false` em `CONTA` esconde tudo se algo quebrar). No **Claude Code**, o ambiente de nuvem **`"logos-biblia"`** libera rede para `rxmxxuyqvetbkjfilayc.supabase.co` e `solabiblia.com.br` (sessões iniciadas nele conseguem conferir o projeto Supabase e o site publicado; no ambiente *Default*, não).
 - **GitHub Pages**: enquanto a publicação continuar saindo direto da branch `main` (e não via GitHub Actions em *Settings → Pages*), a pasta `biblia/` permanece versionada no repositório e verificada pelo `verificar.yml`.
