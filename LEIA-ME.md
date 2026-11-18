@@ -47,8 +47,9 @@ O `gerar_paginas.py` reescreve a pasta `biblia/`, a página inicial dentro do `i
 `biblia/` à mão. A cada envio, o GitHub Actions (`.github/workflows/verificar.yml`) confere o
 JavaScript, os dados e se as páginas geradas estão em dia.
 
-Correção pequena vai direto no `main`; mudança grande, em branch com pull request. O site atualiza em
-cerca de dois minutos (no navegador, `Ctrl+Shift+R` para ver a versão nova).
+Toda alteração é feita em branch nova e enviada por pull request — nunca faça commit direto no `main`.
+Depois de mesclado, o site atualiza em cerca de dois minutos (no navegador, `Ctrl+Shift+R` para ver a
+versão nova).
 
 ## Pastas
 
@@ -61,7 +62,7 @@ cerca de dois minutos (no navegador, `Ctrl+Shift+R` para ver a versão nova).
 | `ferramentas/` | Geradores e validador (Python, sem dependências) |
 | `ferramentas/tradutor/` | Tradução automática offline (Argos e NLLB) |
 
-Os detalhes de cada arquivo de dados e as decisões do projeto estão em `CLAUDE.md`.
+Os detalhes de cada arquivo de dados, as decisões do projeto e as regras para agentes estão em `AGENTS.md`.
 
 ## Ferramentas
 
