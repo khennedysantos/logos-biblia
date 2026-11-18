@@ -147,7 +147,16 @@ def avaliar(atual, nova, en):
         return nova, "partes"
     if "você" in nova.lower():
         return nova, "você"
+    pa, pn = palavras(atual), palavras(nova)
+    if len(pn) < len(pa) and not (Counter(pn) - Counter(pa)):
+        return nova, "só apagou"            # "dando graças" -> "dando", "eu abrirei" -> "abrirei", "as abominações"
+    if "não" in pn and "não" not in pa and not re.search(r"\b(?:not|no|never|nor|neither|none|without)\b", en.lower()):
+        return nova, "negação"
     return nova, ""
+
+
+def palavras(g):
+    return re.findall(r"[\wÀ-ÿ-]+", g.lower())
 
 
 def ler_resposta(txt):
@@ -339,6 +348,19 @@ def cmd_baixar(a):
     print("  recusas:", dict(Counter(r["motivo"] for r in est["recusas"].values())))
 
 
+def cmd_refiltrar(a):
+    """Reaplica as regras de avaliar() às correções já baixadas (sem chamar a API)"""
+    est = ler_json(SAIDA, {"correcoes": {}, "recusas": {}, "feitos": []})
+    for k, c in list(est["correcoes"].items()):
+        final, motivo = avaliar(c["de"], c["para"], c["en"])
+        if motivo:
+            est["recusas"][k] = {"de": c["de"], "para": c["para"], "en": c["en"], "motivo": motivo}
+            del est["correcoes"][k]
+    gravar_atomico(SAIDA, est, indent=None)
+    print(f"[refiltrar] {len(est['correcoes']):,} correções; recusas:",
+          dict(Counter(r["motivo"] for r in est["recusas"].values())))
+
+
 def cmd_aplicar(a):
     est = ler_json(SAIDA, {"correcoes": {}})
     final = {k: {"de": c["de"], "para": c["para"]} for k, c in sorted(est["correcoes"].items())}
@@ -349,14 +371,14 @@ def cmd_aplicar(a):
 
 def main():
     ap = argparse.ArgumentParser(description="Revisão das glosas do interlinear via LLM (Batch API)")
-    ap.add_argument("acao", choices=["amostra", "preparar", "enviar", "status", "baixar", "aplicar"])
+    ap.add_argument("acao", choices=["amostra", "preparar", "enviar", "status", "baixar", "refiltrar", "aplicar"])
     ap.add_argument("--modelo", default=None)
     ap.add_argument("--chave", default=None)
     ap.add_argument("--n", type=int, default=0)
     ap.add_argument("--limite", type=int, default=0)
     a = ap.parse_args()
     {"amostra": cmd_amostra, "preparar": cmd_preparar, "enviar": cmd_enviar, "status": cmd_status,
-     "baixar": cmd_baixar, "aplicar": cmd_aplicar}[a.acao](a)
+     "baixar": cmd_baixar, "refiltrar": cmd_refiltrar, "aplicar": cmd_aplicar}[a.acao](a)
 
 
 if __name__ == "__main__":
