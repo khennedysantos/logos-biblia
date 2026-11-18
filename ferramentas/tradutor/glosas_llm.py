@@ -364,7 +364,8 @@ def cmd_refiltrar(a):
 def cmd_aplicar(a):
     est = ler_json(SAIDA, {"correcoes": {}})
     final = {k: {"de": c["de"], "para": c["para"]} for k, c in sorted(est["correcoes"].items())}
-    gravar_atomico(FINAL, final, indent=0)
+    linhas = [f"{json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)}" for k, v in final.items()]
+    FINAL.write_text("{\n" + ",\n".join(linhas) + "\n}\n", encoding="utf-8")     # uma correção por linha
     print(f"[aplicar] {len(final):,} correções em {FINAL.relative_to(FERR.parent)}")
     subprocess.run([sys.executable, str(FERR / "corrigir_glosas.py"), "aplicar"], check=True)
 
