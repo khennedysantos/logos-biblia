@@ -8,7 +8,7 @@ const UI = {
     cores:{ouro:"ouro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
-    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática (Claude) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexPagina:"Página completa, com todos os versículos", lexFonte:"Léxico de Strong (1890), definições em tradução automática (Claude) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
@@ -88,7 +88,7 @@ const UI = {
     cores:{ouro:"gold", verde:"green", azul:"blue", rosa:"pink"},
     original:"Original", comentario:"Commentary", anotacao:"Note", copiar:"Copy", copiado:"Copied!",
     grego:"Greek — Textus Receptus", hebraico:"Hebrew — Leningrad Codex",
-    lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
+    lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexPagina:"Full page with every verse (in Portuguese)", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
     referencias:"Cross-refs", semRefs:"No cross-references for this verse.", refFonte:"Cross-references: openbible.info (CC-BY)",
     leituraCorrida:"Continuous reading",
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
@@ -168,7 +168,7 @@ const UI = {
     cores:{ouro:"oro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentario", anotacao:"Nota", copiar:"Copiar", copiado:"¡Copiado!",
     grego:"Griego — Textus Receptus", hebraico:"Hebreo — Códice de Leningrado",
-    lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexPagina:"Página completa con todos los versículos (en portugués)", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referencias", semRefs:"Sin referencias para este versículo.", refFonte:"Referencias: openbible.info (CC-BY)",
     leituraCorrida:"Lectura continua",
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
@@ -270,6 +270,7 @@ const AJUDA = {
       ["Pesquisar", [
         ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
+        ["lexicoPaginas","original","Página de cada palavra","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece. Abra pelo link “Página completa” no verbete."],
         ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e 50 doutrinas da fé reformada (Confissão de Westminster e Catecismos), cada uma com os versículos em que se apoia."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
@@ -300,6 +301,7 @@ const AJUDA = {
       ["Searching", [
         ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
+        ["lexicoPaginas","original","A page for every word","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs (in Portuguese). Open it from the “Full page” link in the entry."],
         ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and 50 doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
@@ -330,6 +332,7 @@ const AJUDA = {
       ["Buscar", [
         ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
+        ["lexicoPaginas","original","Una página por palabra","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece (en portugués). Ábrela desde el enlace “Página completa” en la entrada."],
         ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y 50 doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
@@ -350,6 +353,7 @@ const ACOES_AJUDA = {
   modoEstudo: ()=>{ fecharPaineis(); est.estudo = true; gravarLS("logos_estudo", true); aplicarEstudo(); if(est.vista!=="cap") irPara("JHN", 1, 1); else atualizarEstudo(est.versoEstudo || 1); },
   lido: ()=>irPara("PSA", 23),
   original: ()=>irPara("JHN", 1, 1, "original"),
+  lexicoPaginas: ()=>{ location.href = "/lexico/grego/26/"; },
   comentario: ()=>irPara("ROM", 8, 28, "comentario"),
   referencias: ()=>irPara("JHN", 3, 16, "referencias"),
   palavras: ()=>irPara("PSA", 51, 10),
@@ -1199,7 +1203,8 @@ function ligarLexico(alvo, completo, strongInicial){
         <span class="lex-translit">${esc(ent.translit)}</span>
         <span class="lex-num">${esc(strong)}</span></div>
       <p class="lex-def">${completo ? `<strong>${x.lexDef}:</strong> ` : ""}${esc((emPT() && ent.defpt) || ent.def)}</p>
-      ${completo ? htmlUsosKjv(ent, x) : ""}`;
+      ${completo ? htmlUsosKjv(ent, x) : ""}
+      ${htmlLinkLexico(strong, x)}`;
     if(rolar) caixa.scrollIntoView({ block:"nearest" });
   };
   alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", ()=>mostrar(btn, true)));
@@ -1455,6 +1460,15 @@ function htmlUsosKjv(ent, x){
   const usos = est.idioma==="en" ? ent.kjv : (emPT() ? ent.usopt : "");
   return usos ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(usos)}</p>` : "";
 }
+// página estática do verbete (/lexico/grego/26/), gerada por ferramentas/paginas_lexico.py
+function urlLexico(cod){
+  const m = /^([GH])(\d+)$/.exec(cod || "");
+  return m ? `/lexico/${m[1]==="G" ? "grego" : "hebraico"}/${+m[2]}/` : "";
+}
+function htmlLinkLexico(cod, x){
+  const url = urlLexico(cod);
+  return url ? `<a class="lex-pagina" href="${url}">${x.lexPagina} ›</a>` : "";
+}
 function htmlStrongItem(k, ent, idxPal, x){
   const lema = idxPal && idxPal.lemas && idxPal.lemas[k];
   return `<div class="strong-item">
@@ -1462,6 +1476,7 @@ function htmlStrongItem(k, ent, idxPal, x){
     <p class="lex-def">${esc((emPT() && ent.defpt) || ent.def)}</p>
     ${htmlUsosKjv(ent, x)}
     ${emPT() && lema && lema.nota ? `<p class="strong-nota"><strong>${esc(lema.pt)}:</strong> ${esc(lema.nota)}</p>` : ""}
+    ${htmlLinkLexico(k, x)}
   </div>`;
 }
 async function buscarStrong(){

@@ -1,5 +1,6 @@
 """Gera as páginas estáticas do Sola: a página inicial (dentro do index.html), uma página por livro
-(/biblia/joao/), uma por capítulo (/biblia/joao/3/), o sitemap.xml, o robots.txt e o 404.html.
+(/biblia/joao/), uma por capítulo (/biblia/joao/3/), as do léxico de Strong (/lexico/..., em paginas_lexico.py),
+o sitemap.xml, o robots.txt e o 404.html.
 
 Cada página é o próprio index.html com título, descrição, endereço canônico e o conteúdo já escritos
 no HTML. O Google lê o texto direto; para o visitante, o app assume e funciona igual.
@@ -283,6 +284,11 @@ def main():
         destino.write_text(pagina, encoding="utf-8")
         urls.append(url)
 
+    # léxico de Strong: páginas avulsas e leves (ferramentas/paginas_lexico.py)
+    from paginas_lexico import gerar as gerar_lexico
+    lexico = gerar_lexico(RAIZ, SITE, livros, slug, cortar, cabeca_seo)
+    urls += lexico
+
     # 404: o próprio app (endereços desconhecidos abrem na página inicial), fora do Google
     erro = modelo.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)
     (RAIZ / "404.html").write_text(erro, encoding="utf-8")
@@ -292,7 +298,7 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}\n</urlset>\n',
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
-    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, "
+    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(lexico)} do léxico, "
           f"sitemap com {len(urls)} endereços, robots.txt e 404.html")
 
 
