@@ -1,7 +1,7 @@
 """Gera as páginas estáticas do Sola: a página inicial (dentro do index.html), uma página por livro
-(/biblia/joao/), uma por capítulo (/biblia/joao/3/), as do léxico de Strong (/lexico/..., em paginas_lexico.py), as do dicionário e dos temas (/dicionario/, /temas/,
+(/biblia/joao/), uma por capítulo (/biblia/joao/3/), uma por versículo (/biblia/joao/3/16/, em paginas_versiculos.py), as do léxico de Strong (/lexico/..., em paginas_lexico.py), as do dicionário e dos temas (/dicionario/, /temas/,
 em paginas_acervo.py),
-o sitemap.xml, o robots.txt e o 404.html.
+o sitemap.xml (índice de sitemap-biblia/lexico/acervo.xml), o robots.txt e o 404.html.
 
 Cada página é o próprio index.html com título, descrição, endereço canônico e o conteúdo já escritos
 no HTML. O Google lê o texto direto; para o visitante, o app assume e funciona igual.
@@ -164,7 +164,7 @@ def pagina_capitulo(b, cap, versos, nome_trad, grupo, anterior, proximo):
 </header>"""]
     for n, v in enumerate(versos, 1):
         if v:
-            corpo.append(f'<div class="verso" id="v{n}" data-v="{n}"><p class="escritura"><sup>{n}</sup>{e(v)}</p></div>')
+            corpo.append(f'<div class="verso" id="v{n}" data-v="{n}"><p class="escritura"><sup><a href="/biblia/{s}/{cap}/{n}/">{n}</a></sup>{e(v)}</p></div>')
     links = []
     if anterior:
         pb, pc = anterior
@@ -277,6 +277,12 @@ def main():
         destino.parent.mkdir(parents=True, exist_ok=True)
         destino.write_text(pagina, encoding="utf-8")
 
+    # uma página por versículo (/biblia/joao/3/16/): leves e avulsas (ferramentas/paginas_versiculos.py)
+    from paginas_versiculos import gerar as gerar_versiculos
+    css_leve = "/lexico.css?v=" + hashlib.sha1((RAIZ / "lexico.css").read_bytes()).hexdigest()[:10]
+    versiculos = gerar_versiculos(RAIZ, SITE, livros, slug, cortar, css_leve)
+    urls += versiculos
+
     # páginas de texto avulsas (cada arquivo de ferramentas/paginas/ vira /nome/)
     for arq in sorted((RAIZ / "ferramentas" / "paginas").glob("*.html")):
         url, pagina = pagina_de_texto(modelo, arq)
@@ -298,12 +304,20 @@ def main():
     erro = modelo.replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"', 1)
     (RAIZ / "404.html").write_text(erro, encoding="utf-8")
 
-    itens = "\n".join(f"  <url><loc>{u}</loc></url>" for u in urls)
+    # o protocolo aceita no máximo 50 mil endereços por arquivo: sitemap.xml vira o índice de três sitemaps
+    partes = {"biblia": [u for u in urls if u not in lexico and u not in acervo], "lexico": lexico, "acervo": acervo}
+    for nome, lista in partes.items():
+        assert len(lista) < 50000, f"sitemap-{nome}.xml passou de 50 mil endereços: divida em mais partes"
+        itens = "\n".join(f"  <url><loc>{u}</loc></url>" for u in lista)
+        (RAIZ / f"sitemap-{nome}.xml").write_text(
+            f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}\n</urlset>\n',
+            encoding="utf-8")
+    indice = "\n".join(f"  <sitemap><loc>{SITE}/sitemap-{nome}.xml</loc></sitemap>" for nome in partes)
     (RAIZ / "sitemap.xml").write_text(
-        f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}\n</urlset>\n',
+        f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{indice}\n</sitemapindex>\n',
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
-    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(lexico)} do léxico, {len(acervo)} do dicionário e dos temas, "
+    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo)} do dicionário e dos temas, "
           f"sitemap com {len(urls)} endereços, robots.txt e 404.html")
 
 

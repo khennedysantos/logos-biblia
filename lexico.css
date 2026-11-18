@@ -81,6 +81,22 @@ h2{font:600 1.4rem/1.2 var(--titulo);margin:2rem 0 .6rem;padding-top:1.1rem;bord
   color:var(--tinta-2);font-size:.9rem}
 .acv-original summary{cursor:pointer;font-weight:600;color:var(--suave)}
 
+/* páginas de versículo (/biblia/joao/3/16/) */
+.vs-trad p{margin:.5rem 0;color:var(--tinta-2);font:400 1rem/1.55 var(--escritura)}
+.vs-trad b{font:600 .7rem/1 var(--ui);letter-spacing:.08em;color:var(--ouro);margin-right:.4rem}
+.vs-inter{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:.6rem 0}
+.vs-inter[lang="he"]{direction:rtl}
+.vs-inter li{display:flex;flex-direction:column;align-items:center;min-width:4.2rem;padding:.4rem .55rem;border:1px solid var(--borda);
+  border-radius:.4rem;background:var(--painel);font:400 .82rem/1.35 var(--ui);color:var(--tinta-2);text-align:center;direction:ltr}
+.vs-inter a,.vs-inter li>:first-child{font:400 1.25rem/1.4 var(--escritura);text-decoration:none;color:var(--tinta)}
+.vs-inter[lang="he"] li>:first-child{direction:rtl;unicode-bidi:isolate}
+.vs-inter a:hover{color:var(--rubrica)}
+.vs-inter i{color:var(--suave);font-size:.74rem}
+.vs-com{font:400 1.05rem/1.6 var(--escritura);margin:.5rem 0}
+.vs-refs{list-style:none;padding:0;margin:.5rem 0}
+.vs-refs li{padding:.45rem 0;border-bottom:1px solid var(--borda);font:400 1rem/1.55 var(--escritura)}
+.vs-refs a{font:600 .88rem var(--ui);text-decoration:none;margin-right:.35rem}
+
 .lex-lista{list-style:none;padding:0;margin:.8rem 0;columns:2 18rem;column-gap:2rem}
 .lex-lista li{break-inside:avoid;padding:.3rem 0;border-bottom:1px dotted var(--borda);font-size:.9rem}
 .lex-lista a{text-decoration:none}
