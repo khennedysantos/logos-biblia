@@ -70,15 +70,23 @@ Se aparecer alguma ainda em inglês, use a mesma forma abreviada ("Gen. 3" -> "G
 bíblico, no estilo de verbete de dicionário. As referências bíblicas já estão no formato de código ("GEN 3:15",
 "1SA 13:20; PSA 45:2", "ISA 53"): copie cada uma exatamente como está, com o código em maiúsculas — o site as
 transforma em links. Mantenha "R.V." (Revised Version) e "A.V." (Authorized Version) como estão. Medidas: "cubit" =
-côvado, "shekel" = siclo, "ephah" = efa, "talent" = talento; mantenha os números e as unidades antigas.""" + COMUM,
+côvado, "shekel" = siclo, "ephah" = efa, "talent" = talento; mantenha os números e as unidades como estão — milhas
+continuam milhas, nunca converta para quilômetros. Remissões "See X" / "(See X.)" viram "Veja X" / "(Veja X.)".
+O verbete começa muitas vezes pelo significado do nome ("Whose God is Jehovah", "The people is victor"): traduza
+literalmente esse significado.""" + COMUM,
     "temas": """Você traduz para o português os subtítulos do índice temático de Nave (Nave's Topical Bible) para um
 site gratuito de estudo bíblico. Cada texto é o começo de uma linha que será seguida por uma lista de referências
 bíblicas, por isso costuma ser um fragmento ("Lineage of", "Meets Moses in the wilderness", "Instances of"):
 traduza mantendo o mesmo caráter de fragmento e a mesma concisão ("Linhagem de", "Encontra Moisés no deserto",
 "Exemplos de"), sem completar a frase, sem ponto final que o original não tenha. Remissões "See X" viram "Veja X".
-Títulos em maiúsculas viram frase com maiúscula só no começo. Cada texto vem precedido, entre colchetes, do assunto
-a que pertence ("[Aflições] God is glorified in"): use-o só para entender o sentido e NÃO o repita na resposta
-("Deus é glorificado em").""" + COMUM,
+Títulos de verbete em MAIÚSCULAS que aparecem dentro do texto (remissões "See IRON", "Also called JEHOASH") ficam
+em maiúsculas, na forma portuguesa do nome ("Veja FERRO", "Também chamado JEOÁS"); fora isso, mantenha as
+maiúsculas do original.
+A mensagem é um objeto JSON agrupado por verbete: {"Josué": {"0": "Conquers Hazor", "1": "Death of"}, "Ana": {...}}.
+O verbete (a chave de fora) serve SÓ para entender o sentido: NÃO o traduza nem o repita; traduza apenas cada texto
+("Conquista Hazor", nunca "Josué conquista Hazor" nem "Josué: conquista Hazor").
+Responda com um objeto JSON simples, sem os verbetes: {"0": "Conquista Hazor", "1": "Morte de", ...}, com todos os
+números recebidos.""" + COMUM,
 }
 # códigos de livro da fonte do Henry (estilo e-Sword: "Sa1 3:4", "Kg2 5:1") -> abreviações em português, trocados
 # antes da tradução para que o modelo só precise copiá-los
@@ -98,7 +106,8 @@ def texto_fonte(etapa, texto):
     return texto
 
 
-GRUPO_MAX = {"henry": 6000, "dicionario": 7000, "temas": 3500}
+CODIGOS = set(etapas.EASTON.values())
+GRUPO_MAX = {"henry": 6000, "dicionario": 4000, "temas": 3500}
 FATIA = 9000
 
 
@@ -148,19 +157,20 @@ def grupos(etapa, unids):
 _TITULOS = {}
 
 
-def com_assunto(uid, texto):
-    """Nave: o subtítulo sozinho ("Are multiplied") é ambíguo; vai precedido do assunto em português"""
+def assunto(uid):
+    """Nave: o subtítulo sozinho ("Are multiplied") é ambíguo; vai junto o assunto em português"""
     if not _TITULOS:
         _TITULOS.update(ler_json(DATA / "topics" / "titulos_pt.json"))
-    assunto = uid.split("|")[1]
-    return f"[{_TITULOS.get(assunto) or assunto.title()}] {texto}"
+    a = uid.split("|")[1]
+    return _TITULOS.get(a) or a.title()
 
 
 def mensagem(grupo, etapa=None):
     if etapa == "temas":
-        grupo = [(u, com_assunto(u, t)) for u, t in grupo]
-        if len(grupo) == 1:
-            return json.dumps({"0": grupo[0][1]}, ensure_ascii=False)
+        por_assunto = {}
+        for i, (u, t) in enumerate(grupo):
+            por_assunto.setdefault(assunto(u), {})[str(i)] = t
+        return json.dumps(por_assunto, ensure_ascii=False, indent=0)
     if len(grupo) == 1:
         return grupo[0][1]
     return json.dumps({str(i): t for i, (_, t) in enumerate(grupo)}, ensure_ascii=False, indent=0)
@@ -181,18 +191,56 @@ def payload(etapa, modelo, grupo):
 def ler_resposta(grupo, txt, etapa=None):
     """{uid: tradução} a partir do texto devolvido"""
     if etapa == "temas":
-        res = ler_resposta(grupo + [("", "")] if len(grupo) == 1 else grupo, txt)
-        return {u: re.sub(r"^\[[^\]]*\]\s*", "", t) for u, t in res.items() if u}
+        t = re.sub(r"^```(?:json)?\s*|\s*```$", "", txt.strip())
+        try:
+            obj = json.loads(t[t.find("{"):t.rfind("}") + 1])
+        except (json.JSONDecodeError, ValueError):
+            return {}
+        plano = {}
+        for k, v in obj.items():                     # aceita também a resposta ainda agrupada por verbete
+            plano.update({kk: vv for kk, vv in v.items()} if isinstance(v, dict) else {k: v})
+        res = {u: pos_processar(plano[str(i)]) for i, (u, _) in enumerate(grupo)
+               if isinstance(plano.get(str(i)), str) and plano[str(i)].strip()}
+        saida = {}
+        for (u, en), t in ((x, res[x[0]]) for x in grupo if x[0] in res):
+            a = assunto(u)
+            if t.lower().startswith(a.lower() + ":") and not en.lower().startswith(a.lower()):
+                t = t[len(a) + 1:].strip()                               # "Josué: conquista Hazor"
+                t = t[:1].upper() + t[1:]
+            saida[u] = t
+        return saida
+    if etapa == "dicionario":
+        res = ler_resposta(grupo, txt)
+        return {u: repoe_codigos(en, res[u]) for u, en in grupo if u in res}
     if len(grupo) == 1:
-        return {grupo[0][0]: pos_processar(txt)} if txt.strip() else {}
+        return {grupo[0][0]: re.sub(r"\n{2,}", "\n", pos_processar(txt))} if txt.strip() else {}
     t = re.sub(r"^```(?:json)?\s*|\s*```$", "", txt.strip())
     ini, fim = t.find("{"), t.rfind("}")
     try:
         obj = json.loads(t[ini:fim + 1]) if ini >= 0 else {}
     except json.JSONDecodeError:
         return {}
-    return {uid: pos_processar(obj[str(i)]) for i, (uid, _) in enumerate(grupo)
+    return {uid: re.sub(r"\n{2,}", "\n", pos_processar(obj[str(i)])) for i, (uid, _) in enumerate(grupo)
             if isinstance(obj.get(str(i)), str) and obj[str(i)].strip()}
+
+
+# ---------------- referências do Easton ----------------
+RE_REF_PT = re.compile(r"\b([1-3]?[A-ZÀ-Ú]{1,3}) (\d+(?::\d+)?)")
+
+
+def repoe_codigos(en, pt):
+    """O modelo às vezes "traduz" o código USFM ("1KI 17:1" -> "1RS 17:1", "ACT 13:5" -> "AT 13:5"). Se as
+    referências do português batem uma a uma em número com as do inglês, os códigos do inglês voltam no lugar."""
+    ref_en = [(m.group(1), m.group(2)) for m in re.finditer(r"\b([1-3]?[A-Z]{2,3}) (\d+(?::\d+)?)", en)
+              if m.group(1) in CODIGOS]
+    ref_pt = list(RE_REF_PT.finditer(pt))
+    if not ref_en or len(ref_en) != len(ref_pt) or any(a[1] != b.group(2) for a, b in zip(ref_en, ref_pt)):
+        return pt
+    saida, i = [], 0
+    for (cod, _), m in zip(ref_en, ref_pt):
+        saida += [pt[i:m.start(1)], cod]
+        i = m.end(1)
+    return "".join(saida) + pt[i:]
 
 
 # ---------------- validação ----------------
@@ -203,10 +251,14 @@ INGLES = re.compile(r"\b(?:the|of|and|which|that|with|from|this|shall|unto|thee|
                     r"have|been|would|should)\b")
 
 
-def problemas(etapa, en, pt):
+def problemas(etapa, en, pt, uid=""):
     if not pt.strip():
         return ["vazia"]
     p = []
+    if etapa == "temas" and uid:
+        a = assunto(uid).lower()
+        if (pt.lower().startswith(a) or pt.lower().rstrip(".") == a) and a.split()[0] not in en.lower():
+            p.append("repetiu o verbete")
     falta = Counter(RE_CV.findall(en)) - Counter(RE_CV.findall(pt))
     if falta:
         p.append("referência perdida: " + " ".join(sorted(falta)[:5]))
@@ -286,7 +338,7 @@ def cmd_amostra(a):
     linhas, recusas = [], 0
     for uid, en in unids:
         pt = res.get(uid, "")
-        pr = problemas(a.etapa, en, pt)
+        pr = problemas(a.etapa, en, pt, uid)
         recusas += bool(pr)
         velho = atual(a.etapa, uid.split("#")[0]) if "#" not in uid else "(parte de texto longo)"
         aviso = f"<div class='p'>{html.escape('; '.join(pr))}</div>" if pr else ""
@@ -374,7 +426,7 @@ def cmd_baixar(a):
             grupo = [(u, textos[u]) for u in lt["grupos"].get(obj["custom_id"], []) if u in textos]
             txt = "".join(b.get("text", "") for b in res["message"].get("content", []) if b.get("type") == "text")
             for uid, pt in ler_resposta(grupo, txt, a.etapa).items():
-                pr = problemas(a.etapa, textos[uid], pt)
+                pr = problemas(a.etapa, textos[uid], pt, uid)
                 if pr:
                     est["recusas"][uid] = {"pt": pt, "motivos": pr, "modelo": lt["modelo"]}
                 else:

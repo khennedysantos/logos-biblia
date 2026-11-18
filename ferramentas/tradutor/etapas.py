@@ -248,7 +248,8 @@ def aplicar_temas():
                 if pt and texto.lower().startswith("see "):
                     # remissões ("See music"): padroniza como "Veja ..."
                     pt = re.sub(r"(?i)^(veja|ver|consulte|vide)\s+", "", pt)
-                    pt = "Veja " + pt[:1].lower() + pt[1:]
+                    # minúscula só em palavra comum ("Veja música"); remissão em maiúsculas fica ("Veja FERRO")
+                    pt = "Veja " + (pt[:1].lower() if pt[1:2].islower() else pt[:1]) + pt[1:]
                 if pt:
                     _, resto = separa(l)
                     linhas[i] = "-" + pt + (" " + resto if resto else "")

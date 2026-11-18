@@ -53,8 +53,9 @@ batem com a análise gramatical; gênero do artigo/adjetivo que não bate com a 
 Para cada versículo você recebe o texto da Bíblia Livre (só como referência de sentido e de grafia dos nomes) e, por
 palavra: posição | Strong | gramática | glosa inglesa | glosa portuguesa atual.
 
-Devolva SOMENTE um objeto JSON {"REF": {"posição": "glosa corrigida"}} com as glosas que estão ERRADAS. Versículos
-sem erro ficam de fora; se nada estiver errado, devolva {}. Não reescreva glosas corretas por gosto ou estilo.
+Devolva SOMENTE um objeto JSON {"REF": {"posição": "glosa corrigida"}} com as glosas que estão ERRADAS — nunca
+repita uma glosa que já está certa. A maioria dos versículos não tem erro nenhum e fica de fora; se nada estiver
+errado, devolva {}. Não reescreva glosas corretas por gosto ou estilo, nem só para mexer no espaçamento.
 
 Regras da glosa corrigida:
 - Continua sendo glosa daquela palavra, curta e literal, no mesmo formato da atual — NÃO copie a frase da Bíblia
@@ -123,7 +124,7 @@ def payload(modelo, grupo):
 # ---------------- leitura e validação das correções ----------------
 INGLES = re.compile(r"\b(?:the|of|and|which|that|with|from|shall|unto|you|your|he|she|they|is|are|was|were|will|"
                     r"have|has|to|in|on|for|his|her|its|their|my|him|them|not|be)\b")
-PONT = re.compile(r"[.,;:!?·’”\"]+$")
+PONT = re.compile(r"[.,;:!?·]+$")
 
 
 def avaliar(atual, nova, en):
@@ -134,8 +135,8 @@ def avaliar(atual, nova, en):
     pa = PONT.search(atual)
     if pa and not PONT.search(nova):
         nova += pa.group(0)                                  # devolve a pontuação final da glosa atual
-    if nova == atual:
-        return nova, "igual"
+    if nova == atual or nova.split() == atual.split():     # só o espaçamento mudou
+        return atual, "igual"
     if INGLES.search(nova.lower()) and not INGLES.search(atual.lower()):
         return nova, "inglês"
     if len(nova) > max(28, 3 * len(atual)):
@@ -167,6 +168,8 @@ def registrar(grupo, obj, est, modelo):
         if ref not in por_ref or not isinstance(corr, dict):
             continue
         livro, cap, v, mapa = por_ref[ref]
+        corr = {i: g for i, g in corr.items() if str(i) in mapa and isinstance(g, str)
+                and avaliar(mapa[str(i)][1][3], g, mapa[str(i)][0].en)[1] != "igual"}
         if len(corr) > max(4, 0.6 * len(mapa)):              # reescreveu o versículo inteiro: não é revisão
             for i in corr:
                 est["recusas"][f"{livro}|{cap}|{v}|{i}"] = {"motivo": "versículo inteiro", "modelo": modelo}
