@@ -100,7 +100,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── books.json              # Cânon (66 livros, códigos USFM, nomes pt/en/es) e lista de traduções
 │   ├── bibles/                 # {blivre,kjv,rva,orig,byz}/{USFM}.json (capítulos → versículos)
 │   ├── interlinear/            # {USFM}/{cap}.json → palavras [original, translit, strong, glosa_pt]
-│   ├── strongs/                # G.json (grego) e H.json (hebraico): campos def (EN) e defpt (PT)
+│   ├── strongs/                # G.json (grego) e H.json (hebraico): def (EN), defpt (PT) e usopt (usos da KJV em PT)
 │   ├── palavras/               # indice.json + {USFM}.json (palavras-chave e vocabulário na Bíblia Livre)
 │   ├── commentaries/
 │   │   ├── calvin/             # manifest.json, {USFM}/{cap}.json (EN) e pt/{USFM}/{cap}.json (PT)
@@ -141,6 +141,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── tradutor/               # Pipeline isolado de tradução offline (Argos / NLLB / Batch LLM)
 │   │   ├── etapas.py           # Prepara entradas de data/ e aplica traduções em data/.../pt/
 │   │   ├── calvino_llm.py      # Teste A/B (30 trechos difíceis) + Batch API p/ Calvino → pt-v2/
+│   │   ├── strong_llm.py       # Amostra + Batch API p/ o léxico de Strong (defpt e usopt, com validação)
 │   │   ├── nllb.py             # Motor NLLB-200 1.3B (protege refs USFM, numerais romanos e latim)
 │   │   ├── tradutor.py         # Motor Argos Translate (moderniza inglês arcaico e fatia frases)
 │   │   ├── lote.py             # Execução particionada (--parte K/N) com retomada segura
@@ -256,6 +257,7 @@ git status --short
 - **Traduções automáticas e opção via Batch API (`calvino_llm.py`)**: Calvino (PR #7), Matthew Henry e Dicionário de Easton já foram traduzidos com NLLB-200; Nave (Temas) ainda usa tradução do Argos (mas é quase só títulos curtos). Para retraduzir Calvino com qualidade superior via LLM sem tocar em `pt/` nem nos originais em inglês, `ferramentas/tradutor/calvino_llm.py` roda primeiro um teste A/B em `30` trechos difíceis (`entradas/amostra_calvino_ab.json` → `trabalho/relatorio_ab_calvino.html`) e, se aprovado, envia os `10.349` textos únicos deduplicados na Batch API da Anthropic ou OpenAI (~US$ 3,80 no `claude-haiku-5-5`, ~US$ 75 no `claude-sonnet-5-5` ou ~US$ 3 no `gpt-6-luna`; ou modo `direto` a preço cheio no `gemini-3.5-flash`), gravando exclusivamente em `data/commentaries/calvin/pt-v2/` e proibindo substituição de citações bíblicas pela ARA (direitos da SBB).
 - **Revisão teológica pendente pelo mantenedor**:
   - *Palavras-chave* (`124` lemas e `83` notas de contexto em `851` capítulos), *Vocabulário* (`701` termos / `10.056` ocorrências, especialmente termos teológicos e expressões de sentido sensível) e *Doutrinas reformadas* (`50` temas / `514` referências; pontos de divergência interna reformada como milênio, cessacionismo e salmodia exclusiva ficaram de fora de propósito) foram redigidos por IA e aguardam leitura/revisão autoral do Khennedy.
+- **Léxico de Strong (`strong_llm.py`)**: `defpt` retraduzido em nov/2026 com o `claude-haiku-5-5` pela Batch API (~US$ 0,50; a amostra de 40 entradas difíceis saiu praticamente igual à do Sonnet 5.5), mais o campo novo `usopt` (lista de usos da KJV em português, mostrada em "Como a KJV traduz" no cartão do léxico). O script valida cada resposta (números G/H e palavras gregas/hebraicas preservados, sem inglês, tamanho razoável); 3 entradas recusadas (G5352, G4577, G1744) mantêm a tradução do Argos. Para refazer: `amostra`, `preparar`, `enviar`, `status`, `baixar`, `reenviar`, `aplicar` (idempotente).
 - **Refinamentos residuais nos dados**:
   - *Glosas do interlinear*: após duas grandes rodadas em `corrigir_glosas.py`, restam poucos casos raros de sentido do Argos, ~150 ocorrências de `"você"` com verbos fora da tabela, ~8% de substantivos hebraicos com sufixo fora de `substantivos_pt.json` e `327` nomes próprios raros (`nomes_pt.py --relatorio`). Para corrigir glosas pontuais, adicione em `REVISAO` (`glosas_revisao.py`) e rode `aplicar`.
   - *Atlas e idiomas*: `1.240` de `1.335` lugares têm nome em português; interface suporta `pt`/`en`/`es`, mas rótulos internos do Atlas, linha do tempo e fichas de contexto estão apenas em português.
