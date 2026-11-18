@@ -150,6 +150,17 @@ def nome_portugues(item, pt):
     return pt
 
 
+def limpa_def(pt, en):
+    """o que o modelo às vezes deixa em inglês ou a mais: "i.e." -> "isto é,", ponto final que o original não tem"""
+    pt = re.sub(r"\bi\.\s?e\.,?\s*", "isto é, ", pt)
+    pt = re.sub(r"\be\.\s?g\.,?\s*", "por exemplo, ", pt)
+    pt = re.sub(r"\[(?:idiom|idioma)\]\s*", "", pt)
+    pt = re.sub(r"\bcorretamente\b(?=,)", "propriamente", pt)
+    if pt.endswith(".") and not en.rstrip().endswith("."):
+        pt = pt[:-1]
+    return re.sub(r"\s{2,}", " ", pt).strip()
+
+
 def limpa_usos(u):
     """tira o que o modelo às vezes deixa da lista da KJV: [idiom], X, +, "Compare H3050 (...)" """
     u = re.sub(r"\[(?:idiom|idioma|phrase|frase|expressão|obj\.?)\]\s*", "", u or "")
@@ -169,6 +180,8 @@ INGLES = re.compile(r"\b(?:the|of|and|which|properly|especially|figuratively|imp
 
 def problemas(en, pt):
     """lista de motivos para recusar a tradução de uma definição"""
+    if not en.strip():
+        return []                          # entrada sem definição no original (só a lista da KJV)
     if not pt or not pt.strip():
         return ["vazia"]
     p = []
@@ -366,9 +379,10 @@ def cmd_aplicar(args):
         dados = json.loads(arq.read_text(encoding="utf-8"))
         for k, e in dados.items():
             n = ent.get(k)
-            if n and n["defpt"] and not problemas(e.get("def", ""), n["defpt"]):
-                total += e.get("defpt") != n["defpt"]
-                e["defpt"] = n["defpt"]
+            novo = limpa_def(n["defpt"], e.get("def", "")) if n else ""
+            if n and (novo or not e.get("def", "").strip()) and not problemas(e.get("def", ""), novo):
+                total += e.get("defpt") != novo
+                e["defpt"] = novo
                 if n.get("usopt"):
                     e["usopt"] = n["usopt"]
         if not args.conferir:
