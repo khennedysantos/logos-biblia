@@ -63,10 +63,10 @@
     "id": "JHN|1|1",
     "grupo": "linguas",
     "ref": "João 1:1",
-    "foco": "Calvino traduz Logos por 'Speech' (Sermo), rejeitando 'Verbum' da Vulgata e Erasmo, e refuta Serveto.",
+    "foco": "Calvino traduz Logos por 'Speech' ('a Palavra', lat. Sermo), contrasta Verbum e Sermo em favor de Erasmo e refuta Serveto.",
     "alerta_ara": {
-      "padrao": "No princípio era o Verbo",
-      "nota": "Calvino traduziu propositalmente 'Speech' (Discurso/Fala, lat. Sermo) e não 'Verbo' (Verbum); trocar pela ARA contradiz a própria exegese dele logo abaixo."
+      "padrao": "No princípio era o (?:Verbo|Discurso)",
+      "nota": "'Speech' (lat. Sermo) deve ser traduzido como 'a Palavra' (nunca 'o Verbo' da ARA/Vulgata nem 'o Discurso'), explicando Verbum e Sermo entre parênteses quando Calvino compara os dois termos latinos."
     }
   },
   {

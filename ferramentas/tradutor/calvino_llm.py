@@ -79,7 +79,8 @@ Siga rigorosamente estas regras inegociáveis:
 
 1. CITAÇÕES BÍBLICAS — PROIBIDO USAR A ARA OU TRADUÇÕES COM DIREITOS AUTORAIS:
    - NUNCA substitua as citações bíblicas do texto por versões prontas memorizadas (como Almeida Revista e Atualizada / ARA ou NAA da Sociedade Bíblica do Brasil, NVI, NVT ou NTLH).
-   - Traduza toda citação bíblica DIRETAMENTE das palavras que Calvino escreveu no texto-fonte, preservando com exatidão as escolhas lexicais e sintáticas dele. Calvino traduzia diretamente do hebraico e do grego para o latim, e sua exegese logo em seguida depende das palavras exatas que ele usou (por exemplo: se ele escreveu "In the beginning was the Speech", traduza "No princípio era o Discurso" — jamais "o Verbo"; se escreveu "Momentary lightness", traduza "Leveza momentânea"; se escreveu "I do not reject", traduza "Não rejeito").
+   - Traduza toda citação bíblica DIRETAMENTE das palavras que Calvino escreveu no texto-fonte, preservando com exatidão as escolhas lexicais e sintáticas dele. Calvino traduzia diretamente do hebraico e do grego para o latim, e sua exegese logo em seguida depende das palavras exatas que ele usou (por exemplo: se ele escreveu "In the beginning was the Speech", traduza "No princípio era a Palavra" — jamais "o Verbo" nem "o Discurso"; se escreveu "Momentary lightness", traduza "Leveza momentânea"; se escreveu "I do not reject", traduza "Não rejeito").
+   - Regra específica para "Speech" (o Sermo de Calvino para Λόγος, como em João 1): traduza "the Speech" como "a Palavra" (e não "o Discurso"), ajustando a concordância para o feminino quando o sujeito gramatical for "a Palavra". Exceção: nos trechos em que Calvino compara explicitamente Sermo com Verbum (ex.: João 1:1, "I wonder what induced the Latins to render ὁ λόγος by Verbum..."), mantenha os termos latinos e explique entre parênteses — Verbum (o Verbo, isto é, um vocábulo isolado) e Sermo (a Palavra, no sentido de fala/discurso) — para o argumento dele continuar fazendo sentido.
 
 2. HEBRAICO, GREGO E LATIM INTACTOS:
    - Preserve exatamente como estão todos os vocábulos e caracteres em hebraico (ex.: תוהו, כפר, עלמה), grego politônico (ex.: Λόγος, προτίθεναι, ἱλαστήριον), transliterações entre parênteses e palavras/frases em latim citadas por Calvino (ex.: Sermo, Verbum, sacramentum, hoc est corpus meum, ex opere operato, liberum arbitrium, ac si diceret, citações da Vulgata, de Erasmo ou de Agostinho). Traduza apenas o texto inglês ao redor.
@@ -119,9 +120,12 @@ ERROS_OCR = [
     (re.compile(r"\bSpirit The\b"), "Spirit. The"),
 ]
 
-# Fórmulas típicas da ARA (SBB) que indicam possível substituição memorizada em vez de tradução direta
+# Fórmulas típicas da ARA (SBB) ou desvios lexicais que indicam substituição indevida em vez de tradução direta
 FORMULAS_ARA_GERAIS = [
-    (re.compile(r"No princípio era o Verbo", re.I), "Fórmula clássica/ARA ('era o Verbo') — confira se Calvino escreveu 'Speech' (Discurso/Fala) ou 'Word'."),
+    (
+        re.compile(r"No princípio era o (?:Verbo|Discurso)", re.I),
+        "Fórmula indevida ('era o Verbo' da ARA/Vulgata ou 'era o Discurso') — 'the Speech' (Sermo) de Calvino deve ser traduzido como 'a Palavra'.",
+    ),
     (re.compile(r"leve e momentânea tribulação", re.I), "Fórmula exata da ARA em 2Co 4:17."),
     (re.compile(r"Não anulo a graça de Deus", re.I), "Fórmula exata da ARA em Gl 2:21."),
     (re.compile(r"Sabemos que todas as coisas cooperam para o bem", re.I), "Fórmula exata da ARA em Rm 8:28."),
