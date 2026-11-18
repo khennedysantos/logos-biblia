@@ -143,7 +143,7 @@ def grupos(etapa, unids):
         if len(u[1]) > lim:
             saida.append([u])
             continue
-        if atual and tam + len(u[1]) > lim:
+        if atual and (tam + len(u[1]) > lim or len(atual) >= 80):     # mais que isso o modelo para no meio
             saida.append(atual)
             atual, tam = [], 0
         atual.append(u)
@@ -225,22 +225,26 @@ def ler_resposta(grupo, txt, etapa=None):
 
 
 # ---------------- referências do Easton ----------------
-RE_REF_PT = re.compile(r"\b([1-3]?[A-ZÀ-Ú]{1,3}) (\d+(?::\d+)?)")
+RE_REF_PT = re.compile(r"(?<![\w.-])([1-3]?[A-ZÀ-Ú][A-ZÀ-Úa-zà-ú]{0,4}\.?) (\d+(?::\d+)?)")
+
+
+def junta_dois_pontos(t):
+    """a fonte do Easton tem "ROM 16: 14"; o modelo costuma escrever "ROM 16:14" (que é o certo)"""
+    return re.sub(r"(\d): (\d)", r"\1:\2", t)
 
 
 def repoe_codigos(en, pt):
-    """O modelo às vezes "traduz" o código USFM ("1KI 17:1" -> "1RS 17:1", "ACT 13:5" -> "AT 13:5"). Se as
-    referências do português batem uma a uma em número com as do inglês, os códigos do inglês voltam no lugar."""
+    """O modelo às vezes "traduz" o código USFM ("1KI 17:1" -> "1RS 17:1", "ACT 13:5" -> "ATOS 13:5"). As
+    referências do português são alinhadas em ordem, pelos números, com as do inglês, e o código do inglês volta."""
+    en = junta_dois_pontos(en)
     ref_en = [(m.group(1), m.group(2)) for m in re.finditer(r"\b([1-3]?[A-Z]{2,3}) (\d+(?::\d+)?)", en)
               if m.group(1) in CODIGOS]
-    ref_pt = list(RE_REF_PT.finditer(pt))
-    if not ref_en or len(ref_en) != len(ref_pt) or any(a[1] != b.group(2) for a, b in zip(ref_en, ref_pt)):
-        return pt
-    saida, i = [], 0
-    for (cod, _), m in zip(ref_en, ref_pt):
-        saida += [pt[i:m.start(1)], cod]
-        i = m.end(1)
-    return "".join(saida) + pt[i:]
+    saida, i, j = [], 0, 0
+    for m in RE_REF_PT.finditer(pt):
+        if j < len(ref_en) and m.group(2) == ref_en[j][1]:
+            saida += [pt[i:m.start(1)], ref_en[j][0]]
+            i, j = m.end(1), j + 1
+    return "".join(saida) + pt[i:] if j == len(ref_en) else pt
 
 
 # ---------------- validação ----------------
@@ -255,9 +259,12 @@ def problemas(etapa, en, pt, uid=""):
     if not pt.strip():
         return ["vazia"]
     p = []
+    if etapa == "dicionario":
+        en = junta_dois_pontos(en)
     if etapa == "temas" and uid:
         a = assunto(uid).lower()
-        if (pt.lower().startswith(a) or pt.lower().rstrip(".") == a) and a.split()[0] not in en.lower():
+        b = pt.lower().rstrip(".")
+        if (b == a or b.startswith((a + ":", a + ","))) and not en.lower().startswith(a.split()[0][:4]):
             p.append("repetiu o verbete")
     falta = Counter(RE_CV.findall(en)) - Counter(RE_CV.findall(pt))
     if falta:
@@ -452,6 +459,25 @@ def remissao_nave(en):
     return "Veja " + t.upper() if t else None
 
 
+def cmd_revalidar(a):
+    """Reconfere as recusas com as regras atuais (sem chamar a API)"""
+    textos = dict(unidades(a.etapa, itens_da_etapa(a.etapa)))
+    est = ler_json(arq(a.etapa, "saida"), {"partes": {}, "recusas": {}})
+    ok = 0
+    for uid, r in list(est["recusas"].items()):
+        pt = repoe_codigos(textos[uid], r["pt"]) if a.etapa == "dicionario" else r["pt"]
+        pr = problemas(a.etapa, textos[uid], pt, uid)
+        if pr:
+            r["pt"], r["motivos"] = pt, pr
+        else:
+            est["partes"][uid] = pt
+            del est["recusas"][uid]
+            ok += 1
+    gravar_atomico(arq(a.etapa, "saida"), est, indent=None)
+    print(f"[revalidar] {ok} aceitas agora; {len(est['recusas'])} continuam recusadas")
+    print("  motivos:", dict(Counter(m.split(":")[0].split(" (")[0] for r in est["recusas"].values() for m in r["motivos"])))
+
+
 def cmd_aplicar(a):
     itens = itens_da_etapa(a.etapa)
     est = ler_json(arq(a.etapa, "saida"), {"partes": {}, "recusas": {}})
@@ -480,7 +506,8 @@ def cmd_aplicar(a):
 
 def main():
     ap = argparse.ArgumentParser(description="Henry, Easton e Nave via LLM (Batch API)")
-    ap.add_argument("acao", choices=["amostra", "preparar", "enviar", "status", "baixar", "reenviar", "aplicar"])
+    ap.add_argument("acao", choices=["amostra", "preparar", "enviar", "status", "baixar", "reenviar", "revalidar",
+                                     "aplicar"])
     ap.add_argument("etapa", choices=list(PROMPTS))
     ap.add_argument("--modelo", default=None)
     ap.add_argument("--chave", default=None)
@@ -488,7 +515,7 @@ def main():
     ap.add_argument("--limite", type=int, default=0)
     a = ap.parse_args()
     {"amostra": cmd_amostra, "preparar": cmd_preparar, "enviar": enviar, "status": cmd_status, "baixar": cmd_baixar,
-     "reenviar": lambda x: enviar(x, so_recusadas=True), "aplicar": cmd_aplicar}[a.acao](a)
+     "reenviar": lambda x: enviar(x, so_recusadas=True), "revalidar": cmd_revalidar, "aplicar": cmd_aplicar}[a.acao](a)
 
 
 if __name__ == "__main__":
