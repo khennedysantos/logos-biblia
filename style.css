@@ -302,6 +302,8 @@ body:not([data-vista="cap"]) #navContexto,body:not([data-vista="cap"]) #btnEstud
 .lex-num{margin-left:auto;color:var(--ouro);font-weight:700;font-size:.66rem;letter-spacing:.07em;
   background:color-mix(in srgb,var(--ouro-vivo) 14%,transparent);padding:.1rem .4rem;border-radius:.22rem}
 .lex-def{font-size:.84rem;line-height:1.58;margin:.25rem 0;color:var(--tinta-2)}
+.lex-pagina{display:inline-block;margin:.2rem 0 .1rem;font-size:.8rem;font-weight:600;color:var(--rubrica);text-decoration:none}
+.lex-pagina:hover{text-decoration:underline}
 
 /* ---------- palavras-chave sublinhadas e cartão ---------- */
 .chave{text-decoration:underline;text-decoration-color:var(--ouro-vivo);text-decoration-thickness:1.5px;

@@ -42,8 +42,8 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
    - Ambientes virtuais, modelos baixados e pastas temporárias (`venv/`, `modelo/`, `modelo-*`, `trabalho/`, `ferramentas/fontes/`, `ferramentas/video/{telas,quadros,saida}/`) ficam fora do controle de versão (`.gitignore`).
    - Não rode traduções longas (dezenas de minutos) dentro do ambiente interativo do agente: o trabalho pesado roda no GitHub Actions (`.github/workflows/traduzir.yml`), que publica o resultado em uma branch `traducao-<etapa>` para revisão via Pull Request.
 5. **Nunca editar páginas geradas à mão**:
-   - Não edite manualmente `biblia/`, `privacidade/index.html`, `404.html`, `sitemap.xml` nem o bloco entre `<!--CONTEUDO-->` e `<!--/CONTEUDO-->` dentro de `index.html`.
-   - **Sempre que modificar `index.html`, `app.js`, `style.css`, `sw.js` ou qualquer arquivo em `ferramentas/paginas/*.html`, execute `python3 ferramentas/gerar_paginas.py`** e inclua os arquivos regenerados no commit. O CI (`.github/workflows/verificar.yml`) reprova qualquer PR em que as páginas geradas estejam defasadas.
+   - Não edite manualmente `biblia/`, `lexico/`, `privacidade/index.html`, `404.html`, `sitemap.xml` nem o bloco entre `<!--CONTEUDO-->` e `<!--/CONTEUDO-->` dentro de `index.html`.
+   - **Sempre que modificar `index.html`, `app.js`, `style.css`, `lexico.css`, `sw.js`, `data/strongs/`, `data/interlinear/` ou qualquer arquivo em `ferramentas/paginas/*.html`, execute `python3 ferramentas/gerar_paginas.py`** e inclua os arquivos regenerados no commit. O CI (`.github/workflows/verificar.yml`) reprova qualquer PR em que as páginas geradas estejam defasadas.
 
 ---
 
@@ -74,6 +74,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 /
 ├── index.html                  # Casca principal da SPA (início pré-renderizado entre <!--CONTEUDO-->)
 ├── style.css                   # Estilos globais, variáveis de tema (claro/escuro) e responsividade
+├── lexico.css                  # Folha própria e leve das páginas do léxico (cores/fontes copiadas do style.css)
 ├── app.js                      # Toda a lógica da aplicação no navegador (~2.880 linhas, JS puro)
 ├── sw.js                       # Service Worker (cache do app e cache offline de /data/)
 ├── manifest.webmanifest        # Manifesto PWA (instalação no celular/desktop)
@@ -90,6 +91,8 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   └── <livro-slug>/[<cap>/]index.html
 ├── privacidade/                # GERADO (não editar): página avulsa a partir de ferramentas/paginas/
 │   └── index.html
+├── lexico/                     # GERADO (não editar): léxico de Strong, uma página por palavra (~14.258 páginas)
+│   └── {grego,hebraico}/<n>/index.html + índices e listas de 250 em 250
 │
 ├── fontes/                     # Fontes .woff2 locais (Cardo, Cormorant Garamond, Inter) + LICENCA-OFL.txt
 ├── vendor/
@@ -116,7 +119,8 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   └── timeline.json           # Eventos da linha do tempo bíblica
 │
 ├── ferramentas/                # Scripts offline de geração, revisão e validação (Python 3 stdlib)
-│   ├── gerar_paginas.py        # Gera biblia/, privacidade/, index.html, 404.html, sitemap.xml e hashes
+│   ├── gerar_paginas.py        # Gera biblia/, lexico/, privacidade/, index.html, 404.html, sitemap.xml e hashes
+│   ├── paginas_lexico.py       # Chamado pelo gerar_paginas.py: as páginas do léxico em lexico/
 │   ├── validar_dados.py        # Valida integridade estrutural e textual de todo o acervo em data/
 │   ├── paginas/privacidade.html# Conteúdo-fonte da política de privacidade (/privacidade/)
 │   ├── CONTAS.md               # Passo a passo da sincronização opcional com Supabase
@@ -167,7 +171,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 - **Roteamento SPA e SEO (`app.js` + `gerar_paginas.py`)**:
   - Três vistas (`est.vista`): início (`/`), livro (`/biblia/joao/`) e capítulo (`/biblia/joao/3/`, com `#v16` rolando direto ao versículo) via `history.pushState`. Links antigos `#/JHN/3` continuam funcionando e são convertidos automaticamente.
   - Toda referência bíblica é um `<a href>` real gerado por `linkRef`; um único ouvinte de clique em `iniciar()` intercepta e navega sem recarregar. Todos os `fetch` usam caminhos absolutos (`/data/...`).
-  - `gerar_paginas.py` cria uma página HTML real para cada livro e capítulo em `biblia/` (com `<title>`, meta description, texto do capítulo e `BreadcrumbList` JSON-LD para buscadores) e páginas de texto avulsas sem o app a partir de `ferramentas/paginas/*.html` (como `/privacidade/`, cujo link está cadastrado no Branding do login Google — atualize a data no topo de `ferramentas/paginas/privacidade.html` se mudar o que o site armazena).
+  - `gerar_paginas.py` cria uma página HTML real para cada livro e capítulo em `biblia/` (com `<title>`, meta description, texto do capítulo e `BreadcrumbList` JSON-LD para buscadores) as páginas do léxico de Strong em `lexico/` (`ferramentas/paginas_lexico.py`: uma por palavra em `/lexico/grego/26/` e `/lexico/hebraico/2617/`, com definição, usos da KJV, como o interlinear traduz, ocorrências por livro e versículos — os 25 primeiros com o texto da Bíblia Livre, depois só as referências; HTML avulso e leve com `lexico.css` próprio, para que mudar `app.js`/`style.css` não reescreva as ~14 mil páginas; o cartão do léxico e a busca Strong do app linkam para elas via `urlLexico()`) e páginas de texto avulsas sem o app a partir de `ferramentas/paginas/*.html` (como `/privacidade/`, cujo link está cadastrado no Branding do login Google — atualize a data no topo de `ferramentas/paginas/privacidade.html` se mudar o que o site armazena).
 - **Service Worker (`sw.js`)**:
   - Páginas HTML usam estratégia *rede primeiro*, caindo para a página inicial em cache quando sem internet (o `app.js` lê `location.pathname` e abre o capítulo certo).
   - Arquivos em `/data/` usam o cache `sola-dados-v1` (*stale-while-revalidate*). O botão *"Baixar a Bíblia"* no painel Sobre salva todos os capítulos da tradução atual nesse mesmo cache.
@@ -265,4 +269,4 @@ git status --short
   - *Glosas do interlinear*: depois das duas rodadas em `corrigir_glosas.py`, `glosas_llm.py` (nov/2026, `claude-haiku-5-5` em Batch, ~US$ 1,60) revisou os 31.103 versículos com Strong, gramática, glosa inglesa e texto da Bíblia Livre e gerou `38.779` correções aceitas (a validação recusa as que só apagam palavras, inventam negação, mexem nas marcações `[ ]`/`< >` ou reescrevem o versículo inteiro). Numa auditoria por amostragem, ~9 em 10 corrigiam erros reais; o restante é discutível — para corrigir uma correção ruim, adicione a glosa certa em `REVISAO` ou troque o `para` dela em `glosas_llm.json` (apagar a chave não restaura a glosa antiga, que precisa vir do histórico do git). Antes disso restavam poucos casos raros de sentido do Argos, ~150 ocorrências de `"você"` com verbos fora da tabela, ~8% de substantivos hebraicos com sufixo fora de `substantivos_pt.json` e `327` nomes próprios raros (`nomes_pt.py --relatorio`). Para corrigir glosas pontuais, adicione em `REVISAO` (`glosas_revisao.py`) e rode `aplicar`.
   - *Atlas e idiomas*: `1.240` de `1.335` lugares têm nome em português; interface suporta `pt`/`en`/`es`, mas rótulos internos do Atlas, linha do tempo e fichas de contexto estão apenas em português.
 - **Contas Supabase e ambiente de nuvem do Claude Code**: contas ativas (`google: true`) contra o projeto `rxmxxuyqvetbkjfilayc` (login real e RLS testados pelo mantenedor no navegador; em ambiente de agente usa-se servidor falso nos testes, e mudar `google: false` em `CONTA` esconde tudo se algo quebrar). No **Claude Code**, o ambiente de nuvem **`"logos-biblia"`** libera rede para `rxmxxuyqvetbkjfilayc.supabase.co` e `solabiblia.com.br` (sessões iniciadas nele conseguem conferir o projeto Supabase e o site publicado; no ambiente *Default*, não).
-- **GitHub Pages**: enquanto a publicação continuar saindo direto da branch `main` (e não via GitHub Actions em *Settings → Pages*), a pasta `biblia/` permanece versionada no repositório e verificada pelo `verificar.yml`.
+- **GitHub Pages**: enquanto a publicação continuar saindo direto da branch `main` (e não via GitHub Actions em *Settings → Pages*), as pastas `biblia/` e `lexico/` permanecem versionadas no repositório e verificada pelo `verificar.yml`.
