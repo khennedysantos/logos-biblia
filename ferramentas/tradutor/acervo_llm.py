@@ -442,6 +442,16 @@ def cmd_baixar(a):
         print("  motivos:", dict(motivos))
 
 
+def remissao_nave(en):
+    """ "See IRON" -> "Veja FERRO", com o mesmo título em português que o site mostra para o verbete"""
+    m = re.fullmatch(r"See ([A-Z][A-Z ,'()\-]+?)\.?", en.strip())
+    if not m:
+        return None
+    assunto("x|x|0")
+    t = _TITULOS.get(m.group(1).strip())
+    return "Veja " + t.upper() if t else None
+
+
 def cmd_aplicar(a):
     itens = itens_da_etapa(a.etapa)
     est = ler_json(arq(a.etapa, "saida"), {"partes": {}, "recusas": {}})
@@ -453,6 +463,8 @@ def cmd_aplicar(a):
         else:
             pedacos = [est["partes"].get(f"{it['id']}#{k}") for k in range(len(partes))]
             pt = "".join(p + sep for p, (_, sep) in zip(pedacos, partes)).strip() if all(pedacos) else None
+        if a.etapa == "temas":
+            pt = remissao_nave(it["texto"]) or pt
         if pt:
             tr[it["id"]] = pt
             novos += 1
