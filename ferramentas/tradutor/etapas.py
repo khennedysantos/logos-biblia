@@ -355,7 +355,7 @@ NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
 def preparar_comentario(etapa, pasta):
     base = DATA / "commentaries" / pasta
     itens = []
-    for livro in sorted(p for p in base.iterdir() if p.is_dir() and p.name != "pt"):
+    for livro in sorted(p for p in base.iterdir() if p.is_dir() and not p.name.startswith("pt")):
         for arq in sorted(livro.glob("*.json"), key=lambda a: int(a.stem)):
             for v, txt in ler(arq).items():
                 if v.isdigit() and txt.strip():

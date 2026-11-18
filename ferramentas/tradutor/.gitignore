@@ -3,3 +3,5 @@ modelo/
 trabalho/
 __pycache__/
 modelo-nllb/
+.env
+

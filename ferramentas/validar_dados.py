@@ -60,9 +60,14 @@ def main():
                 erros.append(f"commentaries/{autor}/{i}: está no manifesto mas a pasta não existe")
 
     for autor in autores:
-        for arq in (DATA / "commentaries" / autor / "pt").glob("*/*.json"):
-            if not (DATA / "commentaries" / autor / arq.parent.name / arq.name).exists():
-                erros.append(f"commentaries/{autor}/pt/{arq.parent.name}/{arq.name}: tradução sem o original")
+        for sub_pt in ("pt", "pt-v2"):
+            pasta_pt = DATA / "commentaries" / autor / sub_pt
+            if not pasta_pt.is_dir():
+                continue
+            for arq in pasta_pt.glob("*/*.json"):
+                ler(arq)
+                if not (DATA / "commentaries" / autor / arq.parent.name / arq.name).exists():
+                    erros.append(f"commentaries/{autor}/{sub_pt}/{arq.parent.name}/{arq.name}: tradução sem o original")
     sem_comentario = [b["id"] for b in livros if b["id"] not in autores["calvin"] | autores["henry"]]
     for tipo in ("dictionary", "topics"):
         indice = ler(DATA / tipo / "index.json") or []
