@@ -138,15 +138,16 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── gerar_atlas_pt.py       # Preenche nomes em português (campo p) em data/places.json
 │   ├── gerar_crossrefs.py      # Converte referências cruzadas do openbible.info
 │   ├── baixar_henry.py         # Baixa comentário de Matthew Henry (domínio público)
-│   ├── tradutor/               # Pipeline isolado de tradução automática offline (Argos / NLLB)
+│   ├── tradutor/               # Pipeline isolado de tradução offline (Argos / NLLB / Batch LLM)
 │   │   ├── etapas.py           # Prepara entradas de data/ e aplica traduções em data/.../pt/
+│   │   ├── calvino_llm.py      # Teste A/B (30 trechos difíceis) + Batch API p/ Calvino → pt-v2/
 │   │   ├── nllb.py             # Motor NLLB-200 1.3B (protege refs USFM, numerais romanos e latim)
 │   │   ├── tradutor.py         # Motor Argos Translate (moderniza inglês arcaico e fatia frases)
 │   │   ├── lote.py             # Execução particionada (--parte K/N) com retomada segura
 │   │   ├── revisar.py          # Retraduz trechos em que o modelo omitiu conteúdo
 │   │   ├── teste_refs.py       # Testa amostras antes de rodar uma etapa inteira no Actions
 │   │   ├── traduzir_tudo.sh    # Script local para etapas rápidas com Argos
-│   │   └── entradas/           # Entradas auxiliares versionadas (ex.: verbos contextualizados)
+│   │   └── entradas/           # Entradas auxiliares versionadas (verbos e amostra_calvino_ab.json)
 │   └── video/                  # Geração automatizada do vídeo vertical (1080×1920, 30 fps)
 │       ├── capturar.cjs        # Captura telas mobile do site com Playwright
 │       ├── video.html          # Animação em linha do tempo única
@@ -252,7 +253,7 @@ git status --short
 ## 7. Estado atual e pendências conhecidas
 
 - **Contato e indexação**: o e-mail no rodapé ainda está como `contato@exemplo.com`; o cadastro no Google Search Console e envio do `sitemap.xml` dependem da conta pessoal do mantenedor.
-- **Traduções automáticas e opção futura paga**: Calvino (PR #7), Matthew Henry e Dicionário de Easton já foram traduzidos com NLLB-200; Nave (Temas) ainda usa tradução do Argos (mas é quase só títulos curtos). Usar a **Batch API da Anthropic** (~US$ 45, custo único) daria qualidade superior se o mantenedor decidir pagar no futuro; o script antigo para isso foi removido porque **gravava por cima dos arquivos originais** — caso retomado, será preciso escrever um script novo que leia `trabalho/<etapa>.json` e grave apenas em `pt/`.
+- **Traduções automáticas e opção via Batch API (`calvino_llm.py`)**: Calvino (PR #7), Matthew Henry e Dicionário de Easton já foram traduzidos com NLLB-200; Nave (Temas) ainda usa tradução do Argos (mas é quase só títulos curtos). Para retraduzir Calvino com qualidade superior via LLM sem tocar em `pt/` nem nos originais em inglês, `ferramentas/tradutor/calvino_llm.py` roda primeiro um teste A/B em `30` trechos difíceis (`entradas/amostra_calvino_ab.json` → `trabalho/relatorio_ab_calvino.html`) e, se aprovado, envia os `10.349` textos únicos deduplicados na Batch API da Anthropic ou OpenAI (~US$ 3,80 no `claude-haiku-5-5`, ~US$ 75 no `claude-sonnet-5-5` ou ~US$ 3 no `gpt-6-luna`; ou modo `direto` a preço cheio no `gemini-3.5-flash`), gravando exclusivamente em `data/commentaries/calvin/pt-v2/` e proibindo substituição de citações bíblicas pela ARA (direitos da SBB).
 - **Revisão teológica pendente pelo mantenedor**:
   - *Palavras-chave* (`124` lemas e `83` notas de contexto em `851` capítulos), *Vocabulário* (`701` termos / `10.056` ocorrências, especialmente termos teológicos e expressões de sentido sensível) e *Doutrinas reformadas* (`50` temas / `514` referências; pontos de divergência interna reformada como milênio, cessacionismo e salmodia exclusiva ficaram de fora de propósito) foram redigidos por IA e aguardam leitura/revisão autoral do Khennedy.
 - **Refinamentos residuais nos dados**:

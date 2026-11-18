@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ROM|8|1",
+    "grupo": "listas",
+    "ref": "Romanos 8:1",
+    "foco": "Tripla enumeração encadeada por travessões (—); no NLLB houve repetição ('perdoá-la e perdoá-la') e perda de coesão."
+  },
+  {
+    "id": "ISA|48|22",
+    "grupo": "listas",
+    "ref": "Isaías 48:22",
+    "foco": "Cadeia longa de ponto-e-vírgulas (NLLB capitalizou 29 vezes após ';') + cauda de apêndice do CCEL colada ao fim do capítulo."
+  },
+  {
+    "id": "JER|2|3",
+    "grupo": "listas",
+    "ref": "Jeremias 2:3",
+    "foco": "Exposição com 13 marcadores sequenciais e períodos subordinados longos sobre a ingratidão de Israel."
+  },
+  {
+    "id": "JHN|20|1",
+    "grupo": "listas",
+    "ref": "João 20:1",
+    "foco": "Nove pontos argumentativos sequenciais sobre as testemunhas e provas da ressurreição de Cristo."
+  },
+  {
+    "id": "1CO|1|10",
+    "grupo": "listas",
+    "ref": "1 Coríntios 1:10",
+    "foco": "Enumeração retórica das facções em Corinto e distinção entre unidade doutrinária e concórdia fraterna."
+  },
+  {
+    "id": "HEB|6|1",
+    "grupo": "listas",
+    "ref": "Hebreus 6:1",
+    "foco": "Lista dos seis rudimentos da fé cristã articulados em um único bloco argumentativo denso."
+  },
+  {
+    "id": "1CO|15|27",
+    "grupo": "listas",
+    "ref": "1 Coríntios 15:27",
+    "foco": "Cadeia silogística longa sobre o reino mediatorial de Cristo e a sujeição de todas as coisas ao Pai."
+  },
+  {
+    "id": "NUM|8|16",
+    "grupo": "listas",
+    "ref": "Números 8:16",
+    "foco": "Dez cláusulas encadeadas sobre a separação dos levitas em lugar dos primogênitos."
+  },
+  {
+    "id": "DEU|26|2",
+    "grupo": "listas",
+    "ref": "Deuteronômio 26:2",
+    "foco": "Série de finalidades litúrgicas e teológicas da oferta das primícias no culto público."
+  },
+  {
+    "id": "2CO|13|14",
+    "grupo": "listas",
+    "ref": "2 Coríntios 13:14",
+    "foco": "Bênção apostólica tripartite (first, secondly, thirdly) + cauda de índice grego/bíblico do CCEL onde o NLLB alucinou grego moderno."
+  },
+  {
+    "id": "JHN|1|1",
+    "grupo": "linguas",
+    "ref": "João 1:1",
+    "foco": "Calvino traduz Logos por 'Speech' ('a Palavra', lat. Sermo), contrasta Verbum e Sermo em favor de Erasmo e refuta Serveto.",
+    "alerta_ara": {
+      "padrao": "No princípio era o (?:Verbo|Discurso)",
+      "nota": "'Speech' (lat. Sermo) deve ser traduzido como 'a Palavra' (nunca 'o Verbo' da ARA/Vulgata nem 'o Discurso'), explicando Verbum e Sermo entre parênteses quando Calvino compara os dois termos latinos."
+    }
+  },
+  {
+    "id": "GEN|1|2",
+    "grupo": "linguas",
+    "ref": "Gênesis 1:2",
+    "foco": "Hebraico תוהו (tohu) e בוהו (bohu); no NLLB 'solicitous' virou 'solicitante' e 'subjoins' virou 'subjunta'."
+  },
+  {
+    "id": "ROM|3|25",
+    "grupo": "linguas",
+    "ref": "Romanos 3:25",
+    "foco": "Grego προτίθεναι e ἱλαστήριον, tipologia do propiciatório e vocabulário técnico da expiação."
+  },
+  {
+    "id": "EXO|25|17",
+    "grupo": "linguas",
+    "ref": "Êxodo 25:17",
+    "foco": "Raiz hebraica כפר (caphar), grego da Septuaginta e sentido sacrificial de propiciatório (mercy-seat)."
+  },
+  {
+    "id": "ISA|1|1",
+    "grupo": "linguas",
+    "ref": "Isaías 1:1",
+    "foco": "Oito ocorrências hebraicas (חזון chazon, חזה chazah, etc.) e termos gregos intercalados na prosa inglesa."
+  },
+  {
+    "id": "AMO|5|26",
+    "grupo": "linguas",
+    "ref": "Amós 5:26",
+    "foco": "Confronto entre hebraico massorético e Septuaginta citada por Estêvão (Atos 7), nomes de ídolos e escolha de tradução própria."
+  },
+  {
+    "id": "MAT|1|21",
+    "grupo": "linguas",
+    "ref": "Mateus 1:21",
+    "foco": "Etimologia hebraica do nome JESUS, discussão morfológica e refutação de objeções rabínicas."
+  },
+  {
+    "id": "HEB|5|6",
+    "grupo": "linguas",
+    "ref": "Hebreus 5:6",
+    "foco": "Citação do Salmo 110 com hebraico e grego politônico, ordem de Melquisedeque e tipologia sacerdotal."
+  },
+  {
+    "id": "EXO|20|7",
+    "grupo": "linguas",
+    "ref": "Êxodo 20:7",
+    "foco": "Terceiro Mandamento: termos hebraicos, figura da sinédoque e teologia reformada dos juramentos solenes."
+  },
+  {
+    "id": "ISA|7|14",
+    "grupo": "linguas",
+    "ref": "Isaías 7:14",
+    "foco": "Exegese longa (11 mil caracteres) do hebraico עלמה (almah), refutação de cavilações judaicas e profecia messiânica."
+  },
+  {
+    "id": "2CO|4|17",
+    "grupo": "polemica",
+    "ref": "2 Coríntios 4:17",
+    "foco": "Calvino traduz literalmente 'Momentary lightness' (criticando o Antigo Intérprete/Vulgata e o mérito das obras nos papistas).",
+    "alerta_ara": {
+      "padrao": "leve e momentânea tribulação",
+      "nota": "A ARA diz 'leve e momentânea tribulação', mas Calvino verteu literalmente 'Momentary lightness' (Leveza momentânea) e comenta essa construção exata."
+    }
+  },
+  {
+    "id": "EPH|5|32",
+    "grupo": "polemica",
+    "ref": "Efésios 5:32",
+    "foco": "Polêmica contra a Vulgata ('sacramentum hoc magnum est') usada pelos papistas para fazer do casamento um sacramento."
+  },
+  {
+    "id": "GAL|2|21",
+    "grupo": "polemica",
+    "ref": "Gálatas 2:21",
+    "foco": "Calvino verte 'I do not reject' (e não 'Não anulo' da ARA) e ataca sofistas e papistas sobre o mérito.",
+    "alerta_ara": {
+      "padrao": "Não anulo a graça",
+      "nota": "A ARA traz 'Não anulo a graça de Deus'; Calvino escreveu 'I do not reject' (Não rejeito) e baseia o comentário na ideia de rejeitar/desprezar."
+    }
+  },
+  {
+    "id": "EPH|3|12",
+    "grupo": "polemica",
+    "ref": "Efésios 3:12",
+    "foco": "Polêmica direta contra papistas, sofistas e doutores da Sorbonne acerca da segurança e ousadia da fé."
+  },
+  {
+    "id": "1JN|3|8",
+    "grupo": "polemica",
+    "ref": "1 João 3:8",
+    "foco": "Refutação simultânea do perfeccionismo fanático dos anabatistas e da doutrina pelagiana."
+  },
+  {
+    "id": "1CO|3|9",
+    "grupo": "polemica",
+    "ref": "1 Coríntios 3:9",
+    "foco": "'Cooperadores de Deus': refutação clássica do livre-arbítrio sinergista defendido pelos papistas."
+  },
+  {
+    "id": "EPH|2|9",
+    "grupo": "polemica",
+    "ref": "Efésios 2:9",
+    "foco": "Exclusão de toda justiça de obras e refutação das sutilezas escolásticas sobre graça preparatória."
+  },
+  {
+    "id": "ROM|9|18",
+    "grupo": "polemica",
+    "ref": "Romanos 9:18",
+    "foco": "Misericórdia e endurecimento soberanos ('To whom he wills then he showeth mercy'): defesa da eleição incondicional."
+  },
+  {
+    "id": "DEU|30|19",
+    "grupo": "polemica",
+    "ref": "Deuteronômio 30:19",
+    "foco": "Resposta ao argumento pelagiano e papista de que os preceitos da Lei provam a capacidade do livre-arbítrio."
+  },
+  {
+    "id": "1CO|11|24",
+    "grupo": "polemica",
+    "ref": "1 Coríntios 11:24",
+    "foco": "Bloco longo (15 mil caracteres, testando divisão segura em parágrafos) sobre 'Isto é o meu corpo', metonímia sacramental e transubstanciação."
+  }
+]
