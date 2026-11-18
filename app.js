@@ -14,8 +14,13 @@ const UI = {
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
     chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", chaveDica:"palavra-chave: ver o original e a explicação",
     prefVoc:"Significado das palavras difíceis", vocSig:"Significado", vocOrig:"No original", vocFonte:"Vocabulário do Sola",
-    abaTexto:"Texto", abaTemas:"Temas", abaDic:"Dicionário",
-    exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
+    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Dicionário",
+    exStrong:"ex.: G3056, H2617, logos, hesed, graça", exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
+    comandoBusca:"Passagem, palavra, Strong (G3056) ou doutrina…",
+    emEstudo:"Em estudo", eabaOrig:"Léxico & Orig.", eabaCom:"Comentário", eabaRefs:"CFW & Refs", eabaNota:"Nota",
+    verDoutrina:"Estudar doutrina completa", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
+    palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
+    indiceCanonico:"Índice canônico", todosLivros:"Todos",
     doutSelo:"Doutrina reformada", doutLista:"Doutrinas da fé reformada — ou digite um tema", doutMais:"continua no capítulo",
     doutFonte:"Síntese do Sola a partir da Confissão de Fé de Westminster e dos seus textos de prova. Texto bíblico: Bíblia Livre.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
@@ -34,23 +39,24 @@ const UI = {
     semNotas:"Você ainda não tem anotações. Toque em um versículo e escolha “Anotação”.",
     bibliaToda:"Buscar na Bíblia toda", carregando:"Carregando…",
     buscando:"Buscando…", resultados:"resultado(s)", nadaEncontrado:"Nada encontrado.", mostrando:"mostrando os primeiros",
-    digiteBusca:"Digite ao menos 3 letras, ou uma referência como “João 3:16”.", at:"Antigo Testamento", nt:"Novo Testamento",
-    exPlaceholder:"ex.: graça e verdade, ou João 3:16",
+    digiteBusca:"Digite ao menos 3 letras, ou uma referência como “João 3:16”.", digiteStrong:"Digite um código (ex.: G3056, H2617) ou ao menos 2 letras.",
+    at:"Antigo Testamento", nt:"Novo Testamento",
+    exPlaceholder:"ex.: graça e verdade, G3056 ou João 3:16",
     contexto:"Contexto", voltar:"Voltar", dia:"Dia", dias:"dias", capitulos:"capítulos", todosCaps:"Todos os capítulos",
     autor:"Autor", data:"Data", local:"Local", publico:"Público", tema:"Tema", paralelos:"Paralelos",
     escala:["Criação","Êxodo","Davi","Exílio","Cristo","Igreja"],
     erroCarregar:"Não foi possível carregar este texto. Verifique a conexão.", tentar:"Tentar de novo",
     erroIniciar:"Não foi possível carregar o Sola. Verifique a conexão.", recarregar:"Recarregar",
     heroiSobre:"Sola Scriptura", heroiTitulo:"A Escritura, <em>em profundidade</em>",
-    heroiTexto:"A Bíblia completa com o grego e o hebraico palavra por palavra, léxico de Strong, comentários de Calvino e Matthew Henry, referências cruzadas e atlas. Gratuito, sem anúncios, em português.",
-    heroiCampo:"João 3:16, Sl 23 ou uma palavra", continuar:"Continuar em", comecar:"Começar por João",
+    heroiTexto:"A Bíblia completa com o grego e o hebraico palavra por palavra, léxico de Strong, comentários de Calvino e Matthew Henry, doutrinas reformadas, referências cruzadas e atlas. Gratuito, sem anúncios, em português.",
+    heroiCampo:"João 3:16, Sl 23, G3056 ou uma palavra…", continuar:"Continuar em", comecar:"Começar por João",
     versoDia:"Versículo do dia",
     grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos e sapienciais", maiores:"Profetas maiores",
       menores:"Profetas menores", evangelhos:"Evangelhos e Atos", paulo:"Cartas de Paulo", gerais:"Cartas gerais e Apocalipse"},
     recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
       ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
-      ["Temas e dicionário","Mais de 5.000 temas de Nave e 3.900 verbetes do dicionário de Easton."],
+      ["Temas e dicionário","Doutrinas reformadas (CFW), mais de 5.000 temas de Nave e 3.900 verbetes de Easton."],
       ["Atlas bíblico","1.300 lugares no mapa, com as viagens missionárias de Paulo."],
       ["Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios."]],
     sobreLivro:"Sobre o livro", comentarioDe:"Comentário",
@@ -88,8 +94,13 @@ const UI = {
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
     chaveVer:"See the verse in the original", chaveFonte:"Sola study note", chaveDica:"key word: see the original and the explanation",
     prefVoc:"Meaning of hard words", vocSig:"Meaning", vocOrig:"In the original", vocFonte:"Sola glossary",
-    abaTexto:"Text", abaTemas:"Topics", abaDic:"Dictionary",
-    exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
+    abaTexto:"Text", abaStrong:"Strong", abaTemas:"Topics", abaDic:"Dictionary",
+    exStrong:"e.g. G3056, H2617, logos, grace", exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
+    comandoBusca:"Passage, word, Strong (G3056) or doctrine…",
+    emEstudo:"Studying", eabaOrig:"Lexicon & Orig.", eabaCom:"Commentary", eabaRefs:"WCF & Refs", eabaNota:"Note",
+    verDoutrina:"Read full doctrine", chavesNoVerso:"Key words", notaSalva:"Saved!",
+    palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
+    indiceCanonico:"Canonical index", todosLivros:"All",
     doutSelo:"Reformed doctrine", doutLista:"Reformed doctrines — or type a topic", doutMais:"continues in the chapter",
     doutFonte:"Summary by Sola based on the Westminster Confession of Faith and its proof texts (in Portuguese). Bible text: Bíblia Livre.",
     conteudoEN:"Content in the original English.",
@@ -108,8 +119,9 @@ const UI = {
     semNotas:"No notes yet. Tap a verse and choose “Note”.",
     bibliaToda:"Search the whole Bible", carregando:"Loading…",
     buscando:"Searching…", resultados:"result(s)", nadaEncontrado:"Nothing found.", mostrando:"showing the first",
-    digiteBusca:"Type at least 3 letters, or a reference such as “John 3:16”.", at:"Old Testament", nt:"New Testament",
-    exPlaceholder:"e.g. grace and truth, or John 3:16",
+    digiteBusca:"Type at least 3 letters, or a reference such as “John 3:16”.", digiteStrong:"Type a Strong code (e.g. G3056, H2617) or at least 2 letters.",
+    at:"Old Testament", nt:"New Testament",
+    exPlaceholder:"e.g. grace and truth, G3056 or John 3:16",
     contexto:"Context", voltar:"Back", dia:"Day", dias:"days", capitulos:"chapters", todosCaps:"All chapters",
     autor:"Author", data:"Date", local:"Place", publico:"Audience", tema:"Theme", paralelos:"Parallels",
     escala:["Creation","Exodus","David","Exile","Christ","Church"],
@@ -117,7 +129,7 @@ const UI = {
     erroIniciar:"Could not load Sola. Check your connection.", recarregar:"Reload",
     heroiSobre:"Sola Scriptura", heroiTitulo:"Scripture, <em>in depth</em>",
     heroiTexto:"The whole Bible with Greek and Hebrew word by word, Strong's lexicon, commentaries by Calvin and Matthew Henry, cross-references and an atlas. Free, with no ads.",
-    heroiCampo:"John 3:16, Ps 23 or a word", continuar:"Continue in", comecar:"Start with John",
+    heroiCampo:"John 3:16, Ps 23, G3056 or a word…", continuar:"Continue in", comecar:"Start with John",
     versoDia:"Verse of the day",
     grupos:{pentateuco:"Pentateuch", historicos:"History", poeticos:"Poetry and wisdom", maiores:"Major prophets",
       menores:"Minor prophets", evangelhos:"Gospels and Acts", paulo:"Paul's letters", gerais:"General letters and Revelation"},
@@ -162,8 +174,13 @@ const UI = {
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
     chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", chaveDica:"palabra clave: ver el original y la explicación",
     prefVoc:"Significado de palabras difíciles", vocSig:"Significado", vocOrig:"En el original", vocFonte:"Vocabulario de Sola",
-    abaTexto:"Texto", abaTemas:"Temas", abaDic:"Diccionario",
-    exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
+    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Diccionario",
+    exStrong:"ej.: G3056, H2617, logos, gracia", exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
+    comandoBusca:"Pasaje, palabra, Strong (G3056) o doctrina…",
+    emEstudo:"En estudio", eabaOrig:"Léxico y Orig.", eabaCom:"Comentario", eabaRefs:"CFW y Refs", eabaNota:"Nota",
+    verDoutrina:"Ver doctrina completa", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
+    palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
+    indiceCanonico:"Índice canónico", todosLivros:"Todos",
     doutSelo:"Doctrina reformada", doutLista:"Doctrinas reformadas — o escribe un tema", doutMais:"continúa en el capítulo",
     doutFonte:"Síntesis de Sola basada en la Confesión de Fe de Westminster y sus textos de prueba (en portugués). Texto bíblico: Bíblia Livre.",
     conteudoEN:"Contenido en el inglés original.",
@@ -182,8 +199,9 @@ const UI = {
     semNotas:"Aún no tienes notas. Toca un versículo y elige “Nota”.",
     bibliaToda:"Buscar en toda la Biblia", carregando:"Cargando…",
     buscando:"Buscando…", resultados:"resultado(s)", nadaEncontrado:"No se encontró nada.", mostrando:"mostrando los primeros",
-    digiteBusca:"Escribe al menos 3 letras, o una referencia como “Juan 3:16”.", at:"Antiguo Testamento", nt:"Nuevo Testamento",
-    exPlaceholder:"ej.: gracia y verdad, o Juan 3:16",
+    digiteBusca:"Escribe al menos 3 letras, o una referencia como “Juan 3:16”.", digiteStrong:"Escribe un código (ej.: G3056, H2617) o al menos 2 letras.",
+    at:"Antiguo Testamento", nt:"Nuevo Testamento",
+    exPlaceholder:"ej.: gracia y verdad, G3056 o Juan 3:16",
     contexto:"Contexto", voltar:"Volver", dia:"Día", dias:"días", capitulos:"capítulos", todosCaps:"Todos los capítulos",
     autor:"Autor", data:"Fecha", local:"Lugar", publico:"Destinatarios", tema:"Tema", paralelos:"Paralelos",
     escala:["Creación","Éxodo","David","Exilio","Cristo","Iglesia"],
@@ -191,7 +209,7 @@ const UI = {
     erroIniciar:"No se pudo cargar Sola. Revisa la conexión.", recarregar:"Recargar",
     heroiSobre:"Sola Scriptura", heroiTitulo:"La Escritura, <em>en profundidad</em>",
     heroiTexto:"La Biblia completa con el griego y el hebreo palabra por palabra, léxico de Strong, comentarios de Calvino y Matthew Henry, referencias cruzadas y atlas. Gratis y sin anuncios.",
-    heroiCampo:"Juan 3:16, Sal 23 o una palabra", continuar:"Continuar en", comecar:"Empezar por Juan",
+    heroiCampo:"Juan 3:16, Sal 23, G3056 o una palabra…", continuar:"Continuar en", comecar:"Empezar por Juan",
     versoDia:"Versículo del día",
     grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos y sapienciales", maiores:"Profetas mayores",
       menores:"Profetas menores", evangelhos:"Evangelios y Hechos", paulo:"Cartas de Pablo", gerais:"Cartas generales y Apocalipsis"},
@@ -227,9 +245,9 @@ const UI = {
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
-  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Modo estudo",mais:"Mais",prefs:"Tradução e idioma"},
-  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study mode",mais:"More",prefs:"Translation and language"},
-  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Modo estudio",mais:"Más",prefs:"Traducción e idioma"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Estante",mais:"Mais",prefs:"Tradução e idioma"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study pane",mais:"More",prefs:"Translation and language"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Estante",mais:"Más",prefs:"Traducción e idioma"}
 };
 /* Guia "Como usar": grupos → [ação, ícone, título, texto]. A ação (mesma nos três idiomas) está em ACOES_AJUDA. */
 const AJUDA = {
@@ -237,26 +255,27 @@ const AJUDA = {
     intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função. No celular, o que não cabe na barra do alto fica no botão “Mais”.",
     grupos:[
       ["Ler a Bíblia", [
-        ["livros","livro","Escolher livro e capítulo","Toque no nome do livro no alto da tela. Também dá para digitar uma referência na busca ou na página inicial, como “Jo 3:16” ou “Sl 23”. Para mudar de capítulo, use as setas no rodapé (no computador, as setas ← → do teclado)."],
+        ["livros","livro","Escolher livro e capítulo","Toque no nome do livro no alto da tela. Também dá para digitar uma referência na busca (tecla /) ou na página inicial, como “Jo 3:16” ou “Sl 23”. Para mudar de capítulo, use as setas no rodapé (no computador, as setas ← → do teclado)."],
         ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, no botão “Mais” (ou no Perfil)."],
         ["corrida","corrida","Leitura contínua","O botão de linhas no alto junta os versículos num texto corrido, como num livro, sem números no meio."],
-        ["tema","lua","Tema claro e escuro","O botão da lua (ou do sol) troca as cores. A escolha fica guardada no aparelho."],
-        ["modoEstudo","estudo","Modo estudo","Só no computador: abre uma coluna ao lado do texto com o original e o comentário do versículo em que você toca, sem tirar os olhos da leitura."],
+        ["tema","lua","Tema claro e escuro","O botão da lua (ou do sol) alterna entre Papel Linho (claro) e Vigília (escuro). A escolha fica guardada no aparelho."],
+        ["modoEstudo","estudo","Estante exegética","No computador, a estante ao lado do texto reúne quatro abas sincronizadas ao versículo clicado: Léxico & Original, Comentário, Confissão de Westminster & Referências, e sua Nota pessoal."],
         ["lido","feito","Marcar capítulo como lido","No fim de cada capítulo há o botão “Marcar capítulo como lido”. Os capítulos lidos aparecem marcados na lista e contam no seu progresso."]]],
       ["Estudar um versículo", [
-        ["original","original","Original e Strong","Toque num versículo e escolha “Original”: cada palavra do grego ou do hebraico aparece com a transliteração e a tradução literal. Toque na palavra para abrir o verbete do léxico de Strong."],
+        ["original","original","Original e Strong","Clique num versículo e abra “Original”: cada palavra do grego ou do hebraico aparece com a transliteração e a tradução literal. Toque na palavra para abrir o verbete do léxico de Strong."],
         ["comentario","comentario","Comentário","“Comentário” mostra João Calvino no versículo (em 47 livros) ou Matthew Henry, nos livros que Calvino não comentou."],
-        ["referencias","refs","Referências cruzadas","“Referências” traz as passagens que falam do mesmo assunto: a Escritura interpretando a Escritura."],
-        ["palavras","temas","Palavras sublinhadas","Na Bíblia Livre, o traço dourado cheio marca palavras-chave: toque para ver a palavra original e por que ela importa ali. O traço pontilhado explica palavras difíceis ou antigas. As duas camadas podem ser desligadas em Perfil."],
+        ["referencias","refs","Referências e Confissão","Nas telas largas, as referências principais já aparecem na margem esquerda de cada versículo (como na Bíblia de Genebra); abrir “Referências” mostra os textos completos e as doutrinas da Confissão de Westminster ligadas ao versículo."],
+        ["palavras","temas","Palavras sublinhadas","Na Bíblia Livre, o traço cheio marca palavras-chave: toque para ver a palavra original e por que ela importa ali. O traço pontilhado explica palavras difíceis ou antigas. As duas camadas podem ser desligadas em Perfil."],
         ["contexto","contexto","Contexto do livro","O botão “Contexto” mostra autor, data, local, destinatários, tema e passagens paralelas do livro que você está lendo."]]],
       ["Pesquisar", [
-        ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto. A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
-        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e as doutrinas da fé reformada, como Trindade, pedobatismo e os cinco pontos do calvinismo, cada uma com os versículos em que se apoia."],
+        ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
+        ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
+        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e 50 doutrinas da fé reformada (Confissão de Westminster e Catecismos), cada uma com os versículos em que se apoia."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
         ["atlas","atlas","Atlas","Mais de 1.300 lugares bíblicos no mapa e as viagens missionárias de Paulo."]]],
       ["Seu estudo", [
-        ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
+        ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios e outros. O Sola lembra em que dia você está."],
         ["meu","progresso","Meu estudo","Seu progresso por livro, os dias seguidos de leitura e as marcações. Funciona sem conta."],
@@ -266,21 +285,22 @@ const AJUDA = {
     intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature. On a phone, whatever does not fit in the top bar is under “More”.",
     grupos:[
       ["Reading", [
-        ["livros","livro","Choose a book and chapter","Tap the book name at the top. You can also type a reference in search or on the home page, like “John 3:16”. To change chapters, use the arrows at the bottom (on a computer, the ← → keys)."],
+        ["livros","livro","Choose a book and chapter","Tap the book name at the top. You can also type a reference in search (press /) or on the home page, like “John 3:16”. To change chapters, use the arrows at the bottom (on a computer, the ← → keys)."],
         ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, under “More” (or in Profile)."],
         ["corrida","corrida","Continuous reading","The lines button at the top joins the verses into running text, like a book."],
         ["tema","lua","Light and dark theme","The moon (or sun) button switches colors. Your choice is saved on this device."],
-        ["modoEstudo","estudo","Study mode","Computer only: a column next to the text shows the original and the commentary for the verse you tap."],
+        ["modoEstudo","estudo","Study pane","On desktop, the side study pane gathers four tabs synced to the verse you click: Lexicon & Original, Commentary, Westminster Confession & Cross-refs, and your personal Note."],
         ["lido","feito","Mark a chapter as read","At the end of each chapter there is a “Mark chapter as read” button. Read chapters are marked in the list and count toward your progress."]]],
       ["Studying a verse", [
         ["original","original","Original and Strong","Tap a verse and choose “Original”: every Greek or Hebrew word with transliteration and a literal gloss. Tap a word to open its Strong’s lexicon entry."],
         ["comentario","comentario","Commentary","“Commentary” shows John Calvin on the verse (47 books) or Matthew Henry where Calvin did not comment."],
-        ["referencias","refs","Cross-references","“References” lists passages on the same subject: Scripture interpreting Scripture."],
-        ["palavras","temas","Underlined words","In the Bíblia Livre, a solid gold line marks key words: tap to see the original word and why it matters. A dotted line explains hard or old words. Both layers can be turned off in Profile (Portuguese only)."],
+        ["referencias","refs","Cross-references","Key parallel passages appear in the left margin on wide screens; opening “Cross-refs” shows full verse previews and connected Reformed doctrines."],
+        ["palavras","temas","Underlined words","In the Bíblia Livre, a solid line marks key words: tap to see the original word and why it matters. A dotted line explains hard or old words. Both layers can be turned off in Profile (Portuguese only)."],
         ["contexto","contexto","Book context","The “Context” button shows author, date, place, audience, theme and parallels for the book you are reading."]]],
       ["Searching", [
-        ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book. Exact phrases come first."],
-        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and the doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
+        ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first."],
+        ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
+        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and 50 doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
         ["atlas","atlas","Atlas","Over 1,300 Bible places on the map and Paul’s missionary journeys."]]],
@@ -295,21 +315,22 @@ const AJUDA = {
     intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función. En el celular, lo que no cabe en la barra de arriba está en “Más”.",
     grupos:[
       ["Leer la Biblia", [
-        ["livros","livro","Elegir libro y capítulo","Toca el nombre del libro arriba. También puedes escribir una referencia en la búsqueda o en el inicio, como “Juan 3:16”. Para cambiar de capítulo, usa las flechas de abajo (en la computadora, las teclas ← →)."],
+        ["livros","livro","Elegir libro y capítulo","Toca el nombre del libro arriba. También puedes escribir una referencia en la búsqueda (tecla /) o en el inicio, como “Juan 3:16”. Para cambiar de capítulo, usa las flechas de abajo (en la computadora, las teclas ← →)."],
         ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en el botón “Más” (o en Perfil)."],
         ["corrida","corrida","Lectura continua","El botón de líneas arriba une los versículos en texto corrido, como un libro."],
         ["tema","lua","Tema claro y oscuro","El botón de la luna (o del sol) cambia los colores. La elección queda guardada en el dispositivo."],
-        ["modoEstudo","estudo","Modo estudio","Solo en la computadora: una columna junto al texto muestra el original y el comentario del versículo que tocas."],
+        ["modoEstudo","estudo","Estante de estudio","En computadora, el estante lateral reúne cuatro pestañas sincronizadas al versículo seleccionado: Léxico y Original, Comentario, Confesión de Westminster y Referencias, y tu Nota."],
         ["lido","feito","Marcar capítulo como leído","Al final de cada capítulo está el botón “Marcar capítulo como leído”. Los capítulos leídos aparecen marcados y cuentan en tu progreso."]]],
       ["Estudiar un versículo", [
         ["original","original","Original y Strong","Toca un versículo y elige “Original”: cada palabra del griego o del hebreo con transliteración y traducción literal. Toca la palabra para abrir el léxico de Strong."],
         ["comentario","comentario","Comentario","“Comentario” muestra a Juan Calvino (47 libros) o a Matthew Henry donde Calvino no comentó."],
-        ["referencias","refs","Referencias cruzadas","“Referencias” muestra pasajes sobre el mismo tema: la Escritura interpreta la Escritura."],
-        ["palavras","temas","Palabras subrayadas","En la Bíblia Livre, la línea dorada marca palabras clave y la punteada explica palabras difíciles (en portugués). Se pueden desactivar en Perfil."],
+        ["referencias","refs","Referencias cruzadas","Las referencias principales aparecen en el margen izquierdo en pantallas anchas; abrir “Referencias” muestra los pasajes completos y las doctrinas conectadas."],
+        ["palavras","temas","Palabras subrayadas","En la Bíblia Livre, la línea continua marca palabras clave y la punteada explica palabras difíciles (en portugués). Se pueden desactivar en Perfil."],
         ["contexto","contexto","Contexto del libro","El botón “Contexto” muestra autor, fecha, lugar, destinatarios, tema y paralelos del libro."]]],
       ["Buscar", [
-        ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto. La frase exacta aparece primero."],
-        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y las doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
+        ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero."],
+        ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
+        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y 50 doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
         ["atlas","atlas","Atlas","Más de 1.300 lugares bíblicos en el mapa y los viajes misioneros de Pablo."]]],
@@ -326,7 +347,7 @@ const ACOES_AJUDA = {
   traducoes: ()=>innerWidth > 700 ? irPara("JHN", 1, 1) : abrirMais(),   // no celular os seletores ficam no "Mais"
   corrida: ()=>irPara("PSA", 23),
   tema: ()=>{ est.tema = est.tema==="escuro" ? "claro" : "escuro"; gravarLS("logos_tema", est.tema); aplicarTema(); },
-  modoEstudo: ()=>{ fecharPaineis(); est.estudo = true; gravarLS("logos_estudo", true); aplicarEstudo(); if(est.vista!=="cap") irPara("JHN", 1, 1); },
+  modoEstudo: ()=>{ fecharPaineis(); est.estudo = true; gravarLS("logos_estudo", true); aplicarEstudo(); if(est.vista!=="cap") irPara("JHN", 1, 1); else atualizarEstudo(est.versoEstudo || 1); },
   lido: ()=>irPara("PSA", 23),
   original: ()=>irPara("JHN", 1, 1, "original"),
   comentario: ()=>irPara("ROM", 8, 28, "comentario"),
@@ -334,6 +355,7 @@ const ACOES_AJUDA = {
   palavras: ()=>irPara("PSA", 51, 10),
   contexto: ()=>abrirContexto(),
   buscar: ()=>abrirBusca("texto"),
+  strong: ()=>abrirBusca("strong"),
   temas: ()=>abrirBusca("temas"),
   dicionario: ()=>abrirBusca("dicionario"),
   tempo: ()=>{ montarTempo(); alternarPainel("painelTempo", true); },
@@ -376,6 +398,24 @@ const VERSOS_DIA = [["PSA",119,105],["JHN",3,16],["ROM",8,28],["PSA",23,1],["ISA
   ["PSA",19,7],["LAM",3,22],["MIC",6,8],["MAT",6,33],["JHN",1,14],["1JN",4,19],["ROM",1,16],["PSA",1,2],["COL",3,16],["HEB",11,1],
   ["JAS",1,5],["1PE",1,25],["REV",21,4],["ISA",53,5],["PSA",27,1],["JHN",8,32],["2CO",5,17],["PHP",1,6],["PSA",34,8],["DEU",6,5],
   ["ROM",11,36],["JHN",17,17]];
+/* Destaques diários do léxico original para a Mesa de Estudo inicial: [strong, usfm, cap, v, lema, translit, glosa, nota] */
+const PALAVRAS_DIA = [
+  ["G3056","JHN",1,1,"λόγος","lógos","Palavra, Verbo","No prólogo de João, não é uma força impessoal, mas a eterna autoexpressão pessoal de Deus que estava com Deus, é Deus e se fez carne em Cristo."],
+  ["H2617","PSA",136,1,"חֶסֶד","ḥeseḏ","Amor leal, bondade","Mais que afeto passageiro, descreve a fidelidade firme de quem se comprometeu por aliança e jamais abandona a sua promessa."],
+  ["H1254","GEN",1,1,"בָּרָא","bārāʾ","Criar","Em toda a Bíblia hebraica, este verbo no sentido de criar tem exclusivamente Deus como sujeito: fazer surgir o universo, um povo e um coração novo."],
+  ["G4637","JHN",1,14,"σκηνόω","skēnóō","Habitar, armar tenda","Literalmente “armar tabernáculo”: assim como a glória do Senhor habitava na tenda no deserto, o Filho eterno veio morar entre nós."],
+  ["H3722","LEV",16,30,"כָּפַר","kāpar","Fazer expiação","Cobrir a culpa pagando o preço que afasta o juízo por meio de um sacrifício substituto — cumprido de uma vez por todas na cruz."],
+  ["G5485","EPH",2,8,"χάρις","cháris","Graça","O favor livre e imerecido de Deus concedido a quem merecia condenação — a fonte inteira da eleição, redenção e fé."],
+  ["H1285","GEN",17,7,"בְּרִית","bᵉrîṯ","Aliança, pacto","Pacto solene firmado por Deus com promessas e juramento: o fio condutor que une Abraão, Moisés, Davi e o sangue da nova aliança."],
+  ["G1343","ROM",3,21,"δικαιοσύνη","dikaiosýnē","Justiça","Em Paulo, tanto a retidão perfeita do caráter de Deus quanto a justiça de Cristo imputada pela fé ao pecador justificado."],
+  ["H7965","ISA",53,5,"שָׁלוֹם","šālôm","Paz, plenitude","Não apenas ausência de guerra, mas integridade completa e reconciliação restaurada entre o pecador e o Deus santo."],
+  ["G2435","ROM",3,25,"ἱλαστήριον","hilastḗrion","Propiciatório","O mesmo termo da Septuaginta para a tampa da arca onde o sangue era aspergido: Cristo satisfaz a justiça divina e afasta a ira."]
+];
+const ABREV_CURTA = {GEN:"Gn",EXO:"Êx",LEV:"Lv",NUM:"Nm",DEU:"Dt",JOS:"Js",JDG:"Jz",RUT:"Rt","1SA":"1Sm","2SA":"2Sm","1KI":"1Rs","2KI":"2Rs",
+  "1CH":"1Cr","2CH":"2Cr",EZR:"Ed",NEH:"Ne",EST:"Et",JOB:"Jó",PSA:"Sl",PRO:"Pv",ECC:"Ec",SNG:"Ct",ISA:"Is",JER:"Jr",LAM:"Lm",EZK:"Ez",
+  DAN:"Dn",HOS:"Os",JOL:"Jl",AMO:"Am",OBA:"Ob",JON:"Jn",MIC:"Mq",NAM:"Na",HAB:"Hc",ZEP:"Sf",HAG:"Ag",ZEC:"Zc",MAL:"Ml",MAT:"Mt",
+  MRK:"Mc",LUK:"Lc",JHN:"Jo",ACT:"At",ROM:"Rm","1CO":"1Co","2CO":"2Co",GAL:"Gl",EPH:"Ef",PHP:"Fp",COL:"Cl","1TH":"1Ts","2TH":"2Ts",
+  "1TI":"1Tm","2TI":"2Tm",TIT:"Tt",PHM:"Fm",HEB:"Hb",JAS:"Tg","1PE":"1Pe","2PE":"2Pe","1JN":"1Jo","2JN":"2Jo","3JN":"3Jo",JUD:"Jd",REV:"Ap"};
 /* abreviações usuais em português, para "jo 3 16", "sl 23", "1co 13" na busca */
 const ABREV = {gn:"GEN",ex:"EXO",lv:"LEV",nm:"NUM",dt:"DEU",js:"JOS",jz:"JDG",rt:"RUT","1sm":"1SA","2sm":"2SA","1rs":"1KI","2rs":"2KI",
   "1cr":"1CH","2cr":"2CH",ed:"EZR",ne:"NEH",et:"EST",sl:"PSA",sal:"PSA",pv:"PRO",ec:"ECC",ct:"SNG",is:"ISA",jr:"JER",lm:"LAM",ez:"EZK",
@@ -394,7 +434,7 @@ const est = {
   meta:null, idioma:"pt", traducao:"blivre", comparar:"",
   vista:"inicio", livro:"JHN", cap:1, alvoV:0, abrir:null, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
-  corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", false), progresso: lerLS("logos_planos", {}),
+  corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", true), progresso: lerLS("logos_planos", {}),
   lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
   chave: lerLS("logos_chave", true), voc: lerLS("logos_voc", true),       // as duas camadas de palavras sublinhadas
   cachePalavras:{}, palavrasCap:null,
@@ -403,7 +443,8 @@ const est = {
   cacheBiblia:{}, cacheComent:{}, cacheInter:{}, cacheLex:{}, cacheRefs:{}, cacheTemas:{}, cacheDic:{}, titulosPT:{}, doutrinas:null,
   livrosCom:null, idxTemas:null, idxDic:null, aliasPT:null, planos:null, tempo:null, ctx:null,
   lugares:null, mapa:null, marcadores:[], viagens:null, camadaViagem:[],
-  versos:[], versoAtivo:null, gaveta:null, buscaModo:"texto", vez:0, vezBusca:0, focoAntes:null,
+  versos:[], versoAtivo:null, versoEstudo:1, estudoAba:"original", chaveEstudo:null, filtroCanone:"todos",
+  gaveta:null, buscaModo:"texto", vez:0, vezBusca:0, focoAntes:null,
 };
 function lerLS(k, padrao){ try{ return JSON.parse(localStorage.getItem(k)) ?? padrao; }catch(e){ return padrao; } }
 function gravarLS(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
@@ -554,12 +595,24 @@ function navegar(r, op){
 function irPara(usfm, cap, v, abrir){ return navegar({ vista:"cap", livro:usfm, cap, v, abrir }); }
 
 /* ---------- interface base ---------- */
+const EABAS = { original:"eabaOrig", comentario:"eabaCom", referencias:"eabaRefs", anotacao:"eabaNota" };
 function aplicarTextos(){
   const x = t();
   document.documentElement.lang = est.idioma==="pt" ? "pt-BR" : est.idioma;
-  document.querySelectorAll(".navbar [data-nav] [data-label]").forEach(sp=>{
+  document.querySelectorAll("[data-nav] [data-label]").forEach(sp=>{
     const chave = sp.parentNode.dataset.nav;
     if(NAV[est.idioma][chave]) sp.textContent = NAV[est.idioma][chave];
+  });
+  $("lblComando").textContent = x.comandoBusca;
+  $("estudoSelo").textContent = x.emEstudo;
+  $("estudoCopiar").title = x.copiar;
+  $("estudoCopiar").setAttribute("aria-label", x.copiar);
+  $("estudoCompartilhar").title = x.compartilhar;
+  $("estudoCompartilhar").setAttribute("aria-label", x.compartilhar);
+  document.querySelectorAll("#abasEstante .eaba").forEach(b=>{
+    const p = b.querySelector(".ponto");
+    b.textContent = x[EABAS[b.dataset.eaba]];
+    if(p) b.appendChild(p);
   });
   $("lblIdioma").textContent = x.idioma;
   $("lblTraducao").textContent = x.traducao;
@@ -593,6 +646,7 @@ async function renderizar(op){
   op = op || {};
   const x = t();
   document.body.dataset.vista = est.vista;
+  document.body.classList.toggle("corrida-ativa", est.corrida);
   if(!op.manter) fecharMais();   // mesma página (tradução, idioma): o menu "Mais" continua aberto
   ajustarNav();                  // Contexto e Modo estudo só existem na leitura: muda o que cabe na barra
   fecharPalavra();
@@ -624,60 +678,141 @@ async function renderizar(op){
   est.pronto = true;
 }
 
-/* ---------- página inicial ---------- */
+/* ---------- página inicial: Mesa de Estudo ---------- */
 function renderizarInicio(){
   const x = t(), ult = lerLS("logos_ultimo", null);
   const temUlt = ult && infoLivro(ult.livro) && ult.cap >= 1 && ult.cap <= infoLivro(ult.livro).ch;
   const icones = ["original","comentario","refs","temas","atlas","planos"];
   const resumo = resumoEstudo(), nLidos = resumo.lidos;
-  const testamento = (tst)=>`<section class="testamento"><h2>${tst==="AT" ? x.at : x.nt}</h2>${ornamento}
+  const hoje = new Date(), dia = Math.floor(Date.UTC(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()) / 864e5);
+  const [l, c, v] = VERSOS_DIA[dia % VERSOS_DIA.length];
+  const [pStrong, pl, pc, pv, pLema, pTranslit, pGlosa, pNota] = PALAVRAS_DIA[dia % PALAVRAS_DIA.length];
+  const pDir = pStrong[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"';
+  const testamento = (tst)=>`<section class="testamento${est.filtroCanone!=="todos" && est.filtroCanone!==tst ? " oculto" : ""}" data-tst="${tst}"><h2>${tst==="AT" ? x.at : x.nt}</h2>${ornamento}
     <div class="grupos">` + GRUPOS.filter(g=>g[0]===tst).map(g=>
       `<div class="grupo-livros"><h3>${x.grupos[g[1]]}</h3>` + g[2].map(id=>
         `<a href="${urlLivro(id)}">${esc(nomeLivro(id))}<span>${infoLivro(id).ch}</span></a>`).join("") + `</div>`).join("") +
     `</div></section>`;
   $("leitor").innerHTML = `<div class="inicio">
-    <section class="heroi">
-      <p class="heroi-sobre">${x.heroiSobre}</p>
-      <h1>${x.heroiTitulo}</h1>${ornamento}
-      <p class="heroi-texto">${x.heroiTexto}</p>
-      <form class="heroi-busca" id="formInicio" role="search">
-        <input id="campoInicio" type="search" placeholder="${x.heroiCampo}" aria-label="${x.buscar}" autocomplete="off">
-        <button type="submit">${x.buscar}</button>
-      </form>
-      <div class="heroi-acoes">
-        ${temUlt ? `<a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${ult.cap} ${ico("seta")}</a>` : ""}
-        <a class="${temUlt ? "btn-linha" : "btn-ouro"}" href="${urlCapitulo("JHN", 1)}">${x.comecar}</a>
+    <section class="mesa-cabeca">
+      <div class="mesa-topo">
+        <div>
+          <p class="mesa-sobre">${x.heroiSobre}</p>
+          <h1>${x.heroiTitulo}</h1>
+          <p class="mesa-texto">${x.heroiTexto}</p>
+        </div>
+        <div class="mesa-acao-col">
+          <form class="mesa-busca" id="formInicio" role="search">
+            <input id="campoInicio" type="search" placeholder="${x.heroiCampo}" aria-label="${x.buscar}" autocomplete="off">
+            <button type="submit">${x.buscar}</button>
+          </form>
+          <div class="mesa-acoes">
+            ${temUlt ? `<a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${ult.cap} ${ico("seta")}</a>` : ""}
+            <a class="${temUlt ? "btn-linha" : "btn-ouro"}" href="${urlCapitulo("JHN", 1)}">${x.comecar}</a>
+          </div>
+          <div class="mesa-atalhos">
+            <button type="button" id="btnAjudaInicio">${ico("ajuda")} ${(AJUDA[est.idioma] || AJUDA.pt).titulo}</button>
+            ${nLidos ? `<button type="button" id="btnEstudoInicio">${ico("progresso")} ${x.meuEstudo}: ${nLidos} ${nLidos === 1 ? x.capLido1 : x.capsLidos}${resumo.seq > 1 ? ` · ${resumo.seq} ${x.diasSeguidos}` : ""}</button>` : ""}
+          </div>
+        </div>
       </div>
-      <p class="heroi-ajuda"><button id="btnAjudaInicio">${ico("ajuda")} ${(AJUDA[est.idioma] || AJUDA.pt).titulo}</button></p>
-      ${nLidos ? `<p class="heroi-estudo"><button id="btnEstudoInicio">${ico("pessoa")} ${x.meuEstudo}: ${nLidos} ${nLidos === 1 ? x.capLido1 : x.capsLidos}${resumo.seq > 1 ? ` · ${resumo.seq} ${x.diasSeguidos}` : ""}</button></p>` : ""}
     </section>
-    <section class="dia"><p class="rotulo-secao">${x.versoDia}</p><blockquote id="versoDia"></blockquote><span id="versoDiaRef"></span></section>
+    <section class="mesa-grade">
+      <article class="cartao-mesa">
+        <div>
+          <p class="cm-rotulo">${x.versoDia}</p>
+          <blockquote id="versoDia"></blockquote>
+          <div id="versoDiaRef"></div>
+        </div>
+        <div class="cm-rodape">
+          <span>${nLidos ? `${nLidos} ${nLidos === 1 ? x.capLido1 : x.capsLidos}${resumo.seq > 1 ? ` · ${resumo.seq} ${x.diasSeguidos}` : ""}` : esc(nomeTraducao(est.traducao))}</span>
+          <button type="button" class="cm-acao" id="btnPlanoInicio">${x.iniciarPlano} ${ico("seta")}</button>
+        </div>
+      </article>
+      <article class="cartao-mesa">
+        <div>
+          <p class="cm-rotulo">${x.palavraDia} <span>${pStrong[0] === "H" ? "HEBRAICO" : "GREGO"}</span></p>
+          <div class="cm-palavra-topo">
+            <span class="cm-lemma" ${pDir}>${esc(pLema)}</span>
+            <span class="cm-translit">${esc(pTranslit)}</span>
+            <span class="cm-strong">${esc(pStrong)}</span>
+          </div>
+          <h3 class="cm-glosa">${esc(pGlosa)}</h3>
+          <p class="cm-nota">${esc(pNota)}</p>
+        </div>
+        <div class="cm-rodape">
+          <span>${esc(refStr(pl, pc, pv))}</span>
+          <button type="button" class="cm-acao" id="btnPalavraDia">${x.examinarVerso} ${ico("seta")}</button>
+        </div>
+      </article>
+      <article class="cartao-mesa">
+        <div>
+          <p class="cm-rotulo">${x.doutSelo} <span id="doutDiaFonte">CFW 1</span></p>
+          <h3 class="cm-titulo" id="doutDiaTit">Somente a Escritura (Sola Scriptura)</h3>
+          <p class="cm-nota" id="doutDiaRes">A Bíblia é a Palavra de Deus escrita e a única regra infalível de fé e de vida; tudo o que é necessário para a salvação e para agradar a Deus está nela.</p>
+        </div>
+        <div class="cm-rodape">
+          <span id="doutDiaRef">${esc(refStr("2TI", 3, 16))}</span>
+          <button type="button" class="cm-acao" id="btnDoutDia">${x.verDoutrina} ${ico("seta")}</button>
+        </div>
+      </article>
+    </section>
     <section class="recursos">` + x.recursos.map((r,i)=>
-      `<button class="recurso" data-recurso="${i}">${ico(icones[i])}<h3>${r[0]}</h3><p>${r[1]}</p></button>`).join("") +
-    `</section>` + testamento("AT") + testamento("NT") + `</div>`;
+      `<button type="button" class="recurso" data-recurso="${i}">${ico(icones[i])}<div><h3>${r[0]}</h3><p>${r[1]}</p></div></button>`).join("") +
+    `</section>
+    <section class="canone">
+      <div class="canone-cabeca">
+        <h2>${x.indiceCanonico}</h2>
+        <div class="canone-abas" role="tablist">
+          <button type="button" data-canone="todos" class="${est.filtroCanone==="todos"?"ativa":""}">${x.todosLivros} (66)</button>
+          <button type="button" data-canone="AT" class="${est.filtroCanone==="AT"?"ativa":""}">${x.at} (39)</button>
+          <button type="button" data-canone="NT" class="${est.filtroCanone==="NT"?"ativa":""}">${x.nt} (27)</button>
+        </div>
+      </div>
+      ${testamento("AT")}${testamento("NT")}
+    </section></div>`;
   $("formInicio").addEventListener("submit", (e)=>{
     e.preventDefault();
     const termo = $("campoInicio").value.trim();
     if(!termo) return;
     const r = parseRef(termo);
     if(r) return irPara(r.livro, r.cap, r.v);
+    if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscar(); }
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
   if($("btnEstudoInicio")) $("btnEstudoInicio").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
   $("btnAjudaInicio").addEventListener("click", abrirAjuda);
+  $("btnPlanoInicio").addEventListener("click", ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); });
+  $("btnPalavraDia").addEventListener("click", ()=>irPara(pl, pc, pv, "original"));
+  let doutDia = null;
+  $("btnDoutDia").addEventListener("click", ()=>doutDia ? abrirDoutrina(doutDia) : abrirBusca("temas"));
+  document.querySelectorAll(".canone-abas button").forEach(b=>b.addEventListener("click", ()=>{
+    est.filtroCanone = b.dataset.canone;
+    document.querySelectorAll(".canone-abas button").forEach(o=>o.classList.toggle("ativa", o===b));
+    document.querySelectorAll(".canone .testamento").forEach(sec=>{
+      sec.classList.toggle("oculto", est.filtroCanone !== "todos" && sec.dataset.tst !== est.filtroCanone);
+    });
+  }));
   const acoes = [()=>irPara("JHN",1,1,"original"), ()=>irPara("ROM",8,28,"comentario"), ()=>irPara("JHN",3,16,"referencias"),
     ()=>abrirBusca("temas"), abrirAtlas, ()=>{ montarPlanos(null); alternarPainel("painelPlanos", true); }];
   document.querySelectorAll(".recurso").forEach(b=>b.addEventListener("click", acoes[+b.dataset.recurso]));
-  // versículo do dia: o mesmo para todos, muda à meia-noite
-  const hoje = new Date(), dia = Math.floor(Date.UTC(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()) / 864e5);
-  const [l, c, v] = VERSOS_DIA[dia % VERSOS_DIA.length];
+  // versículo e doutrina do dia: os mesmos para todos, mudam à meia-noite
   const vez = ++est.vez;
   carregarLivro(est.traducao, l).then(livro=>{
     if(vez !== est.vez || !$("versoDia")) return;
     const texto = livro && livro[c-1] && livro[c-1][v-1];
     if(!texto) return;
     $("versoDia").textContent = `“${texto}”`;
-    $("versoDiaRef").innerHTML = linkRef(l, c, v, esc(refStr(l, c, v)), "ref-dia");
+    $("versoDiaRef").innerHTML = linkRef(l, c, v, `${esc(refStr(l, c, v))} ${ico("seta")}`, "cm-ref");
+  });
+  doutrinas().then(douts=>{
+    if(vez !== est.vez || !douts.length || !$("doutDiaTit")) return;
+    const d = doutDia = douts[dia % douts.length];
+    $("doutDiaFonte").textContent = d.f.split(";")[0].trim();
+    $("doutDiaTit").textContent = d.t;
+    $("doutDiaRes").textContent = d.r;
+    const v0 = d.sec && d.sec[0] && d.sec[0].v && d.sec[0].v[0];
+    if(v0) $("doutDiaRef").textContent = refStr(v0[0], v0[1], v0[2]);
   });
 }
 
@@ -719,15 +854,20 @@ function fichaContexto(c){
 }
 
 /* ---------- leitura ---------- */
+const bancadaAtiva = ()=>est.vista === "cap" && est.estudo && !est.corrida && window.innerWidth >= 1060;
+const abrevLivro = (u)=>(emPT() && ABREV_CURTA[u]) || nomeLivro(u).slice(0, 3);
+
 async function renderizarCapitulo(op){
+  op = op || {};
   const x = t(), leitor = $("leitor"), vez = ++est.vez;
   const info = infoLivro(est.livro);
   if(est.cap > info.ch || est.cap < 1) est.cap = 1;
   leitor.classList.add("carregando");
-  const [livro, livroComp, palavras] = await Promise.all([
+  const [livro, livroComp, palavras, refsCap] = await Promise.all([
     carregarLivro(est.traducao, est.livro),
     est.comparar ? carregarLivro(est.comparar, est.livro) : null,
     carregarPalavras(est.livro, est.cap),
+    est.corrida ? null : carregarRefs(est.livro, est.cap),
   ]);
   if(vez !== est.vez) return;   // o leitor já pediu outra página enquanto esta carregava
   leitor.classList.remove("carregando");
@@ -749,16 +889,40 @@ async function renderizarCapitulo(op){
   const versos = est.versos = livro[est.cap-1] || [];
   est.palavrasCap = palavras;
   const versosComp = livroComp ? (livroComp[est.cap-1]||[]) : null;
+  if(!(op.manter && est.versoEstudo >= 1 && est.versoEstudo <= versos.length)){
+    est.versoEstudo = (est.alvoV >= 1 && est.alvoV <= versos.length) ? est.alvoV : 1;
+    est.chaveEstudo = null;
+  }
   if(est.corrida){
     html += `<p class="escritura corrida">` + versos.filter(Boolean).map(esc).join(" ") + `</p>`;
   } else {
+    const ltr = !(est.traducao === "orig" && info.t === "AT");
     versos.forEach((texto, i)=>{
       if(!texto && !(versosComp && versosComp[i])) return;
       const v = i+1, chave = `${est.livro}.${est.cap}.${v}`;
       const marca = CORES.includes(est.marcas[chave]) ? " m-"+est.marcas[chave] : "";
+      const comMargem = refsCap ? " com-margem" : "";
+      const emEst = v === est.versoEstudo ? " em-estudo" : "";
       const temNota = est.notas[chave] ? `<span class="indicadores" title="${x.anotacao}">✎</span>` : "";
-      html += `<div class="verso${marca}" id="v${v}" data-v="${v}" tabindex="0">
-        <p class="escritura"><sup>${v}</sup>${textoVerso(texto, palavras && palavras[v], v)}${temNota}</p>
+      let margem = "";
+      if(refsCap){
+        const lista = refsCap[String(v)] || [];
+        const links = lista.slice(0, 2).map(r=>linkRef(r[0], r[1], r[2], esc(`${abrevLivro(r[0])} ${r[1]}:${r[2]}`), "mref")).join("") +
+          (lista.length > 2 ? `<button type="button" class="mref-mais" data-v="${v}">+${lista.length - 2}</button>` : "");
+        margem = `<aside class="margem-refs" aria-label="${x.referencias}">${links}</aside>`;
+      }
+      let corpoVerso;
+      if(v === 1 && texto && ltr){
+        const ini = /^["“«'‘¡¿]/.test(texto) ? 2 : 1;
+        const conflito = (palavras && palavras[1] || []).some(m => (ehVoc(m) ? est.voc : est.chave) && m[0] < ini);
+        corpoVerso = !conflito && texto.length > ini
+          ? `<span class="capitular">${esc(texto.slice(0, ini))}</span>${textoVerso(texto, palavras && palavras[1], 1, ini)}`
+          : `<sup>${v}</sup>${textoVerso(texto, palavras && palavras[v], v, 0)}`;
+      } else {
+        corpoVerso = `<sup>${v}</sup>${textoVerso(texto, palavras && palavras[v], v, 0)}`;
+      }
+      html += `<div class="verso${comMargem}${emEst}${marca}" id="v${v}" data-v="${v}" tabindex="0">
+        ${margem}<p class="escritura">${corpoVerso}${temNota}</p>
         ${versosComp && versosComp[i] ? `<p class="comparado escritura">${esc(versosComp[i])}</p>` : ""}
         <div class="barra" role="toolbar" aria-label="${esc(refStr(est.livro, est.cap, v))}"></div>
         <div class="gavetas"></div>
@@ -769,6 +933,11 @@ async function renderizarCapitulo(op){
   ligarBotaoLido();
   if(est.capAberto !== est.livro + "." + est.cap){ est.capAberto = est.livro + "." + est.cap; est.capAbertoEm = Date.now(); }
   $("btnCtxCap").addEventListener("click", abrirContexto);
+  leitor.querySelectorAll(".mref-mais").forEach(b=>b.addEventListener("click", (e)=>{
+    e.stopPropagation();
+    const v = +b.dataset.v, el = leitor.querySelector(`.verso[data-v="${v}"]`);
+    if(el) acaoVerso(el, v, "referencias");
+  }));
   leitor.querySelectorAll(".verso").forEach(el=>{
     // com uma gaveta aberta, passar o mouse por outro versículo não troca o ativo (senão a gaveta fecha sozinha)
     // logo depois de chegar por um link, o mouse parado em cima de outro versículo também não rouba o destaque
@@ -777,34 +946,41 @@ async function renderizarCapitulo(op){
       // no toque, o navegador manda este evento antes do clique: se o dedo está numa palavra-chave, ativar o
       // versículo aqui mexeria na página e o clique cairia fora da palavra
       if(matchMedia("(hover:none)").matches && (document.elementFromPoint(e.clientX, e.clientY) || el).closest(".chave")) return;
-      if(!est.gaveta && Date.now() > (est.semHover||0)) ativarVerso(el);
+      if(!est.gaveta && Date.now() > (est.semHover||0)) ativarVerso(el, false);
     });
     el.addEventListener("focus", ()=>montarBarra(el));
     // tocar numa palavra-chave não leva o foco para ela: no celular a barra do versículo que tinha o foco sumiria
     // no meio do toque, o texto subiria e o clique cairia em outro lugar (pelo teclado, Tab continua chegando nela)
     el.addEventListener("mousedown", (e)=>{ if(e.target.closest(".chave")) e.preventDefault(); });
     el.addEventListener("click", (e)=>{
-      if(e.target.closest(".barra,.gavetas")) return;
+      if(e.target.closest(".barra,.gavetas,.margem-refs")) return;
       const chave = e.target.closest(".chave");
-      if(chave) return abrirPalavra(chave);          // palavra-chave: abre o cartão dela, sem mexer no versículo
+      if(chave) return bancadaAtiva() ? abrirPalavraEstante(chave) : abrirPalavra(chave);
       ativarVerso(el, true);
     });
     el.addEventListener("keydown", (e)=>{
       if(e.key !== "Enter" && e.key !== " ") return;
       if(e.target === el){ e.preventDefault(); ativarVerso(el, true); }
-      else if(e.target.classList.contains("chave")){ e.preventDefault(); abrirPalavra(e.target, true); }
+      else if(e.target.classList.contains("chave")){
+        e.preventDefault();
+        bancadaAtiva() ? abrirPalavraEstante(e.target) : abrirPalavra(e.target, true);
+      }
     });
   });
   atualizarNav();
   const alvo = est.alvoV && leitor.querySelector(`.verso[data-v="${est.alvoV}"]`);
   if(alvo) irAoVerso(alvo, est.abrir);
-  else if(!op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
+  else {
+    if(bancadaAtiva()) atualizarEstudo(est.versoEstudo);
+    if(!op.manter && est.pronto) window.scrollTo({ top:0, behavior:"instant" });
+  }
   est.abrir = null;
 }
-/* Texto do versículo com as palavras-chave sublinhadas. */
-function textoVerso(texto, marcas, v){
-  if(!marcas) return esc(texto);
-  let html = "", pos = 0;
+/* Texto do versículo com as palavras-chave sublinhadas. `inicio` permite destacar a capitular no v. 1 sem deslocar offsets. */
+function textoVerso(texto, marcas, v, inicio){
+  inicio = inicio || 0;
+  if(!marcas) return esc(texto.slice(inicio));
+  let html = "", pos = inicio;
   marcas.forEach((m, i)=>{
     if(m[0] < pos || m[1] > texto.length) return;    // arquivo fora de sincronia com o texto: fica sem sublinhado
     if(ehVoc(m) ? !est.voc : !est.chave) return;     // camada desligada no Perfil
@@ -816,30 +992,35 @@ function textoVerso(texto, marcas, v){
 }
 function fecharPalavra(devolverFoco){
   const c = $("cartaoPalavra");
-  if(!c) return false;
   const dona = document.querySelector(".chave.aberta");
+  if(!c){
+    if(dona && !bancadaAtiva()) dona.classList.remove("aberta");
+    return false;
+  }
   c.remove();
   if(dona){ dona.classList.remove("aberta"); if(devolverFoco) dona.focus({ preventScroll:true }); }
   return true;
 }
-/* Cartão da palavra-chave: a palavra original, a tradução e por que ela pesa naquele versículo. */
+function htmlOriginalBadge(num, o, tr){
+  return `<span class="escritura lex-lemma" ${num[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(o)}</span>
+      <span class="lex-translit">${esc(tr)}</span><span class="lex-num">${esc(num)}</span>`;
+}
+/* Cartão da palavra-chave (celular ou quando a estante lateral está fechada). */
 function abrirPalavra(el, peloTeclado){
-  const jaAberta = el.classList.contains("aberta");
+  const jaAberta = el.classList.contains("aberta") && !!$("cartaoPalavra");
   fecharPalavra();
+  document.querySelectorAll(".chave.aberta").forEach(o=>o.classList.remove("aberta"));
   if(jaAberta) return;
   const idx = est.cachePalavras.indice, doVerso = est.palavrasCap && est.palavrasCap[el.dataset.v];
   const m = doVerso && doVerso[+el.dataset.i], voc = m && ehVoc(m);
   const lema = idx && m && (voc ? idx.termos && idx.termos[m[2]] : idx.lemas[m[2]]);
   if(!lema) return;
   const x = t(), verso = el.closest(".verso");
-  const original = (num, o, t)=>`<span class="escritura lex-lemma" ${num[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(o)}</span>
-      <span class="lex-translit">${esc(t)}</span><span class="lex-num">${esc(num)}</span>`;
   const botaoOriginal = `<button class="btn-linha" id="cpOriginal">${ico("original")} ${x.chaveVer}</button>`;
   const c = document.createElement("aside");
   c.id = "cartaoPalavra"; c.className = "cartao-palavra" + (voc ? " voc" : "");
   c.setAttribute("role", "dialog");
   if(voc){
-    // vocabulário: a palavra em português, o que ela quer dizer e, quando o versículo confirma, a palavra original
     const o = m[3] && idx.orig && idx.orig[m[3]];
     c.setAttribute("aria-label", `${el.textContent} — ${lema.s}`);
     c.innerHTML = `
@@ -847,12 +1028,12 @@ function abrirPalavra(el, peloTeclado){
         <button class="fechar" aria-label="${x.fechar}">×</button></div>
       <h4>${x.vocSig}</h4><p class="voc-sig">${esc(lema.s)}</p>
       ${lema.n ? `<p class="voc-nota">${esc(lema.n)}</p>` : ""}
-      ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${original(m[3], o[0], o[1])}</div>` : ""}
+      ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${htmlOriginalBadge(m[3], o[0], o[1])}</div>` : ""}
       <div class="cp-pe">${o ? botaoOriginal : ""}<span class="fonte">${x.vocFonte}</span></div>`;
   } else {
     c.setAttribute("aria-label", `${el.textContent} — ${lema.pt}`);
     c.innerHTML = `
-      <div class="lex-topo">${original(m[2], lema.o, lema.t)}
+      <div class="lex-topo">${htmlOriginalBadge(m[2], lema.o, lema.t)}
         <button class="fechar" aria-label="${x.fechar}">×</button></div>
       <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
       ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
@@ -863,29 +1044,53 @@ function abrirPalavra(el, peloTeclado){
   el.classList.add("aberta");
   const r = el.getBoundingClientRect(), alt = c.offsetHeight;
   if(matchMedia("(max-width:560px)").matches){
-    // no celular o cartão fica preso embaixo: se ele cobriria a palavra, a página sobe um pouco
     const sobra = r.bottom + 16 - (innerHeight - alt - 12);
     if(sobra > 0) window.scrollBy({ top: sobra, behavior:"instant" });
   } else {
     const cabeAbaixo = r.bottom + alt + 18 < innerHeight || r.top - alt - 12 < document.querySelector(".topo").getBoundingClientRect().bottom;
     c.style.left = Math.max(12, Math.min(r.left, innerWidth - c.offsetWidth - 24)) + scrollX + "px";
     c.style.top = (cabeAbaixo ? r.bottom + 10 : r.top - alt - 10) + scrollY + "px";
-    const passa = c.getBoundingClientRect().bottom + 12 - innerHeight;      // não coube inteiro na tela: a página sobe
+    const passa = c.getBoundingClientRect().bottom + 12 - innerHeight;
     if(passa > 0) window.scrollBy({ top: passa, behavior:"instant" });
   }
-  c.querySelector(".fechar").addEventListener("click", (e)=>fecharPalavra(e.detail === 0));   // só o teclado devolve o foco à palavra
+  c.querySelector(".fechar").addEventListener("click", (e)=>fecharPalavra(e.detail === 0));
   if($("cpOriginal")) $("cpOriginal").addEventListener("click", ()=>{ fecharPalavra(); irAoVerso(verso, "original"); });
-  if(peloTeclado) c.querySelector(".fechar").focus({ preventScroll:true });   // quem veio pelo teclado continua nele
+  if(peloTeclado) c.querySelector(".fechar").focus({ preventScroll:true });
+}
+/* Na bancada desktop, clicar numa palavra sublinhada abre a explicação dela direto na Estante Exegética, sem cobrir o texto. */
+function abrirPalavraEstante(el){
+  fecharPalavra();
+  document.querySelectorAll(".chave.aberta").forEach(o=>o.classList.remove("aberta"));
+  el.classList.add("aberta");
+  const v = +el.dataset.v, i = +el.dataset.i;
+  est.estudoAba = "original";
+  est.versoEstudo = v;
+  est.chaveEstudo = i;
+  focarEstudo(v, true);
 }
 /* Rola até o versículo pedido (busca, referência cruzada, link com #v16), destaca e abre as ferramentas dele. */
 function irAoVerso(el, abrir){
   est.semHover = Date.now() + 900;
   el.scrollIntoView({ block:"center", behavior:"instant" });
   el.classList.remove("destino"); void el.offsetWidth; el.classList.add("destino");
+  if(abrir && bancadaAtiva() && ["original","comentario","referencias","anotacao"].includes(abrir)) est.estudoAba = abrir;
   ativarVerso(el, true);
-  if(abrir) acaoVerso(el, +el.dataset.v, abrir);
+  if(abrir && !bancadaAtiva()) acaoVerso(el, +el.dataset.v, abrir);
 }
 
+function focarEstudo(v, forcar, focarNota){
+  const mudou = est.versoEstudo !== v;
+  est.versoEstudo = v;
+  if(mudou){
+    est.chaveEstudo = null;
+    document.querySelectorAll(".chave.aberta").forEach(o=>o.classList.remove("aberta"));
+  }
+  document.querySelectorAll(".verso.em-estudo").forEach(o=>o.classList.remove("em-estudo"));
+  const alvo = document.querySelector(`.verso[data-v="${v}"]`);
+  if(alvo) alvo.classList.add("em-estudo");
+  if(bancadaAtiva() && (mudou || forcar || est.estudoAtual !== `${est.livro}.${est.cap}.${v}.${est.estudoAba}`))
+    atualizarEstudo(v, focarNota);
+}
 function ativarVerso(el, toque){
   if(est.versoAtivo && est.versoAtivo!==el){ est.versoAtivo.classList.remove("ativo"); fecharGavetas(est.versoAtivo); }
   est.versoAtivo = el;
@@ -893,12 +1098,46 @@ function ativarVerso(el, toque){
   const topoFixo = document.querySelector(".topo").getBoundingClientRect().bottom;
   el.classList.toggle("barra-baixo", el.getBoundingClientRect().top < topoFixo + 28);
   montarBarra(el);
-  if(toque || est.ultimoEstudo !== el.dataset.v + est.cap + est.livro){
-    est.ultimoEstudo = el.dataset.v + est.cap + est.livro;
-    atualizarEstudo(+el.dataset.v);
-  }
+  if(toque) focarEstudo(+el.dataset.v);
 }
 function fecharGavetas(el){ const g = el.querySelector(".gavetas"); if(g) g.innerHTML=""; est.gaveta=null; }
+
+function alternarMarcaVerso(v, cor){
+  const chave = `${est.livro}.${est.cap}.${v}`;
+  if(est.marcas[chave]===cor) delete est.marcas[chave]; else est.marcas[chave] = cor;
+  gravarLS("logos_marcas", est.marcas); tocar("marca", chave);
+  if(est.marcas[chave]) convidar("marca");
+  const el = document.querySelector(`.verso[data-v="${v}"]`);
+  if(el){
+    CORES.forEach(o=>el.classList.toggle("m-"+o, est.marcas[chave]===o));
+    el.querySelectorAll(".barra .cor").forEach(o=>{
+      o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
+      o.setAttribute("aria-pressed", est.marcas[chave]===o.dataset.cor);
+    });
+  }
+  if(v === est.versoEstudo){
+    document.querySelectorAll("#estudoCores .cor").forEach(o=>{
+      o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
+      o.setAttribute("aria-pressed", est.marcas[chave]===o.dataset.cor);
+    });
+  }
+}
+function salvarNotaVerso(v, texto){
+  const x = t(), chave = `${est.livro}.${est.cap}.${v}`, valor = texto.trim();
+  if(valor) est.notas[chave] = valor; else delete est.notas[chave];
+  gravarLS("logos_notas", est.notas); tocar("nota", chave);
+  const el = document.querySelector(`.verso[data-v="${v}"]`);
+  if(el){
+    let sinal = el.querySelector(".indicadores");
+    if(valor && !sinal){
+      sinal = document.createElement("span");
+      sinal.className = "indicadores"; sinal.title = x.anotacao; sinal.textContent = "✎";
+      el.querySelector("p.escritura").appendChild(sinal);
+    } else if(!valor && sinal) sinal.remove();
+  }
+  if(valor) convidar("nota");
+  if(v === est.versoEstudo) sinalizarAbasEstante(v);
+}
 
 function montarBarra(el){
   const v = +el.dataset.v, chave = `${est.livro}.${est.cap}.${v}`, x = t();
@@ -913,17 +1152,7 @@ function montarBarra(el){
   barra.querySelectorAll(".cor").forEach(b=>{
     b.classList.toggle("sel", est.marcas[chave]===b.dataset.cor);
     b.setAttribute("aria-pressed", est.marcas[chave]===b.dataset.cor);
-    b.addEventListener("click", ()=>{
-      const c = b.dataset.cor;
-      if(est.marcas[chave]===c){ delete est.marcas[chave]; } else { est.marcas[chave]=c; }
-      gravarLS("logos_marcas", est.marcas); tocar("marca", chave);
-      if(est.marcas[chave]) convidar("marca");
-      CORES.forEach(o=>el.classList.toggle("m-"+o, est.marcas[chave]===o));
-      barra.querySelectorAll(".cor").forEach(o=>{
-        o.classList.toggle("sel", est.marcas[chave]===o.dataset.cor);
-        o.setAttribute("aria-pressed", est.marcas[chave]===o.dataset.cor);
-      });
-    });
+    b.addEventListener("click", ()=>alternarMarcaVerso(v, b.dataset.cor));
   });
   barra.querySelectorAll(".acao").forEach(b=>b.addEventListener("click", ()=>acaoVerso(el, v, b.dataset.acao, b)));
 }
@@ -938,22 +1167,23 @@ async function copiarTexto(texto){
     ta.remove(); return ok;
   }
 }
-/* Grade palavra por palavra (gaveta "Original" e coluna do modo estudo). */
+/* Grade palavra por palavra (gaveta "Original" e Estante Exegética). */
 function gradeInterlinear(palavras, ehAT){
   return `<div class="inter-grid" ${ehAT?'dir="rtl"':''}>` + palavras.map(p=>
-    `<button class="inter-palavra" data-strong="${esc(p[2]||"")}">
+    `<button type="button" class="inter-palavra" data-strong="${esc(p[2]||"")}">
        <span class="ip-surf escritura" ${ehAT?'dir="rtl" lang="he"':'lang="grc"'}>${esc(p[0].replace(/\\/g, ""))}</span>
        <span class="ip-translit">${esc(p[1])}</span>
        <span class="ip-gloss">${esc(p[3])}</span>
        <span class="ip-strong">${esc(p[2]||"")}</span>
      </button>`).join("") + `</div><div class="lex-caixa oculto" aria-live="polite"></div>`;
 }
-function ligarLexico(alvo, completo){
+function ligarLexico(alvo, completo, strongInicial){
   const x = t(), caixa = alvo.querySelector(".lex-caixa");
-  alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", async ()=>{
+  if(!caixa) return;
+  const mostrar = async (btn, rolar)=>{
     const strong = btn.dataset.strong;
     alvo.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
-    if(!strong || (caixa.dataset.atual===strong && !caixa.classList.contains("oculto"))){
+    if(!strong || (rolar && caixa.dataset.atual===strong && !caixa.classList.contains("oculto"))){
       caixa.classList.add("oculto"); caixa.dataset.atual=""; return;
     }
     btn.classList.add("sel");
@@ -965,26 +1195,106 @@ function ligarLexico(alvo, completo){
     if(caixa.dataset.atual !== strong) return;
     if(!ent){ caixa.innerHTML = ""; caixa.classList.add("oculto"); return; }
     caixa.innerHTML = `
-      <div class="lex-topo"><span class="escritura lex-lemma">${esc(ent.lemma)}</span>
+      <div class="lex-topo"><span class="escritura lex-lemma" ${strong[0]==="H"?'dir="rtl" lang="he"':'lang="grc"'}>${esc(ent.lemma)}</span>
         <span class="lex-translit">${esc(ent.translit)}</span>
         <span class="lex-num">${esc(strong)}</span></div>
       <p class="lex-def">${completo ? `<strong>${x.lexDef}:</strong> ` : ""}${esc((emPT() && ent.defpt) || ent.def)}</p>
       ${completo && ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
+    if(rolar) caixa.scrollIntoView({ block:"nearest" });
+  };
+  alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", ()=>mostrar(btn, true)));
+  if(strongInicial){
+    const inicial = alvo.querySelector(`.inter-palavra[data-strong="${CSS.escape(strongInicial)}"]`);
+    if(inicial) mostrar(inicial, false);
+  }
+}
+function htmlMss(ehAT){
+  return ehAT ? "" : `<div class="mss-abas">
+      <button type="button" data-mss="tr">Textus Receptus</button>
+      <button type="button" data-mss="byz">Bizantino</button>
+      <button type="button" data-mss="diff">Diferenças</button>
+    </div><div class="mss-alvo"></div>`;
+}
+function ligarMss(raiz, v){
+  raiz.querySelectorAll(".mss-abas button").forEach(b=>b.addEventListener("click", async ()=>{
+    const alvo = raiz.querySelector(".mss-alvo");
+    const ativa = b.classList.contains("ativa");
+    raiz.querySelectorAll(".mss-abas button").forEach(o=>o.classList.remove("ativa"));
+    if(ativa){ alvo.innerHTML = ""; return; }
+    b.classList.add("ativa");
+    const [tr, byz] = await Promise.all([carregarLivro("orig", est.livro), carregarLivro("byz", est.livro)]);
+    const tTR = tr && tr[est.cap-1] ? (tr[est.cap-1][v-1]||"") : "";
+    const tBZ = byz && byz[est.cap-1] ? (byz[est.cap-1][v-1]||"") : "";
+    const modo = b.dataset.mss;
+    if(modo==="tr") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus (1550)</span>${esc(tTR)}</p>`;
+    else if(modo==="byz") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Texto Bizantino (Robinson-Pierpont)</span>${esc(tBZ)}</p>`;
+    else {
+      const A = tTR.split(/\s+/), B = tBZ.split(/\s+/);
+      const sA = new Set(B), sB = new Set(A);
+      const marcar = (toks, outro)=>toks.map(w=>outro.has(w.replace(/[.,;·]/g,"")) || outro.has(w) ? esc(w) : `<mark>${esc(w)}</mark>`).join(" ");
+      alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus</span>${marcar(A,sA)}</p>
+        <p class="mss-texto" lang="grc"><span class="rot">Bizantino</span>${marcar(B,sB)}</p>`;
+    }
   }));
+}
+function htmlComentarioCorpo(com, v, x, resumir){
+  const achado = comentarioProximo(com, v);
+  if(!achado){
+    const lv = est.livrosCom || {calvin:[], henry:[]};
+    return `<p class="comentario-texto">${autorDoLivro(lv, est.livro) ? x.semComentario : x.semLivroCalvin}</p>`;
+  }
+  const nota = achado.v !== v
+    ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
+  const longo = resumir && achado.texto.length > 1400;
+  const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
+  const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
+  return `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
+    ${longo ? `<button type="button" class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}
+    <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
+    ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
+}
+function ligarLerMais(raiz, x){
+  const lm = raiz.querySelector(".ler-mais");
+  if(lm) lm.addEventListener("click", ()=>{
+    const abrir = raiz.querySelector(".comentario-texto").classList.toggle("recolhido") === false;
+    lm.textContent = abrir ? x.lerMenos : x.lerMais;
+    lm.setAttribute("aria-expanded", abrir);
+  });
+}
+function htmlRefsLista(lista, x){
+  return `<div class="refs">` + lista.map((r,ri)=>{
+    const rot = esc(`${nomeLivro(r[0])} ${r[1]}:${r[2]}${r[3]>r[2] ? "-"+r[3] : ""}`);
+    return `<div class="ref-item">${linkRef(r[0], r[1], r[2], rot, "ref-ir")}<span class="ref-previa" data-ri="${ri}"></span></div>`;
+  }).join("") + `</div><p class="fonte">${x.refFonte}</p>`;
+}
+function carregarPreviasRefs(raiz, lista){
+  lista.forEach(async (r,ri)=>{
+    const livro = await carregarLivro(est.traducao, r[0]);
+    const alvo = raiz.querySelector(`.ref-previa[data-ri="${ri}"]`);
+    if(alvo && livro && livro[r[1]-1] && livro[r[1]-1][r[2]-1]) alvo.textContent = livro[r[1]-1][r[2]-1];
+  });
 }
 
 async function acaoVerso(el, v, acao, botao){
   const x = t(), chave = `${est.livro}.${est.cap}.${v}`;
   const gavetas = el.querySelector(".gavetas");
   if(acao==="compartilhar"){
-    const rot = botao.textContent; botao.textContent = x.gerandoImagem;
+    const rot = botao ? botao.textContent : "";
+    if(botao) botao.textContent = x.gerandoImagem;
     try{ await compartilharVerso(v); } catch(e){ console.warn(e); }
-    botao.textContent = rot;
+    if(botao) botao.textContent = rot;
     return;
   }
   if(acao==="copiar"){
     const ok = await copiarTexto(`“${est.versos[v-1] || ""}” — ${refStr(est.livro, est.cap, v)} (${nomeTraducao(est.traducao)})`);
     if(ok && botao){ const rot = botao.textContent; botao.textContent = x.copiado; setTimeout(()=>{ botao.textContent = rot; }, 1400); }
+    return;
+  }
+  if(bancadaAtiva() && ["original","comentario","referencias","anotacao"].includes(acao)){
+    fecharGavetas(el);
+    est.estudoAba = acao;
+    est.chaveEstudo = null;
+    focarEstudo(v, true, acao === "anotacao");
     return;
   }
   if(est.gaveta && est.gaveta.tipo===acao && est.gaveta.verso===v){ fecharGavetas(el); return; }
@@ -998,33 +1308,9 @@ async function acaoVerso(el, v, acao, botao){
     if(!aberta()) return;
     const palavras = inter && inter[v-1] && inter[v-1].length ? inter[v-1] : null;
     if(palavras){
-      const mss = ehAT ? "" : `<div class="mss-abas">
-          <button data-mss="tr">Textus Receptus</button>
-          <button data-mss="byz">Bizantino</button>
-          <button data-mss="diff">Diferenças</button>
-        </div><div class="mss-alvo"></div>`;
-      gavetas.innerHTML = gaveta(rotulo, gradeInterlinear(palavras, ehAT) + mss + `<p class="fonte">${x.lexFonte}</p>`);
+      gavetas.innerHTML = gaveta(rotulo, gradeInterlinear(palavras, ehAT) + htmlMss(ehAT) + `<p class="fonte">${x.lexFonte}</p>`);
       ligarLexico(gavetas, true);
-      gavetas.querySelectorAll(".mss-abas button").forEach(b=>b.addEventListener("click", async ()=>{
-        const alvo = gavetas.querySelector(".mss-alvo");
-        const ativa = b.classList.contains("ativa");
-        gavetas.querySelectorAll(".mss-abas button").forEach(o=>o.classList.remove("ativa"));
-        if(ativa){ alvo.innerHTML = ""; return; }
-        b.classList.add("ativa");
-        const [tr, byz] = await Promise.all([carregarLivro("orig", est.livro), carregarLivro("byz", est.livro)]);
-        const tTR = tr && tr[est.cap-1] ? (tr[est.cap-1][v-1]||"") : "";
-        const tBZ = byz && byz[est.cap-1] ? (byz[est.cap-1][v-1]||"") : "";
-        const modo = b.dataset.mss;
-        if(modo==="tr") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus (1550)</span>${esc(tTR)}</p>`;
-        else if(modo==="byz") alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Texto Bizantino (Robinson-Pierpont)</span>${esc(tBZ)}</p>`;
-        else {
-          const A = tTR.split(/\s+/), B = tBZ.split(/\s+/);
-          const sA = new Set(B), sB = new Set(A);
-          const marcar = (toks, outro)=>toks.map(w=>outro.has(w.replace(/[.,;·]/g,"")) || outro.has(w) ? esc(w) : `<mark>${esc(w)}</mark>`).join(" ");
-          alvo.innerHTML = `<p class="mss-texto" lang="grc"><span class="rot">Textus Receptus</span>${marcar(A,sA)}</p>
-            <p class="mss-texto" lang="grc"><span class="rot">Bizantino</span>${marcar(B,sB)}</p>`;
-        }
-      }));
+      ligarMss(gavetas, v);
     } else {
       const orig = await carregarLivro("orig", est.livro);
       if(!aberta()) return;
@@ -1037,29 +1323,8 @@ async function acaoVerso(el, v, acao, botao){
   if(acao==="comentario"){
     const com = await carregarComentario(est.livro, est.cap);
     if(!aberta()) return;
-    const achado = comentarioProximo(com, v);
-    let corpo;
-    if(achado){
-      const nota = achado.v !== v
-        ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
-      const longo = achado.texto.length > 1400;
-      const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
-      const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
-      corpo = `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
-        ${longo ? `<button class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}
-        <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
-        ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
-    } else {
-      const lv = est.livrosCom || {calvin:[], henry:[]};
-      corpo = `<p class="comentario-texto">${autorDoLivro(lv, est.livro) ? x.semComentario : x.semLivroCalvin}</p>`;
-    }
-    gavetas.innerHTML = gaveta(x.comentario, corpo);
-    const lm = gavetas.querySelector(".ler-mais");
-    if(lm) lm.addEventListener("click", ()=>{
-      const abrir = gavetas.querySelector(".comentario-texto").classList.toggle("recolhido") === false;
-      lm.textContent = abrir ? x.lerMenos : x.lerMais;
-      lm.setAttribute("aria-expanded", abrir);
-    });
+    gavetas.innerHTML = gaveta(x.comentario, htmlComentarioCorpo(com, v, x, true));
+    ligarLerMais(gavetas, x);
   }
   if(acao==="referencias"){
     const refs = await carregarRefs(est.livro, est.cap);
@@ -1068,16 +1333,8 @@ async function acaoVerso(el, v, acao, botao){
     if(!lista || !lista.length){
       gavetas.innerHTML = gaveta(x.referencias, `<p class="comentario-texto">${x.semRefs}</p>`);
     } else {
-      gavetas.innerHTML = gaveta(x.referencias,
-        `<div class="refs">` + lista.map((r,ri)=>{
-          const rot = esc(`${nomeLivro(r[0])} ${r[1]}:${r[2]}${r[3]>r[2] ? "-"+r[3] : ""}`);
-          return `<div class="ref-item">${linkRef(r[0], r[1], r[2], rot, "ref-ir")}<span class="ref-previa" data-ri="${ri}"></span></div>`;
-        }).join("") + `</div><p class="fonte">${x.refFonte}</p>`);
-      lista.forEach(async (r,ri)=>{
-        const livro = await carregarLivro(est.traducao, r[0]);
-        const alvo = gavetas.querySelector(`.ref-previa[data-ri="${ri}"]`);
-        if(alvo && livro && livro[r[1]-1] && livro[r[1]-1][r[2]-1]) alvo.textContent = livro[r[1]-1][r[2]-1];
-      });
+      gavetas.innerHTML = gaveta(x.referencias, htmlRefsLista(lista, x));
+      carregarPreviasRefs(gavetas, lista);
     }
   }
   if(acao==="anotacao"){
@@ -1089,21 +1346,11 @@ async function acaoVerso(el, v, acao, botao){
        </div>`, true);
     gavetas.querySelector(".cancelar").addEventListener("click", ()=>fecharGavetas(el));
     gavetas.querySelector(".salvar").addEventListener("click", ()=>{
-      const valor = gavetas.querySelector("#campoNota").value.trim();
-      if(valor) est.notas[chave] = valor; else delete est.notas[chave];
-      gravarLS("logos_notas", est.notas); tocar("nota", chave);
+      salvarNotaVerso(v, gavetas.querySelector("#campoNota").value);
       fecharGavetas(el);
-      // só o sinal de anotação deste versículo muda: a página não é redesenhada (e não pula para o topo)
-      let sinal = el.querySelector(".indicadores");
-      if(valor && !sinal){
-        sinal = document.createElement("span");
-        sinal.className = "indicadores"; sinal.title = x.anotacao; sinal.textContent = "✎";
-        el.querySelector("p.escritura").appendChild(sinal);
-      } else if(!valor && sinal) sinal.remove();
-      if(valor) convidar("nota");
     });
     gavetas.querySelector("#campoNota").focus({ preventScroll:true });
-    gavetas.firstElementChild.scrollIntoView({ block:"nearest" });   // a gaveta inteira à vista, com os botões fora da barra de baixo
+    gavetas.firstElementChild.scrollIntoView({ block:"nearest" });
   }
   const fechaBtn = gavetas.querySelector(".rotulo button");
   if(fechaBtn) fechaBtn.addEventListener("click", ()=>fecharGavetas(el));
@@ -1199,7 +1446,62 @@ function destacar(texto, termos){
   }
   return saida + esc(texto.slice(fim));
 }
+function parseStrong(txt){
+  const m = String(txt || "").trim().match(/^([gh])\s*0*([1-9]\d{0,3})$/i);
+  return m ? m[1].toUpperCase() + m[2] : null;
+}
+function htmlStrongItem(k, ent, idxPal, x){
+  const lema = idxPal && idxPal.lemas && idxPal.lemas[k];
+  return `<div class="strong-item">
+    <div class="lex-topo">${htmlOriginalBadge(k, ent.lemma, ent.translit)}</div>
+    <p class="lex-def">${esc((emPT() && ent.defpt) || ent.def)}</p>
+    ${ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}
+    ${emPT() && lema && lema.nota ? `<p class="strong-nota"><strong>${esc(lema.pt)}:</strong> ${esc(lema.nota)}</p>` : ""}
+  </div>`;
+}
+async function buscarStrong(){
+  const x = t(), termo = $("campoBusca").value.trim();
+  const res = $("buscaResultados"), status = $("buscaStatus");
+  res.innerHTML = "";
+  const cod = parseStrong(termo);
+  const vez = ++est.vezBusca;
+  if(cod){
+    status.textContent = x.buscando;
+    const [lex, idxPal] = await Promise.all([carregarLexico(cod[0]), emPT() ? comCache(est.cachePalavras, "indice", "data/palavras/indice.json") : null]);
+    if(vez !== est.vezBusca) return;
+    const ent = lex && lex[cod];
+    if(!ent){ status.textContent = x.nadaEncontrado; return; }
+    status.textContent = `1 ${x.resultados}`;
+    res.innerHTML = htmlStrongItem(cod, ent, idxPal, x) + `<p class="fonte">${x.lexFonte}</p>`;
+    return;
+  }
+  if(termo.length < 2){ status.textContent = x.digiteStrong; return; }
+  status.textContent = x.buscando;
+  const [g, h, idxPal] = await Promise.all([
+    carregarLexico("G"), carregarLexico("H"),
+    emPT() ? comCache(est.cachePalavras, "indice", "data/palavras/indice.json") : null
+  ]);
+  if(vez !== est.vezBusca) return;
+  const normLex = (s)=>normStr(String(s || "")).replace(/[\u0591-\u05c7]/g, "");
+  const alvo = normLex(termo), LIMITE = 40;
+  const pri = [], sec = [];
+  for(const dic of [g, h]){
+    if(!dic) continue;
+    for(const [k, ent] of Object.entries(dic)){
+      const lemaPt = emPT() && idxPal && idxPal.lemas && idxPal.lemas[k] ? normLex(idxPal.lemas[k].pt) : "";
+      const tr = normLex(ent.translit), lm = normLex(ent.lemma);
+      const def = normLex((emPT() && ent.defpt) || ent.def);
+      if(lm === alvo || tr === alvo || ent.lemma === termo || (lemaPt && lemaPt.split(/[,;]/).some(s=>s.trim() === alvo))) pri.push([k, ent]);
+      else if(lm.includes(alvo) || tr.includes(alvo) || (lemaPt && lemaPt.includes(alvo)) || def.includes(alvo)) sec.push([k, ent]);
+    }
+  }
+  const achados = pri.concat(sec);
+  status.textContent = !achados.length ? x.nadaEncontrado
+    : `${achados.length.toLocaleString(est.idioma)} ${x.resultados}` + (achados.length > LIMITE ? ` — ${x.mostrando} ${LIMITE}` : "");
+  if(achados.length) res.innerHTML = achados.slice(0, LIMITE).map(([k, ent])=>htmlStrongItem(k, ent, idxPal, x)).join("") + `<p class="fonte">${x.lexFonte}</p>`;
+}
 async function buscar(){
+  if(est.buscaModo==="strong") return buscarStrong();
   if(est.buscaModo==="temas") return buscarTemas();
   if(est.buscaModo==="dicionario") return buscarDic();
   const x = t(), termo = $("campoBusca").value.trim();
@@ -1207,6 +1509,7 @@ async function buscar(){
   res.innerHTML = "";
   const ref = parseRef(termo);
   if(ref){ alternarPainel("painelBusca", false); return irPara(ref.livro, ref.cap, ref.v); }
+  if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscarStrong(); }
   if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
   const frase = normStr(termo).replace(/\s+/g, " ");
   const palavras = frase.split(" ").filter(p=>p.length > 1);
@@ -1287,6 +1590,13 @@ function htmlDoutrina(d){
   return `<p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p><p class="dout-resumo">${esc(d.r)}</p>` +
     d.sec.map(s=>`<h4 class="dout-sec">${esc(s.t)}</h4>${refs(s.v)}`).join("") + `<p class="fonte">${x.doutFonte}</p>`;
 }
+async function abrirDoutrina(dOuId){
+  abrirBusca("temas");
+  const d = typeof dOuId === "string" ? (await doutrinas()).find(o=>o.id===dOuId) : dOuId;
+  if(!d) return;
+  $("buscaStatus").textContent = "";
+  $("buscaResultados").innerHTML = `<h3 class="res-titulo">${esc(d.t)}</h3>` + htmlDoutrina(d);
+}
 const itemDoutrina = (d)=>({ html: `${esc(d.t)} <span class="dout-tag">${t().doutSelo}</span>`, titulo: esc(d.t), abrir: async ()=>htmlDoutrina(d) });
 const RE_DOUT_GERAL = /reformad|doutrin|westminster|presbiterian|confiss|catecism|calvin/;
 async function buscarTemas(){
@@ -1331,9 +1641,9 @@ function abrirBusca(modo){
 }
 function prepararAbas(){
   const x = t();
-  const exemplo = ()=>est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="temas" ? x.exTema : x.exDic;
+  const exemplo = ()=>est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="strong" ? x.exStrong : est.buscaModo==="temas" ? x.exTema : x.exDic;
   document.querySelectorAll(".busca-abas .aba").forEach(b=>{
-    b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="temas" ? x.abaTemas : x.abaDic;
+    b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="strong" ? x.abaStrong : b.dataset.modo==="temas" ? x.abaTemas : x.abaDic;
     b.onclick = ()=>{
       est.buscaModo = b.dataset.modo;
       document.querySelectorAll(".busca-abas .aba").forEach(o=>{ o.classList.toggle("ativa", o===b); o.setAttribute("aria-selected", o===b); });
@@ -1341,6 +1651,7 @@ function prepararAbas(){
       $("campoBusca").placeholder = exemplo();
       $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
       if(est.buscaModo==="temas" && !$("campoBusca").value.trim()) buscarTemas();
+      else if(est.buscaModo==="strong" && $("campoBusca").value.trim()) buscarStrong();
     };
   });
   $("campoBusca").placeholder = exemplo();
@@ -1518,35 +1829,182 @@ async function abrirContexto(){
   alternarPainel("painelCtx", true);
 }
 
-/* ---------- modo estudo ---------- */
+/* ---------- estante exegética ---------- */
 function aplicarEstudo(){
   document.body.classList.toggle("estudo", est.estudo);
   $("colEstudo").classList.toggle("oculto", !est.estudo);
   $("btnEstudo").classList.toggle("ativa", est.estudo);
   $("btnEstudo").setAttribute("aria-pressed", est.estudo);
 }
-async function atualizarEstudo(v){
-  if(!est.estudo || window.innerWidth < 1100) return;
-  const x = t(), ref = esc(refStr(est.livro, est.cap, v)), chave = est.livro + est.cap + "." + v;
-  const alvoO = $("estudoOriginal"), alvoC = $("estudoComentario");
-  est.estudoAtual = chave;
-  alvoO.innerHTML = alvoC.innerHTML = `<p class="estudo-vazio">${x.carregando}</p>`;
-  const ehAT = infoLivro(est.livro).t==="AT";
-  const [inter, com] = await Promise.all([carregarInterlinear(est.livro, est.cap), carregarComentario(est.livro, est.cap)]);
-  if(est.estudoAtual !== chave) return;
-  const palavras = inter && inter[v-1] ? inter[v-1] : [];
-  if(palavras.length){
-    alvoO.innerHTML = `<p class="lugar-meta" style="margin-top:0">${ref}</p>` + gradeInterlinear(palavras, ehAT);
-    ligarLexico(alvoO, false);
-  } else {
-    alvoO.innerHTML = `<p class="estudo-vazio">${x.semOriginal}</p>`;
+function doutrinasDoVerso(douts, usfm, cap, v){
+  if(!douts || !douts.length) return [];
+  const achados = [];
+  for(const d of douts){
+    const secs = (d.sec || []).filter(s=>(s.v || []).some(([l, c, a, b])=>l===usfm && c===cap && v>=a && v<=b));
+    if(secs.length) achados.push({ d, secs });
   }
-  const achado = comentarioProximo(com, v);
-  alvoC.innerHTML = achado
-    ? `<p class="lugar-meta" style="margin-top:0">${ref} — ${autorComentario(com, x).split(" (")[0]}${achado.v !== v ? ` · ${achado.seguinte ? x.comInicio : x.comRef} ${achado.v}` : ""}</p>
-       <p class="comentario-texto">${esc(achado.texto)}</p>
-       ${est.idioma!=="en" ? `<p class="aviso-idioma">${com.__pt ? x.tradAuto : x.avisoIdiomaComentario}</p>` : ""}`
-    : `<p class="estudo-vazio">${x.semComentario}</p>`;
+  return achados;
+}
+function sinalizarAbasEstante(v, doutsVerso){
+  const temNota = !!est.notas[`${est.livro}.${est.cap}.${v}`];
+  const temDout = doutsVerso !== undefined
+    ? doutsVerso.length > 0
+    : !!(est.doutrinas && doutrinasDoVerso(est.doutrinas, est.livro, est.cap, v).length);
+  const marcar = (aba, ativo)=>{
+    const btn = document.querySelector(`#abasEstante .eaba[data-eaba="${aba}"]`);
+    if(!btn) return;
+    let p = btn.querySelector(".ponto");
+    if(ativo && !p){ p = document.createElement("span"); p.className = "ponto"; p.setAttribute("aria-hidden", "true"); btn.appendChild(p); }
+    else if(!ativo && p) p.remove();
+  };
+  marcar("anotacao", temNota);
+  marcar("referencias", temDout);
+}
+function htmlPalavraEstante(v, x){
+  const idx = est.cachePalavras.indice;
+  const todas = (est.traducao === "blivre" && idx && est.palavrasCap && est.palavrasCap[v]) || [];
+  const texto = est.versos[v - 1] || "";
+  const ativas = todas.map((m, i)=>({ m, i, voc: ehVoc(m), txt: texto.slice(m[0], m[1]) }))
+    .filter(o=>o.m[0] >= 0 && o.m[1] <= texto.length && (o.voc ? est.voc : est.chave));
+  if(!ativas.length) return { html:"", strong:null };
+  const sel = (est.chaveEstudo !== null && ativas.find(o=>o.i === est.chaveEstudo)) || ativas.find(o=>!o.voc) || null;
+  const chips = `<div class="chaves-verso"><span class="chaves-rot">${x.chavesNoVerso}</span>` +
+    ativas.map(o=>`<button type="button" class="chip-chave${sel && sel.i===o.i ? " ativa" : ""}" data-i="${o.i}">${esc(o.txt)}</button>`).join("") + `</div>`;
+  if(!sel) return { html: chips, strong: null };
+  const m = sel.m, lema = sel.voc ? idx.termos && idx.termos[m[2]] : idx.lemas && idx.lemas[m[2]];
+  if(!lema) return { html: chips, strong: null };
+  if(sel.voc){
+    const o = m[3] && idx.orig && idx.orig[m[3]];
+    return {
+      strong: m[3] || null,
+      html: chips + `<div class="estante-palavra voc">
+        <div class="voc-topo"><span class="voc-palavra">${esc(lema.p || sel.txt)}</span></div>
+        <h4>${x.vocSig}</h4><p class="voc-sig">${esc(lema.s)}</p>
+        ${lema.n ? `<p class="voc-nota">${esc(lema.n)}</p>` : ""}
+        ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${htmlOriginalBadge(m[3], o[0], o[1])}</div>` : ""}
+        <p class="fonte">${x.vocFonte}</p></div>`
+    };
+  }
+  return {
+    strong: m[2] || null,
+    html: chips + `<div class="estante-palavra">
+      <div class="lex-topo">${htmlOriginalBadge(m[2], lema.o, lema.t)}</div>
+      <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
+      ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
+      ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
+      <p class="fonte">${x.chaveFonte}</p></div>`
+  };
+}
+async function atualizarEstudo(v, focarNota){
+  if(!bancadaAtiva()) return;
+  v = Math.max(1, Math.min(v || 1, est.versos.length || 1));
+  est.versoEstudo = v;
+  const x = t(), chave = `${est.livro}.${est.cap}.${v}`, estado = `${chave}.${est.estudoAba}`;
+  est.estudoAtual = estado;
+  document.querySelectorAll(".verso.em-estudo").forEach(o=>{ if(+o.dataset.v !== v) o.classList.remove("em-estudo"); });
+  const elVerso = document.querySelector(`.verso[data-v="${v}"]`);
+  if(elVerso) elVerso.classList.add("em-estudo");
+
+  $("estudoRef").textContent = refStr(est.livro, est.cap, v);
+  $("estudoCores").innerHTML = CORES.map(c=>
+    `<button type="button" class="cor${est.marcas[chave]===c ? " sel" : ""}" data-cor="${c}" title="${x.marcar}: ${x.cores[c]}" aria-label="${x.marcar}: ${x.cores[c]}" aria-pressed="${est.marcas[chave]===c}" style="background:var(--m-${c})"></button>`).join("");
+  $("estudoCores").querySelectorAll(".cor").forEach(b=>b.addEventListener("click", ()=>alternarMarcaVerso(v, b.dataset.cor)));
+  document.querySelectorAll("#abasEstante .eaba").forEach(b=>{
+    const ativa = b.dataset.eaba === est.estudoAba;
+    b.classList.toggle("ativa", ativa);
+    b.setAttribute("aria-selected", ativa);
+  });
+  sinalizarAbasEstante(v);
+  if(!est.doutrinas) doutrinas().then(ds=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v, doutrinasDoVerso(ds, est.livro, est.cap, v)); });
+
+  const corpo = $("estudoCorpo");
+  if(est.estudoAba === "anotacao"){
+    const atual = est.notas[chave] || "";
+    corpo.innerHTML = `<div class="estante-cartao nota-editor">
+      <p class="estante-sub">${x.anotacao} · ${esc(refStr(est.livro, est.cap, v))}</p>
+      <textarea id="estanteNota" placeholder="${x.escrevaNota}" aria-label="${x.anotacao}">${esc(atual)}</textarea>
+      <div class="acoes">
+        ${atual ? `<button type="button" class="cancelar" id="estanteExcluirNota">${x.excluir}</button>` : ""}
+        <button type="button" class="salvar" id="estanteSalvarNota">${x.salvar}</button>
+      </div></div>
+      <button type="button" class="btn-linha" id="estanteVerNotas" style="justify-content:center">${ico("anotacoes")} ${x.notas}</button>`;
+    $("estanteSalvarNota").addEventListener("click", ()=>{
+      salvarNotaVerso(v, $("estanteNota").value);
+      avisar(x.notaSalva, null, null, 1500);
+      atualizarEstudo(v);
+    });
+    if($("estanteExcluirNota")) $("estanteExcluirNota").addEventListener("click", ()=>{
+      salvarNotaVerso(v, "");
+      atualizarEstudo(v, true);
+    });
+    $("estanteVerNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
+    if(focarNota) $("estanteNota").focus({ preventScroll:true });
+    return;
+  }
+
+  corpo.innerHTML = `<p class="estudo-vazio">${x.carregando}</p>`;
+  if(est.estudoAba === "original"){
+    const ehAT = infoLivro(est.livro).t === "AT", rotulo = ehAT ? x.hebraico : x.grego;
+    const inter = await carregarInterlinear(est.livro, est.cap);
+    if(est.estudoAtual !== estado) return;
+    const pal = htmlPalavraEstante(v, x);
+    const palavras = inter && inter[v - 1] && inter[v - 1].length ? inter[v - 1] : null;
+    let htmlInter = "";
+    if(palavras){
+      htmlInter = `<div class="estante-cartao"><p class="estante-sub">${rotulo}</p>${gradeInterlinear(palavras, ehAT)}${htmlMss(ehAT)}<p class="fonte">${x.lexFonte}</p></div>`;
+    } else {
+      const orig = await carregarLivro("orig", est.livro);
+      if(est.estudoAtual !== estado) return;
+      const txOrig = orig && orig[est.cap - 1] ? orig[est.cap - 1][v - 1] : "";
+      htmlInter = `<div class="estante-cartao"><p class="estante-sub">${rotulo}</p>${txOrig
+        ? `<p class="original-texto" dir="${ehAT ? "rtl" : "ltr"}" lang="${ehAT ? "he" : "grc"}">${esc(txOrig)}</p>`
+        : `<p class="estudo-vazio">${x.semOriginal}</p>`}</div>`;
+    }
+    corpo.innerHTML = est.chaveEstudo !== null ? pal.html + htmlInter : htmlInter + pal.html;
+    corpo.querySelectorAll(".chip-chave").forEach(b=>b.addEventListener("click", ()=>{
+      const idxChip = +b.dataset.i;
+      est.chaveEstudo = est.chaveEstudo === idxChip ? null : idxChip;
+      document.querySelectorAll(".chave.aberta").forEach(o=>o.classList.remove("aberta"));
+      if(est.chaveEstudo !== null){
+        const chEl = document.querySelector(`.chave[data-v="${v}"][data-i="${idxChip}"]`);
+        if(chEl) chEl.classList.add("aberta");
+      }
+      atualizarEstudo(v);
+    }));
+    if(palavras){
+      const cartaoInter = corpo.querySelector(".estante-cartao");
+      ligarLexico(cartaoInter, true, est.chaveEstudo !== null ? pal.strong : null);
+      ligarMss(cartaoInter, v);
+    }
+    return;
+  }
+
+  if(est.estudoAba === "comentario"){
+    const com = await carregarComentario(est.livro, est.cap);
+    if(est.estudoAtual !== estado) return;
+    const autor = com && com.__autor ? autorComentario(com, x).split(" (")[0] : x.comentario;
+    corpo.innerHTML = `<div class="estante-cartao"><p class="estante-sub">${esc(autor)}</p>${htmlComentarioCorpo(com, v, x, false)}</div>`;
+    return;
+  }
+
+  if(est.estudoAba === "referencias"){
+    const [refs, douts] = await Promise.all([carregarRefs(est.livro, est.cap), doutrinas()]);
+    if(est.estudoAtual !== estado) return;
+    const dVerso = doutrinasDoVerso(douts, est.livro, est.cap, v);
+    sinalizarAbasEstante(v, dVerso);
+    const htmlDouts = dVerso.map(({ d, secs })=>`<div class="estante-cartao confessional">
+      <p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p>
+      <h4 class="cm-titulo">${esc(d.t)}</h4>
+      <p class="cm-nota">${esc(d.r)}</p>
+      ${secs.length ? `<p class="fonte">${secs.map(s=>esc(s.t)).join(" · ")}</p>` : ""}
+      <button type="button" class="dout-atalho" data-dout="${esc(d.id)}">${x.verDoutrina} ${ico("seta")}</button></div>`).join("");
+    const lista = refs ? refs[String(v)] : null;
+    const htmlRefs = `<div class="estante-cartao"><p class="estante-sub">${x.referencias}</p>${lista && lista.length
+      ? htmlRefsLista(lista, x) : `<p class="estudo-vazio">${x.semRefs}</p>`}</div>`;
+    corpo.innerHTML = htmlDouts + htmlRefs;
+    corpo.querySelectorAll(".dout-atalho").forEach(b=>b.addEventListener("click", ()=>abrirDoutrina(b.dataset.dout)));
+    if(lista && lista.length) carregarPreviasRefs(corpo, lista);
+  }
 }
 
 /* ---------- compartilhar versículo como imagem ---------- */
@@ -1569,14 +2027,14 @@ async function compartilharVerso(v){
   const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
   const c = cv.getContext("2d");
   const fundo = c.createLinearGradient(0, 0, W, H);
-  fundo.addColorStop(0, "#1B2438"); fundo.addColorStop(1, "#131A2A");
+  fundo.addColorStop(0, "#1E1B17"); fundo.addColorStop(1, "#12100E");
   c.fillStyle = fundo; c.fillRect(0, 0, W, H);
-  c.strokeStyle = "rgba(217,185,120,.55)"; c.lineWidth = 2; c.strokeRect(44, 44, W-88, H-88);
+  c.strokeStyle = "rgba(212,174,106,.5)"; c.lineWidth = 2; c.strokeRect(44, 44, W-88, H-88);
   // logotipo: o livro aberto com o ponto de luz (mesmo desenho do ícone do site)
   c.save(); c.translate(W/2 - 36, 128); c.scale(3, 3);
-  c.strokeStyle = "#D9B978"; c.lineWidth = 1.5; c.lineCap = "round"; c.lineJoin = "round";
+  c.strokeStyle = "#D4AE6A"; c.lineWidth = 1.5; c.lineCap = "round"; c.lineJoin = "round";
   c.stroke(new Path2D("M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"));
-  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#D9B978";
+  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#DC7D6F";
   c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI*2); c.fill(); c.restore();
   // texto do versículo, com a fonte reduzindo até caber
   let tam = 66, linhas, alt;
@@ -1586,17 +2044,18 @@ async function compartilharVerso(v){
     alt = linhas.length * tam * 1.42;
     tam -= 2;
   } while(alt > H - 600 && tam > 30);
-  c.fillStyle = "#F1E9D8"; c.textAlign = "center"; c.textBaseline = "middle";
+  c.fillStyle = "#F4EFE4"; c.textAlign = "center"; c.textBaseline = "middle";
   let y = (H - alt) / 2 + tam * 0.7 - 20;
   for(const l of linhas){ c.fillText(l, W/2, y); y += (tam + 2) * 1.42; }
-  c.fillStyle = "#D9B978"; c.fillRect(W/2 - 40, y + 4, 80, 2);
+  c.fillStyle = "#DC7D6F"; c.fillRect(W/2 - 40, y + 4, 80, 2);
+  c.fillStyle = "#D4AE6A";
   c.font = '600 34px "Inter", sans-serif';
   c.fillText(ref.toUpperCase(), W/2, y + 62);
-  c.font = '400 26px "Inter", sans-serif'; c.fillStyle = "rgba(241,233,216,.6)";
+  c.font = '400 26px "Inter", sans-serif'; c.fillStyle = "rgba(244,239,228,.62)";
   c.fillText(trad, W/2, y + 110);
-  c.font = '600 44px "Cormorant Garamond", "Cardo", serif'; c.fillStyle = "#F1E9D8";
+  c.font = '600 44px "Cormorant Garamond", "Cardo", serif'; c.fillStyle = "#F4EFE4";
   c.fillText("S O L A", W/2, H - 158);
-  c.font = '500 26px "Inter", sans-serif'; c.fillStyle = "#D9B978";
+  c.font = '500 26px "Inter", sans-serif'; c.fillStyle = "#D4AE6A";
   c.fillText("solabiblia.com.br", W/2, H - 108);
   const blob = await new Promise(r=>cv.toBlob(r, "image/png"));
   const nome = `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}.png`;   // sem acento: o Chrome descarta nomes com "ã"
@@ -1703,6 +2162,10 @@ function montarNotas(aviso){
       const [usfm, cap, v] = el.dataset.k.split(".");
       if(est.vista==="cap" && usfm===est.livro && +cap===est.cap){
         const sinal = document.querySelector(`.verso[data-v="${v}"] .indicadores`); if(sinal) sinal.remove();
+        if(+v === est.versoEstudo){
+          sinalizarAbasEstante(+v);
+          if(est.estudoAba === "anotacao" && bancadaAtiva()) atualizarEstudo(+v);
+        }
       }
     });
     el.addEventListener("click", (e)=>{ if(!e.target.closest("a,button")) el.querySelector("a").click(); });
@@ -2239,7 +2702,7 @@ function aplicarTema(){
   const escuro = est.tema==="escuro";
   document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
   $("btnTema").innerHTML = ico(escuro ? "sol" : "lua");
-  $("metaTema").content = escuro ? "#0C1019" : "#F7F3EA";
+  $("metaTema").content = escuro ? "#171613" : "#FAF7F0";
 }
 function avisar(texto, botao, acao, some){
   document.querySelectorAll(".aviso-topo").forEach(a=>a.remove());
@@ -2290,6 +2753,7 @@ async function iniciar(){
   });
   $("selComparar").addEventListener("change", (e)=>{ est.comparar = e.target.value; renderizar({ manter:true }); });
   $("btnLivros").addEventListener("click", ()=>{ montarListaLivros(); alternarPainel("painelLivros"); });
+  $("btnComando").addEventListener("click", ()=>abrirBusca("texto"));
   $("btnMeuEstudo").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
   $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
   $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
@@ -2311,6 +2775,25 @@ async function iniciar(){
   });
   $("btnEstudo").addEventListener("click", ()=>{
     est.estudo = !est.estudo; gravarLS("logos_estudo", est.estudo); aplicarEstudo();
+    if(bancadaAtiva()) atualizarEstudo(est.versoEstudo || 1);
+  });
+  $("btnFecharEstudo").addEventListener("click", ()=>{
+    est.estudo = false; gravarLS("logos_estudo", false); aplicarEstudo();
+  });
+  document.querySelectorAll("#abasEstante .eaba").forEach(b=>b.addEventListener("click", ()=>{
+    est.estudoAba = b.dataset.eaba;
+    atualizarEstudo(est.versoEstudo || 1, est.estudoAba === "anotacao");
+  }));
+  $("estudoCopiar").addEventListener("click", async ()=>{
+    const v = est.versoEstudo || 1;
+    const ok = await copiarTexto(`“${est.versos[v-1] || ""}” — ${refStr(est.livro, est.cap, v)} (${nomeTraducao(est.traducao)})`);
+    if(ok) avisar(t().copiado, null, null, 1500);
+  });
+  $("estudoCompartilhar").addEventListener("click", ()=>{
+    compartilharVerso(est.versoEstudo || 1).catch(e=>console.warn(e));
+  });
+  matchMedia("(min-width: 1060px)").addEventListener("change", (m)=>{
+    if(m.matches && bancadaAtiva()) atualizarEstudo(est.versoEstudo || 1);
   });
   $("btnPerfil").addEventListener("click", ()=>abrirMeuEstudo("perfil"));
   $("navMais").addEventListener("click", (e)=>{
@@ -2374,6 +2857,10 @@ async function iniciar(){
 
   document.addEventListener("click", (e)=>{ if(!e.target.closest("#cartaoPalavra,.chave")) fecharPalavra(); });
   document.addEventListener("keydown", (e)=>{
+    if((e.ctrlKey || e.metaKey) && !e.altKey && e.key.toLowerCase() === "k"){
+      e.preventDefault();
+      return abrirBusca("texto");
+    }
     if(e.key === "Escape"){
       if(fecharMais(true)) return;
       if(painelAberto()) return fecharPaineis();
