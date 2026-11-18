@@ -51,7 +51,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 
 - **Aplicação web (SPA + HTML pré-renderizado para SEO)**:
   - **HTML5** (`index.html` + páginas estáticas pré-geradas por livro e capítulo em `biblia/`).
-  - **CSS3 puro** (`style.css`, variáveis CSS para temas claro/escuro: marfim, azul-noite e ouro envelhecido).
+  - **CSS3 puro** (`style.css`, variáveis CSS para o modelo editorial *Bancada Genebra*: tema claro *Papel Linho & Rubrica* — papel `#FAF7F0`, carmim `#8C2D23` e ouro envelhecido — e tema escuro *Vigília* em grafite quente `#171613`).
   - **JavaScript puro** (`app.js`, `"use strict"`, ES2020+, roteamento via `history.pushState`, zero dependências de build).
   - **PWA / Offline**: Service Worker (`sw.js`) + `manifest.webmanifest`.
 - **Hospedagem**: **GitHub Pages** servindo diretamente a raiz da branch `main` no domínio customizado `solabiblia.com.br` (`CNAME`).
@@ -74,7 +74,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 /
 ├── index.html                  # Casca principal da SPA (início pré-renderizado entre <!--CONTEUDO-->)
 ├── style.css                   # Estilos globais, variáveis de tema (claro/escuro) e responsividade
-├── app.js                      # Toda a lógica da aplicação no navegador (~2.400 linhas, JS puro)
+├── app.js                      # Toda a lógica da aplicação no navegador (~2.880 linhas, JS puro)
 ├── sw.js                       # Service Worker (cache do app e cache offline de /data/)
 ├── manifest.webmanifest        # Manifesto PWA (instalação no celular/desktop)
 ├── CNAME                       # Domínio customizado (solabiblia.com.br) — NUNCA ALTERAR
@@ -166,8 +166,10 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 - **Service Worker (`sw.js`)**:
   - Páginas HTML usam estratégia *rede primeiro*, caindo para a página inicial em cache quando sem internet (o `app.js` lê `location.pathname` e abre o capítulo certo).
   - Arquivos em `/data/` usam o cache `sola-dados-v1` (*stale-while-revalidate*). O botão *"Baixar a Bíblia"* no painel Sobre salva todos os capítulos da tradução atual nesse mesmo cache.
-- **Navegação responsiva e painéis (`app.js`)**:
-  - **Barra `.navbar` e menu `#navMais` (`#menuMais`)**: `ajustarNav()` esconde com `nav-fora` os últimos botões que não cabem na largura disponível e exibe o botão *"Mais"*. A prioridade segue a ordem no HTML (*Como usar* sai primeiro). Recalcula via `ResizeObserver` na própria barra, ao mudar de vista/idioma e após carregar fontes — nunca por evento `resize` da janela. Onde `.controles` fica oculto (`≤700px`), o menu *"Mais"* também exibe os seletores de idioma, tradução e comparação. Para adicionar um botão novo na barra, basta inseri-lo na posição de prioridade correta no HTML.
+- **Navegação responsiva, bancada de leitura e painéis (`app.js`)**:
+  - **Topo único (`.topo`), barra de comando (`#btnComando`, `/` ou `Ctrl+K`) e menu `#navMais` (`#menuMais`)**: no desktop (`>700px`), `.topo` opera em linha única (`54px`) e `ajustarNav()` esconde com `nav-fora` os últimos botões de `.navbar` que não cabem na largura disponível, exibindo o botão *"Mais"*. A prioridade segue a ordem no HTML (*Como usar* sai primeiro). Recalcula via `ResizeObserver` na própria barra, ao mudar de vista/idioma e após carregar fontes — nunca por evento `resize` da janela. Onde `.controles` fica oculto (`≤700px`), o menu *"Mais"* também exibe os seletores de idioma, tradução e comparação. Para adicionar um botão novo na barra, basta inseri-lo na posição de prioridade correta no HTML.
+  - **Leitura estilo Bíblia de Genebra e Estante Exegética (`#colEstudo`, desktop `≥1060px`)**: em telas largas (`≥860px`, fora de comparação/leitura contínua), `renderizarCapitulo()` exibe até 2 referências cruzadas principais na margem esquerda de cada versículo (`.margem-refs`). Em `≥1060px` com `est.estudo` ativo (`bancadaAtiva()`), a estante lateral acompanha apenas cliques deliberados no versículo (sem saltar ao passar o mouse) e reúne 4 abas sincronizadas em `#abasEstante` (`atualizarEstudo`): *Léxico & Orig.* (`original`, incluindo notas de palavras sublinhadas abertas direto na estante sem cobrir o texto), *Comentário* (`comentario`), *CFW & Refs* (`referencias`, cruzando textos de prova de `doutrinas.json` com `crossrefs`) e *Nota* (`anotacao`). Em telas menores ou com a estante fechada, as ações abrem nas gavetas internas do versículo (`.gaveta`) e no balão `#cartaoPalavra`.
+  - **Busca unificada (`#painelBusca`)**: quatro abas (`texto`, `strong`, `temas`, `dicionario`); digitar uma referência (`Jo 3:16`) navega direto e digitar um código Strong (`G3056`, `H2617`) abre automaticamente a aba *Strong* (`buscarStrong()`), que pesquisa código, lema original (com ou sem massorá), transliteração e definição nas `14.197` entradas.
   - **Painel "Meu estudo"**: dividido em duas abas (`est.abaEstudo`): *Estudo* (estatísticas, progresso por livro, dias seguidos, marcações) e *Perfil* (conta, preferências, backup, privacidade, excluir conta), acessível também pelo botão `#btnPerfil` no topo.
   - **Painel "Como usar" (`#painelAjuda`)**: montado por `montarAjuda()` a partir do objeto `AJUDA` (`pt`/`en`/`es`: grupos → `[ação, ícone, título, texto]`), com botões *"Experimentar"* ligados a `ACOES_AJUDA[ação]`. Ao criar funcionalidade nova no site, adicione-a em `AJUDA` nos três idiomas e registre a ação correspondente.
 - **Contas opcionais (`CONTA` em `app.js` + `ferramentas/CONTAS.md`)**:
@@ -227,12 +229,12 @@ git status --short
   - Nomes de variáveis, funções, classes CSS, scripts e comentários devem ser escritos em **português**.
   - Textos visíveis na interface ficam centralizados nos objetos `UI`, `NAV` e `AJUDA` (`pt`, `en`, `es`) em `app.js`.
 - **Cuidados essenciais de layout, CSS e mobile (não regredir)**:
-  - **Cabeçalho no celular (`≤560px`)**: a palavra `"Sola"` ao lado do símbolo só aparece se couber junto ao nome do livro (`.topo .marca` quebra internamente e esconde o excedente). Sempre teste o topo mobile abrindo **`1 Tessalonicenses 5`**. Cabeçalho em linha única só ocorre a partir de `1500px` (ou `1850px` na tela de leitura).
+  - **Cabeçalho no celular (`≤560px`) e no desktop (`>700px`)**: em `≤560px`, a palavra `"Sola"` é ocultada para que o ícone da marca caiba junto a nomes longos de livros sem quebrar linha (sempre teste o topo mobile abrindo **`1 Tessalonicenses 5`**); em `≤700px`, `.topo` divide-se em duas faixas compactas (identidade/ações em cima e `.navbar` embaixo), enquanto acima de `700px` permanece sempre em linha única (`3.4rem`) apoiado pelo botão `#navMais`.
   - **Toque e foco no celular**: a barra de ações do versículo fica no fluxo do documento em `≤560px` (entre o texto e a gaveta; flutuando ela cobria o botão *Salvar*). Qualquer mudança de foco ou versículo ativo no meio do toque desloca o texto e faz o clique errar o alvo — por isso palavras sublinhadas usam `mousedown` com `preventDefault` e ignoram `mouseenter` vindo de toque. **Nunca use o evento `resize` da janela para fechar menus/painéis**, pois no celular ele dispara ao rolar a página.
   - **Regras globais obrigatórias em `style.css`**:
     - `font-variant-numeric: lining-nums` no `body` (sem isso, o algarismo `"1"` da fonte Cormorant Garamond parece `"I"`).
     - `button, input, select, textarea { color: inherit }` (botões não herdam cor por padrão nos navegadores).
-    - `.verso > p` estiliza apenas o texto bíblico do versículo; o conteúdo das gavetas tem estilo próprio.
+    - `.verso > p` estiliza apenas o texto bíblico do versículo (com `display: flow-root` para que a capitular `.capitular` do v. 1 nunca invada o v. 2 em versículos curtos); o conteúdo das gavetas tem estilo próprio.
     - Texto em português ao lado de hebraico (RTL) exige `unicode-bidi: isolate`, senão a pontuação se embaralha.
 - **Downloads e geração de dados**:
   - Gere nomes de arquivos de download **sem acentos** (o Chrome descarta nomes acentuados em downloads gerados no cliente).
