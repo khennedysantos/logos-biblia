@@ -16,6 +16,9 @@ O que corrige (cada parte conta no relatório):
 6. sufixos — glosa hebraica com sufixo pronominal remontada parte por parte ("hand  his" -> "mão  dele").
 7. formas  — "você" -> tu/vós, "eu têm falado" -> "eu falei", imperativo, plural de adjetivo, maiúscula (conjugar.py).
 8. artigos — artigo grego concordando com a palavra portuguesa ("o terra" -> "a terra", "fazer" -> "do").
+9. llm     — por último, as correções de sentido revisadas por LLM versículo a versículo (glosas_llm.json, gerado por
+             tradutor/glosas_llm.py). Só trocam a glosa que ainda está igual à que o modelo viu ("de"); a palavra já
+             corrigida fica fora das regras acima, para não ser desfeita.
 
 uso:  python3 ferramentas/corrigir_glosas.py preparar
       python3 ferramentas/corrigir_glosas.py aplicar [--conferir] [--relatorio]
@@ -33,6 +36,7 @@ from glosas_revisao import REVISAO                                            # 
 
 ENTRADAS = AQUI / "tradutor" / "entradas"
 NOMES = AQUI / "nomes_pt.json"
+GLOSAS_LLM = AQUI / "glosas_llm.json"
 SUBSTANTIVOS = AQUI / "substantivos_pt.json"
 
 
@@ -1140,6 +1144,23 @@ def _principal(glosa):
     return next((x.lower() for x in re.findall(r"[A-Za-zÀ-ÿ]+", glosa or "") if x.lower() not in VAZIAS), "")
 
 
+# ---------------------------------------------------------------- 9. revisão por LLM
+def chave_palavra(w):
+    return f"{w.livro}|{w.cap}|{w.v}|{w.i}"
+
+
+def correcoes_llm():
+    return json.loads(GLOSAS_LLM.read_text(encoding="utf-8")) if GLOSAS_LLM.exists() else {}
+
+
+def corrigir_llm(palavras, llm, conta):
+    for w, p in palavras:
+        c = llm.get(chave_palavra(w))
+        if c and p[3] == c["de"]:
+            conta["llm"][(w.en, p[3], c["para"])] += 1
+            p[3] = c["para"]
+
+
 # ----------------------------------------------------------------
 def aplicar():
     conferir = "--conferir" in sys.argv
@@ -1149,7 +1170,10 @@ def aplicar():
     cand = {k: candidatos(t, minusc) for k, t in textos.items()}
     mapa = json.loads(NOMES.read_text(encoding="utf-8"))
     conta = {k: collections.Counter() for k in ("nomes", "verbos", "tabela", "revisao", "sufixos", "gramatica", "formas",
-                                                 "artigos")}
+                                                 "artigos", "llm")}
+    llm = correcoes_llm()
+    todas = palavras          # as já corrigidas pelo LLM não passam pelas regras (que poderiam desfazer a correção)
+    palavras = [(w, p) for w, p in todas if not (c := llm.get(chave_palavra(w))) or p[3] != c["para"]]
     for volta in range(1, 6):         # uma correção abre caminho para outra ("O Tofeth" -> "o Tofeth" -> "o Tofete"):
         antes_da_volta = [p[3] for _, p in palavras]                  # repete até não mudar nada, e então rodar de novo
         c = conta if volta == 1 else {k: collections.Counter() for k in conta}   # também não muda
@@ -1163,6 +1187,7 @@ def aplicar():
         corrigir_artigos(palavras, c)
         if [p[3] for _, p in palavras] == antes_da_volta:
             break
+    corrigir_llm(todas, llm, conta)
     mudados = [k for k, v in caps.items() if json.dumps(v, ensure_ascii=False) != antes[k]]
     if not conferir:
         for livro, cap in mudados:
