@@ -8,7 +8,7 @@ const UI = {
     cores:{ouro:"ouro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
-    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexFonte:"Léxico de Strong (1890), definições em tradução automática (Claude) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
@@ -1199,7 +1199,7 @@ function ligarLexico(alvo, completo, strongInicial){
         <span class="lex-translit">${esc(ent.translit)}</span>
         <span class="lex-num">${esc(strong)}</span></div>
       <p class="lex-def">${completo ? `<strong>${x.lexDef}:</strong> ` : ""}${esc((emPT() && ent.defpt) || ent.def)}</p>
-      ${completo && ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}`;
+      ${completo ? htmlUsosKjv(ent, x) : ""}`;
     if(rolar) caixa.scrollIntoView({ block:"nearest" });
   };
   alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", ()=>mostrar(btn, true)));
@@ -1450,12 +1450,17 @@ function parseStrong(txt){
   const m = String(txt || "").trim().match(/^([gh])\s*0*([1-9]\d{0,3})$/i);
   return m ? m[1].toUpperCase() + m[2] : null;
 }
+// "Como a KJV traduz": a lista original em inglês; em português, a tradução dela (usopt), quando existe
+function htmlUsosKjv(ent, x){
+  const usos = est.idioma==="en" ? ent.kjv : (emPT() ? ent.usopt : "");
+  return usos ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(usos)}</p>` : "";
+}
 function htmlStrongItem(k, ent, idxPal, x){
   const lema = idxPal && idxPal.lemas && idxPal.lemas[k];
   return `<div class="strong-item">
     <div class="lex-topo">${htmlOriginalBadge(k, ent.lemma, ent.translit)}</div>
     <p class="lex-def">${esc((emPT() && ent.defpt) || ent.def)}</p>
-    ${ent.kjv && est.idioma==="en" ? `<p class="lex-def"><strong>${x.lexKjv}:</strong> ${esc(ent.kjv)}</p>` : ""}
+    ${htmlUsosKjv(ent, x)}
     ${emPT() && lema && lema.nota ? `<p class="strong-nota"><strong>${esc(lema.pt)}:</strong> ${esc(lema.nota)}</p>` : ""}
   </div>`;
 }

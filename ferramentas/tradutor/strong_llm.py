@@ -73,7 +73,8 @@ Convenções do Strong (siga sempre):
 e chaves {} quando houver.
 - Nomes próprios: use "nome_pt" quando vier. Sem ele, use a grafia tradicional das Bíblias em português \
 (Almeida/Bíblia Livre): "Beth-lebaoth" -> "Bete-Lebaote", "Jehoshaphat" -> "Josafá", "Dioscuri" -> "Dióscuros". \
-"Jehovah" -> "Jeová". "a place in Palestine" -> "um lugar na Palestina"; "an Israelite" -> "um israelita".
+"Jehovah" -> "Jeová". Nome bíblico conhecido vai sempre na forma portuguesa, nunca na transliteração hebraica \
+("Mosheh" -> "Moisés", "Jehoshua" -> "Josué", "Yirmeyah" -> "Jeremias"). "a place in Palestine" -> "um lugar na Palestina"; "an Israelite" -> "um israelita".
 - Termos teológicos com o vocabulário clássico protestante: "righteousness" = "justiça", "atonement" = "expiação", \
 "grace" = "graça", "sanctify" = "santificar", "propitiation" = "propiciação", "elect" = "eleito".
 - Português brasileiro culto, sem artigos desnecessários no começo ("an ox" -> "boi"), sem aspas a mais.
@@ -136,6 +137,27 @@ def extrair_json(txt):
     except json.JSONDecodeError:
         return {}
     return obj if isinstance(obj, dict) else {}
+
+
+def nome_portugues(item, pt):
+    """"Mosheh, o legislador" -> "Moisés, o legislador": o nome que ficou na transliteração vira o da Bíblia Livre"""
+    nome = item.get("nome_pt")
+    if not nome or nome in pt:
+        return pt
+    m_en, m_pt = re.match(r"[^\s,(;]+", item.get("en", "")), re.match(r"[^\s,(;]+", pt)
+    if m_en and m_pt and m_en.group(0) == m_pt.group(0) and m_en.group(0)[:1].isupper():
+        return nome + pt[m_pt.end():]
+    return pt
+
+
+def limpa_usos(u):
+    """tira o que o modelo às vezes deixa da lista da KJV: [idiom], X, +, "Compare H3050 (...)" """
+    u = re.sub(r"\[(?:idiom|idioma|phrase|frase|expressão|obj\.?)\]\s*", "", u or "")
+    u = re.sub(r"\s*\b(?:Compare|Compara|Compar[ea]|Veja|Ver)\b[^;]*$", "", u)
+    u = re.sub(r"(^|[,(]\s*)[X+]\s+", r"\1", u)
+    u = re.sub(r"\(?como tal não (?:é )?representad[oa] em (?:inglês|português)\)?", "", u)
+    u = re.sub(r"\s+([,.;)])", r"\1", u)
+    return re.sub(r"[\s,;.]+$", "", u).strip(" ,")
 
 
 # ---------------- validação ----------------
@@ -214,7 +236,7 @@ def relatorio(lex, salvos):
             n = salvos[m].get(k) or {}
             pr = problemas(e.get("def", ""), n.get("defpt", ""))
             aviso = f"<div class='p'>{html.escape('; '.join(pr))}</div>" if pr else ""
-            cel.append(f"<td>{html.escape(n.get('defpt', '—'))}<div class='k'>Usos: {html.escape(n.get('usopt', ''))}</div>{aviso}</td>")
+            cel.append(f"<td>{html.escape(n.get('defpt', '—'))}<div class='k'>Usos: {html.escape(limpa_usos(n.get('usopt', '')))}</div>{aviso}</td>")
         linhas.append("<tr>" + "".join(cel) + "</tr>")
     cab = "".join(f"<th>Novo — {html.escape(m)}</th>" for m in modelos)
     doc = f"""<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Strong: amostra</title>
@@ -323,7 +345,7 @@ def cmd_baixar(args):
                 if pr:
                     recusas[it["id"]] = {"novo": n, "motivos": pr}
                 else:
-                    ent[it["id"]] = {"defpt": n.get("defpt", "").strip(), "usopt": (n.get("usopt") or "").strip()}
+                    ent[it["id"]] = {"defpt": nome_portugues(it, n.get("defpt", "").strip()), "usopt": limpa_usos(n.get("usopt"))}
                     recusas.pop(it["id"], None)
                     novos += 1
         lt["baixado"] = True
