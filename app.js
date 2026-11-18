@@ -270,7 +270,7 @@ const AJUDA = {
       ["Pesquisar", [
         ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
-        ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Abra pelo link “Página completa” ou “Página do verbete”."],
+        ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Cada versículo também tem a sua (como /biblia/joao/3/16/), com as três traduções, o original, o começo do comentário e as referências. Abra pelo link “Página completa” ou “Página do verbete”."],
         ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e 50 doutrinas da fé reformada (Confissão de Westminster e Catecismos), cada uma com os versículos em que se apoia."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
@@ -301,7 +301,7 @@ const AJUDA = {
       ["Searching", [
         ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
-        ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). All in Portuguese; open them from the “Full page” or “Entry page” link."],
+        ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). Every verse has one too (such as /biblia/joao/3/16/), with the three translations, the original, the start of the commentary and the cross-references. All in Portuguese; open them from the “Full page” or “Entry page” link."],
         ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and 50 doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
@@ -332,7 +332,7 @@ const AJUDA = {
       ["Buscar", [
         ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
-        ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
+        ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Cada versículo también tiene la suya (como /biblia/joao/3/16/), con las tres traducciones, el original, el inicio del comentario y las referencias. Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
         ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y 50 doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
@@ -574,6 +574,9 @@ function rotaDe(caminho, hash){
   const v = +((hash||"").match(/^#v(\d+)$/)||[])[1] || 0;
   let m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/(\d+)\/?$/);
   if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { vista:"cap", livro:b.id, cap:+m[2], v }; }
+  // página de um versículo (/biblia/joao/3/16/): no app, abre o capítulo nele
+  m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/(\d+)\/(\d+)\/?$/);
+  if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { vista:"cap", livro:b.id, cap:+m[2], v:+m[3] }; }
   m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/?$/);
   if(m){ const b = livroPorSlug(m[1]); if(b) return { vista:"livro", livro:b.id }; }
   return caminho === "/" || caminho === "/index.html" ? { vista:"inicio" } : null;
