@@ -105,12 +105,14 @@ def montar(modelo, *, vista, conteudo, rotulo, titulo=None, desc=None, seo=None)
 def pagina_inicial(livros):
     por_id = {b["id"]: b for b in livros}
     partes = [f"""<div class="inicio">
-<section class="heroi">
-<p class="heroi-sobre">Sola Scriptura</p>
-<h1>A Escritura, <em>em profundidade</em></h1>{ORNAMENTO}
-<p class="heroi-texto">A Bíblia completa com o grego e o hebraico palavra por palavra, léxico de Strong, comentários de Calvino e Matthew Henry, referências cruzadas e atlas. Gratuito, sem anúncios, em português.</p>
-<div class="heroi-acoes"><a class="btn-ouro" href="/biblia/joao/1/">Começar por João</a></div>
-</section>"""]
+<section class="mesa-cabeca"><div class="mesa-topo"><div>
+<p class="mesa-sobre">Sola Scriptura</p>
+<h1>A Escritura, <em>em profundidade</em></h1>
+<p class="mesa-texto">A Bíblia completa com o grego e o hebraico palavra por palavra, léxico de Strong, comentários de Calvino e Matthew Henry, doutrinas reformadas (CFW), referências cruzadas e atlas. Gratuito, sem anúncios, em português.</p>
+</div><div class="mesa-acao-col">
+<div class="mesa-acoes"><a class="btn-ouro" href="/biblia/joao/1/">Começar por João</a></div>
+</div></div></section>
+<section class="canone"><div class="canone-cabeca"><h2>Índice canônico</h2></div>"""]
     for sigla, nome in TESTAMENTO.items():
         partes.append(f'<section class="testamento"><h2>{nome}</h2>{ORNAMENTO}<div class="grupos">')
         for t, grupo, ids in GRUPOS:
@@ -120,7 +122,7 @@ def pagina_inicial(livros):
                             for i in ids.split())
             partes.append(f'<div class="grupo-livros"><h3>{grupo}</h3>{links}</div>')
         partes.append("</div></section>")
-    partes.append("</div>")
+    partes.append("</section></div>")
     return "\n".join(partes)
 
 
@@ -190,7 +192,7 @@ def pagina_de_texto(modelo, arq):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{e(titulo)} — Sola</title>
 <meta name="description" content="{e(desc)}">
-<meta name="theme-color" content="#F7F3EA">
+<meta name="theme-color" content="#FAF7F0">
 {tema}
 <link rel="stylesheet" href="{estilo}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

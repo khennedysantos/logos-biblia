@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Josué 6 — Bíblia de estudo com grego, hebraico e comentários | Sola</title>
 <meta name="description" content="Josué 6: Porém Jericó estava fechada, bem fechada, por causa dos filhos de Israel: ninguém entrava, nem saía. Mas o SENHOR disse a Josué: Olha, eu…">
-<meta name="theme-color" content="#F7F3EA" id="metaTema">
+<meta name="theme-color" content="#FAF7F0" id="metaTema">
 <script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
 try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
 if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=0ea37a7fb8">
+<link rel="stylesheet" href="/style.css?v=679d63c893">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -63,33 +63,43 @@ document.documentElement.dataset.tema=t;</script>
 <symbol id="i-ajuda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 5 .9c0 1.800-2.500 2.200-2.500 4"/><path d="M12 17.2v.01"/></symbol>
 <symbol id="i-mais" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-chama" viewBox="0 0 24 24"><path d="M12 3c1 3.500 5 5.500 5 10a5 5 0 0 1-10 0c0-1.800.800-3 1.800-4 .200 1.500 1 2.300 1.700 2.500C10 9 10.500 5.500 12 3z"/></symbol>
+<symbol id="i-copiar" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-compartilhar" viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Josué 6</span></button>
+  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Josué 6</span> <svg class="ico ico-seta-baixo" aria-hidden="true"><use href="#i-chevron"/></svg></button>
   <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
+  <button id="btnComando" class="busca-comando" type="button" aria-label="Buscar passagem, palavra, Strong ou doutrina">
+    <svg class="ico"><use href="#i-busca"/></svg>
+    <span id="lblComando">Passagem, palavra, Strong (G3056) ou doutrina…</span>
+    <kbd>/</kbd>
+  </button>
   <nav class="navbar" aria-label="Recursos">
     <button id="btnMeuEstudo" data-nav="meu"><svg class="ico"><use href="#i-progresso"/></svg><span data-label>Meu estudo</span></button>
     <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
     <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
     <button id="navDic" data-nav="dicionario"><svg class="ico"><use href="#i-dicionario"/></svg><span data-label>Dicionário</span></button>
     <button id="btnPlanos" data-nav="planos"><svg class="ico"><use href="#i-planos"/></svg><span data-label>Planos</span></button>
-    <button id="navTempo" data-nav="tempo"><svg class="ico"><use href="#i-tempo"/></svg><span data-label>Linha do tempo</span></button>
     <button id="navAtlas" data-nav="atlas"><svg class="ico"><use href="#i-atlas"/></svg><span data-label>Atlas</span></button>
+    <button id="navTempo" data-nav="tempo"><svg class="ico"><use href="#i-tempo"/></svg><span data-label>Linha do tempo</span></button>
     <button id="navContexto" data-nav="contexto"><svg class="ico"><use href="#i-contexto"/></svg><span data-label>Contexto</span></button>
     <button id="btnNotas" data-nav="notas"><svg class="ico"><use href="#i-anotacoes"/></svg><span data-label>Anotações</span></button>
-    <button id="btnEstudo" data-nav="estudo" class="so-desktop"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Modo estudo</span></button>
     <button id="navAjuda" data-nav="ajuda"><svg class="ico"><use href="#i-ajuda"/></svg><span data-label>Como usar</span></button>
     <button id="navMais" data-nav="mais" class="nav-mais oculto" aria-expanded="false" aria-controls="menuMais"><svg class="ico"><use href="#i-mais"/></svg><span data-label>Mais</span></button>
   </nav>
   <div id="menuMais" class="menu-mais oculto" role="group" aria-labelledby="navMais"></div>
   <div class="topo-acoes">
-    <button id="btnPerfil" class="btn-icone" aria-label="Perfil"><svg class="ico"><use href="#i-pessoa"/></svg></button>
+    <button id="btnEstudo" data-nav="estudo" class="btn-estudo-topo so-desktop" aria-label="Alternar estante de estudo"><svg class="ico"><use href="#i-estudo"/></svg><span data-label>Estante</span></button>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
+    <button id="btnPerfil" class="btn-icone" aria-label="Perfil"><svg class="ico"><use href="#i-pessoa"/></svg></button>
   </div>
 </header>
 
 <div class="controles">
+  <label><span id="lblTraducao">Tradução</span><select id="selTraducao"></select></label>
+  <label><span id="lblComparar">Comparar com…</span><select id="selComparar"></select></label>
   <label><span id="lblIdioma">Idioma</span>
     <select id="selIdioma">
       <option value="pt">Português</option>
@@ -97,8 +107,6 @@ document.documentElement.dataset.tema=t;</script>
       <option value="es">Español</option>
     </select>
   </label>
-  <label><span id="lblTraducao">Tradução</span><select id="selTraducao"></select></label>
-  <label><span id="lblComparar">Comparar com…</span><select id="selComparar"></select></label>
 </div>
 
 <div id="areaLeitura" class="area-leitura">
@@ -135,9 +143,26 @@ document.documentElement.dataset.tema=t;</script>
 <div class="verso" id="v26" data-v="26"><p class="escritura"><sup>26</sup>E naquele tempo Josué lhes juramentou dizendo: Maldito diante do SENHOR o homem que se levantar e reedificar esta cidade de Jericó. Em seu primogênito lance seus alicerces, e em seu menor assente suas portas.</p></div>
 <div class="verso" id="v27" data-v="27"><p class="escritura"><sup>27</sup>Foi, pois, o SENHOR com Josué, e seu nome se divulgou por toda a terra.</p></div>
 <nav class="seo-nav"><a href="/biblia/josue/5/">‹ Josué 5</a><a href="/biblia/josue/7/">Josué 7 ›</a></nav><!--/CONTEUDO--></main>
-  <aside id="colEstudo" class="col-estudo oculto" aria-label="Modo estudo">
-    <div class="estudo-bloco"><h4 id="estudoTit1">Original & Strong</h4><div id="estudoOriginal"></div></div>
-    <div class="estudo-bloco"><h4 id="estudoTit2">Comentário</h4><div id="estudoComentario"></div></div>
+  <aside id="colEstudo" class="col-estudo oculto" aria-label="Estante de estudo">
+    <div class="estante-topo">
+      <div class="estante-id">
+        <span class="selo-rubrica" id="estudoSelo">Em estudo</span>
+        <h3 class="estante-ref" id="estudoRef">—</h3>
+      </div>
+      <div class="estante-acoes">
+        <div class="estante-cores" id="estudoCores" role="group" aria-label="Marcar versículo"></div>
+        <button id="estudoCopiar" class="btn-icone mini" type="button" title="Copiar"><svg class="ico"><use href="#i-copiar"/></svg></button>
+        <button id="estudoCompartilhar" class="btn-icone mini" type="button" title="Compartilhar"><svg class="ico"><use href="#i-compartilhar"/></svg></button>
+        <button id="btnFecharEstudo" class="fechar mini" type="button" aria-label="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="estante-abas" id="abasEstante" role="tablist">
+      <button type="button" data-eaba="original" class="eaba ativa" role="tab" aria-selected="true">Léxico &amp; Orig.</button>
+      <button type="button" data-eaba="comentario" class="eaba" role="tab" aria-selected="false">Comentário</button>
+      <button type="button" data-eaba="referencias" class="eaba" role="tab" aria-selected="false">CFW &amp; Refs</button>
+      <button type="button" data-eaba="anotacao" class="eaba" role="tab" aria-selected="false">Nota</button>
+    </div>
+    <div id="estudoCorpo" class="estante-corpo"></div>
   </aside>
 </div>
 
@@ -159,6 +184,7 @@ document.documentElement.dataset.tema=t;</script>
     <div class="painel-cabeca"><h2 id="tituloBusca">Buscar</h2><button class="fechar" data-fecha="painelBusca" aria-label="Fechar">✕</button></div>
     <div class="busca-abas" role="tablist">
       <button data-modo="texto" class="aba ativa" role="tab">Texto</button>
+      <button data-modo="strong" class="aba" role="tab">Strong</button>
       <button data-modo="temas" class="aba" role="tab">Temas</button>
       <button data-modo="dicionario" class="aba" role="tab">Dicionário</button>
     </div>
@@ -301,6 +327,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script src="/app.js?v=ae7c36f3cc"></script>
+<script src="/app.js?v=a710571095"></script>
 </body>
 </html>
