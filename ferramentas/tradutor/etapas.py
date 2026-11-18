@@ -190,7 +190,7 @@ def aplicar_verbos():
 # ---------------- temas (Nave) ----------------
 def arquivos_temas():
     return [a for a in sorted((DATA / "topics").glob("*.json"))
-            if a.name not in ("index.json", "aliases_pt.json", "titulos_pt.json")]
+            if a.name not in ("index.json", "aliases_pt.json", "titulos_pt.json", "doutrinas.json")]
 
 
 def separa(linha):
