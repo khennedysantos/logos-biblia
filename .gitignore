@@ -3,3 +3,5 @@ ferramentas/video/telas/
 ferramentas/video/quadros/
 ferramentas/video/saida/
 __pycache__/
+.env
+.env.*

@@ -9,7 +9,7 @@ Regras de segurança deste script:
 4. Usa apenas a biblioteca padrão do Python 3 (roda direto no Windows 11 sem pip).
 
 Configuração da chave de API (escolha uma):
-  - Arquivo ferramentas/tradutor/.env com: ANTHROPIC_API_KEY=sk-ant-...
+  - Arquivo .env na raiz (ou ferramentas/tradutor/.env) com: ANTHROPIC_API_KEY=sk-ant-...
     (ou GEMINI_API_KEY=... / OPENAI_API_KEY=...)
   - PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
   - CMD:        set ANTHROPIC_API_KEY=sk-ant-...
@@ -19,16 +19,18 @@ Fluxo recomendado:
        python ferramentas/tradutor/calvino_llm.py amostra
      Gera ferramentas/tradutor/trabalho/relatorio_ab_calvino.html comparando
      Inglês × NLLB atual (pt/) × LLM novo (pt-v2).
-     Para testar outro modelo na mesma tabela:
-       python ferramentas/tradutor/calvino_llm.py amostra --modelo claude-sonnet-4-5
-       python ferramentas/tradutor/calvino_llm.py amostra --provedor gemini --modelo gemini-2.5-flash
+     Para testar outros modelos da geração atual na mesma tabela:
+       python ferramentas/tradutor/calvino_llm.py amostra --modelo claude-sonnet-5-5
+       python ferramentas/tradutor/calvino_llm.py amostra --provedor gemini --modelo gemini-3.5-flash
 
-  2) Tradução completa em lote (50% de desconto na Batch API, retomável):
+  2) Tradução completa em lote (50% de desconto na Batch API — Anthropic e OpenAI):
        python ferramentas/tradutor/calvino_llm.py preparar
        python ferramentas/tradutor/calvino_llm.py enviar
        python ferramentas/tradutor/calvino_llm.py status
        python ferramentas/tradutor/calvino_llm.py baixar
        python ferramentas/tradutor/calvino_llm.py aplicar
+     Obs.: no Gemini este script usa apenas o modo síncrono ('amostra' ou 'direto'),
+     cobrado a preço cheio (sem Batch API).
 """
 import argparse
 import hashlib
@@ -58,9 +60,9 @@ ARQ_SAIDA_V2 = TRABALHO / "calvino_v2_pt.json"
 ARQ_LOTES_V2 = TRABALHO / "lotes_calvino_v2.json"
 
 MODELOS_PADRAO = {
-    "anthropic": "claude-haiku-4-5",
-    "gemini": "gemini-2.5-flash",
-    "openai": "gpt-4.1-mini",
+    "anthropic": "claude-haiku-5-5",
+    "gemini": "gemini-3.5-flash",
+    "openai": "gpt-6-luna",
 }
 
 VAR_CHAVE = {
@@ -87,7 +89,7 @@ Siga rigorosamente estas regras inegociáveis:
    - Após ponto-e-vírgula (;), use letra minúscula em português (exceto nomes próprios), mantendo rigorosamente a concordância verbal e nominal até o fim de períodos extensos.
 
 4. VOCABULÁRIO TEOLÓGICO REFORMADO E INGLÊS DO SÉCULO XIX:
-   - Mantenha terminologia reformada clássica consistente: "the godly / pious" = os piedosos / os fiéis; "the ungodly / wicked" = os ímpios; "covenant" = aliança (ou pacto); "propitiation" = propiciação; "mercy-seat" = propiciatório; "atonement / expiation" = expiação; "righteousness" = justiça; "imputation" = imputação; "free-will" = livre-arbítrio; "Papists" = papistas; "Sophists" = sofistas; "Schoolmen" = escolásticos; "Old Interpreter" = Antigo Intérprete (referência à Vulgata).
+   - Mantenha terminologia reformada clássica consistente: "the godly / pious" = os piedosos; "the faithful" = os fiéis; "the ungodly / wicked" = os ímpios; "covenant" = aliança; "propitiation" = propiciação; "mercy-seat" = propiciatório; "atonement / expiation" = expiação; "righteousness" = justiça; "imputation" = imputação; "free-will" = livre-arbítrio; "Papists" = papistas; "Sophists" = sofistas; "Schoolmen" = escolásticos; "Old Interpreter" = Antigo Intérprete (referência à Vulgata).
    - Atenção a falsos cognatos do inglês oitocentista: "solicitous" = preocupado / detido em minúcias (nunca "solicitante"); "subjoins" = acrescenta em seguida (nunca "subjunta"); "obtains" (intransitivo) = vigora / prevalece; "what he intends" = o que ele tem em vista / quer dizer.
 
 5. FORMATO DE SAÍDA (TEXTO PURO):
@@ -248,8 +250,9 @@ def pos_processar(pt: str) -> str:
 
 
 def max_tokens_para(texto: str) -> int:
-    estimado = int(len(texto) * 0.45) + 1500
-    return max(4096, min(16384, estimado))
+    # Folga ampla para acomodar tokenizador do Claude 5.5 e eventual raciocínio adaptativo mínimo
+    estimado = int(len(texto) * 0.6) + 4096
+    return max(8192, min(32768, estimado))
 
 
 # ---------------- Chamadas HTTP (stdlib pura) ----------------
@@ -294,10 +297,10 @@ def http_texto(url: str, cabecalhos: dict) -> str:
 
 
 def payload_anthropic(modelo: str, texto: str) -> dict:
-    return {
+    m = modelo.lower()
+    corpo: dict = {
         "model": modelo,
         "max_tokens": max_tokens_para(texto),
-        "temperature": 0.2,
         "system": [
             {
                 "type": "text",
@@ -307,6 +310,47 @@ def payload_anthropic(modelo: str, texto: str) -> dict:
         ],
         "messages": [{"role": "user", "content": texto}],
     }
+    # Claude 4.7+ e 5.5 rejeitam temperature/top_p com HTTP 400.
+    if any(v in m for v in ("claude-3", "4-5", "4-6")):
+        corpo["temperature"] = 0.2
+    # No Haiku 5.5 é possível desligar totalmente o thinking; no Sonnet/Opus 5.5 usa-se effort="low".
+    if "haiku-5" in m:
+        corpo["thinking"] = {"type": "disabled"}
+    elif any(v in m for v in ("-5", "4-7")):
+        corpo["output_config"] = {"effort": "low"}
+    return corpo
+
+
+def cfg_gemini(modelo: str) -> dict:
+    m = modelo.lower()
+    cfg: dict = {"maxOutputTokens": 32768}
+    if "2.5" in m:
+        cfg["temperature"] = 0.2
+        cfg["thinkingConfig"] = {"thinkingBudget": 0}
+    elif any(x in m for x in ("3.5-flash", "3.6-flash", "flash-lite", "3-flash")):
+        cfg["thinkingConfig"] = {"thinkingLevel": "minimal"}
+    elif any(m.startswith(p) for p in ("gemini-3", "gemini-4")):
+        cfg["thinkingConfig"] = {"thinkingLevel": "low"}
+    else:
+        cfg["temperature"] = 0.2
+    return cfg
+
+
+def payload_openai(modelo: str, texto: str) -> dict:
+    m = modelo.lower()
+    corpo: dict = {
+        "model": modelo,
+        "max_completion_tokens": max_tokens_para(texto),
+        "messages": [
+            {"role": "system", "content": PROMPT_SISTEMA},
+            {"role": "user", "content": texto},
+        ],
+    }
+    if m.startswith(("gpt-5", "gpt-6", "o1", "o3", "o4")):
+        corpo["reasoning_effort"] = "low"
+    else:
+        corpo["temperature"] = 0.2
+    return corpo
 
 
 def traduzir_um(provedor: str, modelo: str, chave: str, texto: str) -> str:
@@ -329,9 +373,6 @@ def traduzir_um(provedor: str, modelo: str, chave: str, texto: str) -> str:
             txt = "".join(b.get("text", "") for b in resp.get("content", []) if b.get("type") == "text")
 
         elif provedor == "gemini":
-            gen_cfg = {"temperature": 0.2, "maxOutputTokens": 32768}
-            if "2.5-flash" in modelo:
-                gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
             resp = http_json(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent",
                 metodo="POST",
@@ -339,28 +380,24 @@ def traduzir_um(provedor: str, modelo: str, chave: str, texto: str) -> str:
                 corpo={
                     "systemInstruction": {"parts": [{"text": PROMPT_SISTEMA}]},
                     "contents": [{"role": "user", "parts": [{"text": pedaco}]}],
-                    "generationConfig": gen_cfg,
+                    "generationConfig": cfg_gemini(modelo),
                 },
             )
             cands = resp.get("candidates") or []
             if not cands:
                 raise RuntimeError(f"Gemini não retornou candidato: {resp}")
-            txt = "".join(p.get("text", "") for p in cands[0].get("content", {}).get("parts", []))
+            txt = "".join(
+                p.get("text", "")
+                for p in cands[0].get("content", {}).get("parts", [])
+                if not p.get("thought")
+            )
 
         elif provedor == "openai":
             resp = http_json(
                 "https://api.openai.com/v1/chat/completions",
                 metodo="POST",
                 cabecalhos={"Authorization": f"Bearer {chave}"},
-                corpo={
-                    "model": modelo,
-                    "temperature": 0.2,
-                    "max_completion_tokens": max_tokens_para(pedaco),
-                    "messages": [
-                        {"role": "system", "content": PROMPT_SISTEMA},
-                        {"role": "user", "content": pedaco},
-                    ],
-                },
+                corpo=payload_openai(modelo, pedaco),
             )
             esc = (resp.get("choices") or [{}])[0]
             if esc.get("finish_reason") == "length":
@@ -782,8 +819,13 @@ def cmd_preparar(args):
 
     total_limpo = sum(len(p["texto"]) for u in unicos.values() for p in u["partes"])
     total_requisicoes = sum(len(u["partes"]) for u in unicos.values())
-    tok_in = total_limpo / 4.0
-    tok_out = tok_in * 1.15
+    # Contabiliza também ~50% do prompt de sistema por requisição (considerando hits parciais de cache)
+    car_sys_medio = total_requisicoes * len(PROMPT_SISTEMA) * 0.5
+    # Tokenizador BPE padrão (Gemini / OpenAI ~4,0 car./tok) vs. Claude 5.5 (~3,1 car./tok)
+    tok_in_bpe = (total_limpo + car_sys_medio) / 4.0
+    tok_out_bpe = (total_limpo / 4.0) * 1.15
+    tok_in_c55 = (total_limpo + car_sys_medio) / 3.1
+    tok_out_c55 = (total_limpo / 3.1) * 1.15
 
     pacote = {
         "versao": 2,
@@ -798,11 +840,18 @@ def cmd_preparar(args):
     print(f"  Versículos/blocos mapeados : {len(mapa_versos):,}")
     print(f"  Textos únicos deduplicados : {len(unicos):,} (economia de {economia:.1f}% sobre {total_bruto:,} car. brutos)")
     print(f"  Apêndices CCEL removidos   : {caudas}")
-    print(f"  Requisições p/ Batch API   : {total_requisicoes:,} ({total_limpo:,} car. ~ {tok_in/1e6:.2f}M tok entrada / {tok_out/1e6:.2f}M tok saída)")
-    print("  Estimativa de custo único (preço Batch 50% desc.):")
-    print(f"    - Claude Haiku 4.5 Batch : ~US$ {(tok_in/1e6)*0.50 + (tok_out/1e6)*2.50:.2f}")
-    print(f"    - Gemini 2.5 Flash Batch : ~US$ {(tok_in/1e6)*0.15 + (tok_out/1e6)*1.25:.2f}")
-    print(f"    - GPT-4.1 mini Batch     : ~US$ {(tok_in/1e6)*0.20 + (tok_out/1e6)*0.80:.2f}")
+    print(
+        f"  Requisições totais         : {total_requisicoes:,} ({total_limpo:,} car. de texto | "
+        f"~{tok_in_c55/1e6:.1f}M in / {tok_out_c55/1e6:.1f}M out no Claude 5.5; "
+        f"~{tok_in_bpe/1e6:.1f}M in / {tok_out_bpe/1e6:.1f}M out em BPE)"
+    )
+    print("  Estimativa via Batch API (50% desc. — suportado em Anthropic e OpenAI):")
+    print(f"    - claude-haiku-5-5  (Batch $0.05 / $0.25 MTok) : ~US$ {(tok_in_c55/1e6)*0.05 + (tok_out_c55/1e6)*0.25:.2f}")
+    print(f"    - claude-sonnet-5-5 (Batch $1.00 / $5.00 MTok) : ~US$ {(tok_in_c55/1e6)*1.00 + (tok_out_c55/1e6)*5.00:.2f}")
+    print(f"    - gpt-6-luna        (Batch $0.05 / $0.25 MTok) : ~US$ {(tok_in_bpe/1e6)*0.05 + (tok_out_bpe/1e6)*0.25:.2f}")
+    print("  Estimativa no modo 'direto' síncrono (PREÇO CHEIO — Gemini não usa Batch neste script):")
+    print(f"    - gemini-3.5-flash      (preço cheio $1.50 / $9.00 MTok) : ~US$ {(tok_in_bpe/1e6)*1.50 + (tok_out_bpe/1e6)*9.00:.2f}")
+    print(f"    - gemini-3.5-flash-lite (preço cheio $0.30 / $2.50 MTok) : ~US$ {(tok_in_bpe/1e6)*0.30 + (tok_out_bpe/1e6)*2.50:.2f}")
 
 
 # ---------------- Batch API (enviar / status / baixar) ----------------
@@ -844,7 +893,10 @@ def cmd_enviar(args):
 
     provedor = args.provedor
     if provedor not in ("anthropic", "openai"):
-        sys.exit("O modo Batch assíncrono ('enviar') suporta 'anthropic' e 'openai'. Para Gemini use 'amostra' ou 'direto'.")
+        sys.exit(
+            "O modo Batch assíncrono ('enviar', 50% desc.) suporta apenas 'anthropic' e 'openai'. "
+            "No Gemini este script roda apenas em 'amostra' ou 'direto' (preço cheio, sem Batch API)."
+        )
     modelo = args.modelo or MODELOS_PADRAO[provedor]
     chave = obter_chave(provedor, args.chave)
 
@@ -892,15 +944,7 @@ def cmd_enviar(args):
                     "custom_id": p["cid"],
                     "method": "POST",
                     "url": "/v1/chat/completions",
-                    "body": {
-                        "model": modelo,
-                        "temperature": 0.2,
-                        "max_completion_tokens": max_tokens_para(p["texto"]),
-                        "messages": [
-                            {"role": "system", "content": PROMPT_SISTEMA},
-                            {"role": "user", "content": p["texto"]},
-                        ],
-                    },
+                    "body": payload_openai(modelo, p["texto"]),
                 }, ensure_ascii=False)
                 for p in bloco
             ]
@@ -1138,7 +1182,7 @@ def main():
 
     def comuns_api(p):
         p.add_argument("--provedor", choices=["anthropic", "gemini", "openai"], default="anthropic")
-        p.add_argument("--modelo", default=None, help="Ex.: claude-haiku-4-5, claude-sonnet-4-5, gemini-2.5-flash, gpt-4.1-mini")
+        p.add_argument("--modelo", default=None, help="Ex.: claude-haiku-5-5, claude-sonnet-5-5, gemini-3.5-flash, gpt-6-luna")
         p.add_argument("--chave", default=None, help="Chave da API (opcional se estiver em .env ou variável de ambiente)")
 
     p_am = sub.add_parser("amostra", help="Roda o teste A/B nos 30 trechos difíceis e gera o relatório HTML")
@@ -1152,7 +1196,7 @@ def main():
     p_pr = sub.add_parser("preparar", help="Prepara, limpa e deduplica todos os comentários de Calvino")
     p_pr.add_argument("--livro", default=None, help="Filtra por código(s) USFM separados por vírgula (ex.: JHN,ROM)")
 
-    p_en = sub.add_parser("enviar", help="Envia requisições pendentes para a Batch API (50%% de desconto)")
+    p_en = sub.add_parser("enviar", help="Envia requisições pendentes para a Batch API (50%% desc. — Anthropic e OpenAI)")
     comuns_api(p_en)
     p_en.add_argument("--por-lote", type=int, default=2500, help="Máximo de requisições por lote (padrão: 2500)")
     p_en.add_argument("--limite", type=int, default=0, help="Envia apenas as primeiras N requisições pendentes")
@@ -1164,7 +1208,7 @@ def main():
     p_bx.add_argument("--chave", default=None)
     p_bx.add_argument("--forcar", action="store_true", help="Rebaixa mesmo lotes já marcados como baixados")
 
-    p_di = sub.add_parser("direto", help="Traduz de forma síncrona e retomável (útil para 1 livro ou Gemini)")
+    p_di = sub.add_parser("direto", help="Traduz de forma síncrona a preço cheio (para 1 livro ou Gemini)")
     comuns_api(p_di)
     p_di.add_argument("--limite", type=int, default=0)
 
