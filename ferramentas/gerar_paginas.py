@@ -280,7 +280,10 @@ def main():
     # uma página por versículo (/biblia/joao/3/16/): leves e avulsas (ferramentas/paginas_versiculos.py)
     from paginas_versiculos import gerar as gerar_versiculos
     css_leve = "/lexico.css?v=" + hashlib.sha1((RAIZ / "lexico.css").read_bytes()).hexdigest()[:10]
-    versiculos = gerar_versiculos(RAIZ, SITE, livros, slug, cortar, css_leve)
+    # confissões e catecismos (ferramentas/paginas_confissoes.py); o índice de citações vai para as páginas de versículo
+    from paginas_confissoes import gerar as gerar_confissoes
+    confissoes, citacoes = gerar_confissoes(RAIZ, SITE, livros, slug, cortar, cabeca_seo, css_leve)
+    versiculos = gerar_versiculos(RAIZ, SITE, livros, slug, cortar, css_leve, citacoes)
     urls += versiculos
 
     # páginas de texto avulsas (cada arquivo de ferramentas/paginas/ vira /nome/)
@@ -297,7 +300,7 @@ def main():
     urls += lexico
     # dicionário de Easton e temas de Nave: mesmo esquema (ferramentas/paginas_acervo.py)
     from paginas_acervo import gerar as gerar_acervo
-    acervo = gerar_acervo(RAIZ, SITE, livros, slug, cortar, cabeca_seo)
+    acervo = gerar_acervo(RAIZ, SITE, livros, slug, cortar, cabeca_seo) + confissoes
     urls += acervo
 
     # 404: o próprio app (endereços desconhecidos abrem na página inicial), fora do Google
@@ -317,7 +320,7 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{indice}\n</sitemapindex>\n',
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
-    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo)} do dicionário e dos temas, "
+    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo) - len(confissoes)} do dicionário e dos temas, {len(confissoes)} das confissões, "
           f"sitemap com {len(urls)} endereços, robots.txt e 404.html")
 
 

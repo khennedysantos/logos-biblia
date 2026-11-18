@@ -1,0 +1,153 @@
+"""Páginas estáticas dos símbolos de fé (data/confissoes/): /confissoes/, a Confissão de Westminster por capítulo
+(/confissoes/westminster/11/), o Catecismo Maior e o Breve Catecismo por pergunta (/confissoes/catecismo-maior/71/)
+e os Cânones de Dort por capítulo (/confissoes/canones-de-dort/1/).
+
+Chamado pelo gerar_paginas.py (não rode sozinho). Mesmo esquema das outras páginas avulsas (HTML leve, /lexico.css).
+Os marcadores dos textos de prova ([1], [2]…) viram números que levam às provas logo abaixo do parágrafo, cada uma
+com o versículo da Bíblia Livre. Devolve também o índice inverso (versículo -> onde é citado), usado nas páginas de
+versículo."""
+import json, re
+from html import escape as e
+
+from paginas_versiculos import pagina_versiculo
+
+RE_MARCA = re.compile(r"\s?\[(\d+)\]")
+DESCRICAO = {
+    "westminster": "Os 33 capítulos da Confissão de Fé de Westminster (1647), o principal símbolo de fé presbiteriano, "
+                   "com os textos de prova da própria Assembleia.",
+    "catecismo-maior": "As 196 perguntas e respostas do Catecismo Maior de Westminster (1647), com os textos de prova.",
+    "breve-catecismo": "As 107 perguntas e respostas do Breve Catecismo de Westminster (1647), a começar por "
+                       "“Qual é o fim principal do homem?”.",
+    "canones-de-dort": "Os Cânones do Sínodo de Dort (1619): os cinco pontos da doutrina reformada da graça, com a "
+                       "rejeição dos erros.",
+}
+AVISO = ("Texto de domínio público; tradução automática do original inglês, feita pelo Sola (pode conter "
+         "imprecisões). Textos de prova da Assembleia de Westminster, no texto da Bíblia Livre.")
+
+
+def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
+    info = {b["id"]: b for b in livros}
+    biblia = {}
+
+    def texto(l, c, a):
+        if l not in biblia:
+            biblia[l] = json.loads((raiz / "data" / "bibles" / "blivre" / f"{l}.json").read_text(encoding="utf-8"))
+        try:
+            return biblia[l][c - 1][a - 1] or ""
+        except IndexError:
+            return ""
+
+    def rotulo(r):
+        l, c, a, b = r[:4]
+        if not a:
+            return f"{info[l]['pt']} {c}" + (f"-{r[4]}" if len(r) > 4 else "")
+        fim = f"-{r[4]}:{b}" if len(r) > 4 else (f"-{b}" if b != a else "")
+        return f"{info[l]['pt']} {c}:{a}{fim}"
+
+    def link(r):
+        l, c, a = r[:3]
+        alvo = f"/biblia/{slug_livro(info[l]['pt'])}/{c}/" + (f"{a}/" if a else "")
+        return f'<a href="{alvo}">{e(rotulo(r))}</a>'
+
+    def paragrafo(txt, provas, ancora):
+        """texto com os marcadores [n] como números que levam à lista de provas logo abaixo"""
+        corpo = RE_MARCA.sub(lambda m: f'<sup><a href="#{ancora}-{m.group(1)}">{m.group(1)}</a></sup>', e(txt))
+        lista = ""
+        if provas:
+            itens = []
+            for n in sorted(provas, key=int):
+                refs = provas[n]
+                if not refs:
+                    continue
+                primeira = refs[0]
+                trecho = texto(primeira[0], primeira[1], primeira[2] or 1)
+                itens.append(f'<li id="{ancora}-{n}"><b>{n}</b> ' + "; ".join(link(r) for r in refs) +
+                             (f'<span>{e(cortar(trecho, 160))}</span>' if trecho else "") + "</li>")
+            lista = f'<ol class="cf-provas">{"".join(itens)}</ol>'
+        return f'<p class="cf-texto">{corpo}</p>{lista}'
+
+    urls, citacoes = [], {}
+
+    def citar(provas, rot, url):
+        for refs in provas.values():
+            for r in refs:
+                l, c, a, b = r[:4]
+                if not a:
+                    continue
+                fim = len(biblia[l][c - 1]) if len(r) > 4 else b       # de um capítulo a outro: até o fim do primeiro
+                for v in range(a, fim + 1):
+                    lista = citacoes.setdefault((l, c, v), [])
+                    if (rot, url) not in lista:
+                        lista.append((rot, url))
+
+    def gravar(caminho, titulo, desc, corpo, migalhas):
+        seo = cabeca_seo(site + caminho, titulo.split(" | ")[0], desc, "article", migalhas)
+        arq = raiz / caminho.strip("/") / "index.html"
+        arq.parent.mkdir(parents=True, exist_ok=True)
+        arq.write_text(pagina_versiculo(titulo, desc, css, corpo, seo), encoding="utf-8")
+        urls.append(site + caminho)
+
+    docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
+            for d in ("westminster", "catecismo-maior", "breve-catecismo", "canones-de-dort")]
+    for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
+        texto(l, 1, 1)
+    fonte = f'<p class="fonte">{AVISO}</p>'
+    for doc in docs:
+        d, nome = doc["id"], doc["titulo"]
+        base = f"/confissoes/{d}/"
+        topo = f'<p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a> · <a href="{base}">{e(nome)}</a></p>'
+        if doc["tipo"] == "catecismo":
+            itens = doc["itens"]
+            for i, q in enumerate(itens):
+                p, r = q.get("p") or q["p_en"], q.get("r") or q["r_en"]
+                caminho = f"{base}{q['n']}/"
+                curto = "Breve Catecismo" if d == "breve-catecismo" else "Catecismo Maior"
+                citar(q["provas"], f"{curto}, pergunta {q['n']}", caminho)
+                ant = f'<span>‹ <a href="{base}{itens[i - 1]["n"]}/">Pergunta {itens[i - 1]["n"]}</a></span>' if i else "<span></span>"
+                pro = f'<span><a href="{base}{itens[i + 1]["n"]}/">Pergunta {itens[i + 1]["n"]}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
+                corpo = (f'{topo}<h1>Pergunta {q["n"]}</h1><p class="lex-resumo">{e(p)}</p>' +
+                         paragrafo(r, q["provas"], f"p{q['n']}") +
+                         f'<details class="acv-original"><summary>Original inglês (1647)</summary><p>{e(q["p_en"])}</p>'
+                         f'<p>{e(RE_MARCA.sub("", q["r_en"]))}</p></details>'
+                         f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
+                gravar(caminho, f"{curto} de Westminster, pergunta {q['n']}: {cortar(p, 60)} | Sola",
+                       cortar(f"{p} {RE_MARCA.sub('', r)}", 158), corpo,
+                       [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (f"Pergunta {q['n']}", caminho)])
+            lista = "".join(f'<li><a href="{base}{q["n"]}/">{q["n"]}. {e(q.get("p") or q["p_en"])}</a></li>' for q in itens)
+        else:
+            partes = doc["partes"]
+            nums = [p["n"] for p in partes] if d != "canones-de-dort" else ["1", "2", "3-4", "5"]
+            for i, (parte, n) in enumerate(zip(partes, nums)):
+                titulo = parte.get("titulo") or parte["titulo_en"]
+                caminho = f"{base}{n}/"
+                blocos = []
+                for it in parte["itens"]:
+                    rot_it = it["n"]
+                    if d == "canones-de-dort":
+                        rot_it = ("Artigo " if it["n"].startswith("A") else "Rejeição dos erros ") + it["n"][1:]
+                    else:
+                        rot_it = f"{n}.{it['n']}"
+                    citar(it["provas"], f"{'Confissão de Westminster' if d == 'westminster' else nome} {rot_it}", caminho)
+                    blocos.append(f'<h2 class="cf-n" id="s{it["n"]}">{e(rot_it)}</h2>' +
+                                  paragrafo(it.get("pt") or it["en"], it["provas"], f"s{it['n']}"))
+                rot_doc = "Capítulo" if d == "westminster" else "Capítulo de doutrina"
+                ant = f'<span>‹ <a href="{base}{nums[i - 1]}/">{rot_doc} {nums[i - 1]}</a></span>' if i else "<span></span>"
+                pro = f'<span><a href="{base}{nums[i + 1]}/">{rot_doc} {nums[i + 1]}</a> ›</span>' if i + 1 < len(nums) else "<span></span>"
+                corpo = (f'{topo}<h1>{e(titulo)}</h1><p class="lex-translit">{e(nome)}, {rot_doc.lower()} {n}</p>'
+                         + "".join(blocos) + f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
+                primeiro = RE_MARCA.sub("", parte["itens"][0].get("pt") or parte["itens"][0]["en"]) if parte["itens"] else ""
+                gravar(caminho, f"{nome}, {rot_doc.lower()} {n}: {titulo} | Sola", cortar(f"{titulo}. {primeiro}", 158),
+                       corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (titulo, caminho)])
+            lista = "".join(f'<li><a href="{base}{n}/">{n}. {e(p.get("titulo") or p["titulo_en"])}</a></li>'
+                            for p, n in zip(partes, nums))
+        gravar(base, f"{nome} ({doc['ano']}) em português | Sola", DESCRICAO[d],
+               f'<p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a></p><h1>{e(nome)}</h1>'
+               f'<p class="lex-resumo">{e(DESCRICAO[d])}</p><ol class="cf-indice">{lista}</ol>{fonte}',
+               [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
+    desc = ("Os símbolos de fé da tradição reformada em português: a Confissão de Fé de Westminster, o Catecismo Maior e "
+            "o Breve Catecismo, e os Cânones de Dort, com os textos de prova.")
+    gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
+           f'<h1>Confissões e catecismos</h1><p class="lex-resumo">{e(desc)}</p><ul class="lex-lista">' +
+           "".join(f'<li><a href="/confissoes/{doc["id"]}/">{e(doc["titulo"])}</a> <small>{doc["ano"]}</small></li>'
+                   for doc in docs) + f"</ul>{fonte}", [("Sola", "/"), ("Confissões", "/confissoes/")])
+    return urls, citacoes
