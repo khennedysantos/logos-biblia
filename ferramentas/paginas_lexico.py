@@ -70,7 +70,7 @@ def pagina(*, titulo, desc, css, corpo, seo=""):
 </head>
 <body>
 <header class="topo"><a class="marca" href="/" aria-label="Sola — página inicial">{LOGO}Sola</a>
-<nav aria-label="Seções"><a href="/biblia/joao/1/">Bíblia</a><a href="/lexico/">Léxico</a></nav></header>
+<nav aria-label="Seções"><a href="/biblia/joao/1/">Bíblia</a><a href="/lexico/">Léxico</a><a href="/dicionario/">Dicionário</a><a href="/temas/">Temas</a></nav></header>
 <main class="lex">
 {corpo}
 </main>
