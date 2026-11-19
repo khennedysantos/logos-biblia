@@ -34,7 +34,7 @@ const UI = {
     semOriginal:"Texto original indisponível para este versículo.",
     semComentario:"Ainda não há comentário para este versículo.",
     avisoIdiomaComentario:"Comentário exibido no original em inglês — tradução em andamento.",
-    fonte:"Fonte", salvar:"Salvar", cancelar:"Cancelar", excluir:"Excluir", fechar:"Fechar",
+    fonte:"Fonte", salvar:"Salvar", cancelar:"Cancelar", excluir:"Excluir", fechar:"Fechar", outrosLugares:"Outros lugares achados",
     escrevaNota:"Escreva sua reflexão sobre este versículo…",
     semNotas:"Você ainda não tem anotações. Toque em um versículo e escolha “Anotação”.",
     bibliaToda:"Buscar na Bíblia toda", carregando:"Carregando…",
@@ -114,7 +114,7 @@ const UI = {
     semOriginal:"Original text unavailable for this verse.",
     semComentario:"No commentary available for this verse yet.",
     avisoIdiomaComentario:"Commentary shown in the original English.",
-    fonte:"Source", salvar:"Save", cancelar:"Cancel", excluir:"Delete", fechar:"Close",
+    fonte:"Source", salvar:"Save", cancelar:"Cancel", excluir:"Delete", fechar:"Close", outrosLugares:"Other places found",
     escrevaNota:"Write your reflection on this verse…",
     semNotas:"No notes yet. Tap a verse and choose “Note”.",
     bibliaToda:"Search the whole Bible", carregando:"Loading…",
@@ -194,7 +194,7 @@ const UI = {
     semOriginal:"Texto original no disponible para este versículo.",
     semComentario:"Aún no hay comentario para este versículo.",
     avisoIdiomaComentario:"Comentario mostrado en el inglés original.",
-    fonte:"Fuente", salvar:"Guardar", cancelar:"Cancelar", excluir:"Eliminar", fechar:"Cerrar",
+    fonte:"Fuente", salvar:"Guardar", cancelar:"Cancelar", excluir:"Eliminar", fechar:"Cerrar", outrosLugares:"Otros lugares encontrados",
     escrevaNota:"Escribe tu reflexión sobre este versículo…",
     semNotas:"Aún no tienes notas. Toca un versículo y elige “Nota”.",
     bibliaToda:"Buscar en toda la Biblia", carregando:"Cargando…",
@@ -1929,27 +1929,25 @@ function atualizarRotulos(){
       .addTo(est.camadaRotulos);
   }
 }
+/* A busca não lista nada acima do mapa: marca no mapa os lugares achados e abre a ficha do primeiro; os outros
+   (homônimos como os três "Jezreel", ou "Vale de Jezreel") ficam como marcadores e como atalhos dentro da ficha. */
 function buscarAtlas(){
   const termo = normStr($("campoAtlas").value.trim());
   const res = $("atlasResultados");
-  if(termo.length < 2 || !est.lugares || !est.mapa){ res.innerHTML = ""; return; }
-  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo))).slice(0, 12);
-  const nomeL = nomeLugar;
+  res.innerHTML = "";
+  if(termo.length < 2 || !est.lugares || !est.mapa) return;
+  // primeiro o nome exato, e entre os homônimos o mais citado ("Jezreel" abre na cidade de Acabe, não na de Judá)
+  const exato = (l)=> normStr(nomeLugar(l)) === termo || normStr(l.n.replace(/ \d+$/, "")) === termo;
+  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo)))
+    .sort((a, b)=>(exato(b) - exato(a)) || (b.tot - a.tot)).slice(0, 12);
   fecharLugar();
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
-  res.innerHTML = achados.length ? achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
-    <p>${l.r.slice(0,6).map(([b,c,v])=>linkRef(b, c, v, esc(nomeLivro(b)+" "+c))).join(" · ")}</p></div>`).join("")
-    : `<p class="busca-status">${t().nadaEncontrado}</p>`;
+  if(!achados.length){ res.innerHTML = `<p class="busca-status">${t().nadaEncontrado}</p>`; return; }
   achados.forEach(l=>{
-    const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(nomeL(l)));
+    const m = L.marker([l.la, l.lo], { title: nomeLugar(l), alt: nomeLugar(l) }).addTo(est.mapa).on("click", ()=>mostrarLugar(l, achados));
     est.marcadores.push(m);
   });
-  // sem animação: o fim de uma animação de zoom recentraria o mapa depois que a ficha do lugar se ajustasse a ele
-  if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7, { animate: false }); est.marcadores[0].openPopup(); }
-  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
-    if(e.target.closest("a")) return;
-    mostrarLugar(achados[+el.dataset.i]);
-  }));
+  mostrarLugar(achados[0], achados);
 }
 const CIDADES_CHAVE = [["Jerusalém",31.7784,35.2354],["Babilônia",32.5364,44.4208],["Roma",41.8919,12.5113],["Éfeso",37.9411,27.3419],["Alexandria",31.2001,29.9187],["Damasco",33.5132,36.2919]];
 function distKm(a1,o1,a2,o2){
@@ -1961,8 +1959,9 @@ function distKm(a1,o1,a2,o2){
 /* nome em português, sem o número que separa os lugares homônimos ("Jezreel 2", "Afeque 3") */
 function nomeLugar(l){ return ((emPT() && l.p) || l.n).replace(/ \d+$/, ""); }
 function fecharLugar(){ const f = $("fichaLugar"); if(f){ f.hidden = true; f.innerHTML = ""; } }
-function mostrarLugar(l){
+function mostrarLugar(l, achados){
   const res = $("fichaLugar");
+  const outros = (achados || []).filter(o=>o !== l);
   const refs = l.r.map(([b,c,v])=>linkRef(b, c, v)).join(" · ");
   const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
   const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase() && c[0] !== l.p)
@@ -1975,8 +1974,10 @@ function mostrarLugar(l){
       · Última: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>
     <p class="lugar-refs">${refs}</p>
     <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
-    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}`;
+    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
+    ${outros.length ? `<p class="lugar-outros">${t().outrosLugares}: ${outros.map(o=>`<button type="button" data-i="${achados.indexOf(o)}">${esc(nomeLugar(o))} <small>(${esc(nomeLivro(o.r[0][0]))} ${o.r[0][1]})</small></button>`).join(" · ")}</p>` : ""}`;
   res.hidden = false;
+  res.querySelectorAll(".lugar-outros button").forEach(b=>b.addEventListener("click", ()=>mostrarLugar(achados[+b.dataset.i], achados)));
   res.scrollTop = 0;
   res.querySelector(".lugar-fechar").addEventListener("click", fecharLugar);
   // o lugar fica fora da ficha: à esquerda dela no desktop, acima dela no celular

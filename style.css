@@ -588,6 +588,10 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 .lugar-fechar{position:absolute;top:.45rem;right:.45rem;width:2rem;height:2rem;border:0;border-radius:50%;background:none;
   font-size:1rem;line-height:1;cursor:pointer;color:var(--suave)}
 .lugar-fechar:hover{background:var(--mesa);color:var(--tinta)}
+.lugar-outros{font-size:.74rem;color:var(--suave);margin-top:.55rem;line-height:1.7;border-top:1px solid var(--borda);padding-top:.5rem}
+.lugar-outros button{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--rubrica);cursor:pointer;text-align:left}
+.lugar-outros button:hover{text-decoration:underline}
+.lugar-outros small{font-weight:400;color:var(--suave)}
 @media (max-width:560px){
   .lugar-ficha{top:auto;bottom:.5rem;left:.5rem;right:.5rem;width:auto;max-height:62%}
 }
