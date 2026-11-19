@@ -1,6 +1,6 @@
 /* Sola — service worker: deixa o site abrir e os capítulos já lidos funcionarem sem internet.
    A linha VERSAO é carimbada por ferramentas/gerar_paginas.py a cada mudança no app. */
-const VERSAO = "cc882b6495";
+const VERSAO = "33a814d5b0";
 const CACHE_APP = "sola-app-" + VERSAO;
 const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no app.js (botão "Baixar a Bíblia")
 const BASE = ["/", "/data/books.json", "/favicon.svg", "/manifest.webmanifest",
@@ -31,7 +31,7 @@ async function guardar(nomeCache, pedido, resposta){
 
 self.addEventListener("fetch", (e)=>{
   const pedido = e.request, url = new URL(pedido.url);
-  if(pedido.method !== "GET" || url.origin !== location.origin) return;   // mapa (OpenStreetMap) e o resto: direto na rede
+  if(pedido.method !== "GET" || url.origin !== location.origin) return;   // o que vem de fora (Supabase): direto na rede
 
   // páginas: sempre a versão nova da rede; sem rede, a página guardada (o app lê o endereço e abre o capítulo certo)
   if(pedido.mode === "navigate"){

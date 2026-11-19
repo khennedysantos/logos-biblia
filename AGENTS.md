@@ -33,7 +33,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
    - Sempre atualize a referência remota antes (`git fetch origin main`), crie uma branch nova a partir de `origin/main`, faça os commits nela e abra um Pull Request contra a `main` para revisão.
 2. **O site é 100% estático no GitHub Pages, sem backend**:
    - Não introduza servidor de aplicação (Node/Python/PHP/etc.), SSR dinâmico, banco de dados obrigatório para leitura, frameworks JS (React, Vue, etc.) nem etapa de empacotamento/build (`npm run build`, Vite, Webpack).
-   - Fontes e bibliotecas ficam auto-hospedadas no próprio repositório (`fontes/`, `vendor/`). Não adicione Google Fonts nem CDNs externos (`unpkg`, `jsdelivr`). As únicas conexões externas no cliente são os *tiles* do OpenStreetMap (apenas ao abrir o Atlas) e o Supabase (apenas se o visitante optar por entrar na conta).
+   - Fontes e bibliotecas ficam auto-hospedadas no próprio repositório (`fontes/`, `vendor/`). Não adicione Google Fonts nem CDNs externos (`unpkg`, `jsdelivr`). A única conexão externa no cliente é o Supabase (apenas se o visitante optar por entrar na conta); o mapa do Atlas é desenhado pelo próprio site, sem *tiles* de fora.
 3. **Não alterar o arquivo `CNAME` nem os dados já traduzidos**:
    - **Nunca apague, renomeie ou edite o arquivo `CNAME`** (`solabiblia.com.br`).
    - **Não altere, sobrescreva nem regere por cima os dados já traduzidos** (`data/commentaries/calvin/pt/`, `data/commentaries/henry/pt/`, `data/dictionary/pt/`, `data/topics/pt/`, o campo `defpt` em `data/strongs/{G,H}.json`, os arquivos `titulos_pt.json`, as glosas já traduzidas/revisadas em `data/interlinear/` e `ferramentas/glosas_pt.json`), nem apague ou sobrescreva os textos originais em inglês em `data/`, salvo pedido explícito do mantenedor.
@@ -57,7 +57,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 - **Hospedagem**: **GitHub Pages** servindo diretamente a raiz da branch `main` no domínio customizado `solabiblia.com.br` (`CNAME`).
 - **Ativos auto-hospedados**:
   - `fontes/`: *Cormorant Garamond* (títulos), *Cardo* (Escritura, grego e hebraico) e *Inter* (interface) em `.woff2` sob SIL Open Font License.
-  - `vendor/leaflet/`: biblioteca de mapas Leaflet (BSD) para o Atlas.
+  - `vendor/leaflet/`: biblioteca de mapas Leaflet (BSD) para o Atlas, que desenha a base própria de `data/mapa/base.json` (Natural Earth, domínio público) em vez de *tiles* de terceiros.
   - `vendor/supabase/`: cliente JS do Supabase (~220 KB), carregado sob demanda apenas quando há sessão salva, retorno de login ou clique em "Entrar". Banco configurado com tabela única `public.itens` e RLS em `ferramentas/supabase.sql`.
 - **Geradores e validação (`ferramentas/`)**: **Python 3** usando exclusivamente a biblioteca padrão (`json`, `re`, `hashlib`, `pathlib`, `urllib`, `unicodedata`, etc.).
 - **Pipeline de tradução offline (`ferramentas/tradutor/`)**: **Python 3** + `ctranslate2` + `sentencepiece`, com dois motores:
@@ -120,6 +120,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── crossrefs/              # {USFM}/{cap}.json (referências cruzadas do openbible.info)
 │   ├── places.json             # 1.335 lugares bíblicos com coordenadas e campo p (nome em PT)
 │   ├── journeys.json           # Rotas das viagens de Paulo para o Atlas
+│   ├── mapa/base.json          # GERADO por gerar_mapa_base.py: terra, litoral, lagos e rios (Natural Earth) do Atlas
 │   ├── context.json            # Fichas de contexto dos 66 livros (autor, época, tema, esboço)
 │   ├── plans.json              # 3 planos de leitura bíblica
 │   └── timeline.json           # Eventos da linha do tempo bíblica
@@ -152,6 +153,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── paginas_confissoes.py   # Chamado pelo gerar_paginas.py: confissoes/ e o índice versículo → citações
 │   ├── gerar_doutrinas.py      # Gera data/topics/doutrinas.json dos 33 capítulos da Confissão de Westminster
 │   ├── gerar_atlas_pt.py       # Preenche nomes em português (campo p) em data/places.json
+│   ├── gerar_mapa_base.py      # Base do Atlas sem nomes modernos (Natural Earth recortado e simplificado) → data/mapa/base.json
 │   ├── gerar_crossrefs.py      # Converte referências cruzadas do openbible.info
 │   ├── baixar_henry.py         # Baixa comentário de Matthew Henry (domínio público)
 │   ├── tradutor/               # Pipeline isolado de tradução offline (Argos / NLLB / Batch LLM)
@@ -270,7 +272,7 @@ git status --short
   - Léxico de Strong, Calvino, Matthew Henry, Easton e Nave: domínio público.
   - Referências cruzadas e lugares do Atlas: `openbible.info` (**CC-BY**).
   - Traduções automáticas: Claude (Anthropic) em Calvino, Henry, Strong, Easton, Nave e revisão das glosas; Argos Translate e NLLB-200 da Meta na base das glosas (**CC BY-NC** — exige manutenção do caráter não comercial do site).
-  - Fontes tipográficas: Cardo, Cormorant Garamond e Inter (**SIL Open Font License**). Mapa: Leaflet (**BSD**) + OpenStreetMap.
+  - Fontes tipográficas: Cardo, Cormorant Garamond e Inter (**SIL Open Font License**). Mapa: Leaflet (**BSD**) + Natural Earth (domínio público).
 
 ---
 
@@ -282,6 +284,7 @@ git status --short
 - **Léxico de Strong (`strong_llm.py`)**: `defpt` retraduzido em nov/2026 com o `claude-haiku-5-5` pela Batch API (~US$ 0,50; a amostra de 40 entradas difíceis saiu praticamente igual à do Sonnet 5.5), mais o campo novo `usopt` (lista de usos da KJV em português, mostrada em "Como a KJV traduz" no cartão do léxico). O script valida cada resposta (números G/H e palavras gregas/hebraicas preservados, sem inglês, tamanho razoável); as 3 entradas recusadas (G5352, G4577, G1744) foram traduzidas à mão na sessão do agente em nov/2026. Para refazer: `amostra`, `preparar`, `enviar`, `status`, `baixar`, `reenviar`, `aplicar` (idempotente).
 - **Refinamentos residuais nos dados**:
   - *Glosas do interlinear*: depois das duas rodadas em `corrigir_glosas.py`, `glosas_llm.py` (nov/2026, `claude-haiku-5-5` em Batch, ~US$ 1,60) revisou os 31.103 versículos com Strong, gramática, glosa inglesa e texto da Bíblia Livre e gerou `38.779` correções aceitas (a validação recusa as que só apagam palavras, inventam negação, mexem nas marcações `[ ]`/`< >` ou reescrevem o versículo inteiro). Numa auditoria por amostragem, ~9 em 10 corrigiam erros reais; o restante é discutível — para corrigir uma correção ruim, adicione a glosa certa em `REVISAO` ou troque o `para` dela em `glosas_llm.json` (apagar a chave não restaura a glosa antiga, que precisa vir do histórico do git). Antes disso restavam poucos casos raros de sentido do Argos, ~150 ocorrências de `"você"` com verbos fora da tabela, ~8% de substantivos hebraicos com sufixo fora de `substantivos_pt.json` e `327` nomes próprios raros (`nomes_pt.py --relatorio`). Para corrigir glosas pontuais, adicione em `REVISAO` (`glosas_revisao.py`) e rode `aplicar`.
+  - *Mapa do Atlas* (nov/2026): os *tiles* do OpenStreetMap (que escreviam os nomes em árabe e hebraico) deram lugar a uma base própria — `ferramentas/gerar_mapa_base.py` recorta e simplifica o Natural Earth (níveis `geral` 1:50m, da Espanha à Índia, e `detalhe` 1:10m, do Mediterrâneo à Mesopotâmia, ~670 KB) e o app a desenha em canvas com as cores do tema (`--mapa-mar/-terra/-costa/-rio` no `style.css`; `montarBaseMapa`, `trocarNivelMapa`, `colorirMapa`). Os únicos nomes são os bíblicos em português: `atualizarRotulos()` mostra os mais citados que cabem sem se encostar, mais os mares fixos de `MARES_MAPA`, e ignora direções genéricas do geocódigo (`NOMES_GENERICOS`); clicar no nome abre a ficha do lugar.
   - *Atlas e idiomas*: os `1.335` lugares têm nome em português (os 95 que o `gerar_atlas_pt.py` não achava estão no `MANUAL` dele, na grafia da Bíblia Livre ou na forma usual em português); interface suporta `pt`/`en`/`es`, mas rótulos internos do Atlas, linha do tempo e fichas de contexto estão apenas em português.
 - **Contas Supabase e ambiente de nuvem do Claude Code**: contas ativas (`google: true`) contra o projeto `rxmxxuyqvetbkjfilayc` (login real e RLS testados pelo mantenedor no navegador; em ambiente de agente usa-se servidor falso nos testes, e mudar `google: false` em `CONTA` esconde tudo se algo quebrar). No **Claude Code**, o ambiente de nuvem **`"logos-biblia"`** libera rede para `rxmxxuyqvetbkjfilayc.supabase.co` e `solabiblia.com.br` (sessões iniciadas nele conseguem conferir o projeto Supabase e o site publicado; no ambiente *Default*, não).
 - **GitHub Pages**: enquanto a publicação continuar saindo direto da branch `main` (e não via GitHub Actions em *Settings → Pages*), as pastas `biblia/` (incluindo as páginas de versículo), `lexico/`, `dicionario/`, `temas/` e `confissoes/` permanecem versionadas no repositório e verificada pelo `verificar.yml`.

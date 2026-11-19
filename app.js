@@ -1795,11 +1795,91 @@ async function abrirAtlas(){
   }catch(e){ $("atlasResultados").innerHTML = `<p class="erro-leitura">${t().erroCarregar}</p>`; return; }
   montarViagens();
   if(!est.mapa){
-    est.mapa = L.map("mapa").setView([31.77, 35.21], 6);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      { attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>', maxZoom: 15 }).addTo(est.mapa);
+    let base;
+    try{ base = await json("data/mapa/base.json"); }
+    catch(e){ $("atlasResultados").innerHTML = `<p class="erro-leitura">${t().erroCarregar}</p>`; return; }
+    est.mapa = L.map("mapa", { minZoom: 3, maxZoom: 10, maxBounds: [[-6, -26], [60, 104]], maxBoundsViscosity: .8 })
+      .setView([31.77, 35.21], 6);
+    est.mapa.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
+    est.mapa.attributionControl.addAttribution('<a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a>');
+    est.mapa.createPane("base").style.zIndex = 250;      // abaixo das rotas, marcadores e nomes
+    montarBaseMapa(base);
+    est.mapa.on("moveend", ()=>{ trocarNivelMapa(); atualizarRotulos(); });
+    atualizarRotulos();
   }
-  setTimeout(()=>est.mapa.invalidateSize(), 150);
+  setTimeout(()=>{ est.mapa.invalidateSize(); atualizarRotulos(); }, 150);
+}
+/* Base do Atlas sem azulejos de fora: terra, litoral, lagos e rios do Natural Earth (data/mapa/base.json, gerado por
+   ferramentas/gerar_mapa_base.py), desenhados com as cores do tema; os únicos nomes são os bíblicos, em português.
+   Dois níveis: "geral" de longe e "detalhe" de perto (só dentro da caixa dele, do Mediterrâneo à Mesopotâmia). */
+const ZOOM_DETALHE = 6;
+const corMapa = (v)=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function pontosMapa(plano){ const r = []; for(let i = 0; i < plano.length; i += 2) r.push([plano[i + 1], plano[i]]); return r; }
+function montarBaseMapa(base){
+  const rend = L.canvas({ pane: "base", padding: .3 }), sem = { renderer: rend, interactive: false };
+  est.baseMapa = { niveis: {}, atual: null };
+  for(const [nome, n] of Object.entries(base.niveis)){
+    est.baseMapa.niveis[nome] = { caixa: n.caixa, camadas: [
+      ["terra", L.polygon(n.terra.map(p=>p.map(pontosMapa)), { ...sem, stroke: false, fillOpacity: 1 })],
+      ["lagos", L.polygon(n.lagos.map(p=>p.map(pontosMapa)), { ...sem, weight: .8, fillOpacity: 1 })],
+      ["rios", L.polyline(n.rios.map(pontosMapa), { ...sem, weight: 1.2 })],
+      ["costa", L.polyline(n.costa.map(pontosMapa), { ...sem, weight: 1 })]] };
+  }
+  colorirMapa(); trocarNivelMapa();
+}
+function colorirMapa(){
+  if(!est.baseMapa) return;
+  const terra = corMapa("--mapa-terra"), mar = corMapa("--mapa-mar"), costa = corMapa("--mapa-costa"), rio = corMapa("--mapa-rio");
+  const estilo = { terra: { fillColor: terra }, lagos: { color: costa, fillColor: mar }, rios: { color: rio }, costa: { color: costa } };
+  Object.values(est.baseMapa.niveis).forEach(n=>n.camadas.forEach(([tipo, c])=>c.setStyle(estilo[tipo])));
+  if(est.camadaRotulos) atualizarRotulos();
+}
+function trocarNivelMapa(){
+  const mapa = est.mapa, c = mapa.getCenter(), cx = est.baseMapa.niveis.detalhe.caixa;
+  const nome = mapa.getZoom() >= ZOOM_DETALHE && c.lng >= cx[0] && c.lat >= cx[1] && c.lng <= cx[2] && c.lat <= cx[3] ? "detalhe" : "geral";
+  if(est.baseMapa.atual === nome) return;
+  if(est.baseMapa.atual) est.baseMapa.niveis[est.baseMapa.atual].camadas.forEach(([, c])=>mapa.removeLayer(c));
+  est.baseMapa.niveis[nome].camadas.forEach(([, c])=>c.addTo(mapa));
+  est.baseMapa.atual = nome;
+}
+/* Nomes no mapa: os mares (fixos, em itálico) e os lugares mais citados na Bíblia que cabem na tela sem se encostar
+   (mais nomes quanto mais perto). Ficam de fora as direções e águas genéricas do geocódigo ("Rio", "Sul", "Oriente"). */
+const MARES_MAPA = [   // [nome, lat, lon, zoom mínimo, zoom máximo]
+  ["Mar Grande (Mediterrâneo)", 34.3, 19.5, 3, 7], ["Mar Grande", 33.4, 33.2, 6, 8], ["Mar Egeu", 38.4, 25.1, 5, 9], ["Mar Adriático", 42.6, 16.2, 5, 9],
+  ["Mar Vermelho", 21.2, 38.6, 3, 7], ["Golfo Pérsico", 27.3, 51.2, 4, 8], ["Mar Negro", 43.3, 34.2, 3, 7],
+  ["Mar Cáspio", 41.8, 50.8, 3, 7], ["Mar Salgado (Morto)", 31.52, 35.49, 8, 10], ["Mar da Galileia", 32.83, 35.59, 9, 10]];
+const NOMES_GENERICOS = /^(Rio|Sul|Norte|Oriente|Mar (Grande|Salgado|Vermelho|do Egito|da Galileia|Adriático))$/;
+function atualizarRotulos(){
+  const mapa = est.mapa;
+  if(!mapa || !est.lugares) return;
+  if(!est.camadaRotulos) est.camadaRotulos = L.layerGroup().addTo(mapa);
+  est.camadaRotulos.clearLayers();
+  const z = mapa.getZoom(), lim = mapa.getBounds();
+  const max = Math.round((mapa.getSize().x < 500 ? .55 : 1) * (z <= 4 ? 16 : z === 5 ? 26 : z === 6 ? 38 : z === 7 ? 50 : 64));
+  const cor = corMapa("--rubrica"), ocupados = [], usados = new Set();
+  for(const [nome, la, lo, zmin, zmax] of MARES_MAPA){
+    if(z < zmin || z > zmax || !lim.contains([la, lo])) continue;
+    const pt = mapa.latLngToContainerPoint([la, lo]), meia = nome.length * 3.4;
+    ocupados.push([pt.x - meia, pt.y - 9, pt.x + meia, pt.y + 9]);
+    L.marker([la, lo], { interactive: false, keyboard: false,
+      icon: L.divIcon({ className: "rotulo-mar", html: `<span>${esc(nome)}</span>`, iconSize: [0, 0] }) }).addTo(est.camadaRotulos);
+  }
+  const limite = ocupados.length + max;
+  const cand = est.lugares.filter(l=>l.tot > 0 && lim.contains([l.la, l.lo])).sort((a, b)=>b.tot - a.tot);
+  for(const l of cand){
+    if(ocupados.length >= limite) break;
+    const nome = ((emPT() && l.p) || l.n).replace(/ \d+$/, "");
+    if(usados.has(nome) || NOMES_GENERICOS.test(nome)) continue;
+    const pt = mapa.latLngToContainerPoint([l.la, l.lo]), maior = l.tot >= 150;
+    const caixa = [pt.x - 5, pt.y - 10, pt.x + 12 + nome.length * (maior ? 8 : 7), pt.y + 10];
+    if(ocupados.some(o=>caixa[0] < o[2] && o[0] < caixa[2] && caixa[1] < o[3] && o[1] < caixa[3])) continue;
+    ocupados.push(caixa); usados.add(nome);
+    L.circleMarker([l.la, l.lo], { radius: maior ? 3.5 : 2.5, weight: 1, color: cor, fillColor: cor, fillOpacity: 1 })
+      .bindTooltip(esc(nome), { permanent: true, interactive: true, direction: "right", offset: [3, 0],
+        className: "rotulo-lugar" + (maior ? " maior" : "") })
+      .on("click", ()=>mostrarLugar(l))
+      .addTo(est.camadaRotulos);
+  }
 }
 function buscarAtlas(){
   const termo = normStr($("campoAtlas").value.trim());
@@ -2767,6 +2847,7 @@ function aplicarTema(){
   document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
   $("btnTema").innerHTML = ico(escuro ? "sol" : "lua");
   $("metaTema").content = escuro ? "#171613" : "#FAF7F0";
+  if(est.baseMapa) colorirMapa();
 }
 function avisar(texto, botao, acao, some){
   document.querySelectorAll(".aviso-topo").forEach(a=>a.remove());
