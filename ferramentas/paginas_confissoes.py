@@ -1,4 +1,5 @@
-"""Páginas estáticas dos símbolos de fé (data/confissoes/): /confissoes/, a Confissão de Westminster por capítulo
+"""Páginas estáticas dos símbolos de fé (data/confissoes/): /confissoes/, os credos antigos (/confissoes/credos/niceno/),
+a Confissão de Westminster por capítulo
 (/confissoes/westminster/11/), o Catecismo Maior e o Breve Catecismo por pergunta (/confissoes/catecismo-maior/71/)
 e os Cânones de Dort por capítulo (/confissoes/canones-de-dort/1/).
 
@@ -13,6 +14,8 @@ from paginas_versiculos import pagina_versiculo
 
 RE_MARCA = re.compile(r"\s?\[(\d+)\]")
 DESCRICAO = {
+    "credos": "Os credos da Igreja antiga: o Credo Apostólico, o Credo Niceno, o Credo de Atanásio e a Definição de "
+              "Calcedônia, base comum da fé cristã que os Padrões de Westminster pressupõem.",
     "westminster": "Os 33 capítulos da Confissão de Fé de Westminster (1647), o principal símbolo de fé presbiteriano, "
                    "com os textos de prova da própria Assembleia.",
     "catecismo-maior": "As 196 perguntas e respostas do Catecismo Maior de Westminster (1647), com os textos de prova.",
@@ -21,6 +24,8 @@ DESCRICAO = {
     "canones-de-dort": "Os Cânones do Sínodo de Dort (1619): os cinco pontos da doutrina reformada da graça, com a "
                        "rejeição dos erros.",
 }
+AVISO_CREDOS = ("Textos antigos, em domínio público. Tradução do Sola, feita com IA a partir do latim e do grego e "
+                "conferida com textos ingleses em domínio público (pode conter imprecisões).")
 AVISO = ("Texto de domínio público; tradução automática do original inglês, feita pelo Sola (pode conter "
          "imprecisões). Textos de prova da Assembleia de Westminster, no texto da Bíblia Livre.")
 
@@ -88,15 +93,33 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         urls.append(site + caminho)
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
-            for d in ("westminster", "catecismo-maior", "breve-catecismo", "canones-de-dort")]
+            for d in ("credos", "westminster", "catecismo-maior", "breve-catecismo", "canones-de-dort")]
     for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
         texto(l, 1, 1)
-    fonte = f'<p class="fonte">{AVISO}</p>'
     for doc in docs:
         d, nome = doc["id"], doc["titulo"]
         base = f"/confissoes/{d}/"
+        fonte = f'<p class="fonte">{AVISO_CREDOS if d == "credos" else AVISO}</p>'
         topo = f'<p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a> · <a href="{base}">{e(nome)}</a></p>'
-        if doc["tipo"] == "catecismo":
+        if doc["tipo"] == "credos":
+            itens = doc["itens"]
+            for i, c in enumerate(itens):
+                caminho = f"{base}{c['id']}/"
+                notas = "".join(f'<p class="cf-nota"><b>“{e(trecho)}”</b> — {e(texto)} <a href="{url}">{e(rot)}</a></p>'
+                                for trecho, texto, url, rot in c["notas"])
+                ant = f'<span>‹ <a href="{base}{itens[i - 1]["id"]}/">{e(itens[i - 1]["titulo"])}</a></span>' if i else "<span></span>"
+                pro = f'<span><a href="{base}{itens[i + 1]["id"]}/">{e(itens[i + 1]["titulo"])}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
+                corpo = (f'{topo}<h1>{e(c["titulo"])}</h1><p class="lex-translit">{e(c["quando"][:1].upper() + c["quando"][1:])}; original em {e(c["lingua"])}</p>'
+                         f'<p class="lex-resumo">{e(c["sobre"])}</p>'
+                         + "".join(f'<p class="cf-texto">{e(par)}</p>' for par in c["texto"])
+                         + (f'<h2 class="cf-n">Notas</h2>{notas}' if notas else "")
+                         + f'<details class="acv-original"><summary>Texto inglês de referência — {e(c["fonte_en"])}</summary>'
+                         + "".join(f"<p>{e(par)}</p>" for par in c["texto_en"]) + "</details>"
+                         + f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
+                gravar(caminho, f"{c['titulo']} em português: texto completo | Sola", cortar(f"{c['titulo']}: {' '.join(c['texto'])}", 158),
+                       corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (c["titulo"], caminho)])
+            lista = "".join(f'<li><a href="{base}{c["id"]}/">{e(c["titulo"])}</a> <small>{e(c["quando"])}</small></li>' for c in itens)
+        elif doc["tipo"] == "catecismo":
             itens = doc["itens"]
             for i, q in enumerate(itens):
                 p, r = q.get("p") or q["p_en"], q.get("r") or q["r_en"]
@@ -144,8 +167,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                f'<p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a></p><h1>{e(nome)}</h1>'
                f'<p class="lex-resumo">{e(DESCRICAO[d])}</p><ol class="cf-indice">{lista}</ol>{fonte}',
                [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
-    desc = ("Os símbolos de fé da tradição reformada em português: a Confissão de Fé de Westminster, o Catecismo Maior e "
-            "o Breve Catecismo, e os Cânones de Dort, com os textos de prova.")
+    desc = ("Os símbolos de fé em português: os credos da Igreja antiga e, da tradição reformada, a Confissão de Fé de "
+            "Westminster, o Catecismo Maior e o Breve Catecismo, e os Cânones de Dort, com os textos de prova.")
     gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
            f'<h1>Confissões e catecismos</h1><p class="lex-resumo">{e(desc)}</p><ul class="lex-lista">' +
            "".join(f'<li><a href="/confissoes/{doc["id"]}/">{e(doc["titulo"])}</a> <small>{doc["ano"]}</small></li>'
