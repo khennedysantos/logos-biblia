@@ -70,6 +70,23 @@ def carimbar_sw():
     sw.write_text(texto, encoding="utf-8")
 
 
+def carimbar_dados():
+    """data/versoes.json: a versão (hash) de cada grupo de arquivos de data/, que o app põe no endereço (?v=).
+    Grupo = a pasta do arquivo, ou o próprio arquivo nos dois primeiros níveis (a mesma regra de urlDados no app.js).
+    Roda por último, depois de tudo o que este script grava em data/."""
+    grupos = {}
+    for f in sorted((RAIZ / "data").rglob("*")):
+        rel = f.relative_to(RAIZ / "data").as_posix()
+        if not f.is_file() or rel == "versoes.json":
+            continue
+        p = rel.split("/")
+        g = "/".join(p[:-1]) if len(p) >= 3 else rel
+        grupos.setdefault(g, hashlib.sha1()).update(rel.encode() + b"\0" + f.read_bytes())
+    versoes = {g: h.hexdigest()[:8] for g, h in sorted(grupos.items())}
+    (RAIZ / "data" / "versoes.json").write_text(json.dumps(versoes, separators=(",", ":")) + "\n", encoding="utf-8")
+    return len(versoes)
+
+
 def cabeca_seo(url, titulo, desc, tipo, migalhas):
     """Bloco entre <!--SEO--> e <!--/SEO-->: canônico, Open Graph e o caminho da página para o Google."""
     trilha = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -320,8 +337,9 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{indice}\n</sitemapindex>\n',
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    n_versoes = carimbar_dados()
     print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo) - len(confissoes)} do dicionário e dos temas, {len(confissoes)} das confissões, "
-          f"sitemap com {len(urls)} endereços, robots.txt e 404.html")
+          f"sitemap com {len(urls)} endereços, robots.txt, 404.html e versões de {n_versoes} grupos de dados")
 
 
 if __name__ == "__main__":

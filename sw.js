@@ -1,6 +1,6 @@
 /* Sola — service worker: deixa o site abrir e os capítulos já lidos funcionarem sem internet.
    A linha VERSAO é carimbada por ferramentas/gerar_paginas.py a cada mudança no app. */
-const VERSAO = "29a3b99242";
+const VERSAO = "2006c47349";
 const CACHE_APP = "sola-app-" + VERSAO;
 const CACHE_DADOS = "sola-dados-v1";   // o mesmo nome está no app.js (botão "Baixar a Bíblia")
 const BASE = ["/", "/data/books.json", "/favicon.svg", "/manifest.webmanifest",
@@ -38,9 +38,23 @@ self.addEventListener("fetch", (e)=>{
     e.respondWith(fetch(pedido).catch(()=>caches.match("/")));
     return;
   }
-  // dados (Bíblia, interlinear, comentários…): responde do que está guardado e atualiza por trás
   if(url.pathname.startsWith("/data/")){
-    e.respondWith(caches.match(pedido).then(guardado=>{
+    // a lista de versões dos dados: sempre a da rede; sem rede, a guardada
+    if(url.pathname === "/data/versoes.json"){
+      e.respondWith(fetch(pedido).then(r=>guardar(CACHE_DADOS, url.pathname, r)).catch(()=>caches.match(url.pathname)));
+      return;
+    }
+    // endereço com ?v=<versão>: o guardado é exatamente este conteúdo; da rede, troca a versão velha pela nova.
+    // Sem rede, qualquer versão guardada daquele arquivo serve.
+    if(url.searchParams.has("v")){
+      e.respondWith(caches.match(pedido).then(guardado=>guardado || fetch(pedido).then(async r=>{
+        if(r.ok){ const c = await caches.open(CACHE_DADOS); await c.delete(url.pathname, { ignoreSearch: true }); await c.put(pedido, r.clone()); }
+        return r;
+      }).catch(()=>caches.match(pedido, { ignoreSearch: true }))));
+      return;
+    }
+    // sem versão (lista de versões indisponível): responde do que está guardado e atualiza por trás
+    e.respondWith(caches.match(pedido, { ignoreSearch: true }).then(guardado=>{
       const rede = fetch(pedido).then(r=>guardar(CACHE_DADOS, pedido, r));
       if(guardado){ rede.catch(()=>{}); return guardado; }
       return rede;
