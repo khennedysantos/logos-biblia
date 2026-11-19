@@ -460,7 +460,20 @@ const emPT = ()=>est.idioma==="pt";
 const ico = (nome)=>`<svg class="ico" aria-hidden="true"><use href="#i-${nome}"/></svg>`;
 
 /* ---------- dados ---------- */
-async function json(url){ const r = await fetch(url.startsWith("data/") ? "/" + url : url); if(!r.ok) throw new Error(url); return r.json(); }
+/* Versão de cada grupo de dados (data/versoes.json, gerado por ferramentas/gerar_paginas.py). O endereço leva
+   ?v=<versão>: quando um arquivo muda, o endereço muda, e nenhum cache (nem um service worker antigo) entrega a
+   cópia velha junto com o app novo. Grupo = a pasta do arquivo, ou o próprio arquivo nos dois primeiros níveis. */
+let VERSOES = {};
+function urlDados(url){
+  const rel = url.replace(/^\/?data\//, "");
+  if(rel === url) return url;
+  const p = rel.split("/"), v = VERSOES[p.length >= 3 ? p.slice(0, -1).join("/") : rel];
+  return "/data/" + rel + (v ? "?v=" + v : "");
+}
+async function carregarVersoes(){
+  try{ const r = await fetch("/data/versoes.json", { cache: "no-cache" }); if(r.ok) VERSOES = await r.json(); }catch(e){}
+}
+async function json(url){ const r = await fetch(urlDados(url)); if(!r.ok) throw new Error(url); return r.json(); }
 /* Guarda no cache o que deu certo; o que falhou (sem rede) pode ser pedido de novo. */
 async function comCache(cache, chave, url){
   if(!(chave in cache)){
@@ -2228,7 +2241,7 @@ async function baixarOffline(){
   try{
     const cache = await caches.open(CACHE_DADOS);
     for(let i = 0; i < urls.length; i += 6){
-      await Promise.all(urls.slice(i, i+6).map(u=>cache.add(u).then(()=>{ feitos++; }, ()=>{ falhas++; })));
+      await Promise.all(urls.slice(i, i+6).map(u=>cache.add(urlDados(u)).then(()=>{ feitos++; }, ()=>{ falhas++; })));
       status.textContent = `${x.offBaixando} ${feitos}/${urls.length}`;
     }
   }catch(e){ falhas++; }
@@ -2759,6 +2772,7 @@ function avisar(texto, botao, acao, some){
 async function iniciar(){
   est.idioma = lerLS("logos_idioma","pt"); if(!UI[est.idioma]) est.idioma = "pt";
   est.tema = document.documentElement.dataset.tema || "claro";
+  await carregarVersoes();
   try{ est.meta = await json("data/books.json"); }
   catch(e){ avisar(t().erroIniciar, t().recarregar, ()=>location.reload()); return; }
   est.traducao = lerLS("logos_trad","blivre");
