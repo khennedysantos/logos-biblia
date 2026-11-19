@@ -39,6 +39,7 @@
   --escritura:"Cardo",Georgia,serif;
   --ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --raio:.45rem; --raio-curto:.32rem;
+  --mapa-mar:#D3DEDD; --mapa-terra:#F5EFE1; --mapa-costa:#7F9395; --mapa-rio:#86A7AE; --mapa-relevo:.55;
 }
 [data-tema="escuro"]{
   --mesa:#11100E; --papel:#171613; --estante:#1D1B17; --painel:#23201B;
@@ -48,6 +49,7 @@
   --ouro:#D2AD6B; --ouro-vivo:#B89252;
   --noite:#0E0D0B; --noite-2:#171512;
   --m-ouro:#4A3D1C; --m-verde:#263D24; --m-azul:#22364A; --m-rosa:#4A2828;
+  --mapa-mar:#182024; --mapa-terra:#25221D; --mapa-costa:#55666A; --mapa-rio:#456970; --mapa-relevo:.6;
   --sombra:0 1px 2px rgba(0,0,0,.32),0 10px 28px rgba(0,0,0,.38);
   --sombra-alta:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.65);
 }
@@ -550,6 +552,28 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 
 /* ---------- atlas ---------- */
 #mapa{height:21rem;border-radius:var(--raio);border:1px solid var(--borda);margin-top:.75rem;z-index:0}
+#mapa.leaflet-container{background:var(--mapa-mar);font-family:var(--ui)}
+#mapa .leaflet-relevo-pane{opacity:var(--mapa-relevo)}
+#mapa .leaflet-control-attribution{background:color-mix(in srgb,var(--papel) 80%,transparent);color:var(--suave)}
+#mapa .leaflet-control-attribution a{color:var(--suave)}
+.rotulo span{position:absolute;left:-4px;top:-.62em;white-space:nowrap;cursor:pointer;color:var(--tinta);
+  font:600 .74rem/1.2 var(--escritura);text-shadow:0 0 2px var(--mapa-terra),0 0 3px var(--mapa-terra),0 0 4px var(--mapa-terra)}
+.rotulo span::before{content:"";display:inline-block;width:.42rem;height:.42rem;border-radius:50%;margin-right:.3rem;
+  vertical-align:.05em;background:var(--rubrica);box-shadow:0 0 0 1.5px var(--mapa-terra)}
+.rotulo.maior span{font-size:.86rem;font-weight:700}
+.rotulo.maior span::before{width:.55rem;height:.55rem}
+.rotulo-monte span::before{content:"▲";width:auto;height:auto;border-radius:0;background:none;box-shadow:none;
+  color:var(--ouro);font-size:.62rem;margin-right:.22rem;vertical-align:.08em}
+.rotulo-agua span{color:var(--mapa-rio);font-style:italic}
+.rotulo-agua span::before{background:var(--mapa-rio)}
+.rotulo-regiao span{left:0;top:0;transform:translate(-50%,-50%);color:var(--suave);font:600 .66rem/1 var(--ui);
+  letter-spacing:.16em;text-transform:uppercase}
+.rotulo-regiao span::before{display:none}
+.rotulo-regiao.maior span{font-size:.74rem;font-weight:600}
+.lugar-incerto{font-size:.8rem;color:var(--rubrica);margin:.1rem 0 .35rem}
+.rotulo-mar span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;
+  font:italic 500 .8rem/1 var(--escritura);letter-spacing:.06em;color:var(--mapa-costa);
+  text-shadow:0 0 3px var(--mapa-mar),0 0 4px var(--mapa-mar)}
 .lugar-card{border:1px solid var(--borda);border-left:3px solid var(--rubrica);border-radius:var(--raio);padding:.88rem 1rem;margin:.7rem 0;background:var(--painel)}
 .lugar-card h3{font-family:var(--titulo);font-weight:600;margin:0 0 .38rem;font-size:1.4rem}
 .lugar-meta{font-size:.72rem;color:var(--suave);margin:.15rem 0}

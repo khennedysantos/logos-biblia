@@ -85,4 +85,4 @@ Os detalhes de cada arquivo de dados, as decisões do projeto e as regras para a
 - Referências cruzadas e lugares: openbible.info (CC-BY).
 - Traduções automáticas: Argos Translate e NLLB-200 (Meta, CC BY-NC — uso não comercial).
 - Tipografia: Cardo, Cormorant Garamond e Inter (SIL Open Font License). Mapa: Leaflet (BSD) e
-  OpenStreetMap.
+  Natural Earth (domínio público), com relevo da elevação do Terrain Tiles (AWS Open Data), desenhado pelo próprio site.
