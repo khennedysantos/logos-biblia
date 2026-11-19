@@ -926,6 +926,9 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 /* ---------- perfil personalizável ---------- */
 .perfil-cartao{position:relative;border:1px solid var(--borda);border-radius:var(--raio);background:var(--painel);overflow:hidden;margin-bottom:1rem}
 .perfil-capa{display:block;height:5.2rem;background:var(--capa-fundo);background-size:cover}
+.perfil-compartilhar{position:absolute;top:.6rem;right:.6rem;width:2.3rem;height:2.3rem;border-radius:50%;border:0;cursor:pointer;
+  background:color-mix(in srgb,var(--papel) 88%,transparent);color:var(--tinta);display:grid;place-items:center;font-size:1.05rem;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.perfil-compartilhar:hover{color:var(--rubrica)}
 .perfil-id{display:flex;align-items:flex-start;gap:.9rem;padding:.55rem 1rem .8rem}
 .perfil-id .conta-letra.grande{width:4.4rem;height:4.4rem;font-size:2.2rem;box-shadow:0 0 0 3px var(--painel);margin-top:-2.7rem;flex:0 0 auto}
 .perfil-id > div{display:flex;flex-direction:column;gap:.12rem;min-width:0;padding-bottom:.15rem}
@@ -983,6 +986,10 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .lombada.aberta{outline:2px solid var(--ouro);outline-offset:1px}
 .tr-antiga{--lombada:#6B2D3E}.tr-medieval{--lombada:#55613A}.tr-reforma{--lombada:#8C2D23}.tr-puritanos{--lombada:#35546E}
 .tr-avivamento{--lombada:#7A5E2A}.tr-moderna{--lombada:#4A453D}.tr-outra{--lombada:#6D665A}
+.tr-filosofia{--lombada:#2F5D5A}.tr-apologetica{--lombada:#5A3E6E}.tr-devocional{--lombada:#9A4E2E}.tr-literatura{--lombada:#2E3F5E}.tr-biografia{--lombada:#6E5A2E}
+.prat-grupos{display:flex;flex-wrap:wrap;gap:.3rem}
+.prat-grupos button{border:1px solid var(--borda);background:var(--painel);border-radius:999px;padding:.25rem .65rem;font:500 .74rem var(--ui);color:var(--tinta-2);cursor:pointer}
+.prat-grupos button[aria-pressed="true"]{background:var(--rubrica);border-color:var(--rubrica);color:#FAF7F0}
 .prat-ficha{position:relative;border:1px solid var(--borda);border-left:3px solid var(--ouro);border-radius:var(--raio);background:var(--painel);padding:.8rem 2.4rem .8rem .9rem;margin:.4rem 0 .8rem}
 .prat-ficha h4{margin:0 0 .2rem;font-family:var(--titulo);font-size:1.15rem}
 .prat-liga{font-size:.8rem;margin:.4rem 0}

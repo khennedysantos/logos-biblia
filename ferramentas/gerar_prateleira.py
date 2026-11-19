@@ -1,4 +1,5 @@
-"""Catálogo da prateleira do perfil (data/prateleira.json): clássicos da fé cristã, sobretudo da tradição reformada,
+"""Catálogo da prateleira do perfil (data/prateleira.json): clássicos da teologia cristã (sobretudo da tradição
+reformada), da filosofia, da apologética, da vida devocional, da literatura cristã e biografias e história da igreja,
 que a pessoa marca como lido, lendo ou "quero ler" (ela também pode pôr qualquer outro livro à mão).
 
 Cada obra traz a ligação teológica com o acervo do Sola ("liga": páginas das confissões, livros e capítulos da
@@ -17,7 +18,16 @@ TRADICOES = {   # id -> (nome pt, en, es)
     "puritanos": ("Puritanos e ortodoxia reformada", "Puritans and Reformed orthodoxy", "Puritanos y ortodoxia reformada"),
     "avivamento": ("Avivamentos e séc. XIX", "Revivals and 19th century", "Avivamientos y siglo XIX"),
     "moderna": ("Séculos XX e XXI", "20th and 21st centuries", "Siglos XX y XXI"),
+    "filosofia": ("Filosofia", "Philosophy", "Filosofía"),
+    "apologetica": ("Apologética", "Apologetics", "Apologética"),
+    "devocional": ("Vida cristã e devocionais", "Christian life and devotionals", "Vida cristiana y devocionales"),
+    "literatura": ("Literatura cristã", "Christian literature", "Literatura cristiana"),
+    "biografia": ("Biografias e história da igreja", "Biographies and church history", "Biografías e historia de la iglesia"),
 }
+# grupos do filtro do catálogo: a teologia junta as seis tradições
+GRUPO = {"antiga": "teologia", "medieval": "teologia", "reforma": "teologia", "puritanos": "teologia", "avivamento": "teologia",
+         "moderna": "teologia", "filosofia": "filosofia", "apologetica": "apologetica", "devocional": "devocional",
+         "literatura": "literatura", "biografia": "biografia"}
 # (id, título em português, título original, autor, ano, tradição, [(rótulo, endereço no Sola)])
 OBRAS = [
     ("contra-heresias", "Contra as Heresias", "Adversus Haereses", "Ireneu de Lião", "c. 180", "antiga",
@@ -123,6 +133,64 @@ OBRAS = [
      [("Confissão Belga, artigo 21", "/confissoes/confissao-belga/21/")]),
     ("lloyd-jones", "Depressão Espiritual", "Spiritual Depression", "D. Martyn Lloyd-Jones", "1965", "moderna",
      [("Salmo 42", "/biblia/salmos/42/")]),
+    ("suma-teologica", "Suma Teológica", "Summa Theologiae", "Tomás de Aquino", "1265–1274", "medieval",
+     [("CFW 2: De Deus e da Santíssima Trindade", "/confissoes/westminster/2/")]),
+    # filosofia
+    ("apologia-socrates", "Apologia de Sócrates", "Ἀπολογία Σωκράτους", "Platão", "c. 399 a.C.", "filosofia", []),
+    ("republica", "A República", "Πολιτεία", "Platão", "c. 375 a.C.", "filosofia", []),
+    ("etica-nicomaco", "Ética a Nicômaco", "Ἠθικὰ Νικομάχεια", "Aristóteles", "c. 340 a.C.", "filosofia", []),
+    ("meditacoes-aurelio", "Meditações", "Τὰ εἰς ἑαυτόν", "Marco Aurélio", "c. 175", "filosofia", []),
+    ("consolacao", "A Consolação da Filosofia", "De Consolatione Philosophiae", "Boécio", "524", "filosofia",
+     [("CFW 5: Da providência", "/confissoes/westminster/5/")]),
+    ("principe", "O Príncipe", "Il Principe", "Nicolau Maquiavel", "1532", "filosofia", []),
+    ("discurso-metodo", "Discurso do Método", "Discours de la méthode", "René Descartes", "1637", "filosofia", []),
+    ("leviata", "Leviatã", "Leviathan", "Thomas Hobbes", "1651", "filosofia", [("Jó 41", "/biblia/jo/41/")]),
+    ("ensaio-locke", "Ensaio sobre o Entendimento Humano", "An Essay Concerning Human Understanding", "John Locke", "1689", "filosofia", []),
+    ("critica-razao-pura", "Crítica da Razão Pura", "Kritik der reinen Vernunft", "Immanuel Kant", "1781", "filosofia", []),
+    ("temor-tremor", "Temor e Tremor", "Frygt og Bæven", "Søren Kierkegaard", "1843", "filosofia",
+     [("Gênesis 22", "/biblia/genesis/22/")]),
+    ("zaratustra", "Assim Falou Zaratustra", "Also sprach Zarathustra", "Friedrich Nietzsche", "1883–1885", "filosofia", []),
+    ("dooyeweerd", "No Crepúsculo do Pensamento Ocidental", "In the Twilight of Western Thought", "Herman Dooyeweerd", "1960", "filosofia", []),
+    ("abolicao-homem", "A Abolição do Homem", "The Abolition of Man", "C. S. Lewis", "1943", "filosofia", []),
+    ("plantinga", "Deus, a Liberdade e o Mal", "God, Freedom, and Evil", "Alvin Plantinga", "1974", "filosofia",
+     [("CFW 5: Da providência", "/confissoes/westminster/5/")]),
+    # apologética
+    ("pensamentos-pascal", "Pensamentos", "Pensées", "Blaise Pascal", "1670", "apologetica", [("Eclesiastes 3:11", "/biblia/eclesiastes/3/11/")]),
+    ("ortodoxia", "Ortodoxia", "Orthodoxy", "G. K. Chesterton", "1908", "apologetica", [("Credo Apostólico", "/confissoes/credos/apostolico/")]),
+    ("van-til", "A Defesa da Fé", "The Defense of the Faith", "Cornelius Van Til", "1955", "apologetica",
+     [("CFW 1: Da Escritura Sagrada", "/confissoes/westminster/1/")]),
+    ("schaeffer", "O Deus que Intervém", "The God Who Is There", "Francis Schaeffer", "1968", "apologetica", [("Atos 17", "/biblia/atos/17/")]),
+    ("deus-banco-reus", "Deus no Banco dos Réus", "God in the Dock", "C. S. Lewis", "1970", "apologetica", []),
+    ("craig-fe-razoavel", "Em Guarda", "On Guard", "William Lane Craig", "2010", "apologetica", [("1 Pedro 3:15", "/biblia/1-pedro/3/15/")]),
+    # vida cristã e devocionais
+    ("presenca-deus", "A Prática da Presença de Deus", "La Pratique de la présence de Dieu", "Irmão Lourenço", "1692", "devocional", []),
+    ("manha-noite", "Manhã e Noite", "Morning and Evening", "Charles H. Spurgeon", "1865", "devocional", [("Salmo 5:3", "/biblia/salmos/5/3/")]),
+    ("tudo-para-ele", "Tudo para Ele", "My Utmost for His Highest", "Oswald Chambers", "1927", "devocional", []),
+    ("discipulado", "Discipulado", "Nachfolge", "Dietrich Bonhoeffer", "1937", "devocional", [("Mateus 5", "/biblia/mateus/5/")]),
+    ("vida-comunhao", "Vida em Comunhão", "Gemeinsames Leben", "Dietrich Bonhoeffer", "1939", "devocional", [("Salmo 133", "/biblia/salmos/133/")]),
+    ("busca-deus", "À Procura de Deus", "The Pursuit of God", "A. W. Tozer", "1948", "devocional", [("Salmo 42:1", "/biblia/salmos/42/1/")]),
+    ("celebracao-disciplina", "Celebração da Disciplina", "Celebration of Discipline", "Richard Foster", "1978", "devocional", []),
+    # literatura cristã
+    ("divina-comedia", "A Divina Comédia", "La Divina Commedia", "Dante Alighieri", "c. 1320", "literatura", []),
+    ("paraiso-perdido", "O Paraíso Perdido", "Paradise Lost", "John Milton", "1667", "literatura", [("Gênesis 3", "/biblia/genesis/3/")]),
+    ("crime-castigo", "Crime e Castigo", "Преступление и наказание", "Fiódor Dostoiévski", "1866", "literatura", [("João 11", "/biblia/joao/11/")]),
+    ("karamazov", "Os Irmãos Karamázov", "Братья Карамазовы", "Fiódor Dostoiévski", "1880", "literatura", [("João 12:24", "/biblia/joao/12/24/")]),
+    ("ben-hur", "Ben-Hur", "Ben-Hur: A Tale of the Christ", "Lew Wallace", "1880", "literatura", []),
+    ("em-seus-passos", "Em Seus Passos", "In His Steps", "Charles Sheldon", "1896", "literatura", [("1 Pedro 2:21", "/biblia/1-pedro/2/21/")]),
+    ("cartas-diabo", "Cartas de um Diabo a seu Aprendiz", "The Screwtape Letters", "C. S. Lewis", "1942", "literatura",
+     [("Efésios 6:11", "/biblia/efesios/6/11/")]),
+    ("grande-divorcio", "O Grande Divórcio", "The Great Divorce", "C. S. Lewis", "1945", "literatura", []),
+    ("narnia", "As Crônicas de Nárnia", "The Chronicles of Narnia", "C. S. Lewis", "1950–1956", "literatura", []),
+    ("senhor-aneis", "O Senhor dos Anéis", "The Lord of the Rings", "J. R. R. Tolkien", "1954–1955", "literatura", []),
+    # biografias e história da igreja
+    ("eusebio", "História Eclesiástica", "Ἐκκλησιαστικὴ ἱστορία", "Eusébio de Cesareia", "c. 325", "biografia", [("Atos", "/biblia/atos/")]),
+    ("martires-foxe", "O Livro dos Mártires", "Actes and Monuments", "John Foxe", "1563", "biografia", [("Hebreus 11", "/biblia/hebreus/11/")]),
+    ("vida-calvino-beza", "A Vida de Calvino", "Vita Calvini", "Teodoro de Beza", "1564", "biografia", []),
+    ("brainerd", "A Vida de David Brainerd", "The Life of David Brainerd", "Jonathan Edwards", "1749", "biografia", []),
+    ("hudson-taylor", "O Segredo Espiritual de Hudson Taylor", "Hudson Taylor's Spiritual Secret", "Howard e Geraldine Taylor", "1932", "biografia", []),
+    ("aqui-estou", "Cativo à Palavra: a vida de Lutero", "Here I Stand: A Life of Martin Luther", "Roland Bainton", "1950", "biografia", []),
+    ("portoes-esplendor", "Através dos Portões do Esplendor", "Through Gates of Splendor", "Elisabeth Elliot", "1957", "biografia", []),
+    ("refugio-secreto", "O Refúgio Secreto", "The Hiding Place", "Corrie ten Boom", "1971", "biografia", [("Salmo 91", "/biblia/salmos/91/")]),
 ]
 
 
@@ -136,10 +204,11 @@ def main():
         for _, url in liga:
             if not (RAIZ / url.strip("/") / "index.html").exists():
                 faltam.append(f"{id_}: {url}")
-        obras.append({"id": id_, "t": t, "o": o, "a": a, "ano": ano, "tr": trad,
+        obras.append({"id": id_, "t": t, "o": o, "a": a, "ano": ano, "tr": trad, "g": GRUPO[trad],
                       "liga": [[r, u] for r, u in liga]})
     assert not faltam, f"páginas que não existem: {faltam}"
     doc = {"tradicoes": {k: {"pt": v[0], "en": v[1], "es": v[2]} for k, v in TRADICOES.items()}, "obras": obras}
+    print({g: sum(1 for o in obras if o["g"] == g) for g in sorted(set(GRUPO.values()))})
     DESTINO.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{len(obras)} obras na prateleira, {sum(len(o['liga']) for o in obras)} ligações com o Sola")
 

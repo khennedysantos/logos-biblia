@@ -66,6 +66,7 @@ const UI = {
     offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
     offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet.",
     meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
+    imgPerfilTit:"Imagem do perfil", imgPerfilTexto:"meu estudo bíblico no Sola:", compartilharPerfil:"Compartilhar perfil", imgLivrosLidos:"livros lidos",
     personalizar:"Personalizar perfil", pfNome:"Nome no perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícone", pfAv_foto:"Foto",
     pfFotoEscolher:"Escolher foto", pfFotoOk:"Foto salva (reduzida a 160 px).", pfFotoDica:"A foto fica pequena e recortada no centro.", pfFotoErro:"Não deu para ler essa imagem.",
     pfCapa:"Capa", capas:{linho:"Linho", carmim:"Carmim", ouro:"Ouro", oliva:"Oliveira", mar:"Mar da Galileia", vigilia:"Vigília"},
@@ -81,8 +82,8 @@ const UI = {
       at:"O Antigo Testamento", biblia:"A Bíblia toda", seq7:"7 dias seguidos", seq30:"30 dias seguidos", seq100:"100 dias seguidos",
       plano:"Um plano concluído", notas10:"10 anotações", marcas50:"50 versículos marcados", prateleira5:"5 livros na prateleira"},
     prateleiraTit:"Minha prateleira", stLivro:{lendo:"Lendo", lido:"Lidos", quero:"Quero ler"}, ligaSola:"No Sola", tirarLivro:"Tirar da prateleira",
-    pratBuscaDica:"Buscar clássicos: Calvino, Owen, Agostinho…", pratComo:"Pôr como", pratOutro:"Outro livro:", pratTitulo:"Título", pratAutor:"Autor",
-    pratPor:"Pôr na prateleira", pratAdicionar:"Adicionar livro", pratVazia:"Monte a sua prateleira com os livros de teologia que você leu, está lendo ou quer ler — há um catálogo de clássicos ligados ao Sola, e dá para pôr qualquer outro.",
+    pratGrupoRot:"Tipo de livro", pratGrupos:{todos:"Todos", teologia:"Teologia", filosofia:"Filosofia", apologetica:"Apologética", devocional:"Vida cristã", literatura:"Literatura", biografia:"Biografias e história"}, pratBuscaDica:"Buscar: Calvino, Agostinho, Pascal, Lewis…", pratComo:"Pôr como", pratOutro:"Outro livro:", pratTitulo:"Título", pratAutor:"Autor",
+    pratPor:"Pôr na prateleira", pratAdicionar:"Adicionar livro", pratVazia:"Monte a sua prateleira com os livros de teologia, filosofia, vida cristã e literatura que você leu, está lendo ou quer ler — há um catálogo de clássicos ligados ao Sola, e dá para pôr qualquer outro.",
     semanaTit:"Esta semana", semanaCaps:"capítulo(s) nesta semana", semanaDias:"dia(s) com leitura", semanaAntes:"semana passada",
     metaRot:"Meta semanal", metaSem:"Sem meta", metaCaps:"capítulos", metaFeita:"Meta da semana cumprida!", metaFalta:"faltam {n} para a meta",
     diasSem:["D","S","T","Q","Q","S","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"mais",
@@ -171,6 +172,7 @@ const UI = {
     offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
     offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use.",
     meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
+    imgPerfilTit:"Profile image", imgPerfilTexto:"my Bible study on Sola:", compartilharPerfil:"Share profile", imgLivrosLidos:"books read",
     personalizar:"Customize profile", pfNome:"Profile name", pfAvatar:"Avatar", pfAv_letra:"Initial", pfAv_icone:"Icon", pfAv_foto:"Photo",
     pfFotoEscolher:"Choose photo", pfFotoOk:"Photo saved (reduced to 160 px).", pfFotoDica:"The photo is made small and cropped to the center.", pfFotoErro:"Couldn't read that image.",
     pfCapa:"Cover", capas:{linho:"Linen", carmim:"Crimson", ouro:"Gold", oliva:"Olive", mar:"Sea of Galilee", vigilia:"Vigil"},
@@ -186,8 +188,8 @@ const UI = {
       at:"The Old Testament", biblia:"The whole Bible", seq7:"7 days in a row", seq30:"30 days in a row", seq100:"100 days in a row",
       plano:"A plan completed", notas10:"10 notes", marcas50:"50 highlighted verses", prateleira5:"5 books on the shelf"},
     prateleiraTit:"My bookshelf", stLivro:{lendo:"Reading", lido:"Read", quero:"Want to read"}, ligaSola:"On Sola", tirarLivro:"Remove from shelf",
-    pratBuscaDica:"Search classics: Calvin, Owen, Augustine…", pratComo:"Add as", pratOutro:"Another book:", pratTitulo:"Title", pratAutor:"Author",
-    pratPor:"Add to shelf", pratAdicionar:"Add book", pratVazia:"Build your shelf with the theology books you've read, are reading or want to read — there's a catalog of classics linked to Sola, and you can add any other.",
+    pratGrupoRot:"Kind of book", pratGrupos:{todos:"All", teologia:"Theology", filosofia:"Philosophy", apologetica:"Apologetics", devocional:"Christian life", literatura:"Literature", biografia:"Biographies and history"}, pratBuscaDica:"Search: Calvin, Augustine, Pascal, Lewis…", pratComo:"Add as", pratOutro:"Another book:", pratTitulo:"Title", pratAutor:"Author",
+    pratPor:"Add to shelf", pratAdicionar:"Add book", pratVazia:"Build your shelf with the theology, philosophy, Christian life and literature books you've read, are reading or want to read — there's a catalog of classics linked to Sola, and you can add any other.",
     semanaTit:"This week", semanaCaps:"chapter(s) this week", semanaDias:"day(s) with reading", semanaAntes:"last week",
     metaRot:"Weekly goal", metaSem:"No goal", metaCaps:"chapters", metaFeita:"Weekly goal reached!", metaFalta:"{n} to go",
     diasSem:["S","M","T","W","T","F","S"], historicoTit:"Last 12 weeks", menos:"less", mais:"more",
@@ -276,6 +278,7 @@ const UI = {
     offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
     offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión.",
     meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
+    imgPerfilTit:"Imagen del perfil", imgPerfilTexto:"mi estudio bíblico en Sola:", compartilharPerfil:"Compartir perfil", imgLivrosLidos:"libros leídos",
     personalizar:"Personalizar perfil", pfNome:"Nombre en el perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícono", pfAv_foto:"Foto",
     pfFotoEscolher:"Elegir foto", pfFotoOk:"Foto guardada (reducida a 160 px).", pfFotoDica:"La foto queda pequeña y recortada al centro.", pfFotoErro:"No se pudo leer esa imagen.",
     pfCapa:"Portada", capas:{linho:"Lino", carmim:"Carmesí", ouro:"Oro", oliva:"Olivo", mar:"Mar de Galilea", vigilia:"Vigilia"},
@@ -291,8 +294,8 @@ const UI = {
       at:"El Antiguo Testamento", biblia:"Toda la Biblia", seq7:"7 días seguidos", seq30:"30 días seguidos", seq100:"100 días seguidos",
       plano:"Un plan completado", notas10:"10 notas", marcas50:"50 versículos resaltados", prateleira5:"5 libros en la estantería"},
     prateleiraTit:"Mi estantería", stLivro:{lendo:"Leyendo", lido:"Leídos", quero:"Quiero leer"}, ligaSola:"En Sola", tirarLivro:"Quitar de la estantería",
-    pratBuscaDica:"Buscar clásicos: Calvino, Owen, Agustín…", pratComo:"Poner como", pratOutro:"Otro libro:", pratTitulo:"Título", pratAutor:"Autor",
-    pratPor:"Poner en la estantería", pratAdicionar:"Añadir libro", pratVazia:"Arma tu estantería con los libros de teología que leíste, estás leyendo o quieres leer — hay un catálogo de clásicos enlazados con Sola, y puedes poner cualquier otro.",
+    pratGrupoRot:"Tipo de libro", pratGrupos:{todos:"Todos", teologia:"Teología", filosofia:"Filosofía", apologetica:"Apologética", devocional:"Vida cristiana", literatura:"Literatura", biografia:"Biografías e historia"}, pratBuscaDica:"Buscar: Calvino, Agustín, Pascal, Lewis…", pratComo:"Poner como", pratOutro:"Otro libro:", pratTitulo:"Título", pratAutor:"Autor",
+    pratPor:"Poner en la estantería", pratAdicionar:"Añadir libro", pratVazia:"Arma tu estantería con los libros de teología, filosofía, vida cristiana y literatura que leíste, estás leyendo o quieres leer — hay un catálogo de clásicos enlazados con Sola, y puedes poner cualquier otro.",
     semanaTit:"Esta semana", semanaCaps:"capítulo(s) esta semana", semanaDias:"día(s) con lectura", semanaAntes:"semana pasada",
     metaRot:"Meta semanal", metaSem:"Sin meta", metaCaps:"capítulos", metaFeita:"¡Meta de la semana cumplida!", metaFalta:"faltan {n} para la meta",
     diasSem:["D","L","M","X","J","V","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"más",
@@ -354,7 +357,7 @@ const AJUDA = {
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias e Salmos e Provérbios. O Sola lembra em que dia você está."],
-        ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros de teologia, o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta."],
+        ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), que você pode compartilhar como imagem, a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros (teologia, filosofia, vida cristã, literatura), o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
@@ -385,7 +388,7 @@ const AJUDA = {
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
         ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days and Psalms and Proverbs. Sola remembers your day."],
-        ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your shelf of theology books, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account."],
+        ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your bookshelf (theology, philosophy, Christian life, literature), a shareable profile image, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
@@ -416,7 +419,7 @@ const AJUDA = {
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
         ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días y Salmos y Proverbios. Sola recuerda tu día."],
-        ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros de teología, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta."],
+        ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros (teología, filosofía, vida cristiana, literatura), una imagen del perfil para compartir, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
 };
@@ -2370,14 +2373,8 @@ function espacado(c, texto, x, y, esp){   // texto com espaço entre letras (o l
   for(const ch of texto){ c.fillText(ch, px, y); px += c.measureText(ch).width + esp; }
   c.textAlign = al;
 }
-async function desenharVerso(v, formato, tema){
-  const texto = est.versos[v-1] || "", ref = refStr(est.livro, est.cap, v), trad = nomeTraducao(est.traducao);
-  await Promise.all(['400 64px "Cardo"', 'italic 400 26px "Cardo"', '600 34px "Inter"', '400 24px "Inter"', '600 40px "Cormorant Garamond"']
-    .map(f=>document.fonts.load(f))).catch(()=>{});
-  const k = CORES_IMAGEM[tema], stories = formato === "stories";
-  const W = 1080, H = stories ? 1920 : 1350, M = 112;
-  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
-  const c = cv.getContext("2d");
+/* Fundo, molduras, faixa carmim com o endereço e a marca do Sola, comuns às imagens do versículo e do perfil. */
+function molduraImagem(c, W, H, k, stories){
   const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, k.fundo[0]); g.addColorStop(1, k.fundo[1]);
   c.fillStyle = g; c.fillRect(0, 0, W, H);
   c.strokeStyle = k.fio; c.lineWidth = 1.5; c.strokeRect(26, 26, W - 52, H - 52);
@@ -2400,6 +2397,17 @@ async function desenharVerso(v, formato, tema){
   c.fillStyle = k.marca; c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI * 2); c.fill(); c.restore();
   c.fillStyle = k.nome; c.textAlign = "center"; c.font = '600 42px "Cormorant Garamond", "Cardo", serif';
   espacado(c, "SOLA", W / 2 + 40, topo, 15);
+  return { topo, faixaY };
+}
+async function desenharVerso(v, formato, tema){
+  const texto = est.versos[v-1] || "", ref = refStr(est.livro, est.cap, v), trad = nomeTraducao(est.traducao);
+  await Promise.all(['400 64px "Cardo"', 'italic 400 26px "Cardo"', '600 34px "Inter"', '400 24px "Inter"', '600 40px "Cormorant Garamond"']
+    .map(f=>document.fonts.load(f))).catch(()=>{});
+  const k = CORES_IMAGEM[tema], stories = formato === "stories";
+  const W = 1080, H = stories ? 1920 : 1350, M = 112;
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const c = cv.getContext("2d");
+  const { topo, faixaY } = molduraImagem(c, W, H, k, stories);
   // área do versículo: entre a marca e a faixa, com a fonte diminuindo até caber
   const areaIni = topo + 90, areaFim = faixaY - 70, rodapeRef = 128;
   const hebraico = /[֐-׿]/.test(texto);
@@ -2426,7 +2434,7 @@ async function desenharVerso(v, formato, tema){
   return { cv, ref, nome: `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}${stories ? "-stories" : ""}.png` };   // sem acento: o Chrome descarta nomes com "ã"
 }
 /* Janela com a prévia: escolhe formato e tema, e compartilha (celular), baixa ou copia a imagem. */
-async function compartilharVerso(v){
+async function abrirImagem({ titulo, desenhar, texto }){
   const x = t();
   document.querySelector(".img-verso-fundo")?.remove();
   let formato = lerLS("logos_img_formato", "feed"), tema = lerLS("logos_img_tema", "claro");
@@ -2436,7 +2444,7 @@ async function compartilharVerso(v){
   fundo.className = "img-verso-fundo";
   fundo.innerHTML = `<div class="img-verso" role="dialog" aria-modal="true" aria-labelledby="imgVersoTit">
     <button class="fechar" aria-label="${x.fechar}">✕</button>
-    <h3 id="imgVersoTit">${x.imgTitulo}</h3>
+    <h3 id="imgVersoTit">${titulo}</h3>
     <div class="img-verso-opcoes">
       <div class="seg" role="group" aria-label="${x.imgFormato}"><button data-formato="feed">${x.imgFeed}</button><button data-formato="stories">${x.imgStories}</button></div>
       <div class="seg" role="group" aria-label="${x.imgTema}"><button data-img-tema="claro">${x.imgClaro}</button><button data-img-tema="escuro">${x.imgEscuro}</button></div>
@@ -2453,23 +2461,22 @@ async function compartilharVerso(v){
   document.addEventListener("keydown", tecla);
   fundo.addEventListener("click", (e)=>{ if(e.target === fundo) fechar(); });
   fundo.querySelector(".fechar").addEventListener("click", fechar);
-  async function desenhar(){
+  async function redesenhar(){
     fundo.querySelectorAll("[data-formato]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.formato === formato));
     fundo.querySelectorAll("[data-img-tema]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.imgTema === tema));
     fundo.querySelector(".img-verso-previa").classList.toggle("stories", formato === "stories");
-    atual = await desenharVerso(v, formato, tema);
+    atual = await desenhar(formato, tema);
     blob = await new Promise(r=>atual.cv.toBlob(r, "image/png"));
     if(img.src) URL.revokeObjectURL(img.src);
-    img.src = URL.createObjectURL(blob); img.alt = `${atual.ref} — ${x.imgTitulo}`;
+    img.src = URL.createObjectURL(blob); img.alt = `${atual.ref} — ${titulo}`;
     aviso.textContent = "";
   }
-  fundo.querySelectorAll("[data-formato]").forEach(b=>b.addEventListener("click", ()=>{ formato = b.dataset.formato; gravarLS("logos_img_formato", formato); desenhar(); }));
-  fundo.querySelectorAll("[data-img-tema]").forEach(b=>b.addEventListener("click", ()=>{ tema = b.dataset.imgTema; gravarLS("logos_img_tema", tema); desenhar(); }));
+  fundo.querySelectorAll("[data-formato]").forEach(b=>b.addEventListener("click", ()=>{ formato = b.dataset.formato; gravarLS("logos_img_formato", formato); redesenhar(); }));
+  fundo.querySelectorAll("[data-img-tema]").forEach(b=>b.addEventListener("click", ()=>{ tema = b.dataset.imgTema; gravarLS("logos_img_tema", tema); redesenhar(); }));
   const arquivo = ()=>new File([blob], atual.nome, { type: "image/png" });
   const podeCompartilhar = ()=>!!(navigator.canShare && blob && navigator.canShare({ files: [arquivo()] }));
   $("imgCompartilhar").addEventListener("click", async ()=>{
-    const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap, v);
-    if(podeCompartilhar()) await navigator.share({ files: [arquivo()], text: `${atual.ref} — ${link}` }).catch(()=>{});
+    if(podeCompartilhar()) await navigator.share({ files: [arquivo()], text: texto(atual) }).catch(()=>{});
     else $("imgBaixar").click();
   });
   $("imgBaixar").addEventListener("click", ()=>{
@@ -2483,9 +2490,15 @@ async function compartilharVerso(v){
     try{ await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]); aviso.textContent = x.imgCopiada; }
     catch(e){ aviso.textContent = x.imgSemCopiar; }
   });
-  await desenhar();
+  await redesenhar();
   if(!podeCompartilhar()) $("imgCompartilhar").hidden = true;    // no computador: Baixar e Copiar
   fundo.querySelector(".fechar").focus();
+}
+
+function compartilharVerso(v){
+  const x = t();
+  return abrirImagem({ titulo: x.imgTitulo, desenhar: (f, tm)=>desenharVerso(v, f, tm),
+    texto: (a)=>`${a.ref} — https://solabiblia.com.br${urlCapitulo(est.livro, est.cap, v)}` });
 }
 
 /* ---------- anotações e backup ---------- */
@@ -2737,6 +2750,7 @@ function htmlCartaoPerfil(x, extra){
   const [l, c, v] = (p.vers || "").split(".");
   return `<div class="perfil-cartao capa-${p.capa}">
       <div class="perfil-capa"></div>
+      <button type="button" class="perfil-compartilhar" aria-label="${x.compartilharPerfil}" title="${x.compartilharPerfil}">${ico("compartilhar")}</button>
       <div class="perfil-id">${htmlAvatar("grande")}
         <div><strong class="perfil-nome">${esc(nome)}</strong>${p.bio ? `<span class="perfil-bio">${esc(p.bio)}</span>` : ""}${extra || ""}</div>
       </div>
@@ -2747,6 +2761,121 @@ function htmlCartaoPerfil(x, extra){
 async function preencherVersiculoVida(raiz){
   const el = raiz.querySelector("[data-vers-vida]");
   if(el) el.textContent = await textoVersiculoVida(el.dataset.versVida);
+}
+
+/* ----- imagem do perfil para compartilhar (mesma janela da imagem do versículo) ----- */
+const CAPAS_IMAGEM = { linho:["#F3ECDD", "#DCCBA8"], carmim:["#B24A3C", "#5E1C16"], ouro:["#E4C98E", "#7A5E2A"], oliva:["#7D8A55", "#4F5B33"],
+  mar:["#6E93AE", "#2F4E66"], vigilia:["#3A342B", "#12100E"] };
+const LOMBADAS = { antiga:"#6B2D3E", medieval:"#55613A", reforma:"#8C2D23", puritanos:"#35546E", avivamento:"#7A5E2A", moderna:"#4A453D",
+  filosofia:"#2F5D5A", apologetica:"#5A3E6E", devocional:"#9A4E2E", literatura:"#2E3F5E", biografia:"#6E5A2E", outra:"#6D665A" };
+/* desenha no canvas um ícone do próprio site (os <symbol> do index.html) */
+function desenharIcone(c, nome, x, y, tam, cor){
+  const sim = document.getElementById("i-" + nome); if(!sim) return;
+  c.save(); c.translate(x - tam / 2, y - tam / 2); c.scale(tam / 24, tam / 24);
+  c.strokeStyle = cor; c.fillStyle = cor; c.lineWidth = 1.7; c.lineCap = "round"; c.lineJoin = "round";
+  sim.querySelectorAll("path,circle").forEach(el=>{
+    if(el.tagName === "path"){ c.stroke(new Path2D(el.getAttribute("d"))); return; }
+    c.beginPath(); c.arc(+el.getAttribute("cx"), +el.getAttribute("cy"), +el.getAttribute("r"), 0, Math.PI * 2);
+    if(el.getAttribute("fill") === "currentColor") c.fill(); else c.stroke();
+  });
+  c.restore();
+}
+function carregarImagem(src){ return new Promise((ok)=>{ const i = new Image(); i.onload = ()=>ok(i); i.onerror = ()=>ok(null); i.src = src; }); }
+function cortarLinha(c, txt, larg){ if(c.measureText(txt).width <= larg) return txt; while(txt && c.measureText(txt + "…").width > larg) txt = txt.slice(0, -1); return txt.trim() + "…"; }
+async function desenharPerfil(formato, tema){
+  const x = t(), p = perfil(), r = resumoEstudo(), nome = nomeExibicao() || x.visitante;
+  await Promise.all(['400 64px "Cardo"', 'italic 400 34px "Cardo"', '600 34px "Inter"', '500 48px "Inter"', '400 24px "Inter"', '600 40px "Cormorant Garamond"']
+    .map(f=>document.fonts.load(f))).catch(()=>{});
+  const k = CORES_IMAGEM[tema], stories = formato === "stories";
+  const W = 1080, H = stories ? 1920 : 1350, M = 120;
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const c = cv.getContext("2d");
+  const { topo, faixaY } = molduraImagem(c, W, H, k, stories);
+  c.textBaseline = "alphabetic"; c.textAlign = "center";
+  // capa
+  const capaY = topo + 58, capaH = stories ? 230 : 180, cc = CAPAS_IMAGEM[p.capa] || CAPAS_IMAGEM.linho;
+  const gc = c.createLinearGradient(70, capaY, W - 70, capaY + capaH); gc.addColorStop(0, cc[0]); gc.addColorStop(1, cc[1]);
+  c.fillStyle = gc; c.beginPath(); if(c.roundRect) c.roundRect(70, capaY, W - 140, capaH, 18); else c.rect(70, capaY, W - 140, capaH); c.fill();
+  // avatar
+  const R = stories ? 118 : 96, ax = W / 2, ay = capaY + capaH;
+  c.fillStyle = k.fundo[0]; c.beginPath(); c.arc(ax, ay, R + 9, 0, Math.PI * 2); c.fill();
+  c.save(); c.beginPath(); c.arc(ax, ay, R, 0, Math.PI * 2); c.clip();
+  const foto = p.av.t === "foto" && p.av.foto ? await carregarImagem(p.av.foto) : null;
+  if(foto) c.drawImage(foto, ax - R, ay - R, 2 * R, 2 * R);
+  else {
+    c.fillStyle = PERFIL_CORES[p.av.cor] || PERFIL_CORES.carmim; c.fillRect(ax - R, ay - R, 2 * R, 2 * R);
+    if(p.av.t === "icone") desenharIcone(c, p.av.ic, ax, ay, R * 1.15, "#FAF7F0");
+    else { c.fillStyle = "#FAF7F0"; c.font = `600 ${Math.round(R * 1.15)}px "Cormorant Garamond", serif`; c.textBaseline = "middle";
+      c.fillText((nome.trim()[0] || "?").toUpperCase(), ax, ay + R * .06); c.textBaseline = "alphabetic"; }
+  }
+  c.restore();
+  // nome e bio
+  let y = ay + R + (stories ? 90 : 74);
+  let tam = stories ? 74 : 64; c.fillStyle = k.nome;
+  do { c.font = `600 ${tam}px "Cormorant Garamond", "Cardo", serif`; tam -= 2; } while(c.measureText(nome).width > W - 2 * M && tam > 36);
+  c.fillText(nome, W / 2, y);
+  if(p.bio){
+    c.font = `400 ${stories ? 30 : 27}px "Inter", sans-serif`; c.fillStyle = k.trad;
+    quebrarLinhas(c, p.bio, W - 2 * M - 40).slice(0, 2).forEach((l, i)=>{ y += i ? (stories ? 42 : 38) : (stories ? 58 : 52); c.fillText(l, W / 2, y); });
+  }
+  // versículo de vida
+  if(p.vers){
+    const txt = await textoVersiculoVida(p.vers), [l, cp, v] = p.vers.split(".");
+    if(txt){
+      const tv = stories ? 38 : 32, max = stories ? 6 : 4;
+      c.font = `italic 400 ${tv}px "Cardo", serif`; c.fillStyle = k.texto;
+      let linhas = quebrarLinhas(c, `“${txt}”`, W - 2 * M - 30);
+      if(linhas.length > max){ linhas = linhas.slice(0, max); linhas[max - 1] = cortarLinha(c, linhas[max - 1] + "…", W - 2 * M - 30); }
+      y += stories ? 84 : 68;
+      for(const lin of linhas){ c.fillText(lin, W / 2, y); y += tv * 1.42; }
+      c.fillStyle = k.ref; c.font = '600 24px "Inter", sans-serif';
+      espacado(c, refStr(l, +cp, +v).toUpperCase(), W / 2, y + 8, 3);
+      y += 30;
+    }
+  }
+  // números do estudo
+  const feitas = conquistas().filter(q=>q.feito).length;
+  const livrosLidos = Object.values(est.prateleira || {}).filter(o=>o && o.st === "lido").length;
+  const nums = [[r.lidos, x.capsLidos], [feitas, x.conquistasTit.toLowerCase()], [livrosLidos ? livrosLidos : r.seq, livrosLidos ? x.imgLivrosLidos : x.diasSeguidos]];
+  y += stories ? 100 : 80;
+  const colW = (W - 2 * M) / 3;
+  nums.forEach(([n, rot], i)=>{
+    const cx = M + colW * i + colW / 2;
+    c.fillStyle = k.nome; c.font = `500 ${stories ? 56 : 48}px "Inter", sans-serif`; c.fillText(Number(n).toLocaleString(est.idioma), cx, y);
+    c.fillStyle = k.trad; c.font = '400 22px "Inter", sans-serif'; c.fillText(cortarLinha(c, rot, colW - 20), cx, y + 38);
+    if(i){ c.fillStyle = k.fio; c.fillRect(M + colW * i, y - 46, 1.5, 92); }
+  });
+  y += 64;
+  // prateleira: as lombadas dos livros lidos e em leitura, se houver espaço até a faixa
+  const cat = est.catPrateleira || { obras: [] };
+  const livros = Object.keys(est.prateleira || {}).filter(id=>["lido", "lendo"].includes(est.prateleira[id].st)).map(id=>obraDe(id, cat))
+    .sort((a, b)=>(b.em || 0) - (a.em || 0));
+  const espaco = faixaY - 60 - y;
+  if(livros.length && espaco >= 120){
+    const altMax = Math.min(espaco - 30, 240), lw = stories ? 52 : 46, gap = 6;
+    const cabem = Math.min(livros.length, Math.floor((W - 2 * M + gap) / (lw + gap)));
+    const larg = cabem * (lw + gap) - gap;
+    let lx = (W - larg) / 2;
+    const base = y + 20 + altMax;
+    livros.slice(0, cabem).forEach((o, i)=>{
+      const h = altMax * (.78 + ((o.t.length * 7 + i * 3) % 23) / 100);
+      c.fillStyle = LOMBADAS[o.tr] || LOMBADAS.outra;
+      c.beginPath(); if(c.roundRect) c.roundRect(lx, base - h, lw, h, [4, 4, 0, 0]); else c.rect(lx, base - h, lw, h); c.fill();
+      c.fillStyle = "rgba(255,255,255,.14)"; c.fillRect(lx + 4, base - h + 6, 3, h - 12);
+      c.save(); c.translate(lx + lw / 2 + 7, base - 12); c.rotate(-Math.PI / 2);
+      c.fillStyle = "#FAF7F0"; c.font = `600 ${stories ? 18 : 16}px "Inter", sans-serif`; c.textAlign = "left";
+      c.fillText(cortarLinha(c, o.t, h - 24), 0, 0); c.restore();
+      lx += lw + gap;
+    });
+    c.fillStyle = k.ref; c.fillRect((W - larg) / 2 - 24, base, larg + 48, 8);
+  }
+  return { cv, ref: nome, nome: `perfil-${normStr(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "sola"}${stories ? "-stories" : ""}.png` };
+}
+async function compartilharPerfil(){
+  const x = t();
+  await catalogoPrateleira();
+  return abrirImagem({ titulo: x.imgPerfilTit, desenhar: desenharPerfil,
+    texto: (a)=>`${a.ref} — ${x.imgPerfilTexto} https://solabiblia.com.br` });
 }
 
 /* ----- editor do perfil (aba Perfil) ----- */
@@ -2928,7 +3057,10 @@ function htmlPrateleira(x, cat){
   const adicionar = busca !== undefined ? `<div class="prat-add">
       <div class="prat-add-topo"><input id="pratBusca" type="search" value="${esc(busca)}" placeholder="${x.pratBuscaDica}" aria-label="${x.pratBuscaDica}">
         <label>${x.pratComo} <select id="pratSt">${ST_LIVRO.map(s=>`<option value="${s}"${(est.pratSt || "lido") === s ? " selected" : ""}>${x.stLivro[s]}</option>`).join("")}</select></label></div>
-      <ul class="prat-cat">${cat.obras.filter(o=>!(est.prateleira || {})[o.id] && (!busca || normStr(o.t + " " + o.o + " " + o.a).includes(normStr(busca)))).slice(0, 12)
+      <div class="prat-grupos" role="group" aria-label="${x.pratGrupoRot}">${["todos", "teologia", "filosofia", "apologetica", "devocional", "literatura", "biografia"].map(g=>
+        `<button type="button" data-grupo="${g}" aria-pressed="${(est.pratGrupo || "todos") === g}">${x.pratGrupos[g]}</button>`).join("")}</div>
+      <ul class="prat-cat">${cat.obras.filter(o=>!(est.prateleira || {})[o.id] && ((est.pratGrupo || "todos") === "todos" || o.g === est.pratGrupo)
+        && (!busca || normStr(o.t + " " + o.o + " " + o.a).includes(normStr(busca)))).slice(0, 40)
         .map(o=>`<li><button type="button" data-por-livro="${esc(o.id)}"><b>${esc(o.t)}</b> <small>${esc(o.a)}, ${esc(o.ano)}</small></button></li>`).join("")}</ul>
       <form id="pratOutro" class="prat-outro"><span>${x.pratOutro}</span>
         <input name="t" maxlength="120" required placeholder="${x.pratTitulo}" aria-label="${x.pratTitulo}">
@@ -2953,6 +3085,7 @@ function ligarPrateleira(raiz){
   let espera;
   if($("pratBusca")) $("pratBusca").addEventListener("input", (e)=>{ clearTimeout(espera); espera = setTimeout(()=>{ est.prateleiraBusca = e.target.value; refazer("pratBusca"); }, 250); });
   if($("pratSt")) $("pratSt").addEventListener("change", (e)=>{ est.pratSt = e.target.value; });
+  raiz.querySelectorAll("[data-grupo]").forEach(b=>b.addEventListener("click", ()=>{ est.pratGrupo = b.dataset.grupo; refazer(); }));
   raiz.querySelectorAll("[data-por-livro]").forEach(b=>b.addEventListener("click", ()=>{ salvarLivro(b.dataset.porLivro, { st: est.pratSt || "lido", em: Date.now() }); convidar("lido"); refazer("pratBusca"); }));
   if($("pratOutro")) $("pratOutro").addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -3044,7 +3177,8 @@ async function montarMeuEstudo(){
     b.onclick = ()=>{ est.abaEstudo = b.dataset.aba; montarMeuEstudo(); };
   });
   $("tituloEstudo").textContent = est.abaEstudo === "perfil" ? x.abaPerfil : x.meuEstudo;
-  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); ligarEditorPerfil(); preencherVersiculoVida(alvo); return; }
+  const ligarCompartilhar = ()=>alvo.querySelectorAll(".perfil-compartilhar").forEach(b=>b.addEventListener("click", compartilharPerfil));
+  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); ligarEditorPerfil(); preencherVersiculoVida(alvo); ligarCompartilhar(); return; }
   const ult = lerLS("logos_ultimo", null);
   const pct = r.total ? Math.round(r.lidos / r.total * 1000) / 10 : 0;
   const livros = (tst)=>est.meta.books.filter(b=>b.t===tst).map(b=>{
@@ -3081,7 +3215,7 @@ async function montarMeuEstudo(){
     </div>
     ${ult && infoLivro(ult.livro) ? `<p class="estudo-continuar"><a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${+ult.cap} ${ico("seta")}</a></p>` : ""}
     ` + ordemSecoes().filter(s=>!ocultas.includes(s)).map(s=>secoes[s]()).join("");
-  preencherVersiculoVida(alvo);
+  preencherVersiculoVida(alvo); ligarCompartilhar();
   if($("secPrateleira")) ligarPrateleira($("secPrateleira"));
   $("btnEditarPerfil").addEventListener("click", ()=>{ est.abaEstudo = "perfil"; montarMeuEstudo().then(()=>{ const ed = $("perfilEditor"); if(ed) ed.scrollIntoView({ block:"start" }); }); });
   if($("btnTodasNotas")) $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
