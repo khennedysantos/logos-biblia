@@ -1,0 +1,116 @@
+{
+ "_leia": "Revisão manual da saída do notas_llm.py, aplicada pelo comando aplicar. 'reverter': itens que ficam com o texto escrito à mão (sem a lista de fontes). 'editar': texto corrigido à mão sobre a resposta do modelo (as fontes da resposta continuam, mais as de 'f_mais').",
+ "reverter": [
+  "termo|Adar",
+  "termo|Arabá",
+  "termo|Azazel",
+  "termo|Faraó",
+  "termo|Gogue e Magogue",
+  "termo|Horebe",
+  "termo|Reino dos céus",
+  "termo|adulamita",
+  "termo|ajuntar",
+  "termo|aleluia",
+  "termo|alvoroço",
+  "termo|arquita",
+  "termo|bdélio",
+  "termo|belial",
+  "termo|besta",
+  "termo|bispo",
+  "termo|bradar",
+  "termo|bramido",
+  "termo|cana",
+  "termo|cidades-filisteias",
+  "termo|circuncisão",
+  "termo|clamar",
+  "termo|conhecer-intimo",
+  "termo|coraítas",
+  "termo|côvado",
+  "termo|dalém",
+  "termo|deleitar",
+  "termo|edificar",
+  "termo|encantador",
+  "termo|entalhar",
+  "termo|enternecer",
+  "termo|epicureus e estoicos",
+  "termo|escarvar",
+  "termo|estádio",
+  "termo|favo",
+  "termo|fiador",
+  "termo|folgar",
+  "termo|gibeonitas",
+  "termo|gômer",
+  "termo|horonita",
+  "termo|incenso",
+  "termo|legião",
+  "termo|libra",
+  "termo|lombos",
+  "termo|mar de Quinerete",
+  "termo|mar salgado",
+  "termo|midianitas",
+  "termo|mina",
+  "termo|minguar",
+  "termo|murmurar",
+  "termo|nazireu",
+  "termo|oficiais-da-assiria",
+  "termo|possessão",
+  "termo|purim",
+  "termo|quarta vigília",
+  "termo|recabitas",
+  "termo|repúdio",
+  "termo|seita",
+  "termo|serafim",
+  "termo|siclo",
+  "termo|simples",
+  "termo|tabernáculo",
+  "termo|talento",
+  "termo|tetrarca",
+  "termo|tírios",
+  "termo|vindima",
+  "termo|vivente",
+  "termo|vivificar",
+  "termo|zelo",
+  "termo|áspide",
+  "termo|êxtase",
+  "termo|óbolo"
+ ],
+ "editar": {
+  "lema|H1254": {
+   "nota": "Verbo hebraico que significa criar. É o primeiro verbo da Bíblia (Gênesis 1:1) e volta no pedido de Davi por um coração puro (Salmo 51:10).",
+   "f_mais": [
+    "Gênesis 1:1",
+    "Salmos 51:10"
+   ]
+  },
+  "lema|H2617": {
+   "nota": "Hesed é bondade, benevolência. Por isso aparece traduzido de várias formas: favor, misericórdia, benignidade."
+  },
+  "lema|H6299": {
+   "nota": "Libertar, resgatar, livrar; em sentido geral, soltar, preservar."
+  },
+  "lema|G1588": {
+   "nota": "Escolhido. Usado no Novo Testamento para Cristo e para os cristãos, como povo escolhido de Deus. Segundo o Catecismo Maior, somente os eleitos são eficazmente chamados; outros ouvem o chamado exterior, mas não vêm a Cristo."
+  },
+  "lema|G313": {
+   "nota": "Gerar de novo: no Novo Testamento, o termo descreve o nascimento espiritual (1 Pedro 1:3; 1:23).",
+   "f_menos": [
+    "CFW 12.1"
+   ]
+  },
+  "contexto|GEN.1.1|H1254|1": {
+   "nota": "Verbo que significa “criar”, o primeiro da Bíblia. Hebreus 11:3 diz que o universo foi formado pela palavra de Deus: o que se vê não veio do que é visível."
+  },
+  "contexto|PSA.51.1|H4229|1": {
+   "nota": "O verbo hebraico significa esfregar, apagar. Davi pede que Deus apague as suas transgressões, confiando na abundância das misericórdias dele."
+  },
+  "contexto|JHN.3.16|G4100|1": {
+   "nota": "Com a preposição “eis” (crer em), o verbo expressa confiança e apoio pessoal, mais que mera aceitação de algo como verdade (Abbott-Smith). A fé justificadora recebe a Cristo e descansa nele (Catecismo Maior 72)."
+  },
+  "termo|cingir": {
+   "nota": "Em hebraico e em grego, o verbo significa prender ou pôr um cinto em volta do corpo, como ao vestir-se para o trabalho ou para a batalha. Por isso 'cingir-se' pode indicar preparar-se para agir."
+  },
+  "termo|escrivão": {
+   "nota": "Em Atos 19:35, o escrivão é o funcionário que responde pela cidade de Éfeso e acalma a multidão."
+  }
+ }
+}

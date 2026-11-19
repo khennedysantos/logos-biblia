@@ -612,7 +612,7 @@ def aplicar_fontes():
         ref, s, n = chave.split("|")
         if (ref, s, int(n)) in CONTEXTOS:
             CONTEXTOS[(ref, s, int(n))].update(nota=r["nota"], f=r.get("f", []))
-    por_palavra = {tm["palavra"]: tm for tm in TERMOS}
+    por_palavra = {tm["id"] or tm["palavra"]: tm for tm in TERMOS}     # mesma chave do notas_llm.py
     for palavra, r in f.get("termos", {}).items():
         if palavra in por_palavra:
             por_palavra[palavra].update(significado=r["s"], nota=r.get("n") or None, f=r.get("f", []))

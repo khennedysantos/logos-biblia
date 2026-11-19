@@ -33,6 +33,7 @@ from calvino_llm import gravar_atomico, http_json, ler_json, obter_chave, pos_pr
 TRAB = PASTA / "trabalho"
 SAIDA = TRAB / "notas_llm_saida.json"
 FINAL = FERR / "notas_fontes.json"
+REVISAO = PASTA / "entradas" / "notas_revisao.json"   # decisões da leitura humana (versionado)
 FONTES_DIR = FERR / "fontes"
 LEXICOS = {"G": "TBESG - Translators Brief lexicon of Extended Strongs for Greek - STEPBible.org CC BY.txt",
            "H": "TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"}
@@ -205,7 +206,8 @@ def itens(fontes):
     for tm in TERMOS:
         fs = [fontes.lexico(s) for s in tm["s"][:3] if s[0] in "GH" and s in fontes.strong[s[0]]]
         fs += fontes.versiculos_citados((tm["nota"] or "") + " " + tm["significado"])
-        saida.append({"id": f"termo|{tm['palavra']}", "tipo": "vocabulário", "palavra": tm["palavra"],
+        chave = tm["id"] or tm["palavra"]          # os termos de grupo (pedras, títulos de salmo) só têm id
+        saida.append({"id": f"termo|{chave}", "tipo": "vocabulário", "palavra": tm["palavra"] or chave,
                       "significado": tm["significado"], "nota": tm["nota"] or "", "fontes": fs})
     return saida
 
@@ -354,8 +356,26 @@ def cmd_conferir(a):
 
 def cmd_aplicar(a):
     est = ler_json(SAIDA, {"ok": {}})
+    rev = json.loads(REVISAO.read_text(encoding="utf-8")) if REVISAO.exists() else {"reverter": [], "editar": {}}
+    faltam = [i for i in rev["reverter"] + list(rev["editar"]) if i not in est["ok"]]
+    assert not faltam, f"notas_revisao.json cita itens que não estão na saída: {faltam}"
+    sys.path.insert(0, str(FERR))
+    from vocabulario import TERMOS
+    orig = {f"termo|{tm['id'] or tm['palavra']}": tm["significado"] for tm in TERMOS}
+    ok = {}
+    for id_, r in est["ok"].items():
+        if id_ in rev["reverter"]:            # fica o texto escrito à mão
+            continue
+        r = dict(r)
+        e = rev["editar"].get(id_, {})
+        r.update({k: e[k] for k in ("nota", "significado") if k in e})
+        r["fontes"] = [f for f in r["fontes"] if f.split(" — ")[0] not in e.get("f_menos", [])] + e.get("f_mais", [])
+        if id_.startswith("termo|") and r["significado"]:      # mesmo estilo do texto à mão: sem ponto final e
+            s = r["significado"].rstrip(".")                     # com minúscula quando ele começa com minúscula
+            r["significado"] = s[0].lower() + s[1:] if not orig.get(id_, "A")[:1].isupper() else s
+        ok[id_] = r
     saida = {"lemas": {}, "contextos": {}, "termos": {}}
-    for id_, r in sorted(est["ok"].items()):
+    for id_, r in sorted(ok.items()):
         tipo, resto = id_.split("|", 1)
         if tipo == "lema":
             saida["lemas"][resto] = {"nota": r["nota"], "f": r["fontes"]}
