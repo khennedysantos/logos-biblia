@@ -66,6 +66,23 @@ const UI = {
     offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
     offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet.",
     meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
+    personalizar:"Personalizar perfil", pfNome:"Nome no perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícone", pfAv_foto:"Foto",
+    pfFotoEscolher:"Escolher foto", pfFotoOk:"Foto salva (reduzida a 160 px).", pfFotoDica:"A foto fica pequena e recortada no centro.", pfFotoErro:"Não deu para ler essa imagem.",
+    pfCapa:"Capa", capas:{linho:"Linho", carmim:"Carmim", ouro:"Ouro", oliva:"Oliveira", mar:"Mar da Galileia", vigilia:"Vigília"},
+    pfVers:"Versículo de vida", pfVersDica:"ex.: Rm 8:28", pfVersErro:"Não reconheci a referência; use algo como “Rm 8:28”.",
+    pfBio:"Sobre você", pfBioDica:"Igreja, tradição, o que você gosta de estudar…", pfEstudo:"Estudo do meu jeito", pfLetra:"Tamanho da letra",
+    pfConf:"Confissão em destaque", pfConfW:"Padrões de Westminster", pfConf3:"Três Formas de Unidade", pfSecoes:"Seções do painel (marque as que aparecem)",
+    pfSobe:"Subir", pfDesce:"Descer",
+    secoesNomes:{semana:"Esta semana", historico:"Últimas 12 semanas", recentes:"Leituras recentes", conquistas:"Conquistas", prateleira:"Minha prateleira",
+      livros:"Progresso por livro", planos:"Planos de leitura", marcacoes:"Marcações", notas:"Anotações"},
+    conquistasTit:"Conquistas", conquistado:"Conquistado!",
+    selos:{primeiro:"Primeiro capítulo", cem:"100 capítulos", quinhentos:"500 capítulos", livroInteiro:"Um livro inteiro", dezLivros:"10 livros inteiros",
+      salmos:"Todos os Salmos", pentateuco:"O Pentateuco", evangelhos:"Os quatro Evangelhos", paulo:"As cartas de Paulo", nt:"O Novo Testamento",
+      at:"O Antigo Testamento", biblia:"A Bíblia toda", seq7:"7 dias seguidos", seq30:"30 dias seguidos", seq100:"100 dias seguidos",
+      plano:"Um plano concluído", notas10:"10 anotações", marcas50:"50 versículos marcados", prateleira5:"5 livros na prateleira"},
+    prateleiraTit:"Minha prateleira", stLivro:{lendo:"Lendo", lido:"Lidos", quero:"Quero ler"}, ligaSola:"No Sola", tirarLivro:"Tirar da prateleira",
+    pratBuscaDica:"Buscar clássicos: Calvino, Owen, Agostinho…", pratComo:"Pôr como", pratOutro:"Outro livro:", pratTitulo:"Título", pratAutor:"Autor",
+    pratPor:"Pôr na prateleira", pratAdicionar:"Adicionar livro", pratVazia:"Monte a sua prateleira com os livros de teologia que você leu, está lendo ou quer ler — há um catálogo de clássicos ligados ao Sola, e dá para pôr qualquer outro.",
     semanaTit:"Esta semana", semanaCaps:"capítulo(s) nesta semana", semanaDias:"dia(s) com leitura", semanaAntes:"semana passada",
     metaRot:"Meta semanal", metaSem:"Sem meta", metaCaps:"capítulos", metaFeita:"Meta da semana cumprida!", metaFalta:"faltam {n} para a meta",
     diasSem:["D","S","T","Q","Q","S","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"mais",
@@ -154,6 +171,23 @@ const UI = {
     offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
     offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use.",
     meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
+    personalizar:"Customize profile", pfNome:"Profile name", pfAvatar:"Avatar", pfAv_letra:"Initial", pfAv_icone:"Icon", pfAv_foto:"Photo",
+    pfFotoEscolher:"Choose photo", pfFotoOk:"Photo saved (reduced to 160 px).", pfFotoDica:"The photo is made small and cropped to the center.", pfFotoErro:"Couldn't read that image.",
+    pfCapa:"Cover", capas:{linho:"Linen", carmim:"Crimson", ouro:"Gold", oliva:"Olive", mar:"Sea of Galilee", vigilia:"Vigil"},
+    pfVers:"Life verse", pfVersDica:"e.g. Rom 8:28", pfVersErro:"I didn't recognize the reference; try something like “Rom 8:28”.",
+    pfBio:"About you", pfBioDica:"Church, tradition, what you like to study…", pfEstudo:"Study my way", pfLetra:"Text size",
+    pfConf:"Featured confession", pfConfW:"Westminster Standards", pfConf3:"Three Forms of Unity", pfSecoes:"Panel sections (tick the ones shown)",
+    pfSobe:"Move up", pfDesce:"Move down",
+    secoesNomes:{semana:"This week", historico:"Last 12 weeks", recentes:"Recent reading", conquistas:"Achievements", prateleira:"My bookshelf",
+      livros:"Progress by book", planos:"Reading plans", marcacoes:"Highlights", notas:"Notes"},
+    conquistasTit:"Achievements", conquistado:"Earned!",
+    selos:{primeiro:"First chapter", cem:"100 chapters", quinhentos:"500 chapters", livroInteiro:"A whole book", dezLivros:"10 whole books",
+      salmos:"All the Psalms", pentateuco:"The Pentateuch", evangelhos:"The four Gospels", paulo:"Paul's letters", nt:"The New Testament",
+      at:"The Old Testament", biblia:"The whole Bible", seq7:"7 days in a row", seq30:"30 days in a row", seq100:"100 days in a row",
+      plano:"A plan completed", notas10:"10 notes", marcas50:"50 highlighted verses", prateleira5:"5 books on the shelf"},
+    prateleiraTit:"My bookshelf", stLivro:{lendo:"Reading", lido:"Read", quero:"Want to read"}, ligaSola:"On Sola", tirarLivro:"Remove from shelf",
+    pratBuscaDica:"Search classics: Calvin, Owen, Augustine…", pratComo:"Add as", pratOutro:"Another book:", pratTitulo:"Title", pratAutor:"Author",
+    pratPor:"Add to shelf", pratAdicionar:"Add book", pratVazia:"Build your shelf with the theology books you've read, are reading or want to read — there's a catalog of classics linked to Sola, and you can add any other.",
     semanaTit:"This week", semanaCaps:"chapter(s) this week", semanaDias:"day(s) with reading", semanaAntes:"last week",
     metaRot:"Weekly goal", metaSem:"No goal", metaCaps:"chapters", metaFeita:"Weekly goal reached!", metaFalta:"{n} to go",
     diasSem:["S","M","T","W","T","F","S"], historicoTit:"Last 12 weeks", menos:"less", mais:"more",
@@ -242,6 +276,23 @@ const UI = {
     offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
     offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión.",
     meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
+    personalizar:"Personalizar perfil", pfNome:"Nombre en el perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícono", pfAv_foto:"Foto",
+    pfFotoEscolher:"Elegir foto", pfFotoOk:"Foto guardada (reducida a 160 px).", pfFotoDica:"La foto queda pequeña y recortada al centro.", pfFotoErro:"No se pudo leer esa imagen.",
+    pfCapa:"Portada", capas:{linho:"Lino", carmim:"Carmesí", ouro:"Oro", oliva:"Olivo", mar:"Mar de Galilea", vigilia:"Vigilia"},
+    pfVers:"Versículo de vida", pfVersDica:"ej.: Ro 8:28", pfVersErro:"No reconocí la referencia; usa algo como “Ro 8:28”.",
+    pfBio:"Sobre ti", pfBioDica:"Iglesia, tradición, lo que te gusta estudiar…", pfEstudo:"Estudio a mi manera", pfLetra:"Tamaño de letra",
+    pfConf:"Confesión destacada", pfConfW:"Normas de Westminster", pfConf3:"Tres Formas de Unidad", pfSecoes:"Secciones del panel (marca las que aparecen)",
+    pfSobe:"Subir", pfDesce:"Bajar",
+    secoesNomes:{semana:"Esta semana", historico:"Últimas 12 semanas", recentes:"Lecturas recientes", conquistas:"Logros", prateleira:"Mi estantería",
+      livros:"Progreso por libro", planos:"Planes de lectura", marcacoes:"Resaltados", notas:"Notas"},
+    conquistasTit:"Logros", conquistado:"¡Logrado!",
+    selos:{primeiro:"Primer capítulo", cem:"100 capítulos", quinhentos:"500 capítulos", livroInteiro:"Un libro entero", dezLivros:"10 libros enteros",
+      salmos:"Todos los Salmos", pentateuco:"El Pentateuco", evangelhos:"Los cuatro Evangelios", paulo:"Las cartas de Pablo", nt:"El Nuevo Testamento",
+      at:"El Antiguo Testamento", biblia:"Toda la Biblia", seq7:"7 días seguidos", seq30:"30 días seguidos", seq100:"100 días seguidos",
+      plano:"Un plan completado", notas10:"10 notas", marcas50:"50 versículos resaltados", prateleira5:"5 libros en la estantería"},
+    prateleiraTit:"Mi estantería", stLivro:{lendo:"Leyendo", lido:"Leídos", quero:"Quiero leer"}, ligaSola:"En Sola", tirarLivro:"Quitar de la estantería",
+    pratBuscaDica:"Buscar clásicos: Calvino, Owen, Agustín…", pratComo:"Poner como", pratOutro:"Otro libro:", pratTitulo:"Título", pratAutor:"Autor",
+    pratPor:"Poner en la estantería", pratAdicionar:"Añadir libro", pratVazia:"Arma tu estantería con los libros de teología que leíste, estás leyendo o quieres leer — hay un catálogo de clásicos enlazados con Sola, y puedes poner cualquier otro.",
     semanaTit:"Esta semana", semanaCaps:"capítulo(s) esta semana", semanaDias:"día(s) con lectura", semanaAntes:"semana pasada",
     metaRot:"Meta semanal", metaSem:"Sin meta", metaCaps:"capítulos", metaFeita:"¡Meta de la semana cumplida!", metaFalta:"faltan {n} para la meta",
     diasSem:["D","L","M","X","J","V","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"más",
@@ -303,7 +354,7 @@ const AJUDA = {
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias e Salmos e Provérbios. O Sola lembra em que dia você está."],
-        ["meu","progresso","Meu estudo","Sua semana de leitura com meta de capítulos, as últimas 12 semanas, as leituras recentes, o progresso por livro, os dias seguidos e as marcações. Funciona sem conta."],
+        ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros de teologia, o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
@@ -334,7 +385,7 @@ const AJUDA = {
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
         ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days and Psalms and Proverbs. Sola remembers your day."],
-        ["meu","progresso","My study","Your reading week with a chapter goal, the last 12 weeks, recent reading, progress by book, reading streak and highlights. Works without an account."],
+        ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your shelf of theology books, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
@@ -365,7 +416,7 @@ const AJUDA = {
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
         ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días y Salmos y Proverbios. Sola recuerda tu día."],
-        ["meu","progresso","Mi estudio","Tu semana de lectura con meta de capítulos, las últimas 12 semanas, las lecturas recientes, el progreso por libro, los días seguidos y los resaltados. Funciona sin cuenta."],
+        ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros de teología, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
 };
@@ -463,7 +514,8 @@ const est = {
   vista:"inicio", livro:"JHN", cap:1, alvoV:0, abrir:null, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
   corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", true), progresso: lerLS("logos_planos", {}),
-  metaSemana: +lerLS("logos_meta_semana", 0) || 0,                       // meta de capítulos por semana (0 = sem meta)
+  metaSemana: +lerLS("logos_meta_semana", 0) || 0,
+  perfil: lerLS("logos_perfil", {}), prateleira: lerLS("logos_prateleira", {}),         // perfil personalizável                       // meta de capítulos por semana (0 = sem meta)
   lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
   chave: lerLS("logos_chave", true), voc: lerLS("logos_voc", true),       // as duas camadas de palavras sublinhadas
   cachePalavras:{}, palavrasCap:null,
@@ -2283,7 +2335,10 @@ async function atualizarEstudo(v, focarNota){
     const lista = refs ? refs[String(v)] : null;
     const htmlRefs = `<div class="estante-cartao"><p class="estante-sub">${x.referencias}</p>${lista && lista.length
       ? htmlRefsLista(lista, x) : `<p class="estudo-vazio">${x.semRefs}</p>`}</div>`;
-    corpo.innerHTML = htmlDouts + htmlCitacoes(cits, x) + htmlRefs;
+    const tresFormas = perfil().conf === "tres-formas";
+    const ordemCit = ["/confissoes/confissao-belga/", "/confissoes/heidelberg/", "/confissoes/canones-de-dort/"];
+    const citsOrd = tresFormas ? [...cits].sort((a, b)=>(ordemCit.findIndex(o=>a[1].startsWith(o)) + 1 || 9) - (ordemCit.findIndex(o=>b[1].startsWith(o)) + 1 || 9)) : cits;
+    corpo.innerHTML = tresFormas ? htmlCitacoes(citsOrd, x) + htmlDouts + htmlRefs : htmlDouts + htmlCitacoes(cits, x) + htmlRefs;
     corpo.querySelectorAll(".dout-atalho").forEach(b=>b.addEventListener("click", ()=>abrirDoutrina(b.dataset.dout)));
     if(lista && lista.length) carregarPreviasRefs(corpo, lista);
   }
@@ -2448,7 +2503,8 @@ function limparDados(){
   for(const k of Object.keys(est.notas)) if(!chaveValida(k) || typeof est.notas[k] !== "string") delete est.notas[k];
 }
 function exportarBackup(){
-  const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, lidos: est.lidos, v: 2 };
+  const dados = { marcas: est.marcas, notas: est.notas, planos: est.progresso, lidos: est.lidos, perfil: est.perfil,
+    prateleira: est.prateleira, meta: est.metaSemana, v: 3 };
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 1)], {type: "application/json"}));
   a.download = "sola-backup.json";
@@ -2467,6 +2523,9 @@ function importarBackup(arquivo, feito){
         const nMarcas = Object.keys(d.marcas || {}).filter(k=>chaveValida(k) && CORES.includes(d.marcas[k])).length;
         Object.assign(est.marcas, d.marcas); Object.assign(est.notas, d.notas);
         if(d.lidos && typeof d.lidos === "object") Object.assign(est.lidos, d.lidos);
+        if(d.perfil && perfilValido(d.perfil)){ est.perfil = perfilValido(d.perfil); gravarLS("logos_perfil", est.perfil); tocar("estado", "perfil"); aplicarPerfil(); }
+        if(d.prateleira && typeof d.prateleira === "object") for(const [id, v] of Object.entries(d.prateleira)) if(livroValido(id, v)) salvarLivro(id, v);
+        if(+d.meta > 0){ est.metaSemana = Math.min(500, Math.round(+d.meta)); gravarLS("logos_meta_semana", est.metaSemana); tocar("estado", "meta"); }
         if(d.planos && typeof d.planos === "object") for(const id of Object.keys(d.planos))
           est.progresso[id] = Object.assign({}, est.progresso[id], d.planos[id]);
         limparDados();
@@ -2601,6 +2660,308 @@ const ordemRef = (a, b)=>{
   return o.findIndex(x=>x.id===la) - o.findIndex(x=>x.id===lb) || ca - cb || va - vb;
 };
 
+/* ---------- perfil personalizável ----------
+   Tudo fica no aparelho (logos_perfil, logos_prateleira) e sobe para a conta como itens "estado" (chaves "perfil" e
+   "livro:<id>"), com a mesma regra de sempre: no mesmo item, vale a alteração mais recente. */
+const PERFIL_CORES = { carmim:"#8C2D23", ouro:"#7A5E2A", oliva:"#55613A", azul:"#35546E", vinho:"#6B2D3E", grafite:"#4A453D" };
+const PERFIL_ICONES = ["cruz", "livro", "lampada", "ancora", "coroa", "pomba"];
+const PERFIL_CAPAS = ["linho", "carmim", "ouro", "oliva", "mar", "vigilia"];
+const PERFIL_LETRAS = { p:.9, m:1, g:1.12, gg:1.25 };
+const SECOES_PAINEL = ["semana", "historico", "recentes", "conquistas", "prateleira", "livros", "planos", "marcacoes", "notas"];
+const RE_FOTO = /^data:image\/(jpeg|webp|png);base64,[A-Za-z0-9+/=]+$/;
+function perfil(){
+  const p = est.perfil && typeof est.perfil === "object" ? est.perfil : {};
+  const av = Object.assign({ t:"letra", cor:"carmim", ic:"cruz", foto:"" }, p.av || {});
+  const secoes = Object.assign({ ordem:[], ocultas:[] }, p.secoes || {});
+  return { nome:"", capa:"linho", vers:"", bio:"", letra:"m", conf:"westminster", ...p, av, secoes };
+}
+/* Confere um perfil que veio de fora (conta, backup): só campos conhecidos, tamanhos limitados. */
+function perfilValido(v){
+  if(!v || typeof v !== "object") return null;
+  const s = (x, n)=>typeof x === "string" ? x.slice(0, n) : "";
+  const av = v.av && typeof v.av === "object" ? v.av : {};
+  return {
+    nome: s(v.nome, 40), bio: s(v.bio, 200),
+    vers: typeof v.vers === "string" && chaveValida(v.vers) ? v.vers : "",
+    capa: PERFIL_CAPAS.includes(v.capa) ? v.capa : "linho",
+    letra: v.letra in PERFIL_LETRAS ? v.letra : "m",
+    conf: v.conf === "tres-formas" ? "tres-formas" : "westminster",
+    av: { t: ["letra", "icone", "foto"].includes(av.t) ? av.t : "letra", cor: av.cor in PERFIL_CORES ? av.cor : "carmim",
+          ic: PERFIL_ICONES.includes(av.ic) ? av.ic : "cruz", foto: typeof av.foto === "string" && RE_FOTO.test(av.foto) && av.foto.length < 45000 ? av.foto : "" },
+    secoes: { ordem: (v.secoes && Array.isArray(v.secoes.ordem) ? v.secoes.ordem : []).filter(x=>SECOES_PAINEL.includes(x)),
+              ocultas: (v.secoes && Array.isArray(v.secoes.ocultas) ? v.secoes.ocultas : []).filter(x=>SECOES_PAINEL.includes(x)) },
+  };
+}
+function salvarPerfil(mudanca){
+  est.perfil = perfilValido(Object.assign(perfil(), mudanca));
+  gravarLS("logos_perfil", est.perfil); tocar("estado", "perfil");
+  aplicarPerfil();
+}
+function aplicarPerfil(){
+  document.documentElement.style.setProperty("--escala-texto", PERFIL_LETRAS[perfil().letra] || 1);
+  if($("btnPerfil")) atualizarBotaoPerfil();
+}
+function nomeExibicao(){ const u = est.sessao && est.sessao.user; return perfil().nome.trim() || (u ? nomeUsuario(u) : ""); }
+function perfilPersonalizado(){ const p = perfil(); return !!(p.nome.trim() || p.av.t !== "letra" || p.av.cor !== "carmim"); }
+function htmlAvatar(classe){
+  const p = perfil(), nome = nomeExibicao(), cor = PERFIL_CORES[p.av.cor] || PERFIL_CORES.carmim;
+  if(p.av.t === "foto" && p.av.foto) return `<span class="conta-letra ${classe} com-foto" aria-hidden="true"><img src="${p.av.foto}" alt=""></span>`;
+  const dentro = p.av.t === "icone" ? ico(p.av.ic) : nome ? esc(nome.trim()[0].toUpperCase()) : ico("pessoa");
+  return `<span class="conta-letra ${classe}" style="background:${cor}" aria-hidden="true">${dentro}</span>`;
+}
+/* foto escolhida no aparelho: recortada no centro e reduzida a 160×160 (cabe com folga na conta) */
+function reduzirFoto(arquivo){
+  return new Promise((ok, falha)=>{
+    if(!arquivo || !/^image\//.test(arquivo.type)) return falha();
+    const img = new Image(), url = URL.createObjectURL(arquivo);
+    img.onload = ()=>{
+      const lado = Math.min(img.naturalWidth, img.naturalHeight), cv = document.createElement("canvas");
+      cv.width = cv.height = 160;
+      cv.getContext("2d").drawImage(img, (img.naturalWidth - lado) / 2, (img.naturalHeight - lado) / 2, lado, lado, 0, 0, 160, 160);
+      URL.revokeObjectURL(url);
+      ok(cv.toDataURL("image/jpeg", .82));
+    };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); falha(); };
+    img.src = url;
+  });
+}
+/* o versículo de vida no idioma da interface (Bíblia Livre, KJV ou RVA) */
+async function textoVersiculoVida(chave){
+  if(!chave) return "";
+  const [l, c, v] = chave.split(".");
+  const trad = est.idioma === "en" ? "kjv" : est.idioma === "es" ? "rva" : "blivre";
+  try{ const caps = await carregarLivro(trad, l); return (caps[+c - 1] || [])[+v - 1] || ""; }catch(e){ return ""; }
+}
+function htmlCartaoPerfil(x, extra){
+  const p = perfil(), nome = nomeExibicao() || x.visitante;
+  const [l, c, v] = (p.vers || "").split(".");
+  return `<div class="perfil-cartao capa-${p.capa}">
+      <div class="perfil-capa"></div>
+      <div class="perfil-id">${htmlAvatar("grande")}
+        <div><strong class="perfil-nome">${esc(nome)}</strong>${p.bio ? `<span class="perfil-bio">${esc(p.bio)}</span>` : ""}${extra || ""}</div>
+      </div>
+      ${p.vers ? `<blockquote class="perfil-vers"><p data-vers-vida="${esc(p.vers)}"></p>
+        <cite>${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")}</cite></blockquote>` : ""}
+    </div>`;
+}
+async function preencherVersiculoVida(raiz){
+  const el = raiz.querySelector("[data-vers-vida]");
+  if(el) el.textContent = await textoVersiculoVida(el.dataset.versVida);
+}
+
+/* ----- editor do perfil (aba Perfil) ----- */
+function htmlEditorPerfil(x){
+  const p = perfil();
+  const ordem = ordemSecoes();
+  const nomesSec = x.secoesNomes;
+  return `<div class="perfil-editor" id="perfilEditor">
+    <label class="pf-campo"><span>${x.pfNome}</span><input id="pfNome" maxlength="40" value="${esc(p.nome)}" placeholder="${esc(nomeExibicao() || x.visitante)}"></label>
+    <div class="pf-campo"><span>${x.pfAvatar}</span>
+      <div class="seg" role="group" aria-label="${x.pfAvatar}">${["letra", "icone", "foto"].map(tp=>
+        `<button type="button" data-av="${tp}" aria-pressed="${p.av.t === tp}">${x["pfAv_" + tp]}</button>`).join("")}</div>
+      ${p.av.t === "icone" ? `<div class="pf-opcoes">${PERFIL_ICONES.map(ic=>
+        `<button type="button" class="pf-ic${p.av.ic === ic ? " ativo" : ""}" data-ic="${ic}" aria-label="${ic}" aria-pressed="${p.av.ic === ic}">${ico(ic)}</button>`).join("")}</div>` : ""}
+      ${p.av.t === "foto" ? `<div class="pf-opcoes"><label class="btn-linha" tabindex="0">${x.pfFotoEscolher}<input type="file" id="pfFoto" accept="image/*" hidden></label>
+        <span class="fonte" id="pfFotoAviso">${p.av.foto ? x.pfFotoOk : x.pfFotoDica}</span></div>`
+        : `<div class="pf-opcoes">${Object.entries(PERFIL_CORES).map(([n, cor])=>
+          `<button type="button" class="pf-cor${p.av.cor === n ? " ativo" : ""}" data-cor="${n}" style="background:${cor}" aria-label="${n}" aria-pressed="${p.av.cor === n}"></button>`).join("")}</div>`}
+    </div>
+    <div class="pf-campo"><span>${x.pfCapa}</span>
+      <div class="pf-opcoes">${PERFIL_CAPAS.map(cp=>`<button type="button" class="pf-capa capa-${cp}${p.capa === cp ? " ativo" : ""}" data-capa="${cp}" aria-label="${x.capas[cp]}" title="${x.capas[cp]}" aria-pressed="${p.capa === cp}"><span class="perfil-capa"></span></button>`).join("")}</div></div>
+    <label class="pf-campo"><span>${x.pfVers}</span><input id="pfVers" maxlength="30" value="${p.vers ? esc(refStr(...p.vers.split(".").map((y, i)=>i ? +y : y))) : ""}" placeholder="${x.pfVersDica}">
+      <small class="fonte" id="pfVersAviso"></small></label>
+    <label class="pf-campo"><span>${x.pfBio}</span><textarea id="pfBio" maxlength="200" rows="2" placeholder="${x.pfBioDica}">${esc(p.bio)}</textarea></label>
+    <h4 class="pf-sub">${x.pfEstudo}</h4>
+    <div class="pf-campo"><span>${x.pfLetra}</span><div class="seg" role="group" aria-label="${x.pfLetra}">${Object.keys(PERFIL_LETRAS).map(k=>
+      `<button type="button" data-letra="${k}" aria-pressed="${p.letra === k}" style="font-size:${PERFIL_LETRAS[k] * .82}rem">A${k === "p" ? "−" : k === "m" ? "" : k === "g" ? "+" : "++"}</button>`).join("")}</div></div>
+    <div class="pf-campo"><span>${x.pfConf}</span><div class="seg" role="group" aria-label="${x.pfConf}">
+      <button type="button" data-conf="westminster" aria-pressed="${p.conf === "westminster"}">${x.pfConfW}</button>
+      <button type="button" data-conf="tres-formas" aria-pressed="${p.conf === "tres-formas"}">${x.pfConf3}</button></div></div>
+    <div class="pf-campo"><span>${x.pfSecoes}</span><ol class="pf-secoes">${ordem.map((s, i)=>`<li>
+      <label><input type="checkbox" data-sec="${s}" ${p.secoes.ocultas.includes(s) ? "" : "checked"}> ${nomesSec[s]}</label>
+      <span><button type="button" class="pf-mover" data-sobe="${s}" ${i ? "" : "disabled"} aria-label="${x.pfSobe}">↑</button><button type="button" class="pf-mover" data-desce="${s}" ${i < ordem.length - 1 ? "" : "disabled"} aria-label="${x.pfDesce}">↓</button></span></li>`).join("")}</ol></div>
+  </div>`;
+}
+function ordemSecoes(){
+  const o = perfil().secoes.ordem.filter(s=>SECOES_PAINEL.includes(s));
+  return o.concat(SECOES_PAINEL.filter(s=>!o.includes(s)));
+}
+function ligarEditorPerfil(){
+  const ed = $("perfilEditor"); if(!ed) return;
+  const x = t();
+  const refazer = ()=>{ const rolar = $("conteudoEstudo").scrollTop; montarMeuEstudo().then(()=>{ $("conteudoEstudo").scrollTop = rolar; }); };
+  let espera;
+  const adiar = (fn)=>{ clearTimeout(espera); espera = setTimeout(fn, 500); };
+  $("pfNome").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ nome: e.target.value.trim() }); atualizarCartaoTopo(); }));
+  $("pfBio").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ bio: e.target.value.trim() }); atualizarCartaoTopo(); }));
+  $("pfVers").addEventListener("change", (e)=>{
+    const txt = e.target.value.trim(), r = txt ? parseRef(txt) : null;
+    if(txt && (!r || !r.v)){ $("pfVersAviso").textContent = x.pfVersErro; return; }
+    $("pfVersAviso").textContent = "";
+    salvarPerfil({ vers: r ? `${r.livro}.${r.cap}.${r.v}` : "" }); refazer();
+  });
+  ed.querySelectorAll("[data-av]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, t: b.dataset.av } }); refazer(); }));
+  ed.querySelectorAll("[data-ic]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, ic: b.dataset.ic } }); refazer(); }));
+  ed.querySelectorAll("[data-cor]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, cor: b.dataset.cor } }); refazer(); }));
+  ed.querySelectorAll("[data-capa]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ capa: b.dataset.capa }); refazer(); }));
+  ed.querySelectorAll("[data-letra]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ letra: b.dataset.letra }); refazer(); }));
+  ed.querySelectorAll("[data-conf]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ conf: b.dataset.conf }); refazer(); }));
+  if($("pfFoto")) $("pfFoto").addEventListener("change", async (e)=>{
+    try{ const foto = await reduzirFoto(e.target.files[0]); salvarPerfil({ av: { ...perfil().av, t: "foto", foto } }); refazer(); }
+    catch(err){ $("pfFotoAviso").textContent = x.pfFotoErro; }
+  });
+  ed.querySelectorAll("[data-sec]").forEach(c=>c.addEventListener("change", ()=>{
+    const ocultas = perfil().secoes.ocultas.filter(s=>s !== c.dataset.sec).concat(c.checked ? [] : [c.dataset.sec]);
+    salvarPerfil({ secoes: { ordem: ordemSecoes(), ocultas } });
+  }));
+  const mover = (s, d)=>{
+    const o = ordemSecoes(), i = o.indexOf(s), j = i + d;
+    if(j < 0 || j >= o.length) return;
+    [o[i], o[j]] = [o[j], o[i]];
+    salvarPerfil({ secoes: { ordem: o, ocultas: perfil().secoes.ocultas } }); refazer();
+  };
+  ed.querySelectorAll("[data-sobe]").forEach(b=>b.addEventListener("click", ()=>mover(b.dataset.sobe, -1)));
+  ed.querySelectorAll("[data-desce]").forEach(b=>b.addEventListener("click", ()=>mover(b.dataset.desce, 1)));
+}
+function atualizarCartaoTopo(){
+  const c = document.querySelector("#conteudoEstudo .perfil-cartao");
+  if(!c) return;
+  const p = perfil(), x = t();
+  c.querySelector(".perfil-nome").textContent = nomeExibicao() || x.visitante;
+  let bio = c.querySelector(".perfil-bio");
+  if(p.bio && !bio){ bio = document.createElement("span"); bio.className = "perfil-bio"; c.querySelector(".perfil-nome").after(bio); }
+  if(bio){ if(p.bio) bio.textContent = p.bio; else bio.remove(); }
+  const av = c.querySelector(".conta-letra"); if(av) av.outerHTML = htmlAvatar("grande");
+}
+
+/* ----- conquistas: tudo calculado do que já está no aparelho ----- */
+function sequenciaMaxima(){
+  const dias = [...new Set(Object.values(est.lidos).map(diaLocal))].sort();
+  let max = 0, atual = 0, ant = null;
+  for(const d of dias){
+    const dia = new Date(d + "T12:00:00");
+    atual = ant && Math.round((dia - ant) / 864e5) === 1 ? atual + 1 : 1;
+    max = Math.max(max, atual); ant = dia;
+  }
+  return max;
+}
+function conquistas(){
+  const r = resumoEstudo(), livros = est.meta.books;
+  const cheio = (b)=>(r.porLivro[b.id] || 0) >= b.ch;
+  const grupo = (ids)=>{ const bs = livros.filter(b=>ids.includes(b.id)); return [bs.reduce((n, b)=>n + Math.min(r.porLivro[b.id] || 0, b.ch), 0), bs.reduce((n, b)=>n + b.ch, 0)]; };
+  const ate = (de, a)=>{ const i = livros.findIndex(b=>b.id === de), j = livros.findIndex(b=>b.id === a); return livros.slice(i, j + 1).map(b=>b.id); };
+  const at = livros.filter(b=>b.t === "AT").map(b=>b.id), nt = livros.filter(b=>b.t === "NT").map(b=>b.id);
+  const seqMax = Math.max(sequenciaMaxima(), r.seq);
+  let planosFeitos = 0;
+  try{ planosFeitos = (est.planos || []).filter(pl=>pctPlano(pl) >= 100).length; }catch(e){}
+  const lidosPrat = Object.values(est.prateleira || {}).filter(l=>l && l.st === "lido").length;
+  const [pent, pentT] = grupo(ate("GEN", "DEU")), [ev, evT] = grupo(["MAT", "MRK", "LUK", "JHN"]);
+  const [paulo, pauloT] = grupo(ate("ROM", "PHM")), [ntN, ntT] = grupo(nt), [atN, atT] = grupo(at);
+  return [
+    ["primeiro", "livro", r.lidos, 1], ["cem", "livro", r.lidos, 100], ["quinhentos", "livro", r.lidos, 500],
+    ["livroInteiro", "feito", livros.filter(cheio).length, 1], ["dezLivros", "feito", livros.filter(cheio).length, 10],
+    ["salmos", "coroa", Math.min(r.porLivro.PSA || 0, 150), 150], ["pentateuco", "lampada", pent, pentT],
+    ["evangelhos", "cruz", ev, evT], ["paulo", "pomba", paulo, pauloT], ["nt", "cruz", ntN, ntT], ["at", "lampada", atN, atT],
+    ["biblia", "coroa", r.lidos, r.total],
+    ["seq7", "chama", seqMax, 7], ["seq30", "chama", seqMax, 30], ["seq100", "chama", seqMax, 100],
+    ["plano", "planos", planosFeitos, 1], ["notas10", "anotacoes", r.notas, 10], ["marcas50", "ancora", r.marcas, 50],
+    ["prateleira5", "estante", lidosPrat, 5],
+  ].map(([id, ic, n, meta])=>({ id, ic, n: Math.min(n, meta), meta, feito: n >= meta }));
+}
+function htmlConquistas(x){
+  const lista = conquistas(), feitas = lista.filter(c=>c.feito).length;
+  return `<h3 class="estudo-sub">${x.conquistasTit} <small class="sub-conta">${feitas}/${lista.length}</small></h3>
+    <div class="selos">${lista.map(c=>{
+      const nome = x.selos[c.id] || c.id, pct = Math.round(c.n / c.meta * 100);
+      return `<div class="selo${c.feito ? " feito" : ""}" title="${esc(nome + " — " + c.n + "/" + c.meta)}">
+        <span class="selo-ic">${ico(c.ic)}</span><b>${esc(nome)}</b>
+        ${c.feito ? `<small>${x.conquistado}</small>` : `<small>${c.n.toLocaleString(est.idioma)}/${c.meta.toLocaleString(est.idioma)}</small><div class="plano-barra"><i style="width:${pct}%"></i></div>`}
+      </div>`; }).join("")}</div>`;
+}
+
+/* ----- prateleira: os livros teológicos da pessoa (catálogo em data/prateleira.json + livros à mão) ----- */
+async function catalogoPrateleira(){
+  if(!est.catPrateleira){ try{ est.catPrateleira = await json("data/prateleira.json"); }catch(e){ est.catPrateleira = { tradicoes:{}, obras:[] }; } }
+  return est.catPrateleira;
+}
+const ST_LIVRO = ["lendo", "lido", "quero"];
+function livroValido(id, v){
+  if(!v || typeof v !== "object" || !ST_LIVRO.includes(v.st) || !/^[a-z0-9-]{1,40}$/.test(id)) return null;
+  const s = (x, n)=>typeof x === "string" ? x.slice(0, n).trim() : "";
+  const o = { st: v.st, em: +v.em > 0 ? +v.em : Date.now() };
+  if(id.startsWith("u-")){ o.t = s(v.t, 120); o.a = s(v.a, 80); if(!o.t) return null; }
+  const nota = s(v.nota, 300); if(nota) o.nota = nota;
+  return o;
+}
+function salvarLivro(id, v){
+  est.prateleira = est.prateleira || {};
+  const ok = v && livroValido(id, v);
+  if(ok) est.prateleira[id] = ok; else delete est.prateleira[id];
+  gravarLS("logos_prateleira", est.prateleira); tocar("estado", "livro:" + id);
+}
+function obraDe(id, cat){
+  const own = (est.prateleira || {})[id] || {};
+  const o = cat.obras.find(b=>b.id === id);
+  return o ? { ...o, ...own, catalogo: true } : { id, t: own.t || "?", a: own.a || "", ano: "", tr: "", liga: [], ...own };
+}
+function htmlPrateleira(x, cat){
+  const meus = Object.keys(est.prateleira || {}).map(id=>obraDe(id, cat)).sort((a, b)=>(b.em || 0) - (a.em || 0));
+  const lombada = (o)=>{
+    const alt = 7 + (o.t.length % 5) * .45;
+    return `<button type="button" class="lombada tr-${o.tr || "outra"}${est.livroAberto === o.id ? " aberta" : ""}" data-livro="${esc(o.id)}" style="height:${alt}rem" title="${esc(o.t + (o.a ? " — " + o.a : ""))}"><span>${esc(o.t)}</span></button>`;
+  };
+  const prateleiras = ST_LIVRO.map(st=>{
+    const l = meus.filter(o=>o.st === st);
+    return l.length ? `<div class="prat"><p class="prat-rot">${x.stLivro[st]} <small>${l.length}</small></p><div class="prat-livros">${l.map(lombada).join("")}</div></div>` : "";
+  }).join("");
+  const aberto = est.livroAberto && est.prateleira && est.prateleira[est.livroAberto] ? obraDe(est.livroAberto, cat) : null;
+  const tradNome = (tr)=>tr && cat.tradicoes[tr] ? (cat.tradicoes[tr][est.idioma] || cat.tradicoes[tr].pt) : "";
+  const ficha = aberto ? `<div class="prat-ficha">
+      <button type="button" class="lugar-fechar" data-fechar-livro aria-label="${x.fechar}">✕</button>
+      <h4>${esc(emPT() || !aberto.o ? aberto.t : aberto.o)}</h4>
+      <p class="fonte">${esc([aberto.a, aberto.ano, tradNome(aberto.tr)].filter(Boolean).join(" · "))}</p>
+      ${aberto.liga && aberto.liga.length ? `<p class="prat-liga">${x.ligaSola}: ${aberto.liga.map(([r, u])=>`<a href="${esc(u)}">${esc(r)}</a>`).join(" · ")}</p>` : ""}
+      <div class="prat-acoes"><select data-st-livro="${esc(aberto.id)}">${ST_LIVRO.map(s=>`<option value="${s}"${aberto.st === s ? " selected" : ""}>${x.stLivro[s]}</option>`).join("")}</select>
+        <button type="button" class="btn-linha" data-tirar-livro="${esc(aberto.id)}">${x.tirarLivro}</button></div>
+    </div>` : "";
+  const busca = est.prateleiraBusca;
+  const adicionar = busca !== undefined ? `<div class="prat-add">
+      <div class="prat-add-topo"><input id="pratBusca" type="search" value="${esc(busca)}" placeholder="${x.pratBuscaDica}" aria-label="${x.pratBuscaDica}">
+        <label>${x.pratComo} <select id="pratSt">${ST_LIVRO.map(s=>`<option value="${s}"${(est.pratSt || "lido") === s ? " selected" : ""}>${x.stLivro[s]}</option>`).join("")}</select></label></div>
+      <ul class="prat-cat">${cat.obras.filter(o=>!(est.prateleira || {})[o.id] && (!busca || normStr(o.t + " " + o.o + " " + o.a).includes(normStr(busca)))).slice(0, 12)
+        .map(o=>`<li><button type="button" data-por-livro="${esc(o.id)}"><b>${esc(o.t)}</b> <small>${esc(o.a)}, ${esc(o.ano)}</small></button></li>`).join("")}</ul>
+      <form id="pratOutro" class="prat-outro"><span>${x.pratOutro}</span>
+        <input name="t" maxlength="120" required placeholder="${x.pratTitulo}" aria-label="${x.pratTitulo}">
+        <input name="a" maxlength="80" placeholder="${x.pratAutor}" aria-label="${x.pratAutor}">
+        <button class="btn-linha">${x.pratPor}</button></form>
+      <p><button type="button" class="link-discreto" id="pratFechar">${x.fechar}</button></p>
+    </div>` : `<p><button type="button" class="btn-linha" id="pratAbrir">+ ${x.pratAdicionar}</button></p>`;
+  return `<h3 class="estudo-sub">${x.prateleiraTit} <small class="sub-conta">${meus.length}</small></h3>
+    ${meus.length ? prateleiras : `<p class="fonte">${x.pratVazia}</p>`}${ficha}${adicionar}`;
+}
+function ligarPrateleira(raiz){
+  const refazer = (foco)=>{
+    const rolar = $("conteudoEstudo").scrollTop;
+    montarMeuEstudo().then(()=>{ $("conteudoEstudo").scrollTop = rolar; if(foco && $(foco)){ $(foco).focus(); const v = $(foco).value; $(foco).setSelectionRange && $(foco).setSelectionRange(v.length, v.length); } });
+  };
+  raiz.querySelectorAll("[data-livro]").forEach(b=>b.addEventListener("click", ()=>{ est.livroAberto = est.livroAberto === b.dataset.livro ? null : b.dataset.livro; refazer(); }));
+  raiz.querySelectorAll("[data-fechar-livro]").forEach(b=>b.addEventListener("click", ()=>{ est.livroAberto = null; refazer(); }));
+  raiz.querySelectorAll("[data-st-livro]").forEach(s=>s.addEventListener("change", ()=>{ const id = s.dataset.stLivro; salvarLivro(id, { ...est.prateleira[id], st: s.value, em: Date.now() }); refazer(); }));
+  raiz.querySelectorAll("[data-tirar-livro]").forEach(b=>b.addEventListener("click", ()=>{ salvarLivro(b.dataset.tirarLivro, null); est.livroAberto = null; refazer(); }));
+  if($("pratAbrir")) $("pratAbrir").addEventListener("click", ()=>{ est.prateleiraBusca = ""; refazer("pratBusca"); });
+  if($("pratFechar")) $("pratFechar").addEventListener("click", ()=>{ est.prateleiraBusca = undefined; refazer(); });
+  let espera;
+  if($("pratBusca")) $("pratBusca").addEventListener("input", (e)=>{ clearTimeout(espera); espera = setTimeout(()=>{ est.prateleiraBusca = e.target.value; refazer("pratBusca"); }, 250); });
+  if($("pratSt")) $("pratSt").addEventListener("change", (e)=>{ est.pratSt = e.target.value; });
+  raiz.querySelectorAll("[data-por-livro]").forEach(b=>b.addEventListener("click", ()=>{ salvarLivro(b.dataset.porLivro, { st: est.pratSt || "lido", em: Date.now() }); convidar("lido"); refazer("pratBusca"); }));
+  if($("pratOutro")) $("pratOutro").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const f = e.target, id = "u-" + Date.now().toString(36);
+    salvarLivro(id, { st: est.pratSt || "lido", t: f.t.value, a: f.a.value, em: Date.now() });
+    refazer("pratBusca");
+  });
+}
+
 /* ---------- painel "Meu estudo": a semana, a meta e o histórico ---------- */
 const METAS_SEMANA = [0, 7, 14, 21, 28, 35, 50];
 function inicioDia(d){ d = new Date(d); d.setHours(0, 0, 0, 0); return d; }
@@ -2683,7 +3044,7 @@ async function montarMeuEstudo(){
     b.onclick = ()=>{ est.abaEstudo = b.dataset.aba; montarMeuEstudo(); };
   });
   $("tituloEstudo").textContent = est.abaEstudo === "perfil" ? x.abaPerfil : x.meuEstudo;
-  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); return; }
+  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); ligarEditorPerfil(); preencherVersiculoVida(alvo); return; }
   const ult = lerLS("logos_ultimo", null);
   const pct = r.total ? Math.round(r.lidos / r.total * 1000) / 10 : 0;
   const livros = (tst)=>est.meta.books.filter(b=>b.t===tst).map(b=>{
@@ -2692,9 +3053,25 @@ async function montarMeuEstudo(){
   }).join("");
   const marcas = Object.keys(est.marcas).filter(chaveValida).sort(ordemRef);
   const notas = Object.keys(est.notas).filter(chaveValida).sort(ordemRef);
-  let planosHTML = "";
+  let planosHTML = "", cat = { tradicoes:{}, obras:[] };
+  try{ cat = await catalogoPrateleira(); }catch(e){}
   try{ planosHTML = (await planos()).map(pl=>{ const p = pctPlano(pl); return p ? `<div class="plano-linha"><span>${esc(pl.nome[est.idioma]||pl.nome.pt)}</span><div class="plano-barra"><i style="width:${p}%"></i></div><small>${p}%</small></div>` : ""; }).join(""); }catch(e){}
-  alvo.innerHTML = faixaConta() + `
+  const secoes = {
+    semana: ()=>htmlSemana(x), historico: ()=>htmlHistorico(x), recentes: ()=>htmlRecentes(x),
+    conquistas: ()=>htmlConquistas(x), prateleira: ()=>`<div id="secPrateleira">${htmlPrateleira(x, cat)}</div>`,
+    livros: ()=>`<h3 class="estudo-sub">${x.progLivros}</h3>
+    ${r.lidos ? "" : `<p class="fonte">${x.semLeitura}</p>`}
+    <p class="rotulo-secao pequeno">${x.at}</p><div class="lvs">${livros("AT")}</div>
+    <p class="rotulo-secao pequeno">${x.nt}</p><div class="lvs">${livros("NT")}</div>`,
+    planos: ()=>planosHTML ? `<h3 class="estudo-sub">${x.planosTit}</h3>${planosHTML}` : "",
+    marcacoes: ()=>`<h3 class="estudo-sub">${x.marcacoes}</h3>
+    ${marcas.length ? `<div class="marcas-lista">` + marcas.slice(0, 120).map(k=>{ const [l, c, v] = k.split("."); return linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "m-chip m-" + est.marcas[k]); }).join("") + `</div>` : `<p class="fonte">${x.semMarcas}</p>`}`,
+    notas: ()=>`<h3 class="estudo-sub">${x.notas}</h3>
+    ${notas.length ? notas.slice(0, 4).map(k=>{ const [l, c, v] = k.split("."); return `<p class="nota-curta">${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")} ${esc(est.notas[k].slice(0, 140))}${est.notas[k].length > 140 ? "…" : ""}</p>`; }).join("") : ""}
+    <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas}</button></p>`,
+  };
+  const ocultas = perfil().secoes.ocultas;
+  alvo.innerHTML = htmlCartaoPerfil(x, `<button type="button" class="link-discreto perfil-editar" id="btnEditarPerfil">${x.personalizar}</button>`) + faixaConta() + `
     <div class="estudo-numeros">
       <div class="num largo"><b>${r.lidos.toLocaleString(est.idioma)}</b><span>${x.de} ${r.total.toLocaleString(est.idioma)} ${x.capsLidos} · ${pct.toLocaleString(est.idioma)}%</span>
         <div class="plano-barra"><i style="width:${pct}%"></i></div></div>
@@ -2703,21 +3080,12 @@ async function montarMeuEstudo(){
       <div class="num"><b>${r.marcas}</b><span>${x.nMarcasRot}</span></div>
     </div>
     ${ult && infoLivro(ult.livro) ? `<p class="estudo-continuar"><a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${+ult.cap} ${ico("seta")}</a></p>` : ""}
-    ${htmlSemana(x)}
-    ${htmlHistorico(x)}
-    ${htmlRecentes(x)}
-    <h3 class="estudo-sub">${x.progLivros}</h3>
-    ${r.lidos ? "" : `<p class="fonte">${x.semLeitura}</p>`}
-    <p class="rotulo-secao pequeno">${x.at}</p><div class="lvs">${livros("AT")}</div>
-    <p class="rotulo-secao pequeno">${x.nt}</p><div class="lvs">${livros("NT")}</div>
-    ${planosHTML ? `<h3 class="estudo-sub">${x.planosTit}</h3>${planosHTML}` : ""}
-    <h3 class="estudo-sub">${x.marcacoes}</h3>
-    ${marcas.length ? `<div class="marcas-lista">` + marcas.slice(0, 120).map(k=>{ const [l, c, v] = k.split("."); return linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "m-chip m-" + est.marcas[k]); }).join("") + `</div>` : `<p class="fonte">${x.semMarcas}</p>`}
-    <h3 class="estudo-sub">${x.notas}</h3>
-    ${notas.length ? notas.slice(0, 4).map(k=>{ const [l, c, v] = k.split("."); return `<p class="nota-curta">${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")} ${esc(est.notas[k].slice(0, 140))}${est.notas[k].length > 140 ? "…" : ""}</p>`; }).join("") : ""}
-    <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas}</button></p>`;
-  $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
-  $("selMeta").addEventListener("change", (e)=>{
+    ` + ordemSecoes().filter(s=>!ocultas.includes(s)).map(s=>secoes[s]()).join("");
+  preencherVersiculoVida(alvo);
+  if($("secPrateleira")) ligarPrateleira($("secPrateleira"));
+  $("btnEditarPerfil").addEventListener("click", ()=>{ est.abaEstudo = "perfil"; montarMeuEstudo().then(()=>{ const ed = $("perfilEditor"); if(ed) ed.scrollIntoView({ block:"start" }); }); });
+  if($("btnTodasNotas")) $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
+  if($("selMeta")) $("selMeta").addEventListener("change", (e)=>{
     est.metaSemana = +e.target.value || 0; gravarLS("logos_meta_semana", est.metaSemana); tocar("estado", "meta");
     const rolar = $("conteudoEstudo").scrollTop; montarMeuEstudo().then(()=>{ $("conteudoEstudo").scrollTop = rolar; });
   });
@@ -2750,13 +3118,11 @@ function perfilHTML(){
       <p class="fonte" id="contaAviso" role="status"></p></div>`;
   else conta = `<div class="conta-acoes"><button class="btn-linha" id="btnSincAgora">${x.sincAgora}</button><button class="btn-linha" id="btnSair">${x.sair}</button></div>
       <p class="fonte" id="contaAviso" role="status"></p>`;
-  return `<div class="perfil-topo">
-      <span class="conta-letra grande" aria-hidden="true">${u ? esc((nome[0] || "?").toUpperCase()) : ico("pessoa")}</span>
-      <div><strong class="perfil-nome">${esc(nome)}</strong>
-        ${u ? `<span>${esc(u.email || "")}</span>${desde ? `<span>${x.desde} ${esc(desde)}</span>` : ""}<span id="sincEstado" role="status">${textoSinc()}</span>`
-            : `<span>${x.visitanteTexto}</span>`}</div>
-    </div>
+  return htmlCartaoPerfil(x, `<span class="perfil-conta">${u ? `${esc(u.email || "")}${desde ? ` · ${x.desde} ${esc(desde)}` : ""}</span><span class="perfil-conta" id="sincEstado" role="status">${textoSinc()}`
+            : x.visitanteTexto}</span>`) + `
     ${conta}
+    <h3 class="estudo-sub">${x.personalizar}</h3>
+    ${htmlEditorPerfil(x)}
     <h3 class="estudo-sub">${x.preferencias}</h3>
     <div class="prefs">
       <label><span>${x.idioma}</span><select data-espelho="selIdioma"></select></label>
@@ -2806,8 +3172,8 @@ function ligarPerfil(){
 /* O botão de perfil no topo mostra a inicial de quem entrou. */
 function atualizarBotaoPerfil(){
   const u = est.sessao && est.sessao.user, b = $("btnPerfil");
-  b.innerHTML = u ? `<span class="conta-letra mini" aria-hidden="true">${esc((nomeUsuario(u)[0] || "?").toUpperCase())}</span>` : ico("pessoa");
-  b.title = u ? nomeUsuario(u) : t().abaPerfil;
+  b.innerHTML = u || perfilPersonalizado() ? htmlAvatar("mini") : ico("pessoa");
+  b.title = nomeExibicao() || t().abaPerfil;
   b.setAttribute("aria-label", b.title);
 }
 
@@ -2963,10 +3329,17 @@ const DADOS = {
   lido:  { chaves:()=>Object.keys(est.lidos), ler:(k)=>k in est.lidos ? { em: est.lidos[k] } : null,
            por:(k, v)=>{ if(v && +v.em > 0 && capValido(k)) est.lidos[k] = +v.em; else delete est.lidos[k]; },
            salvar:()=>gravarLS("logos_lidos", est.lidos) },
-  estado:{ chaves:()=>(lerLS("logos_ultimo", null) ? ["ultimo"] : []).concat(est.metaSemana ? ["meta"] : []),
-           ler:(k)=>k === "ultimo" ? lerLS("logos_ultimo", null) : k === "meta" && est.metaSemana ? { n: est.metaSemana } : null,
+  estado:{ chaves:()=>(lerLS("logos_ultimo", null) ? ["ultimo"] : []).concat(est.metaSemana ? ["meta"] : [])
+             .concat(est.perfil && Object.keys(est.perfil).length ? ["perfil"] : [])
+             .concat(Object.keys(est.prateleira || {}).map(id=>"livro:" + id)),
+           ler:(k)=>k === "ultimo" ? lerLS("logos_ultimo", null) : k === "meta" ? (est.metaSemana ? { n: est.metaSemana } : null)
+             : k === "perfil" ? (est.perfil && Object.keys(est.perfil).length ? perfilValido(est.perfil) : null)
+             : k.startsWith("livro:") ? ((est.prateleira || {})[k.slice(6)] || null) : null,
            por:(k, v)=>{ if(k === "ultimo" && v && infoLivro(v.livro) && capValido(v.livro + "." + v.cap)) gravarLS("logos_ultimo", { livro: v.livro, cap: +v.cap });
-             if(k === "meta"){ est.metaSemana = v && +v.n > 0 && +v.n <= 500 ? Math.round(+v.n) : 0; gravarLS("logos_meta_semana", est.metaSemana); } },
+             if(k === "meta"){ est.metaSemana = v && +v.n > 0 && +v.n <= 500 ? Math.round(+v.n) : 0; gravarLS("logos_meta_semana", est.metaSemana); }
+             if(k === "perfil"){ est.perfil = perfilValido(v) || {}; gravarLS("logos_perfil", est.perfil); aplicarPerfil(); }
+             if(k.startsWith("livro:")){ const id = k.slice(6), ok = livroValido(id, v); est.prateleira = est.prateleira || {};
+               if(ok) est.prateleira[id] = ok; else delete est.prateleira[id]; gravarLS("logos_prateleira", est.prateleira); } },
            salvar:()=>{} },
 };
 /* Anota que um item mudou agora. Funciona sem conta também: quando a pessoa entrar, sobe com a hora certa. */
@@ -3172,7 +3545,7 @@ async function iniciar(){
   const antigo = /^#\//.test(location.hash) || !rotaDe(location.pathname, "");
 
   $("selIdioma").value = est.idioma;
-  aplicarTextos(); preencherTraducoes(); aplicarTema(); aplicarEstudo();
+  aplicarTextos(); preencherTraducoes(); aplicarTema(); aplicarEstudo(); aplicarPerfil();
   $("btnCorrida").classList.toggle("ativa", est.corrida);
   $("btnCorrida").setAttribute("aria-pressed", est.corrida);
   // voltando da tela de login: primeiro a sessão (o código está no endereço), depois a página em que a pessoa estava
