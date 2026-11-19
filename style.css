@@ -1007,6 +1007,11 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .pub-endereco{display:flex;align-items:stretch;border:1px solid var(--borda);border-radius:.45rem;background:var(--papel);overflow:hidden}
 .pub-endereco > span{display:flex;align-items:center;padding:0 .2rem 0 .6rem;font:400 .82rem var(--ui);color:var(--suave);white-space:nowrap}
 .pf-campo .pub-endereco input#pubApelido{border:0;border-radius:0;background:transparent;padding-left:0;min-width:0;flex:1}
+.pub-link{display:flex;flex-wrap:wrap;gap:.45rem;align-items:stretch}
+.pub-link-url{flex:1 1 13rem;min-width:0;display:flex;align-items:center;border:1px solid var(--borda);border-radius:.45rem;background:var(--papel);
+  padding:.55rem .7rem;font:600 .92rem/1.35 var(--ui);color:var(--tinta);overflow-wrap:anywhere;cursor:text;-webkit-user-select:all;user-select:all}
+.pub-link-url:focus-visible{outline:2px solid var(--rubrica);outline-offset:1px}
+.pub-link .btn-ouro{flex:0 0 auto;white-space:nowrap;justify-content:center}
 .pub-opcao{display:flex;align-items:center;gap:.45rem;font-size:.84rem;color:var(--tinta);font-weight:400}
 .pf-campo .pub-opcao input{width:auto;flex:0 0 auto;margin:0;accent-color:var(--rubrica)}
 .pub-no-ar{color:#2E7D4F;font-weight:600}
