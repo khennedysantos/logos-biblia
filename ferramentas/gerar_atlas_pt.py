@@ -55,6 +55,29 @@ MANUAL = {
     "Magdala": "Magdala", "Gadara": "Gadara", "Gerasa": "Gerasa", "Gergesa": "Gergesa", "Lydia": "Lídia",
     "Lycia": "Lícia", "Rhodes": "Rodes", "Sparta": "Esparta", "Carthage": "Cartago", "Scythia": "Cítia",
     "Etruria": "Etrúria", "Tartessos": "Tartesso", "Goiim": "Goim", "Ur": "Ur", "Sela": "Selá", "Arbela": "Arbela",
+    # nov/2026: os 95 que faltavam. Com versículo: a grafia da Bíblia Livre quando o nome aparece nela; quando ela
+    # traduz o nome ("casa de tosa", "monte dos prepúcios"), a forma transliterada usual ou a expressão do texto
+    "Allon": "Alom", "Amaw": "Amave", "Aphik": "Afeque", "Aroer": "Aroer", "Atroth-beth-joab": "Atarote-Bete-Joabe",
+    "Baale-judah": "Baal de Judá", "Beth-eked": "Bete-Equede", "Beth-haggan": "Bete-Hagã", "Beth-haram": "Bete-Harã",
+    "Bor-ashan": "Corasã", "Caleb Ephrathah": "Calebe de Efrata", "Eglath-shelishiyah": "Eglate-Selisia",
+    "Elkosh": "Elcós", "Enaim": "Enaim", "Enam": "Enã", "Ephron": "Efrom", "Gamad": "Gamade", "Gederah": "Gederá",
+    "Ge-harashim": "Vale dos Artesãos", "Gibeath-elohim": "Morro de Deus", "Gibeath-haaraloth": "Monte dos Prepúcios",
+    "Gulloth-mayim": "Fontes de Águas", "Hakkephirim": "Quefirim", "Hamath-zobah": "Hamate de Zobá", "Harod": "Harode",
+    "Hazar-susah": "Hazar-Susa", "Hazer-hatticon": "Hazer-Haticom", "Helech": "Heleque", "Ir-nahash": "Ir-Naás",
+    "Kartah": "Cartá", "Kue": "Coa", "Lehem": "Leém", "Maareh-geba": "Prado de Gibeá", "Mahalab": "Maalabe",
+    "Mahaneh-dan": "Maané-Dã", "Meronoth": "Meronote", "Mortar": "Mactés", "Parbar": "Parbar", "Pau": "Paú",
+    "Sahar": "Saar", "Secu": "Socó", "Shaalim": "Saalim", "Shalishah": "Salisa", "Shen": "Sem", "Syrtis": "Sirte",
+    "Tabbur-erez": "Tabur-Erez", "Uzzen-sheerah": "Uzém-Seerá", "Zaphon": "Zafom",
+    # sem versículo (lugares da história e da arqueologia ao redor da Bíblia): a forma usual em português
+    "Abila": "Ábila", "Abila Lysaniou": "Ábila de Lisânias", "Adasa": "Adasa", "Adulis": "Ádulis", "Ama": "Ama",
+    "Amate": "Amate", "Arsinoe": "Arsínoe", "Batanea": "Bataneia", "Belamon": "Belamom", "Bether": "Beter",
+    "Chalcis": "Cálcis", "Charmande": "Carmande", "Eridu": "Eridu", "Gath-padalla": "Gate-Padala", "Gutium": "Gútio",
+    "Halahha": "Halaha", "Harhar": "Harhar", "Hatti": "Hati", "Heracleopolis Magna": "Heracleópolis Magna",
+    "Heracleopolis Parva": "Heracleópolis Parva", "Hilakku": "Hilaku", "Janua": "Janua", "Kumidi": "Kumidi",
+    "Laash": "Laash", "Madiama": "Madiama", "Magdalsenna": "Magdalsena", "Magdolum": "Magdolo", "Nahuru": "Nahuru",
+    "Nuhashe": "Nuhaxe", "Pitru": "Pitru", "Punt": "Punt", "Ragmat": "Ragmate", "Salona": "Salona", "Saparda": "Saparda",
+    "Saparre": "Sapare", "Sutu": "Sutu", "Tegarama": "Tegarama", "Thapsacus": "Tápsaco", "Thelme": "Telme",
+    "Tjaru": "Tjaru", "Umman Manda": "Umman-Manda", "Upu": "Upu", "Uqnu": "Uqnu", "Ura": "Ura",
 }
 QUALIFICA = {"Lower": "de Baixo", "Upper": "de Cima"}
 FRASE = r"\b((?i:{g}))\s+((?:(?:de|do|da|dos|das)\s+)?[A-ZÀ-Ý][\wÀ-ÿ'-]*(?:\s+[A-ZÀ-Ý][\wÀ-ÿ'-]*)?)"
