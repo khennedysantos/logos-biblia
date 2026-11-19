@@ -16,7 +16,22 @@ def ler(p):
         return None
 
 
+def conferir_apelidos():
+    """As regras do apelido da página pública estão no app.js (aviso na hora) e no supabase.sql (quem decide):
+    as listas têm de ser as mesmas nos dois."""
+    js = (DATA.parent / "app.js").read_text(encoding="utf-8")
+    sql = (DATA.parent / "ferramentas" / "supabase.sql").read_text(encoding="utf-8")
+    palavras = lambda txt: sorted(re.findall(r"'([a-z0-9-]+)'", txt) or re.findall(r'"([a-z0-9-]+)"', txt))
+    js_listas = [palavras(re.search(r"const APELIDO_%s = \[(.*?)\];" % n, js, re.S).group(1)) for n in ("RESERVADOS", "PROIBIDOS")]
+    sql_listas = [palavras(re.search(r"%s \(array\[(.*?)\]\)" % op, sql, re.S).group(1)) for op in ("<> all", "= any")]
+    js_regex = [re.search(r"const APELIDO_%s = /(.*?)/;" % n, js).group(1) for n in ("RAIZES", "SEMPRE")]
+    sql_regex = [re.search(r"s ~ '(.*?)'\)", sql).group(1), re.search(r"!~ '(.*?)';", sql).group(1)]
+    if js_listas != sql_listas or js_regex != sql_regex:
+        erros.append("as regras do apelido (APELIDO_* no app.js) diferem das de apelido_permitido() em ferramentas/supabase.sql")
+
+
 def main():
+    conferir_apelidos()
     meta = ler(DATA / "books.json")
     livros = meta["books"]
     assert len(livros) == 66, "books.json deveria ter 66 livros"

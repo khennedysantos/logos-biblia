@@ -12,6 +12,9 @@ pessoa continuar em qualquer aparelho. Sem conta, o "Meu estudo" continua funcio
 
 1. Entre em supabase.com com a sua conta do GitHub e crie um projeto (região: São Paulo).
 2. Em **SQL Editor → New query**, cole o arquivo `ferramentas/supabase.sql` inteiro e clique em **Run**.
+   O arquivo pode rodar de novo sem estragar nada: quando ele mudar (como na página pública do perfil, em
+   nov/2026, que criou a tabela `perfis_publicos` e as funções `publicar_perfil`/`despublicar_perfil`), é só
+   colar e rodar outra vez.
 3. Em **Project Settings → API** (ou "API Keys"), copie:
    - o **Project URL** (`https://xxxx.supabase.co`);
    - a chave **publishable** (nos projetos antigos chama-se `anon` `public`).
@@ -72,3 +75,12 @@ Supabase é só para teste, com limite de poucos e-mails por hora.
 A sincronização foi testada com um servidor falso que imita a tabela (dois aparelhos, sem rede, conflito,
 troca de conta, exclusão). O login de verdade com o Google e as regras do banco só podem ser testados
 depois que o projeto existir.
+
+## Página pública do perfil
+
+Quem tem conta pode publicar o perfil em `solabiblia.com.br/perfil/<apelido>/` (aba Perfil → Página pública).
+O GitHub Pages responde a esse endereço com o `404.html`, que é o próprio app; o app lê o cartão em
+`perfis_publicos` com a chave pública (um `fetch` simples, sem o cliente do Supabase). Ninguém grava direto
+na tabela: só pelas funções do `supabase.sql`, cada pessoa no próprio perfil, e o apelido passa por
+`apelido_permitido()` (formato, endereços reservados e palavrões — a mesma lista do `app.js`, conferida pelo
+`validar_dados.py`). Para tirar do ar um perfil impróprio: **Table Editor → perfis_publicos**, apague a linha.

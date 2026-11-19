@@ -66,11 +66,25 @@ const UI = {
     offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
     offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet.",
     meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
+    pubTit:"Página pública", pubNoAr:"no ar", pubSemConta:"Entre na conta para ter uma página pública do seu perfil, com endereço próprio para compartilhar.",
+    pubTexto:"Quem tiver o link vê o seu cartão (nome, foto ou avatar, capa, bio e versículo de vida) e o que você marcar abaixo. Anotações, marcações e o histórico de leitura nunca aparecem.",
+    pubEndereco:"Endereço", pubMostrar:"Mostrar também", pubOpcoes:{ num:"Números do estudo (capítulos, livros, dias seguidos)", selos:"Conquistas", prat:"Prateleira de livros" },
+    pubPublicar:"Publicar perfil", pubAtualizar:"Atualizar página", pubVer:"Ver página", pubCopiar:"Copiar link", pubTirar:"Tirar do ar",
+    pubTirarConfirma:"Tirar sua página pública do ar? O endereço fica livre para outra pessoa.", pubEnviando:"Publicando…",
+    pubOk:"Publicado! Seu perfil está em", pubFora:"Sua página pública saiu do ar.", pubErro:"Não deu para publicar agora. Confira a conexão e tente de novo.",
+    pubLinkCopiado:"Link copiado.", apelidoLivre:"Disponível.",
+    apelidoErros:{ formato:"Use de 3 a 30 letras minúsculas sem acento, números ou hífens (sem hífen no começo ou no fim).", reservado:"Esse endereço é reservado. Escolha outro.",
+      improprio:"Esse endereço não é permitido. Escolha outro.", emUso:"Esse endereço já está em uso. Escolha outro." },
+    pubCarregando:"Carregando o perfil…", pubNaoAchou:"Perfil não encontrado", pubNaoAchouTexto:"Não há perfil publicado neste endereço. Talvez a pessoa tenha mudado o endereço ou tirado a página do ar.",
+    pubSemRedeTit:"Não foi possível abrir o perfil", pubSemRede:"Confira a conexão e tente de novo.", pubLivrosBiblia:"livros da Bíblia completos", pubMaiorSeq:"maior sequência de dias",
+    pubAtualizado:"Atualizado em", pubCompartilhar:"Compartilhar", pubEditar:"Editar meu perfil", pubConvite:"Estude a Bíblia com o Sola",
+    pubConviteTexto:"Bíblia de estudo gratuita e sem anúncios: texto original palavra por palavra, léxico, comentários de Calvino e Matthew Henry, confissões de fé, atlas e o seu próprio perfil de estudo.",
+    pubComecar:"Começar a ler",
     imgPerfilTit:"Imagem do perfil", imgPerfilTexto:"meu estudo bíblico no Sola:", compartilharPerfil:"Compartilhar perfil", imgLivrosLidos:"livros lidos",
     personalizar:"Personalizar perfil", pfNome:"Nome no perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícone", pfAv_foto:"Foto",
     pfFotoEscolher:"Escolher foto", pfFotoOk:"Foto salva (reduzida a 160 px).", pfFotoDica:"A foto fica pequena e recortada no centro.", pfFotoErro:"Não deu para ler essa imagem.",
     pfCapa:"Capa", capas:{linho:"Linho", carmim:"Carmim", ouro:"Ouro", oliva:"Oliveira", mar:"Mar da Galileia", vigilia:"Vigília"},
-    pfVers:"Versículo de vida", pfVersDica:"ex.: Rm 8:28", pfVersErro:"Não reconheci a referência; use algo como “Rm 8:28”.",
+    pfVers:"Versículo de vida", pfVersDica:"ex.: Rm 8:28", pfVersErro:"Não reconheci o livro. Tente “Sl 23:1”, “Salmo 23 1” ou “Romanos 8:28”.", pfVersFaltaCap:"falta o capítulo e o versículo (ex.: Sl 23:1).", pfVersEscolha:"toque no versículo:", irPara:"Ir para",
     pfBio:"Sobre você", pfBioDica:"Igreja, tradição, o que você gosta de estudar…", pfEstudo:"Estudo do meu jeito", pfLetra:"Tamanho da letra",
     pfConf:"Confissão em destaque", pfConfW:"Padrões de Westminster", pfConf3:"Três Formas de Unidade", pfSecoes:"Seções do painel (marque as que aparecem)",
     pfSobe:"Subir", pfDesce:"Descer",
@@ -172,11 +186,25 @@ const UI = {
     offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
     offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use.",
     meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
+    pubTit:"Public page", pubNoAr:"online", pubSemConta:"Sign in to get a public page for your profile, with its own address to share.",
+    pubTexto:"Anyone with the link sees your card (name, photo or avatar, cover, bio and life verse) and whatever you tick below. Notes, highlights and reading history never appear.",
+    pubEndereco:"Address", pubMostrar:"Also show", pubOpcoes:{ num:"Study numbers (chapters, books, days in a row)", selos:"Achievements", prat:"Bookshelf" },
+    pubPublicar:"Publish profile", pubAtualizar:"Update page", pubVer:"View page", pubCopiar:"Copy link", pubTirar:"Unpublish",
+    pubTirarConfirma:"Take your public page down? The address becomes free for someone else.", pubEnviando:"Publishing…",
+    pubOk:"Published! Your profile is at", pubFora:"Your public page is no longer online.", pubErro:"Could not publish right now. Check your connection and try again.",
+    pubLinkCopiado:"Link copied.", apelidoLivre:"Available.",
+    apelidoErros:{ formato:"Use 3 to 30 lowercase letters without accents, numbers or hyphens (no hyphen at the start or end).", reservado:"That address is reserved. Choose another.",
+      improprio:"That address is not allowed. Choose another.", emUso:"That address is already taken. Choose another." },
+    pubCarregando:"Loading profile…", pubNaoAchou:"Profile not found", pubNaoAchouTexto:"There is no profile published at this address. The person may have changed the address or taken the page down.",
+    pubSemRedeTit:"Could not open the profile", pubSemRede:"Check your connection and try again.", pubLivrosBiblia:"books of the Bible completed", pubMaiorSeq:"longest streak (days)",
+    pubAtualizado:"Updated on", pubCompartilhar:"Share", pubEditar:"Edit my profile", pubConvite:"Study the Bible with Sola",
+    pubConviteTexto:"A free Bible study site with no ads: the original text word by word, lexicon, commentaries by Calvin and Matthew Henry, confessions of faith, an atlas and your own study profile.",
+    pubComecar:"Start reading",
     imgPerfilTit:"Profile image", imgPerfilTexto:"my Bible study on Sola:", compartilharPerfil:"Share profile", imgLivrosLidos:"books read",
     personalizar:"Customize profile", pfNome:"Profile name", pfAvatar:"Avatar", pfAv_letra:"Initial", pfAv_icone:"Icon", pfAv_foto:"Photo",
     pfFotoEscolher:"Choose photo", pfFotoOk:"Photo saved (reduced to 160 px).", pfFotoDica:"The photo is made small and cropped to the center.", pfFotoErro:"Couldn't read that image.",
     pfCapa:"Cover", capas:{linho:"Linen", carmim:"Crimson", ouro:"Gold", oliva:"Olive", mar:"Sea of Galilee", vigilia:"Vigil"},
-    pfVers:"Life verse", pfVersDica:"e.g. Rom 8:28", pfVersErro:"I didn't recognize the reference; try something like “Rom 8:28”.",
+    pfVers:"Life verse", pfVersDica:"e.g. Rom 8:28", pfVersErro:"I didn't recognize the book. Try “Ps 23:1”, “Psalm 23 1” or “Romans 8:28”.", pfVersFaltaCap:"add the chapter and verse (e.g. Ps 23:1).", pfVersEscolha:"tap the verse:", irPara:"Go to",
     pfBio:"About you", pfBioDica:"Church, tradition, what you like to study…", pfEstudo:"Study my way", pfLetra:"Text size",
     pfConf:"Featured confession", pfConfW:"Westminster Standards", pfConf3:"Three Forms of Unity", pfSecoes:"Panel sections (tick the ones shown)",
     pfSobe:"Move up", pfDesce:"Move down",
@@ -278,11 +306,25 @@ const UI = {
     offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
     offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión.",
     meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
+    pubTit:"Página pública", pubNoAr:"en línea", pubSemConta:"Inicia sesión para tener una página pública de tu perfil, con dirección propia para compartir.",
+    pubTexto:"Quien tenga el enlace ve tu tarjeta (nombre, foto o avatar, portada, bio y versículo de vida) y lo que marques abajo. Notas, resaltados e historial de lectura nunca aparecen.",
+    pubEndereco:"Dirección", pubMostrar:"Mostrar también", pubOpcoes:{ num:"Números del estudio (capítulos, libros, días seguidos)", selos:"Logros", prat:"Estantería de libros" },
+    pubPublicar:"Publicar perfil", pubAtualizar:"Actualizar página", pubVer:"Ver página", pubCopiar:"Copiar enlace", pubTirar:"Retirar",
+    pubTirarConfirma:"¿Retirar tu página pública? La dirección queda libre para otra persona.", pubEnviando:"Publicando…",
+    pubOk:"¡Publicado! Tu perfil está en", pubFora:"Tu página pública ya no está en línea.", pubErro:"No se pudo publicar ahora. Revisa la conexión e inténtalo de nuevo.",
+    pubLinkCopiado:"Enlace copiado.", apelidoLivre:"Disponible.",
+    apelidoErros:{ formato:"Usa de 3 a 30 letras minúsculas sin tilde, números o guiones (sin guion al principio ni al final).", reservado:"Esa dirección está reservada. Elige otra.",
+      improprio:"Esa dirección no está permitida. Elige otra.", emUso:"Esa dirección ya está en uso. Elige otra." },
+    pubCarregando:"Cargando el perfil…", pubNaoAchou:"Perfil no encontrado", pubNaoAchouTexto:"No hay un perfil publicado en esta dirección. Tal vez la persona cambió la dirección o retiró la página.",
+    pubSemRedeTit:"No se pudo abrir el perfil", pubSemRede:"Revisa la conexión e inténtalo de nuevo.", pubLivrosBiblia:"libros de la Biblia completos", pubMaiorSeq:"racha más larga (días)",
+    pubAtualizado:"Actualizado el", pubCompartilhar:"Compartir", pubEditar:"Editar mi perfil", pubConvite:"Estudia la Biblia con Sola",
+    pubConviteTexto:"Biblia de estudio gratuita y sin anuncios: texto original palabra por palabra, léxico, comentarios de Calvino y Matthew Henry, confesiones de fe, atlas y tu propio perfil de estudio.",
+    pubComecar:"Empezar a leer",
     imgPerfilTit:"Imagen del perfil", imgPerfilTexto:"mi estudio bíblico en Sola:", compartilharPerfil:"Compartir perfil", imgLivrosLidos:"libros leídos",
     personalizar:"Personalizar perfil", pfNome:"Nombre en el perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícono", pfAv_foto:"Foto",
     pfFotoEscolher:"Elegir foto", pfFotoOk:"Foto guardada (reducida a 160 px).", pfFotoDica:"La foto queda pequeña y recortada al centro.", pfFotoErro:"No se pudo leer esa imagen.",
     pfCapa:"Portada", capas:{linho:"Lino", carmim:"Carmesí", ouro:"Oro", oliva:"Olivo", mar:"Mar de Galilea", vigilia:"Vigilia"},
-    pfVers:"Versículo de vida", pfVersDica:"ej.: Ro 8:28", pfVersErro:"No reconocí la referencia; usa algo como “Ro 8:28”.",
+    pfVers:"Versículo de vida", pfVersDica:"ej.: Ro 8:28", pfVersErro:"No reconocí el libro. Prueba “Sal 23:1”, “Salmo 23 1” o “Romanos 8:28”.", pfVersFaltaCap:"falta el capítulo y el versículo (ej.: Sal 23:1).", pfVersEscolha:"toca el versículo:", irPara:"Ir a",
     pfBio:"Sobre ti", pfBioDica:"Iglesia, tradición, lo que te gusta estudiar…", pfEstudo:"Estudio a mi manera", pfLetra:"Tamaño de letra",
     pfConf:"Confesión destacada", pfConfW:"Normas de Westminster", pfConf3:"Tres Formas de Unidad", pfSecoes:"Secciones del panel (marca las que aparecen)",
     pfSobe:"Subir", pfDesce:"Bajar",
@@ -357,7 +399,7 @@ const AJUDA = {
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias e Salmos e Provérbios. O Sola lembra em que dia você está."],
-        ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), que você pode compartilhar como imagem, a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros (teologia, filosofia, vida cristã, literatura), o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta."],
+        ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), que você pode compartilhar como imagem, a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros (teologia, filosofia, vida cristã, literatura), o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta; com conta, dá também para publicar uma página pública do perfil (solabiblia.com.br/perfil/seu-nome)."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
@@ -388,7 +430,7 @@ const AJUDA = {
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
         ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days and Psalms and Proverbs. Sola remembers your day."],
-        ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your bookshelf (theology, philosophy, Christian life, literature), a shareable profile image, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account."],
+        ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your bookshelf (theology, philosophy, Christian life, literature), a shareable profile image, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account; with one, you can also publish a public profile page (solabiblia.com.br/perfil/your-name)."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
@@ -419,7 +461,7 @@ const AJUDA = {
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
         ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días y Salmos y Proverbios. Sola recuerda tu día."],
-        ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros (teología, filosofía, vida cristiana, literatura), una imagen del perfil para compartir, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta."],
+        ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros (teología, filosofía, vida cristiana, literatura), una imagen del perfil para compartir, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta; con cuenta, también puedes publicar una página pública del perfil (solabiblia.com.br/perfil/tu-nombre)."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
 };
@@ -677,7 +719,8 @@ function grupoDe(usfm){ return GRUPOS.find(g=>g[2].includes(usfm)); }
 function linkRef(usfm, cap, v, rotulo, classe){
   return `<a class="${classe ?? "tema-ref"}" href="${urlCapitulo(usfm, cap, v)}">${rotulo ?? esc(nomeLivro(usfm)+" "+cap+(v ? ":"+v : ""))}</a>`;
 }
-/* Lê um endereço e devolve a rota: {vista:"inicio"} | {vista:"livro",livro} | {vista:"cap",livro,cap,v} | null (não é do app). */
+/* Lê um endereço e devolve a rota: {vista:"inicio"} | {vista:"livro",livro} | {vista:"cap",livro,cap,v} | {vista:"perfil",apelido}
+   | null (não é do app). */
 function rotaDe(caminho, hash){
   const h = (hash||"").match(/^#\/([A-Z0-9]{3})\/(\d+)(?:\/(\d+))?/);   // links antigos: #/JHN/3
   if(h && infoLivro(h[1])) return { vista:"cap", livro:h[1], cap:Math.min(Math.max(+h[2],1), infoLivro(h[1]).ch), v:+h[3]||0 };
@@ -689,11 +732,14 @@ function rotaDe(caminho, hash){
   if(m){ const b = livroPorSlug(m[1]); if(b && +m[2] >= 1 && +m[2] <= b.ch) return { vista:"cap", livro:b.id, cap:+m[2], v:+m[3] }; }
   m = caminho.match(/^\/biblia\/([a-z0-9-]+)\/?$/);
   if(m){ const b = livroPorSlug(m[1]); if(b) return { vista:"livro", livro:b.id }; }
+  m = caminho.match(/^\/perfil\/([a-z0-9][a-z0-9-]{1,28}[a-z0-9])\/?$/);   // página pública de um perfil
+  if(m) return { vista:"perfil", apelido:m[1] };
   return caminho === "/" || caminho === "/index.html" ? { vista:"inicio" } : null;
 }
 function lerRota(){ return rotaDe(location.pathname, location.hash) || { vista:"inicio" }; }   // endereço desconhecido (404): início
 function urlAtual(){
-  return est.vista==="inicio" ? "/" : est.vista==="livro" ? urlLivro(est.livro) : urlCapitulo(est.livro, est.cap, est.alvoV);
+  return est.vista==="inicio" ? "/" : est.vista==="livro" ? urlLivro(est.livro) : est.vista==="perfil" ? urlPerfilPublico(est.apelidoPub)
+    : urlCapitulo(est.livro, est.cap, est.alvoV);
 }
 function atualizarURL(substituir){
   const url = urlAtual();
@@ -705,6 +751,7 @@ function atualizarURL(substituir){
 function navegar(r, op){
   est.vista = r.vista;
   if(r.livro) est.livro = r.livro;
+  if(r.vista==="perfil") est.apelidoPub = r.apelido;
   if(r.vista==="cap"){ est.cap = r.cap; est.alvoV = r.v || 0; est.abrir = r.abrir || null; }
   else { est.alvoV = 0; est.abrir = null; }
   return renderizar(Object.assign({ nav:true }, op));
@@ -781,6 +828,9 @@ async function renderizar(op){
     await renderizarLivro();
     $("lblLivroAtual").textContent = nomeLivro(est.livro);
     document.title = `${nomeLivro(est.livro)} — Sola`;
+  } else if(est.vista==="perfil"){
+    $("lblLivroAtual").textContent = x.livros;
+    await renderizarPerfilPublico();
   } else {
     await renderizarCapitulo(op);
     $("lblLivroAtual").textContent = `${nomeLivro(est.livro)} ${est.cap}`;
@@ -893,12 +943,16 @@ function renderizarInicio(){
       </div>
       ${testamento("AT")}${testamento("NT")}
     </section></div>`;
+  const dicaInicio = document.createElement("div");
+  dicaInicio.className = "dica-ref-linha"; dicaInicio.setAttribute("aria-live", "polite");
+  $("formInicio").after(dicaInicio);
+  ligarDicaRef($("campoInicio"), dicaInicio);
   $("formInicio").addEventListener("submit", (e)=>{
     e.preventDefault();
     const termo = $("campoInicio").value.trim();
     if(!termo) return;
     const r = parseRef(termo);
-    if(r) return irPara(r.livro, r.cap, r.v);
+    if(r && r.cap) return irParaRef(r);
     if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscar(); }
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
@@ -1539,21 +1593,86 @@ function montarListaLivros(){
 }
 
 /* ---------- busca ---------- */
-/* "João 3:16", "jo 3 16", "1 co 13", "sl 23" -> {livro, cap, v} */
+/* Outros nomes e abreviações dos livros (além de ABREV e dos nomes em pt/en/es), já sem acento e sem espaço. */
+const APELIDOS_LIVRO = { PSA:["sm","slm","salmo","ps","psa","psalm","salterio"], SNG:["canticos","canticodoscanticos","canticodesalomao","cantaresdesalomao","songofsongs","songofsolomon","cant"],
+  JOB:["jb"], PRO:["pr","prov"], ECC:["ecl","qoelet"], EZR:["esd"], OBA:["abd","abdias"], ZEP:["sof"], ZEC:["zac"], MIC:["miq"],
+  HAB:["hab"], MRK:["mr","mar"], LUK:["lu"], ACT:["atos","atosdosapostolos","hch","hechos"], PHP:["filip"], PHM:["flm","filem"],
+  JAS:["tiago","sant","stg"], REV:["apc","apocalipse","revelacao","revelation"], JHN:["joao"], JON:["jonas"],
+  "1SA":["1sa","1sam"], "2SA":["2sa","2sam"], "1KI":["1re","1reis","1reyes","1kings"], "2KI":["2re","2reis","2reyes","2kings"],
+  "1TH":["1tes","1tess"], "2TH":["2tes","2tess"], "1TI":["1tim"], "2TI":["2tim"], "1PE":["1pd","1ped"], "2PE":["2pd","2ped"],
+  "1JN":["1joao"], "2JN":["2joao"], "3JN":["3joao"] };
+/* distância de edição (letras trocadas, a mais ou a menos), para aceitar "genisis" e "apocalipce" */
+function distancia(a, b){
+  if(Math.abs(a.length - b.length) > 2) return 9;
+  let ant = [...Array(b.length + 1).keys()];
+  for(let i = 1; i <= a.length; i++){
+    const atual = [i];
+    for(let j = 1; j <= b.length; j++) atual[j] = Math.min(ant[j] + 1, atual[j - 1] + 1, ant[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    ant = atual;
+  }
+  return ant[b.length];
+}
+/* Acha o livro por um nome já normalizado ("1corintios", "sl", "apocalipce"). solto = sem capítulo: só nome inteiro. */
+function acharLivro(nome, solto){
+  if(!nome) return null;
+  const livros = est.meta.books, limpo = (n)=>normStr(n).replace(/[^a-z0-9]/g, "");
+  const nomes = (b)=>[b.pt, b.en, b.es].map(limpo);
+  const exato = nome.length >= 3 && livros.find(b=>nomes(b).includes(nome));          // "jo" (Jó sem acento) fica para João
+  if(exato) return exato;
+  const apelido = Object.keys(APELIDOS_LIVRO).find(id=>APELIDOS_LIVRO[id].includes(nome));
+  if(solto) return apelido && nome.length >= 5 ? infoLivro(apelido) : null;            // sozinho, "os" ou "at" são palavras
+  if(ABREV[nome]) return infoLivro(ABREV[nome]);
+  if(apelido) return infoLivro(apelido);
+  if(livros.find(b=>b.id.toLowerCase() === nome)) return infoLivro(nome.toUpperCase());
+  if(nome.length >= 2){                                                                  // começo do nome: "gen", "filip", "jud"
+    const comeco = (lng)=>livros.find(b=>limpo(b[lng]).startsWith(nome));
+    const b = comeco("pt") || comeco("es") || comeco("en");
+    if(b) return b;
+  }
+  // erro de digitação: o nome mais parecido (até 1 letra nos curtos, 2 nos longos)
+  let melhor = null, menor = 9;
+  for(const l of livros) for(const n of nomes(l)){
+    const d = distancia(nome, n);
+    if(d < menor){ menor = d; melhor = l; }
+  }
+  return melhor && menor <= (nome.length >= 7 ? 2 : nome.length >= 4 ? 1 : 0) ? melhor : null;
+}
+/* Lê uma referência escrita de muitos jeitos: "João 3:16", "jo 3 16", "Jo3.16", "1 co 13", "I Coríntios 13:4",
+   "primeira coríntios 13", "Sm 51", "salmo 23 versículo 1", "apocalipce 21", "Judas 3", "Salmos".
+   Devolve {livro, cap, v} (cap 0 = só o livro; v 0 = o capítulo inteiro) ou null. */
 function parseRef(txt){
-  const cru = txt.trim().toLowerCase();
-  const m = normStr(cru).match(/^([1-3]?\s*[a-z]+(?:\s+[a-z]+)*)\.?\s*(\d+)(?:\s*[:.,\s]\s*(\d+))?(?:\s*-\s*\d+)?$/);
+  const cru = String(txt || "").trim().toLowerCase();
+  let s = normStr(cru).replace(/[ºª°]/g, "").replace(/\s+/g, " ").trim();
+  s = s.replace(/^(livro de |evangelho (de |segundo )?|sao |s\. ?|st\.? |saint )/, "");
+  s = s.replace(/^(terceir[oa]|tercer[oa]?|third|3rd|iii)\s+(?=[a-z])/, "3").replace(/^(segund[oa]|second|2nd|ii)\s+(?=[a-z])/, "2")
+       .replace(/^(primeir[oa]|primer[oa]?|first|1st|i)\s+(?=[a-z])/, "1").replace(/^([1-3])[oa]\s*(?=[a-z])/, "$1");
+  const m = s.match(/^([1-3]?)\s*([a-z][a-z.\s]*?)\.?\s*(\d.*)?$/);
   if(!m) return null;
-  const nome = m[1].replace(/\s+/g, "");
-  let livro = null;
-  if(/^jó/.test(cru)) livro = infoLivro("JOB");   // sem o acento, "jo" é João
-  if(!livro && ABREV[nome]) livro = infoLivro(ABREV[nome]);
-  const nomes = (b)=>[b.pt, b.en, b.es, b.id].map(n=>normStr(n).replace(/\s+/g, ""));
-  if(!livro) livro = est.meta.books.find(b=>nomes(b).includes(nome));
-  if(!livro && nome.length >= 3) livro = est.meta.books.find(b=>nomes(b).some(n=>n.startsWith(nome)));
-  const cap = +m[2];
-  if(!livro || cap < 1 || cap > livro.ch) return null;
-  return { livro: livro.id, cap, v: +m[3] || 0 };
+  const nome = (m[1] + m[2]).replace(/[.\s]/g, "").replace(/(capitulo|cap|chapter|cp)$/, "");
+  const resto = (m[3] || "").trim();
+  const mn = resto.match(/^(\d+)(?:\s*(?:[:.,;]|\s|v|vs|vv|vers|versiculo|verso|verse)\.?\s*(\d+))?(?:\s*[-–]\s*\d+)?$/);   // o fim de um intervalo fica de fora
+  if(resto && !mn) return null;
+  const nums = mn ? [+mn[1]].concat(mn[2] ? [+mn[2]] : []) : [];
+  let livro = /^jó/.test(cru) ? infoLivro("JOB") : acharLivro(nome, !nums.length);   // sem o acento, "jo" é João
+  if(!livro && !m[1] && nums.length) livro = acharLivro("1" + nome, false);              // "coríntios 13": a primeira
+  if(!livro) return null;
+  if(!nums.length) return { livro: livro.id, cap: 0, v: 0 };
+  let [cap, v] = nums;
+  if(livro.ch === 1 && nums.length === 1){ v = cap; cap = 1; }                            // Judas 3, Filemom 4: versículo
+  if(cap < 1 || cap > livro.ch) return null;
+  return { livro: livro.id, cap, v: v || 0 };
+}
+const nomeRef = (r)=>r.cap ? (r.v ? refStr(r.livro, r.cap, r.v) : `${nomeLivro(r.livro)} ${r.cap}`) : nomeLivro(r.livro);
+function irParaRef(r){ return r.cap ? irPara(r.livro, r.cap, r.v) : navegar({ vista:"livro", livro:r.livro }); }
+/* Enquanto a pessoa digita numa busca: se o texto é uma referência, um botão "Ir para Salmos 51" logo abaixo. */
+function ligarDicaRef(campo, dica, antes){
+  const atualizar = ()=>{
+    const r = (!antes || antes()) && campo.value.trim() ? parseRef(campo.value) : null;
+    dica.innerHTML = r ? `<button type="button" class="dica-ref">${ico("seta")} ${t().irPara} <b>${esc(nomeRef(r))}</b></button>` : "";
+    if(r) dica.querySelector("button").addEventListener("click", ()=>{ fecharPaineis(); irParaRef(r); });
+  };
+  campo.addEventListener("input", atualizar);
+  return atualizar;
 }
 /* Marca os termos no texto ignorando acentos e maiúsculas ("graca" destaca "graça"). */
 function destacar(texto, termos){
@@ -1653,7 +1772,7 @@ async function buscar(){
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
   const ref = parseRef(termo);
-  if(ref){ alternarPainel("painelBusca", false); return irPara(ref.livro, ref.cap, ref.v); }
+  if(ref && ref.cap){ alternarPainel("painelBusca", false); return irParaRef(ref); }
   if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscarStrong(); }
   if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
   const frase = normStr(termo).replace(/\s+/g, " ");
@@ -1819,6 +1938,7 @@ function prepararAbas(){
       document.querySelector(".busca-escopo").style.display = est.buscaModo==="texto" ? "" : "none";
       $("campoBusca").placeholder = exemplo();
       $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+      if(est.dicaBusca) est.dicaBusca();
       if(est.buscaModo==="temas" && !$("campoBusca").value.trim()) buscarTemas();
       else if(est.buscaModo==="strong" && $("campoBusca").value.trim()) buscarStrong();
     };
@@ -2686,13 +2806,15 @@ function perfil(){
   const p = est.perfil && typeof est.perfil === "object" ? est.perfil : {};
   const av = Object.assign({ t:"letra", cor:"carmim", ic:"cruz", foto:"" }, p.av || {});
   const secoes = Object.assign({ ordem:[], ocultas:[] }, p.secoes || {});
-  return { nome:"", capa:"linho", vers:"", bio:"", letra:"m", conf:"westminster", ...p, av, secoes };
+  const pub = Object.assign({ on:false, apelido:"", num:true, selos:true, prat:true, conta:"" }, p.pub || {});
+  return { nome:"", capa:"linho", vers:"", bio:"", letra:"m", conf:"westminster", ...p, av, secoes, pub };
 }
 /* Confere um perfil que veio de fora (conta, backup): só campos conhecidos, tamanhos limitados. */
 function perfilValido(v){
   if(!v || typeof v !== "object") return null;
   const s = (x, n)=>typeof x === "string" ? x.slice(0, n) : "";
   const av = v.av && typeof v.av === "object" ? v.av : {};
+  const pub = v.pub && typeof v.pub === "object" ? v.pub : {};
   return {
     nome: s(v.nome, 40), bio: s(v.bio, 200),
     vers: typeof v.vers === "string" && chaveValida(v.vers) ? v.vers : "",
@@ -2703,6 +2825,9 @@ function perfilValido(v){
           ic: PERFIL_ICONES.includes(av.ic) ? av.ic : "cruz", foto: typeof av.foto === "string" && RE_FOTO.test(av.foto) && av.foto.length < 45000 ? av.foto : "" },
     secoes: { ordem: (v.secoes && Array.isArray(v.secoes.ordem) ? v.secoes.ordem : []).filter(x=>SECOES_PAINEL.includes(x)),
               ocultas: (v.secoes && Array.isArray(v.secoes.ocultas) ? v.secoes.ocultas : []).filter(x=>SECOES_PAINEL.includes(x)) },
+    pub: { on: !!pub.on, apelido: typeof pub.apelido === "string" && !problemaApelido(pub.apelido) ? pub.apelido : "",
+           num: pub.num !== false, selos: pub.selos !== false, prat: pub.prat !== false,
+           conta: typeof pub.conta === "string" && /^[0-9a-f-]{36}$/.test(pub.conta) ? pub.conta : "" },
   };
 }
 function salvarPerfil(mudanca){
@@ -2716,8 +2841,8 @@ function aplicarPerfil(){
 }
 function nomeExibicao(){ const u = est.sessao && est.sessao.user; return perfil().nome.trim() || (u ? nomeUsuario(u) : ""); }
 function perfilPersonalizado(){ const p = perfil(); return !!(p.nome.trim() || p.av.t !== "letra" || p.av.cor !== "carmim"); }
-function htmlAvatar(classe){
-  const p = perfil(), nome = nomeExibicao(), cor = PERFIL_CORES[p.av.cor] || PERFIL_CORES.carmim;
+function htmlAvatar(classe, p = perfil(), nome = nomeExibicao()){
+  const cor = PERFIL_CORES[p.av.cor] || PERFIL_CORES.carmim;
   if(p.av.t === "foto" && p.av.foto) return `<span class="conta-letra ${classe} com-foto" aria-hidden="true"><img src="${p.av.foto}" alt=""></span>`;
   const dentro = p.av.t === "icone" ? ico(p.av.ic) : nome ? esc(nome.trim()[0].toUpperCase()) : ico("pessoa");
   return `<span class="conta-letra ${classe}" style="background:${cor}" aria-hidden="true">${dentro}</span>`;
@@ -2745,13 +2870,12 @@ async function textoVersiculoVida(chave){
   const trad = est.idioma === "en" ? "kjv" : est.idioma === "es" ? "rva" : "blivre";
   try{ const caps = await carregarLivro(trad, l); return (caps[+c - 1] || [])[+v - 1] || ""; }catch(e){ return ""; }
 }
-function htmlCartaoPerfil(x, extra){
-  const p = perfil(), nome = nomeExibicao() || x.visitante;
+function htmlCartaoPerfil(x, extra, p = perfil(), nome = nomeExibicao() || x.visitante, compartilhar = true){
   const [l, c, v] = (p.vers || "").split(".");
   return `<div class="perfil-cartao capa-${p.capa}">
       <div class="perfil-capa"></div>
-      <button type="button" class="perfil-compartilhar" aria-label="${x.compartilharPerfil}" title="${x.compartilharPerfil}">${ico("compartilhar")}</button>
-      <div class="perfil-id">${htmlAvatar("grande")}
+      ${compartilhar ? `<button type="button" class="perfil-compartilhar" aria-label="${x.compartilharPerfil}" title="${x.compartilharPerfil}">${ico("compartilhar")}</button>` : ""}
+      <div class="perfil-id">${htmlAvatar("grande", p, nome)}
         <div><strong class="perfil-nome">${esc(nome)}</strong>${p.bio ? `<span class="perfil-bio">${esc(p.bio)}</span>` : ""}${extra || ""}</div>
       </div>
       ${p.vers ? `<blockquote class="perfil-vers"><p data-vers-vida="${esc(p.vers)}"></p>
@@ -2875,7 +2999,206 @@ async function compartilharPerfil(){
   const x = t();
   await catalogoPrateleira();
   return abrirImagem({ titulo: x.imgPerfilTit, desenhar: desenharPerfil,
-    texto: (a)=>`${a.ref} — ${x.imgPerfilTexto} https://solabiblia.com.br` });
+    texto: (a)=>`${a.ref} — ${x.imgPerfilTexto} https://solabiblia.com.br${pubAtivo() ? urlPerfilPublico(perfil().pub.apelido) : ""}` });
+}
+
+/* ----- página pública do perfil (opcional, com conta): solabiblia.com.br/perfil/<apelido>/ -----
+   A pessoa escolhe o apelido e o que mostrar; o app grava um retrato do cartão em perfis_publicos (ferramentas/supabase.sql)
+   pela função publicar_perfil() e o refaz depois de cada sincronização. Qualquer visitante lê com a chave pública, por
+   fetch simples (sem carregar o cliente do Supabase). As listas abaixo são as mesmas de apelido_permitido() no SQL. */
+const APELIDO_RESERVADOS = ["sola","solabiblia","sola-biblia","admin","administrador","administracao","suporte","contato",
+  "ajuda","oficial","equipe","moderador","moderacao","root","sistema","perfil","perfis","biblia","api","www","null",
+  "undefined","deus","jesus","cristo","jesus-cristo","espirito-santo","senhor","igreja"];
+const APELIDO_PROIBIDOS = ["puta","puto","putas","putos","merda","porra","foda","fodase","foder","fodido","fodida","cu",
+  "cus","cuzao","cuzinho","bosta","piroca","corno","viado","vadia","vagabunda","vagabundo","otario","babaca",
+  "imbecil","cacete","buceta","boceta","xoxota","xereca","punheta","prostituta","prostituto","nazi","nazista",
+  "hitler","satanas","satan","diabo","lucifer","demonio","sexo","porno","porn","xxx","anal","nude","nudes",
+  "fuck","fucker","fucking","shit","bitch","cunt","dick","cock","pussy","whore","slut","fag","faggot","nigger",
+  "nigga","rape","rapist","asshole","bastard","kkk","mierda","joder","cono","pendejo","pendeja","cabron",
+  "cabrona","verga","chinga","chingar","maricon","culo","zorra","perra","gilipollas","hijueputa"];
+const APELIDO_RAIZES = /^(arromb|vagabund|prostitut|punhet|fodid|caralh|bucet|bocet|xoxot|putari|pornog|fuck|nigg|faggot|pendej|chingad|hijueput|gilipoll|retardad|nazis|satanis)/;
+const APELIDO_SEMPRE = /(caralho|buceta|boceta|punheta|xoxota|fuck|nigger|nigga|faggot|hitler|putaria|putinha|putona)/;
+function problemaApelido(a){
+  if(!/^[a-z0-9][a-z0-9-]{1,28}[a-z0-9]$/.test(a) || a.includes("--")) return "formato";
+  if(APELIDO_RESERVADOS.includes(a)) return "reservado";
+  if(a.split("-").some(s=>APELIDO_PROIBIDOS.includes(s) || APELIDO_RAIZES.test(s)) || APELIDO_SEMPRE.test(a.replace(/-/g, ""))) return "improprio";
+  return "";
+}
+const limparApelido = (s)=>normStr(s).replace(/[\s_.]+/g, "-").replace(/[^a-z0-9-]/g, "").slice(0, 30);
+function sugerirApelido(){ return limparApelido(nomeExibicao()).replace(/-+/g, "-").replace(/^-+|-+$/g, ""); }
+const urlPerfilPublico = (a)=>`/perfil/${a}/`;
+function pubAtivo(){ const pub = perfil().pub, u = est.sessao && est.sessao.user; return !!(u && pub.on && pub.apelido && pub.conta === u.id); }
+/* o retrato publicado: só o que está no cartão e o que a pessoa marcou (nunca anotações, marcações ou datas de leitura) */
+function dadosPublicos(){
+  const p = perfil(), pub = p.pub, r = resumoEstudo();
+  const d = { v: 1, nome: nomeExibicao().slice(0, 40), bio: p.bio, capa: p.capa, vers: p.vers,
+    av: Object.assign({ t: p.av.t, cor: p.av.cor, ic: p.av.ic }, p.av.t === "foto" && p.av.foto ? { foto: p.av.foto } : {}) };
+  if(pub.num) d.num = { lidos: r.lidos, livros: est.meta.books.filter(b=>(r.porLivro[b.id] || 0) >= b.ch).length,
+    seq: r.seq, seqMax: Math.max(sequenciaMaxima(), r.seq) };
+  if(pub.selos) d.selos = conquistas().filter(c=>c.feito).map(c=>c.id);
+  if(pub.prat) d.prat = Object.entries(est.prateleira || {}).sort((a, b)=>(b[1].em || 0) - (a[1].em || 0)).slice(0, 80)
+    .map(([id, o])=>id.startsWith("u-") ? { t: o.t, a: o.a || "", st: o.st } : { id, st: o.st });
+  return d;
+}
+/* grava a página; sem forcar, só quando algo mudou desde o último envio */
+async function publicarPerfil(forcar){
+  if(!pubAtivo()) return { ok: false };
+  const pub = perfil().pub, dados = dadosPublicos(), assinatura = JSON.stringify([pub.apelido, dados]);
+  if(!forcar && lerLS("logos_pub_enviado", "") === assinatura) return { ok: true };
+  const sb = await clienteConta();
+  const { error } = await sb.rpc("publicar_perfil", { p_apelido: pub.apelido, p_dados: dados });
+  if(error){
+    const m = String(error.message || "");
+    return { ok: false, erro: /apelido_em_uso/.test(m) ? "emUso" : /apelido_invalido/.test(m) ? "formato" : "rede" };
+  }
+  gravarLS("logos_pub_enviado", assinatura);
+  return { ok: true };
+}
+function agendarPublicacao(){
+  if(!pubAtivo()) return;
+  clearTimeout(est.timerPub);
+  est.timerPub = setTimeout(()=>publicarPerfil().catch(e=>console.warn("perfil público", e)), 3000);
+}
+async function lerPerfilPublico(apelido){
+  const r = await fetch(`${CONTA.url}/rest/v1/perfis_publicos?apelido=eq.${encodeURIComponent(apelido)}&select=apelido,dados,atualizado_em`,
+    { headers: { apikey: CONTA.chave, Accept: "application/json" }, cache: "no-store" });
+  if(!r.ok) throw new Error("perfil público " + r.status);
+  const l = await r.json();
+  return Array.isArray(l) && l[0] ? l[0] : null;
+}
+/* seção "Página pública" da aba Perfil */
+function htmlPaginaPublica(x){
+  if(!temConta()) return "";
+  const u = est.sessao && est.sessao.user, pub = perfil().pub;
+  if(!u) return `<h3 class="estudo-sub">${x.pubTit}</h3><p class="fonte">${x.pubSemConta}</p>`;
+  const ativo = pubAtivo();
+  return `<h3 class="estudo-sub">${x.pubTit}${ativo ? ` <small class="sub-conta pub-no-ar">${x.pubNoAr}</small>` : ""}</h3>
+    <div class="pub-caixa" id="pubCaixa">
+      <p class="fonte">${x.pubTexto}</p>
+      <label class="pf-campo"><span>${x.pubEndereco}</span>
+        <span class="pub-endereco"><span>solabiblia.com.br/perfil/</span><input id="pubApelido" maxlength="30" autocapitalize="none" autocomplete="off" spellcheck="false" value="${esc(pub.apelido || sugerirApelido())}"></span>
+        <small class="fonte" id="pubAviso" role="status"></small></label>
+      <div class="pf-campo"><span>${x.pubMostrar}</span>
+        ${["num", "selos", "prat"].map(k=>`<label class="pub-opcao"><input type="checkbox" data-pub="${k}" ${pub[k] ? "checked" : ""}> ${x.pubOpcoes[k]}</label>`).join("")}</div>
+      <div class="conta-acoes">${ativo
+        ? `<button class="btn-ouro" id="pubPublicar">${x.pubAtualizar}</button><a class="btn-linha" href="${urlPerfilPublico(pub.apelido)}">${x.pubVer}</a>
+           <button class="btn-linha" id="pubCopiar">${x.pubCopiar}</button><button class="link-discreto" id="pubTirar">${x.pubTirar}</button>`
+        : `<button class="btn-ouro" id="pubPublicar">${x.pubPublicar}</button>`}</div>
+    </div>`;
+}
+function ligarPaginaPublica(){
+  const cx = $("pubCaixa"); if(!cx) return;
+  const x = t(), campo = $("pubApelido"), aviso = ()=>$("pubAviso");
+  const refazer = async (msg)=>{ const rolar = $("conteudoEstudo").scrollTop; await montarMeuEstudo(); $("conteudoEstudo").scrollTop = rolar; if(msg && aviso()) aviso().textContent = msg; };
+  let espera;
+  campo.addEventListener("input", ()=>{
+    const limpo = limparApelido(campo.value);
+    if(limpo !== campo.value) campo.value = limpo;
+    clearTimeout(espera);
+    espera = setTimeout(async ()=>{
+      const a = campo.value, prob = problemaApelido(a);
+      if(prob){ aviso().textContent = x.apelidoErros[prob]; return; }
+      if(pubAtivo() && a === perfil().pub.apelido){ aviso().textContent = ""; return; }
+      try{ const r = await lerPerfilPublico(a); if(campo.value === a) aviso().textContent = r ? x.apelidoErros.emUso : x.apelidoLivre; }
+      catch(e){ aviso().textContent = ""; }
+    }, 450);
+  });
+  cx.querySelectorAll("[data-pub]").forEach(c=>c.addEventListener("change", ()=>{
+    salvarPerfil({ pub: { ...perfil().pub, [c.dataset.pub]: c.checked } }); agendarPublicacao();
+  }));
+  $("pubPublicar").addEventListener("click", async ()=>{
+    const a = campo.value.replace(/^-+|-+$/g, ""), prob = problemaApelido(a);
+    if(prob){ aviso().textContent = x.apelidoErros[prob]; campo.focus(); return; }
+    const antes = perfil().pub;
+    salvarPerfil({ pub: { ...antes, on: true, apelido: a, conta: est.sessao.user.id } });
+    aviso().textContent = x.pubEnviando;
+    const r = await publicarPerfil(true).catch(()=>({ ok: false, erro: "rede" }));
+    if(!r.ok){
+      salvarPerfil({ pub: antes });
+      aviso().textContent = r.erro === "emUso" || r.erro === "formato" ? x.apelidoErros[r.erro] : x.pubErro;
+      return;
+    }
+    await refazer(`${x.pubOk} solabiblia.com.br${urlPerfilPublico(a)}`);
+  });
+  if($("pubCopiar")) $("pubCopiar").addEventListener("click", async ()=>{
+    if(await copiarTexto("https://solabiblia.com.br" + urlPerfilPublico(perfil().pub.apelido))) aviso().textContent = x.pubLinkCopiado;
+  });
+  if($("pubTirar")) $("pubTirar").addEventListener("click", async ()=>{
+    if(!confirm(x.pubTirarConfirma)) return;
+    try{
+      const { error } = await (await clienteConta()).rpc("despublicar_perfil");
+      if(error) throw error;
+    }catch(e){ console.warn("perfil público", e); aviso().textContent = x.pubErro; return; }
+    salvarPerfil({ pub: { ...perfil().pub, on: false } });
+    try{ localStorage.removeItem("logos_pub_enviado"); }catch(e){}
+    await refazer(x.pubFora);
+  });
+}
+/* a página que o visitante vê em /perfil/<apelido>/ */
+async function renderizarPerfilPublico(){
+  const x = t(), a = est.apelidoPub, alvo = $("leitor");
+  document.title = `@${a} — Sola`;
+  alvo.innerHTML = `<div class="perfil-publico"><p class="fonte pub-carregando">${x.pubCarregando}</p></div>`;
+  let linha = null, falhou = false;
+  try{ linha = temConta() ? await lerPerfilPublico(a) : null; }catch(e){ console.warn("perfil público", e); falhou = true; }
+  const [cat] = await Promise.all([catalogoPrateleira()]);
+  if(est.vista !== "perfil" || est.apelidoPub !== a) return;   // a pessoa já foi para outra página
+  const convite = `<aside class="pub-convite"><p class="heroi-sobre">Sola</p><h2>${x.pubConvite}</h2><p>${x.pubConviteTexto}</p>
+      <a class="btn-ouro" href="/">${x.pubComecar} ${ico("seta")}</a></aside>`;
+  if(!linha){
+    alvo.innerHTML = `<div class="perfil-publico pub-vazio"><h1>${falhou ? x.pubSemRedeTit : x.pubNaoAchou}</h1>
+      <p>${falhou ? x.pubSemRede : x.pubNaoAchouTexto}</p>${convite}</div>`;
+    return;
+  }
+  const d = linha.dados && typeof linha.dados === "object" ? linha.dados : {};
+  const p = perfilValido(d), nome = p.nome.trim() || a;
+  document.title = `${nome} (@${a}) — Sola`;
+  const int = (v, max)=>Math.max(0, Math.min(max, Math.round(+v) || 0));
+  const total = est.meta.books.reduce((n, b)=>n + b.ch, 0), num = d.num && typeof d.num === "object" ? d.num : null;
+  let numeros = "";
+  if(num){
+    const lidos = int(num.lidos, total), pct = Math.round(lidos / total * 1000) / 10;
+    numeros = `<div class="estudo-numeros pub-numeros">
+      <div class="num largo"><b>${lidos.toLocaleString(est.idioma)}</b><span>${x.de} ${total.toLocaleString(est.idioma)} ${x.capsLidos} · ${pct.toLocaleString(est.idioma)}%</span>
+        <div class="plano-barra"><i style="width:${pct}%"></i></div></div>
+      <div class="num"><b>${int(num.livros, 66)}</b><span>${x.pubLivrosBiblia}</span></div>
+      <div class="num">${ico("chama")}<b>${int(num.seq, 99999)}</b><span>${x.diasSeguidos}</span></div>
+      <div class="num"><b>${int(num.seqMax, 99999)}</b><span>${x.pubMaiorSeq}</span></div></div>`;
+  }
+  const todos = conquistas(), ids = Array.isArray(d.selos) ? d.selos : [];
+  const feitos = todos.filter(c=>ids.includes(c.id));
+  const selos = feitos.length ? `<h3 class="estudo-sub">${x.conquistasTit} <small class="sub-conta">${feitos.length}/${todos.length}</small></h3>
+    <div class="selos">${feitos.map(c=>`<div class="selo feito"><span class="selo-ic">${ico(c.ic)}</span><b>${esc(x.selos[c.id] || c.id)}</b></div>`).join("")}</div>` : "";
+  const livros = (Array.isArray(d.prat) ? d.prat.slice(0, 80) : []).map(o=>{
+    if(!o || typeof o !== "object" || !ST_LIVRO.includes(o.st)) return null;
+    if(o.id){ const c = cat.obras.find(b=>b.id === o.id); return c ? { ...c, st: o.st } : null; }
+    const tt = typeof o.t === "string" ? o.t.slice(0, 120).trim() : "";
+    return tt ? { t: tt, a: typeof o.a === "string" ? o.a.slice(0, 80) : "", tr: "outra", st: o.st } : null;
+  }).filter(Boolean);
+  const prat = livros.length ? `<h3 class="estudo-sub">${x.prateleiraTit} <small class="sub-conta">${livros.length}</small></h3>` + ST_LIVRO.map(st=>{
+    const l = livros.filter(o=>o.st === st);
+    return l.length ? `<div class="prat"><p class="prat-rot">${x.stLivro[st]} <small>${l.length}</small></p><div class="prat-livros">${l.map(o=>
+      `<span class="lombada tr-${o.tr || "outra"}" style="height:${7 + (o.t.length % 5) * .45}rem" title="${esc(o.t + (o.a ? " — " + o.a : ""))}"><span>${esc(o.t)}</span></span>`).join("")}</div></div>` : "";
+  }).join("") : "";
+  const meu = pubAtivo() && perfil().pub.apelido === a;
+  const quando = new Date(linha.atualizado_em);
+  alvo.innerHTML = `<div class="perfil-publico">
+      ${htmlCartaoPerfil(x, `<span class="perfil-apelido">@${esc(a)}</span>`, p, nome, false)}
+      ${numeros}${selos}${prat}
+      <div class="pub-rodape">
+        ${isNaN(quando) ? "" : `<p class="fonte">${x.pubAtualizado} ${esc(quando.toLocaleDateString(est.idioma, { day:"numeric", month:"long", year:"numeric" }))}</p>`}
+        <div class="conta-acoes"><button class="btn-linha" id="pubCompartilharLink">${ico("compartilhar")} ${x.pubCompartilhar}</button>
+          ${meu ? `<button class="btn-linha" id="pubEditar">${x.pubEditar}</button>` : ""}</div>
+      </div>
+      ${convite}
+    </div>`;
+  preencherVersiculoVida(alvo);
+  $("pubCompartilharLink").addEventListener("click", async ()=>{
+    const url = "https://solabiblia.com.br" + urlPerfilPublico(a);
+    if(navigator.share){ try{ await navigator.share({ title: `${nome} — Sola`, url }); return; }catch(e){ if(e && e.name === "AbortError") return; } }
+    if(await copiarTexto(url)) avisar(x.pubLinkCopiado, null, null, 2000);
+  });
+  if($("pubEditar")) $("pubEditar").addEventListener("click", ()=>abrirMeuEstudo("perfil"));
 }
 
 /* ----- editor do perfil (aba Perfil) ----- */
@@ -2897,8 +3220,8 @@ function htmlEditorPerfil(x){
     </div>
     <div class="pf-campo"><span>${x.pfCapa}</span>
       <div class="pf-opcoes">${PERFIL_CAPAS.map(cp=>`<button type="button" class="pf-capa capa-${cp}${p.capa === cp ? " ativo" : ""}" data-capa="${cp}" aria-label="${x.capas[cp]}" title="${x.capas[cp]}" aria-pressed="${p.capa === cp}"><span class="perfil-capa"></span></button>`).join("")}</div></div>
-    <label class="pf-campo"><span>${x.pfVers}</span><input id="pfVers" maxlength="30" value="${p.vers ? esc(refStr(...p.vers.split(".").map((y, i)=>i ? +y : y))) : ""}" placeholder="${x.pfVersDica}">
-      <small class="fonte" id="pfVersAviso"></small></label>
+    <div class="pf-campo"><label class="pf-campo"><span>${x.pfVers}</span><input id="pfVers" maxlength="40" autocomplete="off" value="${p.vers ? esc(refStr(...p.vers.split(".").map((y, i)=>i ? +y : y))) : ""}" placeholder="${x.pfVersDica}"></label>
+      <div class="pf-vers-dica" id="pfVersDica" aria-live="polite"></div></div>
     <label class="pf-campo"><span>${x.pfBio}</span><textarea id="pfBio" maxlength="200" rows="2" placeholder="${x.pfBioDica}">${esc(p.bio)}</textarea></label>
     <h4 class="pf-sub">${x.pfEstudo}</h4>
     <div class="pf-campo"><span>${x.pfLetra}</span><div class="seg" role="group" aria-label="${x.pfLetra}">${Object.keys(PERFIL_LETRAS).map(k=>
@@ -2923,11 +3246,33 @@ function ligarEditorPerfil(){
   const adiar = (fn)=>{ clearTimeout(espera); espera = setTimeout(fn, 500); };
   $("pfNome").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ nome: e.target.value.trim() }); atualizarCartaoTopo(); }));
   $("pfBio").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ bio: e.target.value.trim() }); atualizarCartaoTopo(); }));
-  $("pfVers").addEventListener("change", (e)=>{
+  // enquanto digita: o que entendeu, o texto do versículo, ou os números para tocar quando falta o versículo
+  const versosDe = async (r)=>{ try{ return (await carregarLivro(est.idioma === "en" ? "kjv" : est.idioma === "es" ? "rva" : "blivre", r.livro))[r.cap - 1] || []; }catch(e){ return []; } };
+  const dicaVers = async ()=>{
+    const el = $("pfVersDica"), txt = $("pfVers").value.trim(), vez = est.vezVers = (est.vezVers || 0) + 1;
+    if(!txt){ el.innerHTML = ""; return; }
+    const r = parseRef(txt);
+    if(!r){ el.innerHTML = `<p class="fonte">${x.pfVersErro}</p>`; return; }
+    if(!r.cap){ el.innerHTML = `<p class="fonte"><b>${esc(nomeLivro(r.livro))}</b> — ${x.pfVersFaltaCap}</p>`; return; }
+    const versos = await versosDe(r);
+    if(vez !== est.vezVers) return;
+    if(r.v && versos[r.v - 1]){
+      const tv = versos[r.v - 1];
+      el.innerHTML = `<p class="pf-vers-previa"><b>${esc(refStr(r.livro, r.cap, r.v))}</b> “${esc(tv.length > 150 ? tv.slice(0, 150).trim() + "…" : tv)}”</p>`;
+      return;
+    }
+    el.innerHTML = `<p class="fonte"><b>${esc(nomeLivro(r.livro))} ${r.cap}</b> — ${x.pfVersEscolha}</p>
+      <div class="pf-versos">${versos.map((_, i)=>`<button type="button" data-vv="${i + 1}">${i + 1}</button>`).join("")}</div>`;
+    el.querySelectorAll("[data-vv]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ vers: `${r.livro}.${r.cap}.${b.dataset.vv}` }); refazer(); }));
+  };
+  let esperaVers;
+  $("pfVers").addEventListener("input", ()=>{ clearTimeout(esperaVers); esperaVers = setTimeout(dicaVers, 250); });
+  $("pfVers").addEventListener("keydown", (e)=>{ if(e.key === "Enter"){ e.preventDefault(); e.target.blur(); } });
+  $("pfVers").addEventListener("change", async (e)=>{
     const txt = e.target.value.trim(), r = txt ? parseRef(txt) : null;
-    if(txt && (!r || !r.v)){ $("pfVersAviso").textContent = x.pfVersErro; return; }
-    $("pfVersAviso").textContent = "";
-    salvarPerfil({ vers: r ? `${r.livro}.${r.cap}.${r.v}` : "" }); refazer();
+    if(!txt){ salvarPerfil({ vers: "" }); return refazer(); }
+    if(!r || !r.cap || !r.v || !(await versosDe(r))[r.v - 1]) return;    // incompleta: a dica (já à vista) mostra o que falta
+    salvarPerfil({ vers: `${r.livro}.${r.cap}.${r.v}` }); refazer();
   });
   ed.querySelectorAll("[data-av]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, t: b.dataset.av } }); refazer(); }));
   ed.querySelectorAll("[data-ic]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, ic: b.dataset.ic } }); refazer(); }));
@@ -3178,7 +3523,7 @@ async function montarMeuEstudo(){
   });
   $("tituloEstudo").textContent = est.abaEstudo === "perfil" ? x.abaPerfil : x.meuEstudo;
   const ligarCompartilhar = ()=>alvo.querySelectorAll(".perfil-compartilhar").forEach(b=>b.addEventListener("click", compartilharPerfil));
-  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); ligarEditorPerfil(); preencherVersiculoVida(alvo); ligarCompartilhar(); return; }
+  if(est.abaEstudo === "perfil"){ alvo.innerHTML = perfilHTML(); ligarPerfil(); ligarConta(); ligarPaginaPublica(); ligarEditorPerfil(); preencherVersiculoVida(alvo); ligarCompartilhar(); return; }
   const ult = lerLS("logos_ultimo", null);
   const pct = r.total ? Math.round(r.lidos / r.total * 1000) / 10 : 0;
   const livros = (tst)=>est.meta.books.filter(b=>b.t===tst).map(b=>{
@@ -3255,6 +3600,7 @@ function perfilHTML(){
   return htmlCartaoPerfil(x, `<span class="perfil-conta">${u ? `${esc(u.email || "")}${desde ? ` · ${x.desde} ${esc(desde)}` : ""}</span><span class="perfil-conta" id="sincEstado" role="status">${textoSinc()}`
             : x.visitanteTexto}</span>`) + `
     ${conta}
+    ${htmlPaginaPublica(x)}
     <h3 class="estudo-sub">${x.personalizar}</h3>
     ${htmlEditorPerfil(x)}
     <h3 class="estudo-sub">${x.preferencias}</h3>
@@ -3387,7 +3733,7 @@ async function aoMudarSessao(sessao){
       // este aparelho tem o estudo de outra conta: não se mistura; a pessoa decide
       if(temDadosLocais() && !confirm(t().contaOutra)){ est.sessao = null; try{ await est.sb.auth.signOut(); }catch(e){} return; }
       for(const tp of Object.keys(DADOS)) if(tp !== "estado"){ DADOS[tp].chaves().forEach(k=>DADOS[tp].por(k, null)); DADOS[tp].salvar(); }
-      try{ localStorage.removeItem("logos_ultimo"); }catch(e){}
+      try{ localStorage.removeItem("logos_ultimo"); localStorage.removeItem("logos_pub_enviado"); }catch(e){}
       s.pend = {}; s.cursor = null;
     } else if(!s.conta){
       // primeira vez neste aparelho: o que já existe aqui entra na conta (no mesmo item, vale o mais recente)
@@ -3531,6 +3877,7 @@ async function sincronizar(){
     }
     s.cursor = cursor; s.conta = uid; s.ultima = Date.now();
     estadoSinc("ok");
+    agendarPublicacao();
   }catch(e){ console.warn("sincronização", e); estadoSinc("erro"); }
   gravarLS("logos_sinc", s);
   est.sincronizando = false;
@@ -3544,6 +3891,7 @@ function atualizarTelas(tipos){
   if(!$("painelNotas").classList.contains("oculto")) montarNotas();
   if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) || est.gaveta) return;
   const mexeu = (...l)=>l.some(tp=>tipos.has(tp));
+  if(est.vista === "perfil") return;
   if(est.vista === "inicio" ? mexeu("estado", "lido") : est.vista === "livro" ? mexeu("lido") : mexeu("nota", "marca", "lido"))
     renderizar({ manter:true });
 }
@@ -3781,6 +4129,10 @@ async function iniciar(){
   $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
+  const dicaBusca = document.createElement("div");
+  dicaBusca.className = "dica-ref-linha"; dicaBusca.setAttribute("aria-live", "polite");
+  $("buscaStatus").before(dicaBusca);
+  est.dicaBusca = ligarDicaRef($("campoBusca"), dicaBusca, ()=>est.buscaModo === "texto");
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));
   document.querySelectorAll(".painel").forEach(p=>p.addEventListener("click", (e)=>{ if(e.target===p) alternarPainel(p.id, false); }));
 
@@ -3798,7 +4150,8 @@ async function iniciar(){
   // botão voltar/avançar do navegador e links antigos com "#/JHN/3"
   const seguirRota = ()=>{
     const r = lerRota(), antigoHash = /^#\//.test(location.hash);
-    const mesma = r.vista===est.vista && (r.vista==="inicio" || r.livro===est.livro) && (r.vista!=="cap" || r.cap===est.cap);
+    const mesma = r.vista===est.vista && (r.vista==="inicio" || r.livro===est.livro || (r.vista==="perfil" && r.apelido===est.apelidoPub))
+      && (r.vista!=="cap" || r.cap===est.cap);
     if(mesma && !antigoHash){
       const alvo = r.v && document.querySelector(`.verso[data-v="${r.v}"]`);
       if(alvo){ est.alvoV = r.v; irAoVerso(alvo); }
