@@ -21,7 +21,7 @@ const UI = {
     verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
-    doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Credos antigos, Westminster e Dort", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
+    doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Todas as confissões e catecismos", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…", imgTitulo:"Imagem do versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Escuro", imgBaixar:"Baixar", imgCopiar:"Copiar imagem", imgCopiada:"Imagem copiada.", imgSemCopiar:"Este navegador não deixou copiar; use Baixar.",
@@ -34,7 +34,7 @@ const UI = {
     semOriginal:"Texto original indisponível para este versículo.",
     semComentario:"Ainda não há comentário para este versículo.",
     avisoIdiomaComentario:"Comentário exibido no original em inglês — tradução em andamento.",
-    fonte:"Fonte", salvar:"Salvar", cancelar:"Cancelar", excluir:"Excluir", fechar:"Fechar",
+    fonte:"Fonte", salvar:"Salvar", cancelar:"Cancelar", excluir:"Excluir", fechar:"Fechar", outrosLugares:"Outros lugares achados",
     escrevaNota:"Escreva sua reflexão sobre este versículo…",
     semNotas:"Você ainda não tem anotações. Toque em um versículo e escolha “Anotação”.",
     bibliaToda:"Buscar na Bíblia toda", carregando:"Carregando…",
@@ -101,7 +101,7 @@ const UI = {
     verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
-    doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"Ancient creeds, Westminster and Dort (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
+    doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"All creeds, confessions and catechisms (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
     conteudoEN:"Content in the original English.",
     tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…", imgTitulo:"Verse image", imgFormato:"Format", imgTema:"Theme", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Light", imgEscuro:"Dark", imgBaixar:"Download", imgCopiar:"Copy image", imgCopiada:"Image copied.", imgSemCopiar:"This browser did not allow copying; use Download.",
@@ -114,7 +114,7 @@ const UI = {
     semOriginal:"Original text unavailable for this verse.",
     semComentario:"No commentary available for this verse yet.",
     avisoIdiomaComentario:"Commentary shown in the original English.",
-    fonte:"Source", salvar:"Save", cancelar:"Cancel", excluir:"Delete", fechar:"Close",
+    fonte:"Source", salvar:"Save", cancelar:"Cancel", excluir:"Delete", fechar:"Close", outrosLugares:"Other places found",
     escrevaNota:"Write your reflection on this verse…",
     semNotas:"No notes yet. Tap a verse and choose “Note”.",
     bibliaToda:"Search the whole Bible", carregando:"Loading…",
@@ -181,7 +181,7 @@ const UI = {
     verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
-    doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Credos antiguos, Westminster y Dort (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
+    doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Todas las confesiones y catecismos (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
     conteudoEN:"Contenido en el inglés original.",
     tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…", imgTitulo:"Imagen del versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Oscuro", imgBaixar:"Descargar", imgCopiar:"Copiar imagen", imgCopiada:"Imagen copiada.", imgSemCopiar:"Este navegador no permitió copiar; usa Descargar.",
@@ -194,7 +194,7 @@ const UI = {
     semOriginal:"Texto original no disponible para este versículo.",
     semComentario:"Aún no hay comentario para este versículo.",
     avisoIdiomaComentario:"Comentario mostrado en el inglés original.",
-    fonte:"Fuente", salvar:"Guardar", cancelar:"Cancelar", excluir:"Eliminar", fechar:"Cerrar",
+    fonte:"Fuente", salvar:"Guardar", cancelar:"Cancelar", excluir:"Eliminar", fechar:"Cerrar", outrosLugares:"Otros lugares encontrados",
     escrevaNota:"Escribe tu reflexión sobre este versículo…",
     semNotas:"Aún no tienes notas. Toca un versículo y elige “Nota”.",
     bibliaToda:"Buscar en toda la Biblia", carregando:"Cargando…",
@@ -271,7 +271,7 @@ const AJUDA = {
         ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
         ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Cada versículo também tem a sua (como /biblia/joao/3/16/), com as três traduções, o original, o começo do comentário e as referências. Abra pelo link “Página completa” ou “Página do verbete”."],
-        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave), os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia, e os credos antigos (Apostólico, Niceno, Atanásio e Calcedônia)."],
+        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave), os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia, e os credos antigos (Apostólico, Niceno, Atanásio e Calcedônia). Em “Todas as confissões e catecismos” estão também os Catecismos de Westminster, a Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
         ["atlas","atlas","Atlas","Mais de 1.300 lugares bíblicos no mapa e as viagens missionárias de Paulo."]]],
@@ -302,7 +302,7 @@ const AJUDA = {
         ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
         ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). Every verse has one too (such as /biblia/joao/3/16/), with the three translations, the original, the start of the commentary and the cross-references. All in Portuguese; open them from the “Full page” or “Entry page” link."],
-        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave), the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts, and the ancient creeds (Apostles', Nicene, Athanasian and Chalcedon)."],
+        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave), the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts, and the ancient creeds (Apostles', Nicene, Athanasian and Chalcedon). The confessions page also has the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism and the Canons of Dort (in Portuguese)."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
         ["atlas","atlas","Atlas","Over 1,300 Bible places on the map and Paul’s missionary journeys."]]],
@@ -333,7 +333,7 @@ const AJUDA = {
         ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
         ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Cada versículo también tiene la suya (como /biblia/joao/3/16/), con las tres traducciones, el original, el inicio del comentario y las referencias. Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
-        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave), los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea, y los credos antiguos (Apostólico, Niceno, Atanasio y Calcedonia), en portugués."],
+        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave), los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea, y los credos antiguos (Apostólico, Niceno, Atanasio y Calcedonia), en portugués. En la página de confesiones están también los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
         ["atlas","atlas","Atlas","Más de 1.300 lugares bíblicos en el mapa y los viajes misioneros de Pablo."]]],
@@ -1929,25 +1929,25 @@ function atualizarRotulos(){
       .addTo(est.camadaRotulos);
   }
 }
+/* A busca não lista nada acima do mapa: marca no mapa os lugares achados e abre a ficha do primeiro; os outros
+   (homônimos como os três "Jezreel", ou "Vale de Jezreel") ficam como marcadores e como atalhos dentro da ficha. */
 function buscarAtlas(){
   const termo = normStr($("campoAtlas").value.trim());
   const res = $("atlasResultados");
-  if(termo.length < 2 || !est.lugares || !est.mapa){ res.innerHTML = ""; return; }
-  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo))).slice(0, 12);
-  const nomeL = (l)=> (emPT() && l.p) || l.n;
+  res.innerHTML = "";
+  if(termo.length < 2 || !est.lugares || !est.mapa) return;
+  // primeiro o nome exato, e entre os homônimos o mais citado ("Jezreel" abre na cidade de Acabe, não na de Judá)
+  const exato = (l)=> normStr(nomeLugar(l)) === termo || normStr(l.n.replace(/ \d+$/, "")) === termo;
+  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo)))
+    .sort((a, b)=>(exato(b) - exato(a)) || (b.tot - a.tot)).slice(0, 12);
+  fecharLugar();
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
-  res.innerHTML = achados.length ? achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
-    <p>${l.r.slice(0,6).map(([b,c,v])=>linkRef(b, c, v, esc(nomeLivro(b)+" "+c))).join(" · ")}</p></div>`).join("")
-    : `<p class="busca-status">${t().nadaEncontrado}</p>`;
+  if(!achados.length){ res.innerHTML = `<p class="busca-status">${t().nadaEncontrado}</p>`; return; }
   achados.forEach(l=>{
-    const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(nomeL(l)));
+    const m = L.marker([l.la, l.lo], { title: nomeLugar(l), alt: nomeLugar(l) }).addTo(est.mapa).on("click", ()=>mostrarLugar(l, achados));
     est.marcadores.push(m);
   });
-  if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
-  res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
-    if(e.target.closest("a")) return;
-    mostrarLugar(achados[+el.dataset.i]);
-  }));
+  mostrarLugar(achados[0], achados);
 }
 const CIDADES_CHAVE = [["Jerusalém",31.7784,35.2354],["Babilônia",32.5364,44.4208],["Roma",41.8919,12.5113],["Éfeso",37.9411,27.3419],["Alexandria",31.2001,29.9187],["Damasco",33.5132,36.2919]];
 function distKm(a1,o1,a2,o2){
@@ -1956,14 +1956,18 @@ function distKm(a1,o1,a2,o2){
   const h=Math.sin(dA/2)**2 + Math.cos(a1*r)*Math.cos(a2*r)*Math.sin(dO/2)**2;
   return Math.round(2*R*Math.asin(Math.sqrt(h)));
 }
-function mostrarLugar(l){
-  const res = $("atlasResultados");
+/* nome em português, sem o número que separa os lugares homônimos ("Jezreel 2", "Afeque 3") */
+function nomeLugar(l){ return ((emPT() && l.p) || l.n).replace(/ \d+$/, ""); }
+function fecharLugar(){ const f = $("fichaLugar"); if(f){ f.hidden = true; f.innerHTML = ""; } }
+function mostrarLugar(l, achados){
+  const res = $("fichaLugar");
+  const outros = (achados || []).filter(o=>o !== l);
   const refs = l.r.map(([b,c,v])=>linkRef(b, c, v)).join(" · ");
   const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
   const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase() && c[0] !== l.p)
     .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
-  res.innerHTML = `<div class="lugar-card">
-    <h3>${esc((emPT() && l.p) || l.n)}</h3>
+  res.innerHTML = `<button type="button" class="lugar-fechar" aria-label="${t().fechar}">✕</button>
+    <h3>${esc(nomeLugar(l))}</h3>
     ${l.c < 300 ? `<p class="lugar-incerto">Localização incerta: os estudiosos não concordam onde ficava (openbible.info).</p>` : ""}
     <p class="lugar-meta">${+l.tot} ocorrência(s) na Bíblia
       · Primeira: ${linkRef(primeira[0], primeira[1], primeira[2])}
@@ -1971,8 +1975,16 @@ function mostrarLugar(l){
     <p class="lugar-refs">${refs}</p>
     <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
     ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
-  </div>`;
-  est.mapa.setView([l.la, l.lo], 9);
+    ${outros.length ? `<p class="lugar-outros">${t().outrosLugares}: ${outros.map(o=>`<button type="button" data-i="${achados.indexOf(o)}">${esc(nomeLugar(o))} <small>(${esc(nomeLivro(o.r[0][0]))} ${o.r[0][1]})</small></button>`).join(" · ")}</p>` : ""}`;
+  res.hidden = false;
+  res.querySelectorAll(".lugar-outros button").forEach(b=>b.addEventListener("click", ()=>mostrarLugar(achados[+b.dataset.i], achados)));
+  res.scrollTop = 0;
+  res.querySelector(".lugar-fechar").addEventListener("click", fecharLugar);
+  // o lugar fica fora da ficha: à esquerda dela no desktop, acima dela no celular
+  const celular = res.offsetTop > 20;
+  est.mapa.setView([l.la, l.lo], Math.max(est.mapa.getZoom(), 9), { animate: false });
+  est.mapa.panBy(celular ? [0, res.offsetHeight / 2] : [res.offsetWidth / 2, 0], { animate: false });
+  res.closest(".mapa-caixa").scrollIntoView({ block: "nearest" });
 }
 async function montarViagens(){
   if(!est.viagens){ est.viagens = await json("data/journeys.json"); }

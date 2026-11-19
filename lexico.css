@@ -107,8 +107,9 @@ h2{font:600 1.4rem/1.2 var(--titulo);margin:2rem 0 .6rem;padding-top:1.1rem;bord
 .cf-provas b{color:var(--rubrica);margin-right:.3rem}
 .cf-provas a{text-decoration:none;font-weight:600}
 .cf-provas span{display:block;color:var(--tinta-2);font:400 .95rem/1.5 var(--escritura)}
-.cf-indice{padding-left:1.4rem;line-height:1.9}
+.cf-indice{list-style:none;padding-left:0;line-height:1.9}
 .cf-indice a{text-decoration:none}
+.cf-indice .cf-domingo{margin:1rem 0 .1rem;font:600 .74rem/1.4 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ouro)}
 
 .lex-lista{list-style:none;padding:0;margin:.8rem 0;columns:2 18rem;column-gap:2rem}
 .lex-lista li{break-inside:avoid;padding:.3rem 0;border-bottom:1px dotted var(--borda);font-size:.9rem}

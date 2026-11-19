@@ -1,0 +1,1171 @@
+{
+ "id": "heidelberg",
+ "titulo": "Catecismo de Heidelberg",
+ "titulo_en": "The Heidelberg Catechism",
+ "ano": 1563,
+ "tipo": "catecismo",
+ "fonte": "Heidelberg Catechism (1563), domínio público. Texto inglês da edição do tricentenário (Nova York, 1863), em Philip Schaff, The Creeds of Christendom, vol. 3 (1877): https://ccel.org/ccel/schaff/creeds3.iv.vi.html",
+ "itens": [
+  {
+   "n": "1",
+   "p_en": "What is thy only comfort in life and in death?",
+   "r_en": "That I, with body and soul, both in life and in death, am not my own, but belong to my faithful Saviour Jesus Christ, who with his precious blood has fully satisfied for all my sins, and redeemed me from all the power of the devil; and so preserves me that without the will of my Father in heaven not a hair can fall from my head; yea, that all things must work together for my salvation. Wherefore, by his Holy Spirit, he also assures me of eternal life, and makes me heartily willing and ready henceforth to live unto him.",
+   "domingo": 1,
+   "p": "Qual é o teu único consolo na vida e na morte?",
+   "r": "Que eu, de corpo e alma, tanto na vida como na morte, não pertenço a mim mesmo, mas ao meu fiel Salvador Jesus Cristo, que com o seu precioso sangue satisfez plenamente por todos os meus pecados e me libertou de todo o poder do diabo; e de tal maneira me guarda que, sem a vontade do meu Pai que está no céu, nem um fio de cabelo pode cair da minha cabeça; e, mais ainda, todas as coisas devem cooperar para a minha salvação. Por isso, pelo seu Espírito Santo, ele também me assegura a vida eterna e me torna de coração disposto e pronto a viver para ele daqui em diante.",
+   "provas": {}
+  },
+  {
+   "n": "2",
+   "p_en": "How many things are necessary for thee to know, that thou in this comfort mayest live and die happily?",
+   "r_en": "Three things: First, the greatness of my sin and misery. Second, how I am redeemed from all my sins and misery. Third, how I am to be thankful to God for such redemption.",
+   "domingo": 1,
+   "p": "Quantas coisas precisas saber para que, neste consolo, possas viver e morrer feliz?",
+   "r": "Três coisas: primeira, quão grandes são o meu pecado e a minha miséria; segunda, como sou libertado de todos os meus pecados e da minha miséria; terceira, como devo ser grato a Deus por essa redenção.",
+   "provas": {}
+  },
+  {
+   "n": "3",
+   "p_en": "Whence knowest thou thy misery?",
+   "r_en": "Out of the Law of God.",
+   "domingo": 2,
+   "p": "Como conheces a tua miséria?",
+   "r": "Pela Lei de Deus.",
+   "provas": {}
+  },
+  {
+   "n": "4",
+   "p_en": "What does the Law of God require of us?",
+   "r_en": "This Christ teaches us in sum, Matt 22: Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind, and with all thy strength. This is the first and great commandment; and the second is like unto it: Thou shalt love thy neighbor as thyself.—On these two commandments hang all the law and the prophets.",
+   "domingo": 2,
+   "p": "Que exige de nós a Lei de Deus?",
+   "r": "Isto Cristo nos ensina em resumo, em Mateus 22: Amarás o Senhor teu Deus de todo o teu coração, de toda a tua alma, de todo o teu entendimento e de todas as tuas forças. Este é o primeiro e grande mandamento; e o segundo, semelhante a este, é: Amarás o teu próximo como a ti mesmo. — Destes dois mandamentos dependem toda a Lei e os Profetas.",
+   "provas": {}
+  },
+  {
+   "n": "5",
+   "p_en": "Canst thou keep all this perfectly?",
+   "r_en": "No; for I am by nature prone to hate God and my neighbor.",
+   "domingo": 2,
+   "p": "Podes guardar tudo isso perfeitamente?",
+   "r": "Não; porque por natureza estou inclinado a odiar a Deus e ao meu próximo.",
+   "provas": {}
+  },
+  {
+   "n": "6",
+   "p_en": "Did God create man thus wicked and perverse?",
+   "r_en": "No; but God created man good, and after his own image—that is, in righteousness and true holiness; that he might rightly know God his Creator, heartily love him, and live with him in eternal blessedness, to praise and glorify him.",
+   "domingo": 3,
+   "p": "Criou Deus o homem assim mau e perverso?",
+   "r": "Não; Deus criou o homem bom e à sua imagem, isto é, em justiça e verdadeira santidade, para que conhecesse corretamente a Deus, seu Criador, o amasse de coração e vivesse com ele em eterna bem-aventurança, para o louvar e glorificar.",
+   "provas": {}
+  },
+  {
+   "n": "7",
+   "p_en": "Whence, then, comes this depraved nature of man?",
+   "r_en": "From the fall and disobedience of our first parents, Adam and Eve, in Paradise, whereby our nature became so corrupt that we are all conceived and born in sin.",
+   "domingo": 3,
+   "p": "De onde vem, então, essa natureza corrompida do homem?",
+   "r": "Da queda e desobediência dos nossos primeiros pais, Adão e Eva, no Paraíso, pela qual a nossa natureza ficou tão corrompida que todos somos concebidos e nascidos em pecado.",
+   "provas": {}
+  },
+  {
+   "n": "8",
+   "p_en": "But are we so far depraved that we are wholly unapt to any good, and prone to all evil?",
+   "r_en": "Yes; unless we are born again by the Spirit of God.",
+   "domingo": 3,
+   "p": "Mas somos tão corrompidos que sejamos totalmente incapazes de qualquer bem e inclinados a todo mal?",
+   "r": "Sim, a menos que sejamos regenerados pelo Espírito de Deus.",
+   "provas": {}
+  },
+  {
+   "n": "9",
+   "p_en": "Does not God, then, wrong man by requiring of him in his law that which he can not perform?",
+   "r_en": "No; for God so made man that he could perform it; but man, through the instigation of the devil, by willful disobedience deprived himself and all his posterity of this power.",
+   "domingo": 4,
+   "p": "Então Deus não faz injustiça ao homem, exigindo dele na sua lei o que ele não pode cumprir?",
+   "r": "Não; porque Deus fez o homem de tal modo que ele podia cumpri-la; mas o homem, por instigação do diabo, com desobediência voluntária, privou a si mesmo e a toda a sua descendência dessa capacidade.",
+   "provas": {}
+  },
+  {
+   "n": "10",
+   "p_en": "Will God suffer such disobedience and apostasy to go unpunished?",
+   "r_en": "By no means; but he is terribly displeased with our inborn as well as actual sins, and will punish them in just judgment in time and eternity, as he has declared: Cursed is every one that continueth not in all things which are written in the book of the law, to do them.",
+   "domingo": 4,
+   "p": "Deixará Deus sem castigo tal desobediência e apostasia?",
+   "r": "De modo nenhum; ele se ira terrivelmente tanto contra os pecados com que nascemos como contra os que cometemos, e os castigará com justo juízo, no tempo e na eternidade, como declarou: Maldito todo aquele que não permanece em todas as coisas que estão escritas no livro da lei, para fazê-las.",
+   "provas": {}
+  },
+  {
+   "n": "11",
+   "p_en": "Is, then, God not also merciful?",
+   "r_en": "God is indeed merciful, but he is likewise just; wherefore his justice requires that sin, which is committed against the most high majesty of God, be also punished with extreme, that is, with everlasting punishment both of body and soul.",
+   "domingo": 4,
+   "p": "Mas Deus não é também misericordioso?",
+   "r": "Deus é de fato misericordioso, mas é igualmente justo; por isso a sua justiça exige que o pecado, cometido contra a altíssima majestade de Deus, seja também castigado com a pena extrema, isto é, com o castigo eterno do corpo e da alma.",
+   "provas": {}
+  },
+  {
+   "n": "12",
+   "p_en": "Since, then, by the righteous judgment of God we deserve temporal and eternal punishment, what is required that we may escape this punishment and be again received into favor?",
+   "r_en": "God wills that his justice be satisfied; therefore must we make full satisfaction to the same, either by ourselves or by another.",
+   "domingo": 5,
+   "p": "Uma vez que, pelo justo juízo de Deus, merecemos castigo temporal e eterno, que se requer para que escapemos desse castigo e sejamos outra vez recebidos em graça?",
+   "r": "Deus quer que a sua justiça seja satisfeita; por isso devemos dar-lhe plena satisfação, ou por nós mesmos ou por outro.",
+   "provas": {}
+  },
+  {
+   "n": "13",
+   "p_en": "Can we ourselves make this satisfaction?",
+   "r_en": "By no means; on the contrary, we daily increase our guilt.",
+   "domingo": 5,
+   "p": "Podemos nós mesmos dar essa satisfação?",
+   "r": "De modo nenhum; pelo contrário, cada dia aumentamos a nossa culpa.",
+   "provas": {}
+  },
+  {
+   "n": "14",
+   "p_en": "Can any mere creature make satisfaction for us?",
+   "r_en": "None; for, first, God will not punish, in any other creature, that of which man has made himself guilty; and, further, no mere creature can sustain the burden of God's eternal wrath against sin, and redeem others therefrom.",
+   "domingo": 5,
+   "p": "Pode alguma simples criatura dar satisfação por nós?",
+   "r": "Nenhuma; porque, em primeiro lugar, Deus não quer castigar em outra criatura aquilo de que o homem se fez culpado; e, além disso, nenhuma simples criatura pode suportar o peso da ira eterna de Deus contra o pecado e livrar dela os outros.",
+   "provas": {}
+  },
+  {
+   "n": "15",
+   "p_en": "What manner of mediator and redeemer, then, must we seek?",
+   "r_en": "One who is a true and sinless man, and yet more powerful than all creatures; that is, one who is at the same time true God.",
+   "domingo": 5,
+   "p": "Que mediador e redentor, então, devemos buscar?",
+   "r": "Um que seja verdadeiro homem e sem pecado, e contudo mais poderoso que todas as criaturas; isto é, que seja ao mesmo tempo verdadeiro Deus.",
+   "provas": {}
+  },
+  {
+   "n": "16",
+   "p_en": "Why must he be a true and sinless man?",
+   "r_en": "Because the justice of God requires that the same human nature which has sinned should make satisfaction for sin; but no man, being himself a sinner, could satisfy for others.",
+   "domingo": 6,
+   "p": "Por que ele deve ser verdadeiro homem e sem pecado?",
+   "r": "Porque a justiça de Deus exige que a mesma natureza humana que pecou dê satisfação pelo pecado; mas nenhum homem, sendo ele mesmo pecador, poderia satisfazer pelos outros.",
+   "provas": {}
+  },
+  {
+   "n": "17",
+   "p_en": "Why must he be at the same time true God?",
+   "r_en": "That by the power of his Godhead he might bear, in his manhood, the burden of God's wrath, and so obtain for and restore to us righteousness and life.",
+   "domingo": 6,
+   "p": "Por que ele deve ser ao mesmo tempo verdadeiro Deus?",
+   "r": "Para que, pelo poder da sua divindade, pudesse suportar na sua humanidade o peso da ira de Deus, e assim alcançar para nós e nos devolver a justiça e a vida.",
+   "provas": {}
+  },
+  {
+   "n": "18",
+   "p_en": "But who, now, is that mediator, who is at the same time true God and a true, sinless man?",
+   "r_en": "Our Lord Jesus Christ, who is freely given unto us for complete redemption and righteousness.",
+   "domingo": 6,
+   "p": "Mas quem é esse mediador, que é ao mesmo tempo verdadeiro Deus e verdadeiro homem sem pecado?",
+   "r": "Nosso Senhor Jesus Cristo, que gratuitamente nos foi dado para completa redenção e justiça.",
+   "provas": {}
+  },
+  {
+   "n": "19",
+   "p_en": "Whence knowest thou this?",
+   "r_en": "From the Holy Gospel, which God himself first revealed in Paradise, afterwards proclaimed by the holy Patriarchs and Prophets, and foreshadowed by the sacrifices and other ceremonies of the law, and finally fulfilled by his well-beloved Son.",
+   "domingo": 6,
+   "p": "Como sabes isso?",
+   "r": "Pelo santo Evangelho, que o próprio Deus revelou primeiro no Paraíso, depois anunciou pelos santos patriarcas e profetas, prefigurou pelos sacrifícios e outras cerimônias da lei, e por fim cumpriu pelo seu Filho amado.",
+   "provas": {}
+  },
+  {
+   "n": "20",
+   "p_en": "Are all men, then, saved by Christ, as they have perished by Adam?",
+   "r_en": "No; only such as by true faith are ingrafted into him, and receive all his benefits.",
+   "domingo": 7,
+   "p": "Então todos os homens são salvos por Cristo, assim como pereceram por Adão?",
+   "r": "Não; somente aqueles que, por verdadeira fé, são enxertados nele e recebem todos os seus benefícios.",
+   "provas": {}
+  },
+  {
+   "n": "21",
+   "p_en": "What is true faith?",
+   "r_en": "It is not only a certain knowledge whereby I hold for truth all that God has revealed to us in his Word, but also a hearty trust which the Holy Ghost works in me by the Gospel, that not only to others, but to me also, forgiveness of sins, everlasting righteousness and salvation, are freely given by God, merely of grace, only for the sake of Christ's merits.",
+   "domingo": 7,
+   "p": "Que é a verdadeira fé?",
+   "r": "Não é somente um conhecimento seguro, pelo qual tenho por verdadeiro tudo o que Deus nos revelou na sua Palavra, mas também uma confiança de coração, que o Espírito Santo opera em mim pelo Evangelho, de que não só a outros, mas também a mim, Deus deu gratuitamente o perdão dos pecados, a justiça eterna e a salvação, por pura graça, somente por causa dos méritos de Cristo.",
+   "provas": {}
+  },
+  {
+   "n": "22",
+   "p_en": "What is it, then, necessary for a Christian to believe?",
+   "r_en": "All that is promised us in the Gospel, which the articles of our catholic, undoubted Christian faith teach us in sum.",
+   "domingo": 7,
+   "p": "Que é, então, necessário que o cristão creia?",
+   "r": "Tudo o que nos é prometido no Evangelho, que os artigos da nossa fé cristã, católica e indubitável, nos ensinam em resumo.",
+   "provas": {}
+  },
+  {
+   "n": "23",
+   "p_en": "What are these Articles?",
+   "r_en": "I believe in God the Father Almighty, Maker of heaven and earth.\nAnd in Jesus Christ, his only-begotten Son, our Lord: who was conceived by the Holy Ghost, born of the Virgin Mary; suffered under Pontius Pilate, was crucified, dead, and buried; he descended into Hades; the third day he rose from the dead; he ascended into Heaven, and sitteth at the right hand of God the Father Almighty; from thence he shall come to judge the quick and the dead.\nI believe in the Holy Ghost; the holy Catholic Church; the communion of saints; the forgiveness of sins; the resurrection of the body, and the life everlasting.",
+   "domingo": 7,
+   "p": "Quais são esses artigos?",
+   "r": "Creio em Deus Pai todo-poderoso, criador do céu e da terra.\nE em Jesus Cristo, seu único Filho, nosso Senhor, que foi concebido pelo Espírito Santo, nasceu da virgem Maria, padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu ao inferno; ao terceiro dia ressurgiu dos mortos; subiu ao céu e está sentado à direita de Deus Pai todo-poderoso, de onde há de vir para julgar os vivos e os mortos.\nCreio no Espírito Santo, na santa Igreja católica, na comunhão dos santos, na remissão dos pecados, na ressurreição do corpo e na vida eterna.",
+   "provas": {}
+  },
+  {
+   "n": "24",
+   "p_en": "How are these Articles divided?",
+   "r_en": "Into three parts: The first is of God the Father and our creation; the second, of God the Son and our redemption; the third, of God the Holy Ghost and our sanctification.",
+   "domingo": 8,
+   "p": "Como se dividem esses artigos?",
+   "r": "Em três partes: a primeira trata de Deus Pai e da nossa criação; a segunda, de Deus Filho e da nossa redenção; a terceira, de Deus Espírito Santo e da nossa santificação.",
+   "provas": {}
+  },
+  {
+   "n": "25",
+   "p_en": "Since there is but one Divine Being, why speakest thou of three, Father, Son, and Holy Ghost?",
+   "r_en": "Because God has so revealed himself in his Word that these three distinct Persons are the one, true, eternal God.",
+   "domingo": 8,
+   "p": "Uma vez que há um só Ser divino, por que falas de três: Pai, Filho e Espírito Santo?",
+   "r": "Porque Deus assim se revelou na sua Palavra: estas três Pessoas distintas são o único, verdadeiro e eterno Deus.",
+   "provas": {}
+  },
+  {
+   "n": "26",
+   "p_en": "What dost thou believe when thou sayest: I believe in God the Father Almighty, Maker of Heaven and Earth?",
+   "r_en": "That the eternal Father of our Lord Jesus Christ, who of nothing made heaven and earth, with all that in them is, who likewise upholds and governs the same by his eternal counsel and providence, is for the sake of Christ his Son my God and my Father, in whom I so trust as to have no doubt that he will provide me with all things necessary for body and soul; and further, that whatever evil he sends upon me in this vale of tears, he will turn to my good; for he is able to do it, being Almighty God, and willing also, being a faithful Father.",
+   "domingo": 9,
+   "p": "Que crês quando dizes: Creio em Deus Pai todo-poderoso, criador do céu e da terra?",
+   "r": "Que o eterno Pai de nosso Senhor Jesus Cristo, que do nada fez o céu e a terra com tudo o que neles há, e que também os sustenta e governa pelo seu eterno conselho e providência, é, por causa de Cristo, seu Filho, o meu Deus e o meu Pai; nele confio de tal modo que não duvido de que me proverá de todas as coisas necessárias para o corpo e para a alma; e ainda, que todo mal que me enviar neste vale de lágrimas, ele o converterá em meu bem; porque pode fazê-lo, sendo Deus todo-poderoso, e também o quer, sendo Pai fiel.",
+   "provas": {}
+  },
+  {
+   "n": "27",
+   "p_en": "What dost thou understand by the Providence of God?",
+   "r_en": "The almighty and every where present power of God, whereby, as it were by his hand, he still upholds heaven and earth, with all creatures, and so governs them that herbs and grass, rain and drought, fruitful and barren years, meat and drink, health and sickness, riches and poverty, yea, all things, come not by chance, but by his fatherly hand.",
+   "domingo": 10,
+   "p": "Que entendes pela providência de Deus?",
+   "r": "O poder de Deus, todo-poderoso e presente em toda parte, pelo qual, como que pela sua mão, ele ainda sustenta o céu e a terra com todas as criaturas, e de tal maneira os governa que ervas e plantas, chuva e seca, anos férteis e estéreis, comida e bebida, saúde e doença, riqueza e pobreza, enfim, todas as coisas não nos vêm por acaso, mas da sua mão paterna.",
+   "provas": {}
+  },
+  {
+   "n": "28",
+   "p_en": "What does it profit us to know that God has created, and by his providence still upholds all things?",
+   "r_en": "That we may be patient in adversity, thankful in prosperity, and for what is future have good confidence in our faithful God and Father that no creature shall separate us from his love, since all creatures are so in his hand that without his will they can not so much as move.",
+   "domingo": 10,
+   "p": "De que nos serve saber que Deus criou todas as coisas e ainda as sustenta pela sua providência?",
+   "r": "Para que sejamos pacientes na adversidade, gratos na prosperidade e, quanto ao futuro, tenhamos firme confiança no nosso fiel Deus e Pai de que nenhuma criatura nos separará do seu amor, pois todas as criaturas estão de tal modo na sua mão que, sem a sua vontade, não se podem nem mover.",
+   "provas": {}
+  },
+  {
+   "n": "29",
+   "p_en": "Why is the Son of God called Jesus, that is, Saviour?",
+   "r_en": "Because he saves us from our sins; and no salvation is to be either sought or found in any other.",
+   "domingo": 11,
+   "p": "Por que o Filho de Deus se chama Jesus, isto é, Salvador?",
+   "r": "Porque ele nos salva dos nossos pecados, e em nenhum outro se deve buscar nem se pode achar salvação.",
+   "provas": {}
+  },
+  {
+   "n": "30",
+   "p_en": "Do such, then, believe in the only Saviour Jesus who seek their salvation and welfare of saints, of themselves, or any where else?",
+   "r_en": "No; although they may make their boast of him, yet in act they deny the only Saviour Jesus. For either Jesus is not a complete Saviour, or they who by true faith receive this Saviour must have in him all that is necessary to their salvation.",
+   "domingo": 11,
+   "p": "Creem então no único Salvador Jesus os que buscam a sua salvação e o seu bem nos santos, em si mesmos ou em qualquer outra parte?",
+   "r": "Não; ainda que se gloriem dele, com os seus atos negam o único Salvador Jesus. Porque, ou Jesus não é um Salvador completo, ou os que recebem esse Salvador por verdadeira fé devem ter nele tudo o que é necessário à sua salvação.",
+   "provas": {}
+  },
+  {
+   "n": "31",
+   "p_en": "Why is he called Christ, that is, Anointed?",
+   "r_en": "Because he is ordained of God the Father, and anointed with the Holy Ghost, to be our chief Prophet and Teacher, who fully reveals to us the secret counsel and will of God concerning our redemption; and our only High Priest, who by the one sacrifice of his body has redeemed us, and ever liveth to make intercession for us with the Father; and our eternal King, who governs us by his Word and Spirit, and defends and preserves us in the redemption obtained for us.",
+   "domingo": 12,
+   "p": "Por que ele se chama Cristo, isto é, Ungido?",
+   "r": "Porque foi ordenado por Deus Pai e ungido com o Espírito Santo para ser o nosso supremo Profeta e Mestre, que nos revela plenamente o conselho secreto e a vontade de Deus a respeito da nossa redenção; o nosso único Sumo Sacerdote, que pelo único sacrifício do seu corpo nos redimiu e vive sempre para interceder por nós junto ao Pai; e o nosso eterno Rei, que nos governa pela sua Palavra e pelo seu Espírito e nos defende e conserva na redenção que nos alcançou.",
+   "provas": {}
+  },
+  {
+   "n": "32",
+   "p_en": "But why art thou called a Christian?",
+   "r_en": "Because by faith I am a member of Christ, and thus a partaker of his anointing; in order that I also may confess his name, may present myself a living sacrifice of thankfulness to him, and may with free conscience fight against sin and the devil in this life, and hereafter, in eternity, reign with him over all creatures.",
+   "domingo": 12,
+   "p": "Mas por que tu te chamas cristão?",
+   "r": "Porque pela fé sou membro de Cristo e assim participante da sua unção, para que também eu confesse o seu nome, me apresente a ele como sacrifício vivo de gratidão e, com consciência livre, combata nesta vida contra o pecado e o diabo, e depois, na eternidade, reine com ele sobre todas as criaturas.",
+   "provas": {}
+  },
+  {
+   "n": "33",
+   "p_en": "Why is he called God's only-begotten Son, since we also are the children of God?",
+   "r_en": "Because Christ alone is the eternal natural Son of God; but we are children of God by adoption through grace for his sake.",
+   "domingo": 13,
+   "p": "Por que ele se chama Filho unigênito de Deus, se nós também somos filhos de Deus?",
+   "r": "Porque somente Cristo é o eterno e natural Filho de Deus; mas nós somos filhos de Deus por adoção, pela graça, por causa dele.",
+   "provas": {}
+  },
+  {
+   "n": "34",
+   "p_en": "Why callest thou him our Lord?",
+   "r_en": "Because, not with silver or gold, but with his precious blood, he has redeemed and purchased us, body and soul, from sin and from all the power of the devil, to be his own.",
+   "domingo": 13,
+   "p": "Por que o chamas nosso Senhor?",
+   "r": "Porque, não com prata nem com ouro, mas com o seu precioso sangue, ele nos resgatou e comprou, de corpo e alma, do pecado e de todo o poder do diabo, para sermos seus.",
+   "provas": {}
+  },
+  {
+   "n": "35",
+   "p_en": "What is the meaning of Conceived by the Holy Ghost, born of the Virgin Mary?",
+   "r_en": "That the eternal Son of God, who is and continues true and eternal God, took upon him the very nature of man, of the flesh and blood of the Virgin Mary, by the operation of the Holy Ghost, so that he also might be the true seed of David, like unto his brethren in all things, sin excepted.",
+   "domingo": 14,
+   "p": "Que significa: concebido pelo Espírito Santo, nasceu da virgem Maria?",
+   "r": "Que o eterno Filho de Deus, que é e continua sendo verdadeiro e eterno Deus, tomou sobre si a verdadeira natureza humana, da carne e do sangue da virgem Maria, pela operação do Espírito Santo, para que fosse também a verdadeira descendência de Davi, semelhante a seus irmãos em todas as coisas, exceto no pecado.",
+   "provas": {}
+  },
+  {
+   "n": "36",
+   "p_en": "What benefit dost thou receive from the holy conception and birth of Christ?",
+   "r_en": "That he is our Mediator, and with his innocence and perfect holiness covers, in the sight of God, my sin wherein I was conceived.",
+   "domingo": 14,
+   "p": "Que benefício recebes da santa concepção e do nascimento de Cristo?",
+   "r": "Que ele é o nosso Mediador e, com a sua inocência e perfeita santidade, cobre diante de Deus o meu pecado, no qual fui concebido.",
+   "provas": {}
+  },
+  {
+   "n": "37",
+   "p_en": "What dost thou understand by the word Suffered?",
+   "r_en": "That all the time he lived on earth, but especially at the end of his life, he bore, in body and soul, the wrath of God against the sin of the whole human race, in order that by his passion, as the only atoning sacrifice, he might redeem our body and soul from everlasting damnation, and obtain for us the grace of God, righteousness, and eternal life.",
+   "domingo": 15,
+   "p": "Que entendes pela palavra padeceu?",
+   "r": "Que, durante todo o tempo em que viveu na terra, mas sobretudo no fim da vida, ele suportou, no corpo e na alma, a ira de Deus contra o pecado de todo o gênero humano, para que, pela sua paixão, como único sacrifício expiatório, redimisse o nosso corpo e a nossa alma da condenação eterna e nos alcançasse a graça de Deus, a justiça e a vida eterna.",
+   "provas": {}
+  },
+  {
+   "n": "38",
+   "p_en": "Why did he suffer under Pontius Pilate, as judge?",
+   "r_en": "That he, being innocent, might be condemned by the temporal judge, and thereby deliver us from the severe judgment of God to which we were exposed.",
+   "domingo": 15,
+   "p": "Por que padeceu sob Pôncio Pilatos, como juiz?",
+   "r": "Para que, sendo inocente, fosse condenado pelo juiz terreno e assim nos livrasse do severo juízo de Deus a que estávamos sujeitos.",
+   "provas": {}
+  },
+  {
+   "n": "39",
+   "p_en": "Is there any thing more in his having been crucified than if he had died some other death?",
+   "r_en": "Yes; for thereby I am assured that he took on himself the curse which lay upon me, because the death of the cross was accursed of God.",
+   "domingo": 15,
+   "p": "Há algo mais em ter sido crucificado do que se tivesse morrido de outra morte?",
+   "r": "Sim; porque assim estou certo de que ele tomou sobre si a maldição que pesava sobre mim, pois a morte de cruz era maldita por Deus.",
+   "provas": {}
+  },
+  {
+   "n": "40",
+   "p_en": "Why was it necessary for Christ to suffer death?",
+   "r_en": "Because, by reason of the justice and truth of God, satisfaction for our sins could be made no other wise than by the death of the Son of God.",
+   "domingo": 16,
+   "p": "Por que foi necessário que Cristo sofresse a morte?",
+   "r": "Porque, por causa da justiça e da verdade de Deus, a satisfação pelos nossos pecados não podia ser feita de outro modo senão pela morte do Filho de Deus.",
+   "provas": {}
+  },
+  {
+   "n": "41",
+   "p_en": "Why was he buried?",
+   "r_en": "To show thereby that he was really dead.",
+   "domingo": 16,
+   "p": "Por que foi sepultado?",
+   "r": "Para mostrar com isso que estava realmente morto.",
+   "provas": {}
+  },
+  {
+   "n": "42",
+   "p_en": "Since, then, Christ died for us, why must we also die?",
+   "r_en": "Our death is not a satisfaction for our sin, but only a dying to sins and entering into eternal life.",
+   "domingo": 16,
+   "p": "Se Cristo morreu por nós, por que também nós devemos morrer?",
+   "r": "A nossa morte não é uma satisfação pelo nosso pecado, mas somente um morrer para os pecados e uma entrada na vida eterna.",
+   "provas": {}
+  },
+  {
+   "n": "43",
+   "p_en": "What further benefit do we receive from the sacrifice and death of Christ on the cross?",
+   "r_en": "That by his power our old man is with him crucified, slain, and buried; that so the evil lusts of the flesh may no more reign in us, but that we may offer ourselves unto him a sacrifice of thanksgiving.",
+   "domingo": 16,
+   "p": "Que outro benefício recebemos do sacrifício e da morte de Cristo na cruz?",
+   "r": "Que pelo seu poder o nosso velho homem é com ele crucificado, morto e sepultado, para que os maus desejos da carne não reinem mais em nós, mas nos ofereçamos a ele em sacrifício de gratidão.",
+   "provas": {}
+  },
+  {
+   "n": "44",
+   "p_en": "Why is it added: He descended into Hades?",
+   "r_en": "That in my greatest temptations I may be assured that Christ, my Lord, by his inexpressible anguish, pains, and terrors which he suffered in his soul on the cross and before, has redeemed me from the anguish and torment of hell.",
+   "domingo": 16,
+   "p": "Por que se acrescenta: desceu ao inferno?",
+   "r": "Para que, nas minhas maiores tentações, eu tenha a certeza de que Cristo, meu Senhor, pela indizível angústia, dores e terrores que sofreu na sua alma na cruz e antes dela, me livrou da angústia e do tormento do inferno.",
+   "provas": {}
+  },
+  {
+   "n": "45",
+   "p_en": "What benefit do we receive from the resurrection of Christ?",
+   "r_en": "First, by his resurrection he has overcome death, that he might make us partakers of the righteousness which by his death he has obtained for us. Secondly, we also are now by his power raised up to a new life. Thirdly the resurrection of Christ is to us a sure pledge of our blessed resurrection.",
+   "domingo": 17,
+   "p": "Que benefício recebemos da ressurreição de Cristo?",
+   "r": "Primeiro, pela sua ressurreição ele venceu a morte, para nos fazer participantes da justiça que pela sua morte nos alcançou. Segundo, também nós somos agora, pelo seu poder, ressuscitados para uma vida nova. Terceiro, a ressurreição de Cristo é para nós um penhor seguro da nossa bem-aventurada ressurreição.",
+   "provas": {}
+  },
+  {
+   "n": "46",
+   "p_en": "How dost thou understand the words, He ascended into Heaven?",
+   "r_en": "That Christ, in sight of his disciples, was taken up from the earth into heaven, and in our behalf there continues, until he shall come again to judge the living and the dead.",
+   "domingo": 18,
+   "p": "Como entendes as palavras: subiu ao céu?",
+   "r": "Que Cristo, à vista dos seus discípulos, foi elevado da terra ao céu, e ali permanece em nosso favor até que volte para julgar os vivos e os mortos.",
+   "provas": {}
+  },
+  {
+   "n": "47",
+   "p_en": "Is not, then, Christ with us even unto the end of the world, as he has promised?",
+   "r_en": "Christ is true Man and true God: according to his human nature, he is now not upon earth; but according to his Godhead, majesty, grace, and Spirit, he is at no time absent from us.",
+   "domingo": 18,
+   "p": "Então Cristo não está conosco até o fim do mundo, como prometeu?",
+   "r": "Cristo é verdadeiro homem e verdadeiro Deus: segundo a sua natureza humana, agora não está na terra; mas segundo a sua divindade, majestade, graça e Espírito, nunca está ausente de nós.",
+   "provas": {}
+  },
+  {
+   "n": "48",
+   "p_en": "But are not, in this way, the two natures in Christ separated from one another, if the Manhood be not wherever the Godhead is?",
+   "r_en": "By no means; for since the Godhead is incomprehensible and every where present, it must follow that it is indeed beyond the bounds of the Manhood which it has assumed, but is yet none the less in the same also, and remains personally united to it.",
+   "domingo": 18,
+   "p": "Mas assim não ficam separadas uma da outra as duas naturezas em Cristo, se a humanidade não está onde quer que esteja a divindade?",
+   "r": "De modo nenhum; porque, sendo a divindade incompreensível e presente em toda parte, segue-se necessariamente que ela está, sim, além dos limites da humanidade que assumiu, mas nem por isso deixa de estar também nela e de permanecer pessoalmente unida a ela.",
+   "provas": {}
+  },
+  {
+   "n": "49",
+   "p_en": "What benefit do we receive from Christ's ascension into heaven?",
+   "r_en": "First, that he is our Advocate in the presence of his Father in heaven. Secondly, that we have our flesh in heaven, as a sure pledge that he, as the Head, will also take us, his members, up to himself. Thirdly, that he sends us his Spirit, as an earnest, by whose power we seek those things which are above, where Christ sitteth on the right hand of God, and not things on the earth.",
+   "domingo": 18,
+   "p": "Que benefício recebemos da ascensão de Cristo ao céu?",
+   "r": "Primeiro, que ele é o nosso Advogado diante do seu Pai, no céu. Segundo, que temos a nossa carne no céu, como penhor seguro de que ele, que é a Cabeça, também nos levará para junto de si, a nós que somos os seus membros. Terceiro, que ele nos envia o seu Espírito como garantia, e pelo poder dele buscamos as coisas que são de cima, onde Cristo está sentado à direita de Deus, e não as que são da terra.",
+   "provas": {}
+  },
+  {
+   "n": "50",
+   "p_en": "Why is it added, And sitteth at the right hand of God?",
+   "r_en": "Because Christ ascended into heaven for this end, that he might there appear as Head of his Church, by whom the Father governs all things.",
+   "domingo": 19,
+   "p": "Por que se acrescenta: e está sentado à direita de Deus?",
+   "r": "Porque Cristo subiu ao céu com este fim: mostrar-se ali como Cabeça da sua Igreja, por meio de quem o Pai governa todas as coisas.",
+   "provas": {}
+  },
+  {
+   "n": "51",
+   "p_en": "What benefit do we receive from this glory of our Head, Christ?",
+   "r_en": "First, that by his Holy Spirit he sheds forth heavenly gifts in us, his members; then, that by his power he defends and preserves us against all enemies.",
+   "domingo": 19,
+   "p": "Que benefício recebemos dessa glória de Cristo, nossa Cabeça?",
+   "r": "Primeiro, que pelo seu Espírito Santo ele derrama dons celestiais em nós, seus membros; depois, que pelo seu poder ele nos defende e conserva contra todos os inimigos.",
+   "provas": {}
+  },
+  {
+   "n": "52",
+   "p_en": "What comfort is it to thee that Christ shall come again to judge the quick and the dead?",
+   "r_en": "That in all my sorrows and persecutions, with uplifted head, I look for the self-same One who has before offered himself for me to the judgment of God, and removed from me all curse, to come again as Judge from heaven; who shall cast all his and my enemies into everlasting condemnation, but shall take me, with all his chosen ones, to himself, into heavenly joy and glory.",
+   "domingo": 19,
+   "p": "Que consolo te dá saber que Cristo há de vir para julgar os vivos e os mortos?",
+   "r": "Que em todas as minhas tristezas e perseguições, de cabeça erguida, espero do céu como Juiz aquele mesmo que antes se ofereceu por mim ao juízo de Deus e tirou de mim toda maldição; ele lançará todos os seus inimigos, que são também os meus, na condenação eterna, mas me levará para junto de si, com todos os seus escolhidos, à alegria e à glória celestiais.",
+   "provas": {}
+  },
+  {
+   "n": "53",
+   "p_en": "What dost thou believe concerning the Holy Ghost?",
+   "r_en": "First, that he is co-eternal God with the Father and the Son. Secondly, that he is also given unto me, makes me by a true faith partaker of Christ and all his benefits, comforts me, and shall abide with me forever.",
+   "domingo": 20,
+   "p": "Que crês a respeito do Espírito Santo?",
+   "r": "Primeiro, que ele é Deus, coeterno com o Pai e o Filho. Segundo, que também me foi dado, me torna participante de Cristo e de todos os seus benefícios por verdadeira fé, me consola e permanecerá comigo para sempre.",
+   "provas": {}
+  },
+  {
+   "n": "54",
+   "p_en": "What dost thou believe concerning the Holy Catholic Church?",
+   "r_en": "That out of the whole human race, from the beginning to the end of the world, the Son of God, by his Spirit and Word, gathers, defends, and preserves for himself unto everlasting life, a chosen communion in the unity of the true faith; and that I am, and forever shall remain, a living member of the same.",
+   "domingo": 21,
+   "p": "Que crês a respeito da santa Igreja católica?",
+   "r": "Que, de todo o gênero humano, desde o princípio até o fim do mundo, o Filho de Deus, pelo seu Espírito e pela sua Palavra, ajunta, defende e conserva para si, para a vida eterna, uma comunidade escolhida, na unidade da verdadeira fé; e que eu sou, e para sempre continuarei sendo, membro vivo dela.",
+   "provas": {}
+  },
+  {
+   "n": "55",
+   "p_en": "What dost thou understand by the communion of saints?",
+   "r_en": "First, that believers, all and every one, as members of Christ, have part in him and in all his treasures and gifts. Secondly, that each one must feel himself bound to use his gifts, readily and cheerfully, for the advantage and welfare of other members.",
+   "domingo": 21,
+   "p": "Que entendes pela comunhão dos santos?",
+   "r": "Primeiro, que os crentes, todos e cada um, como membros de Cristo, têm parte nele e em todos os seus tesouros e dons. Segundo, que cada um deve sentir-se obrigado a usar os seus dons de boa vontade e com alegria para o proveito e o bem dos outros membros.",
+   "provas": {}
+  },
+  {
+   "n": "56",
+   "p_en": "What dost thou believe concerning the forgiveness of sins?",
+   "r_en": "That God, for the sake of Christ's satisfaction, will no more remember my sins, neither the sinful nature with which I have to struggle all my life long; but graciously imparts to me the righteousness of Christ, that I may nevermore come into condemnation.",
+   "domingo": 21,
+   "p": "Que crês a respeito da remissão dos pecados?",
+   "r": "Que Deus, por causa da satisfação de Cristo, não se lembrará mais dos meus pecados, nem da natureza pecadora contra a qual tenho de lutar a vida inteira, mas me concede por graça a justiça de Cristo, para que eu nunca mais venha a condenação.",
+   "provas": {}
+  },
+  {
+   "n": "57",
+   "p_en": "What comfort does the resurrection of the body afford thee?",
+   "r_en": "That not only my soul, after this life, shall be immediately taken up to Christ its Head, but also that this my body, raised by the power of Christ, shall again be united with my soul, and made like unto the glorious body of Christ.",
+   "domingo": 22,
+   "p": "Que consolo te dá a ressurreição do corpo?",
+   "r": "Que não só a minha alma, depois desta vida, será imediatamente levada a Cristo, sua Cabeça, mas também que este meu corpo, ressuscitado pelo poder de Cristo, será de novo unido à minha alma e feito semelhante ao corpo glorioso de Cristo.",
+   "provas": {}
+  },
+  {
+   "n": "58",
+   "p_en": "What comfort hast thou from the article of the life everlasting?",
+   "r_en": "That, inasmuch as I now feel in my heart the beginning of eternal joy, I shall after this life possess complete bliss, such as eye hath not seen, nor ear heard, neither hath entered into the heart of man, therein to praise God forever.",
+   "domingo": 22,
+   "p": "Que consolo tens do artigo da vida eterna?",
+   "r": "Que, assim como agora sinto no meu coração o começo da alegria eterna, depois desta vida possuirei a perfeita bem-aventurança, tal como o olho não viu, nem o ouvido ouviu, nem subiu ao coração do homem, para nela louvar a Deus para sempre.",
+   "provas": {}
+  },
+  {
+   "n": "59",
+   "p_en": "But what does it help thee now that thou believest all this?",
+   "r_en": "That I am righteous in Christ before God, and an heir of eternal life.",
+   "domingo": 23,
+   "p": "Mas de que te serve agora crer tudo isso?",
+   "r": "De que sou justo em Cristo diante de Deus e herdeiro da vida eterna.",
+   "provas": {}
+  },
+  {
+   "n": "60",
+   "p_en": "How art thou righteous before God?",
+   "r_en": "Only by true faith in Jesus Christ; that is, although my conscience accuse me that I have grievously sinned against all the commandments of God, and have never kept any of them, and that I am still prone always to all evil, yet God, without any merit of mine, of mere grace, grants and imputes to me the perfect satisfaction, righteousness, and holiness of Christ, as if I had never committed nor had any sin, and had myself accomplished all the obedience which Christ has fulfilled for me, if only I accept such benefit with a believing heart.",
+   "domingo": 23,
+   "p": "Como és justo diante de Deus?",
+   "r": "Somente pela verdadeira fé em Jesus Cristo. Isto é: ainda que a minha consciência me acuse de que pequei gravemente contra todos os mandamentos de Deus, de que nunca guardei nenhum deles e de que ainda estou sempre inclinado a todo mal, contudo Deus, sem nenhum mérito meu, por pura graça, me concede e imputa a perfeita satisfação, justiça e santidade de Cristo, como se eu nunca tivesse cometido nem tido pecado algum e eu mesmo tivesse cumprido toda a obediência que Cristo cumpriu por mim, contanto que eu aceite esse benefício com coração crente.",
+   "provas": {}
+  },
+  {
+   "n": "61",
+   "p_en": "Why sayest thou that thou art righteous only by faith?",
+   "r_en": "Not that I am acceptable to God on account of the worthiness of my faith; but because only the satisfaction, righteousness, and holiness of Christ is my righteousness before God, and I can receive the same and make it my own in no other way than by faith only.",
+   "domingo": 23,
+   "p": "Por que dizes que és justo somente pela fé?",
+   "r": "Não porque eu seja agradável a Deus pelo valor da minha fé, mas porque somente a satisfação, a justiça e a santidade de Cristo são a minha justiça diante de Deus, e eu não as posso receber e fazer minhas de outro modo senão somente pela fé.",
+   "provas": {}
+  },
+  {
+   "n": "62",
+   "p_en": "But why can not our good works be the whole or part of our righteousness before God?",
+   "r_en": "Because the righteousness which can stand before the judgment-seat of God must be perfect throughout, and wholly conformable to the divine law; whereas even our best works in this life are all imperfect and defiled with sin.",
+   "domingo": 24,
+   "p": "Mas por que as nossas boas obras não podem ser a nossa justiça diante de Deus, nem no todo nem em parte?",
+   "r": "Porque a justiça que pode subsistir diante do tribunal de Deus tem de ser inteiramente perfeita e em tudo conforme à lei divina; e mesmo as nossas melhores obras nesta vida são todas imperfeitas e manchadas de pecado.",
+   "provas": {}
+  },
+  {
+   "n": "63",
+   "p_en": "How is it that our good works merit nothing, while yet it is God's will to reward them in this life and in that which is to come?",
+   "r_en": "The reward comes not of merit, but of grace.",
+   "domingo": 24,
+   "p": "Como é que as nossas boas obras nada merecem, se é vontade de Deus recompensá-las nesta vida e na vindoura?",
+   "r": "A recompensa não vem por mérito, mas por graça.",
+   "provas": {}
+  },
+  {
+   "n": "64",
+   "p_en": "But does not this doctrine make men careless and profane?",
+   "r_en": "No; for it is impossible that those who are implanted into Christ by true faith should not bring forth fruits of righteousness.",
+   "domingo": 24,
+   "p": "Mas esta doutrina não torna os homens descuidados e ímpios?",
+   "r": "Não; porque é impossível que os que estão enxertados em Cristo por verdadeira fé não produzam frutos de justiça.",
+   "provas": {}
+  },
+  {
+   "n": "65",
+   "p_en": "Since, then, we are made partakers of Christ and all his benefits by faith only, whence comes this faith?",
+   "r_en": "The Holy Ghost works it in our hearts by the preaching of the holy Gospel, and confirms it by the use of the holy Sacraments.",
+   "domingo": 25,
+   "p": "Uma vez que somente pela fé somos feitos participantes de Cristo e de todos os seus benefícios, de onde vem essa fé?",
+   "r": "O Espírito Santo a produz nos nossos corações pela pregação do santo Evangelho e a confirma pelo uso dos santos sacramentos.",
+   "provas": {}
+  },
+  {
+   "n": "66",
+   "p_en": "What are the Sacraments?",
+   "r_en": "The Sacraments are visible, holy signs and seals, appointed of God for this end, that by the use thereof he may the more fully declare and seal to us the promise of the Gospel; namely, that he grants us out of free grace the forgiveness of sins and everlasting life, for the sake of the one sacrifice of Christ accomplished on the cross.",
+   "domingo": 25,
+   "p": "Que são os sacramentos?",
+   "r": "Os sacramentos são sinais e selos santos e visíveis, instituídos por Deus para que, pelo seu uso, ele nos declare e sele mais plenamente a promessa do Evangelho, a saber: que, por pura graça, ele nos dá o perdão dos pecados e a vida eterna por causa do único sacrifício de Cristo, consumado na cruz.",
+   "provas": {}
+  },
+  {
+   "n": "67",
+   "p_en": "Are both these, then, the Word and the sacraments, designed to direct our faith to the sacrifice of Jesus Christ on the cross as the only ground of our salvation?",
+   "r_en": "Yes, truly; for the Holy Ghost teaches in the Gospel, and by the holy Sacraments assures us, that our whole salvation stands in the one sacrifice of Christ made for us on the cross.",
+   "domingo": 25,
+   "p": "Então as duas coisas, a Palavra e os sacramentos, destinam-se a dirigir a nossa fé ao sacrifício de Jesus Cristo na cruz como único fundamento da nossa salvação?",
+   "r": "Sim, de fato; porque o Espírito Santo ensina no Evangelho, e pelos santos sacramentos nos assegura, que toda a nossa salvação está no único sacrifício de Cristo, oferecido por nós na cruz.",
+   "provas": {}
+  },
+  {
+   "n": "68",
+   "p_en": "How many Sacraments has Christ appointed in the New Testament?",
+   "r_en": "Two: holy Baptism and the holy Supper.",
+   "domingo": 25,
+   "p": "Quantos sacramentos Cristo instituiu no Novo Testamento?",
+   "r": "Dois: o santo Batismo e a santa Ceia.",
+   "provas": {}
+  },
+  {
+   "n": "69",
+   "p_en": "How is it signified and sealed unto thee in holy Baptism that thou hast part in the one sacrifice of Christ on the cross?",
+   "r_en": "Thus: that Christ has appointed this outward washing with water, and has joined therewith this promise, that I am washed with his blood and Spirit from the pollution of my soul, that is, from all my sins, as certainly as I am washed outwardly with water whereby commonly the filthiness of the body is taken away.",
+   "domingo": 26,
+   "p": "Como te é significado e selado no santo Batismo que tens parte no único sacrifício de Cristo na cruz?",
+   "r": "Assim: Cristo instituiu esta lavagem exterior com água e a ela uniu a promessa de que sou lavado com o seu sangue e o seu Espírito da imundícia da minha alma, isto é, de todos os meus pecados, tão certamente como sou lavado exteriormente com a água, que costuma tirar a sujeira do corpo.",
+   "provas": {}
+  },
+  {
+   "n": "70",
+   "p_en": "What is it to be washed with the blood and Spirit of Christ?",
+   "r_en": "It is to have the forgiveness of sins from God, through grace, for the sake of Christ's blood, which he shed for us in his sacrifice on the cross; and also to be renewed by the Holy Ghost, and sanctified to be members of Christ, that so we may more and more die unto sin, and lead holy and unblamable lives.",
+   "domingo": 26,
+   "p": "Que é ser lavado com o sangue e o Espírito de Cristo?",
+   "r": "É receber de Deus, pela graça, o perdão dos pecados, por causa do sangue de Cristo, que ele derramou por nós no seu sacrifício na cruz; e também ser renovado pelo Espírito Santo e santificado para ser membro de Cristo, para que cada vez mais morramos para o pecado e levemos uma vida santa e irrepreensível.",
+   "provas": {}
+  },
+  {
+   "n": "71",
+   "p_en": "Where has Christ promised that we are as certainly washed with his blood and Spirit as with the water of Baptism?",
+   "r_en": "In the institution of Baptism, which runs thus: Go ye, therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost. He that believeth and is baptized, shall be saved; but he that believeth not, shall be damned. This promise is also repeated where the Scripture calls Baptism the washing of regeneration and the washing away of sins.",
+   "domingo": 26,
+   "p": "Onde Cristo prometeu que somos lavados com o seu sangue e o seu Espírito tão certamente como com a água do Batismo?",
+   "r": "Na instituição do Batismo, que diz assim: Ide, portanto, e ensinai todas as nações, batizando-as em nome do Pai, e do Filho, e do Espírito Santo. Quem crer e for batizado será salvo; mas quem não crer será condenado. Essa promessa se repete também onde a Escritura chama o Batismo de lavagem da regeneração e lavagem dos pecados.",
+   "provas": {}
+  },
+  {
+   "n": "72",
+   "p_en": "Is, then, the outward washing of water itself the washing away of sins?",
+   "r_en": "No; for only the blood of Jesus Christ and the Holy Spirit cleanse us from all sin.",
+   "domingo": 27,
+   "p": "É então a própria lavagem exterior com água que lava os pecados?",
+   "r": "Não; porque somente o sangue de Jesus Cristo e o Espírito Santo nos purificam de todo pecado.",
+   "provas": {}
+  },
+  {
+   "n": "73",
+   "p_en": "Why, then, doth the Holy Ghost call Baptism the washing of regeneration and the washing away of sins?",
+   "r_en": "God speaks thus not without great cause: namely, not only to teach us thereby that like as the filthiness of the body is taken away by water, so our sins also are taken away by the blood and Spirit of Christ; but much more, that by this divine pledge and token he may assure us that we are as really washed from our sins spiritually as our bodies are washed with water.",
+   "domingo": 27,
+   "p": "Por que, então, o Espírito Santo chama o Batismo de lavagem da regeneração e lavagem dos pecados?",
+   "r": "Deus não fala assim sem grande razão: não só para nos ensinar com isso que, assim como a sujeira do corpo é tirada pela água, assim também os nossos pecados são tirados pelo sangue e pelo Espírito de Cristo; mas muito mais para nos assegurar, por este penhor e sinal divino, que somos lavados espiritualmente dos nossos pecados tão realmente como o nosso corpo é lavado com água.",
+   "provas": {}
+  },
+  {
+   "n": "74",
+   "p_en": "Are infants also to be baptized?",
+   "r_en": "Yes; for since they, as well as their parents, belong to the covenant and people of God, and both redemption from sin and the Holy Ghost, who works faith, are through the blood of Christ promised to them no less than to their parents, they are also by Baptism, as a sign of the covenant, to be ingrafted into the Christian Church, and distinguished from the children of unbelievers, as was done in the Old Testament by Circumcision, in place of which in the New Testament Baptism is appointed.",
+   "domingo": 27,
+   "p": "Devem também as crianças ser batizadas?",
+   "r": "Sim; porque, assim como os seus pais, elas pertencem à aliança e ao povo de Deus, e tanto a redenção do pecado como o Espírito Santo, que opera a fé, lhes são prometidos pelo sangue de Cristo não menos que aos pais; por isso também devem, pelo Batismo, como sinal da aliança, ser incorporadas à Igreja cristã e distinguidas dos filhos dos incrédulos, como se fazia no Antigo Testamento pela circuncisão, em cujo lugar foi instituído o Batismo no Novo Testamento.",
+   "provas": {}
+  },
+  {
+   "n": "75",
+   "p_en": "How is it signified and sealed unto thee in the Holy Supper that thou dost partake of the one sacrifice of Christ on the cross and all his benefits?",
+   "r_en": "Thus, that Christ has commanded me and all believers to eat of this broken bread, and to drink of this cup, and has joined therewith these promises: First, that his body was offered and broken on the cross for me, and his blood shed for me, as certainly as I see with my eyes the bread of the Lord broken for me, and the cup communicated to me; and, further, that with his crucified body and shed blood he himself feeds and nourishes my soul to everlasting life, as certainly as I receive from the hand of the minister, and taste with my mouth, the bread and cup of the Lord, which are given me as certain tokens of the body and blood of Christ.",
+   "domingo": 28,
+   "p": "Como te é significado e selado na santa Ceia que participas do único sacrifício de Cristo na cruz e de todos os seus benefícios?",
+   "r": "Assim: Cristo ordenou a mim e a todos os crentes que comêssemos deste pão partido e bebêssemos deste cálice, e a isso uniu estas promessas: primeiro, que o seu corpo foi oferecido e partido na cruz por mim, e o seu sangue derramado por mim, tão certamente como vejo com os meus olhos o pão do Senhor partido para mim e o cálice dado a mim; e, além disso, que com o seu corpo crucificado e o seu sangue derramado ele mesmo alimenta e sustenta a minha alma para a vida eterna, tão certamente como recebo da mão do ministro, e provo com a minha boca, o pão e o cálice do Senhor, que me são dados como sinais seguros do corpo e do sangue de Cristo.",
+   "provas": {}
+  },
+  {
+   "n": "76",
+   "p_en": "What is it to eat the crucified body and drink the shed blood of Christ?",
+   "r_en": "It is not only to embrace with a believing heart all the sufferings and death of Christ, and thereby to obtain the forgiveness of sins and life eternal, but moreover, also, to be so united more and more to his sacred body by the Holy Ghost, who dwells both in Christ and in us, that although he is in heaven, and we on the earth, we are nevertheless flesh of his flesh and bone of his bones, and live and are governed forever by one Spirit, as members of the same body are by one soul.",
+   "domingo": 28,
+   "p": "Que é comer o corpo crucificado e beber o sangue derramado de Cristo?",
+   "r": "Não é somente abraçar com coração crente todo o sofrimento e a morte de Cristo e assim alcançar o perdão dos pecados e a vida eterna; mas é também ser unido cada vez mais ao seu sagrado corpo pelo Espírito Santo, que habita tanto em Cristo como em nós, de tal modo que, embora ele esteja no céu e nós na terra, somos contudo carne da sua carne e osso dos seus ossos, e vivemos e somos governados para sempre por um só Espírito, como os membros de um mesmo corpo por uma só alma.",
+   "provas": {}
+  },
+  {
+   "n": "77",
+   "p_en": "Where has Christ promised that he will thus feed and nourish believers with his body and blood, as certainly as they eat of this broken bread and drink of this cup?",
+   "r_en": "In the institution of the Supper, which runs thus: The Lord Jesus, the same night in which he was betrayed, took bread; and when he had given thanks, he brake it and said: 'Take, eat, this is my body, which is broken for you; this do in remembrance of me' After the same manner also he took the cup, when he had supped, saying: 'This cup is the New Testament in my blood; this do ye as often as ye drink it, in remembrance of me. For as often as ye eat this bread, and drink this cup, ye do show the Lord's death till he come.' And this promise is repeated also by St. Paul, where he says: The cup of blessing which we bless, is it not the communion of the blood of Christ? The bread which we break, is it not the communion of the body of Christ? For we, being many, are one bread, and one body; for we are all partakers of that one bread.",
+   "domingo": 28,
+   "p": "Onde Cristo prometeu que alimenta e sustenta assim os crentes com o seu corpo e o seu sangue, tão certamente como comem deste pão partido e bebem deste cálice?",
+   "r": "Na instituição da Ceia, que diz assim: O Senhor Jesus, na noite em que foi traído, tomou o pão e, tendo dado graças, o partiu e disse: “Tomai, comei; isto é o meu corpo, que é partido por vós; fazei isto em memória de mim.” Do mesmo modo, depois de cear, tomou também o cálice, dizendo: “Este cálice é o novo testamento no meu sangue; fazei isto, todas as vezes que o beberdes, em memória de mim. Porque todas as vezes que comerdes este pão e beberdes este cálice, anunciais a morte do Senhor até que ele venha.” E essa promessa é repetida também por são Paulo, onde diz: O cálice da bênção que abençoamos, não é a comunhão do sangue de Cristo? O pão que partimos, não é a comunhão do corpo de Cristo? Porque nós, sendo muitos, somos um só pão e um só corpo, pois todos participamos daquele único pão.",
+   "provas": {}
+  },
+  {
+   "n": "78",
+   "p_en": "Do, then, the bread and wine become the real body and blood of Christ?",
+   "r_en": "No; but as the water in Baptism is not changed into the blood of Christ, nor becomes the washing away of sins itself, being only the divine token and assurance thereof, so also in the Lord's Supper the sacred bread does not become the body of Christ itself, though agreeably to the nature and usage of sacraments it is called the body of Christ.",
+   "domingo": 29,
+   "p": "Então o pão e o vinho se tornam o próprio corpo e o próprio sangue de Cristo?",
+   "r": "Não; mas, assim como a água no Batismo não se transforma no sangue de Cristo, nem é ela mesma a lavagem dos pecados, sendo somente o sinal divino e a garantia disso, assim também na Ceia do Senhor o pão sagrado não se torna o próprio corpo de Cristo, embora, segundo a natureza e o uso dos sacramentos, seja chamado corpo de Cristo.",
+   "provas": {}
+  },
+  {
+   "n": "79",
+   "p_en": "Why, then, doth Christ call the bread his body, and the cup his blood, or the New Testament in his blood; and St. Paul, the communion of the body and blood of Christ?",
+   "r_en": "Christ speaks thus not without great cause: namely, not only to teach us thereby that like as bread and wine sustain this temporal life, so also his crucified body and shed blood are the true meat and drink of our souls unto life eternal; but much more, by this visible sign and pledge to assure us that we are as really partakers of his true body and blood, through the working of the Holy Ghost, as we receive by the mouth of the body these holy tokens in remembrance of him; and that all his sufferings and obedience are as certainly our own as if we had ourselves suffered and done all in our own persons.",
+   "domingo": 29,
+   "p": "Por que, então, Cristo chama o pão de seu corpo e o cálice de seu sangue, ou de novo testamento no seu sangue, e são Paulo, de comunhão do corpo e do sangue de Cristo?",
+   "r": "Cristo não fala assim sem grande razão: não só para nos ensinar com isso que, assim como o pão e o vinho sustentam esta vida temporal, assim também o seu corpo crucificado e o seu sangue derramado são a verdadeira comida e bebida das nossas almas para a vida eterna; mas muito mais para nos assegurar, por este sinal e penhor visível, que somos tão realmente participantes do seu verdadeiro corpo e sangue, pela operação do Espírito Santo, como recebemos com a boca do corpo estes santos sinais em memória dele; e que todo o seu sofrimento e obediência são tão certamente nossos como se nós mesmos, em pessoa, tivéssemos sofrido e feito tudo.",
+   "provas": {}
+  },
+  {
+   "n": "80",
+   "p_en": "What difference is there between the Lord's Supper and the Popish Mass?",
+   "r_en": "The Lord's Supper testifies to us that we have full forgiveness of all our sins by the one sacrifice of Jesus Christ, which he himself has once accomplished on the cross; [and that by the Holy Ghost we are ingrafted into Christ, who with his true body is now in heaven at the right hand of the Father, and is to be there worshiped]. But the Mass teaches that the living and the dead have not forgiveness of sins through the sufferings of Christ unless Christ is still daily offered for them by the priests; [and that Christ is bodily under the form of bread and wine, and is therefore to be worshiped in them]. And thus the Mass at bottom is nothing else than a denial of the one sacrifice and passion of Jesus Christ [and an accursed idolatry].",
+   "domingo": 30,
+   "p": "Que diferença há entre a Ceia do Senhor e a missa papal?",
+   "r": "A Ceia do Senhor nos testifica que temos pleno perdão de todos os nossos pecados pelo único sacrifício de Jesus Cristo, que ele mesmo consumou uma só vez na cruz; [e que pelo Espírito Santo somos enxertados em Cristo, que com o seu verdadeiro corpo está agora no céu, à direita do Pai, e ali deve ser adorado]. Mas a missa ensina que os vivos e os mortos não têm o perdão dos pecados pelo sofrimento de Cristo, a não ser que Cristo ainda seja oferecido por eles diariamente pelos sacerdotes; [e que Cristo está corporalmente sob a forma de pão e vinho, e por isso deve ser adorado neles]. E assim a missa, no fundo, não é outra coisa senão uma negação do único sacrifício e paixão de Jesus Cristo [e uma idolatria maldita].",
+   "provas": {}
+  },
+  {
+   "n": "81",
+   "p_en": "Who are to come unto the table of the Lord?",
+   "r_en": "Those who are displeased with themselves for their sins, yet trust that these are forgiven them, and that their remaining infirmity is covered by the passion and death of Christ; who also desire more and more to strengthen their faith and amend their life. But the impenitent and hypocrites eat and drink judgment to themselves.",
+   "domingo": 30,
+   "p": "Quem deve aproximar-se da mesa do Senhor?",
+   "r": "Os que se desagradam de si mesmos por causa dos seus pecados, e contudo confiam que estes lhes estão perdoados e que a fraqueza que ainda lhes resta está coberta pela paixão e morte de Cristo; e que também desejam fortalecer cada vez mais a sua fé e corrigir a sua vida. Mas os impenitentes e os hipócritas comem e bebem juízo para si mesmos.",
+   "provas": {}
+  },
+  {
+   "n": "82",
+   "p_en": "Are they, then, also to be admitted to this Supper who show themselves to be, by their confession and life, unbelieving and ungodly?",
+   "r_en": "No; for by this the covenant of God is profaned, and his wrath provoked against the whole congregation; wherefore the Christian Church is bound, according to the order of Christ and his Apostles, by the office of the keys to exclude such person until they amend their life.",
+   "domingo": 30,
+   "p": "Devem então ser admitidos a esta Ceia também os que, pela sua confissão e vida, se mostram incrédulos e ímpios?",
+   "r": "Não; porque assim se profana a aliança de Deus e se provoca a sua ira contra toda a congregação; por isso a Igreja cristã tem o dever, segundo a ordem de Cristo e dos seus apóstolos, de excluir tais pessoas pelo ofício das chaves, até que corrijam a sua vida.",
+   "provas": {}
+  },
+  {
+   "n": "83",
+   "p_en": "What is the Office of the Keys?",
+   "r_en": "The preaching of the holy Gospel and Church discipline; by which two things the kingdom of heaven is opened to believers and shut against unbelievers.",
+   "domingo": 31,
+   "p": "Que é o ofício das chaves?",
+   "r": "A pregação do santo Evangelho e a disciplina da Igreja; por estas duas coisas o reino do céu é aberto aos crentes e fechado aos incrédulos.",
+   "provas": {}
+  },
+  {
+   "n": "84",
+   "p_en": "How is the kingdom of heaven opened and shut by the preaching of the holy Gospel?",
+   "r_en": "In this way: that, according to the command of Christ, it is proclaimed and openly witnessed to believers, one and all, that as often as they accept with true faith the promise of the Gospel, all their sins are really forgiven them of God for the sake of Christ's merits; and on the contrary, to all unbelievers and hypocrites, that the wrath of God and eternal condemnation abide on them so long as they are not converted: according to which witness of the Gospel will be the judgment of God, both in this life and in that which is to come.",
+   "domingo": 31,
+   "p": "Como o reino do céu é aberto e fechado pela pregação do santo Evangelho?",
+   "r": "Desta maneira: segundo o mandamento de Cristo, anuncia-se e testifica-se publicamente aos crentes, a todos e a cada um, que, todas as vezes que aceitam com verdadeira fé a promessa do Evangelho, todos os seus pecados lhes são realmente perdoados por Deus por causa dos méritos de Cristo; e, ao contrário, a todos os incrédulos e hipócritas, que a ira de Deus e a condenação eterna permanecem sobre eles enquanto não se converterem. Segundo esse testemunho do Evangelho será o juízo de Deus, tanto nesta vida como na vindoura.",
+   "provas": {}
+  },
+  {
+   "n": "85",
+   "p_en": "How is the kingdom of heaven shut and opened by Church discipline?",
+   "r_en": "In this way: that, according to the command of Christ, if any under the Christian name show themselves unsound either in doctrine or life, and after repeated brotherly admonition refuse to turn from their errors or evil ways, they are complained of to the Church or to its proper officers, and, if they neglect to hear them also, are by them excluded from the holy Sacraments and the Christian communion, and by God himself from the kingdom of Christ; and if they promise and show real amendment, they are again received as members of Christ and his Church.",
+   "domingo": 31,
+   "p": "Como o reino do céu é fechado e aberto pela disciplina da Igreja?",
+   "r": "Desta maneira: segundo o mandamento de Cristo, se alguns que levam o nome de cristãos se mostram não sãos na doutrina ou na vida, e depois de repetidas admoestações fraternas se recusam a deixar os seus erros ou maus caminhos, são denunciados à Igreja ou aos que nela têm esse ofício; e, se também a estes desprezarem, são por eles excluídos dos santos sacramentos e da comunhão cristã, e pelo próprio Deus, do reino de Cristo; e, se prometerem e mostrarem verdadeira emenda, são de novo recebidos como membros de Cristo e da sua Igreja.",
+   "provas": {}
+  },
+  {
+   "n": "86",
+   "p_en": "Since, then, we are redeemed from our misery by grace through Christ, without any merit of ours, why must we do good works?",
+   "r_en": "Because Christ, having redeemed us by his blood, renews us also by his holy Spirit after his own image, that with our whole life we may show ourselves thankful to God for his blessing, and that he may be glorified through us; then, also, that we ourselves may be assured of our faith by the fruits thereof, and by our godly walk may win our neighbors also to Christ.",
+   "domingo": 32,
+   "p": "Uma vez que fomos libertados da nossa miséria pela graça, por meio de Cristo, sem nenhum mérito nosso, por que devemos fazer boas obras?",
+   "r": "Porque Cristo, tendo-nos redimido com o seu sangue, também nos renova pelo seu Espírito Santo à sua imagem, para que com toda a nossa vida nos mostremos gratos a Deus pelo seu benefício e ele seja glorificado por nós; e também para que nós mesmos tenhamos a certeza da nossa fé pelos seus frutos e, com a nossa vida piedosa, ganhemos também o nosso próximo para Cristo.",
+   "provas": {}
+  },
+  {
+   "n": "87",
+   "p_en": "Can they, then, not be saved who do not turn to God from their unthankful, impenitent life?",
+   "r_en": "By no means; for, as the Scripture saith, no unchaste person, idolater, adulterer, thief, covetous man, drunkard, slanderer, robber, or any such like, shall inherit the kingdom of God.",
+   "domingo": 32,
+   "p": "Então não podem ser salvos os que não se convertem a Deus da sua vida ingrata e impenitente?",
+   "r": "De modo nenhum; porque, como diz a Escritura, nenhum impuro, idólatra, adúltero, ladrão, avarento, bêbado, maldizente, roubador ou outro semelhante herdará o reino de Deus.",
+   "provas": {}
+  },
+  {
+   "n": "88",
+   "p_en": "In how many things does true repentance or conversion consist?",
+   "r_en": "In two things: the dying of the old man, and the quickening of the new.",
+   "domingo": 33,
+   "p": "Em quantas coisas consiste o verdadeiro arrependimento ou conversão?",
+   "r": "Em duas: na mortificação do velho homem e na vivificação do novo.",
+   "provas": {}
+  },
+  {
+   "n": "89",
+   "p_en": "What is the dying of the old man?",
+   "r_en": "Heartfelt sorrow for sin; causing us to hate and turn from it always more and more.",
+   "domingo": 33,
+   "p": "Que é a mortificação do velho homem?",
+   "r": "É a tristeza sincera pelo pecado, que nos leva a odiá-lo e a fugir dele cada vez mais.",
+   "provas": {}
+  },
+  {
+   "n": "90",
+   "p_en": "What is the quickening of the new man?",
+   "r_en": "Heartfelt joy in God; causing us to take delight in living according to the will of God in all good works.",
+   "domingo": 33,
+   "p": "Que é a vivificação do novo homem?",
+   "r": "É a alegria sincera em Deus, que nos leva a ter prazer em viver segundo a vontade de Deus em todas as boas obras.",
+   "provas": {}
+  },
+  {
+   "n": "91",
+   "p_en": "But what are good works?",
+   "r_en": "Those only which are done from true faith, according to the law of God, for his glory; and not such as rest on our own opinion or the commandments of men.",
+   "domingo": 33,
+   "p": "Mas que são boas obras?",
+   "r": "Somente as que se fazem por verdadeira fé, segundo a lei de Deus, para a sua glória; e não as que se fundam na nossa própria opinião ou em mandamentos de homens.",
+   "provas": {}
+  },
+  {
+   "n": "92",
+   "p_en": "What is the law of God?",
+   "r_en": "God spake all these words, saying:\nI am the Lord thy God, which have brought thee out of the land of Egypt, out of the house of bondage. Thou shalt have no other gods before me.\nThou shalt not make unto thee any graven image, or any likeness of any thing that is in heaven above, or that is in the earth beneath, or that is in the water under the earth; thou shalt not bow down thyself to them, nor serve them. For I the Lord thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate me; and showing mercy unto thousands of them that love me and keep my commandments.\nThou shalt not take the name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh his name in vain.\nRemember the Sabbath day to keep it holy. Six days shalt thou labor, and do all thy work: but the seventh day is the Sabbath of the Lord thy God; in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy man-servant, nor thy maid-servant, nor thy cattle, nor the stranger that is within thy gates. For in six days the Lord made heaven and earth, the sea, and all that in them is, and rested the seventh day; wherefore the Lord blessed the Sabbath day, and hallowed it.\nHonor thy father and thy mother; that thy days may be long upon the land which the Lord thy God giveth thee.\nThou shalt not kill.\nThou shalt not commit adultery.\nThou shalt not steal.\nThou shalt not bear false witness against thy neighbor.\nThou shalt not covet thy neighbor's house; thou shalt not covet thy neighbor's wife, nor his man-servant, nor his maidservant, nor his ox, nor his ass, nor any thing that is thy neighbor's.",
+   "domingo": 34,
+   "p": "Qual é a lei de Deus?",
+   "r": "Deus falou todas estas palavras, dizendo:\nEu sou o SENHOR teu Deus, que te tirei da terra do Egito, da casa da servidão. Não terás outros deuses diante de mim.\nNão farás para ti imagem de escultura, nem semelhança alguma do que há em cima no céu, nem embaixo na terra, nem nas águas debaixo da terra; não te curvarás diante delas, nem as servirás. Porque eu, o SENHOR teu Deus, sou Deus zeloso, que castigo a maldade dos pais nos filhos até a terceira e a quarta geração dos que me odeiam, e uso de misericórdia com milhares dos que me amam e guardam os meus mandamentos.\nNão tomarás o nome do SENHOR teu Deus em vão; porque o SENHOR não terá por inocente o que tomar o seu nome em vão.\nLembra-te do dia de sábado, para o santificar. Seis dias trabalharás e farás toda a tua obra; mas o sétimo dia é o sábado do SENHOR teu Deus; nele não farás nenhuma obra, nem tu, nem teu filho, nem tua filha, nem teu servo, nem tua serva, nem o teu animal, nem o estrangeiro que está dentro das tuas portas. Porque em seis dias o SENHOR fez o céu e a terra, o mar e tudo o que neles há, e no sétimo dia descansou; por isso o SENHOR abençoou o dia de sábado e o santificou.\nHonra teu pai e tua mãe, para que se prolonguem os teus dias na terra que o SENHOR teu Deus te dá.\nNão matarás.\nNão adulterarás.\nNão furtarás.\nNão dirás falso testemunho contra o teu próximo.\nNão cobiçarás a casa do teu próximo; não cobiçarás a mulher do teu próximo, nem o seu servo, nem a sua serva, nem o seu boi, nem o seu jumento, nem coisa alguma do teu próximo.",
+   "provas": {}
+  },
+  {
+   "n": "93",
+   "p_en": "How are these Commandments divided?",
+   "r_en": "Into two tables: the first of which teaches us, in four commandments, what duties we owe to God; the second, in six, what duties we owe to our neighbor.",
+   "domingo": 34,
+   "p": "Como se dividem estes mandamentos?",
+   "r": "Em duas tábuas: a primeira nos ensina, em quatro mandamentos, quais são os nossos deveres para com Deus; a segunda, em seis, quais são os nossos deveres para com o próximo.",
+   "provas": {}
+  },
+  {
+   "n": "94",
+   "p_en": "What does God require in the first commandment?",
+   "r_en": "That, on peril of my soul's salvation, I avoid and flee all idolatry, sorcery, enchantments, invocation of saints or of other creatures; and that I rightly acknowledge the only true God, trust in him alone, with all humility and patience expect all good from him only, and love, fear, and honor him with my whole heart; so as rather to renounce all creatures than do the least thing against his will.",
+   "domingo": 34,
+   "p": "Que exige Deus no primeiro mandamento?",
+   "r": "Que, sob pena de perder a salvação da minha alma, eu evite e fuja de toda idolatria, feitiçaria, encantamentos e invocação dos santos ou de outras criaturas; e que eu reconheça corretamente o único Deus verdadeiro, confie somente nele, com toda humildade e paciência espere somente dele todo bem, e o ame, tema e honre de todo o meu coração; de tal modo que antes renuncie a todas as criaturas do que faça a mínima coisa contra a sua vontade.",
+   "provas": {}
+  },
+  {
+   "n": "95",
+   "p_en": "What is idolatry?",
+   "r_en": "It is, instead of the one true God who has revealed himself in his Word, or along with the same, to conceive or have something else on which to place our trust.",
+   "domingo": 34,
+   "p": "Que é idolatria?",
+   "r": "É, em lugar do único Deus verdadeiro que se revelou na sua Palavra, ou ao lado dele, imaginar ou ter outra coisa em que pôr a nossa confiança.",
+   "provas": {}
+  },
+  {
+   "n": "96",
+   "p_en": "What does God require in the second commandment?",
+   "r_en": "That we in nowise make any image of God, nor worship him in any other way than he has commanded in his Word.",
+   "domingo": 35,
+   "p": "Que exige Deus no segundo mandamento?",
+   "r": "Que de modo nenhum façamos imagem de Deus, nem o adoremos de outra maneira senão como ele ordenou na sua Palavra.",
+   "provas": {}
+  },
+  {
+   "n": "97",
+   "p_en": "Must we, then, not make any image at all?",
+   "r_en": "God may not and can not be imaged in any way; as for creatures, though they may indeed be imaged, yet God forbids the making or keeping any likeness of them, either to worship them, or by them to serve himself.",
+   "domingo": 35,
+   "p": "Então não devemos fazer imagem alguma?",
+   "r": "Deus não pode nem deve ser representado de modo algum; quanto às criaturas, ainda que possam ser representadas, Deus proíbe fazer ou ter imagem delas para as adorar ou para servir a ele por meio delas.",
+   "provas": {}
+  },
+  {
+   "n": "98",
+   "p_en": "But may not pictures be tolerated in churches as books for the laity?",
+   "r_en": "No; for we should not be wiser than God, who will not have his people taught by dumb idols, but by the lively preaching of his Word.",
+   "domingo": 35,
+   "p": "Mas não se podem tolerar imagens nas igrejas como livros para os leigos?",
+   "r": "Não; porque não devemos ser mais sábios que Deus, que não quer que o seu povo seja ensinado por ídolos mudos, mas pela pregação viva da sua Palavra.",
+   "provas": {}
+  },
+  {
+   "n": "99",
+   "p_en": "What is required in the third commandment?",
+   "r_en": "That we must not by cursing, or by false swearing, nor yet by unnecessary oaths, profane or abuse the name of God; nor even by our silence and connivance be partakers of these horrible sins in others; and in sum, that we use the holy name of God no otherwise than with fear and reverence, so that he may be rightly confessed and worshiped by us, and be glorified in all our words and works.",
+   "domingo": 36,
+   "p": "Que se exige no terceiro mandamento?",
+   "r": "Que não profanemos nem abusemos do nome de Deus com maldições, juramentos falsos ou mesmo juramentos desnecessários; nem nos tornemos participantes desses horríveis pecados nos outros com o nosso silêncio e consentimento; e, em suma, que não usemos o santo nome de Deus senão com temor e reverência, para que ele seja corretamente confessado e adorado por nós e glorificado em todas as nossas palavras e obras.",
+   "provas": {}
+  },
+  {
+   "n": "100",
+   "p_en": "Is, then, the profaning of God's name, by swearing and cursing, so grievous a sin that his wrath is kindled against those also who seek not, as much as in them lies, to hinder and forbid the same?",
+   "r_en": "Yes, truly; for no sin is greater or more provoking to God than the profaning of his name. Wherefore he even commanded it to be punished with death.",
+   "domingo": 36,
+   "p": "É então a profanação do nome de Deus, com juramentos e maldições, um pecado tão grave que a sua ira se acende também contra os que não procuram, quanto está em si, impedi-la e proibi-la?",
+   "r": "Sim, certamente; porque nenhum pecado é maior nem provoca mais a ira de Deus do que a profanação do seu nome. Por isso ele até ordenou que fosse castigada com a morte.",
+   "provas": {}
+  },
+  {
+   "n": "101",
+   "p_en": "But may we not swear by the name of God in a religious manner?",
+   "r_en": "Yes; when the magistrate requires it, or it may be needful otherwise to maintain and promote fidelity and truth, to the glory of God and our neighbor's good. For such swearing is grounded in God's Word, and therefore was rightly used by the saints in the Old and New Testament.",
+   "domingo": 37,
+   "p": "Mas não podemos jurar pelo nome de Deus de maneira piedosa?",
+   "r": "Sim; quando o magistrado o exige, ou quando de outro modo for necessário para manter e promover a fidelidade e a verdade, para a glória de Deus e o bem do próximo. Porque tal juramento se funda na Palavra de Deus, e por isso foi usado corretamente pelos santos no Antigo e no Novo Testamento.",
+   "provas": {}
+  },
+  {
+   "n": "102",
+   "p_en": "May we swear by the saints or any other creatures?",
+   "r_en": "No; for a lawful oath is a calling upon God, as the only searcher of hearts, to bear witness to the truth, and to punish me if I swear falsely; which honor is due to no creature.",
+   "domingo": 37,
+   "p": "Podemos jurar pelos santos ou por quaisquer outras criaturas?",
+   "r": "Não; porque o juramento legítimo é invocar a Deus, como único que sonda os corações, para que dê testemunho da verdade e me castigue se eu jurar falsamente; e essa honra não se deve a nenhuma criatura.",
+   "provas": {}
+  },
+  {
+   "n": "103",
+   "p_en": "What does God require in the fourth commandment?",
+   "r_en": "In the first place, that the ministry of the Gospel and schools be maintained; and that I, especially on the day of rest, diligently attend church, to learn the Word of God, to use the holy Sacraments, to call publicly upon the Lord, and to give Christian alms. In the second place, that all the days of my life I rest from my evil works, allow the Lord to work in me by his Spirit, and thus begin in this life the everlasting Sabbath.",
+   "domingo": 38,
+   "p": "Que exige Deus no quarto mandamento?",
+   "r": "Primeiro, que se mantenham o ministério do Evangelho e as escolas; e que eu, sobretudo no dia de descanso, frequente com diligência a igreja, para aprender a Palavra de Deus, usar os santos sacramentos, invocar publicamente o Senhor e dar esmolas cristãs. Segundo, que todos os dias da minha vida eu descanse das minhas más obras, deixe o Senhor operar em mim pelo seu Espírito e assim comece nesta vida o sábado eterno.",
+   "provas": {}
+  },
+  {
+   "n": "104",
+   "p_en": "What does God require in the fifth commandment?",
+   "r_en": "That I show all honor, love, and faithfulness to my father and mother, and to all in authority over me; submit myself with due obedience to all their good instruction and correction, and also bear patiently with their infirmities, since it is God's will to govern us by their hand.",
+   "domingo": 39,
+   "p": "Que exige Deus no quinto mandamento?",
+   "r": "Que eu mostre toda honra, amor e fidelidade a meu pai e a minha mãe e a todos os que têm autoridade sobre mim; que me sujeite com a devida obediência a todo bom ensino e correção deles e também suporte com paciência as suas fraquezas, pois é vontade de Deus governar-nos pela mão deles.",
+   "provas": {}
+  },
+  {
+   "n": "105",
+   "p_en": "What does God require in the sixth commandment?",
+   "r_en": "That I neither in thought, nor in word or look, much less in deed, revile, hate, insult, or kill my neighbor, whether by myself or by another; but lay aside all desire of revenge: moreover, that I harm not myself, nor willfully run into any danger. Wherefore, also, to restrain murder, the magistrate is armed with the sword.",
+   "domingo": 40,
+   "p": "Que exige Deus no sexto mandamento?",
+   "r": "Que eu não insulte, odeie, ofenda nem mate o meu próximo, nem por pensamento, nem por palavra ou gesto, e muito menos por obra, nem por mim mesmo nem por outro; mas que deixe todo desejo de vingança; e ainda, que não faça mal a mim mesmo nem me exponha voluntariamente a perigo algum. Por isso também, para impedir o homicídio, o magistrado está armado com a espada.",
+   "provas": {}
+  },
+  {
+   "n": "106",
+   "p_en": "But this commandment speaks only of killing.",
+   "r_en": "In forbidding this, however, God means to teach us that he abhors the root of murder—namely, envy, hatred, anger, and desire of revenge; and that all these are in his sight hidden murder.",
+   "domingo": 40,
+   "p": "Mas este mandamento fala somente de matar.",
+   "r": "Ao proibir isso, porém, Deus quer ensinar-nos que detesta a raiz do homicídio, isto é, a inveja, o ódio, a ira e o desejo de vingança; e que tudo isso, diante dele, é homicídio oculto.",
+   "provas": {}
+  },
+  {
+   "n": "107",
+   "p_en": "Is it, then, enough that we do not kill our neighbor in any such way?",
+   "r_en": "No; for in condemning envy, hatred, and anger, God requires us to love our neighbor as ourselves, to show patience, peace, meekness, mercy, and kindness towards him, and, so far as we have power, to prevent his hurt; also, to do good even unto our enemies.",
+   "domingo": 40,
+   "p": "Então basta que não matemos o nosso próximo de nenhuma dessas maneiras?",
+   "r": "Não; porque, ao condenar a inveja, o ódio e a ira, Deus nos ordena amar o próximo como a nós mesmos, mostrar-lhe paciência, paz, mansidão, misericórdia e bondade, impedir, quanto pudermos, o mal que lhe possa vir, e fazer o bem até aos nossos inimigos.",
+   "provas": {}
+  },
+  {
+   "n": "108",
+   "p_en": "What does the seventh commandment teach us?",
+   "r_en": "That all unchastity is accursed of God; and that we should therefore loathe it from the heart, and live chastely and modestly, whether in holy wedlock or single life.",
+   "domingo": 41,
+   "p": "Que nos ensina o sétimo mandamento?",
+   "r": "Que toda impureza é maldita por Deus; e que, por isso, devemos detestá-la de coração e viver de modo casto e recatado, seja no santo matrimônio, seja solteiros.",
+   "provas": {}
+  },
+  {
+   "n": "109",
+   "p_en": "Does God in this commandment forbid nothing more than adultery, and such like gross sins?",
+   "r_en": "Since our body and soul are both temples of the Holy Ghost, it is his will that we keep both pure and holy; for which reason he forbids all unchaste actions, gestures, words, thoughts, desires, and whatever may entice thereto.",
+   "domingo": 41,
+   "p": "Proíbe Deus neste mandamento somente o adultério e outros pecados grosseiros semelhantes?",
+   "r": "Uma vez que o nosso corpo e a nossa alma são templos do Espírito Santo, é vontade dele que conservemos ambos puros e santos; por isso proíbe todas as ações, gestos, palavras, pensamentos e desejos impuros, e tudo o que possa atrair a eles.",
+   "provas": {}
+  },
+  {
+   "n": "110",
+   "p_en": "What does God forbid in the eighth commandment.",
+   "r_en": "Not only such theft and robbery as are punished by the magistrate, but God views as theft also all wicked tricks and devices whereby we seek to draw to ourselves our neighbor's goods, whether by force or with show of right, such as unjust weights, ells, measures, wares, coins, usury, or any means forbidden of God; so, moreover, all covetousness, and all useless waste of his gifts.",
+   "domingo": 42,
+   "p": "Que proíbe Deus no oitavo mandamento?",
+   "r": "Não somente os furtos e roubos que o magistrado castiga; Deus considera furto também todas as más astúcias e artifícios com que procuramos trazer para nós os bens do próximo, seja pela força, seja com aparência de direito, como pesos, côvados e medidas falsos, mercadorias e moedas enganosas, usura ou qualquer meio proibido por Deus; e também toda avareza e todo desperdício inútil dos seus dons.",
+   "provas": {}
+  },
+  {
+   "n": "111",
+   "p_en": "But what does God require of thee in this commandment?",
+   "r_en": "That I further my neighbor's good where I can and may, deal with him as I would have others deal with me, and labor faithfully that I may be able to help the poor in their need.",
+   "domingo": 42,
+   "p": "Mas que exige Deus de ti neste mandamento?",
+   "r": "Que eu promova o bem do meu próximo onde puder e me for permitido, que o trate como gostaria que os outros me tratassem, e que trabalhe fielmente para poder ajudar os pobres na sua necessidade.",
+   "provas": {}
+  },
+  {
+   "n": "112",
+   "p_en": "What is required in the ninth commandment?",
+   "r_en": "That I bear false witness against no one; wrest no one's words; be no backbiter or slanderer; join in condemning no one unheard and rashly: but that I avoid, on pain of God's heavy wrath, all lying and deceit, as being the proper works of the devil; in matters of judgment and justice, and in all other affairs, love, honestly speak and confess the truth; and, so far as I can, defend and promote my neighbor's good name.",
+   "domingo": 43,
+   "p": "Que se exige no nono mandamento?",
+   "r": "Que eu não dê falso testemunho contra ninguém; não torça as palavras de ninguém; não seja difamador nem caluniador; não ajude a condenar ninguém sem o ouvir e precipitadamente; mas que, sob pena da pesada ira de Deus, evite toda mentira e todo engano, como obras próprias do diabo; que, nos julgamentos e na justiça e em todos os outros negócios, ame a verdade, a fale com sinceridade e a confesse; e que, quanto puder, defenda e promova a boa reputação do meu próximo.",
+   "provas": {}
+  },
+  {
+   "n": "113",
+   "p_en": "What is required in the tenth commandment?",
+   "r_en": "That not even the least inclination or thought against any of God's commandments ever enter into our heart; but that, with our whole heart, we continually hate all sin, and take pleasure in all righteousness.",
+   "domingo": 44,
+   "p": "Que se exige no décimo mandamento?",
+   "r": "Que nunca entre no nosso coração nem a menor inclinação ou pensamento contra qualquer dos mandamentos de Deus; mas que, de todo o coração, odiemos sempre todo pecado e tenhamos prazer em toda justiça.",
+   "provas": {}
+  },
+  {
+   "n": "114",
+   "p_en": "Can those who are converted to God keep these commandments perfectly?",
+   "r_en": "No; but even the holiest men, while in this life, have only a small beginning of this obedience, yet so that with earnest purpose they begin to live, not only according to some, but according to all the commandments of God.",
+   "domingo": 44,
+   "p": "Podem os que se converteram a Deus guardar perfeitamente estes mandamentos?",
+   "r": "Não; mesmo os homens mais santos, enquanto estão nesta vida, têm somente um pequeno começo dessa obediência; contudo de tal modo que, com propósito sincero, começam a viver não só segundo alguns, mas segundo todos os mandamentos de Deus.",
+   "provas": {}
+  },
+  {
+   "n": "115",
+   "p_en": "Why, then, doth God so strictly enjoin upon us the ten commandments, since in this life no one can keep them?",
+   "r_en": "First, that all our life long we may learn more and more to know our sinful nature, and so the more earnestly seek forgiveness of sins and righteousness in Christ; secondly, that we may continually strive and beg from God the grace of the Holy Ghost, so as to become more and more changed into the image of God, till we attain finally to full perfection after this life.",
+   "domingo": 44,
+   "p": "Por que, então, Deus nos manda tão rigorosamente os dez mandamentos, se nesta vida ninguém os pode guardar?",
+   "r": "Primeiro, para que durante toda a nossa vida aprendamos cada vez mais a conhecer a nossa natureza pecadora e assim busquemos com mais empenho o perdão dos pecados e a justiça em Cristo; segundo, para que nos esforcemos sem cessar e peçamos a Deus a graça do Espírito Santo, para sermos cada vez mais transformados à imagem de Deus, até chegarmos por fim à plena perfeição depois desta vida.",
+   "provas": {}
+  },
+  {
+   "n": "116",
+   "p_en": "Why is prayer necessary for Christians?",
+   "r_en": "Because it is the chief part of the thankfulness which God requires of us, and because God will give his grace and Holy Spirit only to such as earnestly and without ceasing beg them from him and render thanks unto him for them.",
+   "domingo": 45,
+   "p": "Por que a oração é necessária aos cristãos?",
+   "r": "Porque é a parte principal da gratidão que Deus exige de nós, e porque Deus só dará a sua graça e o seu Espírito Santo aos que lhos pedem com sinceridade e sem cessar e lhe dão graças por eles.",
+   "provas": {}
+  },
+  {
+   "n": "117",
+   "p_en": "What belongs to such prayer as God is pleased with and will hear?",
+   "r_en": "First, that from the heart we call only upon the one true God, who has revealed himself to us in his Word, for all that he has commanded us to ask of him; secondly, that we thoroughly know our need and misery, so as to humble ourselves before the face of his divine majesty; thirdly, that we be firmly assured that, notwithstanding our unworthiness, he will, for the sake of Christ our Lord, certainly hear our prayer, as he has promised us in his Word.",
+   "domingo": 45,
+   "p": "Que pertence à oração que agrada a Deus e que ele ouve?",
+   "r": "Primeiro, que de coração invoquemos somente o único Deus verdadeiro, que se nos revelou na sua Palavra, pedindo tudo o que ele nos mandou pedir; segundo, que conheçamos bem a nossa necessidade e miséria, para nos humilharmos diante da face da sua divina majestade; terceiro, que estejamos firmemente certos de que, apesar da nossa indignidade, ele certamente ouvirá a nossa oração por causa de Cristo, nosso Senhor, como nos prometeu na sua Palavra.",
+   "provas": {}
+  },
+  {
+   "n": "118",
+   "p_en": "What has God commanded us to ask of him?",
+   "r_en": "All things necessary for soul and body, which Christ our Lord has comprised in the prayer taught us by himself.",
+   "domingo": 45,
+   "p": "Que nos mandou Deus pedir?",
+   "r": "Todas as coisas necessárias para a alma e para o corpo, que Cristo, nosso Senhor, resumiu na oração que ele mesmo nos ensinou.",
+   "provas": {}
+  },
+  {
+   "n": "119",
+   "p_en": "What is the Lord's Prayer?",
+   "r_en": "Our Father who art in heaven: Hallowed be thy name. Thy kingdom come. Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we forgive our debtors. And lead us not into temptation, but deliver us from evil: For thine is the kingdom, and the power, and the glory, forever. Amen.",
+   "domingo": 45,
+   "p": "Qual é a Oração do Senhor?",
+   "r": "Pai nosso, que estás no céu: santificado seja o teu nome. Venha o teu reino. Seja feita a tua vontade, assim na terra como no céu. O pão nosso de cada dia dá-nos hoje. E perdoa-nos as nossas dívidas, assim como nós perdoamos aos nossos devedores. E não nos deixes cair em tentação, mas livra-nos do mal. Porque teu é o reino, e o poder, e a glória, para sempre. Amém.",
+   "provas": {}
+  },
+  {
+   "n": "120",
+   "p_en": "Why has Christ commanded us to address God thus: Our Father?",
+   "r_en": "To awaken in us, at the very beginning of our prayer, that filial reverence and trust toward God which are to be the ground of our prayer; namely, that God has become our Father through Christ, and will much less deny us what we ask of him in faith than our parents refuse us earthly things.",
+   "domingo": 46,
+   "p": "Por que Cristo nos mandou dirigir-nos a Deus assim: Pai nosso?",
+   "r": "Para despertar em nós, logo no começo da nossa oração, a reverência e a confiança de filhos para com Deus, que devem ser o fundamento da nossa oração: que Deus se tornou nosso Pai por meio de Cristo e muito menos nos negará o que lhe pedimos com fé do que os nossos pais nos recusam as coisas terrenas.",
+   "provas": {}
+  },
+  {
+   "n": "121",
+   "p_en": "Why is it added: Who art in heaven?",
+   "r_en": "That we may have no earthly thought of the heavenly majesty of God, and may expect from his almighty power all things necessary for body and soul.",
+   "domingo": 46,
+   "p": "Por que se acrescenta: que estás no céu?",
+   "r": "Para que não tenhamos nenhum pensamento terreno da majestade celestial de Deus, e esperemos do seu poder onipotente todas as coisas necessárias para o corpo e para a alma.",
+   "provas": {}
+  },
+  {
+   "n": "122",
+   "p_en": "What is the first petition?",
+   "r_en": "Hallowed be thy name. That is: Enable us rightly to know thee, and to hallow, magnify, and praise thee in all thy works, in which shine forth thy power, wisdom, goodness, justice, mercy, and truth; and likewise so to order our whole life, in thought, word, and work, that thy name may not be blasphemed, but honored and praised on our account.",
+   "domingo": 47,
+   "p": "Qual é o primeiro pedido?",
+   "r": "Santificado seja o teu nome. Isto é: concede-nos conhecer-te corretamente e santificar, engrandecer e louvar-te em todas as tuas obras, nas quais resplandecem o teu poder, sabedoria, bondade, justiça, misericórdia e verdade; e também ordenar toda a nossa vida, em pensamentos, palavras e obras, de tal modo que o teu nome não seja blasfemado por nossa causa, mas honrado e louvado.",
+   "provas": {}
+  },
+  {
+   "n": "123",
+   "p_en": "What is the second petition?",
+   "r_en": "Thy kingdom come. That is: So govern us by thy Word and Spirit that we may submit ourselves unto thee always more and more; preserve and increase thy Church; destroy the works of the devil, every power that exalteth itself against thee, and all wicked devices formed against thy holy Word, until the full coming of thy kingdom, wherein thou shalt be all in all.",
+   "domingo": 48,
+   "p": "Qual é o segundo pedido?",
+   "r": "Venha o teu reino. Isto é: governa-nos de tal modo pela tua Palavra e pelo teu Espírito que nos sujeitemos a ti cada vez mais; conserva e aumenta a tua Igreja; destrói as obras do diabo, todo poder que se levanta contra ti e todos os maus conselhos tramados contra a tua santa Palavra, até a plena vinda do teu reino, em que serás tudo em todos.",
+   "provas": {}
+  },
+  {
+   "n": "124",
+   "p_en": "What is the third petition?",
+   "r_en": "Thy will be done in earth as it is in heaven. That is: Grant that we and all men may renounce our own will, and yield ourselves, without gainsaying, to thy will, which alone is good; that so every one may fulfill his office and calling as willingly and truly as the angels do in heaven.",
+   "domingo": 49,
+   "p": "Qual é o terceiro pedido?",
+   "r": "Seja feita a tua vontade, assim na terra como no céu. Isto é: concede que nós e todos os homens renunciemos à nossa própria vontade e nos sujeitemos, sem murmurar, à tua vontade, a única que é boa; para que assim cada um cumpra o seu ofício e a sua vocação com tão boa vontade e fidelidade como fazem os anjos no céu.",
+   "provas": {}
+  },
+  {
+   "n": "125",
+   "p_en": "What is the fourth petition?",
+   "r_en": "Give us this day our daily bread. That is: Be pleased to provide for all our bodily need, that we may thereby know that thou art the only fountain of all good, and that without thy blessing neither our care and labor nor thy gifts can profit us, and may therefore withdraw our trust from all creatures, and place it alone in thee.",
+   "domingo": 50,
+   "p": "Qual é o quarto pedido?",
+   "r": "O pão nosso de cada dia dá-nos hoje. Isto é: digna-te prover a todas as nossas necessidades do corpo, para que assim reconheçamos que tu és a única fonte de todo bem e que, sem a tua bênção, nem o nosso cuidado e trabalho nem os teus dons nos podem aproveitar; e para que, por isso, retiremos de todas as criaturas a nossa confiança e a ponhamos somente em ti.",
+   "provas": {}
+  },
+  {
+   "n": "126",
+   "p_en": "What is the fifth petition?",
+   "r_en": "And forgive us our debts as we forgive our debtors. That is: Be pleased, for the sake of Christ's blood, not to impute to us, miserable sinners, our manifold transgressions, nor the evil which still always cleaves to us; as we also find this witness of thy grace in us, that it is our full purpose heartily to forgive our neighbor.",
+   "domingo": 51,
+   "p": "Qual é o quinto pedido?",
+   "r": "E perdoa-nos as nossas dívidas, assim como nós perdoamos aos nossos devedores. Isto é: digna-te, por causa do sangue de Cristo, não imputar a nós, pobres pecadores, as nossas muitas transgressões, nem o mal que ainda sempre nos acompanha; assim como também achamos em nós este testemunho da tua graça: que é nosso firme propósito perdoar de coração ao nosso próximo.",
+   "provas": {}
+  },
+  {
+   "n": "127",
+   "p_en": "What is the sixth petition?",
+   "r_en": "And lead us not into temptation, but deliver us from evil. That is: Since we are so weak in ourselves that we can not stand a moment, while our deadly enemies—the devil, the world, and our own flesh—assail us without ceasing, be pleased to preserve and strengthen us by the power of thy Holy Spirit, that we may make firm stand against them, and not sink in this spiritual war, until we come off at last with complete victory.",
+   "domingo": 52,
+   "p": "Qual é o sexto pedido?",
+   "r": "E não nos deixes cair em tentação, mas livra-nos do mal. Isto é: uma vez que somos em nós mesmos tão fracos que não podemos subsistir nem um momento, e os nossos inimigos mortais, o diabo, o mundo e a nossa própria carne, não cessam de nos atacar, digna-te conservar-nos e fortalecer-nos pelo poder do teu Espírito Santo, para que lhes resistamos firmemente e não sucumbamos nesta guerra espiritual, até que por fim alcancemos a vitória completa.",
+   "provas": {}
+  },
+  {
+   "n": "128",
+   "p_en": "How do you close this Prayer?",
+   "r_en": "For thine is the kingdom, and the power, and the glory, forever. That is: All this we ask of thee, because as our King, having power over all things, thou art both willing and able to give us all good, and that thereby not we but thy holy name may be glorified forever.",
+   "domingo": 52,
+   "p": "Como concluis esta oração?",
+   "r": "Porque teu é o reino, e o poder, e a glória, para sempre. Isto é: tudo isto te pedimos porque tu, como nosso Rei, tendo poder sobre todas as coisas, queres e podes dar-nos todo bem; e para que assim não nós, mas o teu santo nome seja glorificado para sempre.",
+   "provas": {}
+  },
+  {
+   "n": "129",
+   "p_en": "What is the meaning of the word Amen?",
+   "r_en": "Amen means: So shall it truly and surely be. For my prayer is much more certainly heard of God than I feel in my heart that I desire these things of him.",
+   "domingo": 52,
+   "p": "Que significa a palavra Amém?",
+   "r": "Amém quer dizer: assim será, verdadeira e certamente. Porque a minha oração é muito mais certamente ouvida por Deus do que eu sinto no meu coração que desejo dele estas coisas.",
+   "provas": {}
+  }
+ ]
+}
