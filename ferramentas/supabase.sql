@@ -68,3 +68,75 @@ $$;
 
 revoke all on function public.apagar_conta() from public, anon;
 grant execute on function public.apagar_conta() to authenticated;
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Página pública do perfil (opcional): solabiblia.com.br/perfil/<apelido>/
+--
+-- Só existe para quem liga "Publicar perfil" na aba Perfil do app. Uma linha por pessoa: o apelido (o endereço) e
+-- um retrato do cartão do perfil (nome, avatar, capa, bio, versículo de vida e, se a pessoa escolher, os números do
+-- estudo, as conquistas e a prateleira). Qualquer visitante lê, porque a pessoa decidiu tornar público; gravar e
+-- apagar, só pelas funções publicar_perfil() e despublicar_perfil(), cada um o seu. Anotações, marcações e o resto
+-- do estudo continuam só em "itens", privados. Excluir a conta apaga a página junto (on delete cascade).
+-- Para tirar do ar um perfil impróprio: Table Editor → perfis_publicos → apagar a linha.
+
+create table if not exists public.perfis_publicos (
+  user_id       uuid        primary key references auth.users (id) on delete cascade,
+  apelido       text        not null unique,
+  dados         jsonb       not null check (pg_column_size(dados) < 60000),
+  atualizado_em timestamptz not null default now()
+);
+
+alter table public.perfis_publicos enable row level security;
+
+drop policy if exists "perfis publicados são públicos" on public.perfis_publicos;
+create policy "perfis publicados são públicos" on public.perfis_publicos
+  for select to anon, authenticated using (true);
+
+-- ninguém grava direto na tabela, e quem lê vê só o apelido e o cartão (nunca o user_id)
+revoke all on public.perfis_publicos from anon, authenticated;
+grant select (apelido, dados, atualizado_em) on public.perfis_publicos to anon, authenticated;
+
+-- Regras do apelido: 3 a 30 letras minúsculas sem acento, números e hífens (sem hífen no começo, no fim ou dobrado),
+-- fora os endereços reservados e os palavrões. A mesma lista está no app.js (APELIDO_*): mudou aqui, mude lá.
+create or replace function public.apelido_permitido(a text) returns boolean
+  language sql immutable set search_path = '' as $$
+  select a ~ '^[a-z0-9][a-z0-9-]{1,28}[a-z0-9]$' and position('--' in a) = 0
+    and a <> all (array['sola','solabiblia','sola-biblia','admin','administrador','administracao','suporte','contato',
+      'ajuda','oficial','equipe','moderador','moderacao','root','sistema','perfil','perfis','biblia','api','www','null',
+      'undefined','deus','jesus','cristo','jesus-cristo','espirito-santo','senhor','igreja'])
+    and not exists (
+      select 1 from unnest(string_to_array(a, '-')) as s
+      where s = any (array['puta','puto','putas','putos','merda','porra','foda','fodase','foder','fodido','fodida','cu',
+          'cus','cuzao','cuzinho','bosta','piroca','corno','viado','vadia','vagabunda','vagabundo','otario','babaca',
+          'imbecil','cacete','buceta','boceta','xoxota','xereca','punheta','prostituta','prostituto','nazi','nazista',
+          'hitler','satanas','satan','diabo','lucifer','demonio','sexo','porno','porn','xxx','anal','nude','nudes',
+          'fuck','fucker','fucking','shit','bitch','cunt','dick','cock','pussy','whore','slut','fag','faggot','nigger',
+          'nigga','rape','rapist','asshole','bastard','kkk','mierda','joder','cono','pendejo','pendeja','cabron',
+          'cabrona','verga','chinga','chingar','maricon','culo','zorra','perra','gilipollas','hijueputa'])
+         or s ~ '^(arromb|vagabund|prostitut|punhet|fodid|caralh|bucet|bocet|xoxot|putari|pornog|fuck|nigg|faggot|pendej|chingad|hijueput|gilipoll|retardad|nazis|satanis)')
+    and replace(a, '-', '') !~ '(caralho|buceta|boceta|punheta|xoxota|fuck|nigger|nigga|faggot|hitler|putaria|putinha|putona)';
+$$;
+
+create or replace function public.publicar_perfil(p_apelido text, p_dados jsonb) returns void
+  language plpgsql security definer set search_path = '' as $$
+declare
+  eu uuid := (select auth.uid());
+begin
+  if eu is null then raise exception 'sem_conta'; end if;
+  if not public.apelido_permitido(p_apelido) then raise exception 'apelido_invalido'; end if;
+  if jsonb_typeof(p_dados) <> 'object' or pg_column_size(p_dados) >= 60000 then raise exception 'dados_invalidos'; end if;
+  insert into public.perfis_publicos (user_id, apelido, dados) values (eu, p_apelido, p_dados)
+  on conflict (user_id) do update set apelido = excluded.apelido, dados = excluded.dados, atualizado_em = now();
+exception when unique_violation then
+  raise exception 'apelido_em_uso';
+end $$;
+
+create or replace function public.despublicar_perfil() returns void
+  language sql security definer set search_path = '' as $$
+  delete from public.perfis_publicos where user_id = (select auth.uid());
+$$;
+
+revoke all on function public.publicar_perfil(text, jsonb) from public, anon;
+revoke all on function public.despublicar_perfil() from public, anon;
+grant execute on function public.publicar_perfil(text, jsonb) to authenticated;
+grant execute on function public.despublicar_perfil() to authenticated;

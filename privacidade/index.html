@@ -10,7 +10,7 @@
 try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
 if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
 document.documentElement.dataset.tema=t;</script>
-<link rel="stylesheet" href="/style.css?v=3c676e776f">
+<link rel="stylesheet" href="/style.css?v=bc5bcbdd89">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://solabiblia.com.br/privacidade/">
 </head>
@@ -49,6 +49,17 @@ do Google.</p>
 </ul>
 <p><strong>Onde fica:</strong> em um banco de dados do Supabase, serviço contratado pelo Sola para guardar e
 sincronizar essas informações. Cada pessoa só consegue ler e alterar os próprios dados.</p>
+<h2>Página pública do perfil (opcional)</h2>
+<p>Com conta, você pode publicar uma página do seu perfil em um endereço que você escolhe
+(solabiblia.com.br/perfil/seu-nome). Ela só existe se você clicar em “Publicar perfil” na aba Perfil, e
+qualquer pessoa com o link pode vê-la. A página mostra o cartão do perfil (nome de exibição, avatar ou foto,
+capa, a frase sobre você e o versículo de vida) e, se você deixar marcado, os números do seu estudo (capítulos
+lidos, livros completos e dias seguidos), as conquistas e os livros da sua prateleira. Anotações, marcações,
+planos e as datas de leitura nunca aparecem. A página se atualiza sozinha quando o seu perfil muda, e o botão
+“Tirar do ar” a apaga na hora (excluir a conta também a apaga).</p>
+<p>Quem abre a página de um perfil busca esse cartão no Supabase; é a única vez que o site fala com o Supabase
+sem que o visitante tenha entrado na conta.</p>
+
 <p><strong>O que não fazemos:</strong> não vendemos, não compartilhamos e não usamos as suas informações para
 anúncios, perfis ou qualquer finalidade além de mostrar o seu estudo a você.</p>
 

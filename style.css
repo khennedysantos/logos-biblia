@@ -974,6 +974,31 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .selo.feito .selo-ic{background:var(--ouro);color:#FAF7F0}
 .selo b{font-size:.8rem;line-height:1.25}
 .selo small{font-size:.68rem;color:var(--suave)}
+/* página pública do perfil (/perfil/<apelido>/) e a seção que a publica, na aba Perfil */
+.perfil-publico{max-width:46rem;margin:0 auto;padding:1.6rem 1.1rem 4rem;display:flex;flex-direction:column;gap:1rem}
+.perfil-publico .perfil-cartao{margin-bottom:0}
+.perfil-publico .estudo-sub{margin:.6rem 0 .2rem}
+.perfil-publico .lombada{cursor:default}
+.perfil-publico .lombada:hover{transform:none}
+.perfil-apelido{font-size:.8rem;color:var(--suave);letter-spacing:.02em}
+.pub-carregando{text-align:center;padding:3rem 0}
+.pub-vazio{text-align:center}
+.pub-vazio h1{font-family:var(--titulo);font-weight:600;font-size:2rem;margin:.5rem 0 0}
+.pub-rodape{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;align-items:center;border-top:1px solid var(--borda);padding-top:.9rem;margin-top:.4rem}
+.pub-rodape .fonte{margin:0}
+.pub-convite{border:1px solid var(--borda);border-left:3px solid var(--rubrica);border-radius:var(--raio);background:var(--painel);padding:1.1rem 1.2rem;text-align:left}
+.pub-convite h2{font-family:var(--titulo);font-weight:600;font-size:1.5rem;margin:0 0 .35rem}
+.pub-convite p:not(.heroi-sobre){margin:0 0 .9rem;color:var(--tinta-2);font-size:.9rem;line-height:1.5}
+.pub-caixa{display:grid;gap:.8rem;border:1px solid var(--borda);border-radius:var(--raio);background:var(--painel);padding:.9rem 1rem;margin-bottom:.6rem}
+.pub-caixa > .fonte{margin:0}
+.pub-endereco{display:flex;align-items:stretch;border:1px solid var(--borda);border-radius:.45rem;background:var(--papel);overflow:hidden}
+.pub-endereco > span{display:flex;align-items:center;padding:0 .2rem 0 .6rem;font:400 .82rem var(--ui);color:var(--suave);white-space:nowrap}
+.pf-campo .pub-endereco input{border:0;border-radius:0;background:transparent;padding-left:0;min-width:0;flex:1}
+.pub-opcao{display:flex;align-items:center;gap:.45rem;font-size:.84rem;color:var(--tinta);font-weight:400}
+.pf-campo .pub-opcao input{width:auto;flex:0 0 auto;margin:0;accent-color:var(--rubrica)}
+.pub-no-ar{color:#2E7D4F;font-weight:600}
+:root[data-tema="escuro"] .pub-no-ar{color:#7CC59A}
+@media (max-width:560px){.pub-endereco > span{font-size:.72rem;padding-left:.45rem}}
 .selo .plano-barra{margin-top:.15rem}
 /* prateleira */
 .prat{margin-bottom:.9rem}
