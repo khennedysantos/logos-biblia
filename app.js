@@ -24,7 +24,7 @@ const UI = {
     doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Credos antigos, Westminster e Dort", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
-    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
+    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…", imgTitulo:"Imagem do versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Escuro", imgBaixar:"Baixar", imgCopiar:"Copiar imagem", imgCopiada:"Imagem copiada.", imgSemCopiar:"Este navegador não deixou copiar; use Baixar.",
     comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
     comInicio:"Neste capítulo, o comentário começa no v.",
     semLivroCalvin:"Ainda não há comentário para este livro.",
@@ -104,7 +104,7 @@ const UI = {
     doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"Ancient creeds, Westminster and Dort (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
     conteudoEN:"Content in the original English.",
-    tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…",
+    tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…", imgTitulo:"Verse image", imgFormato:"Format", imgTema:"Theme", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Light", imgEscuro:"Dark", imgBaixar:"Download", imgCopiar:"Copy image", imgCopiada:"Image copied.", imgSemCopiar:"This browser did not allow copying; use Download.",
     comRef:"Commentary on v.", comBloco:"(the commentary covers a block of verses)",
     comInicio:"In this chapter, the commentary begins at v.",
     semLivroCalvin:"No commentary available for this book yet.",
@@ -184,7 +184,7 @@ const UI = {
     doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Credos antiguos, Westminster y Dort (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
     conteudoEN:"Contenido en el inglés original.",
-    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…",
+    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…", imgTitulo:"Imagen del versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Oscuro", imgBaixar:"Descargar", imgCopiar:"Copiar imagen", imgCopiada:"Imagen copiada.", imgSemCopiar:"Este navegador no permitió copiar; usa Descargar.",
     comRef:"Comentario sobre el v.", comBloco:"(el comentario abarca un bloque de versículos)",
     comInicio:"En este capítulo, el comentario comienza en el v.",
     semLivroCalvin:"Aún no hay comentario para este libro.",
@@ -2194,57 +2194,137 @@ function quebrarLinhas(ctx, texto, largura){
   if(linha) linhas.push(linha);
   return linhas;
 }
-async function compartilharVerso(v){
-  const texto = est.versos[v-1] || "";
-  const ref = refStr(est.livro, est.cap, v);
-  const trad = nomeTraducao(est.traducao);
-  await Promise.all([document.fonts.load('64px "Cardo"'), document.fonts.load('600 34px "Inter"'), document.fonts.load('600 40px "Cormorant Garamond"')]).catch(()=>{});
-  const W = 1080, H = 1350, M = 120;
+/* Arte do versículo no estilo do Sola: tema claro (papel linho, carmim e ouro) ou escuro (Vigília), no formato do
+   feed (1080×1350) ou dos stories (1080×1920, com o conteúdo longe das faixas que o Instagram cobre). */
+const CORES_IMAGEM = {
+  claro: { fundo: ["#FDFBF6", "#F4EFE3"], fio: "#C6BBA3", fio2: "rgba(140,45,35,.28)", marca: "#8C2D23", nome: "#1D1B18",
+    texto: "#1D1B18", aspa: "rgba(140,45,35,.13)", ref: "#785C2A", trad: "#6D665A", faixa: "#8C2D23", faixaTexto: "#FAF7F0", lema: "#F7EBD8" },
+  escuro: { fundo: ["#1E1B17", "#12100E"], fio: "rgba(212,174,106,.45)", fio2: "rgba(220,125,111,.22)", marca: "#D4AE6A", nome: "#F4EFE4",
+    texto: "#F4EFE4", aspa: "rgba(212,174,106,.12)", ref: "#D4AE6A", trad: "rgba(244,239,228,.62)", faixa: "#9E3429", faixaTexto: "#F4EFE4", lema: "#F1D9B0" },
+};
+function espacado(c, texto, x, y, esp){   // texto com espaço entre letras (o letterSpacing do canvas não existe em todo navegador)
+  const larg = [...texto].reduce((s, ch)=>s + c.measureText(ch).width, 0) + esp * (texto.length - 1);
+  let px = x - larg / 2;
+  const al = c.textAlign; c.textAlign = "left";
+  for(const ch of texto){ c.fillText(ch, px, y); px += c.measureText(ch).width + esp; }
+  c.textAlign = al;
+}
+async function desenharVerso(v, formato, tema){
+  const texto = est.versos[v-1] || "", ref = refStr(est.livro, est.cap, v), trad = nomeTraducao(est.traducao);
+  await Promise.all(['400 64px "Cardo"', 'italic 400 26px "Cardo"', '600 34px "Inter"', '400 24px "Inter"', '600 40px "Cormorant Garamond"']
+    .map(f=>document.fonts.load(f))).catch(()=>{});
+  const k = CORES_IMAGEM[tema], stories = formato === "stories";
+  const W = 1080, H = stories ? 1920 : 1350, M = 112;
   const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
   const c = cv.getContext("2d");
-  const fundo = c.createLinearGradient(0, 0, W, H);
-  fundo.addColorStop(0, "#1E1B17"); fundo.addColorStop(1, "#12100E");
-  c.fillStyle = fundo; c.fillRect(0, 0, W, H);
-  c.strokeStyle = "rgba(212,174,106,.5)"; c.lineWidth = 2; c.strokeRect(44, 44, W-88, H-88);
-  // logotipo: o livro aberto com o ponto de luz (mesmo desenho do ícone do site)
-  c.save(); c.translate(W/2 - 36, 128); c.scale(3, 3);
-  c.strokeStyle = "#D4AE6A"; c.lineWidth = 1.5; c.lineCap = "round"; c.lineJoin = "round";
-  c.stroke(new Path2D("M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"));
-  c.stroke(new Path2D("M12 8v12")); c.fillStyle = "#DC7D6F";
-  c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI*2); c.fill(); c.restore();
-  // texto do versículo, com a fonte reduzindo até caber
-  let tam = 66, linhas, alt;
+  const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, k.fundo[0]); g.addColorStop(1, k.fundo[1]);
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.strokeStyle = k.fio; c.lineWidth = 1.5; c.strokeRect(26, 26, W - 52, H - 52);
+  c.strokeStyle = k.fio2; c.lineWidth = 1; c.strokeRect(33, 33, W - 66, H - 66);
+  // faixa carmim com o endereço (nos stories, acima da barra de resposta do Instagram)
+  const faixaY = stories ? H - 420 : H - 158, faixaA = 132;
+  c.fillStyle = k.faixa; c.fillRect(26, faixaY, W - 52, faixaA);
+  c.textBaseline = "middle";
+  c.fillStyle = k.faixaTexto; c.textAlign = "left"; c.font = '600 44px "Cormorant Garamond", "Cardo", serif';
+  c.fillText("solabiblia.com.br", 80, faixaY + faixaA / 2 - 12);
+  c.font = '500 18px "Inter", sans-serif'; c.globalAlpha = .8;
+  c.fillText("BÍBLIA DE ESTUDO GRATUITA", 82, faixaY + faixaA / 2 + 26); c.globalAlpha = 1;
+  c.textAlign = "right"; c.fillStyle = k.lema; c.font = 'italic 400 27px "Cardo", serif';
+  c.fillText("Sola Scriptura.", W - 80, faixaY + faixaA / 2 - 16); c.fillText("Soli Deo Gloria.", W - 80, faixaY + faixaA / 2 + 18);
+  // marca no topo
+  const topo = stories ? 300 : 112;
+  c.save(); c.translate(W / 2 - 128, topo - 34); c.scale(2.6, 2.6);
+  c.strokeStyle = k.marca; c.lineWidth = 1.6; c.lineCap = "round"; c.lineJoin = "round";
+  c.stroke(new Path2D("M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z")); c.stroke(new Path2D("M12 8v12"));
+  c.fillStyle = k.marca; c.beginPath(); c.arc(12, 3.4, 1.7, 0, Math.PI * 2); c.fill(); c.restore();
+  c.fillStyle = k.nome; c.textAlign = "center"; c.font = '600 42px "Cormorant Garamond", "Cardo", serif';
+  espacado(c, "SOLA", W / 2 + 40, topo, 15);
+  // área do versículo: entre a marca e a faixa, com a fonte diminuindo até caber
+  const areaIni = topo + 90, areaFim = faixaY - 70, rodapeRef = 128;
+  const hebraico = /[֐-׿]/.test(texto);
+  let tam = stories ? 76 : 66, linhas, alt;
   do {
-    c.font = `${tam}px "Cardo", Georgia, serif`;
-    linhas = quebrarLinhas(c, `“${texto}”`, W - 2*M);
+    c.font = `${tam}px "Cardo", "Times New Roman", serif`;
+    linhas = quebrarLinhas(c, hebraico ? texto : `“${texto}”`, W - 2 * M);
     alt = linhas.length * tam * 1.42;
     tam -= 2;
-  } while(alt > H - 600 && tam > 30);
-  c.fillStyle = "#F4EFE4"; c.textAlign = "center"; c.textBaseline = "middle";
-  let y = (H - alt) / 2 + tam * 0.7 - 20;
-  for(const l of linhas){ c.fillText(l, W/2, y); y += (tam + 2) * 1.42; }
-  c.fillStyle = "#DC7D6F"; c.fillRect(W/2 - 40, y + 4, 80, 2);
-  c.fillStyle = "#D4AE6A";
-  c.font = '600 34px "Inter", sans-serif';
-  c.fillText(ref.toUpperCase(), W/2, y + 62);
-  c.font = '400 26px "Inter", sans-serif'; c.fillStyle = "rgba(244,239,228,.62)";
-  c.fillText(trad, W/2, y + 110);
-  c.font = '600 44px "Cormorant Garamond", "Cardo", serif'; c.fillStyle = "#F4EFE4";
-  c.fillText("S O L A", W/2, H - 158);
-  c.font = '500 26px "Inter", sans-serif'; c.fillStyle = "#D4AE6A";
-  c.fillText("solabiblia.com.br", W/2, H - 108);
-  const blob = await new Promise(r=>cv.toBlob(r, "image/png"));
-  const nome = `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}.png`;   // sem acento: o Chrome descarta nomes com "ã"
-  const arquivo = new File([blob], nome, { type: "image/png" });
-  const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap, v);
-  if(navigator.canShare && navigator.canShare({ files: [arquivo] })){
-    await navigator.share({ files: [arquivo], text: `${ref} — ${link}` }).catch(()=>{});
-  } else {
+  } while(alt > areaFim - areaIni - rodapeRef && tam > 28);
+  tam += 2;
+  let y = areaIni + (areaFim - areaIni - rodapeRef - alt) / 2;
+  c.fillStyle = k.aspa; c.font = '600 300px "Cormorant Garamond", serif'; c.textAlign = "center";
+  if(!hebraico && y - areaIni >= 150) c.fillText("“", W / 2, y - 10);     // as aspas grandes só quando há espaço
+  c.fillStyle = k.texto; c.font = `${tam}px "Cardo", "Times New Roman", serif`; c.direction = hebraico ? "rtl" : "ltr";
+  y += tam * .71;
+  for(const l of linhas){ c.fillText(l, W / 2, y); y += tam * 1.42; }
+  c.direction = "ltr";
+  y += 6 - tam * .71;
+  c.fillStyle = k.marca === "#8C2D23" ? "#8C2D23" : "#DC7D6F"; c.fillRect(W / 2 - 40, y + 18, 80, 2.5);
+  c.fillStyle = k.ref; c.font = '600 32px "Inter", sans-serif';
+  espacado(c, ref.toUpperCase(), W / 2, y + 66, 4);
+  c.fillStyle = k.trad; c.font = '400 24px "Inter", sans-serif'; c.fillText(trad, W / 2, y + 108);
+  return { cv, ref, nome: `${normStr(ref).replace(/[^a-z0-9]+/g, "-")}${stories ? "-stories" : ""}.png` };   // sem acento: o Chrome descarta nomes com "ã"
+}
+/* Janela com a prévia: escolhe formato e tema, e compartilha (celular), baixa ou copia a imagem. */
+async function compartilharVerso(v){
+  const x = t();
+  document.querySelector(".img-verso-fundo")?.remove();
+  let formato = lerLS("logos_img_formato", "feed"), tema = lerLS("logos_img_tema", "claro");
+  if(!["feed", "stories"].includes(formato)) formato = "feed";
+  if(!CORES_IMAGEM[tema]) tema = "claro";
+  const fundo = document.createElement("div");
+  fundo.className = "img-verso-fundo";
+  fundo.innerHTML = `<div class="img-verso" role="dialog" aria-modal="true" aria-labelledby="imgVersoTit">
+    <button class="fechar" aria-label="${x.fechar}">✕</button>
+    <h3 id="imgVersoTit">${x.imgTitulo}</h3>
+    <div class="img-verso-opcoes">
+      <div class="seg" role="group" aria-label="${x.imgFormato}"><button data-formato="feed">${x.imgFeed}</button><button data-formato="stories">${x.imgStories}</button></div>
+      <div class="seg" role="group" aria-label="${x.imgTema}"><button data-img-tema="claro">${x.imgClaro}</button><button data-img-tema="escuro">${x.imgEscuro}</button></div>
+    </div>
+    <div class="img-verso-previa"><img alt=""></div>
+    <div class="img-verso-acoes"><button class="btn-ouro" id="imgCompartilhar">${x.compartilhar}</button><button id="imgBaixar">${x.imgBaixar}</button><button id="imgCopiar">${x.imgCopiar}</button></div>
+    <p class="fonte" role="status" id="imgVersoAviso"></p>
+  </div>`;
+  document.body.appendChild(fundo);
+  const img = fundo.querySelector("img"), aviso = $("imgVersoAviso");
+  let atual = null, blob = null;
+  const fechar = ()=>{ fundo.remove(); document.removeEventListener("keydown", tecla); if(img.src) URL.revokeObjectURL(img.src); };
+  const tecla = (e)=>{ if(e.key === "Escape") fechar(); };
+  document.addEventListener("keydown", tecla);
+  fundo.addEventListener("click", (e)=>{ if(e.target === fundo) fechar(); });
+  fundo.querySelector(".fechar").addEventListener("click", fechar);
+  async function desenhar(){
+    fundo.querySelectorAll("[data-formato]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.formato === formato));
+    fundo.querySelectorAll("[data-img-tema]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.imgTema === tema));
+    fundo.querySelector(".img-verso-previa").classList.toggle("stories", formato === "stories");
+    atual = await desenharVerso(v, formato, tema);
+    blob = await new Promise(r=>atual.cv.toBlob(r, "image/png"));
+    if(img.src) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(blob); img.alt = `${atual.ref} — ${x.imgTitulo}`;
+    aviso.textContent = "";
+  }
+  fundo.querySelectorAll("[data-formato]").forEach(b=>b.addEventListener("click", ()=>{ formato = b.dataset.formato; gravarLS("logos_img_formato", formato); desenhar(); }));
+  fundo.querySelectorAll("[data-img-tema]").forEach(b=>b.addEventListener("click", ()=>{ tema = b.dataset.imgTema; gravarLS("logos_img_tema", tema); desenhar(); }));
+  const arquivo = ()=>new File([blob], atual.nome, { type: "image/png" });
+  const podeCompartilhar = ()=>!!(navigator.canShare && blob && navigator.canShare({ files: [arquivo()] }));
+  $("imgCompartilhar").addEventListener("click", async ()=>{
+    const link = "https://solabiblia.com.br" + urlCapitulo(est.livro, est.cap, v);
+    if(podeCompartilhar()) await navigator.share({ files: [arquivo()], text: `${atual.ref} — ${link}` }).catch(()=>{});
+    else $("imgBaixar").click();
+  });
+  $("imgBaixar").addEventListener("click", ()=>{
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob); a.download = nome;
+    a.href = URL.createObjectURL(blob); a.download = atual.nome;
     document.body.appendChild(a); a.click(); a.remove();   // o Chrome só respeita o nome com o link na página
     setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
-  }
+  });
+  if(!(navigator.clipboard && window.ClipboardItem)) $("imgCopiar").hidden = true;
+  $("imgCopiar").addEventListener("click", async ()=>{
+    try{ await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]); aviso.textContent = x.imgCopiada; }
+    catch(e){ aviso.textContent = x.imgSemCopiar; }
+  });
+  await desenhar();
+  if(!podeCompartilhar()) $("imgCompartilhar").hidden = true;    // no computador: Baixar e Copiar
+  fundo.querySelector(".fechar").focus();
 }
 
 /* ---------- anotações e backup ---------- */
