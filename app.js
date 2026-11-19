@@ -21,6 +21,7 @@ const UI = {
     verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
+    citSelo:"Nos catecismos e confissões", citMais:"e mais {n} na página do versículo", citFonte:"Textos de prova dos Catecismos de Westminster, da Confissão Belga, do Heidelberg e dos Cânones de Dort; tradução do Sola.",
     doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Todas as confissões e catecismos", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
@@ -65,6 +66,10 @@ const UI = {
     offBaixando:"Baixando…", offPronto:"Pronto: esta tradução inteira está guardada neste aparelho.",
     offErro:"Não deu para baixar tudo. Verifique a conexão e tente de novo.", offSem:"Este navegador não permite guardar o site para uso sem internet.",
     meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
+    semanaTit:"Esta semana", semanaCaps:"capítulo(s) nesta semana", semanaDias:"dia(s) com leitura", semanaAntes:"semana passada",
+    metaRot:"Meta semanal", metaSem:"Sem meta", metaCaps:"capítulos", metaFeita:"Meta da semana cumprida!", metaFalta:"faltam {n} para a meta",
+    diasSem:["D","S","T","Q","Q","S","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"mais",
+    recentesTit:"Leituras recentes", hoje:"hoje", ontem:"ontem", haDias:"há {n} dias", capsNoDia:"{n} capítulo(s) em {d}",
     diasSeguidos:"dia(s) seguidos", nNotasRot:"anotações", nMarcasRot:"versículos marcados", progLivros:"Progresso por livro",
     marcacoes:"Versículos marcados", semMarcas:"Nenhum versículo marcado ainda. Toque em um versículo e escolha uma cor.", verTodas:"Ver todas",
     planosTit:"Planos de leitura", tempoTit:"Linha do tempo", atlasTit:"Atlas bíblico", atlasDica:"ex.: Jericó, Betel, Corinto",
@@ -104,6 +109,7 @@ const UI = {
     verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
+    citSelo:"In the catechisms and confessions", citMais:"and {n} more on the verse page", citFonte:"Proof texts of the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism and the Canons of Dort; Sola's Portuguese translation.",
     doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"All creeds, confessions and catechisms (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
     conteudoEN:"Content in the original English.",
@@ -148,6 +154,10 @@ const UI = {
     offBaixando:"Downloading…", offPronto:"Done: this whole translation is stored on this device.",
     offErro:"Could not download everything. Check your connection and try again.", offSem:"This browser cannot store the site for offline use.",
     meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
+    semanaTit:"This week", semanaCaps:"chapter(s) this week", semanaDias:"day(s) with reading", semanaAntes:"last week",
+    metaRot:"Weekly goal", metaSem:"No goal", metaCaps:"chapters", metaFeita:"Weekly goal reached!", metaFalta:"{n} to go",
+    diasSem:["S","M","T","W","T","F","S"], historicoTit:"Last 12 weeks", menos:"less", mais:"more",
+    recentesTit:"Recent reading", hoje:"today", ontem:"yesterday", haDias:"{n} days ago", capsNoDia:"{n} chapter(s) on {d}",
     diasSeguidos:"day(s) in a row", nNotasRot:"notes", nMarcasRot:"highlighted verses", progLivros:"Progress by book",
     marcacoes:"Highlighted verses", semMarcas:"No highlighted verses yet. Tap a verse and pick a colour.", verTodas:"See all",
     planosTit:"Reading plans", tempoTit:"Timeline", atlasTit:"Bible atlas", atlasDica:"e.g. Jericho, Bethel, Corinth",
@@ -187,6 +197,7 @@ const UI = {
     verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
+    citSelo:"En los catecismos y confesiones", citMais:"y {n} más en la página del versículo", citFonte:"Textos de prueba de los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort; traducción al portugués de Sola.",
     doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Todas las confesiones y catecismos (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
     conteudoEN:"Contenido en el inglés original.",
@@ -231,6 +242,10 @@ const UI = {
     offBaixando:"Descargando…", offPronto:"Listo: esta traducción completa está guardada en este dispositivo.",
     offErro:"No se pudo descargar todo. Revisa la conexión e inténtalo de nuevo.", offSem:"Este navegador no permite guardar el sitio para usarlo sin conexión.",
     meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
+    semanaTit:"Esta semana", semanaCaps:"capítulo(s) esta semana", semanaDias:"día(s) con lectura", semanaAntes:"semana pasada",
+    metaRot:"Meta semanal", metaSem:"Sin meta", metaCaps:"capítulos", metaFeita:"¡Meta de la semana cumplida!", metaFalta:"faltan {n} para la meta",
+    diasSem:["D","L","M","X","J","V","S"], historicoTit:"Últimas 12 semanas", menos:"menos", mais:"más",
+    recentesTit:"Lecturas recientes", hoje:"hoy", ontem:"ayer", haDias:"hace {n} días", capsNoDia:"{n} capítulo(s) el {d}",
     diasSeguidos:"día(s) seguidos", nNotasRot:"notas", nMarcasRot:"versículos resaltados", progLivros:"Progreso por libro",
     marcacoes:"Versículos resaltados", semMarcas:"Aún no hay versículos resaltados. Toca un versículo y elige un color.", verTodas:"Ver todas",
     planosTit:"Planes de lectura", tempoTit:"Cronología", atlasTit:"Atlas bíblico", atlasDica:"ej.: Jericó, Betel, Corinto",
@@ -273,7 +288,7 @@ const AJUDA = {
       ["Estudar um versículo", [
         ["original","original","Original e Strong","Clique num versículo e abra “Original”: cada palavra do grego ou do hebraico aparece com a transliteração e a tradução literal. Toque na palavra para abrir o verbete do léxico de Strong."],
         ["comentario","comentario","Comentário","“Comentário” mostra João Calvino no versículo (em 47 livros) ou Matthew Henry, nos livros que Calvino não comentou."],
-        ["referencias","refs","Referências e Confissão","Nas telas largas, as referências principais já aparecem na margem esquerda de cada versículo (como na Bíblia de Genebra); abrir “Referências” mostra os textos completos e as doutrinas da Confissão de Westminster ligadas ao versículo."],
+        ["referencias","refs","Referências e Confissão","Nas telas largas, as referências principais já aparecem na margem esquerda de cada versículo (como na Bíblia de Genebra); abrir “Referências” mostra os textos completos, as doutrinas da Confissão de Westminster e onde os Catecismos de Westminster e a Confissão Belga citam o versículo."],
         ["palavras","temas","Palavras sublinhadas","Na Bíblia Livre, o traço cheio marca palavras-chave: toque para ver a palavra original e por que ela importa ali. O traço pontilhado explica palavras difíceis ou antigas. As duas camadas podem ser desligadas em Perfil."],
         ["contexto","contexto","Contexto do livro","O botão “Contexto” mostra autor, data, local, destinatários, tema e passagens paralelas do livro que você está lendo."]]],
       ["Pesquisar", [
@@ -288,7 +303,7 @@ const AJUDA = {
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias e Salmos e Provérbios. O Sola lembra em que dia você está."],
-        ["meu","progresso","Meu estudo","Seu progresso por livro, os dias seguidos de leitura e as marcações. Funciona sem conta."],
+        ["meu","progresso","Meu estudo","Sua semana de leitura com meta de capítulos, as últimas 12 semanas, as leituras recentes, o progresso por livro, os dias seguidos e as marcações. Funciona sem conta."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
@@ -319,7 +334,7 @@ const AJUDA = {
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
         ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days and Psalms and Proverbs. Sola remembers your day."],
-        ["meu","progresso","My study","Your progress by book, reading streak and highlights. Works without an account."],
+        ["meu","progresso","My study","Your reading week with a chapter goal, the last 12 weeks, recent reading, progress by book, reading streak and highlights. Works without an account."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
@@ -350,7 +365,7 @@ const AJUDA = {
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
         ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días y Salmos y Proverbios. Sola recuerda tu día."],
-        ["meu","progresso","Mi estudio","Tu progreso por libro, los días seguidos de lectura y los resaltados. Funciona sin cuenta."],
+        ["meu","progresso","Mi estudio","Tu semana de lectura con meta de capítulos, las últimas 12 semanas, las lecturas recientes, el progreso por libro, los días seguidos y los resaltados. Funciona sin cuenta."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
 };
@@ -448,6 +463,7 @@ const est = {
   vista:"inicio", livro:"JHN", cap:1, alvoV:0, abrir:null, tema:"claro",
   marcas: lerLS("logos_marcas", {}), notas: lerLS("logos_notas", {}),
   corrida: lerLS("logos_corrida", false), estudo: lerLS("logos_estudo", true), progresso: lerLS("logos_planos", {}),
+  metaSemana: +lerLS("logos_meta_semana", 0) || 0,                       // meta de capítulos por semana (0 = sem meta)
   lidos: lerLS("logos_lidos", {}),                                       // capítulos lidos: {"JHN.3": quando}
   chave: lerLS("logos_chave", true), voc: lerLS("logos_voc", true),       // as duas camadas de palavras sublinhadas
   cachePalavras:{}, palavrasCap:null,
@@ -553,6 +569,23 @@ async function idxTemas(){ if(!est.idxTemas){ est.idxTemas = await json("data/to
 async function doutrinas(){
   if(!est.doutrinas){ try{ est.doutrinas = await json("data/topics/doutrinas.json"); }catch(e){ est.doutrinas = []; } }
   return est.doutrinas;
+}
+/* Onde as confissões e os catecismos citam cada versículo (data/confissoes/citacoes/<LIVRO>.json, gerado pelo
+   gerar_paginas.py com os textos de prova): {cap: {v: [[rótulo, endereço, trecho]]}}. A Confissão de Westminster
+   fica de fora da lista porque já aparece completa no cartão da doutrina. */
+async function citacoesDoVerso(usfm, cap, v){
+  est.cacheCit = est.cacheCit || {};
+  if(!(usfm in est.cacheCit)){ try{ est.cacheCit[usfm] = await json(`data/confissoes/citacoes/${usfm}.json`); }catch(e){ est.cacheCit[usfm] = {}; } }
+  return ((est.cacheCit[usfm][String(cap)] || {})[String(v)] || []).filter(c=>!c[1].startsWith("/confissoes/westminster/"));
+}
+function htmlCitacoes(cits, x){
+  if(!cits.length) return "";
+  const mostrar = cits.slice(0, window.innerWidth < 1060 ? 4 : 6);
+  return `<div class="estante-cartao confessional"><p class="dout-selo">${x.citSelo}</p>` +
+    mostrar.map(([rot, url, trecho])=>`<div class="cit-item"><a class="cit-rot" href="${esc(url)}">${esc(rot)}</a>
+      ${trecho ? `<p class="cm-nota">${esc(trecho)}</p>` : ""}</div>`).join("") +
+    (cits.length > mostrar.length ? `<p class="estudo-vazio">${x.citMais.replace("{n}", cits.length - mostrar.length)}</p>` : "") +
+    `<p class="fonte">${x.citFonte}</p></div>`;
 }
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
 async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
@@ -1368,13 +1401,14 @@ async function acaoVerso(el, v, acao, botao){
     ligarLerMais(gavetas, x);
   }
   if(acao==="referencias"){
-    const refs = await carregarRefs(est.livro, est.cap);
+    const [refs, cits] = await Promise.all([carregarRefs(est.livro, est.cap), citacoesDoVerso(est.livro, est.cap, v)]);
     if(!aberta()) return;
     const lista = refs ? refs[String(v)] : null;
+    const confs = htmlCitacoes(cits, x);
     if(!lista || !lista.length){
-      gavetas.innerHTML = gaveta(x.referencias, `<p class="comentario-texto">${x.semRefs}</p>`);
+      gavetas.innerHTML = gaveta(x.referencias, confs + (confs ? "" : `<p class="comentario-texto">${x.semRefs}</p>`));
     } else {
-      gavetas.innerHTML = gaveta(x.referencias, htmlRefsLista(lista, x));
+      gavetas.innerHTML = gaveta(x.referencias, confs + htmlRefsLista(lista, x));
       carregarPreviasRefs(gavetas, lista);
     }
   }
@@ -2096,7 +2130,8 @@ function sinalizarAbasEstante(v, doutsVerso){
   const temNota = !!est.notas[`${est.livro}.${est.cap}.${v}`];
   const temDout = doutsVerso !== undefined
     ? doutsVerso.length > 0
-    : !!(est.doutrinas && doutrinasDoVerso(est.doutrinas, est.livro, est.cap, v).length);
+    : !!(est.doutrinas && doutrinasDoVerso(est.doutrinas, est.livro, est.cap, v).length)
+      || !!(est.cacheCit && ((est.cacheCit[est.livro] || {})[String(est.cap)] || {})[String(v)]);
   const marcar = (aba, ativo)=>{
     const btn = document.querySelector(`#abasEstante .eaba[data-eaba="${aba}"]`);
     if(!btn) return;
@@ -2163,6 +2198,7 @@ async function atualizarEstudo(v, focarNota){
   });
   sinalizarAbasEstante(v);
   if(!est.doutrinas) doutrinas().then(ds=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v, doutrinasDoVerso(ds, est.livro, est.cap, v)); });
+  if(!(est.cacheCit && est.livro in est.cacheCit)) citacoesDoVerso(est.livro, est.cap, v).then(()=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v); });
 
   const corpo = $("estudoCorpo");
   if(est.estudoAba === "anotacao"){
@@ -2235,10 +2271,10 @@ async function atualizarEstudo(v, focarNota){
   }
 
   if(est.estudoAba === "referencias"){
-    const [refs, douts] = await Promise.all([carregarRefs(est.livro, est.cap), doutrinas()]);
+    const [refs, douts, cits] = await Promise.all([carregarRefs(est.livro, est.cap), doutrinas(), citacoesDoVerso(est.livro, est.cap, v)]);
     if(est.estudoAtual !== estado) return;
     const dVerso = doutrinasDoVerso(douts, est.livro, est.cap, v);
-    sinalizarAbasEstante(v, dVerso);
+    sinalizarAbasEstante(v, dVerso.length || cits.length ? [1] : []);
     const htmlDouts = dVerso.map(({ d, secs })=>`<div class="estante-cartao confessional">
       <p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p>
       <h4 class="cm-titulo">${esc(doutTitulo(d))}</h4>
@@ -2247,7 +2283,7 @@ async function atualizarEstudo(v, focarNota){
     const lista = refs ? refs[String(v)] : null;
     const htmlRefs = `<div class="estante-cartao"><p class="estante-sub">${x.referencias}</p>${lista && lista.length
       ? htmlRefsLista(lista, x) : `<p class="estudo-vazio">${x.semRefs}</p>`}</div>`;
-    corpo.innerHTML = htmlDouts + htmlRefs;
+    corpo.innerHTML = htmlDouts + htmlCitacoes(cits, x) + htmlRefs;
     corpo.querySelectorAll(".dout-atalho").forEach(b=>b.addEventListener("click", ()=>abrirDoutrina(b.dataset.dout)));
     if(lista && lista.length) carregarPreviasRefs(corpo, lista);
   }
@@ -2565,6 +2601,78 @@ const ordemRef = (a, b)=>{
   return o.findIndex(x=>x.id===la) - o.findIndex(x=>x.id===lb) || ca - cb || va - vb;
 };
 
+/* ---------- painel "Meu estudo": a semana, a meta e o histórico ---------- */
+const METAS_SEMANA = [0, 7, 14, 21, 28, 35, 50];
+function inicioDia(d){ d = new Date(d); d.setHours(0, 0, 0, 0); return d; }
+/* capítulos lidos por dia ({"2026-11-19": 3}) */
+function leiturasPorDia(){
+  const n = {};
+  for(const em of Object.values(est.lidos)){ const d = diaLocal(em); n[d] = (n[d] || 0) + 1; }
+  return n;
+}
+function htmlSemana(x){
+  const porDia = leiturasPorDia(), hoje = inicioDia(Date.now());
+  const ini = new Date(hoje); ini.setDate(ini.getDate() - ini.getDay());          // a semana começa no domingo
+  const dias = [...Array(7)].map((_, i)=>{ const d = new Date(ini); d.setDate(d.getDate() + i); return d; });
+  const valores = dias.map(d=>porDia[diaLocal(d)] || 0);
+  const semana = valores.reduce((a, b)=>a + b, 0), comLeitura = valores.filter(Boolean).length;
+  let antes = 0;
+  for(let i = 1; i <= 7; i++){ const d = new Date(ini); d.setDate(d.getDate() - i); antes += porDia[diaLocal(d)] || 0; }
+  const topo = Math.max(3, ...valores);
+  const fmt = (d)=>d.toLocaleDateString(est.idioma, { weekday:"long", day:"numeric", month:"short" });
+  const barras = dias.map((d, i)=>{
+    const v = valores[i], futuro = d > hoje, eHoje = +d === +hoje;
+    const dica = x.capsNoDia.replace("{n}", v).replace("{d}", fmt(d));
+    return `<div class="sem-dia${eHoje ? " hoje" : ""}${futuro ? " futuro" : ""}" title="${esc(dica)}" aria-label="${esc(dica)}">
+      <span class="sem-val">${v || ""}</span><i style="height:${v ? Math.max(8, Math.round(v / topo * 100)) : 0}%"></i>
+      <span class="sem-rot">${x.diasSem[i]}</span></div>`;
+  }).join("");
+  const meta = est.metaSemana, pctMeta = meta ? Math.min(100, Math.round(semana / meta * 100)) : 0;
+  const opcoes = METAS_SEMANA.map(n=>`<option value="${n}"${n === meta ? " selected" : ""}>${n ? n + " " + x.metaCaps : x.metaSem}</option>`).join("");
+  return `<h3 class="estudo-sub">${x.semanaTit}</h3>
+    <div class="semana">
+      <div class="sem-barras" role="img" aria-label="${esc(x.semanaTit)}">${barras}</div>
+      <div class="sem-resumo">
+        <p><b>${semana}</b> ${x.semanaCaps} · <b>${comLeitura}</b> ${x.semanaDias}</p>
+        <p class="fonte">${x.semanaAntes}: ${antes}</p>
+        <label class="sem-meta">${x.metaRot} <select id="selMeta">${opcoes}</select></label>
+        ${meta ? `<div class="plano-barra"><i style="width:${pctMeta}%"></i></div>
+          <p class="fonte">${semana >= meta ? x.metaFeita : x.metaFalta.replace("{n}", meta - semana)}</p>` : ""}
+      </div>
+    </div>`;
+}
+/* 12 semanas em quadradinhos (colunas = semanas, linhas = dias), um tom só, do claro ao escuro */
+function htmlHistorico(x){
+  const porDia = leiturasPorDia(), hoje = inicioDia(Date.now());
+  const ini = new Date(hoje); ini.setDate(ini.getDate() - ini.getDay() - 7 * 11);
+  const nivel = (v)=>v === 0 ? 0 : v === 1 ? 1 : v <= 3 ? 2 : v <= 6 ? 3 : 4;
+  let cels = "";
+  for(let s = 0; s < 12; s++) for(let d = 0; d < 7; d++){
+    const dia = new Date(ini); dia.setDate(dia.getDate() + s * 7 + d);
+    if(dia > hoje){ cels += `<i class="hm-cel vazio"></i>`; continue; }
+    const v = porDia[diaLocal(dia)] || 0;
+    const dica = x.capsNoDia.replace("{n}", v).replace("{d}", dia.toLocaleDateString(est.idioma, { day:"numeric", month:"short" }));
+    cels += `<i class="hm-cel n${nivel(v)}" title="${esc(dica)}"></i>`;
+  }
+  return `<h3 class="estudo-sub">${x.historicoTit}</h3>
+    <div class="hm" role="img" aria-label="${esc(x.historicoTit)}">${cels}</div>
+    <p class="hm-escala"><span>${x.menos}</span>${[0,1,2,3,4].map(n=>`<i class="hm-cel n${n}"></i>`).join("")}<span>${x.mais}</span></p>`;
+}
+function htmlRecentes(x){
+  const lista = Object.entries(est.lidos).filter(([k])=>capValido(k)).sort((a, b)=>b[1] - a[1]).slice(0, 8);
+  if(!lista.length) return "";
+  const hoje = +inicioDia(Date.now());
+  const quando = (em)=>{
+    const dias = Math.round((hoje - +inicioDia(em)) / 864e5);
+    return dias <= 0 ? x.hoje : dias === 1 ? x.ontem : dias < 7 ? x.haDias.replace("{n}", dias)
+      : new Date(em).toLocaleDateString(est.idioma, { day:"numeric", month:"short" });
+  };
+  return `<h3 class="estudo-sub">${x.recentesTit}</h3><ul class="recentes">` + lista.map(([k, em])=>{
+    const [l, c] = k.split(".");
+    return `<li>${linkRef(l, +c, 0, esc(nomeLivro(l) + " " + c), "")}<small>${quando(em)}</small></li>`;
+  }).join("") + `</ul>`;
+}
+
 /* ---------- painel "Meu estudo" ---------- */
 async function montarMeuEstudo(){
   const x = t(), r = resumoEstudo(), alvo = $("conteudoEstudo");
@@ -2595,6 +2703,9 @@ async function montarMeuEstudo(){
       <div class="num"><b>${r.marcas}</b><span>${x.nMarcasRot}</span></div>
     </div>
     ${ult && infoLivro(ult.livro) ? `<p class="estudo-continuar"><a class="btn-ouro" href="${urlCapitulo(ult.livro, ult.cap)}">${x.continuar} ${esc(nomeLivro(ult.livro))} ${+ult.cap} ${ico("seta")}</a></p>` : ""}
+    ${htmlSemana(x)}
+    ${htmlHistorico(x)}
+    ${htmlRecentes(x)}
     <h3 class="estudo-sub">${x.progLivros}</h3>
     ${r.lidos ? "" : `<p class="fonte">${x.semLeitura}</p>`}
     <p class="rotulo-secao pequeno">${x.at}</p><div class="lvs">${livros("AT")}</div>
@@ -2606,6 +2717,10 @@ async function montarMeuEstudo(){
     ${notas.length ? notas.slice(0, 4).map(k=>{ const [l, c, v] = k.split("."); return `<p class="nota-curta">${linkRef(l, +c, +v, esc(refStr(l, +c, +v)), "")} ${esc(est.notas[k].slice(0, 140))}${est.notas[k].length > 140 ? "…" : ""}</p>`; }).join("") : ""}
     <p><button class="btn-linha" id="btnTodasNotas">${notas.length ? x.verTodas + " (" + notas.length + ")" : x.notas}</button></p>`;
   $("btnTodasNotas").addEventListener("click", ()=>{ montarNotas(); alternarPainel("painelNotas", true); });
+  $("selMeta").addEventListener("change", (e)=>{
+    est.metaSemana = +e.target.value || 0; gravarLS("logos_meta_semana", est.metaSemana); tocar("estado", "meta");
+    const rolar = $("conteudoEstudo").scrollTop; montarMeuEstudo().then(()=>{ $("conteudoEstudo").scrollTop = rolar; });
+  });
   if($("faixaEntrar")) $("faixaEntrar").addEventListener("click", ()=>{ est.abaEstudo = "perfil"; montarMeuEstudo(); });
 }
 function abrirMeuEstudo(aba){ est.abaEstudo = aba === "perfil" ? "perfil" : "estudo"; montarMeuEstudo(); alternarPainel("painelEstudo", true); }
@@ -2848,8 +2963,10 @@ const DADOS = {
   lido:  { chaves:()=>Object.keys(est.lidos), ler:(k)=>k in est.lidos ? { em: est.lidos[k] } : null,
            por:(k, v)=>{ if(v && +v.em > 0 && capValido(k)) est.lidos[k] = +v.em; else delete est.lidos[k]; },
            salvar:()=>gravarLS("logos_lidos", est.lidos) },
-  estado:{ chaves:()=>lerLS("logos_ultimo", null) ? ["ultimo"] : [], ler:(k)=>k === "ultimo" ? lerLS("logos_ultimo", null) : null,
-           por:(k, v)=>{ if(k === "ultimo" && v && infoLivro(v.livro) && capValido(v.livro + "." + v.cap)) gravarLS("logos_ultimo", { livro: v.livro, cap: +v.cap }); },
+  estado:{ chaves:()=>(lerLS("logos_ultimo", null) ? ["ultimo"] : []).concat(est.metaSemana ? ["meta"] : []),
+           ler:(k)=>k === "ultimo" ? lerLS("logos_ultimo", null) : k === "meta" && est.metaSemana ? { n: est.metaSemana } : null,
+           por:(k, v)=>{ if(k === "ultimo" && v && infoLivro(v.livro) && capValido(v.livro + "." + v.cap)) gravarLS("logos_ultimo", { livro: v.livro, cap: +v.cap });
+             if(k === "meta"){ est.metaSemana = v && +v.n > 0 && +v.n <= 500 ? Math.round(+v.n) : 0; gravarLS("logos_meta_semana", est.metaSemana); } },
            salvar:()=>{} },
 };
 /* Anota que um item mudou agora. Funciona sem conta também: quando a pessoa entrar, sobe com a hora certa. */
