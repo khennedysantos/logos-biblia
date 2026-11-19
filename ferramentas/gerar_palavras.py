@@ -7,7 +7,10 @@ No capítulo, algumas palavras da Bíblia Livre aparecem sublinhadas; um toque a
   sentido de hoje. As definições ficam em ferramentas/vocabulario.py. Entram depois das palavras-chave, sem
   sobrepor nenhuma e sem repetir no capítulo uma palavra que já é palavra-chave nele.
 
-Tudo o que o site mostra sai deste arquivo, escrito à mão:
+Tudo o que o site mostra sai deste arquivo, escrito à mão, com uma camada por cima: ferramentas/notas_fontes.json
+(gerado por tradutor/notas_llm.py) traz, para cada nota e cada termo, o texto conferido com fontes abertas — léxicos
+da STEPBible, a Confissão e os Catecismos de Westminster, o comentário de Calvino/Henry ao versículo — e a lista
+dessas fontes, que o cartão mostra. Onde o arquivo tem um item, ele vale no lugar do texto daqui.
 
   lema("H1254", "criar", r"cri[aeo]\\w*", "nota geral da palavra")
       Número de Strong, tradução curta, as formas que a Bíblia Livre usa (expressão regular, sem diferença
@@ -594,8 +597,30 @@ def preparar_termos(lexico):
         tm["re"] = padrao(tm["formas"])
 
 
+FONTES = Path(__file__).resolve().parent / "notas_fontes.json"
+
+
+def aplicar_fontes():
+    """notas e definições conferidas com fontes abertas (notas_fontes.json) valem no lugar das escritas aqui"""
+    if not FONTES.exists():
+        return
+    f = json.loads(FONTES.read_text(encoding="utf-8"))
+    for s, r in f.get("lemas", {}).items():
+        if s in LEMAS:
+            LEMAS[s]["nota"], LEMAS[s]["f"] = r["nota"] or None, r.get("f", [])
+    for chave, r in f.get("contextos", {}).items():
+        ref, s, n = chave.split("|")
+        if (ref, s, int(n)) in CONTEXTOS:
+            CONTEXTOS[(ref, s, int(n))].update(nota=r["nota"], f=r.get("f", []))
+    por_palavra = {tm["id"] or tm["palavra"]: tm for tm in TERMOS}     # mesma chave do notas_llm.py
+    for palavra, r in f.get("termos", {}).items():
+        if palavra in por_palavra:
+            por_palavra[palavra].update(significado=r["s"], nota=r.get("n") or None, f=r.get("f", []))
+
+
 def main():
     relatorio = "--relatorio" in sys.argv
+    aplicar_fontes()
     livros = ler(DATA / "books.json")["books"]
     lexico = {"H": ler(DATA / "strongs" / "H.json"), "G": ler(DATA / "strongs" / "G.json")}
     for s in LEMAS:
@@ -665,7 +690,7 @@ def main():
                     ja_no_cap.add(s)
                     marcados[s] += 1
                     textos_chave.add(texto[alvo[0]:alvo[1]].lower())
-                    feitos.append([alvo[0], alvo[1], s] + ([c["nota"]] if c else []))
+                    feitos.append([alvo[0], alvo[1], s] + ([c["nota"]] if c else []) + ([c["f"]] if c and c.get("f") else []))
                 marcas[i] = feitos
                 total += len(feitos)
 
@@ -749,8 +774,10 @@ def main():
             gravar(SAIDA / f"{livro}.json", do_livro)
         gravar(SAIDA / "indice.json", {                 # o que o cartão mostra de cada palavra, e que livros têm arquivo
             "lemas": {s: {"o": lexico[s[0]][s]["lemma"], "t": lexico[s[0]][s]["translit"], "pt": l["pt"],
-                          **({"nota": l["nota"]} if l["nota"] else {})} for s, l in LEMAS.items() if marcados[s]},
-            "termos": {tm["id"]: {k: v for k, v in (("p", tm["palavra"]), ("s", tm["significado"]), ("n", tm["nota"])) if v}
+                          **({"nota": l["nota"]} if l["nota"] else {}), **({"f": l["f"]} if l.get("f") else {})}
+                      for s, l in LEMAS.items() if marcados[s]},
+            "termos": {tm["id"]: {k: v for k, v in (("p", tm["palavra"]), ("s", tm["significado"]), ("n", tm["nota"]),
+                                                    ("f", tm.get("f"))) if v}
                        for tm in TERMOS if voc_marcados[tm["id"]]},
             "orig": dict(sorted(orig.items())),
             "livros": list(saida)})

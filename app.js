@@ -12,7 +12,7 @@ const UI = {
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
-    chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", chaveDica:"palavra-chave: ver o original e a explicação",
+    chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", fontesRot:"Fontes", chaveDica:"palavra-chave: ver o original e a explicação",
     prefVoc:"Significado das palavras difíceis", vocSig:"Significado", vocOrig:"No original", vocFonte:"Vocabulário do Sola",
     abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Dicionário",
     exStrong:"ex.: G3056, H2617, logos, hesed, graça", exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
@@ -92,7 +92,7 @@ const UI = {
     referencias:"Cross-refs", semRefs:"No cross-references for this verse.", refFonte:"Cross-references: openbible.info (CC-BY)",
     leituraCorrida:"Continuous reading",
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
-    chaveVer:"See the verse in the original", chaveFonte:"Sola study note", chaveDica:"key word: see the original and the explanation",
+    chaveVer:"See the verse in the original", chaveFonte:"Sola study note", fontesRot:"Sources", chaveDica:"key word: see the original and the explanation",
     prefVoc:"Meaning of hard words", vocSig:"Meaning", vocOrig:"In the original", vocFonte:"Sola glossary",
     abaTexto:"Text", abaStrong:"Strong", abaTemas:"Topics", abaDic:"Dictionary",
     exStrong:"e.g. G3056, H2617, logos, grace", exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
@@ -172,7 +172,7 @@ const UI = {
     referencias:"Referencias", semRefs:"Sin referencias para este versículo.", refFonte:"Referencias: openbible.info (CC-BY)",
     leituraCorrida:"Lectura continua",
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
-    chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", chaveDica:"palabra clave: ver el original y la explicación",
+    chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", fontesRot:"Fuentes", chaveDica:"palabra clave: ver el original y la explicación",
     prefVoc:"Significado de palabras difíciles", vocSig:"Significado", vocOrig:"En el original", vocFonte:"Vocabulario de Sola",
     abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Diccionario",
     exStrong:"ej.: G3056, H2617, logos, gracia", exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
@@ -1012,6 +1012,11 @@ function htmlOriginalBadge(num, o, tr){
   return `<span class="escritura lex-lemma" ${num[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(o)}</span>
       <span class="lex-translit">${esc(tr)}</span><span class="lex-num">${esc(num)}</span>`;
 }
+/* De onde vem a nota (notas_fontes.json, via gerar_palavras.py): "Fontes: léxico…; CFW 11.1"; sem lista, o rótulo antigo. */
+function htmlFontesNota(listas, padrao){
+  const f = [...new Set(listas.flat().filter(Boolean))];
+  return f.length ? `${t().fontesRot}: ${esc(f.join("; "))}` : padrao;
+}
 /* Cartão da palavra-chave (celular ou quando a estante lateral está fechada). */
 function abrirPalavra(el, peloTeclado){
   const jaAberta = el.classList.contains("aberta") && !!$("cartaoPalavra");
@@ -1036,7 +1041,7 @@ function abrirPalavra(el, peloTeclado){
       <h4>${x.vocSig}</h4><p class="voc-sig">${esc(lema.s)}</p>
       ${lema.n ? `<p class="voc-nota">${esc(lema.n)}</p>` : ""}
       ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${htmlOriginalBadge(m[3], o[0], o[1])}</div>` : ""}
-      <div class="cp-pe">${o ? botaoOriginal : ""}<span class="fonte">${x.vocFonte}</span></div>`;
+      <div class="cp-pe">${o ? botaoOriginal : ""}<span class="fonte">${htmlFontesNota([lema.f || []], x.vocFonte)}</span></div>`;
   } else {
     c.setAttribute("aria-label", `${el.textContent} — ${lema.pt}`);
     c.innerHTML = `
@@ -1045,7 +1050,7 @@ function abrirPalavra(el, peloTeclado){
       <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
       ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
       ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
-      <div class="cp-pe">${botaoOriginal}<span class="fonte">${x.chaveFonte}</span></div>`;
+      <div class="cp-pe">${botaoOriginal}<span class="fonte">${htmlFontesNota([m[4] || [], lema.nota ? lema.f || [] : []], x.chaveFonte)}</span></div>`;
   }
   document.body.appendChild(c);
   el.classList.add("aberta");
@@ -1919,7 +1924,7 @@ function htmlPalavraEstante(v, x){
         <h4>${x.vocSig}</h4><p class="voc-sig">${esc(lema.s)}</p>
         ${lema.n ? `<p class="voc-nota">${esc(lema.n)}</p>` : ""}
         ${o ? `<div class="voc-orig"><span class="voc-rot">${x.vocOrig}</span> ${htmlOriginalBadge(m[3], o[0], o[1])}</div>` : ""}
-        <p class="fonte">${x.vocFonte}</p></div>`
+        <p class="fonte">${htmlFontesNota([lema.f || []], x.vocFonte)}</p></div>`
     };
   }
   return {
@@ -1929,7 +1934,7 @@ function htmlPalavraEstante(v, x){
       <p class="cp-trad"><span>${x.chaveTrad}</span> ${esc(lema.pt)}</p>
       ${m[3] ? `<h4>${x.chaveAqui}</h4><p>${esc(m[3])}</p>` : ""}
       ${lema.nota ? `<h4>${x.chavePalavra}</h4><p>${esc(lema.nota)}</p>` : ""}
-      <p class="fonte">${x.chaveFonte}</p></div>`
+      <p class="fonte">${htmlFontesNota([m[4] || [], lema.nota ? lema.f || [] : []], x.chaveFonte)}</p></div>`
   };
 }
 async function atualizarEstudo(v, focarNota){
