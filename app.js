@@ -67,7 +67,10 @@ const UI = {
     meuEstudo:"Meu estudo", lidoMarcar:"Marcar capítulo como lido", lido:"Capítulo lido", capsLidos:"capítulos lidos", capLido1:"capítulo lido", de:"de",
     diasSeguidos:"dia(s) seguidos", nNotasRot:"anotações", nMarcasRot:"versículos marcados", progLivros:"Progresso por livro",
     marcacoes:"Versículos marcados", semMarcas:"Nenhum versículo marcado ainda. Toque em um versículo e escolha uma cor.", verTodas:"Ver todas",
-    planosTit:"Planos de leitura", semLeitura:"Marque os capítulos como lidos ao terminar e acompanhe aqui o seu progresso.",
+    planosTit:"Planos de leitura", tempoTit:"Linha do tempo", atlasTit:"Atlas bíblico", atlasDica:"ex.: Jericó, Betel, Corinto",
+    atlasFonte:"Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: desenhado pelo Sola com dados do Natural Earth (domínio público) e relevo do Terrain Tiles (AWS Open Data)",
+    lugarIncerto:"Localização incerta: os estudiosos não concordam onde ficava (openbible.info).", ocorrencias:"ocorrência(s) na Bíblia",
+    primeira:"Primeira", ultima:"Última", distancias:"Distâncias aproximadas", verFoto:"Ver foto (Wikimedia Commons)", semLeitura:"Marque os capítulos como lidos ao terminar e acompanhe aqui o seu progresso.",
     contaLocal:"Seu estudo fica guardado só neste aparelho. Para levar a outro, use Backup e Restaurar em “Minhas anotações”.",
     contaTitulo:"Continue em qualquer aparelho", contaTexto:"Entre para guardar anotações, marcações, capítulos lidos e planos na sua conta. É gratuito e opcional.",
     entrarGoogle:"Entrar com Google", entrarEmail:"Receber link por e-mail", linkEnviado:"Enviamos um link de acesso para", seuEmail:"seu e-mail",
@@ -147,7 +150,10 @@ const UI = {
     meuEstudo:"My study", lidoMarcar:"Mark chapter as read", lido:"Chapter read", capsLidos:"chapters read", capLido1:"chapter read", de:"of",
     diasSeguidos:"day(s) in a row", nNotasRot:"notes", nMarcasRot:"highlighted verses", progLivros:"Progress by book",
     marcacoes:"Highlighted verses", semMarcas:"No highlighted verses yet. Tap a verse and pick a colour.", verTodas:"See all",
-    planosTit:"Reading plans", semLeitura:"Mark chapters as read when you finish them and follow your progress here.",
+    planosTit:"Reading plans", tempoTit:"Timeline", atlasTit:"Bible atlas", atlasDica:"e.g. Jericho, Bethel, Corinth",
+    atlasFonte:"Places: openbible.info Bible Geocoding (CC-BY) · Map: drawn by Sola from Natural Earth data (public domain) with relief from Terrain Tiles (AWS Open Data)",
+    lugarIncerto:"Uncertain location: scholars disagree on where it was (openbible.info).", ocorrencias:"occurrence(s) in the Bible",
+    primeira:"First", ultima:"Last", distancias:"Approximate distances", verFoto:"See photo (Wikimedia Commons)", semLeitura:"Mark chapters as read when you finish them and follow your progress here.",
     contaLocal:"Your study is stored on this device only. To move it, use Backup and Restore under “My notes”.",
     contaTitulo:"Pick up on any device", contaTexto:"Sign in to keep your notes, highlights, chapters read and plans in your account. Free and optional.",
     entrarGoogle:"Sign in with Google", entrarEmail:"Email me a link", linkEnviado:"We sent a sign-in link to", seuEmail:"your email",
@@ -227,7 +233,10 @@ const UI = {
     meuEstudo:"Mi estudio", lidoMarcar:"Marcar capítulo como leído", lido:"Capítulo leído", capsLidos:"capítulos leídos", capLido1:"capítulo leído", de:"de",
     diasSeguidos:"día(s) seguidos", nNotasRot:"notas", nMarcasRot:"versículos resaltados", progLivros:"Progreso por libro",
     marcacoes:"Versículos resaltados", semMarcas:"Aún no hay versículos resaltados. Toca un versículo y elige un color.", verTodas:"Ver todas",
-    planosTit:"Planes de lectura", semLeitura:"Marca los capítulos como leídos al terminar y sigue aquí tu progreso.",
+    planosTit:"Planes de lectura", tempoTit:"Cronología", atlasTit:"Atlas bíblico", atlasDica:"ej.: Jericó, Betel, Corinto",
+    atlasFonte:"Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: dibujado por Sola con datos de Natural Earth (dominio público) y relieve de Terrain Tiles (AWS Open Data)",
+    lugarIncerto:"Ubicación incierta: los estudiosos no concuerdan dónde estaba (openbible.info).", ocorrencias:"aparición(es) en la Biblia",
+    primeira:"Primera", ultima:"Última", distancias:"Distancias aproximadas", verFoto:"Ver foto (Wikimedia Commons)", semLeitura:"Marca los capítulos como leídos al terminar y sigue aquí tu progreso.",
     contaLocal:"Tu estudio se guarda solo en este dispositivo. Para llevarlo a otro, usa Copia y Restaurar en “Mis notas”.",
     contaTitulo:"Continúa en cualquier dispositivo", contaTexto:"Entra para guardar notas, resaltados, capítulos leídos y planes en tu cuenta. Gratis y opcional.",
     entrarGoogle:"Entrar con Google", entrarEmail:"Recibir enlace por correo", linkEnviado:"Enviamos un enlace de acceso a", seuEmail:"tu correo",
@@ -641,6 +650,11 @@ function aplicarTextos(){
   $("tituloBusca").textContent = x.buscar;
   $("tituloNotas").textContent = x.notas;
   $("lblBibliaToda").textContent = x.bibliaToda;
+  $("tituloPlanos").textContent = x.planosTit;
+  $("tituloTempo").textContent = x.tempoTit;
+  $("tituloAtlas").textContent = x.atlasTit;
+  $("campoAtlas").placeholder = x.atlasDica;
+  $("atlasFonte").textContent = x.atlasFonte;
   $("btnCorrida").title = x.leituraCorrida;
   document.querySelectorAll(".fechar").forEach(b=>b.setAttribute("aria-label", x.fechar));
   prepararAbas();
@@ -860,10 +874,11 @@ async function renderizarLivro(){
 }
 function fichaContexto(c){
   const x = t();
+  c = Object.assign({}, c, (!emPT() && c[est.idioma]) || {});
   const par = (c.par||[]).map(([l,ch])=>linkRef(l, ch)).join(" · ");
   return `<dl class="ctx-grade">
     <dt>${x.autor}</dt><dd>${esc(c.a)}</dd>
-    <dt>${x.data}</dt><dd>${esc(c.d)}</dd>
+    <dt>${x.data}</dt><dd>${esc(dataLocal(c.d))}</dd>
     <dt>${x.local}</dt><dd>${esc(c.l)}</dd>
     <dt>${x.publico}</dt><dd>${esc(c.p)}</dd>
     <dt>${x.tema}</dt><dd>${esc(c.t)}</dd>
@@ -1782,12 +1797,28 @@ async function montarPlanos(planoAberto){
 }
 
 /* ---------- linha do tempo ---------- */
+/* As datas são escritas em português nos dados; em inglês e espanhol, algumas palavras mudam e, em inglês, a.C./d.C.
+   viram BC/AD ("c. 1446 a.C." -> "c. 1446 BC", "30–95 d.C." -> "AD 30–95"). */
+const DATAS_TRAD = {
+  en: [["No princípio","In the beginning"],["Incerta","Uncertain"],["ambientação patriarcal","patriarchal setting"],
+       ["(debatida)","(debated)"],["(provável)","(probable)"],[" ou "," or "]],
+  es: [["No princípio","En el principio"],["Incerta","Incierta"],["ambientação patriarcal","ambientación patriarcal"],
+       ["(debatida)","(debatida)"],["(provável)","(probable)"],[" ou "," o "]]
+};
+function dataLocal(d){
+  if(emPT() || !d) return d;
+  for(const [a, b] of DATAS_TRAD[est.idioma] || []) d = d.split(a).join(b);
+  if(est.idioma === "en") d = d.replace(/a\.C\./g, "BC").replace(/(c\. )?([\d–]+) d\.C\./g, (_, c, n)=>`${c || ""}AD ${n}`);
+  return d;
+}
+/* texto de um campo no idioma da interface: campo_en / campo_es, ou o português */
+const local = (o, campo)=> (!emPT() && o[campo + "_" + est.idioma]) || o[campo];
 async function montarTempo(){
   if(!est.tempo){ est.tempo = await json("data/timeline.json"); }
   $("conteudoTempo").innerHTML = est.tempo.eras.map(era=>
-    `<div class="era"><h3>${esc(era.nome)}</h3>` + era.eventos.map(ev=>
-      `<div class="evento"><span class="data">${esc(ev.d)}</span>
-       <span class="corpo">${esc(ev.t)} — ` + ev.r.map(([l,c])=>linkRef(l, c)).join(", ") +
+    `<div class="era"><h3>${esc(local(era, "nome"))}</h3>` + era.eventos.map(ev=>
+      `<div class="evento"><span class="data">${esc(dataLocal(ev.d))}</span>
+       <span class="corpo">${esc(local(ev, "t"))} — ` + ev.r.map(([l,c])=>linkRef(l, c)).join(", ") +
       `</span></div>`).join("") + `</div>`).join("");
 }
 
@@ -1894,6 +1925,12 @@ const MARES_MAPA = [   // [nome, lat, lon, zoom mínimo, zoom máximo]
   ["Mar Grande (Mediterrâneo)", 34.3, 19.5, 3, 7], ["Mar Grande", 33.4, 33.2, 6, 8], ["Mar Egeu", 38.4, 25.1, 5, 9], ["Mar Adriático", 42.6, 16.2, 5, 9],
   ["Mar Vermelho", 21.2, 38.6, 3, 7], ["Golfo Pérsico", 27.3, 51.2, 4, 8], ["Mar Negro", 43.3, 34.2, 3, 7],
   ["Mar Cáspio", 41.8, 50.8, 3, 7], ["Mar Salgado (Morto)", 31.52, 35.49, 8, 10], ["Mar da Galileia", 32.83, 35.59, 9, 10]];
+const MARES_TRAD = {
+  "Mar Grande (Mediterrâneo)": {en:"Great Sea (Mediterranean)", es:"Mar Grande (Mediterráneo)"}, "Mar Grande": {en:"Great Sea", es:"Mar Grande"},
+  "Mar Egeu": {en:"Aegean Sea", es:"Mar Egeo"}, "Mar Adriático": {en:"Adriatic Sea", es:"Mar Adriático"},
+  "Mar Vermelho": {en:"Red Sea", es:"Mar Rojo"}, "Golfo Pérsico": {en:"Persian Gulf", es:"Golfo Pérsico"},
+  "Mar Negro": {en:"Black Sea", es:"Mar Negro"}, "Mar Cáspio": {en:"Caspian Sea", es:"Mar Caspio"},
+  "Mar Salgado (Morto)": {en:"Salt Sea (Dead Sea)", es:"Mar Salado (Muerto)"}, "Mar da Galileia": {en:"Sea of Galilee", es:"Mar de Galilea"}};
 const NOMES_GENERICOS = /^(Rio|Sul|Norte|Oriente|Mar (Grande|Salgado|Vermelho|do Egito|da Galileia|Adriático))$/;
 function atualizarRotulos(){
   const mapa = est.mapa;
@@ -1903,7 +1940,8 @@ function atualizarRotulos(){
   const z = mapa.getZoom(), lim = mapa.getBounds();
   const max = Math.round((mapa.getSize().x < 500 ? .55 : 1) * (z <= 4 ? 16 : z === 5 ? 26 : z === 6 ? 38 : z === 7 ? 50 : 64));
   const ocupados = [], usados = new Set();
-  for(const [nome, la, lo, zmin, zmax] of MARES_MAPA){
+  for(const [nomePT, la, lo, zmin, zmax] of MARES_MAPA){
+    const nome = emPT() ? nomePT : (MARES_TRAD[nomePT] || {})[est.idioma] || nomePT;
     if(z < zmin || z > zmax || !lim.contains([la, lo])) continue;
     const pt = mapa.latLngToContainerPoint([la, lo]), meia = nome.length * 3.4;
     ocupados.push([pt.x - meia, pt.y - 9, pt.x + meia, pt.y + 9]);
@@ -1916,8 +1954,8 @@ function atualizarRotulos(){
     .sort((a, b)=>b.tot - a.tot);
   for(const l of cand){
     if(ocupados.length >= limite) break;
-    const nome = ((emPT() && l.p) || l.n).replace(/ \d+$/, "");
-    if(usados.has(nome) || NOMES_GENERICOS.test(nome)) continue;
+    const nome = nomeLugar(l);
+    if(usados.has(nome) || NOMES_GENERICOS.test((l.p || "").replace(/ \d+$/, ""))) continue;
     const pt = mapa.latLngToContainerPoint([l.la, l.lo]), maior = l.tot >= 150, regiao = l.t === "regiao";
     const larg = nome.length * (regiao ? 8.5 : maior ? 8 : 7);
     const caixa = regiao ? [pt.x - larg / 2, pt.y - 9, pt.x + larg / 2, pt.y + 9] : [pt.x - 6, pt.y - 10, pt.x + 12 + larg, pt.y + 10];
@@ -1938,7 +1976,7 @@ function buscarAtlas(){
   if(termo.length < 2 || !est.lugares || !est.mapa) return;
   // primeiro o nome exato, e entre os homônimos o mais citado ("Jezreel" abre na cidade de Acabe, não na de Judá)
   const exato = (l)=> normStr(nomeLugar(l)) === termo || normStr(l.n.replace(/ \d+$/, "")) === termo;
-  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo)))
+  const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo)) || (l.e && normStr(l.e).includes(termo)))
     .sort((a, b)=>(exato(b) - exato(a)) || (b.tot - a.tot)).slice(0, 12);
   fecharLugar();
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
@@ -1949,7 +1987,9 @@ function buscarAtlas(){
   });
   mostrarLugar(achados[0], achados);
 }
-const CIDADES_CHAVE = [["Jerusalém",31.7784,35.2354],["Babilônia",32.5364,44.4208],["Roma",41.8919,12.5113],["Éfeso",37.9411,27.3419],["Alexandria",31.2001,29.9187],["Damasco",33.5132,36.2919]];
+const CIDADES_CHAVE = [[{pt:"Jerusalém",en:"Jerusalem",es:"Jerusalén"},31.7784,35.2354],[{pt:"Babilônia",en:"Babylon",es:"Babilonia"},32.5364,44.4208],
+  [{pt:"Roma",en:"Rome",es:"Roma"},41.8919,12.5113],[{pt:"Éfeso",en:"Ephesus",es:"Éfeso"},37.9411,27.3419],
+  [{pt:"Alexandria",en:"Alexandria",es:"Alejandría"},31.2001,29.9187],[{pt:"Damasco",en:"Damascus",es:"Damasco"},33.5132,36.2919]];
 function distKm(a1,o1,a2,o2){
   const R=6371, r=Math.PI/180;
   const dA=(a2-a1)*r, dO=(o2-o1)*r;
@@ -1957,24 +1997,25 @@ function distKm(a1,o1,a2,o2){
   return Math.round(2*R*Math.asin(Math.sqrt(h)));
 }
 /* nome em português, sem o número que separa os lugares homônimos ("Jezreel 2", "Afeque 3") */
-function nomeLugar(l){ return ((emPT() && l.p) || l.n).replace(/ \d+$/, ""); }
+function nomeLugar(l){ return ((est.idioma === "pt" ? l.p : est.idioma === "es" ? l.e : l.n) || l.p || l.n).replace(/ \d+$/, ""); }
 function fecharLugar(){ const f = $("fichaLugar"); if(f){ f.hidden = true; f.innerHTML = ""; } }
 function mostrarLugar(l, achados){
   const res = $("fichaLugar");
   const outros = (achados || []).filter(o=>o !== l);
   const refs = l.r.map(([b,c,v])=>linkRef(b, c, v)).join(" · ");
   const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
-  const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase() && c[0] !== l.p)
-    .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
+  const x = t();
+  const dists = CIDADES_CHAVE.filter(c=>c[0].en.toLowerCase()!==l.n.toLowerCase() && c[0].pt !== l.p)
+    .map(c=>`${c[0][est.idioma] || c[0].pt}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
   res.innerHTML = `<button type="button" class="lugar-fechar" aria-label="${t().fechar}">✕</button>
     <h3>${esc(nomeLugar(l))}</h3>
-    ${l.c < 300 ? `<p class="lugar-incerto">Localização incerta: os estudiosos não concordam onde ficava (openbible.info).</p>` : ""}
-    <p class="lugar-meta">${+l.tot} ocorrência(s) na Bíblia
-      · Primeira: ${linkRef(primeira[0], primeira[1], primeira[2])}
-      · Última: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>
+    ${l.c < 300 ? `<p class="lugar-incerto">${x.lugarIncerto}</p>` : ""}
+    <p class="lugar-meta">${+l.tot} ${x.ocorrencias}
+      · ${x.primeira}: ${linkRef(primeira[0], primeira[1], primeira[2])}
+      · ${x.ultima}: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>
     <p class="lugar-refs">${refs}</p>
-    <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
-    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
+    <p class="lugar-dist">${x.distancias} — ${dists}</p>
+    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">${x.verFoto} ↗</a></p>` : ""}
     ${outros.length ? `<p class="lugar-outros">${t().outrosLugares}: ${outros.map(o=>`<button type="button" data-i="${achados.indexOf(o)}">${esc(nomeLugar(o))} <small>(${esc(nomeLivro(o.r[0][0]))} ${o.r[0][1]})</small></button>`).join(" · ")}</p>` : ""}`;
   res.hidden = false;
   res.querySelectorAll(".lugar-outros button").forEach(b=>b.addEventListener("click", ()=>mostrarLugar(achados[+b.dataset.i], achados)));
@@ -1991,7 +2032,7 @@ async function montarViagens(){
   const alvo = $("viagens");
   if(alvo.dataset.pronto) return;
   alvo.dataset.pronto = "1";
-  alvo.innerHTML = est.viagens.map(v=>`<button data-v="${esc(v.id)}">${esc(v.nome.split(" (")[0])}</button>`).join("");
+  alvo.innerHTML = est.viagens.map(v=>`<button data-v="${esc(v.id)}">${esc(local(v, "nome").split(" (")[0])}</button>`).join("");
   alvo.querySelectorAll("button").forEach(b=>b.addEventListener("click", ()=>{
     const ativa = b.classList.contains("ativa");
     alvo.querySelectorAll("button").forEach(o=>o.classList.remove("ativa"));
@@ -2010,7 +2051,7 @@ function desenharViagem(v){
   v.paradas.forEach((p,i)=>{
     const m = L.circleMarker(p[1], {radius:6, color:v.cor, fillColor:v.cor, fillOpacity:.9})
       .addTo(est.mapa)
-      .bindPopup(`<b>${i+1}. ${esc(p[0])}</b><br>` + p[2].map(([b,c,vv])=>linkRef(b, c, vv, null, "")).join(", "));
+      .bindPopup(`<b>${i+1}. ${esc((!emPT() && (v["paradas_" + est.idioma] || [])[i]) || p[0])}</b><br>` + p[2].map(([b,c,vv])=>linkRef(b, c, vv, null, "")).join(", "));
     est.camadaViagem.push(m);
   });
   est.mapa.fitBounds(L.latLngBounds(pontos).pad(0.15));
@@ -3033,6 +3074,9 @@ async function iniciar(){
     est.idioma = e.target.value; gravarLS("logos_idioma", est.idioma);
     aplicarTextos(); preencherTraducoes(); gravarLS("logos_trad", est.traducao);
     renderizar({ manter:true });
+    // o atlas já montado troca os nomes do mapa e os botões das viagens
+    if(est.mapa){ atualizarRotulos(); fecharLugar(); }
+    if($("viagens").dataset.pronto){ delete $("viagens").dataset.pronto; montarViagens(); }
   });
   $("selTraducao").addEventListener("change", (e)=>{
     est.traducao = e.target.value; gravarLS("logos_trad", est.traducao);
