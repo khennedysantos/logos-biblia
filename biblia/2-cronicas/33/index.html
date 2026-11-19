@@ -12,7 +12,7 @@ if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matche
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=e3a371e11c">
+<link rel="stylesheet" href="/style.css?v=dc53446fc3">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -221,7 +221,7 @@ document.documentElement.dataset.tema=t;</script>
     <div class="busca-linha"><input id="campoAtlas" type="search" placeholder="ex.: Jericó, Betel, Corinto" aria-label="Lugar"><button id="btnAtlasBuscar" aria-label="Buscar lugar"><svg class="ico"><use href="#i-busca"/></svg></button></div>
     <div id="viagens" class="mss-abas"></div>
     <div id="atlasResultados" class="busca-resultados"></div>
-    <div id="mapa"></div>
+    <div class="mapa-caixa"><div id="mapa"></div><div id="fichaLugar" class="lugar-card lugar-ficha" hidden></div></div>
     <p class="fonte">Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: desenhado pelo Sola com dados do Natural Earth (domínio público) e relevo do Terrain Tiles (AWS Open Data)</p>
   </div>
 </div>
@@ -329,6 +329,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script src="/app.js?v=6eac03e30b"></script>
+<script src="/app.js?v=4f5d08c22e"></script>
 </body>
 </html>

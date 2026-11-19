@@ -1934,7 +1934,8 @@ function buscarAtlas(){
   const res = $("atlasResultados");
   if(termo.length < 2 || !est.lugares || !est.mapa){ res.innerHTML = ""; return; }
   const achados = est.lugares.filter(l=>normStr(l.n).includes(termo) || (l.p && normStr(l.p).includes(termo))).slice(0, 12);
-  const nomeL = (l)=> (emPT() && l.p) || l.n;
+  const nomeL = nomeLugar;
+  fecharLugar();
   est.marcadores.forEach(m=>est.mapa.removeLayer(m)); est.marcadores = [];
   res.innerHTML = achados.length ? achados.map((l,i)=>`<div class="res" data-i="${i}"><div class="ref">${esc(nomeL(l))}</div>
     <p>${l.r.slice(0,6).map(([b,c,v])=>linkRef(b, c, v, esc(nomeLivro(b)+" "+c))).join(" · ")}</p></div>`).join("")
@@ -1943,7 +1944,8 @@ function buscarAtlas(){
     const m = L.marker([l.la, l.lo]).addTo(est.mapa).bindPopup(esc(nomeL(l)));
     est.marcadores.push(m);
   });
-  if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7); est.marcadores[0].openPopup(); }
+  // sem animação: o fim de uma animação de zoom recentraria o mapa depois que a ficha do lugar se ajustasse a ele
+  if(achados.length){ est.mapa.setView([achados[0].la, achados[0].lo], achados.length===1 ? 9 : 7, { animate: false }); est.marcadores[0].openPopup(); }
   res.querySelectorAll(".res").forEach(el=>el.addEventListener("click", (e)=>{
     if(e.target.closest("a")) return;
     mostrarLugar(achados[+el.dataset.i]);
@@ -1956,23 +1958,32 @@ function distKm(a1,o1,a2,o2){
   const h=Math.sin(dA/2)**2 + Math.cos(a1*r)*Math.cos(a2*r)*Math.sin(dO/2)**2;
   return Math.round(2*R*Math.asin(Math.sqrt(h)));
 }
+/* nome em português, sem o número que separa os lugares homônimos ("Jezreel 2", "Afeque 3") */
+function nomeLugar(l){ return ((emPT() && l.p) || l.n).replace(/ \d+$/, ""); }
+function fecharLugar(){ const f = $("fichaLugar"); if(f){ f.hidden = true; f.innerHTML = ""; } }
 function mostrarLugar(l){
-  const res = $("atlasResultados");
+  const res = $("fichaLugar");
   const refs = l.r.map(([b,c,v])=>linkRef(b, c, v)).join(" · ");
   const primeira = l.r[0], ultima = l.ult || l.r[l.r.length-1];
   const dists = CIDADES_CHAVE.filter(c=>c[0].toLowerCase()!==l.n.toLowerCase() && c[0] !== l.p)
     .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
-  res.innerHTML = `<div class="lugar-card">
-    <h3>${esc((emPT() && l.p) || l.n)}</h3>
+  res.innerHTML = `<button type="button" class="lugar-fechar" aria-label="${t().fechar}">✕</button>
+    <h3>${esc(nomeLugar(l))}</h3>
     ${l.c < 300 ? `<p class="lugar-incerto">Localização incerta: os estudiosos não concordam onde ficava (openbible.info).</p>` : ""}
     <p class="lugar-meta">${+l.tot} ocorrência(s) na Bíblia
       · Primeira: ${linkRef(primeira[0], primeira[1], primeira[2])}
       · Última: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>
     <p class="lugar-refs">${refs}</p>
     <p class="lugar-dist">Distâncias aproximadas — ${dists}</p>
-    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}
-  </div>`;
-  est.mapa.setView([l.la, l.lo], 9);
+    ${l.f && /^https:\/\//.test(l.f) ? `<p class="lugar-meta"><a href="${esc(l.f)}" target="_blank" rel="noopener">Ver foto (Wikimedia Commons) ↗</a></p>` : ""}`;
+  res.hidden = false;
+  res.scrollTop = 0;
+  res.querySelector(".lugar-fechar").addEventListener("click", fecharLugar);
+  // o lugar fica fora da ficha: à esquerda dela no desktop, acima dela no celular
+  const celular = res.offsetTop > 20;
+  est.mapa.setView([l.la, l.lo], Math.max(est.mapa.getZoom(), 9), { animate: false });
+  est.mapa.panBy(celular ? [0, res.offsetHeight / 2] : [res.offsetWidth / 2, 0], { animate: false });
+  res.closest(".mapa-caixa").scrollIntoView({ block: "nearest" });
 }
 async function montarViagens(){
   if(!est.viagens){ est.viagens = await json("data/journeys.json"); }
