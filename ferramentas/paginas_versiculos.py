@@ -127,7 +127,7 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
                 cit = (citacoes or {}).get((l, c, v), [])
                 if cit:
                     corpo.append('<h2>Nas confissões de fé</h2><ul class="vs-refs">' +
-                                 "".join(f'<li><a href="{u}">{e(r)}</a></li>' for r, u in cit[:8]) + "</ul>" +
+                                 "".join(f'<li><a href="{u}">{e(r)}</a></li>' for r, u, *_ in cit[:8]) + "</ul>" +
                                  (f'<p class="lex-mais">e mais {len(cit) - 8}.</p>' if len(cit) > 8 else ""))
                 lista = refs.get(str(v), [])
                 if lista:

@@ -7,7 +7,9 @@ os Cânones de Dort por capítulo (/confissoes/canones-de-dort/1/), a Confissão
 Chamado pelo gerar_paginas.py (não rode sozinho). Mesmo esquema das outras páginas avulsas (HTML leve, /lexico.css).
 Os marcadores dos textos de prova ([1], [2]…) viram números que levam às provas logo abaixo do parágrafo, cada uma
 com o versículo da Bíblia Livre. Devolve também o índice inverso (versículo -> onde é citado), usado nas páginas de
-versículo."""
+versículo, e grava o mesmo índice em data/confissoes/citacoes/<LIVRO>.json ({cap: {v: [[rótulo, endereço,
+trecho]]}}, sem a Confissão de Westminster, que o app mostra pelo doutrinas.json), usado na aba de referências da
+estante."""
 import json, re
 from html import escape as e
 
@@ -85,7 +87,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
 
     urls, citacoes = [], {}
 
-    def citar(provas, rot, url):
+    def citar(provas, rot, url, trecho=""):
+        item = (rot, url, cortar(re.sub(r"\s+", " ", RE_MARCA.sub("", trecho)).strip(), 240))
         for refs in provas.values():
             for r in refs:
                 l, c, a, b = r[:4]
@@ -94,8 +97,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 fim = len(biblia[l][c - 1]) if len(r) > 4 else b       # de um capítulo a outro: até o fim do primeiro
                 for v in range(a, fim + 1):
                     lista = citacoes.setdefault((l, c, v), [])
-                    if (rot, url) not in lista:
-                        lista.append((rot, url))
+                    if not any(c[:2] == item[:2] for c in lista):
+                        lista.append(item)
 
     def gravar(caminho, titulo, desc, corpo, migalhas):
         seo = cabeca_seo(site + caminho, titulo.split(" | ")[0], desc, "article", migalhas)
@@ -138,7 +141,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 p, r = q.get("p") or q["p_en"], q.get("r") or q["r_en"]
                 caminho = f"{base}{q['n']}/"
                 curto = CURTO[d]
-                citar(q["provas"], f"{curto.removesuffix(' de Westminster')}, pergunta {q['n']}", caminho)
+                citar(q["provas"], f"{curto.removesuffix(' de Westminster')}, pergunta {q['n']}", caminho, f"{p} {r}")
                 ant = f'<span>‹ <a href="{base}{itens[i - 1]["n"]}/">Pergunta {itens[i - 1]["n"]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{itens[i + 1]["n"]}/">Pergunta {itens[i + 1]["n"]}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
                 domingo = f'<p class="lex-translit">{e(nome)}, Domingo {q["domingo"]}</p>' if "domingo" in q else ""
@@ -170,7 +173,10 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                         rot_it = f"artigo {n}"
                     else:
                         rot_it = f"{n}.{it['n']}"
-                    citar(it["provas"], f"{'Confissão de Westminster' if d == 'westminster' else nome} {rot_it}", caminho)
+                    rot_cit = {"westminster": f"Confissão de Westminster {rot_it}", "confissao-belga": f"{nome}, {rot_it}",
+                               "canones-de-dort": f"{nome}, capítulo {n}, {rot_it[:1].lower() + rot_it[1:]}"}.get(d, f"{nome} {rot_it}")
+                    citar(it["provas"], rot_cit, caminho,
+                          it.get("pt") or it["en"])
                     texto_it = paragrafo(it.get("pt") or it["en"], it["provas"], f"s{it['n']}")
                     if d == "confissao-belga":                   # os parágrafos de um artigo, sem título cada um
                         blocos.append(f'<div id="s{it["n"]}">{texto_it}</div>')
@@ -197,4 +203,17 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
            f'<h1>Confissões e catecismos</h1><p class="lex-resumo">{e(desc)}</p><ul class="lex-lista">' +
            "".join(f'<li><a href="/confissoes/{doc["id"]}/">{e(doc["titulo"])}</a> <small>{doc["ano"]}</small></li>'
                    for doc in docs) + f"</ul>{fonte}", [("Sola", "/"), ("Confissões", "/confissoes/")])
+    # o índice também em data/, por livro, para a estante do app
+    pasta = raiz / "data" / "confissoes" / "citacoes"
+    if pasta.exists():
+        for f in pasta.glob("*.json"):
+            f.unlink()
+    pasta.mkdir(parents=True, exist_ok=True)
+    por_livro = {}
+    for (l, c, v), lista in sorted(citacoes.items()):
+        outras = [list(x) for x in lista if not x[1].startswith("/confissoes/westminster/")]   # a CFW o app já tem
+        if outras:
+            por_livro.setdefault(l, {}).setdefault(str(c), {})[str(v)] = outras
+    for l, caps in por_livro.items():
+        (pasta / f"{l}.json").write_text(json.dumps(caps, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return urls, citacoes
