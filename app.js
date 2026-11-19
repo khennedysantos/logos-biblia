@@ -1856,7 +1856,7 @@ function atualizarRotulos(){
   est.camadaRotulos.clearLayers();
   const z = mapa.getZoom(), lim = mapa.getBounds();
   const max = Math.round((mapa.getSize().x < 500 ? .55 : 1) * (z <= 4 ? 16 : z === 5 ? 26 : z === 6 ? 38 : z === 7 ? 50 : 64));
-  const cor = corMapa("--rubrica"), ocupados = [], usados = new Set();
+  const ocupados = [], usados = new Set();
   for(const [nome, la, lo, zmin, zmax] of MARES_MAPA){
     if(z < zmin || z > zmax || !lim.contains([la, lo])) continue;
     const pt = mapa.latLngToContainerPoint([la, lo]), meia = nome.length * 3.4;
@@ -1865,18 +1865,20 @@ function atualizarRotulos(){
       icon: L.divIcon({ className: "rotulo-mar", html: `<span>${esc(nome)}</span>`, iconSize: [0, 0] }) }).addTo(est.camadaRotulos);
   }
   const limite = ocupados.length + max;
-  const cand = est.lugares.filter(l=>l.tot > 0 && lim.contains([l.la, l.lo])).sort((a, b)=>b.tot - a.tot);
+  // fora do mapa: portas, salas e altares (t "outro") e as localizações incertas (c < 300, dados do openbible.info)
+  const cand = est.lugares.filter(l=>l.tot > 0 && l.t !== "outro" && !(l.c < 300) && lim.contains([l.la, l.lo]))
+    .sort((a, b)=>b.tot - a.tot);
   for(const l of cand){
     if(ocupados.length >= limite) break;
     const nome = ((emPT() && l.p) || l.n).replace(/ \d+$/, "");
     if(usados.has(nome) || NOMES_GENERICOS.test(nome)) continue;
-    const pt = mapa.latLngToContainerPoint([l.la, l.lo]), maior = l.tot >= 150;
-    const caixa = [pt.x - 5, pt.y - 10, pt.x + 12 + nome.length * (maior ? 8 : 7), pt.y + 10];
+    const pt = mapa.latLngToContainerPoint([l.la, l.lo]), maior = l.tot >= 150, regiao = l.t === "regiao";
+    const larg = nome.length * (regiao ? 8.5 : maior ? 8 : 7);
+    const caixa = regiao ? [pt.x - larg / 2, pt.y - 9, pt.x + larg / 2, pt.y + 9] : [pt.x - 6, pt.y - 10, pt.x + 12 + larg, pt.y + 10];
     if(ocupados.some(o=>caixa[0] < o[2] && o[0] < caixa[2] && caixa[1] < o[3] && o[1] < caixa[3])) continue;
     ocupados.push(caixa); usados.add(nome);
-    L.circleMarker([l.la, l.lo], { radius: maior ? 3.5 : 2.5, weight: 1, color: cor, fillColor: cor, fillOpacity: 1 })
-      .bindTooltip(esc(nome), { permanent: true, interactive: true, direction: "right", offset: [3, 0],
-        className: "rotulo-lugar" + (maior ? " maior" : "") })
+    L.marker([l.la, l.lo], { keyboard: false, title: nome, riseOnHover: true,
+      icon: L.divIcon({ className: `rotulo rotulo-${l.t || "cidade"}${maior ? " maior" : ""}`, html: `<span>${esc(nome)}</span>`, iconSize: [0, 0] }) })
       .on("click", ()=>mostrarLugar(l))
       .addTo(est.camadaRotulos);
   }
@@ -1916,6 +1918,7 @@ function mostrarLugar(l){
     .map(c=>`${c[0]}: ${distKm(l.la,l.lo,c[1],c[2])} km`).slice(0,4).join(" · ");
   res.innerHTML = `<div class="lugar-card">
     <h3>${esc((emPT() && l.p) || l.n)}</h3>
+    ${l.c < 300 ? `<p class="lugar-incerto">Localização incerta: os estudiosos não concordam onde ficava (openbible.info).</p>` : ""}
     <p class="lugar-meta">${+l.tot} ocorrência(s) na Bíblia
       · Primeira: ${linkRef(primeira[0], primeira[1], primeira[2])}
       · Última: ${linkRef(ultima[0], ultima[1], ultima[2])}</p>

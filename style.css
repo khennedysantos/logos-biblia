@@ -555,11 +555,21 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 #mapa.leaflet-container{background:var(--mapa-mar);font-family:var(--ui)}
 #mapa .leaflet-control-attribution{background:color-mix(in srgb,var(--papel) 80%,transparent);color:var(--suave)}
 #mapa .leaflet-control-attribution a{color:var(--suave)}
-.leaflet-tooltip.rotulo-lugar{background:none;border:0;box-shadow:none;padding:0 2px;color:var(--tinta);
-  font:600 .74rem/1.1 var(--escritura);white-space:nowrap;cursor:pointer;
-  text-shadow:0 0 2px var(--mapa-terra),0 0 3px var(--mapa-terra),0 0 4px var(--mapa-terra)}
-.leaflet-tooltip.rotulo-lugar.maior{font-size:.86rem;font-weight:700}
-.leaflet-tooltip.rotulo-lugar::before{display:none}
+.rotulo span{position:absolute;left:-4px;top:-.62em;white-space:nowrap;cursor:pointer;color:var(--tinta);
+  font:600 .74rem/1.2 var(--escritura);text-shadow:0 0 2px var(--mapa-terra),0 0 3px var(--mapa-terra),0 0 4px var(--mapa-terra)}
+.rotulo span::before{content:"";display:inline-block;width:.42rem;height:.42rem;border-radius:50%;margin-right:.3rem;
+  vertical-align:.05em;background:var(--rubrica);box-shadow:0 0 0 1.5px var(--mapa-terra)}
+.rotulo.maior span{font-size:.86rem;font-weight:700}
+.rotulo.maior span::before{width:.55rem;height:.55rem}
+.rotulo-monte span::before{content:"▲";width:auto;height:auto;border-radius:0;background:none;box-shadow:none;
+  color:var(--ouro);font-size:.62rem;margin-right:.22rem;vertical-align:.08em}
+.rotulo-agua span{color:var(--mapa-rio);font-style:italic}
+.rotulo-agua span::before{background:var(--mapa-rio)}
+.rotulo-regiao span{left:0;top:0;transform:translate(-50%,-50%);color:var(--suave);font:600 .66rem/1 var(--ui);
+  letter-spacing:.16em;text-transform:uppercase}
+.rotulo-regiao span::before{display:none}
+.rotulo-regiao.maior span{font-size:.74rem;font-weight:600}
+.lugar-incerto{font-size:.8rem;color:var(--rubrica);margin:.1rem 0 .35rem}
 .rotulo-mar span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;
   font:italic 500 .8rem/1 var(--escritura);letter-spacing:.06em;color:var(--mapa-costa);
   text-shadow:0 0 3px var(--mapa-mar),0 0 4px var(--mapa-mar)}
