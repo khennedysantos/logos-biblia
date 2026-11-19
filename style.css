@@ -39,7 +39,7 @@
   --escritura:"Cardo",Georgia,serif;
   --ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --raio:.45rem; --raio-curto:.32rem;
-  --mapa-mar:#D3DEDD; --mapa-terra:#F5EFE1; --mapa-costa:#7F9395; --mapa-rio:#86A7AE;
+  --mapa-mar:#D3DEDD; --mapa-terra:#F5EFE1; --mapa-costa:#7F9395; --mapa-rio:#86A7AE; --mapa-relevo:.55;
 }
 [data-tema="escuro"]{
   --mesa:#11100E; --papel:#171613; --estante:#1D1B17; --painel:#23201B;
@@ -49,7 +49,7 @@
   --ouro:#D2AD6B; --ouro-vivo:#B89252;
   --noite:#0E0D0B; --noite-2:#171512;
   --m-ouro:#4A3D1C; --m-verde:#263D24; --m-azul:#22364A; --m-rosa:#4A2828;
-  --mapa-mar:#182024; --mapa-terra:#25221D; --mapa-costa:#55666A; --mapa-rio:#456970;
+  --mapa-mar:#182024; --mapa-terra:#25221D; --mapa-costa:#55666A; --mapa-rio:#456970; --mapa-relevo:.6;
   --sombra:0 1px 2px rgba(0,0,0,.32),0 10px 28px rgba(0,0,0,.38);
   --sombra-alta:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.65);
 }
@@ -553,6 +553,7 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 /* ---------- atlas ---------- */
 #mapa{height:21rem;border-radius:var(--raio);border:1px solid var(--borda);margin-top:.75rem;z-index:0}
 #mapa.leaflet-container{background:var(--mapa-mar);font-family:var(--ui)}
+#mapa .leaflet-relevo-pane{opacity:var(--mapa-relevo)}
 #mapa .leaflet-control-attribution{background:color-mix(in srgb,var(--papel) 80%,transparent);color:var(--suave)}
 #mapa .leaflet-control-attribution a{color:var(--suave)}
 .rotulo span{position:absolute;left:-4px;top:-.62em;white-space:nowrap;cursor:pointer;color:var(--tinta);

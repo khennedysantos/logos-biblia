@@ -1795,16 +1795,18 @@ async function abrirAtlas(){
   }catch(e){ $("atlasResultados").innerHTML = `<p class="erro-leitura">${t().erroCarregar}</p>`; return; }
   montarViagens();
   if(!est.mapa){
-    let base;
-    try{ base = await json("data/mapa/base.json"); }
+    let base, relevo;
+    try{ [base, relevo] = await Promise.all([json("data/mapa/base.json"), json("data/mapa/relevo.json").catch(()=>null)]); }
     catch(e){ $("atlasResultados").innerHTML = `<p class="erro-leitura">${t().erroCarregar}</p>`; return; }
     est.mapa = L.map("mapa", { minZoom: 3, maxZoom: 10, maxBounds: [[-6, -26], [60, 104]], maxBoundsViscosity: .8 })
       .setView([31.77, 35.21], 6);
     est.mapa.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
     est.mapa.attributionControl.addAttribution('<a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a>');
     est.mapa.createPane("base").style.zIndex = 250;      // abaixo das rotas, marcadores e nomes
+    est.mapa.createPane("relevo").style.zIndex = 260;    // o sombreado, misturado à base (mix-blend-mode no CSS)
     montarBaseMapa(base);
-    est.mapa.on("moveend", ()=>{ trocarNivelMapa(); atualizarRotulos(); });
+    if(relevo) montarRelevo(relevo);
+    est.mapa.on("moveend", ()=>{ trocarNivelMapa(); trocarRelevo(); atualizarRotulos(); });
     atualizarRotulos();
   }
   setTimeout(()=>{ est.mapa.invalidateSize(); atualizarRotulos(); }, 150);
@@ -1841,6 +1843,33 @@ function trocarNivelMapa(){
   if(est.baseMapa.atual) est.baseMapa.niveis[est.baseMapa.atual].camadas.forEach(([, c])=>mapa.removeLayer(c));
   est.baseMapa.niveis[nome].camadas.forEach(([, c])=>c.addTo(mapa));
   est.baseMapa.atual = nome;
+}
+/* Relevo sombreado: azulejos em cinza do próprio site (mapa/relevo/{z}/{x}/{y}.png, gerados por
+   ferramentas/gerar_relevo.py a partir da elevação aberta do Terrain Tiles). data/mapa/relevo.json diz quais azulejos
+   existem em cada zoom: 3–5 da Espanha à Índia, 6–7 do Mediterrâneo à Mesopotâmia e 8 na Terra Santa; de perto, fora
+   da Terra Santa, o zoom 7 é ampliado. */
+function montarRelevo(indice){
+  const limites = (z)=>{
+    const [x0, y0, x1, y1] = indice[z], n = 2 ** z, e = 1e-6;
+    const lon = (x)=>x / n * 360 - 180, lat = (y)=>Math.atan(Math.sinh(Math.PI * (1 - 2 * y / n))) * 180 / Math.PI;
+    return L.latLngBounds([lat(y1 + 1) + e, lon(x0) + e], [lat(y0) - e, lon(x1 + 1) - e]);
+  };
+  const camada = (zmin, zmax, nativo, z)=>L.tileLayer("/mapa/relevo/{z}/{x}/{y}.png",
+    { pane: "relevo", minZoom: zmin, maxZoom: zmax, minNativeZoom: zmin, maxNativeZoom: nativo, bounds: limites(z), attribution: "" });
+  // cada camada só pede azulejos dentro da área do seu zoom mais detalhado (os de cima cobrem a mesma área ou mais)
+  est.relevo = { longe: indice[5] ? camada(3, 5, 5, 5) : null, meio: indice[7] ? camada(6, 10, 7, 7) : null,
+    perto: indice[8] ? camada(8, 10, 8, 8) : null, caixaPerto: indice[8] ? limites(8) : null };
+  est.mapa.attributionControl.addAttribution('Relevo: <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener">Terrain Tiles</a>');
+  trocarRelevo();
+}
+function trocarRelevo(){
+  const r = est.relevo, mapa = est.mapa;
+  if(!r) return;
+  const perto = !!(r.perto && mapa.getZoom() >= 8 && r.caixaPerto.contains(mapa.getCenter()));
+  const quer = [r.longe, perto ? r.perto : r.meio].filter(Boolean);
+  [r.longe, r.meio, r.perto].filter(Boolean).forEach(c=>{
+    if(quer.includes(c)) { if(!mapa.hasLayer(c)) c.addTo(mapa); } else if(mapa.hasLayer(c)) mapa.removeLayer(c);
+  });
 }
 /* Nomes no mapa: os mares (fixos, em itálico) e os lugares mais citados na Bíblia que cabem na tela sem se encostar
    (mais nomes quanto mais perto). Ficam de fora as direções e águas genéricas do geocódigo ("Rio", "Sul", "Oriente"). */
