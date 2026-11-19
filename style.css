@@ -533,6 +533,7 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 .plano-card h3{margin:0 0 .48rem;font-size:1.24rem;font-family:var(--titulo);font-weight:600}
 .plano-barra{height:.3rem;border-radius:999px;background:var(--hover);overflow:hidden}
 .plano-barra i{display:block;height:100%;background:linear-gradient(90deg,var(--rubrica),var(--ouro-vivo))}
+.plano-desc{margin:-.2rem 0 .6rem;font-size:.8rem;line-height:1.45;color:var(--tinta-2)}
 .plano-pct{font-size:.68rem;color:var(--suave);margin-top:.38rem;letter-spacing:.03em}
 .plano-titulo{font-family:var(--titulo);font-weight:600;font-size:1.4rem;margin:.2rem 0 .6rem}
 .dia-linha{display:flex;align-items:center;gap:.6rem;padding:.48rem 0;border-bottom:1px solid var(--borda)}

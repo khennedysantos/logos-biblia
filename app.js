@@ -58,7 +58,7 @@ const UI = {
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
       ["Temas e dicionário","Confissão de Westminster, mais de 5.000 temas de Nave e 3.900 verbetes de Easton."],
       ["Atlas bíblico","1.300 lugares no mapa, com as viagens missionárias de Paulo."],
-      ["Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios."]],
+      ["Planos de leitura","A Bíblia em um ano, o clássico plano de M'Cheyne, o Novo Testamento em 90 dias, Salmos e Provérbios."]],
     sobreLivro:"Sobre o livro", comentarioDe:"Comentário",
     backup:"Backup", restaurar:"Restaurar", restaurado:"Restaurado deste arquivo:", arquivoInvalido:"Este arquivo não é um backup do Sola.",
     nAnot:"anotação(ões)", nMarc:"marcação(ões)",
@@ -138,7 +138,7 @@ const UI = {
       ["Cross-references","Scripture interprets Scripture: parallel passages for every verse."],
       ["Topics and dictionary","Over 5,000 topics from Nave and 3,900 entries from Easton's dictionary."],
       ["Bible atlas","1,300 places on the map, with Paul's missionary journeys."],
-      ["Reading plans","The Bible in a year, the New Testament in 90 days, Psalms and Proverbs."]],
+      ["Reading plans","The Bible in a year, the classic M'Cheyne plan, the New Testament in 90 days, Psalms and Proverbs."]],
     sobreLivro:"About the book", comentarioDe:"Commentary",
     backup:"Backup", restaurar:"Restore", restaurado:"Restored from this file:", arquivoInvalido:"This file is not a Sola backup.",
     nAnot:"note(s)", nMarc:"highlight(s)",
@@ -218,7 +218,7 @@ const UI = {
       ["Referencias cruzadas","La Escritura interpreta la Escritura: pasajes paralelos de cada versículo."],
       ["Temas y diccionario","Más de 5.000 temas de Nave y 3.900 entradas del diccionario de Easton."],
       ["Atlas bíblico","1.300 lugares en el mapa, con los viajes misioneros de Pablo."],
-      ["Planes de lectura","La Biblia en un año, el Nuevo Testamento en 90 días, Salmos y Proverbios."]],
+      ["Planes de lectura","La Biblia en un año, el clásico plan de M'Cheyne, el Nuevo Testamento en 90 días, Salmos y Proverbios."]],
     sobreLivro:"Sobre el libro", comentarioDe:"Comentario",
     backup:"Copia", restaurar:"Restaurar", restaurado:"Restaurado de este archivo:", arquivoInvalido:"Este archivo no es una copia de Sola.",
     nAnot:"nota(s)", nMarc:"resaltado(s)",
@@ -278,7 +278,7 @@ const AJUDA = {
       ["Seu estudo", [
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
-        ["planos","planos","Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios e outros. O Sola lembra em que dia você está."],
+        ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias e Salmos e Provérbios. O Sola lembra em que dia você está."],
         ["meu","progresso","Meu estudo","Seu progresso por livro, os dias seguidos de leitura e as marcações. Funciona sem conta."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
@@ -309,7 +309,7 @@ const AJUDA = {
       ["Your study", [
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
-        ["planos","planos","Reading plans","The Bible in a year, the New Testament in 90 days, Psalms and Proverbs and more. Sola remembers your day."],
+        ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days and Psalms and Proverbs. Sola remembers your day."],
         ["meu","progresso","My study","Your progress by book, reading streak and highlights. Works without an account."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
@@ -340,7 +340,7 @@ const AJUDA = {
       ["Tu estudio", [
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
-        ["planos","planos","Planes de lectura","La Biblia en un año, el Nuevo Testamento en 90 días, Salmos y Proverbios y más. Sola recuerda tu día."],
+        ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días y Salmos y Proverbios. Sola recuerda tu día."],
         ["meu","progresso","Mi estudio","Tu progreso por libro, los días seguidos de lectura y los resaltados. Funciona sin cuenta."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
@@ -1729,6 +1729,22 @@ function pctPlano(pl){
   const feitos = Object.values(pr).filter(Boolean).length;
   return Math.round(feitos / pl.dias.length * 100);
 }
+/* As leituras de um dia: cada item é [livro, cap] ou, parte de um capítulo, [livro, cap, v1, v2]. "grupos" diz
+   quantos itens formam cada leitura (M'Cheyne: 4 por dia); sem ele, os capítulos seguidos do mesmo livro são uma
+   leitura. Dentro da leitura o livro aparece uma vez: "Gênesis 9, 10", "Lucas 1:1–38", "Zacarias 12, 13:1". */
+function leiturasDoDia(caps, grupos){
+  const leituras = [];
+  if(grupos){ let i = 0; for(const n of grupos){ leituras.push(caps.slice(i, i + n)); i += n; } }
+  else for(const it of caps){
+    const ult = leituras[leituras.length - 1], ant = ult && ult[ult.length - 1];
+    if(ant && ant[0] === it[0] && ant.length === 2 && it.length === 2 && it[1] === ant[1] + 1) ult.push(it);
+    else leituras.push([it]);
+  }
+  return leituras.map(itens=>itens.map(([l, c, a, b], k)=>{
+    const rotulo = (k ? "" : nomeLivro(l) + " ") + c + (a ? ":" + a + (b > a ? "–" + b : "") : "");
+    return linkRef(l, c, a || 0, esc(rotulo), "");
+  }).join(", ")).join("; ");
+}
 async function montarPlanos(planoAberto){
   const alvo = $("conteudoPlanos"), x = t();
   const ps = await planos();
@@ -1737,6 +1753,7 @@ async function montarPlanos(planoAberto){
       const pct = pctPlano(pl);
       return `<div class="plano-card" data-id="${esc(pl.id)}" tabindex="0" role="button">
         <h3>${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>
+        ${pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : ""}
         <div class="plano-barra"><i style="width:${pct}%"></i></div>
         <div class="plano-pct">${pct}% · ${pl.dias.length} ${x.dias}</div></div>`;
     }).join("");
@@ -1752,7 +1769,7 @@ async function montarPlanos(planoAberto){
     <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
     pl.dias.map((caps,i)=>
       `<div class="dia-linha"><span class="dia-num">${x.dia} ${i+1}</span>
-        <span class="dia-caps">${caps.map(([l,c])=>linkRef(l, c, 0, null, "")).join(", ")}</span>
+        <span class="dia-caps">${leiturasDoDia(caps, pl.grupos && pl.grupos[i])}</span>
         <input type="checkbox" class="dia-check" data-i="${i}" aria-label="${x.dia} ${i+1}" ${pr[i]?"checked":""}></div>`).join("");
   alvo.querySelector(".voltar-planos").addEventListener("click", ()=>montarPlanos(null));
   alvo.querySelectorAll(".dia-check").forEach(ch=>ch.addEventListener("change", ()=>{
