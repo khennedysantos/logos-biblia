@@ -19,6 +19,8 @@ O que corrige (cada parte conta no relatório):
 9. llm     — por último, as correções de sentido revisadas por LLM versículo a versículo (glosas_llm.json, gerado por
              tradutor/glosas_llm.py). Só trocam a glosa que ainda está igual à que o modelo viu ("de"); a palavra já
              corrigida fica fora das regras acima, para não ser desfeita.
+             Depois delas entram as correções escritas à mão em glosas_manuais.json, no mesmo formato ("de" é a glosa
+             que as regras deixaram; o glosas_llm.py regrava o glosas_llm.json, por isso as manuais ficam à parte).
 
 uso:  python3 ferramentas/corrigir_glosas.py preparar
       python3 ferramentas/corrigir_glosas.py aplicar [--conferir] [--relatorio]
@@ -37,6 +39,7 @@ from glosas_revisao import REVISAO                                            # 
 ENTRADAS = AQUI / "tradutor" / "entradas"
 NOMES = AQUI / "nomes_pt.json"
 GLOSAS_LLM = AQUI / "glosas_llm.json"
+GLOSAS_MANUAIS = AQUI / "glosas_manuais.json"     # correções à mão no mesmo formato ({"LIVRO|cap|v|i": {de, para}})
 SUBSTANTIVOS = AQUI / "substantivos_pt.json"
 
 
@@ -1150,7 +1153,11 @@ def chave_palavra(w):
 
 
 def correcoes_llm():
-    return json.loads(GLOSAS_LLM.read_text(encoding="utf-8")) if GLOSAS_LLM.exists() else {}
+    """as do LLM mais as escritas à mão palavra por palavra (glosas_manuais.json, que valem por cima)"""
+    llm = json.loads(GLOSAS_LLM.read_text(encoding="utf-8")) if GLOSAS_LLM.exists() else {}
+    if GLOSAS_MANUAIS.exists():
+        llm.update(json.loads(GLOSAS_MANUAIS.read_text(encoding="utf-8")))
+    return llm
 
 
 def corrigir_llm(palavras, llm, conta):
