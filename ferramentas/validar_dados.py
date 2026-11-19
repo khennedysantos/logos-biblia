@@ -1,7 +1,7 @@
 """Confere os dados do site antes de publicar. Sai com erro se algo essencial estiver quebrado.
     python3 ferramentas/validar_dados.py
 Roda em segundos; o GitHub Actions (.github/workflows/verificar.yml) roda a cada envio."""
-import json, sys
+import json, re, sys
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data"
@@ -79,18 +79,24 @@ def main():
     for nome in ("context.json", "plans.json", "timeline.json", "places.json", "journeys.json"):
         ler(DATA / nome)
 
-    # doutrinas reformadas (busca de Temas): cada referência existe e o texto guardado é o da Bíblia Livre
+    # Confissão de Westminster (doutrinas.json, gerado de data/confissoes/ por gerar_doutrinas.py): cada prova existe
+    # na Bíblia Livre ("b" = 999 é até o fim do capítulo)
     textos_bl = {}
     for d in ler(DATA / "topics" / "doutrinas.json") or []:
         for s in d["sec"]:
-            for l, c, a, b, tx in s["v"]:
+            for l, c, a, b in s["v"]:
                 if l not in textos_bl:
                     textos_bl[l] = ler(DATA / "bibles" / "blivre" / f"{l}.json") or []
                 caps = textos_bl[l]
-                if not (1 <= c <= len(caps) and 1 <= a <= b <= len(caps[c - 1])):
+                if not (1 <= c <= len(caps) and 1 <= a <= len(caps[c - 1]) and (b == 999 or a <= b <= len(caps[c - 1]))):
                     erros.append(f"doutrinas.json {d['id']}: {l} {c}:{a}-{b} não existe")
-                elif caps[c - 1][a - 1:b] != tx:
-                    erros.append(f"doutrinas.json {d['id']}: texto de {l} {c}:{a}-{b} desatualizado (rode gerar_doutrinas.py)")
+    for arq in sorted((DATA / "confissoes").glob("*.json")):
+        doc = ler(arq)
+        itens = doc.get("itens", []) + [i for p in doc.get("partes", []) for i in p["itens"]]
+        for it in itens:
+            en, pt = it.get("en") or it.get("r_en", ""), it.get("pt") or it.get("r", "")
+            if pt and sorted(re.findall(r"\[\d+\]", en)) != sorted(re.findall(r"\[\d+\]", pt)):
+                erros.append(f"confissoes/{arq.name} {it['n']}: marcadores de prova diferentes no português")
     ids = {b["id"] for b in livros}
     for plano in ler(DATA / "plans.json") or []:
         for dia in plano["dias"]:

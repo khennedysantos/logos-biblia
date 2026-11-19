@@ -42,7 +42,7 @@ def cortar_texto(t, n):
     return t if len(t) <= n else t[:n].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
 
 
-def gerar(raiz, site, livros, slug, cortar, css):
+def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
     """grava biblia/<livro>/<cap>/<v>/index.html e devolve os endereços para o sitemap"""
     info = {b["id"]: b for b in livros}
     s_de = {b["id"]: slug(b["pt"]) for b in livros}
@@ -124,6 +124,11 @@ def gerar(raiz, site, livros, slug, cortar, css):
                     corpo.append(f'<h2>Comentário de {autor}</h2><p class="vs-com">{e(cortar_texto(txt, COMENTARIO))}</p>'
                                  f'<p class="fonte">{autor}, tradução automática do inglês{nota}. '
                                  f'<a href="/biblia/{s_de[l]}/{c}/#v{v}">Ler o comentário completo no Sola ›</a></p>')
+                cit = (citacoes or {}).get((l, c, v), [])
+                if cit:
+                    corpo.append('<h2>Nos Padrões de Westminster</h2><ul class="vs-refs">' +
+                                 "".join(f'<li><a href="{u}">{e(r)}</a></li>' for r, u in cit[:8]) + "</ul>" +
+                                 (f'<p class="lex-mais">e mais {len(cit) - 8}.</p>' if len(cit) > 8 else ""))
                 lista = refs.get(str(v), [])
                 if lista:
                     itens = []

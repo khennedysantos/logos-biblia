@@ -18,11 +18,11 @@ const UI = {
     exStrong:"ex.: G3056, H2617, logos, hesed, graça", exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
     comandoBusca:"Passagem, palavra, Strong (G3056) ou doutrina…",
     emEstudo:"Em estudo", eabaOrig:"Léxico & Orig.", eabaCom:"Comentário", eabaRefs:"CFW & Refs", eabaNota:"Nota",
-    verDoutrina:"Estudar doutrina completa", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
+    verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
-    doutSelo:"Doutrina reformada", doutLista:"Doutrinas da fé reformada — ou digite um tema", doutMais:"continua no capítulo",
-    doutFonte:"Síntese do Sola a partir da Confissão de Fé de Westminster e dos seus textos de prova. Texto bíblico: Bíblia Livre.",
+    doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo",
+    doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
     tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…",
     comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
@@ -56,7 +56,7 @@ const UI = {
     recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
       ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
-      ["Temas e dicionário","Doutrinas reformadas (CFW), mais de 5.000 temas de Nave e 3.900 verbetes de Easton."],
+      ["Temas e dicionário","Confissão de Westminster, mais de 5.000 temas de Nave e 3.900 verbetes de Easton."],
       ["Atlas bíblico","1.300 lugares no mapa, com as viagens missionárias de Paulo."],
       ["Planos de leitura","A Bíblia em um ano, o Novo Testamento em 90 dias, Salmos e Provérbios."]],
     sobreLivro:"Sobre o livro", comentarioDe:"Comentário",
@@ -98,11 +98,11 @@ const UI = {
     exStrong:"e.g. G3056, H2617, logos, grace", exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     comandoBusca:"Passage, word, Strong (G3056) or doctrine…",
     emEstudo:"Studying", eabaOrig:"Lexicon & Orig.", eabaCom:"Commentary", eabaRefs:"WCF & Refs", eabaNota:"Note",
-    verDoutrina:"Read full doctrine", chavesNoVerso:"Key words", notaSalva:"Saved!",
+    verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
-    doutSelo:"Reformed doctrine", doutLista:"Reformed doctrines — or type a topic", doutMais:"continues in the chapter",
-    doutFonte:"Summary by Sola based on the Westminster Confession of Faith and its proof texts (in Portuguese). Bible text: Bíblia Livre.",
+    doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter",
+    doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
     conteudoEN:"Content in the original English.",
     tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…",
     comRef:"Commentary on v.", comBloco:"(the commentary covers a block of verses)",
@@ -178,11 +178,11 @@ const UI = {
     exStrong:"ej.: G3056, H2617, logos, gracia", exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     comandoBusca:"Pasaje, palabra, Strong (G3056) o doctrina…",
     emEstudo:"En estudio", eabaOrig:"Léxico y Orig.", eabaCom:"Comentario", eabaRefs:"CFW y Refs", eabaNota:"Nota",
-    verDoutrina:"Ver doctrina completa", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
+    verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
-    doutSelo:"Doctrina reformada", doutLista:"Doctrinas reformadas — o escribe un tema", doutMais:"continúa en el capítulo",
-    doutFonte:"Síntesis de Sola basada en la Confesión de Fe de Westminster y sus textos de prueba (en portugués). Texto bíblico: Bíblia Livre.",
+    doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo",
+    doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
     conteudoEN:"Contenido en el inglés original.",
     tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…",
     comRef:"Comentario sobre el v.", comBloco:"(el comentario abarca un bloque de versículos)",
@@ -271,7 +271,7 @@ const AJUDA = {
         ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
         ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Cada versículo também tem a sua (como /biblia/joao/3/16/), com as três traduções, o original, o começo do comentário e as referências. Abra pelo link “Página completa” ou “Página do verbete”."],
-        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e 50 doutrinas da fé reformada (Confissão de Westminster e Catecismos), cada uma com os versículos em que se apoia."],
+        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave) e os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
         ["atlas","atlas","Atlas","Mais de 1.300 lugares bíblicos no mapa e as viagens missionárias de Paulo."]]],
@@ -302,7 +302,7 @@ const AJUDA = {
         ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
         ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). Every verse has one too (such as /biblia/joao/3/16/), with the three translations, the original, the start of the commentary and the cross-references. All in Portuguese; open them from the “Full page” or “Entry page” link."],
-        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and 50 doctrines of the Reformed faith, each with its proof texts (in Portuguese)."],
+        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave) and the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
         ["atlas","atlas","Atlas","Over 1,300 Bible places on the map and Paul’s missionary journeys."]]],
@@ -333,7 +333,7 @@ const AJUDA = {
         ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
         ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Cada versículo también tiene la suya (como /biblia/joao/3/16/), con las tres traducciones, el original, el inicio del comentario y las referencias. Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
-        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y 50 doctrinas de la fe reformada con sus textos de prueba (en portugués)."],
+        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave) y los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea (en portugués)."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
         ["atlas","atlas","Atlas","Más de 1.300 lugares bíblicos en el mapa y los viajes misioneros de Pablo."]]],
@@ -816,8 +816,8 @@ function renderizarInicio(){
     if(vez !== est.vez || !douts.length || !$("doutDiaTit")) return;
     const d = doutDia = douts[dia % douts.length];
     $("doutDiaFonte").textContent = d.f.split(";")[0].trim();
-    $("doutDiaTit").textContent = d.t;
-    $("doutDiaRes").textContent = d.r;
+    $("doutDiaTit").textContent = doutTitulo(d);
+    $("doutDiaRes").textContent = encurtar(doutResumo(d), 260);
     const v0 = d.sec && d.sec[0] && d.sec[0].v && d.sec[0].v[0];
     if(v0) $("doutDiaRef").textContent = refStr(v0[0], v0[1], v0[2]);
   });
@@ -1612,26 +1612,29 @@ async function htmlLinkAcervo(tipo, nome, x){
 function listarVerbetes(nomes, tit, abrir){
   listarItens(nomes.map(n=>({ html: rotuloDuplo(tit, n), titulo: rotuloDuplo(tit, n), abrir: ()=>abrir(n) })));
 }
-/* Doutrina reformada: resumo, fonte confessional e os versículos em que se apoia, com o texto (até 3 por trecho). */
+/* Capítulo da Confissão de Westminster (doutrinas.json, gerado por ferramentas/gerar_doutrinas.py): cada parágrafo
+   com os seus textos de prova; em inglês, o original de 1647. */
+const doutTitulo = (d)=>est.idioma==="en" && d.te ? d.te : d.t;
+const doutTexto = (s)=>est.idioma==="en" && s.pe ? s.pe : s.p;
+const doutResumo = (d)=>est.idioma==="en" && d.sec && d.sec[0] ? d.sec[0].pe.split(/(?<=[.;:])\s/)[0] : d.r;
+function encurtar(txt, n){ return txt.length > n ? txt.slice(0, n).replace(/\s+\S*$/, "") + "…" : txt; }
 function htmlDoutrina(d){
   const x = t();
-  const refs = (lista)=>lista.map(([l, c, a, b, tx])=>{
-    const rot = esc(`${nomeLivro(l)} ${c}:${a}${b !== a ? "-" + b : ""}`);
-    const corpo = tx.length === 1 ? esc(tx[0])
-      : tx.slice(0, 3).map((v, i)=>`<sup>${a + i}</sup>${esc(v)}`).join(" ") + (tx.length > 3 ? ` <span class="dout-mais">… ${x.doutMais}</span>` : "");
-    return `<div class="dout-ref">${linkRef(l, c, a, rot)}<p>${corpo}</p></div>`;
-  }).join("");
-  return `<p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p><p class="dout-resumo">${esc(d.r)}</p>` +
-    d.sec.map(s=>`<h4 class="dout-sec">${esc(s.t)}</h4>${refs(s.v)}`).join("") + `<p class="fonte">${x.doutFonte}</p>`;
+  const refs = (lista)=>lista.map(([l, c, a, b])=>linkRef(l, c, b===999 && a===1 ? 0 : a,
+    esc(`${nomeLivro(l)} ${c}` + (b===999 && a===1 ? "" : `:${a}${b!==a && b!==999 ? "-" + b : ""}`)))).join("; ");
+  return `<p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p>` +
+    d.sec.map(s=>`<div class="dout-par"><p><b>${esc(s.t)}</b> ${esc(doutTexto(s))}</p>` +
+      (s.v.length ? `<p class="dout-provas">${refs(s.v)}</p>` : "") + `</div>`).join("") +
+    (d.u ? `<a class="lex-pagina" href="${d.u}">${x.doutPagina} ›</a>` : "") + `<p class="fonte">${x.doutFonte}</p>`;
 }
 async function abrirDoutrina(dOuId){
   abrirBusca("temas");
   const d = typeof dOuId === "string" ? (await doutrinas()).find(o=>o.id===dOuId) : dOuId;
   if(!d) return;
   $("buscaStatus").textContent = "";
-  $("buscaResultados").innerHTML = `<h3 class="res-titulo">${esc(d.t)}</h3>` + htmlDoutrina(d);
+  $("buscaResultados").innerHTML = `<h3 class="res-titulo">${esc(doutTitulo(d))}</h3>` + htmlDoutrina(d);
 }
-const itemDoutrina = (d)=>({ html: `${esc(d.t)} <span class="dout-tag">${t().doutSelo}</span>`, titulo: esc(d.t), abrir: async ()=>htmlDoutrina(d) });
+const itemDoutrina = (d)=>({ html: `${esc(doutTitulo(d))} <span class="dout-tag">${t().doutSelo}</span>`, titulo: esc(doutTitulo(d)), abrir: async ()=>htmlDoutrina(d) });
 const RE_DOUT_GERAL = /reformad|doutrin|westminster|presbiterian|confiss|catecism|calvin/;
 async function buscarTemas(){
   const x = t(), termo = $("campoBusca").value.trim();
@@ -1644,7 +1647,7 @@ async function buscarTemas(){
   }
   const [idx, alias, tit] = await Promise.all([idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
   const alvo = normStr(termo), geral = RE_DOUT_GERAL.test(alvo);
-  const dz = douts.filter(d=>geral || normStr(d.t).includes(alvo) || d.s.some(s=>normStr(s).includes(alvo)));
+  const dz = douts.filter(d=>geral || normStr(d.t).includes(alvo) || normStr(d.te || "").includes(alvo) || d.s.some(s=>normStr(s).includes(alvo)));
   const diretos = idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo)));
   const viaAlias = Object.entries(alias).filter(([pt])=>normStr(pt).includes(alvo)).map(([,en])=>en);
   const nave = [...new Set([...viaAlias, ...diretos])].slice(0, 40).map(nome=>({
@@ -2028,9 +2031,8 @@ async function atualizarEstudo(v, focarNota){
     sinalizarAbasEstante(v, dVerso);
     const htmlDouts = dVerso.map(({ d, secs })=>`<div class="estante-cartao confessional">
       <p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p>
-      <h4 class="cm-titulo">${esc(d.t)}</h4>
-      <p class="cm-nota">${esc(d.r)}</p>
-      ${secs.length ? `<p class="fonte">${secs.map(s=>esc(s.t)).join(" · ")}</p>` : ""}
+      <h4 class="cm-titulo">${esc(doutTitulo(d))}</h4>
+      ${secs.slice(0, 2).map(s=>`<p class="cm-nota"><b>${esc(s.t)}</b> ${esc(encurtar(doutTexto(s), 360))}</p>`).join("")}
       <button type="button" class="dout-atalho" data-dout="${esc(d.id)}">${x.verDoutrina} ${ico("seta")}</button></div>`).join("");
     const lista = refs ? refs[String(v)] : null;
     const htmlRefs = `<div class="estante-cartao"><p class="estante-sub">${x.referencias}</p>${lista && lista.length

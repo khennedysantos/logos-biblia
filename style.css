@@ -501,6 +501,11 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
 .dout-resumo{font-size:.91rem;line-height:1.68;margin:0 0 .6rem;color:var(--tinta-2)}
 .dout-sec{font-family:var(--titulo);font-size:1.12rem;font-weight:600;margin:1.05rem 0 .2rem}
 .dout-ref{padding:.45rem 0;border-bottom:1px solid var(--borda)}
+.dout-par{padding:.55rem 0;border-bottom:1px solid var(--borda)}
+.dout-par>p:first-child{margin:0;font-family:var(--escritura);font-size:1rem;line-height:1.62}
+.dout-par b{font-family:var(--ui);font-size:.68rem;color:var(--rubrica);margin-right:.25rem}
+.dout-provas{margin:.3rem 0 0;font-size:.74rem;line-height:1.7;color:var(--suave)}
+.dout-provas a{color:var(--rubrica);text-decoration:none;font-weight:600}
 .dout-ref a{font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--rubrica)}
 .dout-ref p{margin:.2rem 0 0;font-family:var(--escritura);font-size:1rem;line-height:1.55}
 .dout-ref sup{font-family:var(--ui);font-size:.58rem;font-weight:700;color:var(--rubrica);margin:0 .25rem 0 .1rem}
