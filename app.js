@@ -2864,11 +2864,31 @@ function reduzirFoto(arquivo){
   });
 }
 /* o versículo de vida no idioma da interface (Bíblia Livre, KJV ou RVA) */
+/* Na Bíblia Livre o título do salmo vem no começo do v. 1 ("Salmo de Davi, para o regente...: Tem misericórdia...")
+   e o Salmo 119 abre cada estrofe com a letra hebraica ("Álefe:"); no versículo de vida fica só o texto. */
+const TITULO_SALMO_PALAVRAS = /(salmo|c[âa]ntico|can[çc][ãa]o|ora[çc][ãa]o|instru[çc][ãa]o|masquil|mict|regente|davi|asafe|cor[ée]|salom[ãa]o|mois[ée]s|hem[ãa]|et[ãa]|instrumento|sigai|neginote|gitite|seminite|alamote|degraus|louvor|memorial|s[áa]bado)/i;
+function tituloSalmoBL(texto){ const m = (texto || "").match(/^([^:]{3,400}?):\s*(?=\S)/); return m && TITULO_SALMO_PALAVRAS.test(m[1]) ? m[0] : ""; }
+function semTituloSalmo(l, c, v, texto){
+  if(l !== "PSA" || !texto) return texto;
+  if(+c === 119 && v % 8 === 1) return texto.replace(/^[^\s:]{2,12}:\s*/, "");
+  return +v === 1 ? texto.slice(tituloSalmoBL(texto).length) : texto;
+}
+/* KJV e RVA: o título é a primeira frase ("A Psalm of David. The Lord is my shepherd"); quais salmos têm título,
+   diz a Bíblia Livre (assim um salmo sem título não perde a primeira frase) */
+async function semTituloSalmoOutra(l, c, v, texto){
+  if(l !== "PSA" || !texto) return texto;
+  if(+c === 119 && v % 8 === 1) return texto.replace(/^(\S+\s)?[A-Z]+\.\s*/, "");
+  if(+v !== 1) return texto;
+  let bl = ""; try{ bl = ((await carregarLivro("blivre", "PSA"))[c - 1] || [])[0] || ""; }catch(e){}
+  const m = texto.match(/^.{3,400}?[.?]\s+(?=\S)/) || texto.match(/^.{3,400}?:\s+(?=\S)/);
+  return tituloSalmoBL(bl) && m ? texto.slice(m[0].length) : texto;
+}
 async function textoVersiculoVida(chave){
   if(!chave) return "";
   const [l, c, v] = chave.split(".");
   const trad = est.idioma === "en" ? "kjv" : est.idioma === "es" ? "rva" : "blivre";
-  try{ const caps = await carregarLivro(trad, l); return (caps[+c - 1] || [])[+v - 1] || ""; }catch(e){ return ""; }
+  try{ const caps = await carregarLivro(trad, l); const tx = (caps[+c - 1] || [])[+v - 1] || "";
+    return trad === "blivre" ? semTituloSalmo(l, +c, +v, tx) : await semTituloSalmoOutra(l, +c, +v, tx); }catch(e){ return ""; }
 }
 function htmlCartaoPerfil(x, extra, p = perfil(), nome = nomeExibicao() || x.visitante, compartilhar = true){
   const [l, c, v] = (p.vers || "").split(".");
@@ -3263,7 +3283,7 @@ function ligarEditorPerfil(){
     const versos = await versosDe(r);
     if(vez !== est.vezVers) return;
     if(r.v && versos[r.v - 1]){
-      const tv = versos[r.v - 1];
+      const tv = await textoVersiculoVida(`${r.livro}.${r.cap}.${r.v}`);
       el.innerHTML = `<p class="pf-vers-previa"><b>${esc(refStr(r.livro, r.cap, r.v))}</b> “${esc(tv.length > 150 ? tv.slice(0, 150).trim() + "…" : tv)}”</p>`;
       return;
     }
