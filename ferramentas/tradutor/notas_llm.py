@@ -238,6 +238,9 @@ def pedir(modelo, chave, grupo):
         obj = json.loads(t[t.find("{"):t.rfind("}") + 1])
     except (json.JSONDecodeError, ValueError):
         obj = {}
+    if not obj:                                          # para investigar: o texto que não deu para ler
+        with open(TRAB / "notas_llm_erros.txt", "a", encoding="utf-8") as f:
+            f.write(f"--- {resp.get('stop_reason')}\n{txt}\n")
     return obj, resp.get("usage", {})
 
 
@@ -262,6 +265,10 @@ def avaliar(it, r):
     return ""
 
 
+def chave_normal(k):
+    return re.sub(r"\|\d+$", "", re.sub(r"^(?:contexto|lema|termo)\|", "", str(k).strip()))
+
+
 def conferir(lista, modelo, chave, est, arq):
     uso = collections.Counter()
     pend = [it for it in lista if it["id"] not in est["ok"]]
@@ -269,8 +276,9 @@ def conferir(lista, modelo, chave, est, arq):
         g = pend[i:i + GRUPO]
         obj, u = pedir(modelo, chave, g)
         uso.update({k: v for k, v in u.items() if isinstance(v, int)})
-        for it in g:
-            r = obj.get(it["id"])
+        normal = {chave_normal(k): v for k, v in obj.items()}
+        for it in g:                       # o modelo às vezes tira o prefixo ("contexto|") ou o "|1" do fim da chave
+            r = obj.get(it["id"]) or normal.get(chave_normal(it["id"]))
             motivo = avaliar(it, r)
             if motivo:
                 est["recusas"][it["id"]] = {"motivo": motivo, "r": r}
@@ -328,6 +336,8 @@ def cmd_conferir(a):
     lista = itens(Fontes())
     est = ler_json(SAIDA, {"ok": {}, "recusas": {}})
     gasto = conferir(lista, modelo, chave, est, SAIDA)
+    for it in [x for x in lista if x["id"] in est["recusas"]]:      # segunda tentativa, um por vez
+        gasto += conferir([it], modelo, chave, est, SAIDA)
     relatorio(lista, est, TRAB / "relatorio_notas.txt")
     print(f"[conferir] {len(est['ok'])} ok, {len(est['recusas'])} recusados; gasto US$ {gasto:.2f}; "
           f"mudanças: {collections.Counter(r['mudanca'] for r in est['ok'].values())}")
