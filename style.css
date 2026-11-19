@@ -949,6 +949,19 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .perfil-editor{display:grid;gap:.85rem}
 .pf-campo{display:grid;gap:.35rem;font-size:.8rem;color:var(--suave)}
 .pf-campo > span{font-weight:600;letter-spacing:.02em}
+.pf-vers-dica:empty{display:none}
+.pf-vers-dica p{margin:0;font-size:.8rem}
+.pf-vers-previa{color:var(--tinta-2);font-family:var(--escritura);font-style:italic;font-size:.92rem !important;line-height:1.45}
+.pf-vers-previa b{font:600 .74rem var(--ui);font-style:normal;color:var(--rubrica);margin-right:.3rem}
+.pf-versos{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
+.pf-versos button{min-width:2.3rem;height:2.3rem;border:1px solid var(--borda);border-radius:.45rem;background:var(--painel);font:500 .85rem var(--ui);color:var(--tinta);cursor:pointer}
+.pf-versos button:hover,.pf-versos button:focus-visible{border-color:var(--rubrica);color:var(--rubrica)}
+.dica-ref-linha:empty{display:none}
+.dica-ref-linha{margin:.45rem 0 0}
+.dica-ref{display:inline-flex;align-items:center;gap:.4rem;border:1px solid color-mix(in srgb,var(--rubrica) 40%,var(--borda));border-radius:999px;
+  background:color-mix(in srgb,var(--rubrica) 7%,var(--painel));color:var(--tinta);padding:.35rem .85rem;font:500 .84rem var(--ui);cursor:pointer}
+.dica-ref b{color:var(--rubrica)}
+.dica-ref:hover{border-color:var(--rubrica)}
 .pf-campo input,.pf-campo textarea{border:1px solid var(--borda);border-radius:.45rem;background:var(--painel);padding:.5rem .6rem;font:400 .92rem/1.4 var(--ui);color:var(--tinta);width:100%;box-sizing:border-box}
 .pf-sub{font-family:var(--titulo);font-weight:600;font-size:1.1rem;margin:.6rem 0 0;color:var(--tinta)}
 .pf-opcoes{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}

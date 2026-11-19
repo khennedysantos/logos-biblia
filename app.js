@@ -84,7 +84,7 @@ const UI = {
     personalizar:"Personalizar perfil", pfNome:"Nome no perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícone", pfAv_foto:"Foto",
     pfFotoEscolher:"Escolher foto", pfFotoOk:"Foto salva (reduzida a 160 px).", pfFotoDica:"A foto fica pequena e recortada no centro.", pfFotoErro:"Não deu para ler essa imagem.",
     pfCapa:"Capa", capas:{linho:"Linho", carmim:"Carmim", ouro:"Ouro", oliva:"Oliveira", mar:"Mar da Galileia", vigilia:"Vigília"},
-    pfVers:"Versículo de vida", pfVersDica:"ex.: Rm 8:28", pfVersErro:"Não reconheci a referência; use algo como “Rm 8:28”.",
+    pfVers:"Versículo de vida", pfVersDica:"ex.: Rm 8:28", pfVersErro:"Não reconheci o livro. Tente “Sl 23:1”, “Salmo 23 1” ou “Romanos 8:28”.", pfVersFaltaCap:"falta o capítulo e o versículo (ex.: Sl 23:1).", pfVersEscolha:"toque no versículo:", irPara:"Ir para",
     pfBio:"Sobre você", pfBioDica:"Igreja, tradição, o que você gosta de estudar…", pfEstudo:"Estudo do meu jeito", pfLetra:"Tamanho da letra",
     pfConf:"Confissão em destaque", pfConfW:"Padrões de Westminster", pfConf3:"Três Formas de Unidade", pfSecoes:"Seções do painel (marque as que aparecem)",
     pfSobe:"Subir", pfDesce:"Descer",
@@ -204,7 +204,7 @@ const UI = {
     personalizar:"Customize profile", pfNome:"Profile name", pfAvatar:"Avatar", pfAv_letra:"Initial", pfAv_icone:"Icon", pfAv_foto:"Photo",
     pfFotoEscolher:"Choose photo", pfFotoOk:"Photo saved (reduced to 160 px).", pfFotoDica:"The photo is made small and cropped to the center.", pfFotoErro:"Couldn't read that image.",
     pfCapa:"Cover", capas:{linho:"Linen", carmim:"Crimson", ouro:"Gold", oliva:"Olive", mar:"Sea of Galilee", vigilia:"Vigil"},
-    pfVers:"Life verse", pfVersDica:"e.g. Rom 8:28", pfVersErro:"I didn't recognize the reference; try something like “Rom 8:28”.",
+    pfVers:"Life verse", pfVersDica:"e.g. Rom 8:28", pfVersErro:"I didn't recognize the book. Try “Ps 23:1”, “Psalm 23 1” or “Romans 8:28”.", pfVersFaltaCap:"add the chapter and verse (e.g. Ps 23:1).", pfVersEscolha:"tap the verse:", irPara:"Go to",
     pfBio:"About you", pfBioDica:"Church, tradition, what you like to study…", pfEstudo:"Study my way", pfLetra:"Text size",
     pfConf:"Featured confession", pfConfW:"Westminster Standards", pfConf3:"Three Forms of Unity", pfSecoes:"Panel sections (tick the ones shown)",
     pfSobe:"Move up", pfDesce:"Move down",
@@ -324,7 +324,7 @@ const UI = {
     personalizar:"Personalizar perfil", pfNome:"Nombre en el perfil", pfAvatar:"Avatar", pfAv_letra:"Inicial", pfAv_icone:"Ícono", pfAv_foto:"Foto",
     pfFotoEscolher:"Elegir foto", pfFotoOk:"Foto guardada (reducida a 160 px).", pfFotoDica:"La foto queda pequeña y recortada al centro.", pfFotoErro:"No se pudo leer esa imagen.",
     pfCapa:"Portada", capas:{linho:"Lino", carmim:"Carmesí", ouro:"Oro", oliva:"Olivo", mar:"Mar de Galilea", vigilia:"Vigilia"},
-    pfVers:"Versículo de vida", pfVersDica:"ej.: Ro 8:28", pfVersErro:"No reconocí la referencia; usa algo como “Ro 8:28”.",
+    pfVers:"Versículo de vida", pfVersDica:"ej.: Ro 8:28", pfVersErro:"No reconocí el libro. Prueba “Sal 23:1”, “Salmo 23 1” o “Romanos 8:28”.", pfVersFaltaCap:"falta el capítulo y el versículo (ej.: Sal 23:1).", pfVersEscolha:"toca el versículo:", irPara:"Ir a",
     pfBio:"Sobre ti", pfBioDica:"Iglesia, tradición, lo que te gusta estudiar…", pfEstudo:"Estudio a mi manera", pfLetra:"Tamaño de letra",
     pfConf:"Confesión destacada", pfConfW:"Normas de Westminster", pfConf3:"Tres Formas de Unidad", pfSecoes:"Secciones del panel (marca las que aparecen)",
     pfSobe:"Subir", pfDesce:"Bajar",
@@ -943,12 +943,16 @@ function renderizarInicio(){
       </div>
       ${testamento("AT")}${testamento("NT")}
     </section></div>`;
+  const dicaInicio = document.createElement("div");
+  dicaInicio.className = "dica-ref-linha"; dicaInicio.setAttribute("aria-live", "polite");
+  $("formInicio").after(dicaInicio);
+  ligarDicaRef($("campoInicio"), dicaInicio);
   $("formInicio").addEventListener("submit", (e)=>{
     e.preventDefault();
     const termo = $("campoInicio").value.trim();
     if(!termo) return;
     const r = parseRef(termo);
-    if(r) return irPara(r.livro, r.cap, r.v);
+    if(r && r.cap) return irParaRef(r);
     if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscar(); }
     abrirBusca("texto"); $("chkBibliaToda").checked = true; $("campoBusca").value = termo; buscar();
   });
@@ -1589,21 +1593,86 @@ function montarListaLivros(){
 }
 
 /* ---------- busca ---------- */
-/* "João 3:16", "jo 3 16", "1 co 13", "sl 23" -> {livro, cap, v} */
+/* Outros nomes e abreviações dos livros (além de ABREV e dos nomes em pt/en/es), já sem acento e sem espaço. */
+const APELIDOS_LIVRO = { PSA:["sm","slm","salmo","ps","psa","psalm","salterio"], SNG:["canticos","canticodoscanticos","canticodesalomao","cantaresdesalomao","songofsongs","songofsolomon","cant"],
+  JOB:["jb"], PRO:["pr","prov"], ECC:["ecl","qoelet"], EZR:["esd"], OBA:["abd","abdias"], ZEP:["sof"], ZEC:["zac"], MIC:["miq"],
+  HAB:["hab"], MRK:["mr","mar"], LUK:["lu"], ACT:["atos","atosdosapostolos","hch","hechos"], PHP:["filip"], PHM:["flm","filem"],
+  JAS:["tiago","sant","stg"], REV:["apc","apocalipse","revelacao","revelation"], JHN:["joao"], JON:["jonas"],
+  "1SA":["1sa","1sam"], "2SA":["2sa","2sam"], "1KI":["1re","1reis","1reyes","1kings"], "2KI":["2re","2reis","2reyes","2kings"],
+  "1TH":["1tes","1tess"], "2TH":["2tes","2tess"], "1TI":["1tim"], "2TI":["2tim"], "1PE":["1pd","1ped"], "2PE":["2pd","2ped"],
+  "1JN":["1joao"], "2JN":["2joao"], "3JN":["3joao"] };
+/* distância de edição (letras trocadas, a mais ou a menos), para aceitar "genisis" e "apocalipce" */
+function distancia(a, b){
+  if(Math.abs(a.length - b.length) > 2) return 9;
+  let ant = [...Array(b.length + 1).keys()];
+  for(let i = 1; i <= a.length; i++){
+    const atual = [i];
+    for(let j = 1; j <= b.length; j++) atual[j] = Math.min(ant[j] + 1, atual[j - 1] + 1, ant[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    ant = atual;
+  }
+  return ant[b.length];
+}
+/* Acha o livro por um nome já normalizado ("1corintios", "sl", "apocalipce"). solto = sem capítulo: só nome inteiro. */
+function acharLivro(nome, solto){
+  if(!nome) return null;
+  const livros = est.meta.books, limpo = (n)=>normStr(n).replace(/[^a-z0-9]/g, "");
+  const nomes = (b)=>[b.pt, b.en, b.es].map(limpo);
+  const exato = nome.length >= 3 && livros.find(b=>nomes(b).includes(nome));          // "jo" (Jó sem acento) fica para João
+  if(exato) return exato;
+  const apelido = Object.keys(APELIDOS_LIVRO).find(id=>APELIDOS_LIVRO[id].includes(nome));
+  if(solto) return apelido && nome.length >= 5 ? infoLivro(apelido) : null;            // sozinho, "os" ou "at" são palavras
+  if(ABREV[nome]) return infoLivro(ABREV[nome]);
+  if(apelido) return infoLivro(apelido);
+  if(livros.find(b=>b.id.toLowerCase() === nome)) return infoLivro(nome.toUpperCase());
+  if(nome.length >= 2){                                                                  // começo do nome: "gen", "filip", "jud"
+    const comeco = (lng)=>livros.find(b=>limpo(b[lng]).startsWith(nome));
+    const b = comeco("pt") || comeco("es") || comeco("en");
+    if(b) return b;
+  }
+  // erro de digitação: o nome mais parecido (até 1 letra nos curtos, 2 nos longos)
+  let melhor = null, menor = 9;
+  for(const l of livros) for(const n of nomes(l)){
+    const d = distancia(nome, n);
+    if(d < menor){ menor = d; melhor = l; }
+  }
+  return melhor && menor <= (nome.length >= 7 ? 2 : nome.length >= 4 ? 1 : 0) ? melhor : null;
+}
+/* Lê uma referência escrita de muitos jeitos: "João 3:16", "jo 3 16", "Jo3.16", "1 co 13", "I Coríntios 13:4",
+   "primeira coríntios 13", "Sm 51", "salmo 23 versículo 1", "apocalipce 21", "Judas 3", "Salmos".
+   Devolve {livro, cap, v} (cap 0 = só o livro; v 0 = o capítulo inteiro) ou null. */
 function parseRef(txt){
-  const cru = txt.trim().toLowerCase();
-  const m = normStr(cru).match(/^([1-3]?\s*[a-z]+(?:\s+[a-z]+)*)\.?\s*(\d+)(?:\s*[:.,\s]\s*(\d+))?(?:\s*-\s*\d+)?$/);
+  const cru = String(txt || "").trim().toLowerCase();
+  let s = normStr(cru).replace(/[ºª°]/g, "").replace(/\s+/g, " ").trim();
+  s = s.replace(/^(livro de |evangelho (de |segundo )?|sao |s\. ?|st\.? |saint )/, "");
+  s = s.replace(/^(terceir[oa]|tercer[oa]?|third|3rd|iii)\s+(?=[a-z])/, "3").replace(/^(segund[oa]|second|2nd|ii)\s+(?=[a-z])/, "2")
+       .replace(/^(primeir[oa]|primer[oa]?|first|1st|i)\s+(?=[a-z])/, "1").replace(/^([1-3])[oa]\s*(?=[a-z])/, "$1");
+  const m = s.match(/^([1-3]?)\s*([a-z][a-z.\s]*?)\.?\s*(\d.*)?$/);
   if(!m) return null;
-  const nome = m[1].replace(/\s+/g, "");
-  let livro = null;
-  if(/^jó/.test(cru)) livro = infoLivro("JOB");   // sem o acento, "jo" é João
-  if(!livro && ABREV[nome]) livro = infoLivro(ABREV[nome]);
-  const nomes = (b)=>[b.pt, b.en, b.es, b.id].map(n=>normStr(n).replace(/\s+/g, ""));
-  if(!livro) livro = est.meta.books.find(b=>nomes(b).includes(nome));
-  if(!livro && nome.length >= 3) livro = est.meta.books.find(b=>nomes(b).some(n=>n.startsWith(nome)));
-  const cap = +m[2];
-  if(!livro || cap < 1 || cap > livro.ch) return null;
-  return { livro: livro.id, cap, v: +m[3] || 0 };
+  const nome = (m[1] + m[2]).replace(/[.\s]/g, "").replace(/(capitulo|cap|chapter|cp)$/, "");
+  const resto = (m[3] || "").trim();
+  const mn = resto.match(/^(\d+)(?:\s*(?:[:.,;]|\s|v|vs|vv|vers|versiculo|verso|verse)\.?\s*(\d+))?(?:\s*[-–]\s*\d+)?$/);   // o fim de um intervalo fica de fora
+  if(resto && !mn) return null;
+  const nums = mn ? [+mn[1]].concat(mn[2] ? [+mn[2]] : []) : [];
+  let livro = /^jó/.test(cru) ? infoLivro("JOB") : acharLivro(nome, !nums.length);   // sem o acento, "jo" é João
+  if(!livro && !m[1] && nums.length) livro = acharLivro("1" + nome, false);              // "coríntios 13": a primeira
+  if(!livro) return null;
+  if(!nums.length) return { livro: livro.id, cap: 0, v: 0 };
+  let [cap, v] = nums;
+  if(livro.ch === 1 && nums.length === 1){ v = cap; cap = 1; }                            // Judas 3, Filemom 4: versículo
+  if(cap < 1 || cap > livro.ch) return null;
+  return { livro: livro.id, cap, v: v || 0 };
+}
+const nomeRef = (r)=>r.cap ? (r.v ? refStr(r.livro, r.cap, r.v) : `${nomeLivro(r.livro)} ${r.cap}`) : nomeLivro(r.livro);
+function irParaRef(r){ return r.cap ? irPara(r.livro, r.cap, r.v) : navegar({ vista:"livro", livro:r.livro }); }
+/* Enquanto a pessoa digita numa busca: se o texto é uma referência, um botão "Ir para Salmos 51" logo abaixo. */
+function ligarDicaRef(campo, dica, antes){
+  const atualizar = ()=>{
+    const r = (!antes || antes()) && campo.value.trim() ? parseRef(campo.value) : null;
+    dica.innerHTML = r ? `<button type="button" class="dica-ref">${ico("seta")} ${t().irPara} <b>${esc(nomeRef(r))}</b></button>` : "";
+    if(r) dica.querySelector("button").addEventListener("click", ()=>{ fecharPaineis(); irParaRef(r); });
+  };
+  campo.addEventListener("input", atualizar);
+  return atualizar;
 }
 /* Marca os termos no texto ignorando acentos e maiúsculas ("graca" destaca "graça"). */
 function destacar(texto, termos){
@@ -1703,7 +1772,7 @@ async function buscar(){
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
   const ref = parseRef(termo);
-  if(ref){ alternarPainel("painelBusca", false); return irPara(ref.livro, ref.cap, ref.v); }
+  if(ref && ref.cap){ alternarPainel("painelBusca", false); return irParaRef(ref); }
   if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscarStrong(); }
   if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
   const frase = normStr(termo).replace(/\s+/g, " ");
@@ -1869,6 +1938,7 @@ function prepararAbas(){
       document.querySelector(".busca-escopo").style.display = est.buscaModo==="texto" ? "" : "none";
       $("campoBusca").placeholder = exemplo();
       $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+      if(est.dicaBusca) est.dicaBusca();
       if(est.buscaModo==="temas" && !$("campoBusca").value.trim()) buscarTemas();
       else if(est.buscaModo==="strong" && $("campoBusca").value.trim()) buscarStrong();
     };
@@ -3150,8 +3220,8 @@ function htmlEditorPerfil(x){
     </div>
     <div class="pf-campo"><span>${x.pfCapa}</span>
       <div class="pf-opcoes">${PERFIL_CAPAS.map(cp=>`<button type="button" class="pf-capa capa-${cp}${p.capa === cp ? " ativo" : ""}" data-capa="${cp}" aria-label="${x.capas[cp]}" title="${x.capas[cp]}" aria-pressed="${p.capa === cp}"><span class="perfil-capa"></span></button>`).join("")}</div></div>
-    <label class="pf-campo"><span>${x.pfVers}</span><input id="pfVers" maxlength="30" value="${p.vers ? esc(refStr(...p.vers.split(".").map((y, i)=>i ? +y : y))) : ""}" placeholder="${x.pfVersDica}">
-      <small class="fonte" id="pfVersAviso"></small></label>
+    <div class="pf-campo"><label class="pf-campo"><span>${x.pfVers}</span><input id="pfVers" maxlength="40" autocomplete="off" value="${p.vers ? esc(refStr(...p.vers.split(".").map((y, i)=>i ? +y : y))) : ""}" placeholder="${x.pfVersDica}"></label>
+      <div class="pf-vers-dica" id="pfVersDica" aria-live="polite"></div></div>
     <label class="pf-campo"><span>${x.pfBio}</span><textarea id="pfBio" maxlength="200" rows="2" placeholder="${x.pfBioDica}">${esc(p.bio)}</textarea></label>
     <h4 class="pf-sub">${x.pfEstudo}</h4>
     <div class="pf-campo"><span>${x.pfLetra}</span><div class="seg" role="group" aria-label="${x.pfLetra}">${Object.keys(PERFIL_LETRAS).map(k=>
@@ -3176,11 +3246,33 @@ function ligarEditorPerfil(){
   const adiar = (fn)=>{ clearTimeout(espera); espera = setTimeout(fn, 500); };
   $("pfNome").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ nome: e.target.value.trim() }); atualizarCartaoTopo(); }));
   $("pfBio").addEventListener("input", (e)=>adiar(()=>{ salvarPerfil({ bio: e.target.value.trim() }); atualizarCartaoTopo(); }));
-  $("pfVers").addEventListener("change", (e)=>{
+  // enquanto digita: o que entendeu, o texto do versículo, ou os números para tocar quando falta o versículo
+  const versosDe = async (r)=>{ try{ return (await carregarLivro(est.idioma === "en" ? "kjv" : est.idioma === "es" ? "rva" : "blivre", r.livro))[r.cap - 1] || []; }catch(e){ return []; } };
+  const dicaVers = async ()=>{
+    const el = $("pfVersDica"), txt = $("pfVers").value.trim(), vez = est.vezVers = (est.vezVers || 0) + 1;
+    if(!txt){ el.innerHTML = ""; return; }
+    const r = parseRef(txt);
+    if(!r){ el.innerHTML = `<p class="fonte">${x.pfVersErro}</p>`; return; }
+    if(!r.cap){ el.innerHTML = `<p class="fonte"><b>${esc(nomeLivro(r.livro))}</b> — ${x.pfVersFaltaCap}</p>`; return; }
+    const versos = await versosDe(r);
+    if(vez !== est.vezVers) return;
+    if(r.v && versos[r.v - 1]){
+      const tv = versos[r.v - 1];
+      el.innerHTML = `<p class="pf-vers-previa"><b>${esc(refStr(r.livro, r.cap, r.v))}</b> “${esc(tv.length > 150 ? tv.slice(0, 150).trim() + "…" : tv)}”</p>`;
+      return;
+    }
+    el.innerHTML = `<p class="fonte"><b>${esc(nomeLivro(r.livro))} ${r.cap}</b> — ${x.pfVersEscolha}</p>
+      <div class="pf-versos">${versos.map((_, i)=>`<button type="button" data-vv="${i + 1}">${i + 1}</button>`).join("")}</div>`;
+    el.querySelectorAll("[data-vv]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ vers: `${r.livro}.${r.cap}.${b.dataset.vv}` }); refazer(); }));
+  };
+  let esperaVers;
+  $("pfVers").addEventListener("input", ()=>{ clearTimeout(esperaVers); esperaVers = setTimeout(dicaVers, 250); });
+  $("pfVers").addEventListener("keydown", (e)=>{ if(e.key === "Enter"){ e.preventDefault(); e.target.blur(); } });
+  $("pfVers").addEventListener("change", async (e)=>{
     const txt = e.target.value.trim(), r = txt ? parseRef(txt) : null;
-    if(txt && (!r || !r.v)){ $("pfVersAviso").textContent = x.pfVersErro; return; }
-    $("pfVersAviso").textContent = "";
-    salvarPerfil({ vers: r ? `${r.livro}.${r.cap}.${r.v}` : "" }); refazer();
+    if(!txt){ salvarPerfil({ vers: "" }); return refazer(); }
+    if(!r || !r.cap || !r.v || !(await versosDe(r))[r.v - 1]) return;    // incompleta: a dica (já à vista) mostra o que falta
+    salvarPerfil({ vers: `${r.livro}.${r.cap}.${r.v}` }); refazer();
   });
   ed.querySelectorAll("[data-av]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, t: b.dataset.av } }); refazer(); }));
   ed.querySelectorAll("[data-ic]").forEach(b=>b.addEventListener("click", ()=>{ salvarPerfil({ av: { ...perfil().av, ic: b.dataset.ic } }); refazer(); }));
@@ -4037,6 +4129,10 @@ async function iniciar(){
   $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
   $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
+  const dicaBusca = document.createElement("div");
+  dicaBusca.className = "dica-ref-linha"; dicaBusca.setAttribute("aria-live", "polite");
+  $("buscaStatus").before(dicaBusca);
+  est.dicaBusca = ligarDicaRef($("campoBusca"), dicaBusca, ()=>est.buscaModo === "texto");
   document.querySelectorAll(".fechar").forEach(b=>b.addEventListener("click", ()=>alternarPainel(b.dataset.fecha, false)));
   document.querySelectorAll(".painel").forEach(p=>p.addEventListener("click", (e)=>{ if(e.target===p) alternarPainel(p.id, false); }));
 
