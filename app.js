@@ -69,7 +69,7 @@ const UI = {
     pubTit:"Página pública", pubNoAr:"no ar", pubSemConta:"Entre na conta para ter uma página pública do seu perfil, com endereço próprio para compartilhar.",
     pubTexto:"Quem tiver o link vê o seu cartão (nome, foto ou avatar, capa, bio e versículo de vida) e o que você marcar abaixo. Anotações, marcações e o histórico de leitura nunca aparecem.",
     pubEndereco:"Endereço", pubMostrar:"Mostrar também", pubOpcoes:{ num:"Números do estudo (capítulos, livros, dias seguidos)", selos:"Conquistas", prat:"Prateleira de livros" },
-    pubPublicar:"Publicar perfil", pubAtualizar:"Atualizar página", pubVer:"Ver página", pubCopiar:"Copiar link", pubTirar:"Tirar do ar",
+    pubPublicar:"Publicar perfil", pubAtualizar:"Atualizar página", pubVer:"Ver página", pubCopiar:"Copiar link", pubCopiado:"Copiado!", pubCopieAMao:"Não deu para copiar sozinho; o link é:", pubTirar:"Tirar do ar",
     pubTirarConfirma:"Tirar sua página pública do ar? O endereço fica livre para outra pessoa.", pubEnviando:"Publicando…",
     pubOk:"Publicado! Seu perfil está em", pubFora:"Sua página pública saiu do ar.", pubErro:"Não deu para publicar agora. Confira a conexão e tente de novo.",
     pubLinkCopiado:"Link copiado.", apelidoLivre:"Disponível.",
@@ -189,7 +189,7 @@ const UI = {
     pubTit:"Public page", pubNoAr:"online", pubSemConta:"Sign in to get a public page for your profile, with its own address to share.",
     pubTexto:"Anyone with the link sees your card (name, photo or avatar, cover, bio and life verse) and whatever you tick below. Notes, highlights and reading history never appear.",
     pubEndereco:"Address", pubMostrar:"Also show", pubOpcoes:{ num:"Study numbers (chapters, books, days in a row)", selos:"Achievements", prat:"Bookshelf" },
-    pubPublicar:"Publish profile", pubAtualizar:"Update page", pubVer:"View page", pubCopiar:"Copy link", pubTirar:"Unpublish",
+    pubPublicar:"Publish profile", pubAtualizar:"Update page", pubVer:"View page", pubCopiar:"Copy link", pubCopiado:"Copied!", pubCopieAMao:"Could not copy automatically; the link is:", pubTirar:"Unpublish",
     pubTirarConfirma:"Take your public page down? The address becomes free for someone else.", pubEnviando:"Publishing…",
     pubOk:"Published! Your profile is at", pubFora:"Your public page is no longer online.", pubErro:"Could not publish right now. Check your connection and try again.",
     pubLinkCopiado:"Link copied.", apelidoLivre:"Available.",
@@ -309,7 +309,7 @@ const UI = {
     pubTit:"Página pública", pubNoAr:"en línea", pubSemConta:"Inicia sesión para tener una página pública de tu perfil, con dirección propia para compartir.",
     pubTexto:"Quien tenga el enlace ve tu tarjeta (nombre, foto o avatar, portada, bio y versículo de vida) y lo que marques abajo. Notas, resaltados e historial de lectura nunca aparecen.",
     pubEndereco:"Dirección", pubMostrar:"Mostrar también", pubOpcoes:{ num:"Números del estudio (capítulos, libros, días seguidos)", selos:"Logros", prat:"Estantería de libros" },
-    pubPublicar:"Publicar perfil", pubAtualizar:"Actualizar página", pubVer:"Ver página", pubCopiar:"Copiar enlace", pubTirar:"Retirar",
+    pubPublicar:"Publicar perfil", pubAtualizar:"Actualizar página", pubVer:"Ver página", pubCopiar:"Copiar enlace", pubCopiado:"¡Copiado!", pubCopieAMao:"No se pudo copiar solo; el enlace es:", pubTirar:"Retirar",
     pubTirarConfirma:"¿Retirar tu página pública? La dirección queda libre para otra persona.", pubEnviando:"Publicando…",
     pubOk:"¡Publicado! Tu perfil está en", pubFora:"Tu página pública ya no está en línea.", pubErro:"No se pudo publicar ahora. Revisa la conexión e inténtalo de nuevo.",
     pubLinkCopiado:"Enlace copiado.", apelidoLivre:"Disponible.",
@@ -3075,14 +3075,15 @@ function htmlPaginaPublica(x){
   return `<h3 class="estudo-sub">${x.pubTit}${ativo ? ` <small class="sub-conta pub-no-ar">${x.pubNoAr}</small>` : ""}</h3>
     <div class="pub-caixa" id="pubCaixa">
       <p class="fonte">${x.pubTexto}</p>
-      <label class="pf-campo"><span>${x.pubEndereco}</span>
-        <span class="pub-endereco"><span>solabiblia.com.br/perfil/</span><input id="pubApelido" maxlength="30" autocapitalize="none" autocomplete="off" spellcheck="false" value="${esc(pub.apelido || sugerirApelido())}"></span>
-        <small class="fonte" id="pubAviso" role="status"></small></label>
+      <div class="pf-campo"><label for="pubApelido">${x.pubEndereco}</label>
+        <div class="pub-link"><span class="pub-endereco"><span>solabiblia.com.br/perfil/</span><input id="pubApelido" maxlength="30" autocapitalize="none" autocomplete="off" spellcheck="false" value="${esc(pub.apelido || sugerirApelido())}"></span>
+          ${ativo ? `<button type="button" class="btn-ouro" id="pubCopiar" data-url="https://solabiblia.com.br${urlPerfilPublico(pub.apelido)}">${ico("copiar")} <span>${x.pubCopiar}</span></button>` : ""}</div>
+        <small class="fonte" id="pubAviso" role="status"></small></div>
       <div class="pf-campo"><span>${x.pubMostrar}</span>
         ${["num", "selos", "prat"].map(k=>`<label class="pub-opcao"><input type="checkbox" data-pub="${k}" ${pub[k] ? "checked" : ""}> ${x.pubOpcoes[k]}</label>`).join("")}</div>
       <div class="conta-acoes">${ativo
         ? `<button class="btn-ouro" id="pubPublicar">${x.pubAtualizar}</button><a class="btn-linha" href="${urlPerfilPublico(pub.apelido)}">${x.pubVer}</a>
-           <button class="btn-linha" id="pubCopiar">${x.pubCopiar}</button><button class="link-discreto" id="pubTirar">${x.pubTirar}</button>`
+           <button class="link-discreto" id="pubTirar">${x.pubTirar}</button>`
         : `<button class="btn-ouro" id="pubPublicar">${x.pubPublicar}</button>`}</div>
     </div>`;
 }
@@ -3120,8 +3121,13 @@ function ligarPaginaPublica(){
     }
     await refazer(`${x.pubOk} solabiblia.com.br${urlPerfilPublico(a)}`);
   });
+  // o link inteiro: um toque no campo seleciona tudo; o botão copia e confirma no próprio botão
   if($("pubCopiar")) $("pubCopiar").addEventListener("click", async ()=>{
-    if(await copiarTexto("https://solabiblia.com.br" + urlPerfilPublico(perfil().pub.apelido))) aviso().textContent = x.pubLinkCopiado;
+    const rot = $("pubCopiar").querySelector("span");
+    if(await copiarTexto($("pubCopiar").dataset.url)){
+      rot.textContent = x.pubCopiado; clearTimeout(est.timerCopiado);
+      est.timerCopiado = setTimeout(()=>{ if(rot.isConnected) rot.textContent = x.pubCopiar; }, 2000);
+    } else aviso().textContent = `${x.pubCopieAMao} ${$("pubCopiar").dataset.url}`;
   });
   if($("pubTirar")) $("pubTirar").addEventListener("click", async ()=>{
     if(!confirm(x.pubTirarConfirma)) return;
