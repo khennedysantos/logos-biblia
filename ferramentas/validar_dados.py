@@ -98,11 +98,18 @@ def main():
             if pt and sorted(re.findall(r"\[\d+\]", en)) != sorted(re.findall(r"\[\d+\]", pt)):
                 erros.append(f"confissoes/{arq.name} {it['n']}: marcadores de prova diferentes no português")
     ids = {b["id"] for b in livros}
+    caps_livro = {b["id"]: b["ch"] for b in livros}
     for plano in ler(DATA / "plans.json") or []:
+        grupos = plano.get("grupos")
+        if grupos and (len(grupos) != len(plano["dias"]) or any(sum(g) != len(d) for g, d in zip(grupos, plano["dias"]))):
+            erros.append(f"plans.json {plano['id']}: grupos não batem com as leituras dos dias")
         for dia in plano["dias"]:
-            for l, c in dia:
+            for item in dia:
+                l, c = item[0], item[1]
                 if l not in ids:
                     erros.append(f"plans.json: livro desconhecido {l}")
+                elif not 1 <= c <= caps_livro[l] or len(item) not in (2, 4) or (len(item) == 4 and not 1 <= item[2] <= item[3]):
+                    erros.append(f"plans.json {plano['id']}: leitura inválida {item}")
 
     # palavras-chave sublinhadas: posições dentro do versículo da Bíblia Livre, sem sobreposição, com palavra no índice
     indice = ler(DATA / "palavras" / "indice.json")

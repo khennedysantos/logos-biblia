@@ -125,7 +125,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── mapa/base.json          # GERADO por gerar_mapa_base.py: terra, litoral, lagos e rios (Natural Earth) do Atlas
 │   ├── mapa/relevo.json        # GERADO por gerar_relevo.py: quais azulejos de relevo existem em cada zoom
 │   ├── context.json            # Fichas de contexto dos 66 livros (autor, época, tema, esboço)
-│   ├── plans.json              # 3 planos de leitura bíblica
+│   ├── plans.json              # 4 planos de leitura (o de M'Cheyne, 1842, vem de gerar_plano_mcheyne.py)
 │   └── timeline.json           # Eventos da linha do tempo bíblica
 │
 ├── ferramentas/                # Scripts offline de geração, revisão e validação (Python 3 stdlib)
@@ -160,6 +160,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   ├── atlas_openbible.py      # Tipo e certeza de cada lugar (dados do openbible.info, CC BY) → campos t e c de places.json
 │   ├── gerar_relevo.py         # Relevo sombreado do Atlas (elevação do Terrain Tiles, AWS Open Data) → mapa/relevo/ (~2 min)
 │   ├── gerar_crossrefs.py      # Converte referências cruzadas do openbible.info
+│   ├── gerar_plano_mcheyne.py  # Plano de M'Cheyne (365 dias × 4 leituras, domínio público) → data/plans.json
 │   ├── baixar_henry.py         # Baixa comentário de Matthew Henry (domínio público)
 │   ├── tradutor/               # Pipeline isolado de tradução offline (Argos / NLLB / Batch LLM)
 │   │   ├── etapas.py           # Prepara entradas de data/ e aplica traduções em data/.../pt/
