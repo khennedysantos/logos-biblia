@@ -1,59 +1,59 @@
 {"eras":[
-{"nome":"Primórdios","eventos":[
-{"d":"No princípio","t":"Criação dos céus e da terra","r":[["GEN",1]]},
-{"d":"—","t":"Queda do homem no Éden","r":[["GEN",3]]},
-{"d":"—","t":"Dilúvio e a aliança com Noé","r":[["GEN",7],["GEN",9]]},
-{"d":"—","t":"Torre de Babel e dispersão dos povos","r":[["GEN",11]]}]},
-{"nome":"Patriarcas (c. 2100–1800 a.C.)","eventos":[
-{"d":"c. 2091 a.C.","t":"Chamado de Abraão; partida de Harã","r":[["GEN",12]]},
-{"d":"—","t":"Aliança de Deus com Abraão","r":[["GEN",15],["GEN",17]]},
-{"d":"—","t":"Nascimento de Isaque; o sacrifício no Moriá","r":[["GEN",21],["GEN",22]]},
-{"d":"—","t":"Jacó torna-se Israel","r":[["GEN",28],["GEN",32]]},
-{"d":"—","t":"José governa o Egito; Israel desce ao Egito","r":[["GEN",41],["GEN",46]]}]},
-{"nome":"Êxodo e deserto (c. 1446–1406 a.C.)","eventos":[
-{"d":"c. 1446 a.C.","t":"As dez pragas e a Páscoa; saída do Egito","r":[["EXO",12],["EXO",14]]},
-{"d":"—","t":"A Lei entregue no Sinai","r":[["EXO",20]]},
-{"d":"—","t":"O tabernáculo é erguido","r":[["EXO",40]]},
-{"d":"—","t":"40 anos de peregrinação no deserto","r":[["NUM",14]]}]},
-{"nome":"Conquista e juízes (c. 1406–1050 a.C.)","eventos":[
-{"d":"c. 1406 a.C.","t":"Travessia do Jordão; queda de Jericó","r":[["JOS",3],["JOS",6]]},
-{"d":"—","t":"Repartição da terra entre as tribos","r":[["JOS",13]]},
-{"d":"—","t":"Período dos juízes: Débora, Gideão, Sansão","r":[["JDG",4],["JDG",7],["JDG",16]]},
-{"d":"—","t":"História de Rute, bisavó de Davi","r":[["RUT",1]]}]},
-{"nome":"Reino unido (c. 1050–930 a.C.)","eventos":[
-{"d":"c. 1050 a.C.","t":"Saul, primeiro rei de Israel","r":[["1SA",10]]},
-{"d":"c. 1010 a.C.","t":"Davi reina; Jerusalém vira capital","r":[["2SA",5]]},
-{"d":"—","t":"A aliança davídica","r":[["2SA",7]]},
-{"d":"c. 970 a.C.","t":"Salomão; construção do templo","r":[["1KI",6],["1KI",8]]}]},
-{"nome":"Reino dividido (930–586 a.C.)","eventos":[
-{"d":"930 a.C.","t":"Divisão: Israel (norte) e Judá (sul)","r":[["1KI",12]]},
-{"d":"—","t":"Elias no Carmelo contra os profetas de Baal","r":[["1KI",18]]},
-{"d":"722 a.C.","t":"Assíria destrói Samaria; fim do reino do norte","r":[["2KI",17]]},
-{"d":"—","t":"Reforma de Ezequias; livramento de Jerusalém","r":[["2KI",18],["2KI",19]]},
-{"d":"—","t":"Ministério de Isaías, Jeremias e os profetas","r":[["ISA",6],["JER",1]]},
-{"d":"586 a.C.","t":"Babilônia destrói Jerusalém e o templo","r":[["2KI",25],["LAM",1]]}]},
-{"nome":"Exílio e retorno (586–430 a.C.)","eventos":[
-{"d":"—","t":"Daniel na corte da Babilônia","r":[["DAN",1],["DAN",6]]},
-{"d":"—","t":"Visões de Ezequiel entre os exilados","r":[["EZK",1],["EZK",37]]},
-{"d":"538 a.C.","t":"Decreto de Ciro; primeiro retorno","r":[["EZR",1]]},
-{"d":"516 a.C.","t":"O segundo templo é concluído","r":[["EZR",6]]},
-{"d":"—","t":"Ester livra os judeus na Pérsia","r":[["EST",4],["EST",7]]},
-{"d":"445 a.C.","t":"Neemias reconstrói os muros de Jerusalém","r":[["NEH",2],["NEH",6]]},
-{"d":"c. 430 a.C.","t":"Malaquias, último profeta do AT","r":[["MAL",3]]}]},
-{"nome":"Vida de Jesus (c. 5 a.C.–30 d.C.)","eventos":[
-{"d":"c. 5 a.C.","t":"Nascimento de Jesus em Belém","r":[["MAT",1],["LUK",2]]},
-{"d":"c. 27 d.C.","t":"Batismo e início do ministério","r":[["MAT",3],["LUK",4]]},
-{"d":"—","t":"Sermão do Monte","r":[["MAT",5]]},
-{"d":"—","t":"Milagres e parábolas do Reino","r":[["MRK",4],["JHN",11]]},
-{"d":"—","t":"Transfiguração","r":[["MAT",17]]},
-{"d":"c. 30 d.C.","t":"Última ceia, cruz e sepultamento","r":[["JHN",13],["JHN",19]]},
-{"d":"c. 30 d.C.","t":"Ressurreição e grande comissão","r":[["MAT",28],["JHN",20]]}]},
-{"nome":"Igreja primitiva (30–95 d.C.)","eventos":[
-{"d":"30 d.C.","t":"Pentecostes: o Espírito é derramado","r":[["ACT",2]]},
-{"d":"—","t":"Conversão de Paulo","r":[["ACT",9]]},
-{"d":"—","t":"O evangelho chega aos gentios","r":[["ACT",10],["ACT",15]]},
-{"d":"48–57 d.C.","t":"Viagens missionárias de Paulo","r":[["ACT",13],["ACT",16],["ACT",19]]},
-{"d":"c. 57 d.C.","t":"Carta aos Romanos","r":[["ROM",1]]},
-{"d":"60–62 d.C.","t":"Paulo preso em Roma; cartas da prisão","r":[["ACT",28],["EPH",1]]},
-{"d":"c. 95 d.C.","t":"Apocalipse: visões de João em Patmos","r":[["REV",1],["REV",21]]}]}
+{"nome":"Primórdios","nome_en":"Beginnings","nome_es":"Los orígenes","eventos":[
+{"d":"No princípio","t":"Criação dos céus e da terra","r":[["GEN",1]],"t_en":"Creation of the heavens and the earth","t_es":"Creación de los cielos y la tierra"},
+{"d":"—","t":"Queda do homem no Éden","r":[["GEN",3]],"t_en":"The fall of man in Eden","t_es":"La caída del hombre en el Edén"},
+{"d":"—","t":"Dilúvio e a aliança com Noé","r":[["GEN",7],["GEN",9]],"t_en":"The flood and the covenant with Noah","t_es":"El diluvio y el pacto con Noé"},
+{"d":"—","t":"Torre de Babel e dispersão dos povos","r":[["GEN",11]],"t_en":"The tower of Babel and the scattering of the nations","t_es":"La torre de Babel y la dispersión de los pueblos"}]},
+{"nome":"Patriarcas (c. 2100–1800 a.C.)","nome_en":"Patriarchs (c. 2100–1800 BC)","nome_es":"Patriarcas (c. 2100–1800 a.C.)","eventos":[
+{"d":"c. 2091 a.C.","t":"Chamado de Abraão; partida de Harã","r":[["GEN",12]],"t_en":"Call of Abraham; departure from Haran","t_es":"Llamado de Abraham; salida de Harán"},
+{"d":"—","t":"Aliança de Deus com Abraão","r":[["GEN",15],["GEN",17]],"t_en":"God's covenant with Abraham","t_es":"El pacto de Dios con Abraham"},
+{"d":"—","t":"Nascimento de Isaque; o sacrifício no Moriá","r":[["GEN",21],["GEN",22]],"t_en":"Birth of Isaac; the sacrifice on Moriah","t_es":"Nacimiento de Isaac; el sacrificio en Moriah"},
+{"d":"—","t":"Jacó torna-se Israel","r":[["GEN",28],["GEN",32]],"t_en":"Jacob becomes Israel","t_es":"Jacob se convierte en Israel"},
+{"d":"—","t":"José governa o Egito; Israel desce ao Egito","r":[["GEN",41],["GEN",46]],"t_en":"Joseph rules Egypt; Israel goes down to Egypt","t_es":"José gobierna Egipto; Israel desciende a Egipto"}]},
+{"nome":"Êxodo e deserto (c. 1446–1406 a.C.)","nome_en":"Exodus and wilderness (c. 1446–1406 BC)","nome_es":"Éxodo y desierto (c. 1446–1406 a.C.)","eventos":[
+{"d":"c. 1446 a.C.","t":"As dez pragas e a Páscoa; saída do Egito","r":[["EXO",12],["EXO",14]],"t_en":"The ten plagues and the Passover; leaving Egypt","t_es":"Las diez plagas y la Pascua; salida de Egipto"},
+{"d":"—","t":"A Lei entregue no Sinai","r":[["EXO",20]],"t_en":"The Law given at Sinai","t_es":"La Ley entregada en el Sinaí"},
+{"d":"—","t":"O tabernáculo é erguido","r":[["EXO",40]],"t_en":"The tabernacle is set up","t_es":"Se levanta el tabernáculo"},
+{"d":"—","t":"40 anos de peregrinação no deserto","r":[["NUM",14]],"t_en":"40 years of wandering in the wilderness","t_es":"40 años de peregrinación en el desierto"}]},
+{"nome":"Conquista e juízes (c. 1406–1050 a.C.)","nome_en":"Conquest and judges (c. 1406–1050 BC)","nome_es":"Conquista y jueces (c. 1406–1050 a.C.)","eventos":[
+{"d":"c. 1406 a.C.","t":"Travessia do Jordão; queda de Jericó","r":[["JOS",3],["JOS",6]],"t_en":"Crossing the Jordan; the fall of Jericho","t_es":"El cruce del Jordán; la caída de Jericó"},
+{"d":"—","t":"Repartição da terra entre as tribos","r":[["JOS",13]],"t_en":"The land divided among the tribes","t_es":"El reparto de la tierra entre las tribus"},
+{"d":"—","t":"Período dos juízes: Débora, Gideão, Sansão","r":[["JDG",4],["JDG",7],["JDG",16]],"t_en":"The time of the judges: Deborah, Gideon, Samson","t_es":"El tiempo de los jueces: Débora, Gedeón, Sansón"},
+{"d":"—","t":"História de Rute, bisavó de Davi","r":[["RUT",1]],"t_en":"The story of Ruth, David's great-grandmother","t_es":"La historia de Rut, bisabuela de David"}]},
+{"nome":"Reino unido (c. 1050–930 a.C.)","nome_en":"United kingdom (c. 1050–930 BC)","nome_es":"Reino unido (c. 1050–930 a.C.)","eventos":[
+{"d":"c. 1050 a.C.","t":"Saul, primeiro rei de Israel","r":[["1SA",10]],"t_en":"Saul, the first king of Israel","t_es":"Saúl, primer rey de Israel"},
+{"d":"c. 1010 a.C.","t":"Davi reina; Jerusalém vira capital","r":[["2SA",5]],"t_en":"David reigns; Jerusalem becomes the capital","t_es":"David reina; Jerusalén se convierte en la capital"},
+{"d":"—","t":"A aliança davídica","r":[["2SA",7]],"t_en":"The Davidic covenant","t_es":"El pacto davídico"},
+{"d":"c. 970 a.C.","t":"Salomão; construção do templo","r":[["1KI",6],["1KI",8]],"t_en":"Solomon; building the temple","t_es":"Salomón; construcción del templo"}]},
+{"nome":"Reino dividido (930–586 a.C.)","nome_en":"Divided kingdom (930–586 BC)","nome_es":"Reino dividido (930–586 a.C.)","eventos":[
+{"d":"930 a.C.","t":"Divisão: Israel (norte) e Judá (sul)","r":[["1KI",12]],"t_en":"Division: Israel (north) and Judah (south)","t_es":"División: Israel (norte) y Judá (sur)"},
+{"d":"—","t":"Elias no Carmelo contra os profetas de Baal","r":[["1KI",18]],"t_en":"Elijah on Carmel against the prophets of Baal","t_es":"Elías en el Carmelo contra los profetas de Baal"},
+{"d":"722 a.C.","t":"Assíria destrói Samaria; fim do reino do norte","r":[["2KI",17]],"t_en":"Assyria destroys Samaria; the end of the northern kingdom","t_es":"Asiria destruye Samaria; fin del reino del norte"},
+{"d":"—","t":"Reforma de Ezequias; livramento de Jerusalém","r":[["2KI",18],["2KI",19]],"t_en":"Hezekiah's reform; Jerusalem delivered","t_es":"La reforma de Ezequías; Jerusalén librada"},
+{"d":"—","t":"Ministério de Isaías, Jeremias e os profetas","r":[["ISA",6],["JER",1]],"t_en":"Ministry of Isaiah, Jeremiah and the prophets","t_es":"Ministerio de Isaías, Jeremías y los profetas"},
+{"d":"586 a.C.","t":"Babilônia destrói Jerusalém e o templo","r":[["2KI",25],["LAM",1]],"t_en":"Babylon destroys Jerusalem and the temple","t_es":"Babilonia destruye Jerusalén y el templo"}]},
+{"nome":"Exílio e retorno (586–430 a.C.)","nome_en":"Exile and return (586–430 BC)","nome_es":"Exilio y regreso (586–430 a.C.)","eventos":[
+{"d":"—","t":"Daniel na corte da Babilônia","r":[["DAN",1],["DAN",6]],"t_en":"Daniel at the court of Babylon","t_es":"Daniel en la corte de Babilonia"},
+{"d":"—","t":"Visões de Ezequiel entre os exilados","r":[["EZK",1],["EZK",37]],"t_en":"Ezekiel's visions among the exiles","t_es":"Las visiones de Ezequiel entre los exiliados"},
+{"d":"538 a.C.","t":"Decreto de Ciro; primeiro retorno","r":[["EZR",1]],"t_en":"The decree of Cyrus; the first return","t_es":"El decreto de Ciro; el primer regreso"},
+{"d":"516 a.C.","t":"O segundo templo é concluído","r":[["EZR",6]],"t_en":"The second temple is completed","t_es":"Se termina el segundo templo"},
+{"d":"—","t":"Ester livra os judeus na Pérsia","r":[["EST",4],["EST",7]],"t_en":"Esther saves the Jews in Persia","t_es":"Ester libra a los judíos en Persia"},
+{"d":"445 a.C.","t":"Neemias reconstrói os muros de Jerusalém","r":[["NEH",2],["NEH",6]],"t_en":"Nehemiah rebuilds the walls of Jerusalem","t_es":"Nehemías reconstruye los muros de Jerusalén"},
+{"d":"c. 430 a.C.","t":"Malaquias, último profeta do AT","r":[["MAL",3]],"t_en":"Malachi, the last prophet of the OT","t_es":"Malaquías, el último profeta del AT"}]},
+{"nome":"Vida de Jesus (c. 5 a.C.–30 d.C.)","nome_en":"Life of Jesus (c. 5 BC–AD 30)","nome_es":"Vida de Jesús (c. 5 a.C.–30 d.C.)","eventos":[
+{"d":"c. 5 a.C.","t":"Nascimento de Jesus em Belém","r":[["MAT",1],["LUK",2]],"t_en":"Birth of Jesus in Bethlehem","t_es":"Nacimiento de Jesús en Belén"},
+{"d":"c. 27 d.C.","t":"Batismo e início do ministério","r":[["MAT",3],["LUK",4]],"t_en":"Baptism and the start of his ministry","t_es":"Bautismo e inicio del ministerio"},
+{"d":"—","t":"Sermão do Monte","r":[["MAT",5]],"t_en":"The Sermon on the Mount","t_es":"El Sermón del Monte"},
+{"d":"—","t":"Milagres e parábolas do Reino","r":[["MRK",4],["JHN",11]],"t_en":"Miracles and parables of the Kingdom","t_es":"Milagros y parábolas del Reino"},
+{"d":"—","t":"Transfiguração","r":[["MAT",17]],"t_en":"The Transfiguration","t_es":"La Transfiguración"},
+{"d":"c. 30 d.C.","t":"Última ceia, cruz e sepultamento","r":[["JHN",13],["JHN",19]],"t_en":"The Last Supper, the cross and the burial","t_es":"La última cena, la cruz y la sepultura"},
+{"d":"c. 30 d.C.","t":"Ressurreição e grande comissão","r":[["MAT",28],["JHN",20]],"t_en":"The resurrection and the Great Commission","t_es":"La resurrección y la gran comisión"}]},
+{"nome":"Igreja primitiva (30–95 d.C.)","nome_en":"Early church (AD 30–95)","nome_es":"Iglesia primitiva (30–95 d.C.)","eventos":[
+{"d":"30 d.C.","t":"Pentecostes: o Espírito é derramado","r":[["ACT",2]],"t_en":"Pentecost: the Spirit is poured out","t_es":"Pentecostés: el Espíritu es derramado"},
+{"d":"—","t":"Conversão de Paulo","r":[["ACT",9]],"t_en":"Conversion of Paul","t_es":"La conversión de Pablo"},
+{"d":"—","t":"O evangelho chega aos gentios","r":[["ACT",10],["ACT",15]],"t_en":"The gospel reaches the Gentiles","t_es":"El evangelio llega a los gentiles"},
+{"d":"48–57 d.C.","t":"Viagens missionárias de Paulo","r":[["ACT",13],["ACT",16],["ACT",19]],"t_en":"Paul's missionary journeys","t_es":"Los viajes misioneros de Pablo"},
+{"d":"c. 57 d.C.","t":"Carta aos Romanos","r":[["ROM",1]],"t_en":"Letter to the Romans","t_es":"La carta a los Romanos"},
+{"d":"60–62 d.C.","t":"Paulo preso em Roma; cartas da prisão","r":[["ACT",28],["EPH",1]],"t_en":"Paul imprisoned in Rome; the prison letters","t_es":"Pablo preso en Roma; las cartas de la prisión"},
+{"d":"c. 95 d.C.","t":"Apocalipse: visões de João em Patmos","r":[["REV",1],["REV",21]],"t_en":"Revelation: John's visions on Patmos","t_es":"Apocalipsis: las visiones de Juan en Patmos"}]}
 ]}
