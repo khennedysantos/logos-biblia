@@ -15,6 +15,7 @@ Chave: ANTHROPIC_API_KEY (ambiente ou .env). Uso:
   python ferramentas/tradutor/notas_llm.py preparar                # baixa os léxicos, conta itens e custo
   python ferramentas/tradutor/notas_llm.py amostra [--modelo M]    # 24 itens, relatório para ler
   python ferramentas/tradutor/notas_llm.py conferir [--modelo M]   # todos (retoma de onde parou)
+  ... [--so lema,contexto|termo]   # só esses tipos (ex.: Sonnet nas notas e Haiku no vocabulário)
   python ferramentas/tradutor/notas_llm.py aplicar                 # grava ferramentas/notas_fontes.json
 Depois: python3 ferramentas/gerar_palavras.py e python3 ferramentas/gerar_paginas.py
 """
@@ -306,8 +307,16 @@ def relatorio(lista, est, caminho):
     caminho.write_text("\n".join(linhas), encoding="utf-8")
 
 
+def so(lista, a):
+    """--so lema,contexto,termo: limita aos tipos pedidos (para usar um modelo em cada parte)."""
+    if not a.so:
+        return lista
+    tipos = set(a.so.split(","))
+    return [it for it in lista if it["id"].split("|", 1)[0] in tipos]
+
+
 def cmd_preparar(a):
-    lista = itens(Fontes())
+    lista = so(itens(Fontes()), a)
     chars = sum(len(mensagem([it])) for it in lista)
     print(f"[preparar] {len(lista)} itens ({collections.Counter(it['tipo'] for it in lista)}), {chars:,} caracteres")
     for m, (pe, ps) in PRECOS.items():
@@ -322,23 +331,23 @@ def cmd_amostra(a):
     por_tipo = collections.defaultdict(list)
     for it in lista:
         por_tipo[it["tipo"]].append(it)
-    amostra = [x for t, v in sorted(por_tipo.items()) for x in rnd.sample(v, min(8, len(v)))]
+    amostra = so([x for t, v in sorted(por_tipo.items()) for x in rnd.sample(v, min(8, len(v)))], a)
     est = {"ok": {}, "recusas": {}}
     gasto = conferir(amostra, modelo, chave, est, TRAB / "notas_llm_amostra.json")
     relatorio(amostra, est, TRAB / "relatorio_notas.txt")
     print(f"[amostra] {len(est['ok'])} ok, {len(est['recusas'])} recusados; gasto US$ {gasto:.3f}; "
-          f"tudo ~US$ {gasto * len(lista) / len(amostra):.2f}; mudanças: {collections.Counter(r['mudanca'] for r in est['ok'].values())}")
+          f"tudo ~US$ {gasto * len(so(lista, a)) / len(amostra):.2f}; mudanças: {collections.Counter(r['mudanca'] for r in est['ok'].values())}")
     print(f"[amostra] relatório: {TRAB / 'relatorio_notas.txt'}")
 
 
 def cmd_conferir(a):
     modelo, chave = a.modelo or MODELO_PADRAO, obter_chave("anthropic", a.chave)
-    lista = itens(Fontes())
+    lista = so(itens(Fontes()), a)
     est = ler_json(SAIDA, {"ok": {}, "recusas": {}})
     gasto = conferir(lista, modelo, chave, est, SAIDA)
     for it in [x for x in lista if x["id"] in est["recusas"]]:      # segunda tentativa, um por vez
         gasto += conferir([it], modelo, chave, est, SAIDA)
-    relatorio(lista, est, TRAB / "relatorio_notas.txt")
+    relatorio(itens(Fontes()), est, TRAB / "relatorio_notas.txt")
     print(f"[conferir] {len(est['ok'])} ok, {len(est['recusas'])} recusados; gasto US$ {gasto:.2f}; "
           f"mudanças: {collections.Counter(r['mudanca'] for r in est['ok'].values())}")
 
@@ -363,6 +372,7 @@ def main():
     ap.add_argument("acao", choices=["preparar", "amostra", "conferir", "aplicar"])
     ap.add_argument("--modelo", default=None)
     ap.add_argument("--chave", default=None)
+    ap.add_argument("--so", default=None, help="lema,contexto,termo (padrão: todos)")
     a = ap.parse_args()
     {"preparar": cmd_preparar, "amostra": cmd_amostra, "conferir": cmd_conferir, "aplicar": cmd_aplicar}[a.acao](a)
 
