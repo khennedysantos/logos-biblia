@@ -962,7 +962,7 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
   background:color-mix(in srgb,var(--rubrica) 7%,var(--painel));color:var(--tinta);padding:.35rem .85rem;font:500 .84rem var(--ui);cursor:pointer}
 .dica-ref b{color:var(--rubrica)}
 .dica-ref:hover{border-color:var(--rubrica)}
-.pf-campo input,.pf-campo textarea{border:1px solid var(--borda);border-radius:.45rem;background:var(--painel);padding:.5rem .6rem;font:400 .92rem/1.4 var(--ui);color:var(--tinta);width:100%;box-sizing:border-box}
+.pf-campo input:not([type="checkbox"]):not([type="radio"]),.pf-campo textarea{border:1px solid var(--borda);border-radius:.45rem;background:var(--painel);padding:.5rem .6rem;font:400 .92rem/1.4 var(--ui);color:var(--tinta);width:100%;box-sizing:border-box}
 .pf-sub{font-family:var(--titulo);font-weight:600;font-size:1.1rem;margin:.6rem 0 0;color:var(--tinta)}
 .pf-opcoes{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
 .pf-cor{width:1.9rem;height:1.9rem;border-radius:50%;border:2px solid var(--painel);box-shadow:0 0 0 1px var(--borda);cursor:pointer}
@@ -1006,7 +1006,7 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .pub-caixa > .fonte{margin:0}
 .pub-endereco{display:flex;align-items:stretch;border:1px solid var(--borda);border-radius:.45rem;background:var(--papel);overflow:hidden}
 .pub-endereco > span{display:flex;align-items:center;padding:0 .2rem 0 .6rem;font:400 .82rem var(--ui);color:var(--suave);white-space:nowrap}
-.pf-campo .pub-endereco input{border:0;border-radius:0;background:transparent;padding-left:0;min-width:0;flex:1}
+.pf-campo .pub-endereco input#pubApelido{border:0;border-radius:0;background:transparent;padding-left:0;min-width:0;flex:1}
 .pub-opcao{display:flex;align-items:center;gap:.45rem;font-size:.84rem;color:var(--tinta);font-weight:400}
 .pf-campo .pub-opcao input{width:auto;flex:0 0 auto;margin:0;accent-color:var(--rubrica)}
 .pub-no-ar{color:#2E7D4F;font-weight:600}
