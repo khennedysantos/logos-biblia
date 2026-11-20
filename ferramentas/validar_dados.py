@@ -115,6 +115,13 @@ def main():
     ids = {b["id"] for b in livros}
     caps_livro = {b["id"]: b["ch"] for b in livros}
     for plano in ler(DATA / "plans.json") or []:
+        if plano.get("doc"):   # plano de catecismo: cada dia são números de perguntas do documento
+            doc = ler(DATA / "confissoes" / f"{plano['doc']}.json") or {"itens": []}
+            numeros = {int(i["n"]) for i in doc["itens"]}
+            usados = [n for dia in plano["dias"] for n in dia]
+            if any(n not in numeros for n in usados) or sorted(usados) != sorted(numeros):
+                erros.append(f"plans.json {plano['id']}: as perguntas dos dias não batem com confissoes/{plano['doc']}.json")
+            continue
         grupos = plano.get("grupos")
         if grupos and (len(grupos) != len(plano["dias"]) or any(sum(g) != len(d) for g, d in zip(grupos, plano["dias"]))):
             erros.append(f"plans.json {plano['id']}: grupos não batem com as leituras dos dias")
