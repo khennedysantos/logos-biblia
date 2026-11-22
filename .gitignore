@@ -2,6 +2,7 @@ ferramentas/fontes/
 ferramentas/video/telas/
 ferramentas/video/quadros/
 ferramentas/video/saida/
+ferramentas/video/narrado/entrada/
 __pycache__/
 .env
 .env.*

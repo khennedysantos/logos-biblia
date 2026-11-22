@@ -189,7 +189,12 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   └── video/                  # Geração automatizada do vídeo vertical (1080×1920, 30 fps)
 │       ├── capturar.cjs        # Captura telas mobile do site com Playwright
 │       ├── video.html          # Animação em linha do tempo única
-│       └── renderizar.cjs      # Renderiza quadro a quadro e monta MP4 com ffmpeg
+│       ├── renderizar.cjs      # Renderiza quadro a quadro e monta MP4 com ffmpeg
+│       └── narrado/            # Vídeos narrados para o Instagram (voz + cenas + legendas + música)
+│           ├── alinhar.py      # Casa o roteiro com as pausas da voz → episodios/<ep>/tempos.json
+│           ├── renderizar.cjs  # Motor: cenas no tempo da voz, legendas, aceleração e mixagem → saida/<ep>.mp4
+│           ├── episodios/<ep>/ # roteiro.txt, tempos.json e cenas.cjs de cada vídeo (ex.: heidelberg-01)
+│           └── entrada/        # voz.mp3 e musica.mp3 (de terceiros, FORA do git)
 │
 └── .github/workflows/
     ├── verificar.yml           # CI em push/PR: node --check, validar_dados.py e gerar_paginas.py
@@ -236,6 +241,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
   - **Qualidade e limitações conhecidas dos modelos**: boa no Strong e nos títulos; legível, mas ainda com tropeços em prosa densa como Calvino e Easton — por isso o site sempre exibe o aviso transparente de *"Tradução automática"*. Os modelos tendem a omitir texto em listas longas e desconhecem inglês arcaico; o pipeline já moderniza termos arcaicos (`"thou"`, `"ass"` etc.) e fatia/retrabalha frases que saem curtas demais (`revisar.py` refaz trechos com omissão).
 - **Vídeo de apresentação (`ferramentas/video/`)**:
   - Gera vídeo vertical (`1080×1920`, 30 qps, ~33 s) sem editor externo: `capturar.cjs` fotografa o site mobile em `SITE=http://localhost:8000`, `video.html` anima numa linha do tempo única (`trilha(...)`) e `renderizar.cjs` junta quadro a quadro com `ffmpeg` em `saida/sola-apresentacao.mp4` (`--fotos 2,13.5` confere instantes). Usa João 1:14 e Salmo 23:1 no interlinear (evitando João 3:16 por glosas imperfeitas).
+  - **Vídeos narrados (`ferramentas/video/narrado/`, nov/2026)** — a receita aprovada pelo mantenedor para os Reels: (1) escrever `episodios/<ep>/roteiro.txt` (um bloco por cena, separados por linha em branco; `{mostrado|falado}` para números e endereços, ex. `{1563|mil quinhentos e sessenta e três}`, `{solabiblia.com.br|sola bíblia ponto com ponto bê erre}`); (2) `python3 ferramentas/video/narrado/alinhar.py <ep> --texto` dá o texto para colar no **ElevenLabs** (voz *"Carlos – Resonant, Majestic Storyteller"*, modelo *Multilingual v2*, plano gratuito; créditos renovam por mês), e o mp3 vai para `entrada/<ep>/voz.mp3`; (3) a música de fundo é um piano calmo do **Pixabay Music** (licença livre, sem atribuição obrigatória) em `entrada/musica.mp3` — música sintetizada no próprio script ficou ruim e foi descartada; (4) `alinhar.py <ep>` acha as pausas (ffmpeg `silencedetect`) e grava `tempos.json` com blocos, frases e legendas (confira a tabela; dá para ajustar à mão); (5) `episodios/<ep>/cenas.cjs` monta as cenas a partir desses tempos (veja o `heidelberg-01`, Domingo 1 do Heidelberg); (6) com `python3 -m http.server 8000` rodando, `node ferramentas/video/narrado/renderizar.cjs <ep> --previa 2,11,30` tira fotos de instantes e sem `--previa` gera `ferramentas/video/saida/<ep>.mp4` (~2 min). O motor acelera tudo **12%** (`--vel 1.12`: vídeo por `setpts`, voz por `atempo`, sem mudar o tom — no ritmo original ficava lento), põe a música ~12 dB abaixo da voz e a abaixa ainda mais sob a fala (`sidechaincompress`), com entrada e saída suaves. O cartão final (`cartaoFinal`) traz o endereço, "Gratuito e sem anúncios", *Sola Scriptura*, `@projetosolabiblia` e o crédito "Voz: ElevenLabs". Os áudios são de terceiros: nunca entram no repositório.
 
 ---
 
