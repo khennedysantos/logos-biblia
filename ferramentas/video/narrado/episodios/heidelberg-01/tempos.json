@@ -1,0 +1,410 @@
+{
+ "duracao": 84.43,
+ "blocos": [
+  {
+   "ini": 0.0,
+   "fim": 3.59,
+   "texto": "Qual é o seu único consolo, na vida e na morte?"
+  },
+  {
+   "ini": 4.2,
+   "fim": 16.42,
+   "texto": "Essa é a primeira pergunta do Catecismo de Heidelberg, escrito em 1563, na Alemanha, por Zacarias Ursino e Gaspar Oleviano, para ensinar a fé às famílias e às igrejas da Reforma."
+  },
+  {
+   "ini": 17.02,
+   "fim": 25.63,
+   "texto": "São 129 perguntas e respostas, divididas em 52 Domingos, para serem estudadas uma semana de cada vez, ao longo do ano."
+  },
+  {
+   "ini": 26.15,
+   "fim": 52.61,
+   "texto": "E a resposta é esta: Que eu, de corpo e alma, tanto na vida como na morte, não pertenço a mim mesmo, mas ao meu fiel Salvador Jesus Cristo, que com o seu precioso sangue satisfez plenamente por todos os meus pecados, e me libertou de todo o poder do diabo. E de tal maneira me guarda, que sem a vontade do meu Pai que está no céu, nem um fio de cabelo pode cair da minha cabeça."
+  },
+  {
+   "ini": 53.23,
+   "fim": 65.73,
+   "texto": "Por isso, o catecismo diz que precisamos saber três coisas: quão grandes são o nosso pecado e a nossa miséria, como somos libertados deles, e como devemos ser gratos a Deus por essa redenção."
+  },
+  {
+   "ini": 66.34,
+   "fim": 77.25,
+   "texto": "Você pode ler o Catecismo de Heidelberg inteiro no Sola, com um plano de 52 Domingos, além da Confissão de Westminster, dos catecismos, e da Bíblia com o grego e o hebraico."
+  },
+  {
+   "ini": 77.75,
+   "fim": 84.43,
+   "texto": "Acesse solabiblia.com.br. É gratuito, e sem anúncios. Sola Scriptura."
+  }
+ ],
+ "frases": [
+  {
+   "ini": 0.0,
+   "fim": 2.11,
+   "texto": "Qual é o seu único consolo,",
+   "bloco": 0
+  },
+  {
+   "ini": 2.11,
+   "fim": 3.59,
+   "texto": "na vida e na morte?",
+   "bloco": 0
+  },
+  {
+   "ini": 4.2,
+   "fim": 7.46,
+   "texto": "Essa é a primeira pergunta do Catecismo de Heidelberg,",
+   "bloco": 1
+  },
+  {
+   "ini": 7.46,
+   "fim": 10.13,
+   "texto": "escrito em 1563,",
+   "bloco": 1
+  },
+  {
+   "ini": 10.13,
+   "fim": 10.85,
+   "texto": "na Alemanha,",
+   "bloco": 1
+  },
+  {
+   "ini": 10.85,
+   "fim": 13.16,
+   "texto": "por Zacarias Ursino e Gaspar Oleviano,",
+   "bloco": 1
+  },
+  {
+   "ini": 13.16,
+   "fim": 16.42,
+   "texto": "para ensinar a fé às famílias e às igrejas da Reforma.",
+   "bloco": 1
+  },
+  {
+   "ini": 17.02,
+   "fim": 19.79,
+   "texto": "São 129 perguntas e respostas,",
+   "bloco": 2
+  },
+  {
+   "ini": 19.79,
+   "fim": 22.09,
+   "texto": "divididas em 52 Domingos,",
+   "bloco": 2
+  },
+  {
+   "ini": 22.09,
+   "fim": 24.68,
+   "texto": "para serem estudadas uma semana de cada vez,",
+   "bloco": 2
+  },
+  {
+   "ini": 24.68,
+   "fim": 25.63,
+   "texto": "ao longo do ano.",
+   "bloco": 2
+  },
+  {
+   "ini": 26.15,
+   "fim": 27.61,
+   "texto": "E a resposta é esta:",
+   "bloco": 3
+  },
+  {
+   "ini": 28.18,
+   "fim": 28.74,
+   "texto": "Que eu,",
+   "bloco": 3
+  },
+  {
+   "ini": 28.74,
+   "fim": 30.04,
+   "texto": "de corpo e alma,",
+   "bloco": 3
+  },
+  {
+   "ini": 30.35,
+   "fim": 32.01,
+   "texto": "tanto na vida como na morte,",
+   "bloco": 3
+  },
+  {
+   "ini": 32.33,
+   "fim": 33.78,
+   "texto": "não pertenço a mim mesmo,",
+   "bloco": 3
+  },
+  {
+   "ini": 34.13,
+   "fim": 36.7,
+   "texto": "mas ao meu fiel Salvador Jesus Cristo,",
+   "bloco": 3
+  },
+  {
+   "ini": 37.09,
+   "fim": 41.85,
+   "texto": "que com o seu precioso sangue satisfez plenamente por todos os meus pecados,",
+   "bloco": 3
+  },
+  {
+   "ini": 42.19,
+   "fim": 44.56,
+   "texto": "e me libertou de todo o poder do diabo.",
+   "bloco": 3
+  },
+  {
+   "ini": 45.08,
+   "fim": 46.65,
+   "texto": "E de tal maneira me guarda,",
+   "bloco": 3
+  },
+  {
+   "ini": 46.65,
+   "fim": 49.25,
+   "texto": "que sem a vontade do meu Pai que está no céu,",
+   "bloco": 3
+  },
+  {
+   "ini": 49.61,
+   "fim": 52.61,
+   "texto": "nem um fio de cabelo pode cair da minha cabeça.",
+   "bloco": 3
+  },
+  {
+   "ini": 53.23,
+   "fim": 53.79,
+   "texto": "Por isso,",
+   "bloco": 4
+  },
+  {
+   "ini": 53.79,
+   "fim": 56.83,
+   "texto": "o catecismo diz que precisamos saber três coisas:",
+   "bloco": 4
+  },
+  {
+   "ini": 57.33,
+   "fim": 60.08,
+   "texto": "quão grandes são o nosso pecado e a nossa miséria,",
+   "bloco": 4
+  },
+  {
+   "ini": 60.53,
+   "fim": 62.3,
+   "texto": "como somos libertados deles,",
+   "bloco": 4
+  },
+  {
+   "ini": 62.7,
+   "fim": 65.73,
+   "texto": "e como devemos ser gratos a Deus por essa redenção.",
+   "bloco": 4
+  },
+  {
+   "ini": 66.34,
+   "fim": 69.68,
+   "texto": "Você pode ler o Catecismo de Heidelberg inteiro no Sola,",
+   "bloco": 5
+  },
+  {
+   "ini": 69.68,
+   "fim": 72.19,
+   "texto": "com um plano de 52 Domingos,",
+   "bloco": 5
+  },
+  {
+   "ini": 72.19,
+   "fim": 74.15,
+   "texto": "além da Confissão de Westminster,",
+   "bloco": 5
+  },
+  {
+   "ini": 74.15,
+   "fim": 75.05,
+   "texto": "dos catecismos,",
+   "bloco": 5
+  },
+  {
+   "ini": 75.05,
+   "fim": 77.25,
+   "texto": "e da Bíblia com o grego e o hebraico.",
+   "bloco": 5
+  },
+  {
+   "ini": 77.75,
+   "fim": 80.42,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 6
+  },
+  {
+   "ini": 80.78,
+   "fim": 81.55,
+   "texto": "É gratuito,",
+   "bloco": 6
+  },
+  {
+   "ini": 81.55,
+   "fim": 82.61,
+   "texto": "e sem anúncios.",
+   "bloco": 6
+  },
+  {
+   "ini": 83.03,
+   "fim": 84.43,
+   "texto": "Sola Scriptura.",
+   "bloco": 6
+  }
+ ],
+ "legendas": [
+  {
+   "ini": 0.0,
+   "fim": 3.59,
+   "texto": "Qual é o seu único consolo, na vida e na morte?",
+   "bloco": 0
+  },
+  {
+   "ini": 4.2,
+   "fim": 7.46,
+   "texto": "Essa é a primeira pergunta do Catecismo de Heidelberg,",
+   "bloco": 1
+  },
+  {
+   "ini": 7.46,
+   "fim": 10.85,
+   "texto": "escrito em 1563, na Alemanha,",
+   "bloco": 1
+  },
+  {
+   "ini": 10.85,
+   "fim": 13.16,
+   "texto": "por Zacarias Ursino e Gaspar Oleviano,",
+   "bloco": 1
+  },
+  {
+   "ini": 13.16,
+   "fim": 16.42,
+   "texto": "para ensinar a fé às famílias e às igrejas da Reforma.",
+   "bloco": 1
+  },
+  {
+   "ini": 17.02,
+   "fim": 22.09,
+   "texto": "São 129 perguntas e respostas, divididas em 52 Domingos,",
+   "bloco": 2
+  },
+  {
+   "ini": 22.09,
+   "fim": 25.63,
+   "texto": "para serem estudadas uma semana de cada vez, ao longo do ano.",
+   "bloco": 2
+  },
+  {
+   "ini": 26.15,
+   "fim": 30.04,
+   "texto": "E a resposta é esta: Que eu, de corpo e alma,",
+   "bloco": 3
+  },
+  {
+   "ini": 30.35,
+   "fim": 33.78,
+   "texto": "tanto na vida como na morte, não pertenço a mim mesmo,",
+   "bloco": 3
+  },
+  {
+   "ini": 34.13,
+   "fim": 36.7,
+   "texto": "mas ao meu fiel Salvador Jesus Cristo,",
+   "bloco": 3
+  },
+  {
+   "ini": 37.09,
+   "fim": 41.85,
+   "texto": "que com o seu precioso sangue satisfez plenamente por todos os meus pecados,",
+   "bloco": 3
+  },
+  {
+   "ini": 42.19,
+   "fim": 44.56,
+   "texto": "e me libertou de todo o poder do diabo.",
+   "bloco": 3
+  },
+  {
+   "ini": 45.08,
+   "fim": 46.65,
+   "texto": "E de tal maneira me guarda,",
+   "bloco": 3
+  },
+  {
+   "ini": 46.65,
+   "fim": 49.25,
+   "texto": "que sem a vontade do meu Pai que está no céu,",
+   "bloco": 3
+  },
+  {
+   "ini": 49.61,
+   "fim": 52.61,
+   "texto": "nem um fio de cabelo pode cair da minha cabeça.",
+   "bloco": 3
+  },
+  {
+   "ini": 53.23,
+   "fim": 56.83,
+   "texto": "Por isso, o catecismo diz que precisamos saber três coisas:",
+   "bloco": 4
+  },
+  {
+   "ini": 57.33,
+   "fim": 60.08,
+   "texto": "quão grandes são o nosso pecado e a nossa miséria,",
+   "bloco": 4
+  },
+  {
+   "ini": 60.53,
+   "fim": 62.3,
+   "texto": "como somos libertados deles,",
+   "bloco": 4
+  },
+  {
+   "ini": 62.7,
+   "fim": 65.73,
+   "texto": "e como devemos ser gratos a Deus por essa redenção.",
+   "bloco": 4
+  },
+  {
+   "ini": 66.34,
+   "fim": 69.68,
+   "texto": "Você pode ler o Catecismo de Heidelberg inteiro no Sola,",
+   "bloco": 5
+  },
+  {
+   "ini": 69.68,
+   "fim": 74.15,
+   "texto": "com um plano de 52 Domingos, além da Confissão de Westminster,",
+   "bloco": 5
+  },
+  {
+   "ini": 74.15,
+   "fim": 77.25,
+   "texto": "dos catecismos, e da Bíblia com o grego e o hebraico.",
+   "bloco": 5
+  },
+  {
+   "ini": 77.75,
+   "fim": 80.42,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 6
+  },
+  {
+   "ini": 80.78,
+   "fim": 82.61,
+   "texto": "É gratuito, e sem anúncios.",
+   "bloco": 6
+  },
+  {
+   "ini": 83.03,
+   "fim": 84.43,
+   "texto": "Sola Scriptura.",
+   "bloco": 6
+  }
+ ]
+}
