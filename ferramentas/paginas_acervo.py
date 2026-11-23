@@ -58,6 +58,28 @@ def linkar(txt, livros_info, slug_livro):
     return "".join(saida) + e(txt[fim:])
 
 
+def refs_por_extenso(txt, info):
+    """ "GEN 1:1; 2" -> "Gênesis 1:1; 2": para a descrição que o Google mostra, onde link não existe."""
+    return re.sub(r"\b([1-3]?[A-Z]{2,3})(?= \d)", lambda m: info[m.group(1)]["pt"] if m.group(1) in info else m.group(0), txt)
+
+
+def descricao_tema(titulo, linhas, info):
+    """Descrição do tema para buscadores: os subtemas com as referências por extenso e, no fim, as remissões
+    ("Veja ANIMAIS") como "Veja também: Animais, …" — em vez das linhas cruas, que o Google ignorava."""
+    partes, vejas = [], []
+    for x in linhas:
+        m = re.match(r"(?i)veja(?: também)?\s+(.+)", x)
+        if m:
+            vejas.append(m.group(1).strip(" .,;").capitalize())
+        else:
+            partes.append(refs_por_extenso(x.rstrip(" .;"), info))
+    corpo = "; ".join(p[:1].lower() + p[1:] if p[:2] != p[:2].upper() else p for p in partes)
+    txt = f"{titulo} na Bíblia" + (f": {corpo}." if corpo else ".")
+    if vejas:
+        txt += " Veja também: " + ", ".join(vejas[:8]) + "."
+    return txt
+
+
 def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo):
     css = re.search(r'href="(/lexico\.css\?v=[0-9a-f]+)"', (raiz / "lexico" / "index.html").read_text(encoding="utf-8")).group(1)
     info = {b["id"]: b for b in livros}
@@ -128,7 +150,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo):
                 if originais:
                     corpo.append('<details class="acv-original"><summary>Texto original (inglês)</summary>' +
                                  "".join(f"<p>{e(x)}</p>" for x in originais) + "</details>")
-                desc = cortar(f"{titulo}: {texto_plano}", 158)
+                desc = cortar(f"{titulo}: {refs_por_extenso(texto_plano, info)}", 158)
                 tipo_titulo = f"{titulo} — significado e referências bíblicas | Dicionário Bíblico | Sola"
                 termo = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": titulo,
                          "description": cortar(texto_plano, 300), "inDefinedTermSet": f"{site}/{pasta}/"}
@@ -136,7 +158,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo):
             else:
                 corpo.append('<ul class="acv-linhas">' +
                              "".join(f"<li>{remissoes(linkar(x, info, slug_livro))}</li>" for x in linhas) + "</ul>")
-                desc = cortar(f"{titulo} na Bíblia: {texto_plano}", 158)
+                desc = cortar(descricao_tema(titulo, linhas, info), 158)
                 tipo_titulo = f"{titulo} na Bíblia — versículos e referências | Temas bíblicos | Sola"
                 extra = ""
             ant, pro = (ordem[n - 1] if n else None), (ordem[n + 1] if n + 1 < len(ordem) else None)
