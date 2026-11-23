@@ -12,7 +12,7 @@ if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matche
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=ff0489e72c">
+<link rel="stylesheet" href="/style.css?v=e7090b0467">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -37,6 +37,7 @@ document.documentElement.dataset.tema=t;</script>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-sola" viewBox="0 0 24 24"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></symbol>
 <symbol id="i-livro" viewBox="0 0 24 24"><path d="M2 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/><path d="M12 5c3-1.5 7-1.5 10 0v14c-3-1.5-7-1.5-10 0z"/></symbol>
+<symbol id="i-segue" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></symbol>
 <symbol id="i-temas" viewBox="0 0 24 24"><path d="M2.5 2.5H11l10 10-8.5 8.5-10-10z"/><circle cx="7" cy="7" r="1.4" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-dicionario" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
@@ -169,10 +170,13 @@ document.documentElement.dataset.tema=t;</script>
     <div class="estante-topo">
       <div class="estante-id">
         <span class="selo-rubrica" id="estudoSelo">Em estudo</span>
-        <h3 class="estante-ref" id="estudoRef">—</h3>
+        <h3 class="estante-ref" id="estudoRef" role="button" tabindex="0">—</h3>
+        <p class="estante-alvo" id="estudoAlvo" hidden></p>
+        <button id="estudoVolta" class="estante-volta" type="button" hidden></button>
       </div>
       <div class="estante-acoes">
         <div class="estante-cores" id="estudoCores" role="group" aria-label="Marcar versículo"></div>
+        <button id="estudoSegue" class="btn-icone mini" type="button" aria-pressed="false" title="Acompanhar a leitura"><svg class="ico"><use href="#i-segue"/></svg></button>
         <button id="estudoCopiar" class="btn-icone mini" type="button" title="Copiar"><svg class="ico"><use href="#i-copiar"/></svg></button>
         <button id="estudoCompartilhar" class="btn-icone mini" type="button" title="Compartilhar"><svg class="ico"><use href="#i-compartilhar"/></svg></button>
         <button id="btnFecharEstudo" class="fechar mini" type="button" aria-label="Fechar">✕</button>
@@ -353,6 +357,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script src="/app.js?v=87a63063d3"></script>
+<script src="/app.js?v=b0034324c5"></script>
 </body>
 </html>

@@ -18,6 +18,8 @@ const UI = {
     exStrong:"ex.: G3056, H2617, logos, hesed, graça", exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
     comandoBusca:"Passagem, palavra, Strong (G3056) ou doutrina…",
     emEstudo:"Em estudo", eabaOrig:"Léxico & Orig.", eabaCom:"Comentário", eabaRefs:"CFW & Refs", eabaNota:"Nota",
+    refAbrir:"Abrir", estudoSegue:"Acompanhar a leitura", estudoFixo:"Fixar neste versículo", estudoVolta:"Voltar ao v.",
+    irVerso:"Ir ao versículo", bgTemas:"Temas e doutrinas", bgDic:"Dicionário", bgOrig:"No original", bgVersos:"Versículos", bgTodos:"ver todos",
     verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
@@ -139,6 +141,8 @@ const UI = {
     exStrong:"e.g. G3056, H2617, logos, grace", exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     comandoBusca:"Passage, word, Strong (G3056) or doctrine…",
     emEstudo:"Studying", eabaOrig:"Lexicon & Orig.", eabaCom:"Commentary", eabaRefs:"WCF & Refs", eabaNota:"Note",
+    refAbrir:"Open", estudoSegue:"Follow my reading", estudoFixo:"Pin to this verse", estudoVolta:"Back to v.",
+    irVerso:"Go to the verse", bgTemas:"Topics and doctrines", bgDic:"Dictionary", bgOrig:"In the original", bgVersos:"Verses", bgTodos:"see all",
     verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
@@ -260,6 +264,8 @@ const UI = {
     exStrong:"ej.: G3056, H2617, logos, gracia", exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     comandoBusca:"Pasaje, palabra, Strong (G3056) o doctrina…",
     emEstudo:"En estudio", eabaOrig:"Léxico y Orig.", eabaCom:"Comentario", eabaRefs:"CFW y Refs", eabaNota:"Nota",
+    refAbrir:"Abrir", estudoSegue:"Seguir la lectura", estudoFixo:"Fijar en este versículo", estudoVolta:"Volver al v.",
+    irVerso:"Ir al versículo", bgTemas:"Temas y doctrinas", bgDic:"Diccionario", bgOrig:"En el original", bgVersos:"Versículos", bgTodos:"ver todos",
     verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
@@ -1388,8 +1394,11 @@ function ligarLexico(alvo, completo, strongInicial){
   const mostrar = async (btn, rolar)=>{
     const strong = btn.dataset.strong;
     alvo.querySelectorAll(".inter-palavra").forEach(o=>o.classList.remove("sel"));
+    const naEstante = !!alvo.closest("#estudoCorpo");
     if(!strong || (rolar && caixa.dataset.atual===strong && !caixa.classList.contains("oculto"))){
-      caixa.classList.add("oculto"); caixa.dataset.atual=""; return;
+      caixa.classList.add("oculto"); caixa.dataset.atual="";
+      if(naEstante) alvoEstudo(null);
+      return;
     }
     btn.classList.add("sel");
     caixa.dataset.atual = strong;
@@ -1399,6 +1408,7 @@ function ligarLexico(alvo, completo, strongInicial){
     const ent = lex && lex[strong];
     if(caixa.dataset.atual !== strong) return;
     if(!ent){ caixa.innerHTML = ""; caixa.classList.add("oculto"); return; }
+    if(naEstante) alvoEstudo(strong, ent.lemma);
     caixa.innerHTML = `
       <div class="lex-topo"><span class="escritura lex-lemma" ${strong[0]==="H"?'dir="rtl" lang="he"':'lang="grc"'}>${esc(ent.lemma)}</span>
         <span class="lex-translit">${esc(ent.translit)}</span>
@@ -1454,7 +1464,7 @@ function htmlComentarioCorpo(com, v, x, resumir){
   const longo = resumir && achado.texto.length > 1400;
   const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
   const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
-  return `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${esc(achado.texto)}</p>
+  return `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${linkarRefsTexto(achado.texto)}</p>
     ${longo ? `<button type="button" class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}
     <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
     ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
@@ -1787,7 +1797,8 @@ async function buscarStrong(){
     : `${achados.length.toLocaleString(est.idioma)} ${x.resultados}` + (achados.length > LIMITE ? ` — ${x.mostrando} ${LIMITE}` : "");
   if(achados.length) res.innerHTML = achados.slice(0, LIMITE).map(([k, ent])=>htmlStrongItem(k, ent, idxPal, x)).join("") + `<p class="fonte">${x.lexFonte}</p>`;
 }
-async function buscar(){
+async function buscar(aoDigitar){
+  aoDigitar = aoDigitar === true;   // pelo botão chega um evento de clique
   if(est.buscaModo==="strong") return buscarStrong();
   if(est.buscaModo==="temas") return buscarTemas();
   if(est.buscaModo==="dicionario") return buscarDic();
@@ -1795,14 +1806,24 @@ async function buscar(){
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
   const ref = parseRef(termo);
-  if(ref && ref.cap){ alternarPainel("painelBusca", false); return irParaRef(ref); }
-  if(parseStrong(termo)){ abrirBusca("strong"); $("campoBusca").value = termo; return buscarStrong(); }
-  if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
+  if(ref && ref.cap){
+    if(aoDigitar){ ++est.vezBusca; status.textContent = ""; return; }   // o botão "Ir para" já aparece logo abaixo
+    alternarPainel("painelBusca", false); return irParaRef(ref);
+  }
+  if(parseStrong(termo) && !aoDigitar){ abrirBusca("strong"); $("campoBusca").value = termo; return buscarStrong(); }
+  const vezG = ++est.vezBusca, grupos = gruposBusca(termo);
+  if(termo.length < 3 || parseStrong(termo)){
+    const g = await grupos;
+    if(vezG !== est.vezBusca) return;
+    res.innerHTML = g.html; g.ligar(res);
+    status.textContent = g.html ? "" : x.digiteBusca;
+    return;
+  }
   const frase = normStr(termo).replace(/\s+/g, " ");
   const palavras = frase.split(" ").filter(p=>p.length > 1);
   const ids = $("chkBibliaToda").checked || est.vista==="inicio" ? est.meta.books.map(b=>b.id) : [est.livro];
   status.textContent = x.buscando;
-  const vez = ++est.vezBusca;
+  const vez = vezG;
   const livros = await Promise.all(ids.map(id=>carregarLivro(est.traducao, id)));
   if(vez !== est.vezBusca) return;
   const exatos = [], soltos = [];
@@ -1818,9 +1839,13 @@ async function buscar(){
   const achados = exatos.concat(soltos), LIMITE = 300;   // a frase exata vem primeiro; depois, versículos com todas as palavras
   status.textContent = !achados.length ? x.nadaEncontrado
     : `${achados.length.toLocaleString(est.idioma)} ${x.resultados}` + (achados.length > LIMITE ? ` — ${x.mostrando} ${LIMITE}` : "");
-  res.innerHTML = achados.slice(0, LIMITE).map(a=>
+  const g = await grupos;
+  if(vez !== est.vezBusca) return;
+  res.innerHTML = g.html + (g.html && achados.length ? `<h4 class="bg-sec">${x.bgVersos}</h4>` : "") + achados.slice(0, LIMITE).map(a=>
     `<a class="res" href="${urlCapitulo(a.usfm, a.cap, a.v)}" style="display:block;text-decoration:none;color:inherit">
        <div class="ref">${esc(refStr(a.usfm,a.cap,a.v))}</div><p>${destacar(a.texto, a.termos)}</p></a>`).join("");
+  g.ligar(res);
+  if(!achados.length && g.html) status.textContent = "";
 }
 
 function avisoConteudo(x, temPT){ return !emPT() ? "" : `<p class="aviso-en">${temPT ? x.tradAuto : x.conteudoEN}</p>`; }
@@ -1832,6 +1857,128 @@ function rotuloDuplo(tit, n){
    "1TI 1:4; 4:7". Cada uma vira link; depois de uma referência, "; 4:7" é do mesmo livro, e o livro repetido logo em
    seguida não é escrito de novo ("Ezequiel 29:10; 30:6"). Número solto no texto ("40 dias") fica como está. */
 const RE_REF = /(?:\b([1-3]?[A-Z]{2,3}) )?(\d+)(?::(\d+))?((?:[-–]\d+(?::\d+)?)?(?:, ?\d+(?:[-–]\d+)?(?![\dA-Z]))*)/g;
+/* Referências escritas por extenso no texto corrido dos comentários: "Romanos 8:28", "1 Coríntios 11:10", "Sl 23:1",
+   "Jó 1:21" (com acento é Jó; sem, João), "Romans 8:28", "1 Cor. 13:4", "Ps. 23:1". Logo depois de uma, "; 14:44" é do
+   mesmo livro. Só vale com capítulo E versículo (evita "3 vezes"), e só se o nome for de um livro mesmo ("em 3:4" fica
+   como está). Cada uma vira link com prévia (classe ref-pv, data-pv="ROM.8.28.30"). */
+const ABREV_EN = {gen:"GEN",exod:"EXO",lev:"LEV",num:"NUM",deut:"DEU",josh:"JOS",judg:"JDG",neh:"NEH",esth:"EST",ps:"PSA",psa:"PSA",
+  psalm:"PSA",prov:"PRO",eccl:"ECC",eccles:"ECC",isa:"ISA",jer:"JER",lam:"LAM",ezek:"EZK",dan:"DAN",hos:"HOS",obad:"OBA",mic:"MIC",
+  nah:"NAM",hab:"HAB",zeph:"ZEP",hag:"HAG",zech:"ZEC",mal:"MAL",matt:"MAT",mk:"MRK",lk:"LUK",jn:"JHN",rom:"ROM",gal:"GAL",eph:"EPH",
+  phil:"PHP",col:"COL",tit:"TIT",philem:"PHM",heb:"HEB",jas:"JAS",jude:"JUD",rev:"REV",salmo:"PSA",
+  // estas só valem com o número antes ("1 Cor", "2 Sam")
+  sam:"SA",kgs:"KI",chron:"CH",cor:"CO",thess:"TH",tim:"TI",pet:"PE"};
+const RE_REF_TEXTO = /(?<![\p{L}\d])(?:([1-3]|I{1,3})\s?)?(\p{Lu}\p{L}{1,13}|\p{Ll}{2,4})\.?\s(\d{1,3}):(\d{1,3})((?:\s?[-–]\s?\d{1,3}(?!:))?(?:,\s?\d{1,3}(?:[-–]\d{1,3})?(?![\d:]))*)|(?<=;\s?)(\d{1,3}):(\d{1,3})((?:[-–]\d{1,3}(?!:))?)/gu;
+let mapaNomesLivros = null;
+function livroPorNome(num, nome){
+  const n = normStr(nome);
+  if(!num && n === "jo") return /ó/i.test(nome) ? "JOB" : "JHN";
+  if(!mapaNomesLivros){
+    mapaNomesLivros = {};
+    const pon = (k, id)=>{ if(k && !(k in mapaNomesLivros)) mapaNomesLivros[k] = id; };
+    for(const b of est.meta.books) for(const l of ["pt", "en", "es"]) if(b[l]) pon(normStr(b[l]).replace(/\s+/g, ""), b.id);
+    for(const [k, id] of Object.entries(ABREV)) pon(k, id);
+    for(const [k, id] of Object.entries(ABREV_EN)) if(id.length === 3) pon(k, id);
+  }
+  const id = mapaNomesLivros[num + n] || (num && ABREV_EN[n] && ABREV_EN[n].length === 2 ? num + ABREV_EN[n] : null);
+  return id && infoLivro(id) ? id : null;
+}
+function linkarRefsTexto(txt){
+  const s = String(txt ?? "");
+  let saida = "", fim = 0, ultimo = null;
+  for(const m of s.matchAll(RE_REF_TEXTO)){
+    let id, cap, v, resto;
+    if(m[3] !== undefined){
+      id = livroPorNome(m[1] ? ({ I:"1", II:"2", III:"3" }[m[1]] || m[1]) : "", m[2]);
+      if(!id){ ultimo = null; continue; }
+      [cap, v, resto] = [+m[3], +m[4], m[5] || ""];
+    } else {
+      if(!ultimo || !/^\s*;\s*$/.test(s.slice(fim, m.index))) continue;
+      [id, cap, v, resto] = [ultimo, +m[6], +m[7], m[8] || ""];
+    }
+    if(cap < 1 || cap > infoLivro(id).ch || v < 1) continue;
+    const ate = +((resto.match(/^\s?[-–]\s?(\d+)/) || [])[1] || 0);
+    saida += esc(s.slice(fim, m.index)) +
+      `<a class="ref-com ref-pv" href="${urlCapitulo(id, cap, v)}" data-pv="${id}.${cap}.${v}.${ate > v ? ate : v}">${esc(m[0])}</a>`;
+    fim = m.index + m[0].length; ultimo = id;
+  }
+  return saida + esc(s.slice(fim));
+}
+/* Prévia de referência: passar o mouse num link .ref-pv (ou tocar nele, no celular) mostra o versículo num cartão
+   flutuante, sem sair do que se está lendo. No toque, o primeiro toque abre a prévia e o segundo (ou "Abrir") navega. */
+const tocavel = ()=>matchMedia("(hover:none)").matches;
+const prv = { timer:null, fechar:null, link:null };
+function cartaoPrevia(){
+  let c = $("refPrevia");
+  if(!c){
+    c = document.createElement("div");
+    c.id = "refPrevia"; c.className = "ref-previa-flut"; c.setAttribute("role", "tooltip"); c.hidden = true;
+    c.addEventListener("mouseenter", ()=>clearTimeout(prv.fechar));
+    c.addEventListener("mouseleave", ()=>fecharPrevia(220));
+    document.body.appendChild(c);
+  }
+  return c;
+}
+function fecharPrevia(ms){
+  clearTimeout(prv.timer); clearTimeout(prv.fechar);
+  prv.fechar = setTimeout(()=>{ const c = $("refPrevia"); if(c) c.hidden = true; prv.link = null; }, ms || 0);
+}
+function posicionarPrevia(c, a){
+  const r = a.getBoundingClientRect(), w = Math.min(360, innerWidth - 24);
+  c.style.width = w + "px";
+  c.style.left = Math.min(Math.max(12, r.left + r.width / 2 - w / 2), innerWidth - w - 12) + "px";
+  const h = c.offsetHeight;
+  c.style.top = (r.bottom + 8 + h > innerHeight - 8 && r.top - h - 8 > 8 ? r.top - h - 8 : r.bottom + 8) + "px";
+}
+async function abrirPrevia(a){
+  let id, cap, v1, v2;
+  if(a.dataset.pv) [id, cap, v1, v2] = a.dataset.pv.split(".").map((p, i)=>i ? +p : p);
+  else {
+    const r = rotaDe(a.pathname, a.hash);
+    if(!r || r.vista !== "cap") return;
+    [id, cap, v1, v2] = [r.livro, r.cap, r.v || 1, r.v || 3];
+  }
+  const x = t(), c = cartaoPrevia();
+  clearTimeout(prv.fechar); prv.link = a;
+  const trad = ["orig", "byz"].includes(est.traducao) ? (emPT() ? "blivre" : est.idioma === "es" ? "rva" : "kjv") : est.traducao;
+  const titulo = refStr(id, cap, v1) + (v2 > v1 ? "-" + v2 : "");
+  c.innerHTML = `<div class="rp-topo"><b>${esc(titulo)}</b><a href="${esc(a.getAttribute("href"))}">${x.refAbrir} ›</a></div>
+    <p class="rp-texto">${x.carregando}</p>`;
+  c.hidden = false; posicionarPrevia(c, a);
+  const livro = await carregarLivro(trad, id);
+  if(prv.link !== a) return;
+  const versos = [];
+  for(let v = v1; v <= Math.min(v2, v1 + 4); v++){
+    const tx = livro && livro[cap - 1] && livro[cap - 1][v - 1];
+    if(tx) versos.push(`${v2 > v1 ? `<sup>${v}</sup>` : ""}${esc(tx)}`);
+  }
+  c.querySelector(".rp-texto").innerHTML = versos.join(" ") || "—";
+  c.insertAdjacentHTML("beforeend", `<p class="rp-trad">${esc(nomeTraducao(trad))}${v2 > v1 + 4 ? " · …" : ""}</p>`);
+  posicionarPrevia(c, a);
+}
+function ligarPrevias(){
+  document.addEventListener("mouseover", (e)=>{
+    if(tocavel() || !e.target.closest) return;
+    const a = e.target.closest("a.ref-pv");
+    if(!a) return;
+    if(a === prv.link){ clearTimeout(prv.fechar); return; }
+    clearTimeout(prv.timer);
+    prv.timer = setTimeout(()=>abrirPrevia(a), 260);
+  });
+  document.addEventListener("mouseout", (e)=>{
+    const a = e.target.closest && e.target.closest("a.ref-pv");
+    if(!a || (e.relatedTarget && a.contains(e.relatedTarget))) return;
+    clearTimeout(prv.timer);
+    if(prv.link === a) fecharPrevia(220);
+  });
+  // na captura da janela: roda antes do ouvinte que navega pelos links internos
+  window.addEventListener("click", (e)=>{
+    const a = e.target.closest && e.target.closest("a.ref-pv");
+    if(a && tocavel() && prv.link !== a){ e.preventDefault(); e.stopPropagation(); abrirPrevia(a); return; }
+    if(!(e.target.closest && e.target.closest("#refPrevia")) || (e.target.closest && e.target.closest("#refPrevia a"))) fecharPrevia(0);
+  }, true);
+  addEventListener("scroll", ()=>{ const c = $("refPrevia"); if(c && !c.hidden) fecharPrevia(0); }, { passive:true, capture:true });
+  addEventListener("keydown", (e)=>{ if(e.key === "Escape") fecharPrevia(0); });
+}
 function linkarRefs(txt){
   const s = String(txt ?? "");
   let saida = "", fim = 0, livro = null;
@@ -1841,7 +1988,7 @@ function linkarRefs(txt){
     const l = cod ? (infoLivro(cod) ? cod : null) : (seguida ? livro : null);
     if(!l || +c < 1 || +c > infoLivro(l).ch){ if(cod) livro = null; continue; }
     const nome = cod && !(seguida && cod === livro) ? esc(nomeLivro(l)) + " " : "";
-    saida += esc(s.slice(fim, m.index)) + linkRef(l, +c, +v || 0, nome + c + (v ? ":" + v : "") + esc(resto));
+    saida += esc(s.slice(fim, m.index)) + linkRef(l, +c, +v || 0, nome + c + (v ? ":" + v : "") + esc(resto), "tema-ref ref-pv");
     fim = m.index + todo.length; livro = l;
   }
   return saida + esc(s.slice(fim));
@@ -1909,16 +2056,9 @@ const CREDOS_ANTIGOS = [
   ["calcedonia", "Definição de Calcedônia", "calcedonia duas naturezas encarnacao cristo"]];
 const itemCredo = ([id, nome])=>({ html: `${esc(nome)} <span class="dout-tag">${t().credoSelo}</span>`, titulo: esc(nome),
   abrir: async ()=>`<a class="lex-pagina" href="/confissoes/credos/${id}/">${t().credoLer} ›</a>` });
-async function buscarTemas(){
-  const x = t(), termo = $("campoBusca").value.trim();
-  $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
-  const douts = await doutrinas();
-  if(termo.length < 2){
-    if(douts.length){ listarItens(douts.map(itemDoutrina)); $("buscaStatus").textContent = x.doutLista; }
-    else $("buscaStatus").textContent = x.digiteBusca;
-    return;
-  }
-  const [idx, alias, tit] = await Promise.all([idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
+async function itensTemas(termo){
+  const x = t();
+  const [douts, idx, alias, tit] = await Promise.all([doutrinas(), idxTemas(), aliasPT(), emPT() ? titulos("topics") : {}]);
   const alvo = normStr(termo), geral = RE_DOUT_GERAL.test(alvo);
   const dz = douts.filter(d=>geral || normStr(d.t).includes(alvo) || normStr(d.te || "").includes(alvo) || d.s.some(s=>normStr(s).includes(alvo)));
   const credos = CREDOS_ANTIGOS.filter(([, nome, chaves])=>geral || /credo|creed|simbolo/.test(alvo) || normStr(nome + " " + chaves).includes(alvo));
@@ -1930,19 +2070,78 @@ async function buscarTemas(){
       return (secao[nome] || []).map(l=>`<p class="tema-linha">${linkarRefs(l.replace(/^-/, ""))}</p>`).join("") +
         (await htmlLinkAcervo("topics", nome, x)) + `<p class="fonte">${x.fonteNave}</p>` + avisoConteudo(x, !!secao.__pt);
     }}));
-  listarItens([...dz.map(itemDoutrina), ...credos.map(itemCredo), ...nave]);
+  return [...dz.map(itemDoutrina), ...credos.map(itemCredo), ...nave];
+}
+async function buscarTemas(){
+  const x = t(), termo = $("campoBusca").value.trim(), vez = ++est.vezBusca;
+  $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
+  if(termo.length < 2){
+    const douts = await doutrinas();
+    if(vez !== est.vezBusca) return;
+    if(douts.length){ listarItens(douts.map(itemDoutrina)); $("buscaStatus").textContent = x.doutLista; }
+    else $("buscaStatus").textContent = x.digiteBusca;
+    return;
+  }
+  const itens = await itensTemas(termo);
+  if(vez === est.vezBusca) listarItens(itens);
+}
+async function itensDic(termo){
+  const x = t(), [idx, tit] = await Promise.all([idxDic(), emPT() ? titulos("dictionary") : {}]);
+  const alvo = normStr(termo);
+  return idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40).map(nome=>({
+    html: rotuloDuplo(tit, nome), titulo: rotuloDuplo(tit, nome), abrir: async ()=>{
+      const dic = await dicLetra(nome[0].toUpperCase());
+      return (dic[nome]||[]).map(d=>`<p class="dic-def">${linkarRefs(d)}</p>`).join("") +
+        (await htmlLinkAcervo("dictionary", nome, x)) + `<p class="fonte">${x.fonteEaston}</p>` + avisoConteudo(x, !!dic.__pt);
+    }}));
 }
 async function buscarDic(){
-  const x = t(), termo = $("campoBusca").value.trim();
+  const x = t(), termo = $("campoBusca").value.trim(), vez = ++est.vezBusca;
   $("buscaResultados").innerHTML = ""; $("buscaStatus").textContent = "";
   if(termo.length < 2){ $("buscaStatus").textContent = x.digiteBusca; return; }
-  const [idx, tit] = await Promise.all([idxDic(), emPT() ? titulos("dictionary") : {}]);
-  const alvo = normStr(termo);
-  listarVerbetes(idx.filter(s=>normStr(s).includes(alvo) || (tit[s] && normStr(tit[s]).includes(alvo))).slice(0, 40), tit, async (nome)=>{
-    const dic = await dicLetra(nome[0].toUpperCase());
-    return (dic[nome]||[]).map(d=>`<p class="dic-def">${linkarRefs(d)}</p>`).join("") +
-      (await htmlLinkAcervo("dictionary", nome, x)) + `<p class="fonte">${x.fonteEaston}</p>` + avisoConteudo(x, !!dic.__pt);
-  });
+  const itens = await itensDic(termo);
+  if(vez === est.vezBusca) listarItens(itens);
+}
+/* Busca universal (aba Texto): acima dos versículos, os temas e doutrinas, os verbetes do dicionário e as palavras do
+   original que batem com o termo. Cada item abre na aba dele já aberto; "ver todos" leva à aba com a busca feita.
+   O léxico inteiro (3 MB) não é carregado aqui: só o código Strong digitado e as palavras-chave (indice.json). */
+async function gruposBusca(termo){
+  const x = t(), alvo = normStr(termo), vazio = { html:"", ligar(){} };
+  if(alvo.length < 2) return vazio;
+  const cod = parseStrong(termo);
+  const [temas, dic, idxPal] = await Promise.all([
+    cod ? [] : itensTemas(termo), cod ? [] : itensDic(termo),
+    emPT() ? comCache(est.cachePalavras, "indice", "data/palavras/indice.json").catch(()=>null) : null]);
+  const orig = [];
+  if(cod){
+    const lex = await carregarLexico(cod[0]), ent = lex && lex[cod];
+    if(ent) orig.push({ cod, html: `<span class="bg-cod">${esc(cod)}</span> ${esc(ent.lemma)} · ${esc(ent.translit)}` });
+  } else if(idxPal && idxPal.lemas && alvo.length >= 3){
+    for(const [k, l] of Object.entries(idxPal.lemas)){
+      const formas = normStr(l.pt || "").split(/[,;/]/).map(f=>f.trim());
+      if(formas.some(f=>f === alvo || (alvo.length >= 4 && f.startsWith(alvo))))
+        orig.push({ cod: k, html: `<span class="bg-cod">${esc(k)}</span> ${esc(l.o || "")} · ${esc(l.pt)}` });
+      if(orig.length >= 4) break;
+    }
+  }
+  const grupos = [["temas", x.bgTemas, temas], ["dicionario", x.bgDic, dic], ["strong", x.bgOrig, orig]].filter(g=>g[2].length);
+  if(!grupos.length) return vazio;
+  const html = `<div class="busca-grupos">` + grupos.map(([modo, rot, itens])=>`<div class="bg-grupo"><h4>${rot}</h4><div class="bg-itens">` +
+    itens.slice(0, 4).map((it, i)=>`<button type="button" class="bg-item" data-modo="${modo}" data-n="${i}">${it.html}</button>`).join("") +
+    (itens.length > 4 ? `<button type="button" class="bg-mais" data-modo="${modo}">${x.bgTodos} (${itens.length})</button>` : "") +
+    `</div></div>`).join("") + `</div>`;
+  const porModo = Object.fromEntries(grupos.map(g=>[g[0], g[2]]));
+  return { html, ligar(raiz){
+    raiz.querySelectorAll(".bg-item, .bg-mais").forEach(b=>b.addEventListener("click", async ()=>{
+      const modo = b.dataset.modo, it = b.classList.contains("bg-item") ? porModo[modo][+b.dataset.n] : null;
+      abrirBusca(modo);
+      if(modo === "strong"){ if(it) $("campoBusca").value = it.cod; return buscarStrong(); }
+      if(!it) return buscar();
+      ++est.vezBusca;
+      $("buscaStatus").textContent = "";
+      $("buscaResultados").innerHTML = `<h3 class="res-titulo">${it.titulo}</h3>` + await it.abrir();
+    }));
+  }};
 }
 function abrirBusca(modo){
   alternarPainel("painelBusca", true);
@@ -2387,6 +2586,58 @@ function htmlPalavraEstante(v, x){
       <p class="fonte">${htmlFontesNota([m[4] || [], lema.nota ? lema.f || [] : []], x.chaveFonte)}</p></div>`
   };
 }
+/* Cabeçalho da estante: a palavra aberta no léxico, "voltar ao versículo" quando ele sai da tela e o modo
+   "acompanhar a leitura", em que a estante segue o versículo que está na altura de leitura (um terço da tela). */
+function alvoEstudo(strong, lema){
+  const el = $("estudoAlvo");
+  if(!el) return;
+  el.hidden = !strong;
+  el.innerHTML = strong ? `<span class="ea-num">${esc(strong)}</span> <span class="escritura" ${strong[0] === "H" ? 'dir="rtl" lang="he"' : 'lang="grc"'}>${esc(lema || "")}</span>` : "";
+}
+const versoEstudoEl = ()=>document.querySelector(`#leitor .verso[data-v="${est.versoEstudo}"]`);
+function irVersoEstudo(){
+  const el = versoEstudoEl();
+  if(el) el.scrollIntoView({ block:"center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+}
+function aplicarSegue(){
+  const b = $("estudoSegue"), x = t();
+  if(!b) return;
+  b.setAttribute("aria-pressed", !!est.estudoSegue);
+  b.title = est.estudoSegue ? x.estudoFixo : x.estudoSegue;
+  b.setAttribute("aria-label", b.title);
+}
+function verificarEstante(){
+  const volta = $("estudoVolta");
+  if(!volta || !bancadaAtiva()) return;
+  const topo = document.querySelector(".topo").getBoundingClientRect().bottom;
+  if(est.estudoSegue){
+    volta.hidden = true;
+    const linha = topo + (innerHeight - topo) * .3;
+    const alvo = [...document.querySelectorAll("#leitor .verso")].find(el=>el.getBoundingClientRect().bottom >= linha);
+    const escrevendo = document.activeElement && document.activeElement.id === "estanteNota";
+    if(alvo && +alvo.dataset.v !== est.versoEstudo && !escrevendo) atualizarEstudo(+alvo.dataset.v);
+    return;
+  }
+  const el = versoEstudoEl();
+  if(!el){ volta.hidden = true; return; }
+  const r = el.getBoundingClientRect(), acima = r.bottom < topo, abaixo = r.top > innerHeight;
+  volta.hidden = !(acima || abaixo);
+  if(!volta.hidden) volta.textContent = `${acima ? "↑" : "↓"} ${t().estudoVolta} ${est.versoEstudo}`;
+}
+function ligarEstante(){
+  est.estudoSegue = !!lerLS("logos_estudo_segue", false);
+  aplicarSegue();
+  $("estudoRef").addEventListener("click", irVersoEstudo);
+  $("estudoRef").addEventListener("keydown", (e)=>{ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); irVersoEstudo(); } });
+  $("estudoVolta").addEventListener("click", irVersoEstudo);
+  $("estudoSegue").addEventListener("click", ()=>{
+    est.estudoSegue = !est.estudoSegue;
+    gravarLS("logos_estudo_segue", est.estudoSegue);
+    aplicarSegue(); verificarEstante();
+  });
+  let espera = null;
+  addEventListener("scroll", ()=>{ clearTimeout(espera); espera = setTimeout(verificarEstante, 140); }, { passive:true });
+}
 async function atualizarEstudo(v, focarNota){
   if(!bancadaAtiva()) return;
   v = Math.max(1, Math.min(v || 1, est.versos.length || 1));
@@ -2398,6 +2649,9 @@ async function atualizarEstudo(v, focarNota){
   if(elVerso) elVerso.classList.add("em-estudo");
 
   $("estudoRef").textContent = refStr(est.livro, est.cap, v);
+  $("estudoRef").title = x.irVerso;
+  alvoEstudo(null);
+  verificarEstante();
   $("estudoCores").innerHTML = CORES.map(c=>
     `<button type="button" class="cor${est.marcas[chave]===c ? " sel" : ""}" data-cor="${c}" title="${x.marcar}: ${x.cores[c]}" aria-label="${x.marcar}: ${x.cores[c]}" aria-pressed="${est.marcas[chave]===c}" style="background:var(--m-${c})"></button>`).join("");
   $("estudoCores").querySelectorAll(".cor").forEach(b=>b.addEventListener("click", ()=>alternarMarcaVerso(v, b.dataset.cor)));
@@ -4189,7 +4443,14 @@ async function iniciar(){
   $("btnAtlasBuscar").addEventListener("click", buscarAtlas);
   $("campoAtlas").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscarAtlas(); });
   $("btnBuscar").addEventListener("click", buscar);
-  $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter") buscar(); });
+  $("campoBusca").addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ clearTimeout(est.esperaBusca); buscar(); } });
+  // resultados enquanto digita (menos na aba Strong, que carrega o léxico inteiro)
+  $("campoBusca").addEventListener("input", ()=>{
+    clearTimeout(est.esperaBusca);
+    if(est.buscaModo !== "strong") est.esperaBusca = setTimeout(()=>buscar(true), 320);
+  });
+  ligarPrevias();
+  ligarEstante();
   const dicaBusca = document.createElement("div");
   dicaBusca.className = "dica-ref-linha"; dicaBusca.setAttribute("aria-live", "polite");
   $("buscaStatus").before(dicaBusca);
