@@ -224,6 +224,17 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
   - Sem conta, tudo funciona via `localStorage` (`logos_lidos`, `logos_ultimo`, notas, marcas, planos).
   - Se `CONTA.url` estiver vazio ou `google` e `email` estiverem `false`, toda a interface de conta desaparece.
   - A sincronização (`sincronizar()`) é *local-first*: `tocar(tipo, chave)` registra pendências em `est.sinc.pend`, e conflitos no mesmo item são resolvidos pelo maior `ts` (`apagar` também grava timestamp). O mapa `DADOS` descreve cada categoria (`nota`, `marca`, `plano`, `lido`, `estado`).
+  - Referências no texto dos comentários ("Romanos 8:28", "1 Cor. 13:4", "Sl 23:1"; "Jó" com acento é Jó, sem é João)
+    viram link em `linkarRefsTexto` — só com capítulo E versículo, e só se o nome for de livro (`livroPorNome`). Todo
+    link `.ref-pv` (comentários, temas, dicionário) abre a prévia flutuante do versículo (`abrirPrevia`): mouse no
+    computador; no toque, o 1º toque mostra e o 2º (ou "Abrir") navega. O ouvinte fica na captura da janela, antes do
+    que navega pelos links internos.
+  - Cabeçalho da Estante: clicar na referência volta ao versículo; `#estudoAlvo` mostra a palavra aberta no léxico;
+    `#estudoVolta` aparece quando o versículo sai da tela; `#estudoSegue` ("Acompanhar a leitura", `logos_estudo_segue`)
+    faz a Estante seguir o versículo a 1/3 da altura da tela (`verificarEstante`, no scroll).
+  - Busca universal (aba Texto): enquanto digita (`buscar(true)`, 320 ms), mostra acima dos versículos os grupos Temas e
+    doutrinas, Dicionário e No original (`gruposBusca`, com `itensTemas`/`itensDic`, as mesmas das abas). Ao digitar, o
+    léxico inteiro não é carregado: só o código Strong digitado e as palavras-chave do `indice.json`.
   - O convite discreto para criar conta (`convidar(motivo)` / `mostrarConvite`) aparece no máximo uma vez por visita após interações reais e respeita adiamentos progressivos de 3, 7, 30 e 90 dias (`logos_convite`).
 - **Acervo em `data/` e scripts geradores**:
   - **Interlinear (`data/interlinear/`)**: sempre na numeração de versículos da Bíblia Livre (que difere do hebraico massorético em ~2.300 versículos e do grego em ~50; `gerar_interlinear_at.py` e `corrigir_interlinear_nt.py` fazem o alinhamento usando os dados da STEPBible em `ferramentas/fontes/`). No AT, o Strong é o da raiz; partículas feitas só de prefixo/sufixo ficam sem Strong. As glosas passam por `corrigir_glosas.py` (`preparar` / `aplicar`), auxiliado por `stepbible.py`, `nomes_pt.py` (`Yahweh` → `SENHOR`), `glosas_revisao.py` (`REVISAO`), `substantivos_pt.json` (sufixos pronominais hebraicos em 3ª pessoa `dele/dela/deles/delas`), concordância de artigos gregos pelo gênero léxico extraído da Bíblia Livre e `conjugar.py` (`você` → `tu/vós` conjugado). Por último entram as correções de sentido revisadas por LLM em `ferramentas/glosas_llm.json` (`tradutor/glosas_llm.py`): só trocam a glosa que ainda é igual à que o modelo viu (`de`), e a palavra já corrigida fica fora das regras. Por cima delas valem as correções à mão de `ferramentas/glosas_manuais.json`, no mesmo formato (`de` = a glosa que as regras deixaram; ficam à parte porque o `glosas_llm.py aplicar` regrava o `glosas_llm.json`). O comando `aplicar` é idempotente (depois de mexer no `glosas_llm.json`, rode até `--conferir` dar 0 capítulos, porque os artigos gregos vizinhos se ajustam na rodada seguinte).
