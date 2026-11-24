@@ -19,7 +19,7 @@ function montar({ tempos, tela, cartaoFinal }) {
   return {
     css: `
 .heb{font:400 300px/1 Cardo;color:#F4EFE4;direction:rtl}
-.tr{font:500 italic 74px "Cormorant Garamond";color:#D4AE6A;margin-top:30px}
+.tr{font:500 italic 74px "Cormorant Garamond";color:#D4AE6A;margin-top:90px}
 .sub{font:500 38px/1.4 Inter;color:rgba(244,239,228,.8);margin-top:60px}
 .num b{display:block;font:600 230px/1 Inter;letter-spacing:-.03em;color:#8C2D23}
 .num span{display:block;font:600 30px Inter;letter-spacing:.12em;text-transform:uppercase;color:#6D665A;margin-top:12px}
@@ -49,7 +49,7 @@ function montar({ tempos, tela, cartaoFinal }) {
         <p class="rot e" data-t="0.1">Palavra da semana · hebraico</p>
         <p class="heb e" data-t="0.3" style="margin-top:60px">חֶסֶד</p>
         <p class="tr e" data-t="${ini(0, 1) - .2}">hesed</p>
-        <p class="sub e" data-t="${ini(0, 1) + .2}">a palavra que nenhuma<br>tradução diz inteira</p></div>` },
+        <p class="sub e" data-t="${ini(0, 1) - .2}">a palavra que nenhuma<br>tradução diz inteira</p></div>` },
       { ini: B[1].ini, fim: B[2].ini, html: `<div class="mold"></div><div class="centro" style="justify-content:flex-start;padding-top:300px">
         <div class="num e" data-t="${B[1].ini + .1}"><b id="n250">250</b><span>vezes no Antigo Testamento</span></div>
         <div class="barra e" data-t="${ini(1, 1)}"><i id="barra"></i></div><p class="barra-rot e" data-t="${ini(1, 1) + .2}">mais da metade nos Salmos</p>
