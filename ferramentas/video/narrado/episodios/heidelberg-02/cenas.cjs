@@ -20,6 +20,7 @@ function montar({ tempos, tela, cartaoFinal }) {
 .pergunta-grande{font:600 110px/1.08 "Cormorant Garamond";color:#F4EFE4}
 .pergunta-grande em{font-style:italic;font-weight:500;color:#D4AE6A}
 .dom{font:600 200px/1 Inter;letter-spacing:-.03em;color:#8C2D23}
+.sub2{font:600 40px Inter;color:#1D1B18;margin-top:18px} .sub2 span{font-weight:500;color:#8A8274}
 .tres{display:flex;flex-direction:column;gap:26px;width:860px;margin-top:70px}
 .item{display:flex;align-items:center;gap:34px;background:#FBF8F1;border:1.5px solid #D8CDB6;border-radius:18px;padding:28px 36px;text-align:left;transition:none}
 .item b{flex:0 0 auto;width:90px;height:90px;border-radius:50%;background:#C9BFAB;color:#FAF7F0;display:grid;place-items:center;font:600 52px "Cormorant Garamond"}
@@ -52,23 +53,24 @@ function montar({ tempos, tela, cartaoFinal }) {
         <p class="pergunta-grande e" data-t="0.15">Como você conhece a sua <em>miséria</em>?</p></div>` },
       { ini: B[1].ini, fim: B[2].ini, html: `<div class="mold"></div><div class="centro" style="justify-content:flex-start;padding-top:280px">
         <p class="rot e" data-t="${B[1].ini + .1}">Domingo</p><p class="dom e" data-t="${B[1].ini + .25}">2</p>
+        <p class="sub2 e" data-t="${B[1].ini + .5}">perguntas 3 a 5 <span>· de 129 do catecismo</span></p>
         <p class="linha e" data-t="${ini(1, 1)}" style="margin-top:30px">das três coisas que precisamos saber</p>
         <div class="tres"><div class="item e" id="i1" data-t="${ini(1, 1) + .3}"><b>1</b><div>A nossa miséria</div></div>
           <div class="item e" data-t="${ini(1, 1) + .5}"><b>2</b><div>A nossa redenção</div></div>
           <div class="item e" data-t="${ini(1, 1) + .7}"><b>3</b><div>A nossa gratidão</div></div></div></div>` },
       { ini: B[2].ini, fim: B[3].ini, html: `<div class="mold"></div>
-        <div class="qa"><p class="rot e" data-t="${B[2].ini + .05}">Pergunta 3</p><p class="p e" data-t="${ini(2, 1)}">Como conheces a tua miséria?</p>
+        <div class="qa"><p class="rot e" data-t="${B[2].ini + .05}">Catecismo · Pergunta 3 de 129</p><p class="p e" data-t="${ini(2, 1)}">Como conheces a tua miséria?</p>
           <p class="r e" data-t="${ini(2, 3)}"><small>Resposta</small>Pela Lei de Deus.</p>
           <div class="verso e" data-t="${ini(2, 4) + .2}"><p>Assim, ninguém será justificado diante dele pelas obras da Lei, porque o que vem pela Lei é o <mark>conhecimento do pecado</mark>.</p><span>Romanos 3:20 · Bíblia Livre</span></div></div>` },
       { ini: B[3].ini, fim: B[4].ini, html: `<div class="mold"></div>
-        <div class="qa"><p class="rot e" data-t="${B[3].ini + .05}">Pergunta 4</p><p class="p e" data-t="${ini(3, 1)}">Que exige de nós a Lei de Deus?</p></div>
+        <div class="qa"><p class="rot e" data-t="${B[3].ini + .05}">Catecismo · Pergunta 4 de 129</p><p class="p e" data-t="${ini(3, 1)}">Que exige de nós a Lei de Deus?</p></div>
         <div class="mand">
           <div class="tab e" data-t="${ini(3, 3)}"><h3><i>1.</i> Amarás o Senhor teu Deus</h3><div class="chips">${["de todo o coração", "de toda a alma", "de todo o entendimento", "de todas as forças"].map((c, i) => `<span class="chip e" data-t="${[ini(3, 3) + .5, ini(3, 4), ini(3, 5), ini(3, 5) + 1.4][i]}">${c}</span>`).join("")}</div></div>
           <div class="tab e" data-t="${ini(3, 6)}"><h3><i>2.</i> Amarás o teu próximo como a ti mesmo</h3></div>
           <p class="ref e" data-t="${ini(3, 6) + .4}" style="text-align:center">Mateus 22:37-40</p>
           <p class="coracao e" data-t="${ini(3, 8)}">não só atos:<br>o coração inteiro</p></div>` },
       { classe: "escuro", ini: B[4].ini, fim: B[5].ini, html: `<div class="mold"></div><div class="centro" style="justify-content:flex-start;padding-top:300px">
-        <p class="rot e" data-t="${B[4].ini + .05}">Pergunta 5</p>
+        <p class="rot e" data-t="${B[4].ini + .05}">Catecismo · Pergunta 5 de 129</p>
         <p class="pergunta-grande e" data-t="${ini(4, 1)}" style="font-size:84px;margin-top:24px">Podes guardar tudo isso perfeitamente?</p>
         <p class="nao e" data-t="${ini(4, 2)}">Não.</p>
         <p class="resp5 e" data-t="${ini(4, 3)}">Por natureza estou inclinado a odiar a Deus e ao meu próximo.</p></div>` },
