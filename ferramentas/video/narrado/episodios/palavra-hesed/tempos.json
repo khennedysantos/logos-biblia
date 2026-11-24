@@ -1,0 +1,409 @@
+{
+ "duracao": 76.12,
+ "blocos": [
+  {
+   "ini": 0.0,
+   "fim": 5.21,
+   "texto": "Existe uma palavra hebraica que nenhuma tradução consegue dizer inteira: hesed."
+  },
+  {
+   "ini": 5.76,
+   "fim": 17.27,
+   "texto": "Ela aparece cerca de 250 vezes no Antigo Testamento, mais da metade nos Salmos. As Bíblias traduzem como bondade, misericórdia, benignidade, lealdade."
+  },
+  {
+   "ini": 17.69,
+   "fim": 27.81,
+   "texto": "Mas hesed não é só um sentimento bom. É o amor de quem fez uma aliança e não volta atrás. Um amor leal, que permanece mesmo quando o outro falha."
+  },
+  {
+   "ini": 28.31,
+   "fim": 37.68,
+   "texto": "Logo depois do bezerro de ouro, Deus se revela a Moisés assim: misericordioso, tardio para a ira, e grande em benignidade e verdade."
+  },
+  {
+   "ini": 38.19,
+   "fim": 55.02,
+   "texto": "No Salmo 136, o refrão se repete 26 vezes: porque a sua bondade dura para sempre. E em Lamentações, no meio das ruínas de Jerusalém: É pelas bondades do Senhor que não somos consumidos; elas são novas a cada manhã."
+  },
+  {
+   "ini": 55.51,
+   "fim": 63.86,
+   "texto": "E Deus pede o mesmo de nós. Em Miqueias: fazer o que é justo, amar a bondade, e andar humildemente com o teu Deus."
+  },
+  {
+   "ini": 64.49,
+   "fim": 69.25,
+   "texto": "No Sola, toque na palavra no original e veja todos os versículos em que ela aparece."
+  },
+  {
+   "ini": 69.66,
+   "fim": 76.12,
+   "texto": "Acesse solabiblia.com.br. É gratuito, e sem anúncios. Sola Scriptura."
+  }
+ ],
+ "frases": [
+  {
+   "ini": 0.0,
+   "fim": 4.08,
+   "texto": "Existe uma palavra hebraica que nenhuma tradução consegue dizer inteira:",
+   "bloco": 0
+  },
+  {
+   "ini": 4.63,
+   "fim": 5.21,
+   "texto": "hesed.",
+   "bloco": 0
+  },
+  {
+   "ini": 5.76,
+   "fim": 9.45,
+   "texto": "Ela aparece cerca de 250 vezes no Antigo Testamento,",
+   "bloco": 1
+  },
+  {
+   "ini": 9.82,
+   "fim": 11.33,
+   "texto": "mais da metade nos Salmos.",
+   "bloco": 1
+  },
+  {
+   "ini": 11.76,
+   "fim": 14.47,
+   "texto": "As Bíblias traduzem como bondade,",
+   "bloco": 1
+  },
+  {
+   "ini": 14.47,
+   "fim": 15.54,
+   "texto": "misericórdia,",
+   "bloco": 1
+  },
+  {
+   "ini": 15.54,
+   "fim": 16.53,
+   "texto": "benignidade,",
+   "bloco": 1
+  },
+  {
+   "ini": 16.53,
+   "fim": 17.27,
+   "texto": "lealdade.",
+   "bloco": 1
+  },
+  {
+   "ini": 17.69,
+   "fim": 20.21,
+   "texto": "Mas hesed não é só um sentimento bom.",
+   "bloco": 2
+  },
+  {
+   "ini": 20.64,
+   "fim": 23.95,
+   "texto": "É o amor de quem fez uma aliança e não volta atrás.",
+   "bloco": 2
+  },
+  {
+   "ini": 24.37,
+   "fim": 25.25,
+   "texto": "Um amor leal,",
+   "bloco": 2
+  },
+  {
+   "ini": 25.56,
+   "fim": 27.81,
+   "texto": "que permanece mesmo quando o outro falha.",
+   "bloco": 2
+  },
+  {
+   "ini": 28.31,
+   "fim": 30.09,
+   "texto": "Logo depois do bezerro de ouro,",
+   "bloco": 3
+  },
+  {
+   "ini": 30.09,
+   "fim": 31.81,
+   "texto": "Deus se revela a Moisés assim:",
+   "bloco": 3
+  },
+  {
+   "ini": 32.31,
+   "fim": 33.43,
+   "texto": "misericordioso,",
+   "bloco": 3
+  },
+  {
+   "ini": 33.76,
+   "fim": 35.11,
+   "texto": "tardio para a ira,",
+   "bloco": 3
+  },
+  {
+   "ini": 35.11,
+   "fim": 37.68,
+   "texto": "e grande em benignidade e verdade.",
+   "bloco": 3
+  },
+  {
+   "ini": 38.19,
+   "fim": 40.05,
+   "texto": "No Salmo 136,",
+   "bloco": 4
+  },
+  {
+   "ini": 40.05,
+   "fim": 42.33,
+   "texto": "o refrão se repete 26 vezes:",
+   "bloco": 4
+  },
+  {
+   "ini": 42.73,
+   "fim": 45.33,
+   "texto": "porque a sua bondade dura para sempre.",
+   "bloco": 4
+  },
+  {
+   "ini": 45.82,
+   "fim": 46.93,
+   "texto": "E em Lamentações,",
+   "bloco": 4
+  },
+  {
+   "ini": 46.93,
+   "fim": 49.02,
+   "texto": "no meio das ruínas de Jerusalém:",
+   "bloco": 4
+  },
+  {
+   "ini": 49.49,
+   "fim": 52.71,
+   "texto": "É pelas bondades do Senhor que não somos consumidos;",
+   "bloco": 4
+  },
+  {
+   "ini": 53.1,
+   "fim": 55.02,
+   "texto": "elas são novas a cada manhã.",
+   "bloco": 4
+  },
+  {
+   "ini": 55.51,
+   "fim": 57.12,
+   "texto": "E Deus pede o mesmo de nós.",
+   "bloco": 5
+  },
+  {
+   "ini": 57.58,
+   "fim": 58.34,
+   "texto": "Em Miqueias:",
+   "bloco": 5
+  },
+  {
+   "ini": 58.72,
+   "fim": 59.96,
+   "texto": "fazer o que é justo,",
+   "bloco": 5
+  },
+  {
+   "ini": 60.29,
+   "fim": 61.34,
+   "texto": "amar a bondade,",
+   "bloco": 5
+  },
+  {
+   "ini": 61.34,
+   "fim": 63.86,
+   "texto": "e andar humildemente com o teu Deus.",
+   "bloco": 5
+  },
+  {
+   "ini": 64.49,
+   "fim": 64.95,
+   "texto": "No Sola,",
+   "bloco": 6
+  },
+  {
+   "ini": 64.95,
+   "fim": 69.25,
+   "texto": "toque na palavra no original e veja todos os versículos em que ela aparece.",
+   "bloco": 6
+  },
+  {
+   "ini": 69.66,
+   "fim": 72.28,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 7
+  },
+  {
+   "ini": 72.63,
+   "fim": 73.4,
+   "texto": "É gratuito,",
+   "bloco": 7
+  },
+  {
+   "ini": 73.4,
+   "fim": 74.45,
+   "texto": "e sem anúncios.",
+   "bloco": 7
+  },
+  {
+   "ini": 74.83,
+   "fim": 76.12,
+   "texto": "Sola Scriptura.",
+   "bloco": 7
+  }
+ ],
+ "legendas": [
+  {
+   "ini": 0.0,
+   "fim": 4.08,
+   "texto": "Existe uma palavra hebraica que nenhuma tradução consegue dizer inteira:",
+   "bloco": 0
+  },
+  {
+   "ini": 4.63,
+   "fim": 5.21,
+   "texto": "hesed.",
+   "bloco": 0
+  },
+  {
+   "ini": 5.76,
+   "fim": 9.45,
+   "texto": "Ela aparece cerca de 250 vezes no Antigo Testamento,",
+   "bloco": 1
+  },
+  {
+   "ini": 9.82,
+   "fim": 11.33,
+   "texto": "mais da metade nos Salmos.",
+   "bloco": 1
+  },
+  {
+   "ini": 11.76,
+   "fim": 16.53,
+   "texto": "As Bíblias traduzem como bondade, misericórdia, benignidade,",
+   "bloco": 1
+  },
+  {
+   "ini": 16.53,
+   "fim": 17.27,
+   "texto": "lealdade.",
+   "bloco": 1
+  },
+  {
+   "ini": 17.69,
+   "fim": 20.21,
+   "texto": "Mas hesed não é só um sentimento bom.",
+   "bloco": 2
+  },
+  {
+   "ini": 20.64,
+   "fim": 23.95,
+   "texto": "É o amor de quem fez uma aliança e não volta atrás.",
+   "bloco": 2
+  },
+  {
+   "ini": 24.37,
+   "fim": 27.81,
+   "texto": "Um amor leal, que permanece mesmo quando o outro falha.",
+   "bloco": 2
+  },
+  {
+   "ini": 28.31,
+   "fim": 31.81,
+   "texto": "Logo depois do bezerro de ouro, Deus se revela a Moisés assim:",
+   "bloco": 3
+  },
+  {
+   "ini": 32.31,
+   "fim": 35.11,
+   "texto": "misericordioso, tardio para a ira,",
+   "bloco": 3
+  },
+  {
+   "ini": 35.11,
+   "fim": 37.68,
+   "texto": "e grande em benignidade e verdade.",
+   "bloco": 3
+  },
+  {
+   "ini": 38.19,
+   "fim": 42.33,
+   "texto": "No Salmo 136, o refrão se repete 26 vezes:",
+   "bloco": 4
+  },
+  {
+   "ini": 42.73,
+   "fim": 45.33,
+   "texto": "porque a sua bondade dura para sempre.",
+   "bloco": 4
+  },
+  {
+   "ini": 45.82,
+   "fim": 49.02,
+   "texto": "E em Lamentações, no meio das ruínas de Jerusalém:",
+   "bloco": 4
+  },
+  {
+   "ini": 49.49,
+   "fim": 52.71,
+   "texto": "É pelas bondades do Senhor que não somos consumidos;",
+   "bloco": 4
+  },
+  {
+   "ini": 53.1,
+   "fim": 55.02,
+   "texto": "elas são novas a cada manhã.",
+   "bloco": 4
+  },
+  {
+   "ini": 55.51,
+   "fim": 57.12,
+   "texto": "E Deus pede o mesmo de nós.",
+   "bloco": 5
+  },
+  {
+   "ini": 57.58,
+   "fim": 61.34,
+   "texto": "Em Miqueias: fazer o que é justo, amar a bondade,",
+   "bloco": 5
+  },
+  {
+   "ini": 61.34,
+   "fim": 63.86,
+   "texto": "e andar humildemente com o teu Deus.",
+   "bloco": 5
+  },
+  {
+   "ini": 64.49,
+   "fim": 64.95,
+   "texto": "No Sola,",
+   "bloco": 6
+  },
+  {
+   "ini": 64.95,
+   "fim": 69.25,
+   "texto": "toque na palavra no original e veja todos os versículos em que ela aparece.",
+   "bloco": 6
+  },
+  {
+   "ini": 69.66,
+   "fim": 72.28,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 7
+  },
+  {
+   "ini": 72.63,
+   "fim": 74.45,
+   "texto": "É gratuito, e sem anúncios.",
+   "bloco": 7
+  },
+  {
+   "ini": 74.83,
+   "fim": 76.12,
+   "texto": "Sola Scriptura.",
+   "bloco": 7
+  }
+ ]
+}
