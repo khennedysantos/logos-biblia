@@ -1,9 +1,9 @@
-# Domingo, 29/11/2026: Catecismo de Heidelberg, Domingo 2 (perguntas 3 a 5). Um bloco por cena.
+# Domingo, 29/11/2026: Catecismo de Heidelberg, Domingo 2 (perguntas 3 a 5). Um bloco por cena; ~165 palavras = 1 min.
 # Texto das respostas: tradução do Sola em data/confissoes/heidelberg.json.
 
 Como você conhece a sua miséria?
 
-Este é o Domingo {2|dois} do Catecismo de Heidelberg. Depois do consolo, o catecismo começa pela primeira das três coisas que precisamos saber: a nossa miséria.
+Domingo {2|dois} do Catecismo de Heidelberg. Das três coisas que precisamos saber, a primeira: a nossa miséria.
 
 Pergunta {3|três}: Como conheces a tua miséria? Resposta: Pela Lei de Deus. Como diz Paulo em Romanos: o que vem pela Lei é o conhecimento do pecado.
 
@@ -13,6 +13,6 @@ Pergunta {5|cinco}: Podes guardar tudo isso perfeitamente? Não; porque por natu
 
 É uma resposta dura. Mas é o diagnóstico antes do remédio. Só quem conhece a doença procura o médico.
 
-No Sola, você acompanha o Heidelberg em {52|cinquenta e dois} Domingos, com todas as perguntas e respostas.
+No Sola, você acompanha o Heidelberg em {52|cinquenta e dois} Domingos.
 
 Acesse {solabiblia.com.br|sola bíblia ponto com ponto bê erre}. É gratuito, e sem anúncios. Sola Scriptura.
