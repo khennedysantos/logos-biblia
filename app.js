@@ -1472,9 +1472,12 @@ function htmlComentarioCorpo(com, v, x, resumir){
 function ligarLerMais(raiz, x){
   const lm = raiz.querySelector(".ler-mais");
   if(lm) lm.addEventListener("click", ()=>{
+    const antes = lm.getBoundingClientRect().top;
     const abrir = raiz.querySelector(".comentario-texto").classList.toggle("recolhido") === false;
     lm.textContent = abrir ? x.lerMenos : x.lerMais;
     lm.setAttribute("aria-expanded", abrir);
+    // ao recolher, o texto encolhe acima do botão e a página "cai" lá para baixo: mantém o botão onde estava
+    if(!abrir) window.scrollBy({ top: lm.getBoundingClientRect().top - antes, behavior: "instant" });
   });
 }
 function htmlRefsLista(lista, x){
