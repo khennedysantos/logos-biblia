@@ -1,0 +1,403 @@
+{
+ "duracao": 75.31,
+ "blocos": [
+  {
+   "ini": 0.0,
+   "fim": 1.98,
+   "texto": "Como você conhece a sua miséria?"
+  },
+  {
+   "ini": 2.89,
+   "fim": 10.62,
+   "texto": "Domingo 2 do Catecismo de Heidelberg. Das três coisas que precisamos saber, a primeira: a nossa miséria."
+  },
+  {
+   "ini": 11.41,
+   "fim": 22.55,
+   "texto": "Pergunta 3: Como conheces a tua miséria? Resposta: Pela Lei de Deus. Como diz Paulo em Romanos: o que vem pela Lei é o conhecimento do pecado."
+  },
+  {
+   "ini": 23.32,
+   "fim": 45.64,
+   "texto": "Pergunta 4: Que exige de nós a Lei de Deus? Cristo a resume em dois mandamentos: Amarás o Senhor teu Deus de todo o teu coração, de toda a tua alma, de todo o teu entendimento e de todas as tuas forças. E amarás o teu próximo como a ti mesmo. Repare: a Lei não pede só atos, pede o coração inteiro."
+  },
+  {
+   "ini": 46.43,
+   "fim": 55.48,
+   "texto": "Pergunta 5: Podes guardar tudo isso perfeitamente? Não; porque por natureza estou inclinado a odiar a Deus e ao meu próximo."
+  },
+  {
+   "ini": 56.23,
+   "fim": 63.08,
+   "texto": "É uma resposta dura. Mas é o diagnóstico antes do remédio. Só quem conhece a doença procura o médico."
+  },
+  {
+   "ini": 63.91,
+   "fim": 67.81,
+   "texto": "No Sola, você acompanha o Heidelberg em 52 Domingos."
+  },
+  {
+   "ini": 68.24,
+   "fim": 75.31,
+   "texto": "Acesse solabiblia.com.br. É gratuito, e sem anúncios. Sola Scriptura."
+  }
+ ],
+ "frases": [
+  {
+   "ini": 0.0,
+   "fim": 1.98,
+   "texto": "Como você conhece a sua miséria?",
+   "bloco": 0
+  },
+  {
+   "ini": 2.89,
+   "fim": 5.43,
+   "texto": "Domingo 2 do Catecismo de Heidelberg.",
+   "bloco": 1
+  },
+  {
+   "ini": 6.14,
+   "fim": 8.17,
+   "texto": "Das três coisas que precisamos saber,",
+   "bloco": 1
+  },
+  {
+   "ini": 8.53,
+   "fim": 9.12,
+   "texto": "a primeira:",
+   "bloco": 1
+  },
+  {
+   "ini": 9.56,
+   "fim": 10.62,
+   "texto": "a nossa miséria.",
+   "bloco": 1
+  },
+  {
+   "ini": 11.41,
+   "fim": 12.25,
+   "texto": "Pergunta 3:",
+   "bloco": 2
+  },
+  {
+   "ini": 12.83,
+   "fim": 14.48,
+   "texto": "Como conheces a tua miséria?",
+   "bloco": 2
+  },
+  {
+   "ini": 15.15,
+   "fim": 15.8,
+   "texto": "Resposta:",
+   "bloco": 2
+  },
+  {
+   "ini": 16.33,
+   "fim": 17.42,
+   "texto": "Pela Lei de Deus.",
+   "bloco": 2
+  },
+  {
+   "ini": 17.99,
+   "fim": 19.36,
+   "texto": "Como diz Paulo em Romanos:",
+   "bloco": 2
+  },
+  {
+   "ini": 19.76,
+   "fim": 22.55,
+   "texto": "o que vem pela Lei é o conhecimento do pecado.",
+   "bloco": 2
+  },
+  {
+   "ini": 23.32,
+   "fim": 24.16,
+   "texto": "Pergunta 4:",
+   "bloco": 3
+  },
+  {
+   "ini": 24.67,
+   "fim": 26.67,
+   "texto": "Que exige de nós a Lei de Deus?",
+   "bloco": 3
+  },
+  {
+   "ini": 27.39,
+   "fim": 29.44,
+   "texto": "Cristo a resume em dois mandamentos:",
+   "bloco": 3
+  },
+  {
+   "ini": 29.88,
+   "fim": 33.03,
+   "texto": "Amarás o Senhor teu Deus de todo o teu coração,",
+   "bloco": 3
+  },
+  {
+   "ini": 33.03,
+   "fim": 34.31,
+   "texto": "de toda a tua alma,",
+   "bloco": 3
+  },
+  {
+   "ini": 34.31,
+   "fim": 37.86,
+   "texto": "de todo o teu entendimento e de todas as tuas forças.",
+   "bloco": 3
+  },
+  {
+   "ini": 38.34,
+   "fim": 40.64,
+   "texto": "E amarás o teu próximo como a ti mesmo.",
+   "bloco": 3
+  },
+  {
+   "ini": 41.3,
+   "fim": 41.78,
+   "texto": "Repare:",
+   "bloco": 3
+  },
+  {
+   "ini": 42.25,
+   "fim": 43.89,
+   "texto": "a Lei não pede só atos,",
+   "bloco": 3
+  },
+  {
+   "ini": 44.24,
+   "fim": 45.64,
+   "texto": "pede o coração inteiro.",
+   "bloco": 3
+  },
+  {
+   "ini": 46.43,
+   "fim": 47.28,
+   "texto": "Pergunta 5:",
+   "bloco": 4
+  },
+  {
+   "ini": 47.8,
+   "fim": 50.13,
+   "texto": "Podes guardar tudo isso perfeitamente?",
+   "bloco": 4
+  },
+  {
+   "ini": 50.8,
+   "fim": 51.15,
+   "texto": "Não;",
+   "bloco": 4
+  },
+  {
+   "ini": 51.6,
+   "fim": 55.48,
+   "texto": "porque por natureza estou inclinado a odiar a Deus e ao meu próximo.",
+   "bloco": 4
+  },
+  {
+   "ini": 56.23,
+   "fim": 57.38,
+   "texto": "É uma resposta dura.",
+   "bloco": 5
+  },
+  {
+   "ini": 57.94,
+   "fim": 60.06,
+   "texto": "Mas é o diagnóstico antes do remédio.",
+   "bloco": 5
+  },
+  {
+   "ini": 60.51,
+   "fim": 63.08,
+   "texto": "Só quem conhece a doença procura o médico.",
+   "bloco": 5
+  },
+  {
+   "ini": 63.91,
+   "fim": 64.39,
+   "texto": "No Sola,",
+   "bloco": 6
+  },
+  {
+   "ini": 64.39,
+   "fim": 67.81,
+   "texto": "você acompanha o Heidelberg em 52 Domingos.",
+   "bloco": 6
+  },
+  {
+   "ini": 68.24,
+   "fim": 71.2,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 7
+  },
+  {
+   "ini": 71.6,
+   "fim": 72.41,
+   "texto": "É gratuito,",
+   "bloco": 7
+  },
+  {
+   "ini": 72.41,
+   "fim": 73.52,
+   "texto": "e sem anúncios.",
+   "bloco": 7
+  },
+  {
+   "ini": 73.95,
+   "fim": 75.31,
+   "texto": "Sola Scriptura.",
+   "bloco": 7
+  }
+ ],
+ "legendas": [
+  {
+   "ini": 0.0,
+   "fim": 1.98,
+   "texto": "Como você conhece a sua miséria?",
+   "bloco": 0
+  },
+  {
+   "ini": 2.89,
+   "fim": 5.43,
+   "texto": "Domingo 2 do Catecismo de Heidelberg.",
+   "bloco": 1
+  },
+  {
+   "ini": 6.14,
+   "fim": 9.12,
+   "texto": "Das três coisas que precisamos saber, a primeira:",
+   "bloco": 1
+  },
+  {
+   "ini": 9.56,
+   "fim": 10.62,
+   "texto": "a nossa miséria.",
+   "bloco": 1
+  },
+  {
+   "ini": 11.41,
+   "fim": 14.48,
+   "texto": "Pergunta 3: Como conheces a tua miséria?",
+   "bloco": 2
+  },
+  {
+   "ini": 15.15,
+   "fim": 17.42,
+   "texto": "Resposta: Pela Lei de Deus.",
+   "bloco": 2
+  },
+  {
+   "ini": 17.99,
+   "fim": 19.36,
+   "texto": "Como diz Paulo em Romanos:",
+   "bloco": 2
+  },
+  {
+   "ini": 19.76,
+   "fim": 22.55,
+   "texto": "o que vem pela Lei é o conhecimento do pecado.",
+   "bloco": 2
+  },
+  {
+   "ini": 23.32,
+   "fim": 26.67,
+   "texto": "Pergunta 4: Que exige de nós a Lei de Deus?",
+   "bloco": 3
+  },
+  {
+   "ini": 27.39,
+   "fim": 29.44,
+   "texto": "Cristo a resume em dois mandamentos:",
+   "bloco": 3
+  },
+  {
+   "ini": 29.88,
+   "fim": 33.03,
+   "texto": "Amarás o Senhor teu Deus de todo o teu coração,",
+   "bloco": 3
+  },
+  {
+   "ini": 33.03,
+   "fim": 34.31,
+   "texto": "de toda a tua alma,",
+   "bloco": 3
+  },
+  {
+   "ini": 34.31,
+   "fim": 37.86,
+   "texto": "de todo o teu entendimento e de todas as tuas forças.",
+   "bloco": 3
+  },
+  {
+   "ini": 38.34,
+   "fim": 40.64,
+   "texto": "E amarás o teu próximo como a ti mesmo.",
+   "bloco": 3
+  },
+  {
+   "ini": 41.3,
+   "fim": 45.64,
+   "texto": "Repare: a Lei não pede só atos, pede o coração inteiro.",
+   "bloco": 3
+  },
+  {
+   "ini": 46.43,
+   "fim": 50.13,
+   "texto": "Pergunta 5: Podes guardar tudo isso perfeitamente?",
+   "bloco": 4
+  },
+  {
+   "ini": 50.8,
+   "fim": 51.15,
+   "texto": "Não;",
+   "bloco": 4
+  },
+  {
+   "ini": 51.6,
+   "fim": 55.48,
+   "texto": "porque por natureza estou inclinado a odiar a Deus e ao meu próximo.",
+   "bloco": 4
+  },
+  {
+   "ini": 56.23,
+   "fim": 57.38,
+   "texto": "É uma resposta dura.",
+   "bloco": 5
+  },
+  {
+   "ini": 57.94,
+   "fim": 60.06,
+   "texto": "Mas é o diagnóstico antes do remédio.",
+   "bloco": 5
+  },
+  {
+   "ini": 60.51,
+   "fim": 63.08,
+   "texto": "Só quem conhece a doença procura o médico.",
+   "bloco": 5
+  },
+  {
+   "ini": 63.91,
+   "fim": 67.81,
+   "texto": "No Sola, você acompanha o Heidelberg em 52 Domingos.",
+   "bloco": 6
+  },
+  {
+   "ini": 68.24,
+   "fim": 71.2,
+   "texto": "Acesse solabiblia.com.br.",
+   "bloco": 7
+  },
+  {
+   "ini": 71.6,
+   "fim": 73.52,
+   "texto": "É gratuito, e sem anúncios.",
+   "bloco": 7
+  },
+  {
+   "ini": 73.95,
+   "fim": 75.31,
+   "texto": "Sola Scriptura.",
+   "bloco": 7
+  }
+ ]
+}
