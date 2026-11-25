@@ -30,6 +30,8 @@ DESCRICAO = {
                        "(1619), com os textos de prova da edição francesa.",
     "heidelberg": "As 129 perguntas e respostas do Catecismo de Heidelberg (1563), nos 52 Domingos, a começar por "
                   "“Qual é o teu único consolo na vida e na morte?”.",
+    "confissao-batista-1644": "Os 53 artigos da Primeira Confissão de Fé Batista de Londres (1644), das sete igrejas "
+                              "batistas particulares de Londres, com as notas de margem do original (os textos de prova).",
     "confissao-batista-1689": "Os 32 capítulos da Segunda Confissão de Fé Batista de Londres (redigida em 1677 e "
                               "adotada em 1689), o principal símbolo de fé batista reformado, feita sobre a Confissão "
                               "de Westminster.",
@@ -43,14 +45,18 @@ AVISO_SCHAFF = ("Texto de domínio público, do inglês publicado por Philip Sch
 AVISO_1689 = ("Texto de domínio público (edição inglesa de 1677/1689); tradução do Sola, feita com IA a partir da "
               "tradução da Confissão de Westminster nos trechos em comum (pode conter imprecisões). Esta edição não "
               "traz os textos de prova.")
+AVISO_1644 = ("Texto de domínio público (Londres, 1644), na transcrição do The Reformed Reader; tradução do Sola, feita com "
+              "IA (pode conter imprecisões). Textos de prova das notas de margem do original, no texto da Bíblia Livre; "
+              "os títulos dos artigos são do Sola (o original não os tem).")
 AVISOS = {"credos": AVISO_CREDOS, "heidelberg": AVISO_SCHAFF, "confissao-batista-1689": AVISO_1689,
+          "confissao-batista-1644": AVISO_1644,
           "confissao-belga": AVISO_SCHAFF + " Textos de prova da edição francesa, no texto da Bíblia Livre."}
 # as páginas das confissões se vestem como o app (topo com a marca e botões, cartões por tradição); o estilo vai só nelas,
 # num <style> no <head>, para não mudar o lexico.css (que reescreveria as ~55 mil páginas avulsas)
 TRADICOES = [("Igreja antiga", "A fé comum dos primeiros séculos", ["credos"]),
              ("Padrões de Westminster", "Presbiterianos, 1647", ["westminster", "catecismo-maior", "breve-catecismo"]),
              ("Três Formas de Unidade", "Reformados continentais", ["confissao-belga", "heidelberg", "canones-de-dort"]),
-             ("Batista reformada", "Batistas particulares, Londres", ["confissao-batista-1689"])]
+             ("Batista reformada", "Batistas particulares, Londres", ["confissao-batista-1644", "confissao-batista-1689"])]
 RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que toda a Igreja confessa.",
           "westminster": "O principal símbolo de fé presbiteriano, com os textos de prova da Assembleia.",
           "catecismo-maior": "Para o ensino na igreja: a doutrina e os deveres, com os textos de prova.",
@@ -58,6 +64,7 @@ RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que tod
           "confissao-belga": "Escrita por Guido de Brès e revista no Sínodo de Dort.",
           "heidelberg": "Dividido em 52 Domingos, a começar pelo único consolo na vida e na morte.",
           "canones-de-dort": "Os cinco pontos da doutrina da graça e a rejeição dos erros.",
+          "confissao-batista-1644": "A Primeira Confissão de Londres, das sete igrejas batistas particulares.",
           "confissao-batista-1689": "A Segunda Confissão de Londres, feita sobre a de Westminster."}
 # o topo é o mesmo do app (marca, Livros, barra de busca, botões com ícone e "Mais"), mas em HTML puro: cada botão é
 # um link para o app com ?abrir=<botão> (o app abre o painel ao carregar, abrirPeloEndereco); o "Mais" é um <details>
@@ -294,7 +301,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
             for d in ("credos", "westminster", "catecismo-maior", "breve-catecismo", "confissao-belga", "heidelberg",
-                      "canones-de-dort", "confissao-batista-1689")]
+                      "canones-de-dort", "confissao-batista-1644", "confissao-batista-1689")]
     for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
         texto(l, 1, 1)
     tamanhos = {}
@@ -358,20 +365,22 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                     rot_it = it["n"]
                     if d == "canones-de-dort":
                         rot_it = ("Artigo " if it["n"].startswith("A") else "Rejeição dos erros ") + it["n"][1:]
-                    elif d == "confissao-belga":
+                    elif d in ("confissao-belga", "confissao-batista-1644"):
                         rot_it = f"artigo {n}"
                     else:
                         rot_it = f"{n}.{it['n']}"
                     rot_cit = {"westminster": f"Confissão de Westminster {rot_it}", "confissao-belga": f"{nome}, {rot_it}",
+                               "confissao-batista-1644": f"Confissão Batista de 1644, {rot_it}",
                                "canones-de-dort": f"{nome}, capítulo {n}, {rot_it[:1].lower() + rot_it[1:]}"}.get(d, f"{nome} {rot_it}")
                     citar(it["provas"], rot_cit, caminho,
                           it.get("pt") or it["en"])
                     texto_it = paragrafo(it.get("pt") or it["en"], it["provas"], f"s{it['n']}")
-                    if d == "confissao-belga":                   # os parágrafos de um artigo, sem título cada um
+                    if d in ("confissao-belga", "confissao-batista-1644"):   # os parágrafos de um artigo, sem título cada um
                         blocos.append(f'<div id="s{it["n"]}">{texto_it}</div>')
                     else:
                         blocos.append(f'<h2 class="cf-n" id="s{it["n"]}">{e(rot_it)}</h2>{texto_it}')
-                rot_doc = {"westminster": "Capítulo", "confissao-batista-1689": "Capítulo", "confissao-belga": "Artigo"}.get(d, "Capítulo de doutrina")
+                rot_doc = {"westminster": "Capítulo", "confissao-batista-1689": "Capítulo", "confissao-belga": "Artigo",
+                           "confissao-batista-1644": "Artigo"}.get(d, "Capítulo de doutrina")
                 ant = f'<span>‹ <a href="{base}{nums[i - 1]}/">{rot_doc} {nums[i - 1]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{nums[i + 1]}/">{rot_doc} {nums[i + 1]}</a> ›</span>' if i + 1 < len(nums) else "<span></span>"
                 corpo = (f'{topo}<h1>{e(titulo)}</h1><p class="lex-translit">{e(nome)}, {rot_doc.lower()} {n}</p>'
@@ -382,7 +391,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
             lista = "".join(f'<li><a href="{base}{n}/"><b>{n}</b><span>{e(p.get("titulo") or p["titulo_en"])}</span></a></li>'
                             for p, n in zip(partes, nums))
             tamanho = (["5 capítulos de doutrina"] if d == "canones-de-dort" else
-                       [f"{len(partes)} artigos" if d == "confissao-belga" else f"{len(partes)} capítulos"])
+                       [f"{len(partes)} artigos" if d in ("confissao-belga", "confissao-batista-1644") else f"{len(partes)} capítulos"])
         tamanhos[d] = tamanho[0]
         tradicao = next(t for t, _, ds in TRADICOES if d in ds)
         gravar(base, f"{nome} ({doc['ano']}) em português | Sola", DESCRICAO[d],
@@ -393,8 +402,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
     desc = ("Os símbolos de fé em português: os credos da Igreja antiga e, da tradição reformada, os Padrões de "
             "Westminster (a Confissão de Fé, o Catecismo Maior e o Breve Catecismo) e as Três Formas de Unidade (a "
-            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e a Confissão "
-            "Batista de Londres de 1689.")
+            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e as Confissões "
+            "Batistas de Londres de 1644 e de 1689.")
     gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
            '<header class="cf-heroi"><p class="lex-sobre">Símbolos de fé</p><h1>Confissões e <em>catecismos</em></h1>'
            f'<p class="cf-sub">{e(desc)}</p></header>' +
