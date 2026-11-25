@@ -30,6 +30,9 @@ DESCRICAO = {
                        "(1619), com os textos de prova da edição francesa.",
     "heidelberg": "As 129 perguntas e respostas do Catecismo de Heidelberg (1563), nos 52 Domingos, a começar por "
                   "“Qual é o teu único consolo na vida e na morte?”.",
+    "confissao-batista-1689": "Os 32 capítulos da Segunda Confissão de Fé Batista de Londres (redigida em 1677 e "
+                              "adotada em 1689), o principal símbolo de fé batista reformado, feita sobre a Confissão "
+                              "de Westminster.",
 }
 AVISO_CREDOS = ("Textos antigos, em domínio público. Tradução do Sola, feita com IA a partir do latim e do grego e "
                 "conferida com textos ingleses em domínio público (pode conter imprecisões).")
@@ -37,7 +40,10 @@ AVISO = ("Texto de domínio público; tradução automática do original inglês
          "imprecisões). Textos de prova da Assembleia de Westminster, no texto da Bíblia Livre.")
 AVISO_SCHAFF = ("Texto de domínio público, do inglês publicado por Philip Schaff (The Creeds of Christendom, 1877); "
                 "tradução do Sola, feita com IA (pode conter imprecisões).")
-AVISOS = {"credos": AVISO_CREDOS, "heidelberg": AVISO_SCHAFF,
+AVISO_1689 = ("Texto de domínio público (edição inglesa de 1677/1689); tradução do Sola, feita com IA a partir da "
+              "tradução da Confissão de Westminster nos trechos em comum (pode conter imprecisões). Esta edição não "
+              "traz os textos de prova.")
+AVISOS = {"credos": AVISO_CREDOS, "heidelberg": AVISO_SCHAFF, "confissao-batista-1689": AVISO_1689,
           "confissao-belga": AVISO_SCHAFF + " Textos de prova da edição francesa, no texto da Bíblia Livre."}
 CURTO = {"breve-catecismo": "Breve Catecismo de Westminster", "catecismo-maior": "Catecismo Maior de Westminster",
          "heidelberg": "Catecismo de Heidelberg"}
@@ -109,7 +115,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
             for d in ("credos", "westminster", "catecismo-maior", "breve-catecismo", "confissao-belga", "heidelberg",
-                      "canones-de-dort")]
+                      "canones-de-dort", "confissao-batista-1689")]
     for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
         texto(l, 1, 1)
     for doc in docs:
@@ -182,7 +188,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                         blocos.append(f'<div id="s{it["n"]}">{texto_it}</div>')
                     else:
                         blocos.append(f'<h2 class="cf-n" id="s{it["n"]}">{e(rot_it)}</h2>{texto_it}')
-                rot_doc = {"westminster": "Capítulo", "confissao-belga": "Artigo"}.get(d, "Capítulo de doutrina")
+                rot_doc = {"westminster": "Capítulo", "confissao-batista-1689": "Capítulo", "confissao-belga": "Artigo"}.get(d, "Capítulo de doutrina")
                 ant = f'<span>‹ <a href="{base}{nums[i - 1]}/">{rot_doc} {nums[i - 1]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{nums[i + 1]}/">{rot_doc} {nums[i + 1]}</a> ›</span>' if i + 1 < len(nums) else "<span></span>"
                 corpo = (f'{topo}<h1>{e(titulo)}</h1><p class="lex-translit">{e(nome)}, {rot_doc.lower()} {n}</p>'
@@ -198,11 +204,12 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
     desc = ("Os símbolos de fé em português: os credos da Igreja antiga e, da tradição reformada, os Padrões de "
             "Westminster (a Confissão de Fé, o Catecismo Maior e o Breve Catecismo) e as Três Formas de Unidade (a "
-            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova.")
+            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e a Confissão "
+            "Batista de Londres de 1689.")
     gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
            f'<h1>Confissões e catecismos</h1><p class="lex-resumo">{e(desc)}</p><ul class="lex-lista">' +
            "".join(f'<li><a href="/confissoes/{doc["id"]}/">{e(doc["titulo"])}</a> <small>{doc["ano"]}</small></li>'
-                   for doc in docs) + f"</ul>{fonte}", [("Sola", "/"), ("Confissões", "/confissoes/")])
+                   for doc in docs) + f'</ul><p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
     # o índice também em data/, por livro, para a estante do app
     pasta = raiz / "data" / "confissoes" / "citacoes"
     if pasta.exists():

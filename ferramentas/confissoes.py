@@ -1,6 +1,8 @@
 """Importa os símbolos de fé (domínio público) para data/confissoes/: a Confissão de Fé de Westminster, o Catecismo
-Maior e o Breve Catecismo de Westminster (1647, com os textos de prova da Assembleia) e os Cânones de Dort (1619, na
-tradução inglesa antiga, também em domínio público).
+Maior e o Breve Catecismo de Westminster (1647, com os textos de prova da Assembleia), os Cânones de Dort (1619, na
+tradução inglesa antiga, também em domínio público) e a Confissão Batista de Londres de 1689 (sem as provas, que a fonte
+não traz). A tradução da 1689 foi feita na sessão do agente (sem API), partindo da tradução da Westminster do Sola nas
+seções que as duas têm em comum.
 
 Fonte: o repositório NonlinearFruit/Creeds.json (estrutura sob Unlicense; os textos usados aqui são de domínio público
 segundo o próprio repositório, que lista à parte os poucos que têm direitos — nenhum destes). O Heidelberg e a
@@ -29,7 +31,14 @@ DOCUMENTOS = {
     "catecismo-maior": ("westminster_larger_catechism", "Catecismo Maior de Westminster", 1647, "catecismo"),
     "breve-catecismo": ("westminster_shorter_catechism", "Breve Catecismo de Westminster", 1647, "catecismo"),
     "canones-de-dort": ("canons_of_dort", "Cânones de Dort", 1619, "canones"),
+    # batista reformada: a Segunda Confissão de Londres (redigida em 1677, adotada em 1689); a fonte não traz as provas
+    "confissao-batista-1689": ("london_baptist_1689", "Confissão de Fé Batista de Londres", 1689, "confissao"),
 }
+
+
+# títulos de capítulo errados na fonte (Creeds.json repete o título do capítulo seguinte/anterior)
+TITULOS_EN = {("confissao-batista-1689", "20"): "Of the Gospel, and of the Extent of the Grace thereof",
+              ("confissao-batista-1689", "25"): "Of Marriage"}
 
 
 def bl():
@@ -98,7 +107,8 @@ def importar(origem):
             doc["partes"] = []
             for cap in fonte["Data"]:
                 n = str(cap["Chapter"])
-                parte = {"n": n, "titulo_en": cap.get("Title", ""), "titulo": pt_antigo.get(("t", n), ""), "itens": []}
+                parte = {"n": n, "titulo_en": TITULOS_EN.get((doc_id, n), cap.get("Title", "")),
+                         "titulo": pt_antigo.get(("t", n), ""), "itens": []}
                 for i, s in enumerate(cap["Sections"], 1):
                     sn = str(s.get("Section") or i)
                     parte["itens"].append({"n": sn, "en": s.get("ContentWithProofs") or s["Content"],
