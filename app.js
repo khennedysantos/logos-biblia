@@ -56,6 +56,9 @@ const UI = {
     versoDia:"Versículo do dia",
     grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos e sapienciais", maiores:"Profetas maiores",
       menores:"Profetas menores", evangelhos:"Evangelhos e Atos", paulo:"Cartas de Paulo", gerais:"Cartas gerais e Apocalipse"},
+    confTit:"Confissões e catecismos", confTexto:"Os símbolos de fé da Igreja, em português, por tradição.", confTodas:"Todas as confissões",
+    confGrupos:["Igreja antiga","Padrões de Westminster","Três Formas de Unidade","Batista reformada"],
+    confNomes:{credos:"Credos antigos",westminster:"Confissão de Fé","catecismo-maior":"Catecismo Maior","breve-catecismo":"Breve Catecismo","confissao-belga":"Confissão Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cânones de Dort","confissao-batista-1689":"Confissão de Londres"},
     recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
       ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
@@ -180,6 +183,9 @@ const UI = {
     versoDia:"Verse of the day",
     grupos:{pentateuco:"Pentateuch", historicos:"History", poeticos:"Poetry and wisdom", maiores:"Major prophets",
       menores:"Minor prophets", evangelhos:"Gospels and Acts", paulo:"Paul's letters", gerais:"General letters and Revelation"},
+    confTit:"Confessions and catechisms", confTexto:"The Church’s creeds and confessions, in Portuguese, by tradition.", confTodas:"All confessions",
+    confGrupos:["Early Church","Westminster Standards","Three Forms of Unity","Reformed Baptist"],
+    confNomes:{credos:"Ancient creeds",westminster:"Confession of Faith","catecismo-maior":"Larger Catechism","breve-catecismo":"Shorter Catechism","confissao-belga":"Belgic Confession",heidelberg:"Heidelberg Catechism","canones-de-dort":"Canons of Dort","confissao-batista-1689":"London Confession"},
     recursos:[["Original and Strong","Every Greek and Hebrew word with transliteration, literal gloss and its lexicon entry."],
       ["Classic commentaries","John Calvin on 47 books and Matthew Henry on another 18, verse by verse."],
       ["Cross-references","Scripture interprets Scripture: parallel passages for every verse."],
@@ -304,6 +310,9 @@ const UI = {
     versoDia:"Versículo del día",
     grupos:{pentateuco:"Pentateuco", historicos:"Históricos", poeticos:"Poéticos y sapienciales", maiores:"Profetas mayores",
       menores:"Profetas menores", evangelhos:"Evangelios y Hechos", paulo:"Cartas de Pablo", gerais:"Cartas generales y Apocalipsis"},
+    confTit:"Confesiones y catecismos", confTexto:"Los símbolos de fe de la Iglesia, en portugués, por tradición.", confTodas:"Todas las confesiones",
+    confGrupos:["Iglesia antigua","Normas de Westminster","Tres Formas de Unidad","Bautista reformada"],
+    confNomes:{credos:"Credos antiguos",westminster:"Confesión de Fe","catecismo-maior":"Catecismo Mayor","breve-catecismo":"Catecismo Menor","confissao-belga":"Confesión Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cánones de Dort","confissao-batista-1689":"Confesión de Londres"},
     recursos:[["Original y Strong","Cada palabra del griego y del hebreo con transliteración, traducción literal y su entrada del léxico."],
       ["Comentarios clásicos","Juan Calvino en 47 libros y Matthew Henry en otros 18, versículo por versículo."],
       ["Referencias cruzadas","La Escritura interpreta la Escritura: pasajes paralelos de cada versículo."],
@@ -878,6 +887,16 @@ async function renderizar(op){
 }
 
 /* ---------- página inicial: Mesa de Estudo ---------- */
+/* Atalho para os símbolos de fé na página inicial, por tradição (as mesmas páginas de /confissoes/; o mesmo bloco está no
+   gerar_paginas.py, na página inicial que o Google lê). */
+const CONF_INICIO = [[["credos", "IV–VIII"]], [["westminster", "1647"], ["catecismo-maior", "1647"], ["breve-catecismo", "1647"]],
+  [["confissao-belga", "1561"], ["heidelberg", "1563"], ["canones-de-dort", "1619"]], [["confissao-batista-1689", "1689"]]];
+function htmlConfInicio(x){
+  return `<section class="conf-inicio"><div class="conf-cabeca"><div><h2>${x.confTit}</h2><p>${x.confTexto}</p></div>
+    <a class="cm-acao" href="/confissoes/">${x.confTodas} ${ico("seta")}</a></div><div class="conf-grupos">` +
+    CONF_INICIO.map((docs, i)=>`<div class="conf-grupo"><h3>${x.confGrupos[i]}</h3>` + docs.map(([id, ano])=>
+      `<a href="/confissoes/${id}/">${esc(x.confNomes[id])}<span>${ano}</span></a>`).join("") + `</div>`).join("") + `</div></section>`;
+}
 function renderizarInicio(){
   const x = t(), ult = lerLS("logos_ultimo", null);
   const temUlt = ult && infoLivro(ult.livro) && ult.cap >= 1 && ult.cap <= infoLivro(ult.livro).ch;
@@ -970,6 +989,7 @@ function renderizarInicio(){
     <section class="recursos">` + x.recursos.map((r,i)=>
       `<button type="button" class="recurso" data-recurso="${i}">${ico(icones[i])}<div><h3>${r[0]}</h3><p>${r[1]}</p></div></button>`).join("") +
     `</section>
+    ${htmlConfInicio(x)}
     <section class="canone">
       <div class="canone-cabeca">
         <h2>${x.indiceCanonico}</h2>

@@ -690,6 +690,22 @@ body[data-vista="inicio"] .leitor,body[data-vista="livro"] .leitor{max-width:non
 .recurso h3{font-family:var(--titulo);font-weight:600;font-size:1.22rem;margin:0 0 .18rem;line-height:1.18}
 .recurso p{margin:0;font-size:.8rem;line-height:1.52;color:var(--suave)}
 
+/* atalho para as confissões e catecismos (página inicial) */
+.conf-inicio{margin-top:2.2rem;background:var(--papel);border:1px solid var(--borda);border-radius:var(--raio);
+  padding:1.3rem clamp(1.1rem,3.5vw,2.2rem) 1.5rem;box-shadow:var(--sombra)}
+.conf-cabeca{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.6rem 1rem;
+  padding-bottom:.9rem;border-bottom:1px solid var(--borda)}
+.conf-cabeca h2{font-family:var(--titulo);font-weight:600;font-size:1.75rem;margin:0}
+.conf-cabeca p{margin:.15rem 0 0;font-size:.82rem;color:var(--suave)}
+.conf-grupos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem 1.4rem;margin-top:1rem}
+@media (max-width:860px){.conf-grupos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.conf-grupos{grid-template-columns:1fr}}
+.conf-grupo h3{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rubrica);font-weight:700;margin:0 0 .35rem}
+.conf-grupo a{display:flex;justify-content:space-between;gap:.6rem;padding:.42rem 0;border-bottom:1px solid var(--borda);
+  font-family:var(--titulo);font-size:1.08rem;font-weight:600;color:var(--tinta);text-decoration:none}
+.conf-grupo a:hover{color:var(--rubrica)}
+.conf-grupo a span{font-family:var(--ui);font-size:.72rem;font-weight:500;color:var(--suave);align-self:center;white-space:nowrap}
+
 /* índice canônico dos 66 livros */
 .canone{margin-top:2.2rem;background:var(--papel);border:1px solid var(--borda);border-radius:var(--raio);
   padding:1.4rem clamp(1.1rem,3.5vw,2.2rem) 1.8rem;box-shadow:var(--sombra)}

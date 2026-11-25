@@ -131,6 +131,12 @@ def pagina_inicial(livros):
 </div><div class="mesa-acao-col">
 <div class="mesa-acoes"><a class="btn-ouro" href="/biblia/joao/1/">Começar por João</a></div>
 </div></div></section>
+<section class="conf-inicio"><div class="conf-cabeca"><div><h2>Confissões e catecismos</h2><p>Os símbolos de fé da Igreja, em português, por tradição.</p></div><a class="cm-acao" href="/confissoes/">Todas as confissões</a></div><div class="conf-grupos">
+<div class="conf-grupo"><h3>Igreja antiga</h3><a href="/confissoes/credos/">Credos antigos<span>IV–VIII</span></a></div>
+<div class="conf-grupo"><h3>Padrões de Westminster</h3><a href="/confissoes/westminster/">Confissão de Fé<span>1647</span></a><a href="/confissoes/catecismo-maior/">Catecismo Maior<span>1647</span></a><a href="/confissoes/breve-catecismo/">Breve Catecismo<span>1647</span></a></div>
+<div class="conf-grupo"><h3>Três Formas de Unidade</h3><a href="/confissoes/confissao-belga/">Confissão Belga<span>1561</span></a><a href="/confissoes/heidelberg/">Catecismo de Heidelberg<span>1563</span></a><a href="/confissoes/canones-de-dort/">Cânones de Dort<span>1619</span></a></div>
+<div class="conf-grupo"><h3>Batista reformada</h3><a href="/confissoes/confissao-batista-1689/">Confissão de Londres<span>1689</span></a></div>
+</div></section>
 <section class="canone"><div class="canone-cabeca"><h2>Índice canônico</h2></div>"""]
     for sigla, nome in TESTAMENTO.items():
         partes.append(f'<section class="testamento"><h2>{nome}</h2>{ORNAMENTO}<div class="grupos">')
