@@ -5,7 +5,7 @@
    uso:  python3 -m http.server 8000                                   (na raiz do site, em outro terminal)
          python3 ferramentas/video/narrado/alinhar.py <episódio>        (tempos.json, a partir da voz)
          node ferramentas/video/narrado/renderizar.cjs <episódio> --previa 2,11,30   (fotos de instantes, para conferir)
-         node ferramentas/video/narrado/renderizar.cjs <episódio> [--vel 1.12] [--sem-musica]
+         node ferramentas/video/narrado/renderizar.cjs <episódio> [--vel 1.12 | --duracao 60] [--sem-musica]
    Entrada (fora do git): entrada/<episódio>/voz.mp3 e entrada/<episódio>/musica.mp3 ou entrada/musica.mp3.
    Saída: ferramentas/video/saida/<episódio>.mp4 (~3 min para 85 s de vídeo).
 
@@ -95,9 +95,9 @@ function definir(t, cfg) {
 
 (async () => {
   const ep = process.argv[2];
-  if (!ep) { console.log("uso: node renderizar.cjs <episódio> [--previa 2,11] [--vel 1.12] [--sem-musica]"); process.exit(1); }
+  if (!ep) { console.log("uso: node renderizar.cjs <episódio> [--previa 2,11] [--vel 1.12 | --duracao 60] [--sem-musica]"); process.exit(1); }
   const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
-  const VEL = +(arg("--vel") || 1.12), previa = arg("--previa");
+  let VEL = +(arg("--vel") || 1.12); const previa = arg("--previa");
   const dir = path.join(AQUI, "episodios", ep);
   const tempos = JSON.parse(fs.readFileSync(path.join(dir, "tempos.json"), "utf8"));
   const voz = path.join(AQUI, "entrada", ep, "voz.mp3");
@@ -118,6 +118,8 @@ function definir(t, cfg) {
   }
   const m = roteiro.montar({ tempos, LIVRO, tela: (n) => telas[n], cartaoFinal });
   const FIM = tempos.duracao + CAUDA;
+  // --duracao 60: acerta a velocidade para o vídeo final ter esse tempo (só entre 1,05 e 1,20, para a voz continuar natural)
+  if (arg("--duracao")) VEL = Math.min(1.2, Math.max(1.05, FIM / +arg("--duracao")));
   const cfg = { cenas: m.cenas.map((c) => [c.ini, c.fim]), legendas: tempos.legendas.filter((l) => !(m.semLegenda || []).includes(l.bloco)) };
   const html = m.cenas.map((c) => `<section class="s ${c.classe || "claro"}">${c.html}</section>`).join("") + `<div id="leg"><span></span></div>`;
   const pg = await nav.newPage({ viewport: { width: 1080, height: 1920 } });

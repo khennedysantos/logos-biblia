@@ -8,7 +8,7 @@ const UI = {
     cores:{ouro:"ouro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentário", anotacao:"Anotação", copiar:"Copiar", copiado:"Copiado!",
     grego:"Grego — Textus Receptus", hebraico:"Hebraico — Códice de Leningrado",
-    lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexPagina:"Página completa, com todos os versículos", lexFonte:"Léxico de Strong (1890), definições em tradução automática (Claude) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    sugerir:"Sugerir correção", lexDef:"Definição (Strong)", lexKjv:"Como a KJV traduz", lexPagina:"Página completa, com todos os versículos", lexFonte:"Léxico de Strong (1890), definições em tradução automática (Claude) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referências", semRefs:"Sem referências para este versículo.", refFonte:"Referências: openbible.info (CC-BY)",
     leituraCorrida:"Leitura contínua",
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
@@ -124,6 +124,7 @@ const UI = {
     seusDados:"Seus dados", lerOffline:"Ler sem internet", privacidade:"Privacidade", faixaTexto:"Entre para guardar seu estudo.",
     vantagens:["Anotações e versículos marcados em todos os seus aparelhos","Capítulos lidos e planos de leitura sempre em dia","Continue exatamente de onde parou"],
     conviteSobre:"Seu estudo, sempre com você", agoraNao:"Agora não",
+    instSobre:"Sola no celular", instTit:"Instale o Sola na tela inicial", instTexto:"Abre como um aplicativo, sem a barra do navegador, e os capítulos que você já leu funcionam sem internet.", instBotao:"Instalar", instEntendi:"Entendi", instIos:"No Safari, toque em <b>Compartilhar</b> (o quadrado com a seta para cima) e depois em <b>Adicionar à Tela de Início</b>.", instOutro:"No menu do navegador (⋮ ou ⋯), procure <b>Instalar aplicativo</b> ou <b>Adicionar à tela inicial</b>.", instJa:"O Sola já está instalado neste aparelho.",
     convites:{nota:"Sua anotação está só neste aparelho", marca:"Suas marcações estão só neste aparelho", lido:"Guarde o seu progresso", padrao:"Continue de onde parou"},
     conviteTexto:"Entre com o Google para guardar anotações, marcações e capítulos lidos e continuar em qualquer aparelho. É gratuito." },
   en: { idioma:"Language", traducao:"Translation", comparar:"Compare with…", semComparar:"No comparison",
@@ -131,7 +132,7 @@ const UI = {
     cores:{ouro:"gold", verde:"green", azul:"blue", rosa:"pink"},
     original:"Original", comentario:"Commentary", anotacao:"Note", copiar:"Copy", copiado:"Copied!",
     grego:"Greek — Textus Receptus", hebraico:"Hebrew — Leningrad Codex",
-    lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexPagina:"Full page with every verse (in Portuguese)", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
+    sugerir:"Suggest a correction", lexDef:"Definition (Strong)", lexKjv:"KJV renderings", lexPagina:"Full page with every verse (in Portuguese)", lexFonte:"Strong's Lexicon (1890) · Tagged text: STEPBible/Tyndale House (CC BY)",
     referencias:"Cross-refs", semRefs:"No cross-references for this verse.", refFonte:"Cross-references: openbible.info (CC-BY)",
     leituraCorrida:"Continuous reading",
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
@@ -247,6 +248,7 @@ const UI = {
     seusDados:"Your data", lerOffline:"Read offline", privacidade:"Privacy", faixaTexto:"Sign in to keep your study.",
     vantagens:["Notes and highlighted verses on all your devices","Chapters read and reading plans always up to date","Pick up exactly where you left off"],
     conviteSobre:"Your study, always with you", agoraNao:"Not now",
+    instSobre:"Sola on your phone", instTit:"Add Sola to your home screen", instTexto:"It opens like an app, without the browser bar, and the chapters you have read work offline.", instBotao:"Install", instEntendi:"Got it", instIos:"In Safari, tap <b>Share</b> (the square with an arrow) and then <b>Add to Home Screen</b>.", instOutro:"In the browser menu (⋮ or ⋯), look for <b>Install app</b> or <b>Add to home screen</b>.", instJa:"Sola is already installed on this device.",
     convites:{nota:"Your note is on this device only", marca:"Your highlights are on this device only", lido:"Keep your progress", padrao:"Pick up where you left off"},
     conviteTexto:"Sign in with Google to keep your notes, highlights and chapters read, and continue on any device. It's free." },
   es: { idioma:"Idioma", traducao:"Traducción", comparar:"Comparar con…", semComparar:"Sin comparación",
@@ -254,7 +256,7 @@ const UI = {
     cores:{ouro:"oro", verde:"verde", azul:"azul", rosa:"rosa"},
     original:"Original", comentario:"Comentario", anotacao:"Nota", copiar:"Copiar", copiado:"¡Copiado!",
     grego:"Griego — Textus Receptus", hebraico:"Hebreo — Códice de Leningrado",
-    lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexPagina:"Página completa con todos los versículos (en portugués)", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
+    sugerir:"Sugerir corrección", lexDef:"Definición (Strong)", lexKjv:"Traducciones en la KJV", lexPagina:"Página completa con todos los versículos (en portugués)", lexFonte:"Léxico de Strong (1890) · Texto marcado: STEPBible/Tyndale House (CC BY)",
     referencias:"Referencias", semRefs:"Sin referencias para este versículo.", refFonte:"Referencias: openbible.info (CC-BY)",
     leituraCorrida:"Lectura continua",
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
@@ -370,6 +372,7 @@ const UI = {
     seusDados:"Tus datos", lerOffline:"Leer sin conexión", privacidade:"Privacidad", faixaTexto:"Entra para guardar tu estudio.",
     vantagens:["Notas y versículos resaltados en todos tus dispositivos","Capítulos leídos y planes de lectura siempre al día","Continúa exactamente donde lo dejaste"],
     conviteSobre:"Tu estudio, siempre contigo", agoraNao:"Ahora no",
+    instSobre:"Sola en el celular", instTit:"Instala Sola en la pantalla de inicio", instTexto:"Se abre como una aplicación, sin la barra del navegador, y los capítulos que ya leíste funcionan sin internet.", instBotao:"Instalar", instEntendi:"Entendido", instIos:"En Safari, toca <b>Compartir</b> (el cuadrado con la flecha) y luego <b>Agregar a inicio</b>.", instOutro:"En el menú del navegador (⋮ o ⋯), busca <b>Instalar aplicación</b> o <b>Agregar a la pantalla de inicio</b>.", instJa:"Sola ya está instalado en este dispositivo.",
     convites:{nota:"Tu nota está solo en este dispositivo", marca:"Tus resaltados están solo en este dispositivo", lido:"Guarda tu progreso", padrao:"Continúa donde lo dejaste"},
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
@@ -410,7 +413,9 @@ const AJUDA = {
         ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias, Salmos e Provérbios e o Catecismo de Heidelberg em 52 Domingos (as perguntas e respostas abrem no próprio plano). O Sola lembra em que dia você está. Na página inicial, a pergunta do dia percorre o Breve Catecismo."],
         ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), que você pode compartilhar como imagem, a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros (teologia, filosofia, vida cristã, literatura), o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta; com conta, dá também para publicar uma página pública do perfil (solabiblia.com.br/perfil/seu-nome)."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
-        ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal, e o navegador permite instalar o Sola como aplicativo."]]]]},
+        ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal."],
+        ["instalar","baixar","Instalar como aplicativo","No celular, o Sola fica na tela inicial e abre como um aplicativo, sem a barra do navegador. No Android, toque em “Instalar”; no iPhone, em Compartilhar › Adicionar à Tela de Início."],
+        ["sugerir","anotacoes","Achou um erro? Sugira a correção","No léxico, no interlinear e no comentário há o link “Sugerir correção”: ele abre um e-mail já com o lugar, para você dizer o que está errado e como deveria ficar."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
     intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature. On a phone, whatever does not fit in the top bar is under “More”.",
     grupos:[
@@ -441,7 +446,9 @@ const AJUDA = {
         ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days, Psalms and Proverbs, and the Heidelberg Catechism in 52 Lord's Days (the questions and answers open right in the plan). Sola remembers your day. On the home page, the question of the day goes through the Shorter Catechism."],
         ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your bookshelf (theology, philosophy, Christian life, literature), a shareable profile image, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account; with one, you can also publish a public profile page (solabiblia.com.br/perfil/your-name)."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
-        ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible, and your browser can install Sola as an app."]]]]},
+        ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible."],
+        ["instalar","baixar","Install as an app","On your phone, Sola can sit on the home screen and open like an app, without the browser bar. On Android, tap “Install”; on iPhone, Share › Add to Home Screen."],
+        ["sugerir","anotacoes","Found a mistake? Suggest a correction","In the lexicon, the interlinear and the commentary there is a “Suggest a correction” link: it opens an e-mail with the place already filled in, so you can say what is wrong."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
     intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función. En el celular, lo que no cabe en la barra de arriba está en “Más”.",
     grupos:[
@@ -472,7 +479,9 @@ const AJUDA = {
         ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días, Salmos y Proverbios y el Catecismo de Heidelberg en 52 domingos (las preguntas y respuestas se abren en el propio plan). Sola recuerda tu día. En la página de inicio, la pregunta del día recorre el Catecismo Menor."],
         ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros (teología, filosofía, vida cristiana, literatura), una imagen del perfil para compartir, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta; con cuenta, también puedes publicar una página pública del perfil (solabiblia.com.br/perfil/tu-nombre)."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
-        ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera, y el navegador permite instalar Sola como aplicación."]]]]}
+        ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera."],
+        ["instalar","baixar","Instalar como aplicación","En el celular, Sola puede quedar en la pantalla de inicio y abrirse como una aplicación, sin la barra del navegador. En Android, toca “Instalar”; en iPhone, Compartir › Agregar a inicio."],
+        ["sugerir","anotacoes","¿Encontraste un error? Sugiere la corrección","En el léxico, el interlineal y el comentario hay un enlace “Sugerir corrección”: abre un correo con el lugar ya indicado, para que digas qué está mal."]]]]}
 };
 const ACOES_AJUDA = {
   livros: ()=>{ montarListaLivros(); alternarPainel("painelLivros", true); },
@@ -499,6 +508,8 @@ const ACOES_AJUDA = {
   meu: ()=>abrirMeuEstudo("estudo"),
   conta: ()=>abrirMeuEstudo("perfil"),
   offline: ()=>alternarPainel("painelSobre", true),
+  instalar: ()=>mostrarInstalar(true),
+  sugerir: ()=>irPara("MIC", 6, 8, "original"),
 };
 function montarAjuda(){
   const a = AJUDA[est.idioma] || AJUDA.pt;
@@ -729,6 +740,7 @@ function linkRef(usfm, cap, v, rotulo, classe){
   return `<a class="${classe ?? "tema-ref"}" href="${urlCapitulo(usfm, cap, v)}">${rotulo ?? esc(nomeLivro(usfm)+" "+cap+(v ? ":"+v : ""))}</a>`;
 }
 /* Lê um endereço e devolve a rota: {vista:"inicio"} | {vista:"livro",livro} | {vista:"cap",livro,cap,v} | {vista:"perfil",apelido}
+   | {vista:"inicio", plano, dia} (/planos/...)
    | null (não é do app). */
 function rotaDe(caminho, hash){
   const h = (hash||"").match(/^#\/([A-Z0-9]{3})\/(\d+)(?:\/(\d+))?/);   // links antigos: #/JHN/3
@@ -743,6 +755,9 @@ function rotaDe(caminho, hash){
   if(m){ const b = livroPorSlug(m[1]); if(b) return { vista:"livro", livro:b.id }; }
   m = caminho.match(/^\/perfil\/([a-z0-9][a-z0-9-]{1,28}[a-z0-9])\/?$/);   // página pública de um perfil
   if(m) return { vista:"perfil", apelido:m[1] };
+  // planos: /planos/ (a lista), /planos/heidelberg/ e /planos/heidelberg/2/ (já no Domingo 2): o início com o painel aberto
+  m = caminho.match(/^\/planos\/?(?:([a-z0-9]+)\/?(?:(\d{1,3})\/?)?)?$/);
+  if(m) return { vista:"inicio", plano: m[1] || "", dia: +m[2] || 0 };
   return caminho === "/" || caminho === "/index.html" ? { vista:"inicio" } : null;
 }
 function lerRota(){ return rotaDe(location.pathname, location.hash) || { vista:"inicio" }; }   // endereço desconhecido (404): início
@@ -763,7 +778,9 @@ function navegar(r, op){
   if(r.vista==="perfil") est.apelidoPub = r.apelido;
   if(r.vista==="cap"){ est.cap = r.cap; est.alvoV = r.v || 0; est.abrir = r.abrir || null; }
   else { est.alvoV = 0; est.abrir = null; }
-  return renderizar(Object.assign({ nav:true }, op));
+  const feito = renderizar(Object.assign({ nav:true }, op));
+  if(r.plano !== undefined) feito.then(()=>abrirPlano(r.plano, r.dia));
+  return feito;
 }
 function irPara(usfm, cap, v, abrir){ return navegar({ vista:"cap", livro:usfm, cap, v, abrir }); }
 
@@ -852,6 +869,7 @@ async function renderizar(op){
       tocar("estado", "ultimo");
       est.capsVisita = (est.capsVisita || 0) + 1;
       if(est.capsVisita >= 3) convidar("padrao");   // terceiro capítulo da visita
+      if(est.capsVisita >= 2) convidarInstalar();   // não aparece se o da conta já apareceu nesta visita
     }
   }
   atualizarURL(op.substituir);
@@ -1415,7 +1433,8 @@ function ligarLexico(alvo, completo, strongInicial){
         <span class="lex-num">${esc(strong)}</span></div>
       <p class="lex-def">${completo ? `<strong>${x.lexDef}:</strong> ` : ""}${esc((emPT() && ent.defpt) || ent.def)}</p>
       ${completo ? htmlUsosKjv(ent, x) : ""}
-      ${htmlLinkLexico(strong, x)}`;
+      ${htmlLinkLexico(strong, x)}
+      <p class="lex-correcao">${linkCorrecao(`Léxico ${strong} (${ent.translit})`, x)}</p>`;
     if(rolar) caixa.scrollIntoView({ block:"nearest" });
   };
   alvo.querySelectorAll(".inter-palavra").forEach(btn=>btn.addEventListener("click", ()=>mostrar(btn, true)));
@@ -1453,6 +1472,13 @@ function ligarMss(raiz, v){
     }
   }));
 }
+/* "Sugerir correção": abre um e-mail já endereçado ao projeto, com o que é e onde está (o site não tem servidor;
+   quem lê vira revisor). oQue vai no assunto; o corpo leva também o endereço da página. */
+const EMAIL_PROJETO = "projetosolabiblia@gmail.com";
+function linkCorrecao(oQue, x){
+  const corpo = `${oQue}\n${location.href}\n\nO que está errado e como deveria ficar:\n\n`;
+  return `<a class="sugerir" href="mailto:${EMAIL_PROJETO}?subject=${encodeURIComponent("Correção no Sola: " + oQue)}&body=${encodeURIComponent(corpo)}">${ico("anotacoes")} ${x.sugerir}</a>`;
+}
 function htmlComentarioCorpo(com, v, x, resumir){
   const achado = comentarioProximo(com, v);
   if(!achado){
@@ -1466,7 +1492,7 @@ function htmlComentarioCorpo(com, v, x, resumir){
   const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
   return `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${linkarRefsTexto(achado.texto)}</p>
     ${longo ? `<button type="button" class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}
-    <p class="fonte">${x.fonte}: ${autorComentario(com, x)}</p>
+    <p class="fonte">${x.fonte}: ${autorComentario(com, x)} · ${linkCorrecao(`Comentário, ${refStr(est.livro, est.cap, achado.v)}`, x)}</p>
     ${aviso ? `<p class="aviso-idioma">${aviso}</p>` : ""}`;
 }
 function ligarLerMais(raiz, x){
@@ -1527,7 +1553,7 @@ async function acaoVerso(el, v, acao, botao){
     if(!aberta()) return;
     const palavras = inter && inter[v-1] && inter[v-1].length ? inter[v-1] : null;
     if(palavras){
-      gavetas.innerHTML = gaveta(rotulo, gradeInterlinear(palavras, ehAT) + htmlMss(ehAT) + `<p class="fonte">${x.lexFonte}</p>`);
+      gavetas.innerHTML = gaveta(rotulo, gradeInterlinear(palavras, ehAT) + htmlMss(ehAT) + `<p class="fonte">${x.lexFonte} · ${linkCorrecao(`Interlinear, ${refStr(est.livro, est.cap, v)}`, x)}</p>`);
       ligarLexico(gavetas, true);
       ligarMss(gavetas, v);
     } else {
@@ -2194,7 +2220,20 @@ function leiturasDoDia(caps, grupos){
     return linkRef(l, c, a || 0, esc(rotulo), "");
   }).join(", ")).join("; ");
 }
-async function montarPlanos(planoAberto){
+/* Abre o painel de planos (do link /planos/<id>/<dia>/): sem plano, a lista; plano desconhecido, a lista também. */
+async function abrirPlano(id, dia){
+  const ps = await planos();
+  await montarPlanos(ps.find(p=>p.id===id) ? id : null, dia);
+  alternarPainel("painelPlanos", true);
+}
+/* A série do Heidelberg no Instagram (@projetosolabiblia) começou no Domingo 1 em 22/11/2026: quem chega pelo link e
+   ainda não marcou nada cai no Domingo da semana. */
+const SERIE_HEIDELBERG = Date.UTC(2026, 10, 22);
+function domingoDaSerie(){
+  const semanas = Math.floor((Date.now() - SERIE_HEIDELBERG) / (7 * 864e5));
+  return semanas < 0 ? 0 : semanas % 52;
+}
+async function montarPlanos(planoAberto, diaAbrir){
   const alvo = $("conteudoPlanos"), x = t();
   const ps = await planos();
   if(!planoAberto){
@@ -2225,7 +2264,8 @@ async function montarPlanos(planoAberto){
       `<div class="dia-perg"><p class="dia-p"><a href="/confissoes/${esc(pl.doc)}/${q.n}/">${x.pergAbrev} ${q.n}.</a> ${esc(en ? q.p_en : q.p)}</p>
         <p class="dia-r">${esc((en ? q.r_en : q.r).replace(/\s*\[\d+\]/g, ""))}</p></div>`).join("")}</details>`;
   };
-  alvo.innerHTML = `<button class="voltar-planos">‹ ${x.voltar}</button>
+  alvo.innerHTML = `<div class="plano-topo"><button class="voltar-planos">‹ ${x.voltar}</button>
+    <button type="button" class="plano-link" data-url="https://solabiblia.com.br/planos/${esc(pl.id)}/">${ico("copiar")} <span>${x.pubCopiar}</span></button></div>
     <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
     (pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : "") +
     pl.dias.map((caps,i)=>
@@ -2233,13 +2273,27 @@ async function montarPlanos(planoAberto){
         <span class="dia-caps">${pl.doc ? perguntas(caps) : leiturasDoDia(caps, pl.grupos && pl.grupos[i])}</span>
         <input type="checkbox" class="dia-check" data-i="${i}" aria-label="${rotDia} ${i+1}" ${pr[i]?"checked":""}></div>`).join("");
   alvo.querySelector(".voltar-planos").addEventListener("click", ()=>montarPlanos(null));
+  const bl = alvo.querySelector(".plano-link");
+  bl.addEventListener("click", async ()=>{
+    const rot = bl.querySelector("span");
+    if(await copiarTexto(bl.dataset.url)){
+      rot.textContent = x.pubCopiado; clearTimeout(est.timerCopiado);
+      est.timerCopiado = setTimeout(()=>{ if(rot.isConnected) rot.textContent = x.pubCopiar; }, 2000);
+    } else prompt(x.pubCopieAMao, bl.dataset.url);
+  });
   alvo.querySelectorAll(".dia-check").forEach(ch=>ch.addEventListener("change", ()=>{
     est.progresso[pl.id] = est.progresso[pl.id] || {};
     est.progresso[pl.id][ch.dataset.i] = ch.checked;
     gravarLS("logos_planos", est.progresso); tocar("plano", pl.id + "." + ch.dataset.i);
   }));
-  const primeiro = pl.dias.findIndex((_,i)=>!pr[i]);
-  if(primeiro > 3){ const el = alvo.querySelectorAll(".dia-linha")[primeiro]; if(el) el.scrollIntoView({block:"center"}); }
+  // onde abrir: o dia pedido no link; senão o primeiro não lido; no Heidelberg sem nada marcado, o Domingo da semana da série
+  const linhas = alvo.querySelectorAll(".dia-linha"), primeiro = pl.dias.findIndex((_,i)=>!pr[i]);
+  const nada = !Object.values(pr).some(Boolean);
+  let i = diaAbrir >= 1 && diaAbrir <= pl.dias.length ? diaAbrir - 1 : pl.id === "heidelberg" && nada ? domingoDaSerie() : primeiro;
+  const el = linhas[i];
+  if(!el) return;
+  if(pl.doc){ const d = el.querySelector("details"); if(d && (diaAbrir || i > 0 || (pl.id === "heidelberg" && nada))) d.open = true; }
+  if(i > 3 || diaAbrir) requestAnimationFrame(()=>el.scrollIntoView({ block: diaAbrir ? "start" : "center" }));
 }
 
 /* ---------- linha do tempo ---------- */
@@ -2701,7 +2755,7 @@ async function atualizarEstudo(v, focarNota){
     const palavras = inter && inter[v - 1] && inter[v - 1].length ? inter[v - 1] : null;
     let htmlInter = "";
     if(palavras){
-      htmlInter = `<div class="estante-cartao"><p class="estante-sub">${rotulo}</p>${gradeInterlinear(palavras, ehAT)}${htmlMss(ehAT)}<p class="fonte">${x.lexFonte}</p></div>`;
+      htmlInter = `<div class="estante-cartao"><p class="estante-sub">${rotulo}</p>${gradeInterlinear(palavras, ehAT)}${htmlMss(ehAT)}<p class="fonte">${x.lexFonte} · ${linkCorrecao(`Interlinear, ${refStr(est.livro, est.cap, v)}`, x)}</p></div>`;
     } else {
       const orig = await carregarLivro("orig", est.livro);
       if(est.estudoAtual !== estado) return;
@@ -4108,6 +4162,58 @@ function mostrarConvite(motivo){
   $("conviteEntrar").addEventListener("click", async ()=>{ if(!await entrarGoogle()) $("conviteAviso").textContent = x.erroConta; });
 }
 
+/* ---------- convite para instalar (PWA) ----------
+   O site já é instalável (manifest + sw.js), mas quase ninguém sabe. Depois de 3 dias de uso, um aviso discreto, no
+   máximo um por visita (o mesmo controle do convite da conta) e com o mesmo adiamento progressivo (logos_instalar).
+   Android/Chrome: o botão chama o pedido do navegador (beforeinstallprompt). iPhone: não há pedido; mostra o caminho. */
+const instalado = ()=>matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const ehIOS = ()=>/iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+window.addEventListener("beforeinstallprompt", (e)=>{ e.preventDefault(); est.pedidoInstalar = e; });
+window.addEventListener("appinstalled", ()=>{ est.pedidoInstalar = null; gravarLS("logos_instalar", { n: 9, ate: Date.now() + 3650 * 864e5 }); });
+function contarDiaDeUso(){
+  const hoje = new Date().toDateString(), v = lerLS("logos_visitas", { n: 0, dia: "" });
+  if(v.dia !== hoje) gravarLS("logos_visitas", { n: (v.n || 0) + 1, dia: hoje });
+}
+function convidarInstalar(){
+  if(instalado() || painelAberto() || est.fecharConvite || !(est.pedidoInstalar || ehIOS())) return;
+  if((lerLS("logos_visitas", { n: 0 }).n || 0) < 3) return;
+  const c = lerLS("logos_instalar", null);
+  if(c && Date.now() <= c.ate) return;
+  try{ if(sessionStorage.getItem("sola_convidou")) return; }catch(e){ return; }
+  clearTimeout(est.timerInstalar);
+  est.timerInstalar = setTimeout(()=>{ if(!painelAberto() && !est.gaveta && !est.fecharConvite) mostrarInstalar(false); }, 2500);
+}
+function mostrarInstalar(pedido){
+  const x = t();
+  if(est.fecharConvite) est.fecharConvite(false);
+  const el = document.createElement("aside");
+  el.className = "convite"; el.id = "convite";
+  el.setAttribute("role", "dialog"); el.setAttribute("aria-labelledby", "conviteTit");
+  const pode = !!est.pedidoInstalar, ja = instalado();
+  el.innerHTML = `<button class="fechar" aria-label="${x.fechar}">✕</button>
+    <p class="heroi-sobre">${x.instSobre}</p>
+    <h3 id="conviteTit">${ja ? x.instJa : x.instTit}</h3>
+    ${ja ? "" : `<p>${x.instTexto}</p>${pode ? "" : `<p class="convite-passos">${ehIOS() ? x.instIos : x.instOutro}</p>`}`}
+    <div class="convite-acoes">${pode && !ja ? `<button class="btn-ouro" id="instSim">${ico("baixar")} ${x.instBotao}</button><button id="instDepois">${x.agoraNao}</button>`
+      : `<button class="btn-ouro" id="instDepois">${x.instEntendi}</button>`}</div>`;
+  document.body.appendChild(el);
+  try{ sessionStorage.setItem("sola_convidou", "1"); }catch(e){}
+  est.fecharConvite = (adiar)=>{
+    el.remove(); est.fecharConvite = null;
+    if(adiar && !pedido){
+      const n = ((lerLS("logos_instalar", null) || {}).n || 0) + 1;
+      gravarLS("logos_instalar", { n, ate: Date.now() + CONVITE_ESPERA[Math.min(n, CONVITE_ESPERA.length) - 1] * 864e5 });
+    }
+  };
+  el.querySelector(".fechar").addEventListener("click", ()=>est.fecharConvite(true));
+  $("instDepois").addEventListener("click", ()=>est.fecharConvite(true));
+  if($("instSim")) $("instSim").addEventListener("click", async ()=>{
+    const p = est.pedidoInstalar; est.pedidoInstalar = null;
+    est.fecharConvite(false);
+    if(p){ p.prompt(); try{ await p.userChoice; }catch(e){} }
+  });
+}
+
 /* ---------- sincronização ---------- */
 /* Cada tipo de dado do usuário: quais itens existem neste aparelho, como ler um item e como gravá-lo.
    No servidor cada item é uma linha (tipo, chave, valor, apagado, ts); ts = quando foi alterado, no relógio de quem alterou. */
@@ -4341,6 +4447,7 @@ async function iniciar(){
   est.traducao = lerLS("logos_trad","blivre");
   if(!est.meta.translations.find(tr=>tr.id===est.traducao)) est.traducao = "blivre";
   limparDados();
+  contarDiaDeUso();
   const rota = lerRota();
   const antigo = /^#\//.test(location.hash) || !rotaDe(location.pathname, "");
 
@@ -4478,6 +4585,7 @@ async function iniciar(){
     const mesma = r.vista===est.vista && (r.vista==="inicio" || r.livro===est.livro || (r.vista==="perfil" && r.apelido===est.apelidoPub))
       && (r.vista!=="cap" || r.cap===est.cap);
     if(mesma && !antigoHash){
+      if(r.plano !== undefined) return abrirPlano(r.plano, r.dia);
       const alvo = r.v && document.querySelector(`.verso[data-v="${r.v}"]`);
       if(alvo){ est.alvoV = r.v; irAoVerso(alvo); }
       return;
