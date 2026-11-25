@@ -32,6 +32,9 @@ DESCRICAO = {
                   "“Qual é o teu único consolo na vida e na morte?”.",
     "confissao-batista-1644": "Os 53 artigos da Primeira Confissão de Fé Batista de Londres (1644), das sete igrejas "
                               "batistas particulares de Londres, com as notas de margem do original (os textos de prova).",
+    "catecismo-batista": "As 114 perguntas e respostas do Catecismo Batista de Benjamin Keach (1693), feito sobre o "
+                         "Breve Catecismo de Westminster, com os textos de prova, na edição da Associação de "
+                         "Charleston (1813).",
     "confissao-batista-1689": "Os 32 capítulos da Segunda Confissão de Fé Batista de Londres (redigida em 1677 e "
                               "adotada em 1689), o principal símbolo de fé batista reformado, feita sobre a Confissão "
                               "de Westminster.",
@@ -52,13 +55,17 @@ AVISOS = {"credos": AVISO_CREDOS,
           "heidelberg": AVISO_SCHAFF + " Textos de prova da edição de 1879 da Reformed Church in America (transcrição do "
                         "Wikisource), reunidos por pergunta, no texto da Bíblia Livre.", "confissao-batista-1689": AVISO_1689,
           "confissao-batista-1644": AVISO_1644,
+          "catecismo-batista": "Texto de domínio público (edição da Associação Batista de Charleston, 1813), na "
+                               "transcrição do The Reformed Reader; tradução do Sola, feita com IA a partir da tradução "
+                               "do Breve Catecismo nas respostas em comum (pode conter imprecisões). Textos de prova da "
+                               "edição de 1813, no texto da Bíblia Livre.",
           "confissao-belga": AVISO_SCHAFF + " Textos de prova da edição francesa, no texto da Bíblia Livre."}
 # as páginas das confissões se vestem como o app (topo com a marca e botões, cartões por tradição); o estilo vai só nelas,
 # num <style> no <head>, para não mudar o lexico.css (que reescreveria as ~55 mil páginas avulsas)
 TRADICOES = [("Igreja antiga", "A fé comum dos primeiros séculos", ["credos"]),
              ("Padrões de Westminster", "Presbiterianos, 1647", ["westminster", "catecismo-maior", "breve-catecismo"]),
              ("Três Formas de Unidade", "Reformados continentais", ["confissao-belga", "heidelberg", "canones-de-dort"]),
-             ("Batista reformada", "Batistas particulares, Londres", ["confissao-batista-1644", "confissao-batista-1689"])]
+             ("Batista reformada", "Batistas particulares, Londres", ["confissao-batista-1644", "confissao-batista-1689", "catecismo-batista"])]
 RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que toda a Igreja confessa.",
           "westminster": "O principal símbolo de fé presbiteriano, com os textos de prova da Assembleia.",
           "catecismo-maior": "Para o ensino na igreja: a doutrina e os deveres, com os textos de prova.",
@@ -67,7 +74,8 @@ RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que tod
           "heidelberg": "Dividido em 52 Domingos, a começar pelo único consolo na vida e na morte.",
           "canones-de-dort": "Os cinco pontos da doutrina da graça e a rejeição dos erros.",
           "confissao-batista-1644": "A Primeira Confissão de Londres, das sete igrejas batistas particulares.",
-          "confissao-batista-1689": "A Segunda Confissão de Londres, feita sobre a de Westminster."}
+          "confissao-batista-1689": "A Segunda Confissão de Londres, feita sobre a de Westminster.",
+          "catecismo-batista": "O catecismo de Benjamin Keach, feito sobre o Breve Catecismo, com o batismo dos que creem."}
 # o topo é o mesmo do app (marca, Livros, barra de busca, botões com ícone e "Mais"), mas em HTML puro: cada botão é
 # um link para o app com ?abrir=<botão> (o app abre o painel ao carregar, abrirPeloEndereco); o "Mais" é um <details>
 # e o CSS decide, pela largura, quais botões ficam na barra e quais vão para o menu (sem o ajustarNav do app)
@@ -234,7 +242,7 @@ ESTILO = """<style>
 .cf-pag .lex-viz span+span{text-align:right}
 </style>"""
 CURTO = {"breve-catecismo": "Breve Catecismo de Westminster", "catecismo-maior": "Catecismo Maior de Westminster",
-         "heidelberg": "Catecismo de Heidelberg"}
+         "heidelberg": "Catecismo de Heidelberg", "catecismo-batista": "Catecismo Batista"}
 
 
 def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
@@ -305,7 +313,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
             for d in ("credos", "westminster", "catecismo-maior", "breve-catecismo", "confissao-belga", "heidelberg",
-                      "canones-de-dort", "confissao-batista-1644", "confissao-batista-1689")]
+                      "canones-de-dort", "confissao-batista-1644", "confissao-batista-1689", "catecismo-batista")]
     for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
         texto(l, 1, 1)
     tamanhos = {}
@@ -344,7 +352,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 ant = f'<span>‹ <a href="{base}{itens[i - 1]["n"]}/">Pergunta {itens[i - 1]["n"]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{itens[i + 1]["n"]}/">Pergunta {itens[i + 1]["n"]}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
                 domingo = f'<p class="lex-translit">{e(nome)}, Domingo {q["domingo"]}</p>' if "domingo" in q else ""
-                original = "Texto inglês (1863)" if d == "heidelberg" else "Original inglês (1647)"
+                original = {"heidelberg": "Texto inglês (1863)",
+                            "catecismo-batista": "Texto inglês (edição de 1813)"}.get(d, "Original inglês (1647)")
                 corpo = (f'{topo}<h1>Pergunta {q["n"]}</h1>{domingo}<p class="lex-resumo">{e(p)}</p>' +
                          paragrafo(r, q["provas"], f"p{q['n']}") +
                          f'<details class="acv-original"><summary>{original}</summary><p>{e(q["p_en"])}</p>'
@@ -406,8 +415,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
     desc = ("Os símbolos de fé em português: os credos da Igreja antiga e, da tradição reformada, os Padrões de "
             "Westminster (a Confissão de Fé, o Catecismo Maior e o Breve Catecismo) e as Três Formas de Unidade (a "
-            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e as Confissões "
-            "Batistas de Londres de 1644 e de 1689.")
+            "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e, da tradição "
+            "batista reformada, as Confissões de Londres de 1644 e de 1689 e o Catecismo Batista.")
     gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
            '<header class="cf-heroi"><p class="lex-sobre">Símbolos de fé</p><h1>Confissões e <em>catecismos</em></h1>'
            f'<p class="cf-sub">{e(desc)}</p></header>' +
