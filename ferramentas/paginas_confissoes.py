@@ -45,6 +45,75 @@ AVISO_1689 = ("Texto de domínio público (edição inglesa de 1677/1689); tradu
               "traz os textos de prova.")
 AVISOS = {"credos": AVISO_CREDOS, "heidelberg": AVISO_SCHAFF, "confissao-batista-1689": AVISO_1689,
           "confissao-belga": AVISO_SCHAFF + " Textos de prova da edição francesa, no texto da Bíblia Livre."}
+# as páginas das confissões se vestem como o app (topo com a marca e botões, cartões por tradição); o estilo vai só nelas,
+# num <style> no <head>, para não mudar o lexico.css (que reescreveria as ~55 mil páginas avulsas)
+TRADICOES = [("Igreja antiga", "A fé comum dos primeiros séculos", ["credos"]),
+             ("Padrões de Westminster", "Presbiterianos, 1647", ["westminster", "catecismo-maior", "breve-catecismo"]),
+             ("Três Formas de Unidade", "Reformados continentais", ["confissao-belga", "heidelberg", "canones-de-dort"]),
+             ("Batista reformada", "Batistas particulares, Londres", ["confissao-batista-1689"])]
+RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que toda a Igreja confessa.",
+          "westminster": "O principal símbolo de fé presbiteriano, com os textos de prova da Assembleia.",
+          "catecismo-maior": "Para o ensino na igreja: a doutrina e os deveres, com os textos de prova.",
+          "breve-catecismo": "Para as famílias, a começar por “Qual é o fim principal do homem?”.",
+          "confissao-belga": "Escrita por Guido de Brès e revista no Sínodo de Dort.",
+          "heidelberg": "Dividido em 52 Domingos, a começar pelo único consolo na vida e na morte.",
+          "canones-de-dort": "Os cinco pontos da doutrina da graça e a rejeição dos erros.",
+          "confissao-batista-1689": "A Segunda Confissão de Londres, feita sobre a de Westminster."}
+NAV_CONF = ('<nav aria-label="Seções"><a href="/biblia/joao/1/">Bíblia</a><a href="/confissoes/" class="ativa">Confissões</a>'
+            '<a href="/lexico/">Léxico</a><a href="/dicionario/">Dicionário</a><a href="/temas/">Temas</a>'
+            '<a href="/" class="cf-abrir">Abrir o Sola</a></nav>')
+ESTILO = """<style>
+.cf-pag .topo{position:sticky;top:0;z-index:5;padding:.6rem clamp(1rem,3.5vw,2.4rem);gap:.8rem;flex-wrap:wrap;
+  background:color-mix(in srgb,var(--papel) 92%,transparent);backdrop-filter:blur(8px)}
+.cf-pag .marca{font-size:1.25rem;letter-spacing:.42em;text-transform:uppercase}
+.cf-pag .topo nav{gap:.4rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.cf-pag .topo nav::-webkit-scrollbar{display:none}
+.cf-pag .topo nav a{white-space:nowrap;padding:.38rem .8rem;border:1px solid var(--borda);border-radius:999px;background:var(--painel);
+  font-size:.8rem;font-weight:500;color:var(--tinta-2)}
+.cf-pag .topo nav a:hover{border-color:var(--rubrica);color:var(--rubrica)}
+.cf-pag .topo nav a.ativa{background:var(--rubrica-suave);border-color:var(--rubrica);color:var(--rubrica)}
+.cf-pag .topo nav a.cf-abrir{background:var(--rubrica);border-color:var(--rubrica);color:#FAF7F0;font-weight:600}
+[data-tema="escuro"] .cf-pag .topo nav a.cf-abrir{color:#171613}
+.cf-pag .lex{max-width:58rem}
+.cf-heroi{margin:.6rem 0 1.6rem;padding:1.6rem clamp(1.1rem,4vw,2.2rem);border-radius:.7rem;background:var(--noite);color:var(--marfim);
+  border:1px solid rgba(212,174,106,.25);box-shadow:0 18px 40px rgba(30,22,10,.16);position:relative;overflow:hidden}
+.cf-heroi::after{content:"";position:absolute;inset:.45rem;border:1px solid rgba(212,174,106,.18);border-radius:.5rem;pointer-events:none}
+.cf-heroi .lex-sobre,.cf-heroi .lex-sobre a{color:var(--ouro-noite)}
+.cf-heroi h1{color:var(--marfim);margin:.3rem 0 .5rem}
+.cf-heroi h1 em{font-style:italic;color:var(--ouro-noite);font-weight:500}
+.cf-heroi p.cf-sub{margin:0;max-width:40rem;font:400 1.08rem/1.6 var(--escritura);color:rgba(244,239,228,.82)}
+.cf-heroi .cf-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.cf-heroi .cf-meta span{font:600 .72rem/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;padding:.45rem .7rem;border-radius:999px;
+  border:1px solid rgba(212,174,106,.35);color:var(--ouro-noite)}
+.cf-trad{margin:1.8rem 0 .7rem;display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;padding:0;border:0}
+.cf-trad b{font:700 .7rem/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--rubrica)}
+.cf-trad span{font-size:.8rem;color:var(--suave)}
+.cf-cartoes{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.8rem}
+.cf-cartao{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;border:1px solid var(--borda);border-radius:.6rem;
+  background:var(--painel);text-decoration:none;color:var(--tinta);transition:border-color .15s,transform .15s}
+.cf-cartao:hover{border-color:var(--rubrica);transform:translateY(-1px)}
+.cf-cartao .cf-topo{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.cf-cartao h3{margin:0;font:600 1.3rem/1.15 var(--titulo);color:var(--tinta)}
+.cf-cartao .cf-ano{font:600 .72rem/1 var(--ui);color:var(--ouro);white-space:nowrap}
+.cf-cartao p{margin:0;font-size:.86rem;line-height:1.5;color:var(--tinta-2)}
+.cf-cartao .cf-ler{margin-top:auto;padding-top:.3rem;font:600 .78rem/1 var(--ui);color:var(--rubrica)}
+.cf-blocos{list-style:none;padding:0;margin:.4rem 0 1.2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.5rem}
+.cf-blocos li.cf-domingo{grid-column:1/-1;margin:.9rem 0 .1rem;font:700 .7rem/1 var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--ouro)}
+.cf-blocos a{display:flex;gap:.7rem;align-items:flex-start;padding:.65rem .8rem;border:1px solid var(--borda);border-radius:.5rem;
+  background:var(--painel);text-decoration:none;color:var(--tinta);font-size:.92rem;line-height:1.4;height:100%}
+.cf-blocos a:hover{border-color:var(--rubrica);color:var(--rubrica)}
+.cf-blocos a b{flex:0 0 auto;min-width:1.9rem;height:1.9rem;display:grid;place-items:center;border-radius:50%;background:var(--rubrica-suave);
+  color:var(--rubrica);font:700 .78rem/1 var(--ui)}
+.cf-pag .lex-viz a{display:inline-block;padding:.4rem .85rem;border:1px solid var(--borda);border-radius:999px;background:var(--painel);text-decoration:none}
+.cf-pag .lex-viz a:hover{border-color:var(--rubrica)}
+.cf-pag main.lex>h1{margin-bottom:.35rem}
+.cf-pag main.lex>.lex-translit{padding-bottom:1.1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--borda);
+  box-shadow:0 3px 0 -2px var(--ouro)}
+.cf-pag .lex-viz span{flex:1 1 0}
+.cf-pag .lex-viz span+span{text-align:right}
+@media (max-width:560px){.cf-pag .marca{letter-spacing:.3em}.cf-pag .topo{gap:.5rem;position:sticky}
+  .cf-pag .topo nav a.cf-abrir{position:absolute;top:.6rem;right:1rem;padding:.32rem .7rem}}
+</style>"""
 CURTO = {"breve-catecismo": "Breve Catecismo de Westminster", "catecismo-maior": "Catecismo Maior de Westminster",
          "heidelberg": "Catecismo de Heidelberg"}
 
@@ -110,7 +179,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         seo = cabeca_seo(site + caminho, titulo.split(" | ")[0], desc, "article", migalhas)
         arq = raiz / caminho.strip("/") / "index.html"
         arq.parent.mkdir(parents=True, exist_ok=True)
-        arq.write_text(pagina_versiculo(titulo, desc, css, corpo, seo), encoding="utf-8")
+        arq.write_text(pagina_versiculo(titulo, desc, css, corpo, seo, ESTILO, NAV_CONF, "cf-pag"), encoding="utf-8")
         urls.append(site + caminho)
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
@@ -118,6 +187,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                       "canones-de-dort", "confissao-batista-1689")]
     for l in info:                                       # carrega a Bíblia Livre (para o fim dos capítulos)
         texto(l, 1, 1)
+    tamanhos = {}
     for doc in docs:
         d, nome = doc["id"], doc["titulo"]
         base = f"/confissoes/{d}/"
@@ -140,7 +210,9 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                          + f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
                 gravar(caminho, f"{c['titulo']} em português: texto completo | Sola", cortar(f"{c['titulo']}: {' '.join(c['texto'])}", 158),
                        corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (c["titulo"], caminho)])
-            lista = "".join(f'<li><a href="{base}{c["id"]}/">{e(c["titulo"])}</a> <small>{e(c["quando"])}</small></li>' for c in itens)
+            lista = "".join(f'<li><a href="{base}{c["id"]}/"><b>{i + 1}</b><span>{e(c["titulo"])} <small>{e(c["quando"])}</small></span></a></li>'
+                            for i, c in enumerate(itens))
+            tamanho = [f"{len(itens)} credos"]
         elif doc["tipo"] == "catecismo":
             itens = doc["itens"]
             for i, q in enumerate(itens):
@@ -162,8 +234,9 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                        [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (f"Pergunta {q['n']}", caminho)])
             lista = "".join((f'<li class="cf-domingo">Domingo {q["domingo"]}</li>'
                              if q.get("domingo") and (i == 0 or itens[i - 1]["domingo"] != q["domingo"]) else "") +
-                            f'<li><a href="{base}{q["n"]}/">{q["n"]}. {e(q.get("p") or q["p_en"])}</a></li>'
+                            f'<li><a href="{base}{q["n"]}/"><b>{q["n"]}</b><span>{e(q.get("p") or q["p_en"])}</span></a></li>'
                             for i, q in enumerate(itens))
+            tamanho = [f"{len(itens)} perguntas"] + ([f"{itens[-1]['domingo']} Domingos"] if "domingo" in itens[-1] else [])
         else:
             partes = doc["partes"]
             nums = [p["n"] for p in partes] if d != "canones-de-dort" else ["1", "2", "3-4", "5"]
@@ -196,20 +269,32 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 primeiro = RE_MARCA.sub("", parte["itens"][0].get("pt") or parte["itens"][0]["en"]) if parte["itens"] else ""
                 gravar(caminho, f"{nome}, {rot_doc.lower()} {n}: {titulo} | Sola", cortar(f"{titulo}. {primeiro}", 158),
                        corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (titulo, caminho)])
-            lista = "".join(f'<li><a href="{base}{n}/">{n}. {e(p.get("titulo") or p["titulo_en"])}</a></li>'
+            lista = "".join(f'<li><a href="{base}{n}/"><b>{n}</b><span>{e(p.get("titulo") or p["titulo_en"])}</span></a></li>'
                             for p, n in zip(partes, nums))
+            tamanho = (["5 capítulos de doutrina"] if d == "canones-de-dort" else
+                       [f"{len(partes)} artigos" if d == "confissao-belga" else f"{len(partes)} capítulos"])
+        tamanhos[d] = tamanho[0]
+        tradicao = next(t for t, _, ds in TRADICOES if d in ds)
         gravar(base, f"{nome} ({doc['ano']}) em português | Sola", DESCRICAO[d],
-               f'<p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a></p><h1>{e(nome)}</h1>'
-               f'<p class="lex-resumo">{e(DESCRICAO[d])}</p><ol class="cf-indice">{lista}</ol>{fonte}',
+               f'<header class="cf-heroi"><p class="lex-sobre"><a href="/confissoes/">Confissões e catecismos</a> · {e(tradicao)}</p>'
+               f'<h1>{e(nome)}</h1><p class="cf-sub">{e(DESCRICAO[d])}</p><div class="cf-meta">'
+               + "".join(f"<span>{e(str(x))}</span>" for x in [doc["ano"], *tamanho]) +
+               f'</div></header><ol class="cf-blocos">{lista}</ol>{fonte}',
                [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base)])
     desc = ("Os símbolos de fé em português: os credos da Igreja antiga e, da tradição reformada, os Padrões de "
             "Westminster (a Confissão de Fé, o Catecismo Maior e o Breve Catecismo) e as Três Formas de Unidade (a "
             "Confissão Belga, o Catecismo de Heidelberg e os Cânones de Dort), com os textos de prova, e a Confissão "
             "Batista de Londres de 1689.")
     gravar("/confissoes/", "Confissões e catecismos reformados em português | Sola", desc,
-           f'<h1>Confissões e catecismos</h1><p class="lex-resumo">{e(desc)}</p><ul class="lex-lista">' +
-           "".join(f'<li><a href="/confissoes/{doc["id"]}/">{e(doc["titulo"])}</a> <small>{doc["ano"]}</small></li>'
-                   for doc in docs) + f'</ul><p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
+           '<header class="cf-heroi"><p class="lex-sobre">Símbolos de fé</p><h1>Confissões e <em>catecismos</em></h1>'
+           f'<p class="cf-sub">{e(desc)}</p></header>' +
+           "".join(f'<h2 class="cf-trad"><b>{e(t)}</b><span>{e(sub)}</span></h2><div class="cf-cartoes">' +
+                   "".join(f'<a class="cf-cartao" href="/confissoes/{x["id"]}/"><div class="cf-topo"><h3>{e(x["titulo"])}</h3>'
+                           f'<span class="cf-ano">{e(str(x["ano"]))}</span></div><p>{e(RESUMO[x["id"]])}</p>'
+                           f'<span class="cf-ler">{e(tamanhos[x["id"]])} · Ler ›</span></a>'
+                           for x in docs if x["id"] in ds) + "</div>"
+                   for t, sub, ds in TRADICOES) +
+           f'<p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
     # o índice também em data/, por livro, para a estante do app
     pasta = raiz / "data" / "confissoes" / "citacoes"
     if pasta.exists():
