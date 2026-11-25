@@ -1,6 +1,6 @@
 {
  "id": "confissao-batista-1689",
- "titulo": "Confissão de Fé Batista de Londres de 1689",
+ "titulo": "Confissão de Fé Batista de Londres",
  "titulo_en": "1689 London Baptist Confession",
  "ano": 1689,
  "tipo": "confissao",
@@ -717,7 +717,7 @@
   },
   {
    "n": "20",
-   "titulo_en": "Of Christian Liberty and Liberty of Conscience",
+   "titulo_en": "Of the Gospel, and of the Extent of the Grace thereof",
    "titulo": "Do Evangelho e da Extensão da sua Graça",
    "itens": [
     {
@@ -890,7 +890,7 @@
   },
   {
    "n": "25",
-   "titulo_en": "Of the Civil Magistrate",
+   "titulo_en": "Of Marriage",
    "titulo": "Do Matrimônio",
    "itens": [
     {
