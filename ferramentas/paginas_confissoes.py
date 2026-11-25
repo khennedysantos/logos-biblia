@@ -22,8 +22,8 @@ DESCRICAO = {
     "westminster": "Os 33 capítulos da Confissão de Fé de Westminster (1647), o principal símbolo de fé presbiteriano, "
                    "com os textos de prova da própria Assembleia.",
     "catecismo-maior": "As 196 perguntas e respostas do Catecismo Maior de Westminster (1647), com os textos de prova.",
-    "breve-catecismo": "As 107 perguntas e respostas do Breve Catecismo de Westminster (1647), a começar por "
-                       "“Qual é o fim principal do homem?”.",
+    "breve-catecismo": "As 107 perguntas e respostas do Breve Catecismo de Westminster (1647), com os textos de prova "
+                       "da Assembleia, a começar por “Qual é o fim principal do homem?”.",
     "canones-de-dort": "Os Cânones do Sínodo de Dort (1619): os cinco pontos da doutrina reformada da graça, com a "
                        "rejeição dos erros.",
     "confissao-belga": "Os 37 artigos da Confissão Belga (1561), escrita por Guido de Brès e revista no Sínodo de Dort "
@@ -43,12 +43,14 @@ AVISO = ("Texto de domínio público; tradução automática do original inglês
 AVISO_SCHAFF = ("Texto de domínio público, do inglês publicado por Philip Schaff (The Creeds of Christendom, 1877); "
                 "tradução do Sola, feita com IA (pode conter imprecisões).")
 AVISO_1689 = ("Texto de domínio público (edição inglesa de 1677/1689); tradução do Sola, feita com IA a partir da "
-              "tradução da Confissão de Westminster nos trechos em comum (pode conter imprecisões). Esta edição não "
-              "traz os textos de prova.")
+              "tradução da Confissão de Westminster nos trechos em comum (pode conter imprecisões). Textos de prova da "
+              "edição original, reunidos no fim de cada parágrafo (transcrição do Wikisource), no texto da Bíblia Livre.")
 AVISO_1644 = ("Texto de domínio público (Londres, 1644), na transcrição do The Reformed Reader; tradução do Sola, feita com "
               "IA (pode conter imprecisões). Textos de prova das notas de margem do original, no texto da Bíblia Livre; "
               "os títulos dos artigos são do Sola (o original não os tem).")
-AVISOS = {"credos": AVISO_CREDOS, "heidelberg": AVISO_SCHAFF, "confissao-batista-1689": AVISO_1689,
+AVISOS = {"credos": AVISO_CREDOS,
+          "heidelberg": AVISO_SCHAFF + " Textos de prova da edição de 1879 da Reformed Church in America (transcrição do "
+                        "Wikisource), reunidos por pergunta, no texto da Bíblia Livre.", "confissao-batista-1689": AVISO_1689,
           "confissao-batista-1644": AVISO_1644,
           "confissao-belga": AVISO_SCHAFF + " Textos de prova da edição francesa, no texto da Bíblia Livre."}
 # as páginas das confissões se vestem como o app (topo com a marca e botões, cartões por tradição); o estilo vai só nelas,
@@ -264,6 +266,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         corpo = RE_MARCA.sub(lambda m: f'<sup><a href="#{ancora}-{m.group(1)}">{m.group(1)}</a></sup>', e(txt))
         corpo = corpo.replace("\n", "<br>")                # o Credo e os Dez Mandamentos no Heidelberg, linha a linha
         lista = ""
+        sem_marcas = not RE_MARCA.search(txt)             # provas reunidas no fim (Heidelberg, 1689): sem número
         if provas:
             itens = []
             for n in sorted(provas, key=int):
@@ -272,7 +275,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                     continue
                 primeira = refs[0]
                 trecho = texto(primeira[0], primeira[1], primeira[2] or 1)
-                itens.append(f'<li id="{ancora}-{n}"><b>{n}</b> ' + "; ".join(link(r) for r in refs) +
+                rotulo = "Textos de prova:" if sem_marcas else n
+                itens.append(f'<li id="{ancora}-{n}"><b>{rotulo}</b> ' + "; ".join(link(r) for r in refs) +
                              (f'<span>{e(cortar(trecho, 160))}</span>' if trecho else "") + "</li>")
             lista = f'<ol class="cf-provas">{"".join(itens)}</ol>'
         return f'<p class="cf-texto">{corpo}</p>{lista}'

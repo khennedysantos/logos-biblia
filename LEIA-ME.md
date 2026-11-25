@@ -21,7 +21,7 @@ GitHub Pages a partir da raiz do branch `main`. Custo de operação: zero.
 - **Símbolos de fé** (`/confissoes/`): os credos antigos, os Padrões de Westminster (os 33 capítulos da
   Confissão são as doutrinas da busca de Temas) e as Três Formas de Unidade (Confissão Belga, Catecismo de
   Heidelberg e Cânones de Dort), em tradução do Sola, com os textos de prova, e as Confissões Batistas de
-  Londres de 1644 (com as notas de margem do original) e de 1689 (ainda sem os textos de prova).
+  Londres de 1644 e de 1689, todos com os textos de prova.
 - **Referências cruzadas**, **temas** (Nave), **dicionário** (Easton), **atlas** com as viagens de
   Paulo, **linha do tempo**, **planos de leitura** e ficha de **contexto** de cada livro.
 - Marcações em quatro cores, anotações, copiar e compartilhar versículo como imagem. Tudo fica só no
