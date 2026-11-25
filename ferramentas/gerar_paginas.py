@@ -294,6 +294,25 @@ def main():
         destino.parent.mkdir(parents=True, exist_ok=True)
         destino.write_text(pagina, encoding="utf-8")
 
+    # planos (/planos/ e /planos/heidelberg/): o início com o painel de planos aberto no plano (o app lê o endereço);
+    # /planos/heidelberg/2/ não tem página própria: cai no 404.html, que é o próprio app
+    if (RAIZ / "planos").is_dir():
+        shutil.rmtree(RAIZ / "planos")
+    inicio_html = pagina_inicial(livros)
+    planos = [(None, "Planos de leitura", "Planos de leitura da Bíblia e do Catecismo de Heidelberg, com o progresso guardado no aparelho.")] + \
+        [(pl["id"], pl["nome"]["pt"], (pl.get("desc") or {}).get("pt") or f"{pl['nome']['pt']}: plano com {len(pl['dias'])} dias no Sola.")
+         for pl in ler("data/plans.json")]
+    for pid, nome, d in planos:
+        caminho = f"/planos/{pid}/" if pid else "/planos/"
+        url, desc = SITE + caminho, cortar(d)
+        pagina = montar(modelo, vista="inicio", rotulo="Livros", conteudo=inicio_html, titulo=f"{nome} — Sola", desc=desc,
+                        seo=cabeca_seo(url, f"{nome} — Sola", desc, "website",
+                                       [("Sola", "/"), ("Planos", "/planos/")] + ([(nome, caminho)] if pid else [])))
+        destino = RAIZ / caminho.strip("/") / "index.html"
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        destino.write_text(pagina, encoding="utf-8")
+        urls.append(url)
+
     # uma página por versículo (/biblia/joao/3/16/): leves e avulsas (ferramentas/paginas_versiculos.py)
     from paginas_versiculos import gerar as gerar_versiculos
     css_leve = "/lexico.css?v=" + hashlib.sha1((RAIZ / "lexico.css").read_bytes()).hexdigest()[:10]
