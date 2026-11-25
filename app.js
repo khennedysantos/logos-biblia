@@ -4458,7 +4458,19 @@ function avisar(texto, botao, acao, some){
 }
 
 /* ---------- inicialização ---------- */
+// /?abrir=atlas (e os outros botões do topo): as páginas avulsas das confissões têm o mesmo topo do app, em HTML puro,
+// e cada botão vem para cá com o painel a abrir
+const ABRIR_TOPO = { meu:"btnMeuEstudo", buscar:"btnBusca", temas:"navTemas", dicionario:"navDic", atlas:"navAtlas",
+  tempo:"navTempo", contexto:"navContexto", notas:"btnNotas", ajuda:"navAjuda", livros:"btnLivros", perfil:"btnPerfil" };
+function lerAbrir(){
+  const p = new URLSearchParams(location.search), id = ABRIR_TOPO[p.get("abrir")];
+  if(!p.has("abrir")) return null;
+  p.delete("abrir");
+  history.replaceState(history.state, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash);
+  return id || null;
+}
 async function iniciar(){
+  const abrirAoIniciar = lerAbrir();
   est.idioma = lerLS("logos_idioma","pt"); if(!UI[est.idioma]) est.idioma = "pt";
   est.tema = document.documentElement.dataset.tema || "claro";
   await carregarVersoes();
@@ -4645,5 +4657,6 @@ async function iniciar(){
 
   if("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost"))
     navigator.serviceWorker.register("/sw.js").catch(()=>{});
+  if(abrirAoIniciar) $(abrirAoIniciar).click();
 }
 iniciar();

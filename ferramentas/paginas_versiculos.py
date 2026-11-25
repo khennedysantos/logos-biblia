@@ -167,16 +167,15 @@ NAV_PADRAO = ('<nav aria-label="Seções"><a href="/biblia/joao/1/">Bíblia</a><
               '<a href="/dicionario/">Dicionário</a><a href="/temas/">Temas</a></nav>')
 
 
-def pagina_versiculo(titulo, desc, css, corpo, seo, cabeca="", nav=None, classe=""):
+def pagina_versiculo(titulo, desc, css, corpo, seo, cabeca="", topo=None, classe=""):
     """como paginas_lexico.pagina, mas compacta (sem quebras de linha): são 31 mil páginas. cabeca (estilo extra no
-    <head>), nav e classe (do <body>) servem às páginas que se vestem diferente, como as das confissões."""
+    <head>), topo (o cabeçalho inteiro) e classe (do <body>) servem às páginas que se vestem diferente, como as das confissões."""
     from paginas_lexico import LOGO, TEMA
     return (f'<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{e(titulo)}</title>'
             f'<meta name="description" content="{e(desc)}"><meta name="theme-color" content="#FAF7F0">{TEMA}'
             f'<link rel="stylesheet" href="{css}"><link rel="icon" href="/favicon.svg" type="image/svg+xml">{seo}{cabeca}</head>'
             + ('<body class="' + classe + '">' if classe else '<body>') +
-            f'<header class="topo"><a class="marca" href="/" aria-label="Sola — página inicial">{LOGO}Sola</a>'
-            f'{nav or NAV_PADRAO}</header>'
+            (topo or f'<header class="topo"><a class="marca" href="/" aria-label="Sola — página inicial">{LOGO}Sola</a>{NAV_PADRAO}</header>') +
             f'<main class="lex">{corpo}</main><footer class="rodape"><em>Sola Scriptura</em> · Estudo bíblico gratuito e em '
             'português · <a href="/">solabiblia.com.br</a></footer></body></html>\n')
