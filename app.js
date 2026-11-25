@@ -58,7 +58,7 @@ const UI = {
       menores:"Profetas menores", evangelhos:"Evangelhos e Atos", paulo:"Cartas de Paulo", gerais:"Cartas gerais e Apocalipse"},
     confTit:"Confissões e catecismos", confTexto:"Os símbolos de fé da Igreja, em português, por tradição.", confTodas:"Todas as confissões",
     confGrupos:["Igreja antiga","Padrões de Westminster","Três Formas de Unidade","Batista reformada"],
-    confNomes:{credos:"Credos antigos",westminster:"Confissão de Fé","catecismo-maior":"Catecismo Maior","breve-catecismo":"Breve Catecismo","confissao-belga":"Confissão Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cânones de Dort","confissao-batista-1689":"Confissão de Londres"},
+    confNomes:{credos:"Credos antigos",westminster:"Confissão de Fé","catecismo-maior":"Catecismo Maior","breve-catecismo":"Breve Catecismo","confissao-belga":"Confissão Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cânones de Dort","confissao-batista-1644":"1ª Confissão de Londres","confissao-batista-1689":"2ª Confissão de Londres"},
     recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
       ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
@@ -185,7 +185,7 @@ const UI = {
       menores:"Minor prophets", evangelhos:"Gospels and Acts", paulo:"Paul's letters", gerais:"General letters and Revelation"},
     confTit:"Confessions and catechisms", confTexto:"The Church’s creeds and confessions, in Portuguese, by tradition.", confTodas:"All confessions",
     confGrupos:["Early Church","Westminster Standards","Three Forms of Unity","Reformed Baptist"],
-    confNomes:{credos:"Ancient creeds",westminster:"Confession of Faith","catecismo-maior":"Larger Catechism","breve-catecismo":"Shorter Catechism","confissao-belga":"Belgic Confession",heidelberg:"Heidelberg Catechism","canones-de-dort":"Canons of Dort","confissao-batista-1689":"London Confession"},
+    confNomes:{credos:"Ancient creeds",westminster:"Confession of Faith","catecismo-maior":"Larger Catechism","breve-catecismo":"Shorter Catechism","confissao-belga":"Belgic Confession",heidelberg:"Heidelberg Catechism","canones-de-dort":"Canons of Dort","confissao-batista-1644":"First London Confession","confissao-batista-1689":"Second London Confession"},
     recursos:[["Original and Strong","Every Greek and Hebrew word with transliteration, literal gloss and its lexicon entry."],
       ["Classic commentaries","John Calvin on 47 books and Matthew Henry on another 18, verse by verse."],
       ["Cross-references","Scripture interprets Scripture: parallel passages for every verse."],
@@ -312,7 +312,7 @@ const UI = {
       menores:"Profetas menores", evangelhos:"Evangelios y Hechos", paulo:"Cartas de Pablo", gerais:"Cartas generales y Apocalipsis"},
     confTit:"Confesiones y catecismos", confTexto:"Los símbolos de fe de la Iglesia, en portugués, por tradición.", confTodas:"Todas las confesiones",
     confGrupos:["Iglesia antigua","Normas de Westminster","Tres Formas de Unidad","Bautista reformada"],
-    confNomes:{credos:"Credos antiguos",westminster:"Confesión de Fe","catecismo-maior":"Catecismo Mayor","breve-catecismo":"Catecismo Menor","confissao-belga":"Confesión Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cánones de Dort","confissao-batista-1689":"Confesión de Londres"},
+    confNomes:{credos:"Credos antiguos",westminster:"Confesión de Fe","catecismo-maior":"Catecismo Mayor","breve-catecismo":"Catecismo Menor","confissao-belga":"Confesión Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cánones de Dort","confissao-batista-1644":"1.ª Confesión de Londres","confissao-batista-1689":"2.ª Confesión de Londres"},
     recursos:[["Original y Strong","Cada palabra del griego y del hebreo con transliteración, traducción literal y su entrada del léxico."],
       ["Comentarios clásicos","Juan Calvino en 47 libros y Matthew Henry en otros 18, versículo por versículo."],
       ["Referencias cruzadas","La Escritura interpreta la Escritura: pasajes paralelos de cada versículo."],
@@ -412,7 +412,7 @@ const AJUDA = {
         ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras. Enquanto você digita, aparecem acima os temas, verbetes do dicionário e palavras do original que batem com o termo."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
         ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Cada versículo também tem a sua (como /biblia/joao/3/16/), com as três traduções, o original, o começo do comentário e as referências. Abra pelo link “Página completa” ou “Página do verbete”."],
-        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave), os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia, e os credos antigos (Apostólico, Niceno, Atanásio e Calcedônia). Em “Todas as confissões e catecismos” estão também os Catecismos de Westminster, a Confissão Belga, o Catecismo de Heidelberg, os Cânones de Dort e a Confissão Batista de Londres de 1689."],
+        ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave), os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia, e os credos antigos (Apostólico, Niceno, Atanásio e Calcedônia). Em “Todas as confissões e catecismos” estão também os Catecismos de Westminster, a Confissão Belga, o Catecismo de Heidelberg, os Cânones de Dort e as Confissões Batistas de Londres de 1644 e de 1689."],
         ["dicionario","dicionario","Dicionário","Os verbetes do dicionário bíblico de Easton: pessoas, lugares, objetos e costumes."],
         ["tempo","tempo","Linha do tempo","Os grandes acontecimentos da Bíblia em ordem, da criação à igreja."],
         ["atlas","atlas","Atlas","Mais de 1.300 lugares bíblicos no mapa e as viagens missionárias de Paulo."]]],
@@ -445,7 +445,7 @@ const AJUDA = {
         ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first. While you type, matching topics, dictionary entries and original words appear above the verses."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
         ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). Every verse has one too (such as /biblia/joao/3/16/), with the three translations, the original, the start of the commentary and the cross-references. All in Portuguese; open them from the “Full page” or “Entry page” link."],
-        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave), the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts, and the ancient creeds (Apostles', Nicene, Athanasian and Chalcedon). The confessions page also has the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism, the Canons of Dort and the 1689 London Baptist Confession (in Portuguese)."],
+        ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave), the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts, and the ancient creeds (Apostles', Nicene, Athanasian and Chalcedon). The confessions page also has the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism, the Canons of Dort and the 1644 and 1689 London Baptist Confessions (in Portuguese)."],
         ["dicionario","dicionario","Dictionary","Easton’s Bible Dictionary: people, places, objects and customs."],
         ["tempo","tempo","Timeline","The great events of the Bible in order, from creation to the church."],
         ["atlas","atlas","Atlas","Over 1,300 Bible places on the map and Paul’s missionary journeys."]]],
@@ -478,7 +478,7 @@ const AJUDA = {
         ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero. Mientras escribes, aparecen arriba los temas, entradas del diccionario y palabras del original que coinciden."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
         ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Cada versículo también tiene la suya (como /biblia/joao/3/16/), con las tres traducciones, el original, el inicio del comentario y las referencias. Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
-        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave), los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea, y los credos antiguos (Apostólico, Niceno, Atanasio y Calcedonia), en portugués. En la página de confesiones están también los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg, los Cánones de Dort y la Confesión Bautista de Londres de 1689."],
+        ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave), los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea, y los credos antiguos (Apostólico, Niceno, Atanasio y Calcedonia), en portugués. En la página de confesiones están también los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg, los Cánones de Dort y las Confesiones Bautistas de Londres de 1644 y de 1689."],
         ["dicionario","dicionario","Diccionario","El diccionario bíblico de Easton: personas, lugares, objetos y costumbres."],
         ["tempo","tempo","Cronología","Los grandes acontecimientos de la Biblia en orden, de la creación a la iglesia."],
         ["atlas","atlas","Atlas","Más de 1.300 lugares bíblicos en el mapa y los viajes misioneros de Pablo."]]],
@@ -890,7 +890,7 @@ async function renderizar(op){
 /* Atalho para os símbolos de fé na página inicial, por tradição (as mesmas páginas de /confissoes/; o mesmo bloco está no
    gerar_paginas.py, na página inicial que o Google lê). */
 const CONF_INICIO = [[["credos", "IV–VIII"]], [["westminster", "1647"], ["catecismo-maior", "1647"], ["breve-catecismo", "1647"]],
-  [["confissao-belga", "1561"], ["heidelberg", "1563"], ["canones-de-dort", "1619"]], [["confissao-batista-1689", "1689"]]];
+  [["confissao-belga", "1561"], ["heidelberg", "1563"], ["canones-de-dort", "1619"]], [["confissao-batista-1644", "1644"], ["confissao-batista-1689", "1689"]]];
 function htmlConfInicio(x){
   return `<section class="conf-inicio"><div class="conf-cabeca"><div><h2>${x.confTit}</h2><p>${x.confTexto}</p></div>
     <a class="cm-acao" href="/confissoes/">${x.confTodas} ${ico("seta")}</a></div><div class="conf-grupos">` +
