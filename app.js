@@ -386,9 +386,9 @@ const UI = {
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
-  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Estante",mais:"Mais",prefs:"Tradução e idioma"},
-  en:{meu:"My study",buscar:"Search",temas:"Topics",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study pane",mais:"More",prefs:"Translation and language"},
-  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Estante",mais:"Más",prefs:"Traducción e idioma"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",confissoes:"Confissões",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Estante",mais:"Mais",prefs:"Tradução e idioma"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",confissoes:"Confessions",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",estudo:"Study pane",mais:"More",prefs:"Translation and language"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",confissoes:"Confesiones",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Estante",mais:"Más",prefs:"Traducción e idioma"}
 };
 /* Guia "Como usar": grupos → [ação, ícone, título, texto]. A ação (mesma nos três idiomas) está em ACOES_AJUDA. */
 const AJUDA = {
@@ -4505,6 +4505,7 @@ async function iniciar(){
   $("btnMeuEstudo").addEventListener("click", ()=>abrirMeuEstudo("estudo"));
   $("btnBusca").addEventListener("click", ()=>abrirBusca("texto"));
   $("navTemas").addEventListener("click", ()=>abrirBusca("temas"));
+  $("navConf").addEventListener("click", ()=>{ location.href = "/confissoes/"; });   // páginas avulsas, fora do app
   $("navDic").addEventListener("click", ()=>abrirBusca("dicionario"));
   $("navTempo").addEventListener("click", ()=>{ montarTempo(); alternarPainel("painelTempo"); });
   $("navAtlas").addEventListener("click", abrirAtlas);
