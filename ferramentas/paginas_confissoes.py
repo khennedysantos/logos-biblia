@@ -70,7 +70,7 @@ ITENS_TOPO = [  # (endereço, ícone, rótulo, só no celular)
     ("/?abrir=contexto", "contexto", "Contexto", False), ("/?abrir=notas", "anotacoes", "Anotações", False),
     ("/?abrir=ajuda", "ajuda", "Como usar", False)]
 # quantos botões cabem na barra em cada faixa de largura (o resto vai para o "Mais"); no desktop o "Buscar" vira a barra
-CABEM_CEL = [(0, 2), (360, 3), (520, 4), (640, 5)]               # celular e tablet: a barra fica numa segunda faixa
+CABEM_CEL = [(0, 3), (370, 4), (460, 5), (640, 6)]               # celular e tablet: a barra fica numa segunda faixa
 CABEM_MESA = [(760, 0), (850, 1), (930, 2), (1040, 3), (1210, 5), (1290, 6), (1495, 8), (1620, 10)]   # >= 760px: linha única
 
 
@@ -172,7 +172,8 @@ ESTILO = """<style>
   color:var(--tinta);text-decoration:none}
 .cf-mais .menu-mais a:hover{background:var(--hover)}
 .cf-mais .menu-mais a.ativa{color:var(--rubrica);font-weight:600}
-@media (max-width:560px){.cf-topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;justify-content:center}}
+@media (max-width:560px){.cf-topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;justify-content:center}
+  .cf-topo .navbar .so-cel span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 @media (min-width:561px){.cf-topo .navbar a,.cf-mais summary{padding:.42rem .54rem;gap:.38rem;font-size:.72rem;letter-spacing:.02em}}
 @media (min-width:760px){
   .cf-topo{flex-wrap:nowrap;height:3.4rem;padding:0 1.2rem;gap:.55rem}
