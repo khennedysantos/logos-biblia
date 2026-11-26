@@ -21,7 +21,7 @@ FIM_VOLUME = re.compile(r"\s*(?:END OF (?:THE )?(?:COMMENTAR|EPISTLE|BOOK|VOLUME
                         r"|The addenda to|(?i:A TRANSLATION OF CALVIN))")
 # frase de passagem antes do cabeçalho ("Segue-se agora —", "Now follows —"), que fica sem sentido sozinha
 PASSAGEM_PT = re.compile(r"\s*(?:(?:Segue(?:-se)?|Em seguida vem)(?: agora| então)?,?(?: outra profecia| uma oração| o)?:?\s*—?\s*)$")
-PASSAGEM_EN = re.compile(r"\s*(?:(?:(?:Now |There |It )?follows?(?: now)?(?: another prophecy| a prayer)?|Let us (?:go on|proceed))[,:]?\s*—?\s*)$", re.I)
+PASSAGEM_EN = re.compile(r"\s*(?:(?:(?:Now |There |It |Then )?follows?(?: now)?(?: another prophecy| a prayer)?|Let us (?:go on|proceed))[,:]?\s*—?\s*)$", re.I)
 # título da preleção seguinte ("Lecture Forty-Second", "Quadragésima Segunda Preleção"), que também ficaria solto
 PRELECAO_EN = re.compile(r"\s*Lecture [A-Za-z -]+\.?$")
 PRELECAO_PT = re.compile(r"\s*(?:[A-Za-zÀ-ú-]+ ){1,5}(?:Preleção|Lição)\.?$", re.I)

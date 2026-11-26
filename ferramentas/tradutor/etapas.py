@@ -3,7 +3,7 @@ uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry|v
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
-import json, re, sys
+import json, os, re, sys
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
@@ -354,9 +354,13 @@ NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
 
 
 def preparar_comentario(etapa, pasta):
+    """LIVROS=PSA,1TI no ambiente limita a alguns livros (o aplicar só grava os capítulos traduzidos)"""
     base = DATA / "commentaries" / pasta
+    so = {l.strip() for l in os.environ.get("LIVROS", "").split(",") if l.strip()}
     itens = []
     for livro in sorted(p for p in base.iterdir() if p.is_dir() and not p.name.startswith("pt")):
+        if so and livro.name not in so:
+            continue
         for arq in sorted(livro.glob("*.json"), key=lambda a: int(a.stem)):
             for v, txt in ler(arq).items():
                 if v.isdigit() and txt.strip():
