@@ -12,7 +12,7 @@ if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matche
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=856f691b07">
+<link rel="stylesheet" href="/style.css?v=8d96c3e8f9">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/icone-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -84,18 +84,18 @@ document.documentElement.dataset.tema=t;</script>
     <kbd>/</kbd>
   </button>
   <nav class="navbar" aria-label="Recursos">
-    <button id="btnMeuEstudo" data-nav="meu"><svg class="ico"><use href="#i-progresso"/></svg><span data-label>Meu estudo</span></button>
-    <button id="btnBusca" data-nav="buscar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
-    <button id="navTemas" data-nav="temas"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
+    <button id="navMais" data-nav="estudar" class="nav-mais" aria-expanded="false" aria-controls="menuMais"><svg class="ico"><use href="#i-mais"/></svg><span data-label>Estudar</span><svg class="ico ico-seta-baixo" aria-hidden="true"><use href="#i-chevron"/></svg></button>
     <button id="navConf" data-nav="confissoes"><svg class="ico"><use href="#i-ancora"/></svg><span data-label>Confissões</span></button>
-    <button id="navDic" data-nav="dicionario"><svg class="ico"><use href="#i-dicionario"/></svg><span data-label>Dicionário</span></button>
     <button id="btnPlanos" data-nav="planos"><svg class="ico"><use href="#i-planos"/></svg><span data-label>Planos</span></button>
-    <button id="navAtlas" data-nav="atlas"><svg class="ico"><use href="#i-atlas"/></svg><span data-label>Atlas</span></button>
-    <button id="navTempo" data-nav="tempo"><svg class="ico"><use href="#i-tempo"/></svg><span data-label>Linha do tempo</span></button>
-    <button id="navContexto" data-nav="contexto"><svg class="ico"><use href="#i-contexto"/></svg><span data-label>Contexto</span></button>
-    <button id="btnNotas" data-nav="notas"><svg class="ico"><use href="#i-anotacoes"/></svg><span data-label>Anotações</span></button>
-    <button id="navAjuda" data-nav="ajuda"><svg class="ico"><use href="#i-ajuda"/></svg><span data-label>Como usar</span></button>
-    <button id="navMais" data-nav="mais" class="nav-mais oculto" aria-expanded="false" aria-controls="menuMais"><svg class="ico"><use href="#i-mais"/></svg><span data-label>Mais</span></button>
+    <button id="btnMeuEstudo" data-nav="meu" class="em-estudar"><svg class="ico"><use href="#i-progresso"/></svg><span data-label>Meu estudo</span></button>
+    <button id="btnBusca" data-nav="buscar" class="em-estudar"><svg class="ico"><use href="#i-busca"/></svg><span data-label>Buscar</span></button>
+    <button id="navTemas" data-nav="temas" class="em-estudar"><svg class="ico"><use href="#i-temas"/></svg><span data-label>Temas</span></button>
+    <button id="navDic" data-nav="dicionario" class="em-estudar"><svg class="ico"><use href="#i-dicionario"/></svg><span data-label>Dicionário</span></button>
+    <button id="navAtlas" data-nav="atlas" class="em-estudar"><svg class="ico"><use href="#i-atlas"/></svg><span data-label>Atlas</span></button>
+    <button id="navTempo" data-nav="tempo" class="em-estudar"><svg class="ico"><use href="#i-tempo"/></svg><span data-label>Linha do tempo</span></button>
+    <button id="navContexto" data-nav="contexto" class="em-estudar"><svg class="ico"><use href="#i-contexto"/></svg><span data-label>Contexto</span></button>
+    <button id="btnNotas" data-nav="notas" class="em-estudar"><svg class="ico"><use href="#i-anotacoes"/></svg><span data-label>Anotações</span></button>
+    <button id="navAjuda" data-nav="ajuda" class="em-estudar"><svg class="ico"><use href="#i-ajuda"/></svg><span data-label>Como usar</span></button>
   </nav>
   <div id="menuMais" class="menu-mais oculto" role="group" aria-labelledby="navMais"></div>
   <div class="topo-acoes">
@@ -104,6 +104,7 @@ document.documentElement.dataset.tema=t;</script>
     <button id="btnCorrida" class="btn-icone" aria-label="Leitura contínua"><svg class="ico"><use href="#i-corrida"/></svg></button>
     <button id="btnTema" class="btn-icone" aria-label="Alternar tema claro e escuro"><svg class="ico"><use href="#i-lua"/></svg></button>
     <button id="btnPerfil" class="btn-icone" aria-label="Perfil"><svg class="ico"><use href="#i-pessoa"/></svg></button>
+    <button id="btnMaisCel" class="btn-icone so-celular" aria-label="Mais" aria-expanded="false" aria-controls="menuMais"><svg class="ico"><use href="#i-mais"/></svg></button>
   </div>
 </header>
 
@@ -187,6 +188,13 @@ document.documentElement.dataset.tema=t;</script>
   </aside>
 </div>
 
+<nav id="abasCel" class="abas-cel" aria-label="Navegação principal">
+  <a href="/" data-aba="inicio"><svg class="ico"><use href="#i-casa"/></svg><span>Início</span></a>
+  <button type="button" data-aba="biblia"><svg class="ico"><use href="#i-livro"/></svg><span>Bíblia</span></button>
+  <button type="button" data-aba="buscar"><svg class="ico"><use href="#i-busca"/></svg><span>Buscar</span></button>
+  <button type="button" data-aba="estudo"><svg class="ico"><use href="#i-progresso"/></svg><span>Estudo</span></button>
+  <a href="/confissoes/" data-aba="confissoes"><svg class="ico"><use href="#i-ancora"/></svg><span>Confissões</span></a>
+</nav>
 <nav class="rodape-nav" aria-label="Capítulo anterior e próximo">
   <button id="btnAnterior">‹ <span></span></button>
   <button id="btnProximo"><span></span> ›</button>
@@ -355,6 +363,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script defer src="/app.js?v=eab214422e"></script>
+<script defer src="/app.js?v=5429ac25b1"></script>
 </body>
 </html>

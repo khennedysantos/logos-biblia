@@ -389,18 +389,18 @@ const UI = {
     conviteTexto:"Entra con Google para guardar notas, resaltados y capítulos leídos y continuar en cualquier dispositivo. Es gratis." },
 };
 const NAV = {
-  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",confissoes:"Confissões",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Estante",apoiar:"Apoiar",mais:"Mais",prefs:"Tradução e idioma"},
-  en:{meu:"My study",buscar:"Search",temas:"Topics",confissoes:"Confessions",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",apoiar:"Support",estudo:"Study pane",mais:"More",prefs:"Translation and language"},
-  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",confissoes:"Confesiones",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Estante",apoiar:"Apoyar",mais:"Más",prefs:"Traducción e idioma"}
+  pt:{meu:"Meu estudo",buscar:"Buscar",temas:"Temas",confissoes:"Confissões",dicionario:"Dicionário",planos:"Planos",tempo:"Linha do tempo",atlas:"Atlas",contexto:"Contexto",notas:"Anotações",ajuda:"Como usar",estudo:"Estante",apoiar:"Apoiar",mais:"Mais",prefs:"Tradução e idioma",estudar:"Estudar",inicio:"Início",biblia:"Bíblia",estudoCurto:"Estudo"},
+  en:{meu:"My study",buscar:"Search",temas:"Topics",confissoes:"Confessions",dicionario:"Dictionary",planos:"Plans",tempo:"Timeline",atlas:"Atlas",contexto:"Context",notas:"Notes",ajuda:"How to use",apoiar:"Support",estudo:"Study pane",mais:"More",prefs:"Translation and language",estudar:"Study",inicio:"Home",biblia:"Bible",estudoCurto:"Study"},
+  es:{meu:"Mi estudio",buscar:"Buscar",temas:"Temas",confissoes:"Confesiones",dicionario:"Diccionario",planos:"Planes",tempo:"Cronología",atlas:"Atlas",contexto:"Contexto",notas:"Notas",ajuda:"Cómo usar",estudo:"Estante",apoiar:"Apoyar",mais:"Más",prefs:"Traducción e idioma",estudar:"Estudiar",inicio:"Inicio",biblia:"Biblia",estudoCurto:"Estudio"}
 };
 /* Guia "Como usar": grupos → [ação, ícone, título, texto]. A ação (mesma nos três idiomas) está em ACOES_AJUDA. */
 const AJUDA = {
   pt:{ titulo:"Como usar o Sola", experimentar:"Experimentar",
-    intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função. No celular, o que não cabe na barra do alto fica no botão “Mais”.",
+    intro:"Tudo o que o Sola faz, em poucas linhas. Toque em “Experimentar” para ir direto à função. No computador, os recursos de estudo ficam no menu “Estudar”, no alto; no celular, as abas embaixo levam ao início, à Bíblia, à busca, ao seu estudo e às confissões, e o resto fica no botão ⋯ do alto.",
     grupos:[
       ["Ler a Bíblia", [
         ["livros","livro","Escolher livro e capítulo","Toque no nome do livro no alto da tela. Também dá para digitar uma referência na busca (tecla /) ou na página inicial, como “Jo 3:16” ou “Sl 23”. Para mudar de capítulo, use as setas no rodapé (no computador, as setas ← → do teclado)."],
-        ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, no botão “Mais” (ou no Perfil)."],
+        ["traducoes","dicionario","Traduções e comparação","Leia na Bíblia Livre, na King James ou na Reina-Valera, e compare com outra tradução ou com o grego e o hebraico lado a lado. No computador, os seletores ficam acima do texto; no celular, no botão ⋯ do alto (ou no Perfil)."],
         ["corrida","corrida","Leitura contínua","O botão de linhas no alto junta os versículos num texto corrido, como num livro, sem números no meio."],
         ["tema","lua","Tema claro e escuro","O botão da lua (ou do sol) alterna entre Papel Linho (claro) e Vigília (escuro). A escolha fica guardada no aparelho."],
         ["modoEstudo","estudo","Estante exegética","No computador, a estante ao lado do texto reúne quatro abas sincronizadas ao versículo clicado: Léxico & Original, Comentário, Confissão de Westminster & Referências, e sua Nota pessoal. O botão de mira no topo faz a estante acompanhar a leitura enquanto você rola o texto."],
@@ -429,11 +429,11 @@ const AJUDA = {
         ["instalar","baixar","Instalar como aplicativo","No celular, o Sola fica na tela inicial e abre como um aplicativo, sem a barra do navegador. No Android, toque em “Instalar”; no iPhone, em Compartilhar › Adicionar à Tela de Início."],
         ["sugerir","anotacoes","Achou um erro? Sugira a correção","No léxico, no interlinear e no comentário há o link “Sugerir correção”: ele abre um e-mail já com o lugar, para você dizer o que está errado e como deveria ficar."]]]]},
   en:{ titulo:"How to use Sola", experimentar:"Try it",
-    intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature. On a phone, whatever does not fit in the top bar is under “More”.",
+    intro:"Everything Sola does, in a few lines. Tap “Try it” to go straight to each feature. On a computer, the study tools are in the “Study” menu at the top; on a phone, the tabs at the bottom go to home, the Bible, search, your study and the confessions, and everything else is under the ⋯ button at the top.",
     grupos:[
       ["Reading", [
         ["livros","livro","Choose a book and chapter","Tap the book name at the top. You can also type a reference in search (press /) or on the home page, like “John 3:16”. To change chapters, use the arrows at the bottom (on a computer, the ← → keys)."],
-        ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, under “More” (or in Profile)."],
+        ["traducoes","dicionario","Translations and comparison","Read the Bíblia Livre, the King James or the Reina-Valera, and compare with another translation or with the Greek and Hebrew side by side. On a computer the selectors are above the text; on a phone, under the ⋯ button at the top (or in Profile)."],
         ["corrida","corrida","Continuous reading","The lines button at the top joins the verses into running text, like a book."],
         ["tema","lua","Light and dark theme","The moon (or sun) button switches colors. Your choice is saved on this device."],
         ["modoEstudo","estudo","Study pane","On desktop, the side study pane gathers four tabs synced to the verse you click: Lexicon & Original, Commentary, Westminster Confession & Cross-refs, and your personal Note. The target button at the top makes the pane follow your reading as you scroll."],
@@ -462,11 +462,11 @@ const AJUDA = {
         ["instalar","baixar","Install as an app","On your phone, Sola can sit on the home screen and open like an app, without the browser bar. On Android, tap “Install”; on iPhone, Share › Add to Home Screen."],
         ["sugerir","anotacoes","Found a mistake? Suggest a correction","In the lexicon, the interlinear and the commentary there is a “Suggest a correction” link: it opens an e-mail with the place already filled in, so you can say what is wrong."]]]]},
   es:{ titulo:"Cómo usar Sola", experimentar:"Probar",
-    intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función. En el celular, lo que no cabe en la barra de arriba está en “Más”.",
+    intro:"Todo lo que hace Sola, en pocas líneas. Toca “Probar” para ir directo a cada función. En la computadora, las herramientas de estudio están en el menú “Estudiar”, arriba; en el celular, las pestañas de abajo llevan al inicio, a la Biblia, a la búsqueda, a tu estudio y a las confesiones, y lo demás está en el botón ⋯ de arriba.",
     grupos:[
       ["Leer la Biblia", [
         ["livros","livro","Elegir libro y capítulo","Toca el nombre del libro arriba. También puedes escribir una referencia en la búsqueda (tecla /) o en el inicio, como “Juan 3:16”. Para cambiar de capítulo, usa las flechas de abajo (en la computadora, las teclas ← →)."],
-        ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en el botón “Más” (o en Perfil)."],
+        ["traducoes","dicionario","Traducciones y comparación","Lee la Bíblia Livre, la King James o la Reina-Valera, y compara con otra traducción o con el griego y el hebreo lado a lado. En la computadora los selectores están sobre el texto; en el celular, en el botón ⋯ de arriba (o en Perfil)."],
         ["corrida","corrida","Lectura continua","El botón de líneas arriba une los versículos en texto corrido, como un libro."],
         ["tema","lua","Tema claro y oscuro","El botón de la luna (o del sol) cambia los colores. La elección queda guardada en el dispositivo."],
         ["modoEstudo","estudo","Estante de estudio","En computadora, el estante lateral reúne cuatro pestañas sincronizadas al versículo seleccionado: Léxico y Original, Comentario, Confesión de Westminster y Referencias, y tu Nota. El botón de mira arriba hace que el estante siga tu lectura mientras te desplazas."],
@@ -803,6 +803,10 @@ const EABAS = { original:"eabaOrig", comentario:"eabaCom", referencias:"eabaRefs
 function aplicarTextos(){
   const x = t();
   document.documentElement.lang = est.idioma==="pt" ? "pt-BR" : est.idioma;
+  const nv = NAV[est.idioma] || NAV.pt;
+  const ABA_ROTULO = { inicio:"inicio", biblia:"biblia", buscar:"buscar", estudo:"estudoCurto", confissoes:"confissoes" };
+  document.querySelectorAll("#abasCel [data-aba]").forEach(a=>{ a.querySelector("span").textContent = nv[ABA_ROTULO[a.dataset.aba]]; });
+  $("btnMaisCel").setAttribute("aria-label", nv.mais);
   document.querySelectorAll("[data-nav] [data-label]").forEach(sp=>{
     const chave = sp.parentNode.dataset.nav;
     if(NAV[est.idioma][chave]) sp.textContent = NAV[est.idioma][chave];
@@ -858,18 +862,22 @@ async function renderizar(op){
   document.body.classList.toggle("corrida-ativa", est.corrida);
   if(!op.manter) fecharMais();   // mesma página (tradução, idioma): o menu "Mais" continua aberto
   ajustarNav();                  // Contexto e Modo estudo só existem na leitura: muda o que cabe na barra
+  document.querySelectorAll("#abasCel [data-aba]").forEach(a=>{
+    const atual = a.dataset.aba === "inicio" ? est.vista === "inicio" : a.dataset.aba === "biblia" ? ["livro", "cap"].includes(est.vista) : false;
+    if(atual) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
   fecharPalavra();
   est.versoAtivo = null; est.gaveta = null;
   if(est.vista==="inicio"){
     renderizarInicio();
-    $("lblLivroAtual").textContent = x.livros;
+    $("lblLivroAtual").textContent = (NAV[est.idioma] || NAV.pt).biblia;
     document.title = "Sola — Estudo Bíblico";
   } else if(est.vista==="livro"){
     await renderizarLivro();
     $("lblLivroAtual").textContent = nomeLivro(est.livro);
     document.title = `${nomeLivro(est.livro)} — Sola`;
   } else if(est.vista==="perfil"){
-    $("lblLivroAtual").textContent = x.livros;
+    $("lblLivroAtual").textContent = (NAV[est.idioma] || NAV.pt).biblia;
     await renderizarPerfilPublico();
   } else {
     await renderizarCapitulo(op);
@@ -4439,34 +4447,38 @@ function alternarPainel(id, abrir){
 }
 function fecharPaineis(){ const p = painelAberto(); if(p) alternarPainel(p.id, false); }
 
-/* ---------- barra de recursos: o que não cabe na linha vai para o menu "Mais" ----------
-   Vale em qualquer largura e idioma (no celular cabem dois ou três itens). A ordem do HTML é a prioridade: os
-   últimos saem primeiro. Onde a barra de seletores (.controles) não aparece (celular), o menu traz também os
-   seletores de idioma, tradução e comparação, espelhando os da barra como os do Perfil. Recalcula quando a barra
-   muda de largura, não em "resize" (no celular ele dispara ao rolar). */
+/* ---------- barra de recursos e menu "Estudar" ----------
+   No computador a barra mostra Bíblia, "Estudar ▾", Confissões e Planos; os recursos de estudo (.em-estudar: Meu
+   estudo, Temas, Dicionário, Atlas...) moram no menu "Estudar", e o que não couber na linha (Planos, depois
+   Confissões) vai para ele também. No celular (< 760px) a barra some: as abas de baixo levam a Início, Bíblia,
+   Buscar, Estudo e Confissões, e o botão ⋯ do alto abre o mesmo menu com o resto, a leitura contínua e os seletores
+   de idioma, tradução e comparação. Recalcula quando a barra muda de largura, não em "resize" (no celular ele
+   dispara ao rolar). */
 const itensNav = ()=>[...document.querySelectorAll(".navbar button[data-nav]:not(#navMais)")];
 const controlesOcultos = ()=>!document.querySelector(".controles").getClientRects().length;
+const ehCelular = ()=>matchMedia("(max-width:759px)").matches;
+const abridorMais = ()=>ehCelular() ? $("btnMaisCel") : $("navMais");
 function ajustarNav(){
-  const nav = document.querySelector(".navbar"), mais = $("navMais");
-  if(!nav.clientWidth) return;
-  const itens = itensNav();
-  itens.forEach(b=>b.classList.remove("nav-fora"));
-  mais.classList.add("oculto");
-  if(nav.scrollWidth > nav.clientWidth + 1){
-    mais.classList.remove("oculto");
-    const visiveis = itens.filter(b=>b.getClientRects().length);
-    for(let i = visiveis.length - 1; i > 0 && nav.scrollWidth > nav.clientWidth + 1; i--) visiveis[i].classList.add("nav-fora");
+  const nav = document.querySelector(".navbar");
+  if(nav.clientWidth){
+    const itens = itensNav().filter(b=>!b.classList.contains("em-estudar"));
+    itens.forEach(b=>b.classList.remove("nav-fora"));
+    for(let i = itens.length - 1; i >= 0 && nav.scrollWidth > nav.clientWidth + 1; i--) itens[i].classList.add("nav-fora");
   }
-  if(!$("menuMais").classList.contains("oculto")){
-    if(mais.classList.contains("oculto")) fecharMais(); else { montarMais(); posicionarMais(); }
-  }
+  if(!$("menuMais").classList.contains("oculto")){ montarMais(); posicionarMais(); }
 }
 function montarMais(){
-  const x = t(), menu = $("menuMais");
+  const x = t(), menu = $("menuMais"), cel = ehCelular();
   const seletor = (id, rot)=>`<label><span>${rot}</span><select data-espelho="${id}">${$(id).innerHTML}</select></label>`;
-  const html = itensNav().filter(b=>b.classList.contains("nav-fora")).map(b=>
-    `<button type="button" data-alvo="${b.id}"${b.classList.contains("ativa") ? ` class="ativa"` : ""}${
-      b.hasAttribute("aria-pressed") ? ` aria-pressed="${b.getAttribute("aria-pressed")}"` : ""}>${b.innerHTML}</button>`).join("") +
+  const botao = b=>`<button type="button" data-alvo="${b.id}"${b.classList.contains("ativa") ? ` class="ativa"` : ""}${
+      b.hasAttribute("aria-pressed") ? ` aria-pressed="${b.getAttribute("aria-pressed")}"` : ""}>${b.innerHTML.replace(/<svg class="ico ico-seta-baixo"[\s\S]*?<\/svg>/, "")}</button>`;
+  const itens = itensNav().filter(b=>{
+    if(b.id === "btnBusca" || (b.id === "navContexto" && est.vista !== "cap")) return false;
+    if(cel) return !["btnMeuEstudo", "navConf"].includes(b.id);      // já estão nas abas de baixo
+    return b.classList.contains("em-estudar") || b.classList.contains("nav-fora");
+  });
+  const corrida = cel && est.vista === "cap" ? `<button type="button" data-alvo="btnCorrida" aria-pressed="${est.corrida}">${ico("corrida")}<span>${esc(x.leituraCorrida)}</span></button>` : "";
+  const html = itens.map(botao).join("") + corrida +
     (controlesOcultos() ? `<hr><div class="prefs menu-prefs" role="group" aria-label="${(NAV[est.idioma] || NAV.pt).prefs}">` +
       seletor("selIdioma", x.idioma) + seletor("selTraducao", x.traducao) + seletor("selComparar", x.comparar) + `</div>` : "");
   // refazer só quando algo mudou: assim o seletor que acabou de ser usado continua com o foco
@@ -4480,25 +4492,26 @@ function montarMais(){
   menu.querySelectorAll("select[data-espelho]").forEach(sel=>{ sel.value = $(sel.dataset.espelho).value; });
 }
 function posicionarMais(){
-  const menu = $("menuMais"), b = $("navMais").getBoundingClientRect(), topo = document.querySelector(".topo").getBoundingClientRect();
+  const menu = $("menuMais"), b = abridorMais().getBoundingClientRect(), topo = document.querySelector(".topo").getBoundingClientRect();
   menu.style.top = (b.bottom - topo.top + 4) + "px";
-  menu.style.right = Math.max(8, topo.right - b.right) + "px";
-  menu.style.maxHeight = Math.max(160, innerHeight - b.bottom - 16) + "px";
+  if(ehCelular()){ menu.style.right = Math.max(8, topo.right - b.right) + "px"; menu.style.left = "auto"; }
+  else { menu.style.left = Math.max(8, b.left - topo.left) + "px"; menu.style.right = "auto"; }   // abre para baixo do "Estudar"
+  menu.style.maxHeight = Math.max(160, innerHeight - b.bottom - 16 - (ehCelular() ? 64 : 0)) + "px";
 }
 function abrirMais(peloTeclado){
   montarMais();
   $("menuMais").classList.remove("oculto");
-  $("navMais").setAttribute("aria-expanded", "true");
-  $("navMais").classList.add("ativa");
+  const ab = abridorMais();
+  ab.setAttribute("aria-expanded", "true");
+  ab.classList.add("ativa");
   posicionarMais();
   if(peloTeclado){ const b = $("menuMais").querySelector("button"); if(b) b.focus(); }
 }
 function fecharMais(devolverFoco){
   if($("menuMais").classList.contains("oculto")) return false;
   $("menuMais").classList.add("oculto");
-  $("navMais").setAttribute("aria-expanded", "false");
-  $("navMais").classList.remove("ativa");
-  if(devolverFoco) $("navMais").focus({ preventScroll:true });
+  for(const ab of [$("navMais"), $("btnMaisCel")]){ ab.setAttribute("aria-expanded", "false"); ab.classList.remove("ativa"); }
+  if(devolverFoco) abridorMais().focus({ preventScroll:true });
   return true;
 }
 function aplicarTema(){
@@ -4618,9 +4631,16 @@ async function iniciar(){
     if(m.matches && bancadaAtiva()) atualizarEstudo(est.versoEstudo || 1);
   });
   $("btnPerfil").addEventListener("click", ()=>abrirMeuEstudo("perfil"));
-  $("navMais").addEventListener("click", (e)=>{
+  for(const ab of [$("navMais"), $("btnMaisCel")]) ab.addEventListener("click", (e)=>{
     if(!fecharMais()) abrirMais(e.detail === 0);   // detail 0: Enter ou espaço
   });
+  // abas do celular: Início e Confissões são links; as outras abrem o mesmo que os botões do alto
+  document.querySelectorAll("#abasCel button[data-aba]").forEach(b=>b.addEventListener("click", ()=>{
+    fecharMais();
+    if(b.dataset.aba === "biblia") $("btnLivros").click();
+    else if(b.dataset.aba === "buscar") abrirBusca("texto");
+    else if(b.dataset.aba === "estudo") abrirMeuEstudo("estudo");
+  }));
   $("menuMais").addEventListener("click", (e)=>{
     const b = e.target.closest("button[data-alvo]");
     if(!b) return;
@@ -4628,7 +4648,7 @@ async function iniciar(){
     $(b.dataset.alvo).click();
   });
   // fecha ao tocar fora; "pointerdown" porque o Safari do iPhone não manda "click" de toque em área sem ação
-  document.addEventListener("pointerdown", (e)=>{ if(!e.target.closest("#menuMais,#navMais")) fecharMais(); });
+  document.addEventListener("pointerdown", (e)=>{ if(!e.target.closest("#menuMais,#navMais,#btnMaisCel")) fecharMais(); });
   if(window.ResizeObserver) new ResizeObserver(()=>ajustarNav()).observe(document.querySelector(".navbar"));
   if(document.fonts){ document.fonts.ready.then(ajustarNav); document.fonts.addEventListener("loadingdone", ajustarNav); }
   atualizarBotaoPerfil();
