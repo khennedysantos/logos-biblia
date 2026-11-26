@@ -1,0 +1,57 @@
+# Retraduz pelo Gemini (cota gratuita da API do Google) os livros de Calvino que estão com a tradução provisória do
+# NLLB (ferramentas/tradutor/gemini_calvino.py). Roda sozinho uma vez por dia, depois que a cota do Google renova, e
+# continua de onde parou até acabar; o resultado vai acumulando no branch "traducao-gemini-calvino", que vira pull
+# request quando terminar. Também dá para rodar na mão: aba Actions -> "Traduzir (Gemini)" -> Run workflow.
+# A chave fica no secret GEMINI_API_KEY (Settings -> Secrets and variables -> Actions); sem ele, não faz nada.
+name: Traduzir (Gemini)
+
+on:
+  schedule:
+    - cron: "17 9 * * *"     # 06:17 em Brasília, depois da renovação diária da cota do Google
+  workflow_dispatch:
+    inputs:
+      livros:
+        description: "Opcional: só estes livros, ex. TIT,MAL (vazio = os provisórios do manifest)"
+        default: ""
+      minutos:
+        description: "Quanto tempo traduzir nesta execução"
+        default: "320"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: traduzir-gemini
+  cancel-in-progress: false
+
+jobs:
+  traduzir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      RAMO: traducao-gemini-calvino
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Continuar do branch de tradução (se já existir)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin "$RAMO"; then git checkout -B "$RAMO" FETCH_HEAD; else git checkout -B "$RAMO"; fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Traduzir
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then echo "Falta o secret GEMINI_API_KEY"; exit 0; fi
+          python3 ferramentas/tradutor/gemini_calvino.py --livros "${{ inputs.livros }}" --minutos "${{ inputs.minutos || '320' }}"
+      - name: Gravar o progresso no branch
+        if: always()
+        run: |
+          git add data/commentaries/calvin ferramentas/tradutor/entradas/gemini_calvino_feitos.json || true
+          if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
+          python3 ferramentas/tradutor/gemini_calvino.py --situacao | tee /tmp/situacao.txt
+          git commit -q -m "Calvino pelo Gemini: $(head -1 /tmp/situacao.txt)"
+          git push -q origin "$RAMO"
