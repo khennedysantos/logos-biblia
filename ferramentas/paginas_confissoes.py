@@ -88,7 +88,7 @@ ITENS_TOPO = [  # (endereço, ícone, rótulo, só no celular)
     ("/?abrir=ajuda", "ajuda", "Como usar", False)]
 # quantos botões cabem na barra em cada faixa de largura (o resto vai para o "Mais"); no desktop o "Buscar" vira a barra
 CABEM_CEL = [(0, 3), (370, 4), (460, 5), (640, 6)]               # celular e tablet: a barra fica numa segunda faixa
-CABEM_MESA = [(760, 0), (850, 1), (930, 2), (1040, 3), (1210, 5), (1290, 6), (1495, 8), (1620, 10)]   # >= 760px: linha única
+CABEM_MESA = [(760, 0), (936, 1), (1016, 2), (1126, 3), (1296, 5), (1376, 6), (1581, 8), (1706, 10)]   # >= 760px: linha única
 
 
 def _simbolos(ids):
@@ -109,7 +109,7 @@ def _topo():
         atual = ' aria-current="page"' if end == "/confissoes/" else ""
         return f'<a class="{cls}" href="{end}"{atual}>{_ico(ico)}<span>{rot}</span></a>'
     itens = [item(k, *x) for k, x in enumerate(ITENS_TOPO, 1)]
-    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa", "lampada"} | {x[1] for x in ITENS_TOPO}
+    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa", "lampada", "coracao"} | {x[1] for x in ITENS_TOPO}
     return (_simbolos(sorted(ids)) +
             '<header class="topo cf-topo">'
             f'<a class="btn-livros" href="/?abrir=livros">{_ico("livro")} <span>Livros</span> {_ico("chevron", "ico ico-seta-baixo")}</a>'
@@ -118,7 +118,9 @@ def _topo():
             '<div class="cf-barra"><nav class="navbar" aria-label="Recursos">' + "".join(itens) + '</nav>'
             f'<details class="cf-mais"><summary>{_ico("mais")}<span>Mais</span></summary><div class="menu-mais">'
             + "".join(itens) + '</div></details></div>'
-            '<div class="topo-acoes"><button class="btn-icone" id="cfTema" type="button" aria-label="Alternar tema claro e escuro">'
+            '<div class="topo-acoes"><a class="btn-apoiar" href="/apoiar/" title="Apoiar o projeto">'
+            f'{_ico("coracao")}<span>Apoiar</span></a>'
+            '<button class="btn-icone" id="cfTema" type="button" aria-label="Alternar tema claro e escuro">'
             f'{_ico("lua", "ico so-claro")}{_ico("sol", "ico so-escuro")}</button>'
             f'<a class="btn-icone" href="/?abrir=perfil" aria-label="Perfil">{_ico("pessoa")}</a></div></header>'
             '<script>(function(){var b=document.getElementById("cfTema"),m=document.querySelector(".cf-mais");'
@@ -176,6 +178,11 @@ ESTILO = """<style>
 .cf-topo .btn-icone{width:2.1rem;height:2.1rem;padding:0;font-size:.96rem}
 .cf-topo .btn-livros:hover,.cf-topo .btn-icone:hover{border-color:var(--suave);background:var(--hover)}
 .cf-topo .topo-acoes{display:flex;align-items:center;gap:.35rem}
+.cf-topo .btn-apoiar{display:inline-flex;align-items:center;gap:.38rem;height:2.1rem;padding:0 .72rem;border-radius:.32rem;
+  border:1px solid color-mix(in srgb,var(--rubrica) 45%,var(--borda));background:var(--rubrica-suave);color:var(--rubrica);
+  font:600 .73rem/1 var(--ui);letter-spacing:.03em;white-space:nowrap;text-decoration:none}
+.cf-topo .btn-apoiar .ico{fill:currentColor;stroke:none;font-size:.92rem}
+.cf-topo .btn-apoiar:hover{border-color:var(--rubrica)}
 .cf-topo .busca-comando{display:none;align-items:center;gap:.5rem;height:2.1rem;padding:0 .5rem 0 .7rem;border:1px solid var(--borda);
   border-radius:.32rem;background:var(--mesa);color:var(--suave);font:400 .78rem/1 var(--ui);text-decoration:none}
 .cf-topo .busca-comando span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -200,7 +207,9 @@ ESTILO = """<style>
 .cf-mais .menu-mais a:hover{background:var(--hover)}
 .cf-mais .menu-mais a.ativa{color:var(--rubrica);font-weight:600}
 @media (max-width:560px){.cf-topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;justify-content:center}
-  .cf-topo .navbar .so-cel span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+  .cf-topo .navbar .so-cel span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .cf-topo .btn-apoiar{width:2.1rem;padding:0;justify-content:center}
+  .cf-topo .btn-apoiar span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 @media (min-width:561px){.cf-topo .navbar a,.cf-mais summary{padding:.42rem .54rem;gap:.38rem;font-size:.72rem;letter-spacing:.02em}}
 @media (min-width:760px){
   .cf-topo{flex-wrap:nowrap;height:3.4rem;padding:0 1.2rem;gap:.55rem}
