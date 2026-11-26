@@ -110,7 +110,7 @@ const UI = {
     recentesTit:"Leituras recentes", hoje:"hoje", ontem:"ontem", haDias:"há {n} dias", capsNoDia:"{n} capítulo(s) em {d}",
     diasSeguidos:"dia(s) seguidos", nNotasRot:"anotações", nMarcasRot:"versículos marcados", progLivros:"Progresso por livro",
     marcacoes:"Versículos marcados", semMarcas:"Nenhum versículo marcado ainda. Toque em um versículo e escolha uma cor.", verTodas:"Ver todas",
-    perguntaDia:"Pergunta do dia", breveCat:"Breve Catecismo (1647)", lerCatecismo:"Ver no catecismo", pergAbrev:"P.", domingo:"Domingo", domingos:"Domingos",
+    perguntaDia:"Pergunta do dia", breveCat:"Breve Catecismo (1647)", lerCatecismo:"Ver no catecismo", pergAbrev:"P.", domingo:"Domingo", domingos:"Domingos", memorizar:"Memorizar", verResposta:"Mostrar resposta",
     planosTit:"Planos de leitura", tempoTit:"Linha do tempo", atlasTit:"Atlas bíblico", atlasDica:"ex.: Jericó, Betel, Corinto",
     atlasFonte:"Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: desenhado pelo Sola com dados do Natural Earth (domínio público) e relevo do Terrain Tiles (AWS Open Data)",
     lugarIncerto:"Localização incerta: os estudiosos não concordam onde ficava (openbible.info).", ocorrencias:"ocorrência(s) na Bíblia",
@@ -238,7 +238,7 @@ const UI = {
     recentesTit:"Recent reading", hoje:"today", ontem:"yesterday", haDias:"{n} days ago", capsNoDia:"{n} chapter(s) on {d}",
     diasSeguidos:"day(s) in a row", nNotasRot:"notes", nMarcasRot:"highlighted verses", progLivros:"Progress by book",
     marcacoes:"Highlighted verses", semMarcas:"No highlighted verses yet. Tap a verse and pick a colour.", verTodas:"See all",
-    perguntaDia:"Question of the day", breveCat:"Shorter Catechism (1647)", lerCatecismo:"Open in the catechism", pergAbrev:"Q.", domingo:"Lord's Day", domingos:"Lord's Days",
+    perguntaDia:"Question of the day", breveCat:"Shorter Catechism (1647)", lerCatecismo:"Open in the catechism", pergAbrev:"Q.", domingo:"Lord's Day", domingos:"Lord's Days", memorizar:"Memorize", verResposta:"Show answer",
     planosTit:"Reading plans", tempoTit:"Timeline", atlasTit:"Bible atlas", atlasDica:"e.g. Jericho, Bethel, Corinth",
     atlasFonte:"Places: openbible.info Bible Geocoding (CC-BY) · Map: drawn by Sola from Natural Earth data (public domain) with relief from Terrain Tiles (AWS Open Data)",
     lugarIncerto:"Uncertain location: scholars disagree on where it was (openbible.info).", ocorrencias:"occurrence(s) in the Bible",
@@ -366,7 +366,7 @@ const UI = {
     recentesTit:"Lecturas recientes", hoje:"hoy", ontem:"ayer", haDias:"hace {n} días", capsNoDia:"{n} capítulo(s) el {d}",
     diasSeguidos:"día(s) seguidos", nNotasRot:"notas", nMarcasRot:"versículos resaltados", progLivros:"Progreso por libro",
     marcacoes:"Versículos resaltados", semMarcas:"Aún no hay versículos resaltados. Toca un versículo y elige un color.", verTodas:"Ver todas",
-    perguntaDia:"Pregunta del día", breveCat:"Catecismo Menor (1647)", lerCatecismo:"Ver en el catecismo", pergAbrev:"P.", domingo:"Domingo", domingos:"domingos",
+    perguntaDia:"Pregunta del día", breveCat:"Catecismo Menor (1647)", lerCatecismo:"Ver en el catecismo", pergAbrev:"P.", domingo:"Domingo", domingos:"domingos", memorizar:"Memorizar", verResposta:"Mostrar respuesta",
     planosTit:"Planes de lectura", tempoTit:"Cronología", atlasTit:"Atlas bíblico", atlasDica:"ej.: Jericó, Betel, Corinto",
     atlasFonte:"Lugares: openbible.info Bible Geocoding (CC-BY) · Mapa: dibujado por Sola con datos de Natural Earth (dominio público) y relieve de Terrain Tiles (AWS Open Data)",
     lugarIncerto:"Ubicación incierta: los estudiosos no concuerdan dónde estaba (openbible.info).", ocorrencias:"aparición(es) en la Biblia",
@@ -422,7 +422,7 @@ const AJUDA = {
       ["Seu estudo", [
         ["marcar","anotacoes","Marcar, anotar e compartilhar","Toque num versículo para marcá-lo com uma das quatro cores de lápis seco, escrever uma anotação, copiar o texto ou compartilhá-lo como imagem."],
         ["notas","anotacoes","Minhas anotações","Todas as suas anotações e marcações num só lugar, com o versículo de cada uma."],
-        ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias, Salmos e Provérbios e o Catecismo de Heidelberg em 52 Domingos (as perguntas e respostas abrem no próprio plano). O Sola lembra em que dia você está. Na página inicial, a pergunta do dia percorre o Breve Catecismo."],
+        ["planos","planos","Planos de leitura","A Bíblia em um ano, o plano de M'Cheyne (4 leituras por dia, com o Novo Testamento e os Salmos duas vezes), o Novo Testamento em 90 dias, Salmos e Provérbios e os catecismos: Heidelberg em 52 Domingos, Breve Catecismo e Catecismo Batista em 52 semanas (as perguntas e respostas abrem no próprio plano; o botão Memorizar esconde as respostas para você tentar lembrar antes de ver). O Sola lembra em que dia você está. Na página inicial, a pergunta do dia percorre o Breve Catecismo."],
         ["meu","progresso","Meu estudo","Seu perfil (nome, avatar, capa, versículo de vida), que você pode compartilhar como imagem, a semana de leitura com meta, as últimas 12 semanas, conquistas, a sua prateleira de livros (teologia, filosofia, vida cristã, literatura), o progresso por livro e as marcações. Em Perfil › Personalizar, escolha o tamanho da letra, a confissão em destaque e quais seções aparecem. Funciona sem conta; com conta, dá também para publicar uma página pública do perfil (solabiblia.com.br/perfil/seu-nome)."],
         ["conta","pessoa","Conta e backup","Entrar com o Google é opcional: serve para levar anotações, marcações e progresso para outros aparelhos. Sem conta, tudo fica neste aparelho, e você pode salvar um backup em arquivo em Perfil."],
         ["offline","baixar","Ler sem internet","Os capítulos que você abre ficam guardados. Em “Sobre o projeto” dá para baixar a Bíblia inteira para ler sem sinal."],
@@ -455,7 +455,7 @@ const AJUDA = {
       ["Your study", [
         ["marcar","anotacoes","Highlight, note and share","Tap a verse to highlight it in one of four colors, write a note, copy it or share it as an image."],
         ["notas","anotacoes","My notes","All your notes and highlights in one place, each with its verse."],
-        ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days, Psalms and Proverbs, and the Heidelberg Catechism in 52 Lord's Days (the questions and answers open right in the plan). Sola remembers your day. On the home page, the question of the day goes through the Shorter Catechism."],
+        ["planos","planos","Reading plans","The Bible in a year, M'Cheyne's plan (4 readings a day, with the New Testament and the Psalms twice), the New Testament in 90 days, Psalms and Proverbs, and the catechisms: Heidelberg in 52 Lord's Days, the Shorter Catechism and the Baptist Catechism in 52 weeks (the questions and answers open right in the plan; the Memorize button hides the answers so you can try to recall them first). Sola remembers your day. On the home page, the question of the day goes through the Shorter Catechism."],
         ["meu","progresso","My study","Your profile (name, avatar, cover, life verse), your reading week with a goal, the last 12 weeks, achievements, your bookshelf (theology, philosophy, Christian life, literature), a shareable profile image, progress by book and highlights. In Profile › Customize, pick the text size, the featured confession and which sections show. Works without an account; with one, you can also publish a public profile page (solabiblia.com.br/perfil/your-name)."],
         ["conta","pessoa","Account and backup","Signing in with Google is optional: it carries notes, highlights and progress to your other devices. Without an account everything stays on this device, and you can save a backup file in Profile."],
         ["offline","baixar","Offline reading","Chapters you open are kept. In “About” you can download the whole Bible."],
@@ -488,7 +488,7 @@ const AJUDA = {
       ["Tu estudio", [
         ["marcar","anotacoes","Resaltar, anotar y compartir","Toca un versículo para resaltarlo en uno de cuatro colores, anotar, copiarlo o compartirlo como imagen."],
         ["notas","anotacoes","Mis notas","Todas tus notas y resaltados en un solo lugar, con su versículo."],
-        ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días, Salmos y Proverbios y el Catecismo de Heidelberg en 52 domingos (las preguntas y respuestas se abren en el propio plan). Sola recuerda tu día. En la página de inicio, la pregunta del día recorre el Catecismo Menor."],
+        ["planos","planos","Planes de lectura","La Biblia en un año, el plan de M'Cheyne (4 lecturas por día, con el Nuevo Testamento y los Salmos dos veces), el Nuevo Testamento en 90 días, Salmos y Proverbios y los catecismos: Heidelberg en 52 domingos, Catecismo Menor y Catecismo Bautista en 52 semanas (las preguntas y respuestas se abren en el propio plan; el botón Memorizar oculta las respuestas para que intentes recordarlas antes). Sola recuerda tu día. En la página de inicio, la pregunta del día recorre el Catecismo Menor."],
         ["meu","progresso","Mi estudio","Tu perfil (nombre, avatar, portada, versículo de vida), tu semana de lectura con meta, las últimas 12 semanas, logros, tu estantería de libros (teología, filosofía, vida cristiana, literatura), una imagen del perfil para compartir, el progreso por libro y los resaltados. En Perfil › Personalizar, elige el tamaño de letra, la confesión destacada y qué secciones aparecen. Funciona sin cuenta; con cuenta, también puedes publicar una página pública del perfil (solabiblia.com.br/perfil/tu-nombre)."],
         ["conta","pessoa","Cuenta y copia de seguridad","Entrar con Google es opcional: lleva notas, resaltados y progreso a tus otros dispositivos. Sin cuenta todo queda en este dispositivo, y puedes guardar una copia en archivo en Perfil."],
         ["offline","baixar","Leer sin internet","Los capítulos que abres quedan guardados. En “Acerca de” puedes descargar la Biblia entera."],
@@ -768,7 +768,7 @@ function rotaDe(caminho, hash){
   m = caminho.match(/^\/perfil\/([a-z0-9][a-z0-9-]{1,28}[a-z0-9])\/?$/);   // página pública de um perfil
   if(m) return { vista:"perfil", apelido:m[1] };
   // planos: /planos/ (a lista), /planos/heidelberg/ e /planos/heidelberg/2/ (já no Domingo 2): o início com o painel aberto
-  m = caminho.match(/^\/planos\/?(?:([a-z0-9]+)\/?(?:(\d{1,3})\/?)?)?$/);
+  m = caminho.match(/^\/planos\/?(?:([a-z0-9-]+)\/?(?:(\d{1,3})\/?)?)?$/);
   if(m) return { vista:"inicio", plano: m[1] || "", dia: +m[2] || 0 };
   return caminho === "/" || caminho === "/index.html" ? { vista:"inicio" } : null;
 }
@@ -2309,7 +2309,7 @@ async function montarPlanos(planoAberto, diaAbrir){
         <h3>${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>
         ${pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : ""}
         <div class="plano-barra"><i style="width:${pct}%"></i></div>
-        <div class="plano-pct">${pct}% · ${pl.dias.length} ${pl.doc ? x.domingos : x.dias}</div></div>`;
+        <div class="plano-pct">${pct}% · ${pl.dias.length} ${pl.doc ? (pl.rots ? pl.rots[est.idioma] || pl.rots.pt : x.domingos) : x.dias}</div></div>`;
     }).join("");
     alvo.querySelectorAll(".plano-card").forEach(c=>{
       c.addEventListener("click", ()=>montarPlanos(c.dataset.id));
@@ -2321,24 +2321,36 @@ async function montarPlanos(planoAberto, diaAbrir){
   const pr = est.progresso[pl.id] || {};
   let doc = null;
   if(pl.doc){ try{ doc = await json(`data/confissoes/${pl.doc}.json`); }catch(e){ alvo.innerHTML = `<p class="erro-leitura">${x.erroCarregar}</p>`; return; } }
-  const en = est.idioma === "en", rotDia = pl.doc ? x.domingo : x.dia;
+  const en = est.idioma === "en", rotDia = pl.doc ? (pl.rot ? pl.rot[est.idioma] || pl.rot.pt : x.domingo) : x.dia;
   // plano de catecismo: cada dia é um Domingo, com as perguntas e respostas abertas ali mesmo
   const perguntas = (nums)=>{
     const itens = nums.map(n=>doc.itens.find(q=>+q.n === n)).filter(Boolean);
     const faixa = `${x.pergAbrev} ${nums[0]}${nums.length > 1 ? "–" + nums[nums.length - 1] : ""}`;
     return `<details class="dia-cat"><summary><b>${faixa}</b> ${esc(en ? itens[0].p_en : itens[0].p)}</summary>${itens.map(q=>
       `<div class="dia-perg"><p class="dia-p"><a href="/confissoes/${esc(pl.doc)}/${q.n}/">${x.pergAbrev} ${q.n}.</a> ${esc(en ? q.p_en : q.p)}</p>
-        <p class="dia-r">${esc((en ? q.r_en : q.r).replace(/\s*\[\d+\]/g, ""))}</p></div>`).join("")}</details>`;
+        <button type="button" class="ver-resposta">${x.verResposta}</button><p class="dia-r">${esc((en ? q.r_en : q.r).replace(/\s*\[\d+\]/g, ""))}</p></div>`).join("")}</details>`;
   };
-  alvo.innerHTML = `<div class="plano-topo"><button class="voltar-planos">‹ ${x.voltar}</button>
-    <button type="button" class="plano-link" data-url="https://solabiblia.com.br/planos/${esc(pl.id)}/">${ico("copiar")} <span>${x.pubCopiar}</span></button></div>
+  // modo memorizar (planos de catecismo): as respostas ficam escondidas até tocar em "Mostrar resposta"; a escolha
+  // vale também nas páginas de cada pergunta em /confissoes/ (a mesma chave logos_memorizar)
+  const memo = !!pl.doc && lerLS("logos_memorizar", false) === true;
+  alvo.classList.toggle("memorizar", memo);
+  alvo.innerHTML = `<div class="plano-topo"><button class="voltar-planos">‹ ${x.voltar}</button><span class="plano-acoes">
+    ${pl.doc ? `<button type="button" class="plano-memo" aria-pressed="${memo}">${ico("lampada")} <span>${x.memorizar}</span></button>` : ""}
+    <button type="button" class="plano-link" data-url="https://solabiblia.com.br/planos/${esc(pl.id)}/">${ico("copiar")} <span>${x.pubCopiar}</span></button></span></div>
     <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
     (pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : "") +
     pl.dias.map((caps,i)=>
       `<div class="dia-linha${pl.doc ? " dia-linha-cat" : ""}"><span class="dia-num">${rotDia} ${i+1}</span>
         <span class="dia-caps">${pl.doc ? perguntas(caps) : leiturasDoDia(caps, pl.grupos && pl.grupos[i])}</span>
         <input type="checkbox" class="dia-check" data-i="${i}" aria-label="${rotDia} ${i+1}" ${pr[i]?"checked":""}></div>`).join("");
-  alvo.querySelector(".voltar-planos").addEventListener("click", ()=>montarPlanos(null));
+  alvo.querySelector(".voltar-planos").addEventListener("click", ()=>{ alvo.classList.remove("memorizar"); montarPlanos(null); });
+  const bm = alvo.querySelector(".plano-memo");
+  if(bm) bm.addEventListener("click", ()=>{
+    const liga = !alvo.classList.contains("memorizar");
+    alvo.classList.toggle("memorizar", liga); bm.setAttribute("aria-pressed", liga); gravarLS("logos_memorizar", liga);
+    alvo.querySelectorAll(".dia-perg.vista").forEach(p=>p.classList.remove("vista"));
+  });
+  alvo.querySelectorAll(".ver-resposta").forEach(b=>b.addEventListener("click", ()=>b.closest(".dia-perg").classList.add("vista")));
   const bl = alvo.querySelector(".plano-link");
   bl.addEventListener("click", async ()=>{
     const rot = bl.querySelector("span");
@@ -2358,7 +2370,7 @@ async function montarPlanos(planoAberto, diaAbrir){
   let i = diaAbrir >= 1 && diaAbrir <= pl.dias.length ? diaAbrir - 1 : pl.id === "heidelberg" && nada ? domingoDaSerie() : primeiro;
   const el = linhas[i];
   if(!el) return;
-  if(pl.doc){ const d = el.querySelector("details"); if(d && (diaAbrir || i > 0 || (pl.id === "heidelberg" && nada))) d.open = true; }
+  if(pl.doc){ const d = el.querySelector("details"); if(d) d.open = true; }   // a semana (ou o Domingo) de agora já aberta
   if(i > 3 || diaAbrir) requestAnimationFrame(()=>el.scrollIntoView({ block: diaAbrir ? "start" : "center" }));
 }
 
