@@ -106,6 +106,8 @@ def main():
                 if not (1 <= c <= len(caps) and 1 <= a <= len(caps[c - 1]) and (b == 999 or a <= b <= len(caps[c - 1]))):
                     erros.append(f"doutrinas.json {d['id']}: {l} {c}:{a}-{b} não existe")
     for arq in sorted((DATA / "confissoes").glob("*.json")):
+        if arq.name == "busca.json":                     # o índice da busca (gerado), não é um documento
+            continue
         doc = ler(arq)
         itens = doc.get("itens", []) + [i for p in doc.get("partes", []) for i in p["itens"]]
         for it in itens:

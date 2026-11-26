@@ -120,6 +120,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 │   │                           #       pt/A..Z.json e doutrinas.json (GERADO dos 33 capítulos da Confissão)
 │   ├── confissoes/             # citacoes/<LIVRO>.json (GERADO: onde as confissões citam cada versículo, sem a CFW) +
 │   │                           #       credos, westminster, catecismo-maior, breve-catecismo, canones-de-dort, confissao-belga,
+│   │                           #       busca.json (GERADO: o texto de todos, para a aba Confissões da busca) +
 │   │                           #       heidelberg, confissao-batista-1644, confissao-batista-1689, catecismo-batista .json (inglês de
 │   │                           #       domínio público + português + textos de prova em USFM)
 │   ├── crossrefs/              # {USFM}/{cap}.json (referências cruzadas do openbible.info)
@@ -242,7 +243,11 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
     `#estudoVolta` aparece quando o versículo sai da tela; `#estudoSegue` ("Acompanhar a leitura", `logos_estudo_segue`)
     faz a Estante seguir o versículo a 1/3 da altura da tela (`verificarEstante`, no scroll).
   - Busca universal (aba Texto): enquanto digita (`buscar(true)`, 320 ms), mostra acima dos versículos os grupos Temas e
-    doutrinas, Dicionário e No original (`gruposBusca`, com `itensTemas`/`itensDic`, as mesmas das abas). Ao digitar, o
+    doutrinas, Nas confissões e catecismos, Dicionário e No original (`gruposBusca`, com `itensTemas`/`itensConf`/`itensDic`,
+    as mesmas das abas). A aba **Confissões** (nov/2026, `buscarConf`) busca no texto em português de todos os documentos de
+    `/confissoes/` pelo índice `data/confissoes/busca.json` (gerado pelo `paginas_confissoes.py`, `indexar`: `{docs, itens:
+    [[id, rótulo, endereço, texto]]}`, ~570 KB, ~160 KB comprimido, carregado só na primeira busca); frase exata primeiro,
+    depois trechos com todas as palavras; cada resultado é um link para a página (o grupo usa `<a class="bg-item">`). Ao digitar, o
     léxico inteiro não é carregado: só o código Strong digitado e as palavras-chave do `indice.json`.
   - O convite discreto para criar conta (`convidar(motivo)` / `mostrarConvite`) aparece no máximo uma vez por visita após interações reais e respeita adiamentos progressivos de 3, 7, 30 e 90 dias (`logos_convite`).
 - **Acervo em `data/` e scripts geradores**:

@@ -290,6 +290,10 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         return f'<p class="cf-texto">{corpo}</p>{lista}'
 
     urls, citacoes = [], {}
+    busca = []                                           # [documento, rótulo, endereço, texto] para a busca do app
+
+    def indexar(d, rot, url, texto):
+        busca.append([d, rot, url, re.sub(r"\s+", " ", RE_MARCA.sub("", texto)).strip()])
 
     def citar(provas, rot, url, trecho=""):
         item = (rot, url, cortar(re.sub(r"\s+", " ", RE_MARCA.sub("", trecho)).strip(), 240))
@@ -337,6 +341,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                          + f'<details class="acv-original"><summary>Texto inglês de referência — {e(c["fonte_en"])}</summary>'
                          + "".join(f"<p>{e(par)}</p>" for par in c["texto_en"]) + "</details>"
                          + f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
+                indexar(d, c["titulo"], caminho, " ".join(c["texto"]))
                 gravar(caminho, f"{c['titulo']} em português: texto completo | Sola", cortar(f"{c['titulo']}: {' '.join(c['texto'])}", 158),
                        corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (c["titulo"], caminho)])
             lista = "".join(f'<li><a href="{base}{c["id"]}/"><b>{i + 1}</b><span>{e(c["titulo"])} <small>{e(c["quando"])}</small></span></a></li>'
@@ -349,6 +354,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 caminho = f"{base}{q['n']}/"
                 curto = CURTO[d]
                 citar(q["provas"], f"{curto.removesuffix(' de Westminster')}, pergunta {q['n']}", caminho, f"{p} {r}")
+                indexar(d, f"Pergunta {q['n']}", caminho, f"{p} {r}")
                 ant = f'<span>‹ <a href="{base}{itens[i - 1]["n"]}/">Pergunta {itens[i - 1]["n"]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{itens[i + 1]["n"]}/">Pergunta {itens[i + 1]["n"]}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
                 domingo = f'<p class="lex-translit">{e(nome)}, Domingo {q["domingo"]}</p>' if "domingo" in q else ""
@@ -385,6 +391,9 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                     rot_cit = {"westminster": f"Confissão de Westminster {rot_it}", "confissao-belga": f"{nome}, {rot_it}",
                                "confissao-batista-1644": f"Confissão Batista de 1644, {rot_it}",
                                "canones-de-dort": f"{nome}, capítulo {n}, {rot_it[:1].lower() + rot_it[1:]}"}.get(d, f"{nome} {rot_it}")
+                    rot_busca = (f"Capítulo {n}, {rot_it[:1].lower()}{rot_it[1:]}" if d == "canones-de-dort"
+                                 else f"{rot_it[:1].upper()}{rot_it[1:]}")
+                    indexar(d, f"{rot_busca} · {titulo}", f"{caminho}#s{it['n']}", it.get("pt") or it["en"])
                     citar(it["provas"], rot_cit, caminho,
                           it.get("pt") or it["en"])
                     texto_it = paragrafo(it.get("pt") or it["en"], it["provas"], f"s{it['n']}")
@@ -427,6 +436,10 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                            for x in docs if x["id"] in ds) + "</div>"
                    for t, sub, ds in TRADICOES) +
            f'<p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
+    # o texto de todos os documentos, para a busca do app (aba Confissões e o grupo da busca universal)
+    nomes = {doc["id"]: doc["titulo"] for doc in docs}
+    (raiz / "data" / "confissoes" / "busca.json").write_text(
+        json.dumps({"docs": nomes, "itens": busca}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # o índice também em data/, por livro, para a estante do app
     pasta = raiz / "data" / "confissoes" / "citacoes"
     if pasta.exists():

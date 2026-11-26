@@ -14,7 +14,8 @@ const UI = {
     prefChave:"Palavras-chave sublinhadas", chaveTrad:"Tradução", chaveAqui:"Neste versículo", chavePalavra:"A palavra",
     chaveVer:"Ver o versículo no original", chaveFonte:"Nota de estudo do Sola", fontesRot:"Fontes", chaveDica:"palavra-chave: ver o original e a explicação",
     prefVoc:"Significado das palavras difíceis", vocSig:"Significado", vocOrig:"No original", vocFonte:"Vocabulário do Sola",
-    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Dicionário",
+    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Dicionário", abaConf:"Confissões",
+    exConf:"ex.: único consolo, batismo, fim principal", bgConf:"Nas confissões e catecismos",
     exStrong:"ex.: G3056, H2617, logos, hesed, graça", exTema:"ex.: fé, batismo infantil, Trindade", exDic:"ex.: Abraão, altar, aliança",
     comandoBusca:"Passagem, palavra, Strong (G3056) ou doutrina…",
     emEstudo:"Em estudo", eabaOrig:"Léxico & Orig.", eabaCom:"Comentário", eabaRefs:"CFW & Refs", eabaNota:"Nota",
@@ -141,7 +142,8 @@ const UI = {
     prefChave:"Underlined key words", chaveTrad:"Translation", chaveAqui:"In this verse", chavePalavra:"The word",
     chaveVer:"See the verse in the original", chaveFonte:"Sola study note", fontesRot:"Sources", chaveDica:"key word: see the original and the explanation",
     prefVoc:"Meaning of hard words", vocSig:"Meaning", vocOrig:"In the original", vocFonte:"Sola glossary",
-    abaTexto:"Text", abaStrong:"Strong", abaTemas:"Topics", abaDic:"Dictionary",
+    abaTexto:"Text", abaStrong:"Strong", abaTemas:"Topics", abaDic:"Dictionary", abaConf:"Confessions",
+    exConf:"in Portuguese, e.g. batismo, consolo", bgConf:"In the confessions and catechisms",
     exStrong:"e.g. G3056, H2617, logos, grace", exTema:"e.g. faith, covenant", exDic:"e.g. Abraham, altar",
     comandoBusca:"Passage, word, Strong (G3056) or doctrine…",
     emEstudo:"Studying", eabaOrig:"Lexicon & Orig.", eabaCom:"Commentary", eabaRefs:"WCF & Refs", eabaNota:"Note",
@@ -268,7 +270,8 @@ const UI = {
     prefChave:"Palabras clave subrayadas", chaveTrad:"Traducción", chaveAqui:"En este versículo", chavePalavra:"La palabra",
     chaveVer:"Ver el versículo en el original", chaveFonte:"Nota de estudio de Sola", fontesRot:"Fuentes", chaveDica:"palabra clave: ver el original y la explicación",
     prefVoc:"Significado de palabras difíciles", vocSig:"Significado", vocOrig:"En el original", vocFonte:"Vocabulario de Sola",
-    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Diccionario",
+    abaTexto:"Texto", abaStrong:"Strong", abaTemas:"Temas", abaDic:"Diccionario", abaConf:"Confesiones",
+    exConf:"en portugués, ej.: batismo, consolo", bgConf:"En las confesiones y catecismos",
     exStrong:"ej.: G3056, H2617, logos, gracia", exTema:"ej.: fe, pacto", exDic:"ej.: Abraham, altar",
     comandoBusca:"Pasaje, palabra, Strong (G3056) o doctrina…",
     emEstudo:"En estudio", eabaOrig:"Léxico y Orig.", eabaCom:"Comentario", eabaRefs:"CFW y Refs", eabaNota:"Nota",
@@ -409,7 +412,7 @@ const AJUDA = {
         ["palavras","temas","Palavras sublinhadas","Na Bíblia Livre, o traço cheio marca palavras-chave: toque para ver a palavra original e por que ela importa ali. O traço pontilhado explica palavras difíceis ou antigas. As duas camadas podem ser desligadas em Perfil."],
         ["contexto","contexto","Contexto do livro","O botão “Contexto” mostra autor, data, local, destinatários, tema e passagens paralelas do livro que você está lendo."]]],
       ["Pesquisar", [
-        ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras. Enquanto você digita, aparecem acima os temas, verbetes do dicionário e palavras do original que batem com o termo."],
+        ["buscar","busca","Buscar no texto","Procure uma palavra ou frase na Bíblia toda ou só no livro aberto (atalho / ou Ctrl+K). A frase exata aparece primeiro; depois, os versículos com todas as palavras. Enquanto você digita, aparecem acima os temas, os trechos das confissões e catecismos, os verbetes do dicionário e as palavras do original que batem com o termo; a aba Confissões busca só no texto de todas as confissões e catecismos."],
         ["strong","original","Léxico de Strong","Busque direto por código (como G3056 ou H2617), palavra original, transliteração ou significado em português nas 14.197 entradas do léxico."],
         ["lexicoPaginas","original","Uma página para cada palavra, verbete e tema","Cada entrada do léxico tem uma página própria (como /lexico/grego/26/, ἀγάπη) com a definição, como a KJV e o interlinear a traduzem e todos os versículos onde aparece; o dicionário e os temas também (como /dicionario/alianca/ e /temas/fe/). Cada versículo também tem a sua (como /biblia/joao/3/16/), com as três traduções, o original, o começo do comentário e as referências. Abra pelo link “Página completa” ou “Página do verbete”."],
         ["temas","temas","Temas e doutrinas","Mais de 5.000 temas bíblicos (Nave), os 33 capítulos da Confissão de Fé de Westminster (1647), cada um com os textos de prova da própria Assembleia, e os credos antigos (Apostólico, Niceno, Atanásio e Calcedônia). Em “Todas as confissões e catecismos” estão também os Catecismos de Westminster, a Confissão Belga, o Catecismo de Heidelberg, os Cânones de Dort, as Confissões Batistas de Londres de 1644 e de 1689 e o Catecismo Batista."],
@@ -442,7 +445,7 @@ const AJUDA = {
         ["palavras","temas","Underlined words","In the Bíblia Livre, a solid line marks key words: tap to see the original word and why it matters. A dotted line explains hard or old words. Both layers can be turned off in Profile (Portuguese only)."],
         ["contexto","contexto","Book context","The “Context” button shows author, date, place, audience, theme and parallels for the book you are reading."]]],
       ["Searching", [
-        ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first. While you type, matching topics, dictionary entries and original words appear above the verses."],
+        ["buscar","busca","Text search","Search a word or phrase in the whole Bible or only the open book (shortcut / or Ctrl+K). Exact phrases come first. While you type, matching topics, passages from the confessions and catechisms, dictionary entries and original words appear above the verses; the Confessions tab searches only the (Portuguese) text of all the confessions and catechisms."],
         ["strong","original","Strong's Lexicon","Search directly by Strong code (such as G3056 or H2617), original lemma, transliteration or definition across all 14,197 entries."],
         ["lexicoPaginas","original","A page for every word, entry and topic","Each lexicon entry has its own page (such as /lexico/grego/26/, ἀγάπη) with the definition, how the KJV and the interlinear render it and every verse where it occurs; so do the dictionary and the topics (such as /dicionario/alianca/ and /temas/fe/). Every verse has one too (such as /biblia/joao/3/16/), with the three translations, the original, the start of the commentary and the cross-references. All in Portuguese; open them from the “Full page” or “Entry page” link."],
         ["temas","temas","Topics and doctrines","Over 5,000 Bible topics (Nave), the 33 chapters of the Westminster Confession of Faith (1647), each with the Assembly's own proof texts, and the ancient creeds (Apostles', Nicene, Athanasian and Chalcedon). The confessions page also has the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism, the Canons of Dort, the 1644 and 1689 London Baptist Confessions and the Baptist Catechism (in Portuguese)."],
@@ -475,7 +478,7 @@ const AJUDA = {
         ["palavras","temas","Palabras subrayadas","En la Bíblia Livre, la línea continua marca palabras clave y la punteada explica palabras difíciles (en portugués). Se pueden desactivar en Perfil."],
         ["contexto","contexto","Contexto del libro","El botón “Contexto” muestra autor, fecha, lugar, destinatarios, tema y paralelos del libro."]]],
       ["Buscar", [
-        ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero. Mientras escribes, aparecen arriba los temas, entradas del diccionario y palabras del original que coinciden."],
+        ["buscar","busca","Buscar en el texto","Busca una palabra o frase en toda la Biblia o solo en el libro abierto (atajo / o Ctrl+K). La frase exacta aparece primero. Mientras escribes, aparecen arriba los temas, pasajes de las confesiones y catecismos, entradas del diccionario y palabras del original que coinciden; la pestaña Confesiones busca solo en el texto (en portugués) de todas las confesiones y catecismos."],
         ["strong","original","Léxico de Strong","Busca directamente por código (como G3056 o H2617), lema original, transliteración o definición en las 14.197 entradas del léxico."],
         ["lexicoPaginas","original","Una página por palabra, entrada y tema","Cada entrada del léxico tiene su propia página (como /lexico/grego/26/, ἀγάπη) con la definición, cómo la traducen la KJV y el interlineal y todos los versículos donde aparece; también el diccionario y los temas (como /dicionario/alianca/ y /temas/fe/). Cada versículo también tiene la suya (como /biblia/joao/3/16/), con las tres traducciones, el original, el inicio del comentario y las referencias. Todo en portugués; ábrelas desde el enlace “Página completa” o “Página de la entrada”."],
         ["temas","temas","Temas y doctrinas","Más de 5.000 temas bíblicos (Nave), los 33 capítulos de la Confesión de Fe de Westminster (1647), con los textos de prueba de la propia Asamblea, y los credos antiguos (Apostólico, Niceno, Atanasio y Calcedonia), en portugués. En la página de confesiones están también los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg, los Cánones de Dort, las Confesiones Bautistas de Londres de 1644 y de 1689 y el Catecismo Bautista."],
@@ -1851,6 +1854,7 @@ async function buscar(aoDigitar){
   if(est.buscaModo==="strong") return buscarStrong();
   if(est.buscaModo==="temas") return buscarTemas();
   if(est.buscaModo==="dicionario") return buscarDic();
+  if(est.buscaModo==="confissoes") return buscarConf();
   const x = t(), termo = $("campoBusca").value.trim();
   const res = $("buscaResultados"), status = $("buscaStatus");
   res.innerHTML = "";
@@ -2151,6 +2155,42 @@ async function buscarDic(){
   const itens = await itensDic(termo);
   if(vez === est.vezBusca) listarItens(itens);
 }
+/* Busca nas confissões e catecismos (aba Confissões e o grupo da busca universal): o texto em português de todos os
+   documentos de /confissoes/, num índice só (data/confissoes/busca.json, gerado pelo paginas_confissoes.py:
+   {docs: {id: nome}, itens: [[id, rótulo, endereço, texto]]}), carregado na primeira busca. A frase exata vem
+   primeiro; depois, os trechos com todas as palavras. Cada resultado é um link para a página do documento. */
+const idxConf = ()=>comCache(est.cachePalavras, "confissoes", "data/confissoes/busca.json");
+async function itensConf(termo){
+  const idx = await idxConf(), frase = normStr(termo).replace(/\s+/g, " ").trim();
+  if(!idx || frase.length < 3) return [];
+  const palavras = frase.split(" ").filter(p=>p.length > 2), exatos = [], soltos = [];
+  for(const [doc, rot, url, texto] of idx.itens){
+    const n = normStr(texto);
+    if(n.includes(frase)) exatos.push({doc, rot, url, texto, termos:[frase], pos:n.indexOf(frase)});
+    else if(palavras.length > 1 && palavras.every(p=>n.includes(p))) soltos.push({doc, rot, url, texto, termos:palavras, pos:n.indexOf(palavras[0])});
+  }
+  return exatos.concat(soltos).map(a=>({ ...a, nome: idx.docs[a.doc] || a.doc,
+    html: `<b>${esc(idx.docs[a.doc] || a.doc)}</b> · ${esc(a.rot)}` }));
+}
+function trechoConf(a){                                  // ~220 caracteres em volta da primeira ocorrência
+  const ini = Math.max(0, a.pos - 80), fim = Math.min(a.texto.length, ini + 220);
+  const s = (ini ? "…" : "") + a.texto.slice(ini, fim) + (fim < a.texto.length ? "…" : "");
+  return destacar(s, a.termos);
+}
+async function buscarConf(){
+  const x = t(), termo = $("campoBusca").value.trim(), vez = ++est.vezBusca;
+  const res = $("buscaResultados"), status = $("buscaStatus");
+  res.innerHTML = ""; status.textContent = "";
+  if(termo.length < 3){ status.textContent = x.digiteBusca; return; }
+  status.textContent = x.buscando;
+  const itens = await itensConf(termo);
+  if(vez !== est.vezBusca) return;
+  const LIMITE = 150;
+  status.textContent = !itens.length ? x.nadaEncontrado
+    : `${itens.length.toLocaleString(est.idioma)} ${x.resultados}` + (itens.length > LIMITE ? ` — ${x.mostrando} ${LIMITE}` : "");
+  res.innerHTML = itens.slice(0, LIMITE).map(a=>`<a class="res" href="${a.url}" style="display:block;text-decoration:none;color:inherit">
+    <div class="ref">${a.html}</div><p>${trechoConf(a)}</p></a>`).join("");
+}
 /* Busca universal (aba Texto): acima dos versículos, os temas e doutrinas, os verbetes do dicionário e as palavras do
    original que batem com o termo. Cada item abre na aba dele já aberto; "ver todos" leva à aba com a busca feita.
    O léxico inteiro (3 MB) não é carregado aqui: só o código Strong digitado e as palavras-chave (indice.json). */
@@ -2158,9 +2198,10 @@ async function gruposBusca(termo){
   const x = t(), alvo = normStr(termo), vazio = { html:"", ligar(){} };
   if(alvo.length < 2) return vazio;
   const cod = parseStrong(termo);
-  const [temas, dic, idxPal] = await Promise.all([
+  const [temas, dic, idxPal, conf] = await Promise.all([
     cod ? [] : itensTemas(termo), cod ? [] : itensDic(termo),
-    emPT() ? comCache(est.cachePalavras, "indice", "data/palavras/indice.json").catch(()=>null) : null]);
+    emPT() ? comCache(est.cachePalavras, "indice", "data/palavras/indice.json").catch(()=>null) : null,
+    cod || alvo.length < 3 ? [] : itensConf(termo).catch(()=>[])]);
   const orig = [];
   if(cod){
     const lex = await carregarLexico(cod[0]), ent = lex && lex[cod];
@@ -2173,19 +2214,21 @@ async function gruposBusca(termo){
       if(orig.length >= 4) break;
     }
   }
-  const grupos = [["temas", x.bgTemas, temas], ["dicionario", x.bgDic, dic], ["strong", x.bgOrig, orig]].filter(g=>g[2].length);
+  const grupos = [["temas", x.bgTemas, temas], ["confissoes", x.bgConf, conf], ["dicionario", x.bgDic, dic],
+    ["strong", x.bgOrig, orig]].filter(g=>g[2].length);
   if(!grupos.length) return vazio;
   const html = `<div class="busca-grupos">` + grupos.map(([modo, rot, itens])=>`<div class="bg-grupo"><h4>${rot}</h4><div class="bg-itens">` +
-    itens.slice(0, 4).map((it, i)=>`<button type="button" class="bg-item" data-modo="${modo}" data-n="${i}">${it.html}</button>`).join("") +
+    itens.slice(0, 4).map((it, i)=>it.url ? `<a class="bg-item" href="${it.url}">${it.html}</a>`     // confissões: link direto
+      : `<button type="button" class="bg-item" data-modo="${modo}" data-n="${i}">${it.html}</button>`).join("") +
     (itens.length > 4 ? `<button type="button" class="bg-mais" data-modo="${modo}">${x.bgTodos} (${itens.length})</button>` : "") +
     `</div></div>`).join("") + `</div>`;
   const porModo = Object.fromEntries(grupos.map(g=>[g[0], g[2]]));
   return { html, ligar(raiz){
-    raiz.querySelectorAll(".bg-item, .bg-mais").forEach(b=>b.addEventListener("click", async ()=>{
+    raiz.querySelectorAll("button.bg-item, .bg-mais").forEach(b=>b.addEventListener("click", async ()=>{
       const modo = b.dataset.modo, it = b.classList.contains("bg-item") ? porModo[modo][+b.dataset.n] : null;
       abrirBusca(modo);
       if(modo === "strong"){ if(it) $("campoBusca").value = it.cod; return buscarStrong(); }
-      if(!it) return buscar();
+      if(!it) return modo === "confissoes" ? buscarConf() : buscar();
       ++est.vezBusca;
       $("buscaStatus").textContent = "";
       $("buscaResultados").innerHTML = `<h3 class="res-titulo">${it.titulo}</h3>` + await it.abrir();
@@ -2200,9 +2243,11 @@ function abrirBusca(modo){
 }
 function prepararAbas(){
   const x = t();
-  const exemplo = ()=>est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="strong" ? x.exStrong : est.buscaModo==="temas" ? x.exTema : x.exDic;
+  const exemplo = ()=>est.buscaModo==="texto" ? x.exPlaceholder : est.buscaModo==="strong" ? x.exStrong : est.buscaModo==="temas" ? x.exTema
+    : est.buscaModo==="confissoes" ? x.exConf : x.exDic;
   document.querySelectorAll(".busca-abas .aba").forEach(b=>{
-    b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="strong" ? x.abaStrong : b.dataset.modo==="temas" ? x.abaTemas : x.abaDic;
+    b.textContent = b.dataset.modo==="texto" ? x.abaTexto : b.dataset.modo==="strong" ? x.abaStrong : b.dataset.modo==="temas" ? x.abaTemas
+      : b.dataset.modo==="confissoes" ? x.abaConf : x.abaDic;
     b.onclick = ()=>{
       est.buscaModo = b.dataset.modo;
       document.querySelectorAll(".busca-abas .aba").forEach(o=>{ o.classList.toggle("ativa", o===b); o.setAttribute("aria-selected", o===b); });
@@ -2212,6 +2257,7 @@ function prepararAbas(){
       if(est.dicaBusca) est.dicaBusca();
       if(est.buscaModo==="temas" && !$("campoBusca").value.trim()) buscarTemas();
       else if(est.buscaModo==="strong" && $("campoBusca").value.trim()) buscarStrong();
+      else if(est.buscaModo==="confissoes" && $("campoBusca").value.trim()) buscarConf();
     };
   });
   $("campoBusca").placeholder = exemplo();

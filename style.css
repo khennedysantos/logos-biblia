@@ -1109,6 +1109,7 @@ body:not([data-vista="cap"]) .convite{bottom:1.2rem}
 .bg-itens{display:flex;flex-wrap:wrap;gap:.35rem}
 .bg-item{border:1px solid var(--borda);background:var(--painel);border-radius:var(--raio-curto);padding:.3rem .62rem;
   font-size:.8rem;line-height:1.35;cursor:pointer;text-align:left;max-width:100%;transition:border-color .14s,color .14s}
+a.bg-item{display:inline-block;color:inherit;text-decoration:none}
 .bg-item:hover,.bg-item:focus-visible{border-color:var(--ouro-vivo);color:var(--rubrica)}
 .bg-item .bg-cod{font:600 .66rem var(--ui);color:var(--rubrica);margin-right:.15rem}
 .bg-mais{border:0;background:none;color:var(--rubrica);font-size:.74rem;font-weight:600;cursor:pointer;padding:.3rem .35rem}
