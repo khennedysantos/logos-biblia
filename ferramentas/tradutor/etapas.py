@@ -370,6 +370,19 @@ def preparar_comentario(etapa, pasta):
     entradas(etapa, itens)
 
 
+# o NLLB traduz por pedaços e às vezes começa um pedaço do meio da frase com maiúscula ("que, Quando se consideram…")
+MEIO = ("O A Os As Um Uma Uns Umas E Mas Ou Nem Que Quando Como Porque Pois Se Para Por Com Sem De Do Da Dos Das Em No "
+        "Na Nos Nas Ao Aos À Às Não Assim Isto Isso Aquilo Este Esta Estes Estas Esse Essa Esses Essas Aquele Aquela "
+        "Ele Ela Eles Elas Seu Sua Seus Suas Onde Embora Ainda Também Então Já Mesmo Todo Toda Todos Todas Nós Vós Qual "
+        "Quais Cujo Cuja Enquanto Até Sobre Entre Contra Depois Antes Nenhum Nenhuma Algum Alguma Muito Muitos Pelo Pela "
+        "Pelos Pelas Num Numa Lhe Lhes Me Te Vos").split()
+RE_MEIO = re.compile(r"(?<=[,;] )(" + "|".join(sorted(set(MEIO), key=len, reverse=True)) + r")\b")
+
+
+def minusculas_no_meio(texto):
+    return RE_MEIO.sub(lambda m: m.group(1).lower(), texto)
+
+
 def aplicar_comentario(etapa, pasta):
     tr = traducoes(etapa)
     if not tr:
@@ -382,7 +395,7 @@ def aplicar_comentario(etapa, pasta):
             originais[(livro, cap)] = ler(base / livro / f"{cap}.json")
         m = NUM_VERSO.match(originais[(livro, cap)].get(verso, ""))
         prefixo = m.group(0) if m else ""
-        por_cap.setdefault((livro, cap), {})[verso] = prefixo + v
+        por_cap.setdefault((livro, cap), {})[verso] = prefixo + minusculas_no_meio(v)
     for (livro, cap), versos in por_cap.items():
         versos["__pt"] = True
         gravar(base / "pt" / livro / f"{cap}.json", versos)
