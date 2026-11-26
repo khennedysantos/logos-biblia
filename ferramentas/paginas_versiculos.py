@@ -53,6 +53,9 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
     provisorio = {i for pasta in ("henry", "calvin")
                   for i in ler(raiz / "data" / "commentaries" / pasta / "manifest.json").get("provisorio", [])}
     ordem = [(b["id"], c) for b in livros for c in range(1, b["ch"] + 1)]
+    # números de Strong que têm página no léxico (o interlinear do NT usa alguns números estendidos da STEPBible, G6000+,
+    # que não estão no Strong de 1890: sem página, sem link)
+    no_lexico = {k for letra in "GH" for k in ler(raiz / "data" / "strongs" / f"{letra}.json")}
     urls = []
     textos_bl = {}
 
@@ -68,7 +71,9 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
         return f"{info[l]['pt']} {c}:{a}" + (f"-{b}" if b and b != a else "")
 
     def link(l, c, a, b=None):
-        return f'<a href="/biblia/{s_de[l]}/{c}/{a}/">{e(ref_txt(l, c, a, b))}</a>'
+        # versículo vazio na Bíblia Livre (Sl 46:3, unido ao anterior) não tem página: vai para o capítulo
+        destino = f"/biblia/{s_de[l]}/{c}/{a}/" if bl(l, c, a) else f"/biblia/{s_de[l]}/{c}/#v{a}"
+        return f'<a href="{destino}">{e(ref_txt(l, c, a, b))}</a>'
 
     # lista de todos os versículos, para o anterior/próximo atravessar capítulos e livros
     for l in info:
@@ -112,7 +117,7 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
                 if palavras:
                     itens = []
                     for p in palavras:
-                        u = url_lexico(p[2])
+                        u = url_lexico(p[2]) if p[2] in no_lexico else ""
                         orig = e(re.sub(r"[\\׃׀]", "", p[0]).strip())
                         orig = f'<a href="{u}">{orig}</a>' if u else orig
                         itens.append(f"<li>{orig}<i>{e(p[1])}</i>{e(p[3])}</li>")
