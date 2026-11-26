@@ -109,7 +109,7 @@ def _topo():
         atual = ' aria-current="page"' if end == "/confissoes/" else ""
         return f'<a class="{cls}" href="{end}"{atual}>{_ico(ico)}<span>{rot}</span></a>'
     itens = [item(k, *x) for k, x in enumerate(ITENS_TOPO, 1)]
-    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa"} | {x[1] for x in ITENS_TOPO}
+    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa", "lampada"} | {x[1] for x in ITENS_TOPO}
     return (_simbolos(sorted(ids)) +
             '<header class="topo cf-topo">'
             f'<a class="btn-livros" href="/?abrir=livros">{_ico("livro")} <span>Livros</span> {_ico("chevron", "ico ico-seta-baixo")}</a>'
@@ -146,6 +146,16 @@ def _regras_cabem():
 
 
 TOPO_CONF = _topo()
+# modo memorizar nas perguntas dos catecismos (a mesma chave logos_memorizar do plano no app)
+MEMO_BOTAO = ('<button type="button" class="cf-memo" aria-pressed="false" title="Esconder a resposta para tentar lembrar">'
+              + _ico("lampada") + '<span>Memorizar</span></button>')
+MEMO_VER = '<button type="button" class="cf-ver">Mostrar resposta</button>'
+MEMO_JS = ('<script>(function(){var m=document.querySelector(".cf-memo");if(!m)return;var r=document.querySelector(".cf-resposta"),'
+           'on=false;try{on=JSON.parse(localStorage.getItem("logos_memorizar"))===true}catch(e){}'
+           'function por(v,salvar){on=v;document.body.classList.toggle("cf-memorizar",v);m.setAttribute("aria-pressed",v);'
+           'r.classList.remove("vista");if(salvar)try{localStorage.setItem("logos_memorizar",JSON.stringify(v))}catch(e){}}'
+           'por(on);m.onclick=function(){por(!on,1)};r.querySelector(".cf-ver").onclick=function(){r.classList.add("vista")};})();'
+           '</script>')
 ESTILO = """<style>
 .cf-pag .ico{width:1.05em;height:1.05em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
   vertical-align:-.16em;flex:0 0 auto}
@@ -239,6 +249,18 @@ ESTILO = """<style>
 .cf-pag main.lex>.lex-translit{padding-bottom:1.1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--borda);
   box-shadow:0 3px 0 -2px var(--ouro)}
 .cf-pag .lex-viz span{flex:1 1 0}
+.cf-perg{display:flex;align-items:flex-start;gap:.8rem}
+.cf-perg .lex-resumo{flex:1 1 auto}
+.cf-memo{flex:0 0 auto;display:inline-flex;align-items:center;gap:.35rem;margin-top:.2rem;border:1px solid var(--borda);background:var(--painel);
+  border-radius:999px;padding:.35rem .75rem;font:600 .78rem/1 var(--ui);color:var(--tinta-2);cursor:pointer}
+.cf-memo .ico{color:var(--ouro)}
+.cf-memo[aria-pressed="true"]{border-color:var(--rubrica);color:var(--rubrica);background:var(--rubrica-suave)}
+.cf-resposta{position:relative}
+.cf-ver{display:none}
+.cf-memorizar .cf-resposta:not(.vista)>*:not(.cf-ver){filter:blur(7px);user-select:none;pointer-events:none}
+.cf-memorizar .cf-resposta:not(.vista) .cf-ver{display:block;position:absolute;z-index:2;top:1.2rem;left:50%;transform:translateX(-50%);
+  border:1px solid var(--rubrica);background:var(--painel);color:var(--rubrica);border-radius:999px;padding:.6rem 1.2rem;
+  font:600 .9rem/1 var(--ui);cursor:pointer;box-shadow:0 8px 24px rgba(30,22,10,.18)}
 .cf-pag .lex-viz span+span{text-align:right}
 </style>"""
 CURTO = {"breve-catecismo": "Breve Catecismo de Westminster", "catecismo-maior": "Catecismo Maior de Westminster",
@@ -290,6 +312,10 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         return f'<p class="cf-texto">{corpo}</p>{lista}'
 
     urls, citacoes = [], {}
+    busca = []                                           # [documento, rótulo, endereço, texto] para a busca do app
+
+    def indexar(d, rot, url, texto):
+        busca.append([d, rot, url, re.sub(r"\s+", " ", RE_MARCA.sub("", texto)).strip()])
 
     def citar(provas, rot, url, trecho=""):
         item = (rot, url, cortar(re.sub(r"\s+", " ", RE_MARCA.sub("", trecho)).strip(), 240))
@@ -308,7 +334,8 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         seo = cabeca_seo(site + caminho, titulo.split(" | ")[0], desc, "article", migalhas)
         arq = raiz / caminho.strip("/") / "index.html"
         arq.parent.mkdir(parents=True, exist_ok=True)
-        arq.write_text(pagina_versiculo(titulo, desc, css, corpo, seo, ESTILO, TOPO_CONF, "cf-pag"), encoding="utf-8")
+        js = MEMO_JS if "cf-memo" in corpo else ""
+        arq.write_text(pagina_versiculo(titulo, desc, css, corpo + js, seo, ESTILO, TOPO_CONF, "cf-pag"), encoding="utf-8")
         urls.append(site + caminho)
 
     docs = [json.loads((raiz / "data" / "confissoes" / f"{d}.json").read_text(encoding="utf-8"))
@@ -337,6 +364,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                          + f'<details class="acv-original"><summary>Texto inglês de referência — {e(c["fonte_en"])}</summary>'
                          + "".join(f"<p>{e(par)}</p>" for par in c["texto_en"]) + "</details>"
                          + f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
+                indexar(d, c["titulo"], caminho, " ".join(c["texto"]))
                 gravar(caminho, f"{c['titulo']} em português: texto completo | Sola", cortar(f"{c['titulo']}: {' '.join(c['texto'])}", 158),
                        corpo, [("Sola", "/"), ("Confissões", "/confissoes/"), (nome, base), (c["titulo"], caminho)])
             lista = "".join(f'<li><a href="{base}{c["id"]}/"><b>{i + 1}</b><span>{e(c["titulo"])} <small>{e(c["quando"])}</small></span></a></li>'
@@ -349,15 +377,18 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 caminho = f"{base}{q['n']}/"
                 curto = CURTO[d]
                 citar(q["provas"], f"{curto.removesuffix(' de Westminster')}, pergunta {q['n']}", caminho, f"{p} {r}")
+                indexar(d, f"Pergunta {q['n']}", caminho, f"{p} {r}")
                 ant = f'<span>‹ <a href="{base}{itens[i - 1]["n"]}/">Pergunta {itens[i - 1]["n"]}</a></span>' if i else "<span></span>"
                 pro = f'<span><a href="{base}{itens[i + 1]["n"]}/">Pergunta {itens[i + 1]["n"]}</a> ›</span>' if i + 1 < len(itens) else "<span></span>"
                 domingo = f'<p class="lex-translit">{e(nome)}, Domingo {q["domingo"]}</p>' if "domingo" in q else ""
                 original = {"heidelberg": "Texto inglês (1863)",
                             "catecismo-batista": "Texto inglês (edição de 1813)"}.get(d, "Original inglês (1647)")
-                corpo = (f'{topo}<h1>Pergunta {q["n"]}</h1>{domingo}<p class="lex-resumo">{e(p)}</p>' +
+                # modo memorizar: a resposta (e o inglês, que a entregaria) fica embaçada até tocar em "Mostrar resposta"
+                corpo = (f'{topo}<h1>Pergunta {q["n"]}</h1>{domingo}<div class="cf-perg"><p class="lex-resumo">{e(p)}</p>'
+                         f'{MEMO_BOTAO}</div><div class="cf-resposta">{MEMO_VER}' +
                          paragrafo(r, q["provas"], f"p{q['n']}") +
                          f'<details class="acv-original"><summary>{original}</summary><p>{e(q["p_en"])}</p>'
-                         f'<p>{e(RE_MARCA.sub("", q["r_en"])).replace(chr(10), "<br>")}</p></details>'
+                         f'<p>{e(RE_MARCA.sub("", q["r_en"])).replace(chr(10), "<br>")}</p></details></div>'
                          f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
                 gravar(caminho, f"{curto}, pergunta {q['n']}: {cortar(p, 60)} | Sola",
                        cortar(f"{p} {RE_MARCA.sub('', r)}", 158), corpo,
@@ -385,6 +416,9 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                     rot_cit = {"westminster": f"Confissão de Westminster {rot_it}", "confissao-belga": f"{nome}, {rot_it}",
                                "confissao-batista-1644": f"Confissão Batista de 1644, {rot_it}",
                                "canones-de-dort": f"{nome}, capítulo {n}, {rot_it[:1].lower() + rot_it[1:]}"}.get(d, f"{nome} {rot_it}")
+                    rot_busca = (f"Capítulo {n}, {rot_it[:1].lower()}{rot_it[1:]}" if d == "canones-de-dort"
+                                 else f"{rot_it[:1].upper()}{rot_it[1:]}")
+                    indexar(d, f"{rot_busca} · {titulo}", f"{caminho}#s{it['n']}", it.get("pt") or it["en"])
                     citar(it["provas"], rot_cit, caminho,
                           it.get("pt") or it["en"])
                     texto_it = paragrafo(it.get("pt") or it["en"], it["provas"], f"s{it['n']}")
@@ -427,6 +461,10 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                            for x in docs if x["id"] in ds) + "</div>"
                    for t, sub, ds in TRADICOES) +
            f'<p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
+    # o texto de todos os documentos, para a busca do app (aba Confissões e o grupo da busca universal)
+    nomes = {doc["id"]: doc["titulo"] for doc in docs}
+    (raiz / "data" / "confissoes" / "busca.json").write_text(
+        json.dumps({"docs": nomes, "itens": busca}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # o índice também em data/, por livro, para a estante do app
     pasta = raiz / "data" / "confissoes" / "citacoes"
     if pasta.exists():
