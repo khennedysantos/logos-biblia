@@ -12,7 +12,7 @@ if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matche
 document.documentElement.dataset.tema=t;</script>
 <link rel="preload" href="/fontes/cardo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fontes/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=12b1d1ba7b">
+<link rel="stylesheet" href="/style.css?v=b66daaaa2c">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/icone-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -76,7 +76,7 @@ document.documentElement.dataset.tema=t;</script>
 <symbol id="i-estante" viewBox="0 0 24 24"><path d="M3 20.5h18M5 20.5V6h3v14.5M10 20.5V4h3v16.5M15 20.5 16.5 7l3 .5-1.5 13"/></symbol>
 </svg>
 <header class="topo">
-  <button id="btnLivros" class="btn-livros" aria-label="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Lucas 24</span> <svg class="ico ico-seta-baixo" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+  <button id="btnLivros" class="btn-livros" title="Escolher livro e capítulo"><svg class="ico"><use href="#i-livro"/></svg> <span id="lblLivroAtual">Lucas 24</span> <svg class="ico ico-seta-baixo" aria-hidden="true"><use href="#i-chevron"/></svg></button>
   <a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca"><use href="#i-sola"/></svg><span class="nome">Sola</span></a>
   <button id="btnComando" class="busca-comando" type="button" aria-label="Buscar passagem, palavra, Strong ou doutrina">
     <svg class="ico"><use href="#i-busca"/></svg>
@@ -341,7 +341,7 @@ document.documentElement.dataset.tema=t;</script>
       comentários clássicos e referências cruzadas.</p>
     </div>
     <div>
-      <h3>Sobre</h3>
+      <h2>Sobre</h2>
       <a href="#" data-painel="painelSobre">Sobre o projeto</a>
       <a href="#" data-painel="painelAjuda">Como usar</a>
       <a href="#" data-painel="painelFontes">Fontes e licenças</a>
@@ -350,7 +350,7 @@ document.documentElement.dataset.tema=t;</script>
       <a href="mailto:projetosolabiblia@gmail.com">Contato</a>
     </div>
     <div>
-      <h3>Recursos</h3>
+      <h2>Recursos</h2>
       <a href="/">Todos os livros</a>
       <a href="/biblia/joao/1/">Ler a Bíblia</a>
       <a href="#" data-painel="painelPlanos">Planos de leitura</a>
@@ -360,7 +360,7 @@ document.documentElement.dataset.tema=t;</script>
       <a href="#" data-painel="painelNotas">Minhas anotações</a>
     </div>
     <div>
-      <h3>Comunidade</h3>
+      <h2>Comunidade</h2>
       <a href="https://www.instagram.com/projetosolabiblia/" target="_blank" rel="noopener">Instagram · @projetosolabiblia</a>
       <span class="em-breve">YouTube · em breve</span>
       <span class="em-breve">Apoiar o projeto · em breve</span>
@@ -370,6 +370,6 @@ document.documentElement.dataset.tema=t;</script>
   Interlinear: STEPBible/Tyndale House (CC BY) · Referências: openbible.info (CC-BY)</p>
 </footer>
 
-<script src="/app.js?v=d7066e0a20"></script>
+<script defer src="/app.js?v=63039f38f7"></script>
 </body>
 </html>

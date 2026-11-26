@@ -958,7 +958,7 @@ function renderizarInicio(){
             <span class="cm-translit">${esc(pTranslit)}</span>
             <span class="cm-strong">${esc(pStrong)}</span>
           </div>
-          <h3 class="cm-glosa">${esc(pGlosa)}</h3>
+          <p class="cm-glosa">${esc(pGlosa)}</p>
           <p class="cm-nota">${esc(pNota)}</p>
         </div>
         <div class="cm-rodape">
@@ -969,7 +969,7 @@ function renderizarInicio(){
       <article class="cartao-mesa">
         <div>
           <p class="cm-rotulo">${x.doutSelo} <span id="doutDiaFonte">CFW 1</span></p>
-          <h3 class="cm-titulo" id="doutDiaTit">Somente a Escritura (Sola Scriptura)</h3>
+          <h2 class="cm-titulo" id="doutDiaTit">Somente a Escritura (Sola Scriptura)</h2>
           <p class="cm-nota" id="doutDiaRes">A Bíblia é a Palavra de Deus escrita e a única regra infalível de fé e de vida; tudo o que é necessário para a salvação e para agradar a Deus está nela.</p>
         </div>
         <div class="cm-rodape">
@@ -980,7 +980,7 @@ function renderizarInicio(){
       <article class="cartao-mesa">
         <div>
           <p class="cm-rotulo">${x.perguntaDia} <span id="catDiaN"></span></p>
-          <h3 class="cm-titulo" id="catDiaP"></h3>
+          <h2 class="cm-titulo" id="catDiaP"></h2>
           <p class="cm-nota" id="catDiaR"></p>
         </div>
         <div class="cm-rodape">
@@ -996,10 +996,10 @@ function renderizarInicio(){
     <section class="canone">
       <div class="canone-cabeca">
         <h2>${x.indiceCanonico}</h2>
-        <div class="canone-abas" role="tablist">
-          <button type="button" data-canone="todos" class="${est.filtroCanone==="todos"?"ativa":""}">${x.todosLivros} (66)</button>
-          <button type="button" data-canone="AT" class="${est.filtroCanone==="AT"?"ativa":""}">${x.at} (39)</button>
-          <button type="button" data-canone="NT" class="${est.filtroCanone==="NT"?"ativa":""}">${x.nt} (27)</button>
+        <div class="canone-abas" role="group" aria-label="${x.indiceCanonico}">
+          <button type="button" data-canone="todos" class="${est.filtroCanone==="todos"?"ativa":""}" aria-pressed="${est.filtroCanone==="todos"}">${x.todosLivros} (66)</button>
+          <button type="button" data-canone="AT" class="${est.filtroCanone==="AT"?"ativa":""}" aria-pressed="${est.filtroCanone==="AT"}">${x.at} (39)</button>
+          <button type="button" data-canone="NT" class="${est.filtroCanone==="NT"?"ativa":""}" aria-pressed="${est.filtroCanone==="NT"}">${x.nt} (27)</button>
         </div>
       </div>
       ${testamento("AT")}${testamento("NT")}
@@ -1025,7 +1025,7 @@ function renderizarInicio(){
   $("btnDoutDia").addEventListener("click", ()=>doutDia ? abrirDoutrina(doutDia) : abrirBusca("temas"));
   document.querySelectorAll(".canone-abas button").forEach(b=>b.addEventListener("click", ()=>{
     est.filtroCanone = b.dataset.canone;
-    document.querySelectorAll(".canone-abas button").forEach(o=>o.classList.toggle("ativa", o===b));
+    document.querySelectorAll(".canone-abas button").forEach(o=>{ o.classList.toggle("ativa", o===b); o.setAttribute("aria-pressed", o===b); });
     document.querySelectorAll(".canone .testamento").forEach(sec=>{
       sec.classList.toggle("oculto", est.filtroCanone !== "todos" && sec.dataset.tst !== est.filtroCanone);
     });

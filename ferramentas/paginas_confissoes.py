@@ -332,6 +332,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
 
     def gravar(caminho, titulo, desc, corpo, migalhas):
         seo = cabeca_seo(site + caminho, titulo.split(" | ")[0], desc, "article", migalhas)
+        seo = seo.replace("/og.png", "/og-confissoes.png")   # a imagem ao compartilhar (WhatsApp, Twitter): própria das confissões
         arq = raiz / caminho.strip("/") / "index.html"
         arq.parent.mkdir(parents=True, exist_ok=True)
         js = MEMO_JS if "cf-memo" in corpo else ""

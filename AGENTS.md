@@ -83,7 +83,7 @@ Qualquer agente que atue neste repositório **deve** cumprir rigorosamente estas
 ├── 404.html                    # Gerado por gerar_paginas.py (carrega o app em rotas desconhecidas)
 ├── robots.txt                  # Regras de indexação + referência ao sitemap.xml
 ├── sitemap.xml                 # Gerado: índice de sitemap-{biblia,lexico,acervo}.xml (máx. 50 mil endereços por arquivo)
-├── favicon.svg / *.png / og.png # Ícones do site, PWA e imagem Open Graph (1200×630)
+├── favicon.svg / *.png / og.png # Ícones do site, PWA e imagem Open Graph (1200×630); og-confissoes.png é a das páginas de /confissoes/
 ├── AGENTS.md                   # Este guia (fonte única de regras e arquitetura para agentes)
 ├── CLAUDE.md                   # Ponteiro (@AGENTS.md) para o Claude Code
 ├── LEIA-ME.md                  # Resumo humano do projeto
@@ -289,6 +289,10 @@ python3 ferramentas/validar_dados.py
 python3 ferramentas/gerar_paginas.py
 git status --short
 ```
+
+### Desempenho e acessibilidade (Lighthouse)
+
+- Auditoria de nov/2026 (Lighthouse 12, celular, servidor local sem compressão — o GitHub Pages comprime, então o real é melhor): início 83 de desempenho / 98 de acessibilidade, capítulo 84/100, páginas avulsas (versículo, léxico, confissões) 95–99/100; boas práticas e SEO 100 em todas. O `app.js` é carregado com `defer` (antes segurava a primeira pintura); os títulos seguem a ordem (rodapé em `h2`, cartões da inicial em `h2`); as abas do índice canônico são um `role="group"` com `aria-pressed`; o `#btnLivros` usa `title` (o nome acessível é o texto visível); os links do rodapé têm 24 px de altura de toque. Para repetir: `npm i lighthouse` numa pasta temporária e `CHROME_PATH=/opt/pw-browsers/chromium-*/chrome-linux64/chrome lighthouse <url> --chrome-flags="--headless=new --no-sandbox"`.
 
 ### Diretrizes de teste visual no navegador (Playwright)
 
