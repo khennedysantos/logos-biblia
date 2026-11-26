@@ -99,6 +99,12 @@ a{color:var(--ouro)}
 .btn-icone.ativa,.btn-estudo-topo.ativa{border-color:var(--rubrica);color:var(--rubrica);background:var(--rubrica-suave)}
 .btn-estudo-topo.ativa .ico{color:var(--rubrica)}
 .topo-acoes{display:flex;align-items:center;gap:.35rem}
+/* Apoiar o projeto (/apoiar/): pílula em carmim; no celular, só o coração */
+.btn-apoiar{display:inline-flex;align-items:center;gap:.38rem;height:2.1rem;padding:0 .72rem;border-radius:var(--raio-curto);
+  border:1px solid color-mix(in srgb,var(--rubrica) 45%,var(--borda));background:var(--rubrica-suave);color:var(--rubrica);
+  font-size:.73rem;font-weight:600;letter-spacing:.03em;white-space:nowrap;text-decoration:none;transition:background .16s,border-color .16s}
+.btn-apoiar .ico{fill:currentColor;stroke:none;font-size:.92rem}
+.btn-apoiar:hover{border-color:var(--rubrica);background:color-mix(in srgb,var(--rubrica) 16%,transparent)}
 
 /* barra de comando unificada (desktop/tablet >= 760px) */
 .busca-comando{display:none;align-items:center;gap:.5rem;height:2.1rem;padding:0 .5rem 0 .7rem;
@@ -127,12 +133,14 @@ a{color:var(--ouro)}
 @media (max-width:560px){
   .topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;flex-wrap:wrap;justify-content:center;
     align-content:flex-start;height:1.45rem;overflow:hidden}
-  .btn-livros{max-width:calc(100vw - 12.6rem)}
+  .btn-livros{max-width:calc(100vw - 15.05rem)}
   .navbar{gap:0}
   .topo{padding-left:.85rem;padding-right:.85rem}
   .navbar button{padding:.44rem .38rem;gap:.3rem;font-size:.69rem;letter-spacing:0}
   /* "Buscar" só com a lupa (o nome continua para leitores de tela): assim "Confissões" cabe na barra */
   #btnBusca [data-label]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .btn-apoiar{width:2.1rem;padding:0;justify-content:center}
+  .btn-apoiar [data-label]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 /* "Mais": o que não cabe na barra (ajustarNav no app.js) vai para este menu, ancorado no botão */
 .nav-fora{display:none!important}

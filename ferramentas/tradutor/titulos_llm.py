@@ -60,7 +60,7 @@ def faltando():
     for tipo in TIPOS:
         tit = ler_json(DATA / tipo / "titulos_pt.json")
         pt = {}
-        for arq in sorted((DATA / tipo / "pt").glob("*.json")):
+        for arq in sorted((DATA / tipo / "pt").glob("[A-Z].json")):
             pt.update({k: v for k, v in json.loads(arq.read_text(encoding="utf-8")).items() if k != "__pt"})
         for k in sorted(pt):
             if k in tit:

@@ -91,6 +91,14 @@ def main():
             for pasta in ("", "pt/"):
                 if not (DATA / tipo / f"{pasta}{letra}.json").exists():
                     erros.append(f"{tipo}/{pasta}{letra}.json não existe")
+        # na pasta pt/ só ficam as letras: outro .json ali (como um enderecos.json perdido) era lido como verbetes
+        for arq in (DATA / tipo / "pt").glob("*.json"):
+            if not re.fullmatch(r"[A-Z]\.json", arq.name):
+                erros.append(f"{tipo}/pt/{arq.name}: só A.json…Z.json devem ficar nesta pasta")
+            else:
+                for k, v in (ler(arq) or {}).items():
+                    if k != "__pt" and not isinstance(v, list):
+                        erros.append(f"{tipo}/pt/{arq.name}: o verbete {k} não é uma lista de linhas")
     for nome in ("context.json", "plans.json", "timeline.json", "places.json", "journeys.json"):
         ler(DATA / nome)
 

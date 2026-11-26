@@ -97,7 +97,7 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo):
             shutil.rmtree(destino)
         tit = json.loads((raiz / "data" / pasta_dados / "titulos_pt.json").read_text(encoding="utf-8"))
         pt, en = {}, {}
-        for arq in sorted((raiz / "data" / pasta_dados / "pt").glob("*.json")):
+        for arq in sorted((raiz / "data" / pasta_dados / "pt").glob("[A-Z].json")):     # só as letras (A.json…Z.json)
             pt.update({k: v for k, v in json.loads(arq.read_text(encoding="utf-8")).items() if k != "__pt"})
             en.update(json.loads((raiz / "data" / pasta_dados / arq.name).read_text(encoding="utf-8")))
         # endereços: o verbete mais completo fica com o endereço simples
