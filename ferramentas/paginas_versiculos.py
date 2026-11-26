@@ -50,6 +50,8 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
     for pasta, nome in (("henry", "Matthew Henry"), ("calvin", "João Calvino")):
         for i in ler(raiz / "data" / "commentaries" / pasta / "manifest.json")["books"]:
             autores[i] = (pasta, nome)
+    provisorio = {i for pasta in ("henry", "calvin")
+                  for i in ler(raiz / "data" / "commentaries" / pasta / "manifest.json").get("provisorio", [])}
     ordem = [(b["id"], c) for b in livros for c in range(1, b["ch"] + 1)]
     urls = []
     textos_bl = {}
@@ -122,7 +124,8 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
                     txt = NUM_VERSO.sub("", txt, count=1)
                     nota = "" if vc == v else f" (comentário a partir do v. {vc})"
                     corpo.append(f'<h2>Comentário de {autor}</h2><p class="vs-com">{e(cortar_texto(txt, COMENTARIO))}</p>'
-                                 f'<p class="fonte">{autor}, tradução automática do inglês{nota}. '
+                                 f'<p class="fonte">{autor}, tradução automática do inglês{nota}'
+                                 f'{" (provisória, será melhorada em breve)" if l in provisorio else ""}. '
                                  f'<a href="/biblia/{s_de[l]}/{c}/#v{v}">Ler o comentário completo no Sola ›</a></p>')
                 cit = (citacoes or {}).get((l, c, v), [])
                 if cit:

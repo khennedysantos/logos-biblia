@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apoiar o projeto — Sola</title>
+<meta name="description" content="O Sola é gratuito, sem anúncios e sem fins comerciais. Se quiser ajudar a mantê-lo e a melhorar as traduções, você pode contribuir por Pix.">
+<meta name="theme-color" content="#FAF7F0">
+<script>/* tema antes da primeira pintura, para o modo noturno não piscar em claro */
+try{var t=JSON.parse(localStorage.getItem("logos_tema"));}catch(e){}
+if(t!=="claro"&&t!=="escuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"escuro":"claro";
+document.documentElement.dataset.tema=t;</script>
+<link rel="stylesheet" href="/style.css?v=b66daaaa2c">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://solabiblia.com.br/apoiar/">
+</head>
+<body data-vista="texto">
+<header class="topo"><a class="marca" href="/" aria-label="Sola — página inicial"><svg class="ico ico-marca" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.7" fill="currentColor" stroke="none"/><path d="M3 8c3-1.8 6-1.8 9 0c3-1.8 6-1.8 9 0v12c-3-1.8-6-1.8-9 0c-3-1.8-6-1.8-9 0z"/><path d="M12 8v12"/></svg><span class="nome">Sola</span></a></header>
+<main class="texto-pagina">
+<header class="cap-cabeca">
+<p class="cap-sobre"><a href="/">Sola</a></p>
+<h1 class="titulo-cap">Apoiar o projeto</h1><div class="ornamento" aria-hidden="true"><i></i></div>
+</header>
+<p>O Sola é e vai continuar sendo gratuito, sem anúncios e sem fins comerciais, para todos. Ninguém precisa
+pagar nada para usar qualquer parte do site.</p>
+
+<p>Se o Sola tem ajudado no seu estudo e você quiser contribuir, qualquer valor ajuda a cobrir os custos do
+projeto: o domínio do site e, principalmente, a tradução dos comentários clássicos para o português. Hoje
+parte deles (como o comentário de Calvino aos Salmos) está numa tradução automática provisória, feita com uma
+ferramenta gratuita, e o plano é refazê-la com mais qualidade.</p>
+
+<h2>Pix</h2>
+<p>No aplicativo do seu banco, escolha Pix e use a chave de e-mail:</p>
+<p class="apoio-chave"><strong id="chavePix">projetosolabiblia@gmail.com</strong>
+<button type="button" class="btn-ouro" id="copiarPix">Copiar a chave</button></p>
+<p>Ao conferir o Pix, o nome que aparece é <strong>Khennedy Brandão dos Santos</strong>, pelo Mercado Pago.
+É a conta pessoal de quem mantém o Sola, porque o projeto não tem CNPJ.</p>
+<p>A contribuição é voluntária e não dá acesso a nada a mais: o site é o mesmo para todos. O Sola não recebe
+nenhum dado seu além do que o próprio banco mostra em qualquer Pix (o nome de quem enviou e o valor).</p>
+
+<h2>Outras formas de ajudar</h2>
+<ul>
+  <li>Compartilhe o Sola com quem estuda a Bíblia: a sua igreja, o seu grupo de estudo, os seus amigos.</li>
+  <li>Encontrou um erro numa tradução, numa glosa ou no léxico? Use o botão “Sugerir correção” no próprio site
+  ou escreva para <a href="mailto:projetosolabiblia@gmail.com">projetosolabiblia@gmail.com</a>.</li>
+  <li>Siga e divulgue o <a href="https://www.instagram.com/projetosolabiblia/" target="_blank" rel="noopener">@projetosolabiblia</a> no Instagram.</li>
+</ul>
+<p>Obrigado. <em>Soli Deo gloria.</em></p>
+<style>
+.apoio-chave{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;padding:.9rem 1rem;border:1px solid var(--borda);
+  border-radius:.5rem;background:var(--painel)}
+.apoio-chave strong{font-family:var(--ui);font-size:1.05rem;word-break:break-all}
+</style>
+<script>
+document.getElementById("copiarPix").addEventListener("click", function(){
+  var b = this, chave = document.getElementById("chavePix").textContent;
+  var feito = function(){ b.textContent = "Chave copiada"; setTimeout(function(){ b.textContent = "Copiar a chave"; }, 2500); };
+  if(navigator.clipboard){ navigator.clipboard.writeText(chave).then(feito, function(){ b.textContent = "Selecione e copie"; }); }
+  else { b.textContent = "Selecione e copie"; }
+});
+</script>
+
+<p class="texto-voltar"><a class="btn-ouro" href="/">Voltar ao Sola</a></p>
+</main>
+<footer class="rodape"><p class="rodape-legal"><em>Sola Scriptura</em> · Estudo bíblico gratuito e em português · <a href="/" style="display:inline">solabiblia.com.br</a></p></footer>
+</body>
+</html>

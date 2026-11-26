@@ -1,0 +1,40 @@
+<!-- titulo: Apoiar o projeto -->
+<!-- descricao: O Sola é gratuito, sem anúncios e sem fins comerciais. Se quiser ajudar a mantê-lo e a melhorar as traduções, você pode contribuir por Pix. -->
+<p>O Sola é e vai continuar sendo gratuito, sem anúncios e sem fins comerciais, para todos. Ninguém precisa
+pagar nada para usar qualquer parte do site.</p>
+
+<p>Se o Sola tem ajudado no seu estudo e você quiser contribuir, qualquer valor ajuda a cobrir os custos do
+projeto: o domínio do site e, principalmente, a tradução dos comentários clássicos para o português. Hoje
+parte deles (como o comentário de Calvino aos Salmos) está numa tradução automática provisória, feita com uma
+ferramenta gratuita, e o plano é refazê-la com mais qualidade.</p>
+
+<h2>Pix</h2>
+<p>No aplicativo do seu banco, escolha Pix e use a chave de e-mail:</p>
+<p class="apoio-chave"><strong id="chavePix">projetosolabiblia@gmail.com</strong>
+<button type="button" class="btn-ouro" id="copiarPix">Copiar a chave</button></p>
+<p>Ao conferir o Pix, o nome que aparece é <strong>Khennedy Brandão dos Santos</strong>, pelo Mercado Pago.
+É a conta pessoal de quem mantém o Sola, porque o projeto não tem CNPJ.</p>
+<p>A contribuição é voluntária e não dá acesso a nada a mais: o site é o mesmo para todos. O Sola não recebe
+nenhum dado seu além do que o próprio banco mostra em qualquer Pix (o nome de quem enviou e o valor).</p>
+
+<h2>Outras formas de ajudar</h2>
+<ul>
+  <li>Compartilhe o Sola com quem estuda a Bíblia: a sua igreja, o seu grupo de estudo, os seus amigos.</li>
+  <li>Encontrou um erro numa tradução, numa glosa ou no léxico? Use o botão “Sugerir correção” no próprio site
+  ou escreva para <a href="mailto:projetosolabiblia@gmail.com">projetosolabiblia@gmail.com</a>.</li>
+  <li>Siga e divulgue o <a href="https://www.instagram.com/projetosolabiblia/" target="_blank" rel="noopener">@projetosolabiblia</a> no Instagram.</li>
+</ul>
+<p>Obrigado. <em>Soli Deo gloria.</em></p>
+<style>
+.apoio-chave{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;padding:.9rem 1rem;border:1px solid var(--borda);
+  border-radius:.5rem;background:var(--painel)}
+.apoio-chave strong{font-family:var(--ui);font-size:1.05rem;word-break:break-all}
+</style>
+<script>
+document.getElementById("copiarPix").addEventListener("click", function(){
+  var b = this, chave = document.getElementById("chavePix").textContent;
+  var feito = function(){ b.textContent = "Chave copiada"; setTimeout(function(){ b.textContent = "Copiar a chave"; }, 2500); };
+  if(navigator.clipboard){ navigator.clipboard.writeText(chave).then(feito, function(){ b.textContent = "Selecione e copie"; }); }
+  else { b.textContent = "Selecione e copie"; }
+});
+</script>
