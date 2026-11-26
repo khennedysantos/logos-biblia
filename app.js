@@ -28,7 +28,7 @@ const UI = {
     doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Todas as confissões e catecismos", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
     conteudoEN:"Conteúdo no original em inglês — tradução em andamento.",
-    tradAuto:"Tradução automática do original em inglês.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…", imgTitulo:"Imagem do versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Escuro", imgBaixar:"Baixar", imgCopiar:"Copiar imagem", imgCopiada:"Imagem copiada.", imgSemCopiar:"Este navegador não deixou copiar; use Baixar.",
+    tradAuto:"Tradução automática do original em inglês.", tradProvisoria:"Tradução automática provisória, feita com um tradutor gratuito; ela será melhorada no futuro.", lerMais:"Ler mais", lerMenos:"Recolher", compartilhar:"Compartilhar", gerandoImagem:"Gerando…", imgTitulo:"Imagem do versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Escuro", imgBaixar:"Baixar", imgCopiar:"Copiar imagem", imgCopiada:"Imagem copiada.", imgSemCopiar:"Este navegador não deixou copiar; use Baixar.",
     comRef:"Comentário referente ao v.", comBloco:"(o comentário cobre um bloco de versículos)",
     comInicio:"Neste capítulo, o comentário começa no v.",
     semLivroCalvin:"Ainda não há comentário para este livro.",
@@ -156,7 +156,7 @@ const UI = {
     doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"All creeds, confessions and catechisms (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
     conteudoEN:"Content in the original English.",
-    tradAuto:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…", imgTitulo:"Verse image", imgFormato:"Format", imgTema:"Theme", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Light", imgEscuro:"Dark", imgBaixar:"Download", imgCopiar:"Copy image", imgCopiada:"Image copied.", imgSemCopiar:"This browser did not allow copying; use Download.",
+    tradAuto:"", tradProvisoria:"", lerMais:"Read more", lerMenos:"Show less", compartilhar:"Share", gerandoImagem:"Creating…", imgTitulo:"Verse image", imgFormato:"Format", imgTema:"Theme", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Light", imgEscuro:"Dark", imgBaixar:"Download", imgCopiar:"Copy image", imgCopiada:"Image copied.", imgSemCopiar:"This browser did not allow copying; use Download.",
     comRef:"Commentary on v.", comBloco:"(the commentary covers a block of verses)",
     comInicio:"In this chapter, the commentary begins at v.",
     semLivroCalvin:"No commentary available for this book yet.",
@@ -284,7 +284,7 @@ const UI = {
     doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Todas las confesiones y catecismos (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
     conteudoEN:"Contenido en el inglés original.",
-    tradAuto:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…", imgTitulo:"Imagen del versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Oscuro", imgBaixar:"Descargar", imgCopiar:"Copiar imagen", imgCopiada:"Imagen copiada.", imgSemCopiar:"Este navegador no permitió copiar; usa Descargar.",
+    tradAuto:"", tradProvisoria:"", lerMais:"Leer más", lerMenos:"Ocultar", compartilhar:"Compartir", gerandoImagem:"Generando…", imgTitulo:"Imagen del versículo", imgFormato:"Formato", imgTema:"Tema", imgFeed:"Feed (4:5)", imgStories:"Stories (9:16)", imgClaro:"Claro", imgEscuro:"Oscuro", imgBaixar:"Descargar", imgCopiar:"Copiar imagen", imgCopiada:"Imagen copiada.", imgSemCopiar:"Este navegador no permitió copiar; usa Descargar.",
     comRef:"Comentario sobre el v.", comBloco:"(el comentario abarca un bloque de versículos)",
     comInicio:"En este capítulo, el comentario comienza en el v.",
     semLivroCalvin:"Aún no hay comentario para este libro.",
@@ -672,9 +672,11 @@ async function carregarComentario(usfm, cap){
 }
 async function livrosComentario(){
   if(!est.livrosCom){
-    const ler = async (a)=>{ try{ return (await json(`data/commentaries/${a}/manifest.json`)).books; }catch(e){ return []; } };
+    const ler = async (a)=>{ try{ return await json(`data/commentaries/${a}/manifest.json`); }catch(e){ return {}; } };
     const [calvin, henry] = await Promise.all([ler("calvin"), ler("henry")]);
-    est.livrosCom = { calvin, henry };
+    // "provisorio": livros cuja tradução ainda é a do NLLB (gratuito), que será refeita
+    est.livrosCom = { calvin: calvin.books || [], henry: henry.books || [],
+      provisorio: [...(calvin.provisorio || []), ...(henry.provisorio || [])] };
   }
   return est.livrosCom;
 }
@@ -1511,7 +1513,8 @@ function htmlComentarioCorpo(com, v, x, resumir){
   const nota = achado.v !== v
     ? `<p class="aviso-idioma">${achado.seguinte ? x.comInicio : x.comRef} ${achado.v} ${achado.seguinte ? "" : x.comBloco}</p>` : "";
   const longo = resumir && achado.texto.length > 1400;
-  const aviso = est.idioma==="en" ? "" : (com.__pt ? x.tradAuto : x.avisoIdiomaComentario);
+  const provisoria = com.__pt && ((est.livrosCom || {}).provisorio || []).includes(est.livro);
+  const aviso = est.idioma==="en" ? "" : (com.__pt ? (provisoria ? x.tradProvisoria : x.tradAuto) : x.avisoIdiomaComentario);
   const henry = com.__autor === "henry" ? `<p class="aviso-idioma">${x.notaHenry}</p>` : "";
   return `${henry}${nota}<p class="comentario-texto${longo ? " recolhido" : ""}">${linkarRefsTexto(achado.texto)}</p>
     ${longo ? `<button type="button" class="ler-mais" aria-expanded="false">${x.lerMais}</button>` : ""}

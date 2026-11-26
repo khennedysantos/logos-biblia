@@ -3,7 +3,7 @@ uso: python3 etapas.py preparar|aplicar  glosas|temas|dicionario|calvino|henry|v
 
 Os originais em inglês nunca são apagados: as traduções vão para pastas pt/
 (ou, no caso das glosas, substituem só o que ainda estava em inglês)."""
-import json, re, sys
+import json, os, re, sys
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
@@ -354,9 +354,13 @@ NUM_VERSO = re.compile(r"^\s*\d+(?:\s*[-,]\s*\d+)*\s*[\.:]?\s*")
 
 
 def preparar_comentario(etapa, pasta):
+    """LIVROS=PSA,1TI no ambiente limita a alguns livros (o aplicar só grava os capítulos traduzidos)"""
     base = DATA / "commentaries" / pasta
+    so = {l.strip() for l in os.environ.get("LIVROS", "").split(",") if l.strip()}
     itens = []
     for livro in sorted(p for p in base.iterdir() if p.is_dir() and not p.name.startswith("pt")):
+        if so and livro.name not in so:
+            continue
         for arq in sorted(livro.glob("*.json"), key=lambda a: int(a.stem)):
             for v, txt in ler(arq).items():
                 if v.isdigit() and txt.strip():
@@ -364,6 +368,19 @@ def preparar_comentario(etapa, pasta):
                     corpo = NUM_VERSO.sub("", txt, count=1)
                     itens.append({"id": f"{livro.name}|{arq.stem}|{v}", "texto": corpo})
     entradas(etapa, itens)
+
+
+# o NLLB traduz por pedaços e às vezes começa um pedaço do meio da frase com maiúscula ("que, Quando se consideram…")
+MEIO = ("O A Os As Um Uma Uns Umas E Mas Ou Nem Que Quando Como Porque Pois Se Para Por Com Sem De Do Da Dos Das Em No "
+        "Na Nos Nas Ao Aos À Às Não Assim Isto Isso Aquilo Este Esta Estes Estas Esse Essa Esses Essas Aquele Aquela "
+        "Ele Ela Eles Elas Seu Sua Seus Suas Onde Embora Ainda Também Então Já Mesmo Todo Toda Todos Todas Nós Vós Qual "
+        "Quais Cujo Cuja Enquanto Até Sobre Entre Contra Depois Antes Nenhum Nenhuma Algum Alguma Muito Muitos Pelo Pela "
+        "Pelos Pelas Num Numa Lhe Lhes Me Te Vos").split()
+RE_MEIO = re.compile(r"(?<=[,;] )(" + "|".join(sorted(set(MEIO), key=len, reverse=True)) + r")\b")
+
+
+def minusculas_no_meio(texto):
+    return RE_MEIO.sub(lambda m: m.group(1).lower(), texto)
 
 
 def aplicar_comentario(etapa, pasta):
@@ -378,7 +395,7 @@ def aplicar_comentario(etapa, pasta):
             originais[(livro, cap)] = ler(base / livro / f"{cap}.json")
         m = NUM_VERSO.match(originais[(livro, cap)].get(verso, ""))
         prefixo = m.group(0) if m else ""
-        por_cap.setdefault((livro, cap), {})[verso] = prefixo + v
+        por_cap.setdefault((livro, cap), {})[verso] = prefixo + minusculas_no_meio(v)
     for (livro, cap), versos in por_cap.items():
         versos["__pt"] = True
         gravar(base / "pt" / livro / f"{cap}.json", versos)
