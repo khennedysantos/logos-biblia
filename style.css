@@ -90,6 +90,9 @@ a{color:var(--ouro)}
 .btn-livros{padding:.42rem .72rem;font-size:.8rem;font-weight:600;max-width:46vw;overflow:hidden;
   text-overflow:ellipsis;white-space:nowrap}
 .btn-livros .ico{color:var(--rubrica)}
+/* nome longo ("1 Tessalonicenses 5") é cortado no fim, com reticências, e não dos dois lados */
+.btn-livros{justify-content:flex-start}
+#lblLivroAtual{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .btn-livros .ico-seta-baixo{width:.85em;height:.85em;color:var(--suave);margin-left:-.1rem}
 .btn-estudo-topo{height:2.1rem;padding:0 .7rem;font-size:.73rem;font-weight:600;letter-spacing:.03em;white-space:nowrap}
 .btn-estudo-topo .ico{color:var(--ouro)}
@@ -134,27 +137,52 @@ a{color:var(--ouro)}
   .topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;flex-wrap:wrap;justify-content:center;
     align-content:flex-start;height:1.45rem;overflow:hidden}
   .btn-livros{max-width:calc(100vw - 15.05rem)}
-  .navbar{gap:0}
   .topo{padding-left:.85rem;padding-right:.85rem}
-  .navbar button{padding:.44rem .38rem;gap:.3rem;font-size:.69rem;letter-spacing:0}
-  /* "Buscar" só com a lupa (o nome continua para leitores de tela): assim "Confissões" cabe na barra */
-  #btnBusca [data-label]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .btn-apoiar{width:2.1rem;padding:0;justify-content:center}
   .btn-apoiar [data-label]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
-/* "Mais": o que não cabe na barra (ajustarNav no app.js) vai para este menu, ancorado no botão */
-.nav-fora{display:none!important}
-.navbar .nav-mais{margin-left:auto}
+/* "Estudar" (no computador) e "⋯" (no celular) abrem o mesmo menu (montarMais no app.js): os recursos de estudo
+   (.em-estudar) moram sempre nele, e o que não cabe na barra também vai para lá */
+.nav-fora,.em-estudar{display:none!important}
+.so-celular{display:none!important}
+
+/* celular e tablet estreito (< 760px): uma faixa só no alto e as abas fixas embaixo, ao alcance do polegar */
+.abas-cel{display:none}
+@media (max-width:759px){
+  .topo .navbar{display:none}
+  .so-celular{display:inline-flex!important}
+  #btnCorrida{display:none}
+  .abas-cel{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;justify-content:space-around;
+    padding:.3rem .25rem calc(.3rem + env(safe-area-inset-bottom));background:var(--painel);
+    border-top:1px solid var(--borda);box-shadow:0 -6px 18px rgba(29,27,24,.05)}
+  .abas-cel a,.abas-cel button{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.18rem;
+    padding:.38rem .1rem .32rem;border:0;background:none;color:var(--suave);font:500 .64rem/1.2 var(--ui);
+    text-decoration:none;cursor:pointer;border-radius:var(--raio-curto);-webkit-tap-highlight-color:transparent}
+  .abas-cel span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .abas-cel .ico{font-size:1.32rem}
+  .abas-cel [aria-current="page"]{color:var(--rubrica);font-weight:600}
+  .abas-cel a:active,.abas-cel button:active{background:var(--hover)}
+}
+@media print{.abas-cel{display:none!important}}
 /* a partir de 760px o cabeçalho inteiro vira uma barra editorial única de 54px */
+/* a partir de 760px o cabeçalho inteiro vira uma barra única: marca, busca larga, Bíblia, Estudar ▾,
+   Confissões e Planos (em texto, sem ícones) e, depois de um fio, Apoiar e os botões de ícone */
 @media (min-width:760px){
   .topo{flex-wrap:nowrap;height:3.4rem;padding:0 1.2rem;gap:.55rem}
-  .topo .marca{order:1;margin:0 .2rem 0 0;flex:0 0 auto}
-  .topo .btn-livros{order:2;flex:0 0 auto;max-width:14.5rem}
-  .topo .busca-comando{order:3;display:inline-flex;flex:0 1 20.5rem;min-width:11rem}
-  #btnBusca{display:none!important}
-  .topo .navbar{order:4;flex-basis:auto;flex:1 1 auto;min-width:4.5rem;margin:0;border-top:0;padding-top:0}
-  .topo .navbar .nav-mais{margin-left:0}
-  .topo .topo-acoes{order:5;flex:0 0 auto;margin-left:auto}
+  .topo .marca{order:1;margin:0 .5rem 0 0;flex:0 0 auto}
+  .topo .busca-comando{order:2;display:inline-flex;flex:1 100 26rem;max-width:30rem;min-width:10rem;margin-right:auto;
+    border-radius:99px;padding:0 .45rem 0 .95rem}
+  .topo .btn-livros{order:3;flex:0 0 auto;max-width:14.5rem;border:0;background:none;color:var(--tinta-2);
+    font-size:.8rem;font-weight:500;padding:.42rem .55rem;letter-spacing:.01em}
+  .topo .btn-livros > .ico:first-child{display:none}
+  .topo .btn-livros:hover{background:var(--rubrica-suave);color:var(--rubrica)}
+  .topo .navbar{order:4;flex-basis:auto;flex:0 1 auto;min-width:4.5rem;margin:0;border-top:0;padding-top:0}
+  .topo .navbar button{font-size:.8rem;letter-spacing:.01em;padding:.42rem .55rem}
+  .topo .navbar button .ico{display:none}
+  .topo .navbar button .ico-seta-baixo{display:inline;width:.85em;height:.85em;color:var(--suave);margin-left:-.1rem}
+  .topo .topo-acoes{order:5;flex:0 0 auto;padding-left:.75rem;margin-left:.2rem;border-left:1px solid var(--borda)}
+  .topo .btn-apoiar{border:0;background:none;padding:0 .45rem;font-size:.8rem;letter-spacing:.01em}
+  .topo .btn-apoiar:hover{background:var(--rubrica-suave)}
 }
 .menu-mais{position:absolute;z-index:35;display:flex;flex-direction:column;min-width:15rem;max-width:calc(100vw - 1rem);
   overflow-y:auto;padding:.35rem;background:var(--painel);border:1px solid var(--borda);border-radius:var(--raio);
@@ -1138,3 +1166,14 @@ a.bg-item{display:inline-block;color:inherit;text-decoration:none}
 .lex-correcao{margin:.35rem 0 0;font-size:.72rem}
 .convite .convite-passos{margin-top:.5rem;color:var(--marfim)}.convite .convite-passos b{color:var(--ouro-noite);font-weight:600}
 .convite .btn-ouro .ico{width:1em;height:1em;vertical-align:-.12em}
+
+/* abas do celular (< 760px): o que fica preso embaixo da tela sobe acima delas. Fica no fim do arquivo para valer
+   por cima das posições de cada componente */
+@media (max-width:759px){
+  body{padding-bottom:calc(3.65rem + env(safe-area-inset-bottom))}
+  .rodape-nav{bottom:calc(3.65rem + env(safe-area-inset-bottom))}
+  .aviso-topo{bottom:calc(7.6rem + env(safe-area-inset-bottom))}
+  .convite{bottom:calc(8.4rem + env(safe-area-inset-bottom))}
+  .cartao-palavra{bottom:calc(4.4rem + env(safe-area-inset-bottom))!important}
+}
+@media (max-width:560px){.topo .btn-livros > .ico:first-child{display:none}}

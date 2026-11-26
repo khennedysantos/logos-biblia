@@ -76,19 +76,18 @@ RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que tod
           "confissao-batista-1644": "A Primeira Confissão de Londres, das sete igrejas batistas particulares.",
           "confissao-batista-1689": "A Segunda Confissão de Londres, feita sobre a de Westminster.",
           "catecismo-batista": "O catecismo de Benjamin Keach, feito sobre o Breve Catecismo, com o batismo dos que creem."}
-# o topo é o mesmo do app (marca, Livros, barra de busca, botões com ícone e "Mais"), mas em HTML puro: cada botão é
-# um link para o app com ?abrir=<botão> (o app abre o painel ao carregar, abrirPeloEndereco); o "Mais" é um <details>
-# e o CSS decide, pela largura, quais botões ficam na barra e quais vão para o menu (sem o ajustarNav do app)
-ITENS_TOPO = [  # (endereço, ícone, rótulo, só no celular)
-    ("/?abrir=meu", "progresso", "Meu estudo", False), ("/?abrir=buscar", "busca", "Buscar", True),
-    ("/?abrir=temas", "temas", "Temas", False), ("/confissoes/", "ancora", "Confissões", False),
-    ("/?abrir=dicionario", "dicionario", "Dicionário", False), ("/planos/", "planos", "Planos", False),
-    ("/?abrir=atlas", "atlas", "Atlas", False), ("/?abrir=tempo", "tempo", "Linha do tempo", False),
-    ("/?abrir=contexto", "contexto", "Contexto", False), ("/?abrir=notas", "anotacoes", "Anotações", False),
-    ("/?abrir=ajuda", "ajuda", "Como usar", False)]
-# quantos botões cabem na barra em cada faixa de largura (o resto vai para o "Mais"); no desktop o "Buscar" vira a barra
-CABEM_CEL = [(0, 3), (370, 4), (460, 5), (640, 6)]               # celular e tablet: a barra fica numa segunda faixa
-CABEM_MESA = [(760, 0), (936, 1), (1016, 2), (1126, 3), (1296, 5), (1376, 6), (1581, 8), (1706, 10)]   # >= 760px: linha única
+# o topo é o mesmo do app, mas em HTML puro: cada botão é um link para o app com ?abrir=<botão> (o app abre o painel
+# ao carregar, lerAbrir). No computador: marca, busca, Bíblia, "Estudar ▾" (um <details>), Confissões e Planos; no
+# celular (< 760px): uma faixa só no alto, com o ⋯ (outro <details>), e as abas fixas embaixo, como no app
+ESTUDAR = [  # (endereço, ícone, rótulo): o menu "Estudar" (no celular, o ⋯ leva os mesmos, menos "Meu estudo", que é aba)
+    ("/?abrir=meu", "progresso", "Meu estudo"), ("/?abrir=temas", "temas", "Temas"),
+    ("/?abrir=dicionario", "dicionario", "Dicionário"), ("/?abrir=atlas", "atlas", "Atlas"),
+    ("/?abrir=tempo", "tempo", "Linha do tempo"), ("/?abrir=notas", "anotacoes", "Anotações"), ("/?abrir=ajuda", "ajuda", "Como usar")]
+BARRA = [("/confissoes/", "ancora", "Confissões"), ("/planos/", "planos", "Planos")]
+ABAS = [("/", "casa", "Início"), ("/?abrir=livros", "livro", "Bíblia"), ("/?abrir=buscar", "busca", "Buscar"),
+        ("/?abrir=meu", "progresso", "Estudo"), ("/confissoes/", "ancora", "Confissões")]
+# quantos itens de BARRA cabem ao lado do "Estudar" em cada largura (o resto vai para o menu); medido no app (764 e 890 px)
+CABEM_MESA = [(760, 0), (780, 1), (900, 2)]
 
 
 def _simbolos(ids):
@@ -103,48 +102,56 @@ def _ico(nome, classe="ico"):
     return f'<svg class="{classe}" aria-hidden="true"><use href="#i-{nome}"/></svg>'
 
 
+def _link(end, ico, rot, cls=""):
+    atual = end == "/confissoes/"
+    cls = (cls + (" ativa" if atual else "")).strip()
+    classe = ' class="%s"' % cls if cls else ""
+    corrente = ' aria-current="page"' if atual else ""
+    return f'<a{classe} href="{end}"{corrente}>{_ico(ico)}<span>{rot}</span></a>'
+
+
 def _topo():
-    def item(k, end, ico, rot, cel):
-        cls = f"t{k}" + (" so-cel" if cel else "") + (" ativa" if end == "/confissoes/" else "")
-        atual = ' aria-current="page"' if end == "/confissoes/" else ""
-        return f'<a class="{cls}" href="{end}"{atual}>{_ico(ico)}<span>{rot}</span></a>'
-    itens = [item(k, *x) for k, x in enumerate(ITENS_TOPO, 1)]
-    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa", "lampada", "coracao"} | {x[1] for x in ITENS_TOPO}
+    estudar = "".join(_link(*x) for x in ESTUDAR)
+    barra = "".join(_link(*x, cls=f"b{k}") for k, x in enumerate(BARRA, 1))
+    no_menu = "".join(_link(*x, cls=f"m{k}") for k, x in enumerate(BARRA, 1))     # os da barra que não couberem
+    cel = _link(*BARRA[1]) + "".join(_link(*x) for x in ESTUDAR[1:])
+    abas = "".join(_link(*x) for x in ABAS)
+    ids = {"sola", "livro", "chevron", "busca", "mais", "lua", "sol", "pessoa", "lampada", "coracao", "casa"} | {
+        x[1] for x in ESTUDAR + BARRA + ABAS}
     return (_simbolos(sorted(ids)) +
             '<header class="topo cf-topo">'
-            f'<a class="btn-livros" href="/?abrir=livros">{_ico("livro")} <span>Livros</span> {_ico("chevron", "ico ico-seta-baixo")}</a>'
+            f'<a class="btn-livros" href="/?abrir=livros">{_ico("livro")} <span>Bíblia</span> {_ico("chevron", "ico ico-seta-baixo")}</a>'
             f'<a class="marca" href="/" aria-label="Sola — página inicial">{_ico("sola", "ico ico-marca")}<span class="nome">Sola</span></a>'
             f'<a class="busca-comando" href="/?abrir=buscar">{_ico("busca")}<span>Passagem, palavra, Strong (G3056) ou doutrina…</span><kbd>/</kbd></a>'
-            '<div class="cf-barra"><nav class="navbar" aria-label="Recursos">' + "".join(itens) + '</nav>'
-            f'<details class="cf-mais"><summary>{_ico("mais")}<span>Mais</span></summary><div class="menu-mais">'
-            + "".join(itens) + '</div></details></div>'
+            '<nav class="cf-barra" aria-label="Recursos">'
+            f'<details class="cf-menu cf-estudar"><summary><span>Estudar</span>{_ico("chevron", "ico ico-seta-baixo")}</summary>'
+            f'<div class="menu-mais">{estudar}{no_menu}</div></details>{barra}</nav>'
             '<div class="topo-acoes"><a class="btn-apoiar" href="/apoiar/" title="Apoiar o projeto">'
             f'{_ico("coracao")}<span>Apoiar</span></a>'
             '<button class="btn-icone" id="cfTema" type="button" aria-label="Alternar tema claro e escuro">'
             f'{_ico("lua", "ico so-claro")}{_ico("sol", "ico so-escuro")}</button>'
-            f'<a class="btn-icone" href="/?abrir=perfil" aria-label="Perfil">{_ico("pessoa")}</a></div></header>'
-            '<script>(function(){var b=document.getElementById("cfTema"),m=document.querySelector(".cf-mais");'
+            f'<a class="btn-icone" href="/?abrir=perfil" aria-label="Perfil">{_ico("pessoa")}</a>'
+            f'<details class="cf-menu cf-mais-cel"><summary class="btn-icone" aria-label="Mais">{_ico("mais")}</summary>'
+            f'<div class="menu-mais">{cel}</div></details></div></header>'
+            f'<nav class="cf-abas" aria-label="Navegação principal">{abas}</nav>'
+            '<script>(function(){var b=document.getElementById("cfTema"),ms=document.querySelectorAll(".cf-menu");'
             'b.onclick=function(){var t=document.documentElement.dataset.tema==="escuro"?"claro":"escuro";'
             'document.documentElement.dataset.tema=t;try{localStorage.setItem("logos_tema",JSON.stringify(t))}catch(e){}};'
-            'document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false});'
-            'document.addEventListener("keydown",function(e){if(e.key==="Escape")m.open=false;'
+            'document.addEventListener("click",function(e){ms.forEach(function(m){if(m.open&&!m.contains(e.target))m.open=false})});'
+            'document.addEventListener("keydown",function(e){if(e.key==="Escape")ms.forEach(function(m){m.open=false});'
             'if(e.key==="/"&&!/INPUT|TEXTAREA/.test(e.target.tagName)){e.preventDefault();location.href="/?abrir=buscar"}});})();</script>')
 
 
 def _regras_cabem():
-    """mostra na barra só os primeiros N botões (e esconde do "Mais" esses mesmos N), faixa a faixa"""
-    n = len(ITENS_TOPO)
-    def faixa(de, ate, cabem, mesa):
-        visiveis = [k for k, x in enumerate(ITENS_TOPO, 1) if not (mesa and x[3])][:cabem]
-        barra = ",".join(f".cf-topo .navbar .t{k}" for k in range(1, n + 1) if k not in visiveis)
-        menu = ",".join(f".cf-topo .menu-mais .t{k}" for k in visiveis)
-        tudo = len(visiveis) == len([x for x in ITENS_TOPO if not (mesa and x[3])])
+    """no computador, mostra na barra só os primeiros N itens de BARRA (e esconde do menu "Estudar" esses mesmos N)"""
+    regras = []
+    for i, (de, cabem) in enumerate(CABEM_MESA):
+        ate = CABEM_MESA[i + 1][0] if i + 1 < len(CABEM_MESA) else None
         cond = f"(min-width:{de}px)" + (f" and (max-width:{ate - 1}px)" if ate else "")
-        return (f"@media {cond}{{" + (f"{barra}{{display:none}}" if barra else "") + (f"{menu}{{display:none}}" if menu else "")
-                + (".cf-mais{display:none}" if tudo else "") + "}")
-    faixas = [(a, CABEM_CEL[i + 1][0] if i + 1 < len(CABEM_CEL) else 760, c, False) for i, (a, c) in enumerate(CABEM_CEL)]
-    faixas += [(a, CABEM_MESA[i + 1][0] if i + 1 < len(CABEM_MESA) else None, c, True) for i, (a, c) in enumerate(CABEM_MESA)]
-    return "\n".join(faixa(*f) for f in faixas)
+        fora = ",".join(f".cf-topo .cf-barra > a.b{k}" for k in range(cabem + 1, len(BARRA) + 1))
+        dentro = ",".join(f".cf-menu.cf-estudar .menu-mais a.m{k}" for k in range(1, cabem + 1))
+        regras.append(f"@media {cond}{{" + (f"{fora}{{display:none}}" if fora else "") + (f"{dentro}{{display:none}}" if dentro else "") + "}")
+    return "\n".join(regras)
 
 
 TOPO_CONF = _topo()
@@ -189,39 +196,60 @@ ESTILO = """<style>
 .cf-topo .busca-comando kbd{font:600 .66rem/1.2 var(--ui);color:var(--suave);background:var(--papel);border:1px solid var(--borda);
   border-radius:.22rem;padding:.08rem .36rem}
 .cf-topo .busca-comando:hover{border-color:var(--suave);background:var(--painel);color:var(--tinta)}
-.cf-barra{order:5;flex-basis:100%;display:flex;align-items:center;gap:.1rem;margin:0 -.25rem;padding-top:.2rem;
-  border-top:1px solid color-mix(in srgb,var(--borda) 65%,transparent)}
-.cf-topo .navbar{display:flex;gap:0;align-items:center;flex:1 1 auto;min-width:0}
-.cf-topo .navbar a,.cf-mais summary{flex:0 0 auto;display:inline-flex;align-items:center;gap:.3rem;color:var(--tinta-2);
-  padding:.44rem .38rem;font:500 .69rem/1.2 var(--ui);white-space:nowrap;border-radius:.32rem;text-decoration:none;cursor:pointer}
-.cf-topo .navbar .ico,.cf-mais summary .ico,.cf-mais .menu-mais .ico{font-size:.92rem;color:var(--ouro)}
-.cf-topo .navbar a:hover,.cf-topo .navbar a.ativa,.cf-mais summary:hover,.cf-mais[open] summary{color:var(--rubrica);background:var(--rubrica-suave)}
-.cf-topo .navbar a:hover .ico,.cf-topo .navbar a.ativa .ico{color:var(--rubrica)}
-.cf-mais{position:relative;margin-left:auto}
-.cf-mais summary{list-style:none}
-.cf-mais summary::-webkit-details-marker{display:none}
-.cf-mais .menu-mais{position:absolute;right:0;top:calc(100% + .35rem);z-index:35;display:flex;flex-direction:column;min-width:15rem;
+.cf-topo .btn-livros{max-width:46vw;overflow:hidden;white-space:nowrap}
+.cf-topo .cf-barra{display:none;align-items:center;gap:.1rem}
+.cf-barra > a,.cf-estudar summary{flex:0 0 auto;display:inline-flex;align-items:center;gap:.3rem;color:var(--tinta-2);
+  padding:.42rem .55rem;font:500 .8rem/1.2 var(--ui);letter-spacing:.01em;white-space:nowrap;border-radius:.32rem;text-decoration:none;cursor:pointer}
+.cf-barra > a .ico{display:none}
+.cf-estudar summary .ico-seta-baixo{width:.85em;height:.85em;color:var(--suave);margin-left:-.1rem}
+.cf-barra > a:hover,.cf-barra > a.ativa,.cf-estudar summary:hover,.cf-estudar[open] summary{color:var(--rubrica);background:var(--rubrica-suave)}
+.cf-menu{position:relative}
+.cf-menu summary{list-style:none}
+.cf-menu summary::-webkit-details-marker{display:none}
+.cf-menu .menu-mais{position:absolute;top:calc(100% + .35rem);z-index:35;display:flex;flex-direction:column;min-width:15rem;
   padding:.35rem;background:var(--painel);border:1px solid var(--borda);border-radius:.45rem;box-shadow:0 14px 36px rgba(30,22,10,.18)}
-.cf-mais .menu-mais a{display:flex;align-items:center;gap:.7rem;padding:.62rem .78rem;border-radius:.32rem;font-size:.86rem;
+.cf-estudar .menu-mais{left:0}
+.cf-mais-cel .menu-mais{right:0}
+.cf-menu .menu-mais a{display:flex;align-items:center;gap:.7rem;padding:.62rem .78rem;border-radius:.32rem;font:400 .86rem/1.3 var(--ui);
   color:var(--tinta);text-decoration:none}
-.cf-mais .menu-mais a:hover{background:var(--hover)}
-.cf-mais .menu-mais a.ativa{color:var(--rubrica);font-weight:600}
-@media (max-width:560px){.cf-topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;justify-content:center}
-  .cf-topo .navbar .so-cel span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cf-menu .menu-mais .ico{font-size:1rem;color:var(--ouro)}
+.cf-menu .menu-mais a:hover{background:var(--hover)}
+.cf-menu .menu-mais a.ativa{color:var(--rubrica);font-weight:600}
+.cf-mais-cel summary{cursor:pointer}
+.cf-abas{display:none}
+@media (max-width:759px){
+  .cf-abas{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;justify-content:space-around;
+    padding:.3rem .25rem calc(.3rem + env(safe-area-inset-bottom));background:var(--painel);
+    border-top:1px solid var(--borda);box-shadow:0 -6px 18px rgba(29,27,24,.05)}
+  .cf-abas a{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.18rem;padding:.38rem .1rem .32rem;
+    color:var(--suave);font:500 .64rem/1.2 var(--ui);text-decoration:none;border-radius:.32rem}
+  .cf-abas span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-abas .ico{font-size:1.32rem}
+  .cf-abas a.ativa{color:var(--rubrica);font-weight:600}
+  body.cf-pag{padding-bottom:calc(3.65rem + env(safe-area-inset-bottom))}
+}
+@media (max-width:560px){.cf-topo .marca{flex:1 1 1.45rem;min-width:1.45rem;margin:0;justify-content:center;flex-wrap:wrap;
+    align-content:flex-start;height:1.45rem;overflow:hidden}
+  .cf-topo .btn-livros .ico:first-child{display:none}
   .cf-topo .btn-apoiar{width:2.1rem;padding:0;justify-content:center}
   .cf-topo .btn-apoiar span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
-@media (min-width:561px){.cf-topo .navbar a,.cf-mais summary{padding:.42rem .54rem;gap:.38rem;font-size:.72rem;letter-spacing:.02em}}
 @media (min-width:760px){
   .cf-topo{flex-wrap:nowrap;height:3.4rem;padding:0 1.2rem;gap:.55rem}
-  .cf-topo .marca{order:1;margin:0 .2rem 0 0;flex:0 0 auto}
-  .cf-topo .btn-livros{order:2;flex:0 0 auto}
-  .cf-topo .busca-comando{order:3;display:inline-flex;flex:0 1 20.5rem;min-width:11rem}
-  .cf-topo .so-cel{display:none!important}
-  .cf-barra{order:4;flex:1 1 auto;flex-basis:auto;min-width:4.5rem;margin:0;border-top:0;padding-top:0}
-  .cf-mais{margin-left:0}
-  .cf-topo .topo-acoes{order:5;flex:0 0 auto;margin-left:auto}
+  .cf-topo .marca{order:1;margin:0 .5rem 0 0;flex:0 0 auto}
+  .cf-topo .busca-comando{order:2;display:inline-flex;flex:1 100 26rem;max-width:30rem;min-width:10rem;margin-right:auto;
+    border-radius:99px;padding:0 .45rem 0 .95rem}
+  .cf-topo .btn-livros{order:3;flex:0 0 auto;border:0;background:none;color:var(--tinta-2);font-size:.8rem;font-weight:500;
+    padding:.42rem .55rem;letter-spacing:.01em}
+  .cf-topo .btn-livros > .ico:first-child{display:none}
+  .cf-topo .btn-livros:hover{background:var(--rubrica-suave);color:var(--rubrica)}
+  .cf-topo .cf-barra{order:4;display:flex;flex:0 1 auto}
+  .cf-topo .topo-acoes{order:5;flex:0 0 auto;padding-left:.75rem;margin-left:.2rem;border-left:1px solid var(--borda)}
+  .cf-topo .btn-apoiar{border:0;background:none;padding:0 .45rem;font-size:.8rem;letter-spacing:.01em}
+  .cf-topo .btn-apoiar:hover{background:var(--rubrica-suave)}
+  .cf-mais-cel{display:none}
 }
 """ + _regras_cabem() + """
+.cf-pag *{font-variant-numeric:lining-nums}   /* o "font" do lexico.css zera isto; sem ele o "1" da Cormorant parece "I" ("Pergunta I") */
 .cf-pag .lex{max-width:58rem}
 .cf-heroi{margin:.6rem 0 1.6rem;padding:1.6rem clamp(1.1rem,4vw,2.2rem);border-radius:.7rem;background:var(--noite);color:var(--marfim);
   border:1px solid rgba(212,174,106,.25);box-shadow:0 18px 40px rgba(30,22,10,.16);position:relative;overflow:hidden}
