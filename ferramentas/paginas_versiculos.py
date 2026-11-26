@@ -125,7 +125,7 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
                     nota = "" if vc == v else f" (comentário a partir do v. {vc})"
                     corpo.append(f'<h2>Comentário de {autor}</h2><p class="vs-com">{e(cortar_texto(txt, COMENTARIO))}</p>'
                                  f'<p class="fonte">{autor}, tradução automática do inglês{nota}'
-                                 f'{" (provisória, será melhorada em breve)" if l in provisorio else ""}. '
+                                 f'{" (provisória, será melhorada no futuro)" if l in provisorio else ""}. '
                                  f'<a href="/biblia/{s_de[l]}/{c}/#v{v}">Ler o comentário completo no Sola ›</a></p>')
                 cit = (citacoes or {}).get((l, c, v), [])
                 if cit:
