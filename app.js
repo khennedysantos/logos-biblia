@@ -24,7 +24,7 @@ const UI = {
     verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
-    paisSelo:"Nos pais da Igreja", paisFonte:"Citações bíblicas indicadas nas notas da edição inglesa (Nicene and Post-Nicene Fathers); tradução do Sola.",
+    calvinoSobre:"Calvino sobre", paisSelo:"Nos pais da Igreja", paisFonte:"Citações bíblicas indicadas nas notas da edição inglesa (Nicene and Post-Nicene Fathers); tradução do Sola.",
     citSelo:"Nos catecismos e confissões", citMais:"e mais {n} na página do versículo", citFonte:"Textos de prova dos Catecismos de Westminster, da Confissão Belga, do Heidelberg e dos Cânones de Dort; tradução do Sola.",
     doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Todas as confissões e catecismos", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
@@ -153,7 +153,7 @@ const UI = {
     verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
-    paisSelo:"In the Church Fathers", paisFonte:"Scripture citations from the notes of the English edition (Nicene and Post-Nicene Fathers); Sola's Portuguese translation.",
+    calvinoSobre:"Calvin on", paisSelo:"In the Church Fathers", paisFonte:"Scripture citations from the notes of the English edition (Nicene and Post-Nicene Fathers); Sola's Portuguese translation.",
     citSelo:"In the catechisms and confessions", citMais:"and {n} more on the verse page", citFonte:"Proof texts of the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism and the Canons of Dort; Sola's Portuguese translation.",
     doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"All creeds, confessions and catechisms (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
@@ -282,7 +282,7 @@ const UI = {
     verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
-    paisSelo:"En los Padres de la Iglesia", paisFonte:"Citas bíblicas de las notas de la edición inglesa (Nicene and Post-Nicene Fathers); traducción al portugués de Sola.",
+    calvinoSobre:"Calvino sobre", paisSelo:"En los Padres de la Iglesia", paisFonte:"Citas bíblicas de las notas de la edición inglesa (Nicene and Post-Nicene Fathers); traducción al portugués de Sola.",
     citSelo:"En los catecismos y confesiones", citMais:"y {n} más en la página del versículo", citFonte:"Textos de prueba de los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort; traducción al portugués de Sola.",
     doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Todas las confesiones y catecismos (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
@@ -2321,6 +2321,32 @@ function domingoDaSerie(){
   const semanas = Math.floor((Date.now() - SERIE_HEIDELBERG) / (7 * 864e5));
   return semanas < 0 ? 0 : semanas % 52;
 }
+/* Planos com data (o Advento): "inicio" é o dia 1; quem abre sem nada marcado cai no dia de hoje, e cada dia mostra a
+   data. "titulos" dá o tema de cada dia e "calvino" o versículo-chave, que abre já no comentário de Calvino. */
+const MESES_CURTOS = { pt:["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"],
+  en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+  es:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"] };
+function dataPlano(pl, i){ const [a, m, d] = pl.inicio.split("-").map(Number); return new Date(Date.UTC(a, m - 1, d + i)); }
+function dataDoDia(pl, i){
+  if(!pl.inicio) return "";
+  const dt = dataPlano(pl, i), mes = (MESES_CURTOS[est.idioma] || MESES_CURTOS.pt)[dt.getUTCMonth()];
+  return `<small class="dia-data">${est.idioma === "en" ? mes + " " + dt.getUTCDate() : dt.getUTCDate() + " " + mes}</small>`;
+}
+function diaDaData(pl){
+  const agora = new Date(), hoje = Date.UTC(agora.getFullYear(), agora.getMonth(), agora.getDate());
+  const n = Math.floor((hoje - dataPlano(pl, 0)) / 864e5);
+  return Math.max(0, Math.min(pl.dias.length - 1, n));
+}
+function tituloDoDia(pl, i){
+  const ts = pl.titulos && (pl.titulos[est.idioma] || pl.titulos.pt);
+  return ts && ts[i] ? `<b class="dia-titulo">${esc(ts[i])}</b>` : "";
+}
+function calvinoDoDia(pl, i, x){
+  const k = pl.calvino && pl.calvino[i];
+  if(!k) return "";
+  const [l, c, v] = k;
+  return `<button type="button" class="dia-calvino" data-l="${esc(l)}" data-c="${c}" data-v="${v}">${ico("comentario")} ${x.calvinoSobre} ${esc(nomeLivro(l))} ${c}:${v} ›</button>`;
+}
 async function montarPlanos(planoAberto, diaAbrir){
   const alvo = $("conteudoPlanos"), x = t();
   const ps = await planos();
@@ -2362,8 +2388,8 @@ async function montarPlanos(planoAberto, diaAbrir){
     <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
     (pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : "") +
     pl.dias.map((caps,i)=>
-      `<div class="dia-linha${pl.doc ? " dia-linha-cat" : ""}"><span class="dia-num">${rotDia} ${i+1}</span>
-        <span class="dia-caps">${pl.doc ? perguntas(caps) : leiturasDoDia(caps, pl.grupos && pl.grupos[i])}</span>
+      `<div class="dia-linha${pl.doc ? " dia-linha-cat" : ""}"><span class="dia-num">${rotDia} ${i+1}${dataDoDia(pl, i)}</span>
+        <span class="dia-caps">${tituloDoDia(pl, i)}${pl.doc ? perguntas(caps) : leiturasDoDia(caps, pl.grupos && pl.grupos[i])}${calvinoDoDia(pl, i, x)}</span>
         <input type="checkbox" class="dia-check" data-i="${i}" aria-label="${rotDia} ${i+1}" ${pr[i]?"checked":""}></div>`).join("");
   alvo.querySelector(".voltar-planos").addEventListener("click", ()=>{ alvo.classList.remove("memorizar"); montarPlanos(null); });
   const bm = alvo.querySelector(".plano-memo");
@@ -2373,6 +2399,11 @@ async function montarPlanos(planoAberto, diaAbrir){
     alvo.querySelectorAll(".dia-perg.vista").forEach(p=>p.classList.remove("vista"));
   });
   alvo.querySelectorAll(".ver-resposta").forEach(b=>b.addEventListener("click", ()=>b.closest(".dia-perg").classList.add("vista")));
+  // "Calvino sobre Is 7:14": vai ao versículo já com o comentário aberto (Estante no computador, gaveta no celular)
+  alvo.querySelectorAll(".dia-calvino").forEach(b=>b.addEventListener("click", ()=>{
+    alternarPainel("painelPlanos", false);
+    irPara(b.dataset.l, +b.dataset.c, +b.dataset.v, "comentario");
+  }));
   const bl = alvo.querySelector(".plano-link");
   bl.addEventListener("click", async ()=>{
     const rot = bl.querySelector("span");
@@ -2389,7 +2420,8 @@ async function montarPlanos(planoAberto, diaAbrir){
   // onde abrir: o dia pedido no link; senão o primeiro não lido; no Heidelberg sem nada marcado, o Domingo da semana da série
   const linhas = alvo.querySelectorAll(".dia-linha"), primeiro = pl.dias.findIndex((_,i)=>!pr[i]);
   const nada = !Object.values(pr).some(Boolean);
-  let i = diaAbrir >= 1 && diaAbrir <= pl.dias.length ? diaAbrir - 1 : pl.id === "heidelberg" && nada ? domingoDaSerie() : primeiro;
+  let i = diaAbrir >= 1 && diaAbrir <= pl.dias.length ? diaAbrir - 1 : pl.id === "heidelberg" && nada ? domingoDaSerie()
+    : pl.inicio && nada ? diaDaData(pl) : primeiro;
   const el = linhas[i];
   if(!el) return;
   if(pl.doc){ const d = el.querySelector("details"); if(d) d.open = true; }   // a semana (ou o Domingo) de agora já aberta
