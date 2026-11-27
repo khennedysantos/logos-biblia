@@ -30,7 +30,7 @@ SOBRA_CITACAO = re.compile(r"^(?:[\s.,;:()\[\]—–-]|and|also|see|comp|cf|ver|
 # seções com o número errado na edição (livro, capítulo, número impresso) -> número certo; o Livro IX pula a seção 30
 NUMERO_ERRADO = {(11, 17, "2"): "22"}
 # referências que a CCEL leu errado (texto impresso da referência -> OSIS certo)
-CORRECOES = {"Ps. cxxxix. 8": "Ps.139.8", "Ps. cxxiv. 5": "Ps.124.5", "Ps. cxxxvi. 6": "Ps.136.6"}
+CORRECOES = {"1 Cor. v. 17": "2Cor.5.17", "Ps. cxxxix. 8": "Ps.139.8", "Ps. cxxiv. 5": "Ps.124.5", "Ps. cxxxvi. 6": "Ps.136.6"}
 
 OBRAS = {
     "agostinho-confissoes": {
@@ -40,6 +40,26 @@ OBRAS = {
         "fonte": "Agostinho de Hipona, Confissões (c. 397–400), na tradução inglesa de J. G. Pilkington revista por Philip "
                  "Schaff (Nicene and Post-Nicene Fathers, série 1, vol. 1, 1886), domínio público. Texto da CCEL: "
                  "https://www.ccel.org/ccel/schaff/npnf101.vi.html",
+    },
+    # o sermão de Natal de Gregório de Nazianzo (25/12/380), em 18 seções (I–XVIII); um capítulo só, página única
+    "gregorio-nazianzeno-natal": {
+        "arquivo": "npnf207.xml", "url": "https://www.ccel.org/ccel/schaff/npnf207.xml", "div": ("div2", "iii.xxi"),
+        "leitor": "sermao", "autor": "Gregório de Nazianzo", "autor_id": "gregorio-nazianzeno", "obra_id": "natal",
+        "titulo": "Sermão 38: Sobre o Natal de Cristo", "titulo_en": "Oration XXXVIII. On the Theophany, or Birthday of Christ",
+        "ano": "380",
+        "fonte": "Gregório de Nazianzo, Sermão 38, Sobre a Teofania, ou o Nascimento de Cristo (Constantinopla, 380), na "
+                 "tradução inglesa de C. G. Browne e J. E. Swallow (Nicene and Post-Nicene Fathers, série 2, vol. 7, 1894), "
+                 "domínio público. Texto da CCEL: https://www.ccel.org/ccel/schaff/npnf207.iii.xxi.html",
+    },
+    # leituras clássicas fora dos Pais (data/leituras/, páginas em /leituras/)
+    "spurgeon-encarnacao": {
+        "arquivo": "spurgeon-sermons02.xml", "url": "https://www.ccel.org/ccel/spurgeon/sermons02.xml", "div": ("div1", "iv"),
+        "leitor": "spurgeon", "destino": "leituras", "autor": "Charles H. Spurgeon", "autor_id": "spurgeon",
+        "obra_id": "encarnacao-e-nascimento-de-cristo", "titulo": "A encarnação e o nascimento de Cristo",
+        "titulo_en": "The Incarnation and Birth of Christ", "ano": "1855",
+        "fonte": "Charles H. Spurgeon, The Incarnation and Birth of Christ, sermão nº 57, pregado na manhã de domingo, "
+                 "23 de dezembro de 1855, na New Park Street Chapel, Southwark (The New Park Street Pulpit, vol. 2), "
+                 "domínio público. Texto da CCEL: https://www.ccel.org/ccel/spurgeon/sermons02.iv.html",
     },
 }
 
@@ -112,8 +132,10 @@ def baixar(obra):
         req = urllib.request.Request(obra["url"], headers={"User-Agent": "Mozilla/5.0 (Sola)"})
         arq.write_bytes(urllib.request.urlopen(req, timeout=120).read())
     s = arq.read_text(encoding="utf-8")
-    i = s.index(f'<div1 id="{obra["div1"]}"')
-    j = s.find("<div1 ", i + 10)
+    tag, ident = obra.get("div", ("div1", obra.get("div1")))
+    i = s.index(f'id="{ident}"')
+    i = s.rindex(f"<{tag} ", 0, i)
+    j = s.find(f"<{tag} ", i + 10)
     return ET.fromstring(s[i:j if j > 0 else None].replace("&nbsp;", " "))
 
 
@@ -150,6 +172,50 @@ def confissoes(obra, biblia, problemas):
     return livros
 
 
+def sermao(obra, biblia, problemas):
+    """um sermão dos Pais numerado em romanos (I., II., …): um livro, um capítulo, as seções; a introdução do editor fica de fora"""
+    raiz = baixar(obra)
+    cap = {"n": 1, "titulo_en": obra["titulo_en"], "secoes": []}
+    for p in raiz.iter("p"):
+        if "endnote" in (p.get("class") or "") or (p.get("class") or "") in ("c27", "c51", "c52", "c39"):
+            continue
+        txt, provas = secao_com_marcas(p, biblia, problemas)
+        m = re.match(r"([IVXL]+)\.\s+(.*)", txt, re.S)
+        if m:
+            cap["secoes"].append({"n": str(romano(m.group(1))), "en": m.group(2), "provas": provas})
+        elif txt and cap["secoes"]:
+            sec = cap["secoes"][-1]
+            base = len(sec["provas"])
+            sec["en"] += "\n\n" + re.sub(r"\[(\d+)\]", lambda x: f"[{int(x.group(1)) + base}]", txt)
+            sec["provas"].update({str(int(k) + base): v for k, v in provas.items()})
+    assert [int(x["n"]) for x in cap["secoes"]] == list(range(1, len(cap["secoes"]) + 1)), "seções fora de ordem"
+    return [{"n": 1, "resumo_en": "", "caps": [cap]}]
+
+
+def spurgeon(obra, biblia, problemas):
+    """um sermão de Spurgeon: o texto bíblico do título fica em "texto_en" e cada parágrafo vira uma seção numerada"""
+    raiz = baixar(obra)
+    cap = {"n": 1, "titulo_en": obra["titulo_en"], "secoes": []}
+    verso = False                                       # a linha anterior era de um hino (linhas curtas seguidas)
+    for p in raiz.iter("p"):
+        txt, provas = secao_com_marcas(p, biblia, problemas)
+        if not txt or re.match(r"(\(No\. \d+\)|A Sermon|The Incarnation and Birth of Christ$|Delivered on|At New Park|"
+                               r"(by the )?REV\. C\.H\.)", txt, re.I):
+            continue
+        if not cap["secoes"] and txt.startswith("“But thou, Beth"):
+            cap["texto_en"] = txt                         # Miqueias 5:2, o texto do sermão
+            continue
+        linha_de_hino = len(txt) < 70
+        if linha_de_hino and verso:
+            cap["secoes"][-1]["en"] += "\n" + txt          # as estrofes citadas ficam juntas, linha a linha
+        else:
+            cap["secoes"].append({"n": str(len(cap["secoes"]) + 1), "en": txt, "provas": provas})
+            if linha_de_hino:
+                cap["secoes"][-1]["hino"] = True
+        verso = linha_de_hino
+    return [{"n": 1, "resumo_en": "", "caps": [cap]}]
+
+
 def preservar(novo, antigo):
     """traz a tradução já feita (títulos e seções cujo inglês não mudou)"""
     if not antigo:
@@ -168,6 +234,8 @@ def preservar(novo, antigo):
                 continue
             if vc.get("titulo") and vc.get("titulo_en") == c["titulo_en"]:
                 c["titulo"] = vc["titulo"]
+            if vc.get("texto") and vc.get("texto_en") == c.get("texto_en"):
+                c["texto"] = vc["texto"]
             vsec = {s["n"]: s for s in vc["secoes"]}
             for s in c["secoes"]:
                 vs = vsec.get(s["n"])
@@ -177,12 +245,14 @@ def preservar(novo, antigo):
 
 def main():
     biblia, problemas = bl(), []
-    DESTINO.mkdir(parents=True, exist_ok=True)
     for oid, obra in OBRAS.items():
-        livros = confissoes(obra, biblia, problemas)
+        leitor = {"sermao": sermao, "spurgeon": spurgeon}.get(obra.get("leitor"), confissoes)
+        livros = leitor(obra, biblia, problemas)
+        destino = RAIZ / "data" / obra.get("destino", "pais")
+        destino.mkdir(parents=True, exist_ok=True)
         doc = {"id": oid, **{k: obra[k] for k in ("autor", "autor_id", "obra_id", "titulo", "titulo_en", "ano", "fonte")},
                "livros": livros}
-        arq = DESTINO / f"{oid}.json"
+        arq = destino / f"{oid}.json"
         preservar(doc, json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else None)
         arq.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
         secs = [s for l in livros for c in l["caps"] for s in c["secoes"]]

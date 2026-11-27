@@ -591,6 +591,8 @@ body:not([data-vista="cap"]) .col-estudo,body.corrida-ativa .col-estudo{display:
   border-radius:999px;background:var(--painel);color:var(--tinta-2);font:600 .72rem/1.2 var(--ui);cursor:pointer}
 .dia-calvino .ico{color:var(--ouro)}
 .dia-calvino:hover{border-color:var(--rubrica);color:var(--rubrica)}
+.plano-extra{color:var(--rubrica);font-weight:600;text-decoration:none}
+.plano-extra:hover{text-decoration:underline}
 .dia-check{width:1.12rem;height:1.12rem;accent-color:var(--rubrica);cursor:pointer}
 .voltar-planos{border:0;background:none;color:var(--rubrica);font-weight:600;cursor:pointer;font-size:.76rem;margin-bottom:.5rem;padding:0}
 .plano-topo{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.5rem}.plano-topo .voltar-planos{margin:0}

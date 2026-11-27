@@ -2387,6 +2387,7 @@ async function montarPlanos(planoAberto, diaAbrir){
     <button type="button" class="plano-link" data-url="https://solabiblia.com.br/planos/${esc(pl.id)}/">${ico("copiar")} <span>${x.pubCopiar}</span></button></span></div>
     <h3 class="plano-titulo">${esc(pl.nome[est.idioma]||pl.nome.pt)}</h3>` +
     (pl.desc ? `<p class="plano-desc">${esc(pl.desc[est.idioma]||pl.desc.pt)}</p>` : "") +
+    (pl.link ? `<p class="plano-desc"><a class="plano-extra" href="${esc(pl.link.url)}">${esc(pl.link[est.idioma] || pl.link.pt)}</a></p>` : "") +
     pl.dias.map((caps,i)=>
       `<div class="dia-linha${pl.doc ? " dia-linha-cat" : ""}"><span class="dia-num">${rotDia} ${i+1}${dataDoDia(pl, i)}</span>
         <span class="dia-caps">${tituloDoDia(pl, i)}${pl.doc ? perguntas(caps) : leiturasDoDia(caps, pl.grupos && pl.grupos[i])}${calvinoDoDia(pl, i, x)}</span>

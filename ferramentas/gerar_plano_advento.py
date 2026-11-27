@@ -77,6 +77,10 @@ PLANO = {
              "es": "Del primer domingo de Adviento a Navidad (29/11 al 25/12): las promesas, los profetas y el "
                    "nacimiento de Cristo, con el comentario de Juan Calvino en el versículo clave de cada día."},
     "inicio": "2026-11-29",
+    # as leituras de Natal (/natal/: Spurgeon e Gregório de Nazianzo), num link logo abaixo da descrição
+    "link": {"url": "/natal/", "pt": "Leituras de Natal: Spurgeon e Gregório de Nazianzo ›",
+             "en": "Christmas readings: Spurgeon and Gregory of Nazianzus (in Portuguese) ›",
+             "es": "Lecturas de Navidad: Spurgeon y Gregorio Nacianceno (en portugués) ›"},
 }
 
 

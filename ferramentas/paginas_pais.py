@@ -20,7 +20,11 @@ ROMANOS = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"
 AVISO = ("Texto de domínio público (tradução inglesa do Nicene and Post-Nicene Fathers, 1886); tradução para o português "
          "feita pelo Sola com IA (pode conter imprecisões). As citações bíblicas indicadas são as das notas da edição "
          "inglesa, no texto da Bíblia Livre.")
-SOBRE = {"agostinho-confissoes": "O livro em que Agostinho conta a Deus, em forma de oração, a história da sua vida — a "
+SOBRE = {"gregorio-nazianzeno-natal": "O sermão de Natal pregado em Constantinopla em 380: “Cristo nasce: glorificai-o!” — "
+                                      "a encarnação do Verbo, da criação do homem à manjedoura de Belém.",
+         "spurgeon-encarnacao": "Sermão pregado na New Park Street Chapel, em Londres, em 23 de dezembro de 1855, sobre "
+                                "Miqueias 5:2: quem enviou Cristo, aonde veio, para que veio e as suas saídas desde a eternidade.",
+         "agostinho-confissoes": "O livro em que Agostinho conta a Deus, em forma de oração, a história da sua vida — a "
                                  "infância, os erros da juventude, os maniqueus, a conversão no jardim de Milão e a morte "
                                  "de Mônica — e depois medita sobre a memória, o tempo e a criação."}
 ESTILO_PAIS = ESTILO + """<style>
@@ -30,7 +34,26 @@ ESTILO_PAIS = ESTILO + """<style>
 .cf-blocos .pa-falta b{flex:0 0 auto;min-width:1.9rem;height:1.9rem;display:grid;place-items:center;border-radius:50%;
   background:var(--hover);font:700 .78rem/1 var(--ui)}
 .cf-blocos .pa-falta small{font-style:italic}
+.cf-cartao .cf-cab{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.pa-epigrafe{margin:1.2rem 0 1.6rem;padding:.9rem 1.1rem;border-left:3px solid var(--ouro);background:var(--painel);
+  font:italic 400 1.08rem/1.6 var(--escritura);color:var(--tinta-2)}
+.pa-hino{margin:.6rem 0 1rem 1.2rem;padding-left:.9rem;border-left:2px solid var(--borda);font:italic 400 1.05rem/1.65 var(--escritura);
+  color:var(--tinta-2)}
 </style>"""
+# as coleções: a pasta de data/ e as páginas (os Pais da Igreja e as leituras clássicas de outros autores)
+COLECOES = {
+    "pais": {"url": "/pais/", "nome": "Pais da Igreja", "chapeu": "Os primeiros séculos", "h1": "Pais da <em>Igreja</em>",
+             "edicao": "Nicene and Post-Nicene Fathers",
+             "desc": "Os Pais da Igreja em português: as obras dos primeiros séculos do cristianismo, em tradução do Sola a "
+                     "partir de textos em domínio público, com as citações bíblicas ligadas à Bíblia."},
+    "leituras": {"url": "/leituras/", "nome": "Leituras clássicas", "chapeu": "Clássicos da fé reformada",
+                 "h1": "Leituras <em>clássicas</em>", "edicao": "edição original", "sem_numero": True,
+                 "desc": "Sermões e escritos clássicos da tradição reformada e evangélica, em tradução do Sola a partir de "
+                         "textos em domínio público."},
+}
+NATAL = ["natal", "encarnacao-e-nascimento-de-cristo"]      # obra_id das leituras de Natal, mostradas em /natal/
+DESC_NATAL = ("Para o Advento e o Natal: o plano de leitura com Calvino, o sermão de Natal de Gregório de Nazianzo (380) e "
+              "o sermão de Spurgeon sobre Miqueias 5:2 (1855), em tradução do Sola a partir de textos em domínio público.")
 DESC_PAIS = ("Os Pais da Igreja em português: as obras dos primeiros séculos do cristianismo, em tradução do Sola a partir "
              "de textos em domínio público, com as citações bíblicas ligadas à Bíblia.")
 
@@ -111,38 +134,61 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
         arq.write_text(pagina_versiculo(titulo, desc, css, corpo, seo, ESTILO_PAIS, TOPO_CONF, "cf-pag"), encoding="utf-8")
         urls.append(site + caminho)
 
-    if (raiz / "pais").is_dir():                         # capítulo que deixou de existir não fica para trás
-        shutil.rmtree(raiz / "pais")
-    obras = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((raiz / "data" / "pais").glob("*.json"))]
-    cartoes = []
-    for obra in obras:
-        base = f"/pais/{obra['autor_id']}/{obra['obra_id']}/"
-        nome = f"{obra['titulo']}, de {obra['autor'].split(' de ')[0]}"
-        fonte = f'<p class="fonte">{AVISO}</p>'
-        topo = (f'<p class="lex-sobre"><a href="/pais/">Pais da Igreja</a> · <a href="{base}">{e(obra["titulo"])}</a></p>')
+    def obra_paginas(obra, col):
+        """as páginas de uma obra: um capítulo por página e o índice; obra de capítulo único (um sermão) numa página só"""
+        base = f"{col['url']}{obra['autor_id']}/{obra['obra_id']}/"
+        autor_curto = obra["autor"].split(" de ")[0]
+        unica = sum(len(l["caps"]) for l in obra["livros"]) == 1
+        nome = f"{obra['titulo']}, de {autor_curto}"
+        tem_provas = any(s["provas"] for l in obra["livros"] for c in l["caps"] for s in c["secoes"])
+        fonte = (f'<p class="fonte">{e(obra["fonte"])} Tradução para o português feita pelo Sola com IA (pode conter '
+                 f'imprecisões).{" As citações bíblicas indicadas são as das notas da edição inglesa, no texto da Bíblia Livre." if tem_provas else ""}</p>')
+        topo = (f'<p class="lex-sobre"><a href="{col["url"]}">{e(col["nome"])}</a>'
+                + ("" if unica else f' · <a href="{base}">{e(obra["titulo"])}</a>') + "</p>")
         prontos = [(l, c) for l in obra["livros"] for c in l["caps"] if traduzido(c)]
         for i, (l, c) in enumerate(prontos):
-            caminho = f"{base}{l['n']}/{c['n']}/"
+            caminho = base if unica else f"{base}{l['n']}/{c['n']}/"
+            rot_cit = f"{obra['autor']}, {obra['titulo']}" if unica else f"{autor_curto}, {obra['titulo']} {ROMANOS[l['n']]}.{c['n']}"
             blocos = []
+            if c.get("texto"):
+                blocos.append(f'<p class="pa-epigrafe">{e(c["texto"])}</p>')
             for s in c["secoes"]:
-                blocos.append(f'<h2 class="cf-n" id="s{s["n"]}">§ {s["n"]}</h2>' + secao(s, f"s{s['n']}"))
-                citar(s["provas"], f"{obra['autor'].split(' de ')[0]}, {obra['titulo']} {ROMANOS[l['n']]}.{c['n']}",
-                      f"{caminho}#s{s['n']}", s["pt"])
+                if s.get("hino"):
+                    blocos.append('<blockquote class="pa-hino">' + e(s["pt"]).replace("\n", "<br>") + "</blockquote>")
+                    continue
+                cab = "" if col.get("sem_numero") else (
+                    f'<h2 class="cf-n" id="s{s["n"]}">{ROMANOS[int(s["n"])] if unica and int(s["n"]) < len(ROMANOS) else "§ " + s["n"]}</h2>')
+                blocos.append(cab + secao(s, f"s{s['n']}"))
+                citar(s["provas"], rot_cit, f"{caminho}#s{s['n']}", s["pt"])
             ant = (f'<span>‹ <a href="{base}{prontos[i - 1][0]["n"]}/{prontos[i - 1][1]["n"]}/">'
                    f'{ROMANOS[prontos[i - 1][0]["n"]]}.{prontos[i - 1][1]["n"]}</a></span>') if i else "<span></span>"
             pro = (f'<span><a href="{base}{prontos[i + 1][0]["n"]}/{prontos[i + 1][1]["n"]}/">'
                    f'{ROMANOS[prontos[i + 1][0]["n"]]}.{prontos[i + 1][1]["n"]}</a> ›</span>') if i + 1 < len(prontos) else "<span></span>"
-            original = (f'<details class="acv-original"><summary>Texto inglês (Nicene and Post-Nicene Fathers, 1886)</summary>'
-                        f'<p><b>{e(c["titulo_en"])}</b></p>' +
-                        "".join(f"<p>{e(RE_MARCA.sub('', p))}</p>" for s in c["secoes"] for p in s["en"].split("\n\n")) +
-                        "</details>")
-            corpo = (f'{topo}<h1>{e(c["titulo"])}</h1><p class="lex-translit">{e(obra["autor"])}, {e(obra["titulo"])}, '
-                     f'livro {ROMANOS[l["n"]]}, capítulo {c["n"]}</p>' + "".join(blocos) + original +
-                     f'<nav class="lex-viz">{ant}{pro}</nav>{fonte}')
-            gravar(caminho, f"{c['titulo']} — {nome}, {ROMANOS[l['n']]}.{c['n']} | Sola",
-                   cortar(f"{nome}, livro {ROMANOS[l['n']]}, cap. {c['n']}: {RE_MARCA.sub('', c['secoes'][0]['pt'])}", 158),
-                   corpo, [("Sola", "/"), ("Pais da Igreja", "/pais/"), (obra["titulo"], base),
-                           (f"Livro {ROMANOS[l['n']]}, capítulo {c['n']}", caminho)])
+            original = (f'<details class="acv-original"><summary>Texto inglês ({e(col["edicao"])})</summary>'
+                        f'<p><b>{e(c["titulo_en"])}</b></p>' + (f'<p>{e(c["texto_en"])}</p>' if c.get("texto_en") else "") +
+                        "".join(f"<p>{e(RE_MARCA.sub('', p)).replace(chr(10), '<br>')}</p>"
+                                for s in c["secoes"] for p in s["en"].split("\n\n")) + "</details>")
+            sub = (f"{e(obra['autor'])}, {e(obra['ano'])}" if unica else
+                   f"{e(obra['autor'])}, {e(obra['titulo'])}, livro {ROMANOS[l['n']]}, capítulo {c['n']}")
+            nav = "" if unica else f'<nav class="lex-viz">{ant}{pro}</nav>'
+            corpo = (f'{topo}<h1>{e(c["titulo"])}</h1><p class="lex-translit">{sub}</p>' + "".join(blocos) + original +
+                     nav + fonte)
+            primeiro = RE_MARCA.sub("", c["secoes"][0]["pt"])
+            if unica:
+                gravar(caminho, f"{c['titulo']} — {obra['autor']} | Sola", cortar(f"{obra['autor']} ({obra['ano']}): {primeiro}", 158),
+                       corpo, [("Sola", "/"), (col["nome"], col["url"]), (c["titulo"], caminho)])
+            else:
+                gravar(caminho, f"{c['titulo']} — {nome}, {ROMANOS[l['n']]}.{c['n']} | Sola",
+                       cortar(f"{nome}, livro {ROMANOS[l['n']]}, cap. {c['n']}: {primeiro}", 158),
+                       corpo, [("Sola", "/"), (col["nome"], col["url"]), (obra["titulo"], base),
+                               (f"Livro {ROMANOS[l['n']]}, capítulo {c['n']}", caminho)])
+        sobre = SOBRE.get(obra["id"], "")
+        n_caps = sum(len(l["caps"]) for l in obra["livros"])
+        if unica:
+            ler = "Ler ›" if prontos else "Em tradução"
+            return (f'<a class="cf-cartao" href="{base}"><div class="cf-cab"><h3>{e(obra["titulo"])}</h3>'
+                    f'<span class="cf-ano">{e(obra["ano"])}</span></div><p>{e(obra["autor"])}. {e(sobre)}</p>'
+                    f'<span class="cf-ler">{ler}</span></a>') if prontos else ""
         # índice da obra: os livros com o resumo e os capítulos (os ainda sem tradução, sem link)
         lista = []
         for l in obra["livros"]:
@@ -155,24 +201,42 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                 else:
                     lista.append(f'<li><span class="pa-falta"><b>{c["n"]}</b><span>{e(c.get("titulo") or c["titulo_en"])}'
                                  f' <small>(em tradução)</small></span></span></li>')
-        n_caps = sum(len(l["caps"]) for l in obra["livros"])
         meta = [obra["ano"], f"{len(obra['livros'])} livros", f"{n_caps} capítulos"]
         if len(prontos) < n_caps:
             meta.append(f"{len(prontos)} traduzidos")
-        sobre = SOBRE.get(obra["id"], "")
         gravar(base, f"{nome}, em português | Sola", cortar(f"{nome} em português. {sobre}", 158),
-               f'<header class="cf-heroi"><p class="lex-sobre"><a href="/pais/">Pais da Igreja</a> · {e(obra["autor"])}</p>'
+               f'<header class="cf-heroi"><p class="lex-sobre"><a href="{col["url"]}">{e(col["nome"])}</a> · {e(obra["autor"])}</p>'
                f'<h1>{e(obra["titulo"])}</h1><p class="cf-sub">{e(sobre)}</p><div class="cf-meta">' +
                "".join(f"<span>{e(str(x))}</span>" for x in meta) +
                f'</div></header><ol class="cf-blocos">{"".join(lista)}</ol>{fonte}',
-               [("Sola", "/"), ("Pais da Igreja", "/pais/"), (obra["titulo"], base)])
-        cartoes.append(f'<a class="cf-cartao" href="{base}"><div class="cf-topo"><h3>{e(obra["titulo"])}</h3>'
-                       f'<span class="cf-ano">{e(obra["ano"])}</span></div><p>{e(obra["autor"])}. {e(sobre)}</p>'
-                       f'<span class="cf-ler">{len(prontos)} de {n_caps} capítulos · Ler ›</span></a>')
-    gravar("/pais/", "Pais da Igreja em português | Sola", DESC_PAIS,
-           '<header class="cf-heroi"><p class="lex-sobre">Os primeiros séculos</p><h1>Pais da <em>Igreja</em></h1>'
-           f'<p class="cf-sub">{e(DESC_PAIS)}</p></header><div class="cf-cartoes">{"".join(cartoes)}</div>'
-           f'<p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Pais da Igreja", "/pais/")])
+               [("Sola", "/"), (col["nome"], col["url"]), (obra["titulo"], base)])
+        return (f'<a class="cf-cartao" href="{base}"><div class="cf-cab"><h3>{e(obra["titulo"])}</h3>'
+                f'<span class="cf-ano">{e(obra["ano"])}</span></div><p>{e(obra["autor"])}. {e(sobre)}</p>'
+                f'<span class="cf-ler">{len(prontos)} de {n_caps} capítulos · Ler ›</span></a>')
+
+    cartoes_col = {}
+    for pasta_dados, col in COLECOES.items():
+        if (raiz / col["url"].strip("/")).is_dir():      # página que deixou de existir não fica para trás
+            shutil.rmtree(raiz / col["url"].strip("/"))
+        obras = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((raiz / "data" / pasta_dados).glob("*.json"))]
+        cartoes = [x for x in (obra_paginas(o, col) for o in obras) if x]
+        cartoes_col[pasta_dados] = cartoes
+        gravar(col["url"], f"{col['nome']} em português | Sola", col["desc"],
+               f'<header class="cf-heroi"><p class="lex-sobre">{e(col["chapeu"])}</p><h1>{col["h1"]}</h1>'
+               f'<p class="cf-sub">{e(col["desc"])}</p></header><div class="cf-cartoes">{"".join(cartoes)}</div>',
+               [("Sola", "/"), (col["nome"], col["url"])])
+    # /natal/: o plano do Advento e as leituras de Natal (os Pais e as leituras clássicas)
+    natal = [c for cs in cartoes_col.values() for c in cs if any(f"/{x}/" in c for x in NATAL)]
+    if (raiz / "natal").is_dir():
+        shutil.rmtree(raiz / "natal")
+    gravar("/natal/", "Natal e Advento: leituras clássicas em português | Sola", DESC_NATAL,
+           '<header class="cf-heroi"><p class="lex-sobre">Advento e Natal</p><h1>O Verbo se fez <em>carne</em></h1>'
+           f'<p class="cf-sub">{e(DESC_NATAL)}</p></header><div class="cf-cartoes">'
+           '<a class="cf-cartao" href="/planos/advento/"><div class="cf-cab"><h3>Advento com Calvino</h3>'
+           '<span class="cf-ano">29/11 a 25/12</span></div><p>Plano de leitura do 1º Domingo do Advento ao Natal: as promessas, '
+           'os profetas e o nascimento de Cristo, com o comentário de Calvino no versículo-chave de cada dia.</p>'
+           '<span class="cf-ler">Abrir o plano ›</span></a>' + "".join(natal) + "</div>",
+           [("Sola", "/"), ("Natal", "/natal/")])
     # o índice também em data/, por livro, para a Estante do app
     pasta = raiz / "data" / "pais" / "citacoes"
     if pasta.exists():
