@@ -39,7 +39,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          MAIN=$(git rev-parse HEAD)
           if git fetch --depth 1 origin "$RAMO"; then git checkout -B "$RAMO" FETCH_HEAD; else git checkout -B "$RAMO"; fi
+          # o tradutor vem sempre da main (o branch guarda só o progresso)
+          git checkout "$MAIN" -- ferramentas/tradutor/gemini_calvino.py ferramentas/tradutor/calvino_llm.py
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -50,7 +53,7 @@ jobs:
       - name: Gravar o progresso no branch
         if: always()
         run: |
-          git add data/commentaries/calvin ferramentas/tradutor/entradas/gemini_calvino_feitos.json || true
+          git add data/commentaries/calvin ferramentas/tradutor || true
           if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
           python3 ferramentas/tradutor/gemini_calvino.py --situacao | tee /tmp/situacao.txt
           git commit -q -m "Calvino pelo Gemini: $(head -1 /tmp/situacao.txt)"
