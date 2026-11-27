@@ -24,6 +24,7 @@ const UI = {
     verDoutrina:"Ler o capítulo da Confissão", chavesNoVerso:"Palavras destacadas", notaSalva:"Salvo!",
     palavraDia:"Palavra no original", examinarVerso:"Examinar no interlinear", iniciarPlano:"Iniciar plano de leitura",
     indiceCanonico:"Índice canônico", todosLivros:"Todos",
+    paisSelo:"Nos pais da Igreja", paisFonte:"Citações bíblicas indicadas nas notas da edição inglesa (Nicene and Post-Nicene Fathers); tradução do Sola.",
     citSelo:"Nos catecismos e confissões", citMais:"e mais {n} na página do versículo", citFonte:"Textos de prova dos Catecismos de Westminster, da Confissão Belga, do Heidelberg e dos Cânones de Dort; tradução do Sola.",
     doutSelo:"Confissão de Westminster", doutLista:"Confissão de Fé de Westminster (1647) — ou digite um tema", doutPagina:"Página do capítulo, com o texto das provas", doutMais:"continua no capítulo", doutTodos:"Todas as confissões e catecismos", credoSelo:"Credo antigo", credoLer:"Ler o texto completo, com notas",
     doutFonte:"Confissão de Fé de Westminster (1647), domínio público, com os textos de prova da Assembleia; tradução automática do original inglês.",
@@ -59,7 +60,7 @@ const UI = {
       menores:"Profetas menores", evangelhos:"Evangelhos e Atos", paulo:"Cartas de Paulo", gerais:"Cartas gerais e Apocalipse"},
     confTit:"Confissões e catecismos", confTexto:"Os símbolos de fé da Igreja, em português, por tradição.", confTodas:"Todas as confissões",
     confGrupos:["Igreja antiga","Padrões de Westminster","Três Formas de Unidade","Batista reformada"],
-    confNomes:{credos:"Credos antigos",westminster:"Confissão de Fé","catecismo-maior":"Catecismo Maior","breve-catecismo":"Breve Catecismo","confissao-belga":"Confissão Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cânones de Dort","confissao-batista-1644":"1ª Confissão de Londres","confissao-batista-1689":"2ª Confissão de Londres","catecismo-batista":"Catecismo Batista"},
+    confNomes:{credos:"Credos antigos",westminster:"Confissão de Fé","catecismo-maior":"Catecismo Maior","breve-catecismo":"Breve Catecismo","confissao-belga":"Confissão Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cânones de Dort","confissao-batista-1644":"1ª Confissão de Londres","confissao-batista-1689":"2ª Confissão de Londres","catecismo-batista":"Catecismo Batista","agostinho-confissoes":"Confissões de Agostinho"},
     recursos:[["Original e Strong","Cada palavra do grego e do hebraico com transliteração, tradução literal e o verbete do léxico."],
       ["Comentários clássicos","João Calvino em 47 livros e Matthew Henry em outros 18, versículo por versículo."],
       ["Referências cruzadas","A Escritura interpreta a Escritura: as passagens paralelas de cada versículo."],
@@ -152,6 +153,7 @@ const UI = {
     verDoutrina:"Read the Confession chapter", chavesNoVerso:"Key words", notaSalva:"Saved!",
     palavraDia:"Word in the original", examinarVerso:"Inspect in interlinear", iniciarPlano:"Start a reading plan",
     indiceCanonico:"Canonical index", todosLivros:"All",
+    paisSelo:"In the Church Fathers", paisFonte:"Scripture citations from the notes of the English edition (Nicene and Post-Nicene Fathers); Sola's Portuguese translation.",
     citSelo:"In the catechisms and confessions", citMais:"and {n} more on the verse page", citFonte:"Proof texts of the Westminster Catechisms, the Belgic Confession, the Heidelberg Catechism and the Canons of Dort; Sola's Portuguese translation.",
     doutSelo:"Westminster Confession", doutLista:"Westminster Confession of Faith (1647) — or type a topic", doutPagina:"Chapter page with the proof texts (in Portuguese)", doutMais:"continues in the chapter", doutTodos:"All creeds, confessions and catechisms (in Portuguese)", credoSelo:"Ancient creed", credoLer:"Read the full text (in Portuguese)",
     doutFonte:"Westminster Confession of Faith (1647), public domain, with the Westminster Assembly's proof texts.",
@@ -187,7 +189,7 @@ const UI = {
       menores:"Minor prophets", evangelhos:"Gospels and Acts", paulo:"Paul's letters", gerais:"General letters and Revelation"},
     confTit:"Confessions and catechisms", confTexto:"The Church’s creeds and confessions, in Portuguese, by tradition.", confTodas:"All confessions",
     confGrupos:["Early Church","Westminster Standards","Three Forms of Unity","Reformed Baptist"],
-    confNomes:{credos:"Ancient creeds",westminster:"Confession of Faith","catecismo-maior":"Larger Catechism","breve-catecismo":"Shorter Catechism","confissao-belga":"Belgic Confession",heidelberg:"Heidelberg Catechism","canones-de-dort":"Canons of Dort","confissao-batista-1644":"First London Confession","confissao-batista-1689":"Second London Confession","catecismo-batista":"Baptist Catechism"},
+    confNomes:{credos:"Ancient creeds",westminster:"Confession of Faith","catecismo-maior":"Larger Catechism","breve-catecismo":"Shorter Catechism","confissao-belga":"Belgic Confession",heidelberg:"Heidelberg Catechism","canones-de-dort":"Canons of Dort","confissao-batista-1644":"First London Confession","confissao-batista-1689":"Second London Confession","catecismo-batista":"Baptist Catechism","agostinho-confissoes":"Augustine’s Confessions"},
     recursos:[["Original and Strong","Every Greek and Hebrew word with transliteration, literal gloss and its lexicon entry."],
       ["Classic commentaries","John Calvin on 47 books and Matthew Henry on another 18, verse by verse."],
       ["Cross-references","Scripture interprets Scripture: parallel passages for every verse."],
@@ -280,6 +282,7 @@ const UI = {
     verDoutrina:"Leer el capítulo de la Confesión", chavesNoVerso:"Palabras clave", notaSalva:"¡Guardado!",
     palavraDia:"Palabra en el original", examinarVerso:"Examinar en interlineal", iniciarPlano:"Iniciar plan de lectura",
     indiceCanonico:"Índice canónico", todosLivros:"Todos",
+    paisSelo:"En los Padres de la Iglesia", paisFonte:"Citas bíblicas de las notas de la edición inglesa (Nicene and Post-Nicene Fathers); traducción al portugués de Sola.",
     citSelo:"En los catecismos y confesiones", citMais:"y {n} más en la página del versículo", citFonte:"Textos de prueba de los Catecismos de Westminster, la Confesión Belga, el Catecismo de Heidelberg y los Cánones de Dort; traducción al portugués de Sola.",
     doutSelo:"Confesión de Westminster", doutLista:"Confesión de Fe de Westminster (1647) — o escribe un tema", doutPagina:"Página del capítulo (en portugués)", doutMais:"continúa en el capítulo", doutTodos:"Todas las confesiones y catecismos (en portugués)", credoSelo:"Credo antiguo", credoLer:"Leer el texto completo (en portugués)",
     doutFonte:"Confesión de Fe de Westminster (1647), dominio público, con los textos de prueba de la Asamblea; traducción automática al portugués del original inglés.",
@@ -315,7 +318,7 @@ const UI = {
       menores:"Profetas menores", evangelhos:"Evangelios y Hechos", paulo:"Cartas de Pablo", gerais:"Cartas generales y Apocalipsis"},
     confTit:"Confesiones y catecismos", confTexto:"Los símbolos de fe de la Iglesia, en portugués, por tradición.", confTodas:"Todas las confesiones",
     confGrupos:["Iglesia antigua","Normas de Westminster","Tres Formas de Unidad","Bautista reformada"],
-    confNomes:{credos:"Credos antiguos",westminster:"Confesión de Fe","catecismo-maior":"Catecismo Mayor","breve-catecismo":"Catecismo Menor","confissao-belga":"Confesión Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cánones de Dort","confissao-batista-1644":"1.ª Confesión de Londres","confissao-batista-1689":"2.ª Confesión de Londres","catecismo-batista":"Catecismo Bautista"},
+    confNomes:{credos:"Credos antiguos",westminster:"Confesión de Fe","catecismo-maior":"Catecismo Mayor","breve-catecismo":"Catecismo Menor","confissao-belga":"Confesión Belga",heidelberg:"Catecismo de Heidelberg","canones-de-dort":"Cánones de Dort","confissao-batista-1644":"1.ª Confesión de Londres","confissao-batista-1689":"2.ª Confesión de Londres","catecismo-batista":"Catecismo Bautista","agostinho-confissoes":"Confesiones de Agustín"},
     recursos:[["Original y Strong","Cada palabra del griego y del hebreo con transliteración, traducción literal y su entrada del léxico."],
       ["Comentarios clásicos","Juan Calvino en 47 libros y Matthew Henry en otros 18, versículo por versículo."],
       ["Referencias cruzadas","La Escritura interpreta la Escritura: pasajes paralelos de cada versículo."],
@@ -709,14 +712,21 @@ async function citacoesDoVerso(usfm, cap, v){
   if(!(usfm in est.cacheCit)){ try{ est.cacheCit[usfm] = await json(`data/confissoes/citacoes/${usfm}.json`); }catch(e){ est.cacheCit[usfm] = {}; } }
   return ((est.cacheCit[usfm][String(cap)] || {})[String(v)] || []).filter(c=>!c[1].startsWith("/confissoes/westminster/"));
 }
-function htmlCitacoes(cits, x){
+/* Onde os Pais da Igreja citam o versículo (data/pais/citacoes/<LIVRO>.json, gerado pelo paginas_pais.py a partir das
+   notas de citação bíblica das obras): mesmo formato, [rótulo, endereço, frase que cita]. */
+async function citacoesPais(usfm, cap, v){
+  est.cachePais = est.cachePais || {};
+  if(!(usfm in est.cachePais)){ try{ est.cachePais[usfm] = await json(`data/pais/citacoes/${usfm}.json`); }catch(e){ est.cachePais[usfm] = {}; } }
+  return (est.cachePais[usfm][String(cap)] || {})[String(v)] || [];
+}
+function htmlCitacoes(cits, x, selo = x.citSelo, fonte = x.citFonte){
   if(!cits.length) return "";
   const mostrar = cits.slice(0, window.innerWidth < 1060 ? 4 : 6);
-  return `<div class="estante-cartao confessional"><p class="dout-selo">${x.citSelo}</p>` +
+  return `<div class="estante-cartao confessional"><p class="dout-selo">${selo}</p>` +
     mostrar.map(([rot, url, trecho])=>`<div class="cit-item"><a class="cit-rot" href="${esc(url)}">${esc(rot)}</a>
       ${trecho ? `<p class="cm-nota">${esc(trecho)}</p>` : ""}</div>`).join("") +
     (cits.length > mostrar.length ? `<p class="estudo-vazio">${x.citMais.replace("{n}", cits.length - mostrar.length)}</p>` : "") +
-    `<p class="fonte">${x.citFonte}</p></div>`;
+    `<p class="fonte">${fonte}</p></div>`;
 }
 async function idxDic(){ if(!est.idxDic){ est.idxDic = await json("data/dictionary/index.json"); } return est.idxDic; }
 async function aliasPT(){ if(!est.aliasPT){ try{ est.aliasPT = await json("data/topics/aliases_pt.json"); }catch(e){ est.aliasPT = {}; } } return est.aliasPT; }
@@ -902,13 +912,13 @@ async function renderizar(op){
 /* ---------- página inicial: Mesa de Estudo ---------- */
 /* Atalho para os símbolos de fé na página inicial, por tradição (as mesmas páginas de /confissoes/; o mesmo bloco está no
    gerar_paginas.py, na página inicial que o Google lê). */
-const CONF_INICIO = [[["credos", "IV–VIII"]], [["westminster", "1647"], ["catecismo-maior", "1647"], ["breve-catecismo", "1647"]],
+const CONF_INICIO = [[["credos", "IV–VIII"], ["agostinho-confissoes", "c. 400", "/pais/agostinho/confissoes/"]], [["westminster", "1647"], ["catecismo-maior", "1647"], ["breve-catecismo", "1647"]],
   [["confissao-belga", "1561"], ["heidelberg", "1563"], ["canones-de-dort", "1619"]], [["confissao-batista-1644", "1644"], ["confissao-batista-1689", "1689"], ["catecismo-batista", "1693"]]];
 function htmlConfInicio(x){
   return `<section class="conf-inicio"><div class="conf-cabeca"><div><h2>${x.confTit}</h2><p>${x.confTexto}</p></div>
     <a class="cm-acao" href="/confissoes/">${x.confTodas} ${ico("seta")}</a></div><div class="conf-grupos">` +
-    CONF_INICIO.map((docs, i)=>`<div class="conf-grupo"><h3>${x.confGrupos[i]}</h3>` + docs.map(([id, ano])=>
-      `<a href="/confissoes/${id}/">${esc(x.confNomes[id])}<span>${ano}</span></a>`).join("") + `</div>`).join("") + `</div></section>`;
+    CONF_INICIO.map((docs, i)=>`<div class="conf-grupo"><h3>${x.confGrupos[i]}</h3>` + docs.map(([id, ano, url])=>
+      `<a href="${url || `/confissoes/${id}/`}">${esc(x.confNomes[id])}<span>${ano}</span></a>`).join("") + `</div>`).join("") + `</div></section>`;
 }
 function renderizarInicio(){
   const x = t(), ult = lerLS("logos_ultimo", null);
@@ -1606,10 +1616,11 @@ async function acaoVerso(el, v, acao, botao){
     ligarLerMais(gavetas, x);
   }
   if(acao==="referencias"){
-    const [refs, cits] = await Promise.all([carregarRefs(est.livro, est.cap), citacoesDoVerso(est.livro, est.cap, v)]);
+    const [refs, cits, pais] = await Promise.all([carregarRefs(est.livro, est.cap), citacoesDoVerso(est.livro, est.cap, v),
+      citacoesPais(est.livro, est.cap, v)]);
     if(!aberta()) return;
     const lista = refs ? refs[String(v)] : null;
-    const confs = htmlCitacoes(cits, x);
+    const confs = htmlCitacoes(cits, x) + htmlCitacoes(pais, x, x.paisSelo, x.paisFonte);
     if(!lista || !lista.length){
       gavetas.innerHTML = gaveta(x.referencias, confs + (confs ? "" : `<p class="comentario-texto">${x.semRefs}</p>`));
     } else {
@@ -2686,7 +2697,8 @@ function sinalizarAbasEstante(v, doutsVerso){
   const temDout = doutsVerso !== undefined
     ? doutsVerso.length > 0
     : !!(est.doutrinas && doutrinasDoVerso(est.doutrinas, est.livro, est.cap, v).length)
-      || !!(est.cacheCit && ((est.cacheCit[est.livro] || {})[String(est.cap)] || {})[String(v)]);
+      || !!(est.cacheCit && ((est.cacheCit[est.livro] || {})[String(est.cap)] || {})[String(v)])
+      || !!(est.cachePais && ((est.cachePais[est.livro] || {})[String(est.cap)] || {})[String(v)]);
   const marcar = (aba, ativo)=>{
     const btn = document.querySelector(`#abasEstante .eaba[data-eaba="${aba}"]`);
     if(!btn) return;
@@ -2809,6 +2821,7 @@ async function atualizarEstudo(v, focarNota){
   sinalizarAbasEstante(v);
   if(!est.doutrinas) doutrinas().then(ds=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v, doutrinasDoVerso(ds, est.livro, est.cap, v)); });
   if(!(est.cacheCit && est.livro in est.cacheCit)) citacoesDoVerso(est.livro, est.cap, v).then(()=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v); });
+  if(!(est.cachePais && est.livro in est.cachePais)) citacoesPais(est.livro, est.cap, v).then(()=>{ if(est.versoEstudo === v) sinalizarAbasEstante(v); });
 
   const corpo = $("estudoCorpo");
   if(est.estudoAba === "anotacao"){
@@ -2881,10 +2894,11 @@ async function atualizarEstudo(v, focarNota){
   }
 
   if(est.estudoAba === "referencias"){
-    const [refs, douts, cits] = await Promise.all([carregarRefs(est.livro, est.cap), doutrinas(), citacoesDoVerso(est.livro, est.cap, v)]);
+    const [refs, douts, cits, pais] = await Promise.all([carregarRefs(est.livro, est.cap), doutrinas(),
+      citacoesDoVerso(est.livro, est.cap, v), citacoesPais(est.livro, est.cap, v)]);
     if(est.estudoAtual !== estado) return;
     const dVerso = doutrinasDoVerso(douts, est.livro, est.cap, v);
-    sinalizarAbasEstante(v, dVerso.length || cits.length ? [1] : []);
+    sinalizarAbasEstante(v, dVerso.length || cits.length || pais.length ? [1] : []);
     const htmlDouts = dVerso.map(({ d, secs })=>`<div class="estante-cartao confessional">
       <p class="dout-selo">${x.doutSelo} · ${esc(d.f)}</p>
       <h4 class="cm-titulo">${esc(doutTitulo(d))}</h4>
@@ -2896,7 +2910,8 @@ async function atualizarEstudo(v, focarNota){
     const tresFormas = perfil().conf === "tres-formas";
     const ordemCit = ["/confissoes/confissao-belga/", "/confissoes/heidelberg/", "/confissoes/canones-de-dort/"];
     const citsOrd = tresFormas ? [...cits].sort((a, b)=>(ordemCit.findIndex(o=>a[1].startsWith(o)) + 1 || 9) - (ordemCit.findIndex(o=>b[1].startsWith(o)) + 1 || 9)) : cits;
-    corpo.innerHTML = tresFormas ? htmlCitacoes(citsOrd, x) + htmlDouts + htmlRefs : htmlDouts + htmlCitacoes(cits, x) + htmlRefs;
+    const htmlPais = htmlCitacoes(pais, x, x.paisSelo, x.paisFonte);
+    corpo.innerHTML = (tresFormas ? htmlCitacoes(citsOrd, x) + htmlDouts : htmlDouts + htmlCitacoes(cits, x)) + htmlPais + htmlRefs;
     corpo.querySelectorAll(".dout-atalho").forEach(b=>b.addEventListener("click", ()=>abrirDoutrina(b.dataset.dout)));
     if(lista && lista.length) carregarPreviasRefs(corpo, lista);
   }

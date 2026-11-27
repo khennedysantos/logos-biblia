@@ -1,8 +1,10 @@
-# Retraduz pelo Gemini (cota gratuita da API do Google) os livros de Calvino que estão com a tradução provisória do
-# NLLB (ferramentas/tradutor/gemini_calvino.py). Roda sozinho uma vez por dia, depois que a cota do Google renova, e
-# continua de onde parou até acabar; o resultado vai acumulando no branch "traducao-gemini-calvino", que vira pull
-# request quando terminar. Também dá para rodar na mão: aba Actions -> "Traduzir (Gemini)" -> Run workflow.
-# A chave fica no secret GEMINI_API_KEY (Settings -> Secrets and variables -> Actions); sem ele, não faz nada.
+# Traduz pelo Gemini (cota gratuita da API do Google), uma vez por dia, depois que a cota renova:
+#  1. os Pais da Igreja (data/pais/, ferramentas/tradutor/gemini_pais.py), acumulando no branch "traducao-gemini-pais";
+#  2. com a cota que sobrar, os livros de Calvino que estão com a tradução provisória do NLLB
+#     (ferramentas/tradutor/gemini_calvino.py), acumulando no branch "traducao-gemini-calvino".
+# Cada um continua de onde parou até acabar; o branch vira pull request quando terminar. Também dá para rodar na mão:
+# aba Actions -> "Traduzir (Gemini)" -> Run workflow. A chave fica no secret GEMINI_API_KEY (Settings -> Secrets and
+# variables -> Actions); sem ele, não faz nada. Os tradutores vêm sempre da main (os branches guardam só o progresso).
 name: Traduzir (Gemini)
 
 on:
@@ -11,11 +13,11 @@ on:
   workflow_dispatch:
     inputs:
       livros:
-        description: "Opcional: só estes livros, ex. TIT,MAL (vazio = os provisórios do manifest)"
+        description: "Calvino: só estes livros, ex. TIT,MAL (vazio = os provisórios do manifest)"
         default: ""
       minutos:
-        description: "Quanto tempo traduzir nesta execução"
-        default: "320"
+        description: "Quanto tempo traduzir em cada etapa"
+        default: "160"
 
 permissions:
   contents: write
@@ -25,9 +27,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  traduzir:
+  pais:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 175
+    env:
+      RAMO: traducao-gemini-pais
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Continuar do branch de tradução (se já existir)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          MAIN=$(git rev-parse HEAD)
+          if git fetch --depth 1 origin "$RAMO"; then git checkout -B "$RAMO" FETCH_HEAD; else git checkout -B "$RAMO"; fi
+          git checkout "$MAIN" -- ferramentas/tradutor/gemini_pais.py ferramentas/tradutor/gemini_calvino.py ferramentas/tradutor/calvino_llm.py
+          # obra nova na main (importada pelo pais_ccel.py) que o branch ainda não tem
+          for f in $(git ls-tree --name-only "$MAIN" data/pais/); do [ -e "$f" ] || git checkout "$MAIN" -- "$f"; done
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Traduzir
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then echo "Falta o secret GEMINI_API_KEY"; exit 0; fi
+          python3 ferramentas/tradutor/gemini_pais.py --minutos "${{ inputs.minutos || '160' }}"
+      - name: Gravar o progresso no branch
+        if: always()
+        run: |
+          git add data/pais ferramentas/tradutor || true
+          if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
+          python3 ferramentas/tradutor/gemini_pais.py --situacao | tee /tmp/situacao.txt
+          git commit -q -m "Pais da Igreja pelo Gemini: $(head -1 /tmp/situacao.txt)"
+          git push -q origin "$RAMO"
+
+  calvino:
+    needs: pais
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 175
     env:
       RAMO: traducao-gemini-calvino
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -41,7 +80,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           MAIN=$(git rev-parse HEAD)
           if git fetch --depth 1 origin "$RAMO"; then git checkout -B "$RAMO" FETCH_HEAD; else git checkout -B "$RAMO"; fi
-          # o tradutor vem sempre da main (o branch guarda só o progresso)
           git checkout "$MAIN" -- ferramentas/tradutor/gemini_calvino.py ferramentas/tradutor/calvino_llm.py
       - uses: actions/setup-python@v5
         with:
@@ -49,7 +87,7 @@ jobs:
       - name: Traduzir
         run: |
           if [ -z "$GEMINI_API_KEY" ]; then echo "Falta o secret GEMINI_API_KEY"; exit 0; fi
-          python3 ferramentas/tradutor/gemini_calvino.py --livros "${{ inputs.livros }}" --minutos "${{ inputs.minutos || '320' }}"
+          python3 ferramentas/tradutor/gemini_calvino.py --livros "${{ inputs.livros }}" --minutos "${{ inputs.minutos || '160' }}"
       - name: Gravar o progresso no branch
         if: always()
         run: |

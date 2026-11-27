@@ -44,6 +44,7 @@ class CotaDoDia(Exception):
     pass
 
 
+SISTEMA = PROMPT_SISTEMA  # as regras de tradução (o gemini_pais.py troca pelas dele)
 ESGOTADOS = set()        # modelos cuja cota do dia já acabou nesta execução
 PEDIDOS = {}             # pedidos aceitos pelo Google, por modelo
 
@@ -82,7 +83,7 @@ def pedir(texto, modelo, chave, em_json=False):
     config = {"temperature": 0.2}
     if em_json:
         config["responseMimeType"] = "application/json"
-    corpo = json.dumps({"systemInstruction": {"parts": [{"text": PROMPT_SISTEMA}]},
+    corpo = json.dumps({"systemInstruction": {"parts": [{"text": SISTEMA}]},
                         "contents": [{"parts": [{"text": texto}]}],
                         "generationConfig": config}).encode()
     req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent",
