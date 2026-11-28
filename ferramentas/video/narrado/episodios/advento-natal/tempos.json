@@ -1,0 +1,433 @@
+{
+ "duracao": 81.4,
+ "blocos": [
+  {
+   "ini": 0.0,
+   "fim": 7.88,
+   "texto": "Bem-vindo ao Advento: o tempo de esperar o Natal pelas promessas de Deus. E a primeira delas vem logo depois da queda."
+  },
+  {
+   "ini": 8.46,
+   "fim": 20.04,
+   "texto": "Gênesis 3:15: E inimizade porei entre ti e a mulher, e entre tua descendência e a descendência dela; esta te ferirá na cabeça, e tu lhe ferirás no calcanhar."
+  },
+  {
+   "ini": 20.68,
+   "fim": 30.72,
+   "texto": "Calvino observa que Deus fala à serpente, mas por causa do homem. Por trás dela está Satanás. E a sentença contra ele é consolo para quem caiu."
+  },
+  {
+   "ini": 31.23,
+   "fim": 42.39,
+   "texto": "Os dois saem feridos, mas não do mesmo jeito. A serpente fere o calcanhar; a descendência da mulher fere a cabeça. Um golpe machuca. O outro é derrota."
+  },
+  {
+   "ini": 42.89,
+   "fim": 55.67,
+   "texto": "Mas quem é essa descendência? Nem todos os filhos de Adão vencem o diabo. Por isso, diz Calvino, precisamos chegar a uma Cabeça única. Como Paulo ensina da descendência de Abraão: que é Cristo."
+  },
+  {
+   "ini": 56.16,
+   "fim": 64.77,
+   "texto": "Na plenitude dos tempos, Deus enviou o seu Filho, nascido de mulher. Ferido na cruz, ali ele esmagou a cabeça do inimigo."
+  },
+  {
+   "ini": 65.21,
+   "fim": 72.35,
+   "texto": "E a vitória dele é da Igreja: o Deus de paz esmagará Satanás em pedaços debaixo dos vossos pés."
+  },
+  {
+   "ini": 72.88,
+   "fim": 81.4,
+   "texto": "O Natal não começa em Belém. Começa no Éden, com uma promessa. Amanhã começa o plano Advento com Calvino, no Sola."
+  }
+ ],
+ "frases": [
+  {
+   "ini": 0.0,
+   "fim": 1.51,
+   "texto": "Bem-vindo ao Advento:",
+   "bloco": 0
+  },
+  {
+   "ini": 1.92,
+   "fim": 4.92,
+   "texto": "o tempo de esperar o Natal pelas promessas de Deus.",
+   "bloco": 0
+  },
+  {
+   "ini": 5.37,
+   "fim": 7.88,
+   "texto": "E a primeira delas vem logo depois da queda.",
+   "bloco": 0
+  },
+  {
+   "ini": 8.46,
+   "fim": 9.97,
+   "texto": "Gênesis 3:15:",
+   "bloco": 1
+  },
+  {
+   "ini": 10.47,
+   "fim": 13.01,
+   "texto": "E inimizade porei entre ti e a mulher,",
+   "bloco": 1
+  },
+  {
+   "ini": 13.34,
+   "fim": 15.97,
+   "texto": "e entre tua descendência e a descendência dela;",
+   "bloco": 1
+  },
+  {
+   "ini": 16.48,
+   "fim": 18.1,
+   "texto": "esta te ferirá na cabeça,",
+   "bloco": 1
+  },
+  {
+   "ini": 18.1,
+   "fim": 20.04,
+   "texto": "e tu lhe ferirás no calcanhar.",
+   "bloco": 1
+  },
+  {
+   "ini": 20.68,
+   "fim": 23.24,
+   "texto": "Calvino observa que Deus fala à serpente,",
+   "bloco": 2
+  },
+  {
+   "ini": 23.24,
+   "fim": 24.67,
+   "texto": "mas por causa do homem.",
+   "bloco": 2
+  },
+  {
+   "ini": 25.17,
+   "fim": 27.25,
+   "texto": "Por trás dela está Satanás.",
+   "bloco": 2
+  },
+  {
+   "ini": 27.76,
+   "fim": 30.72,
+   "texto": "E a sentença contra ele é consolo para quem caiu.",
+   "bloco": 2
+  },
+  {
+   "ini": 31.23,
+   "fim": 32.55,
+   "texto": "Os dois saem feridos,",
+   "bloco": 3
+  },
+  {
+   "ini": 32.55,
+   "fim": 34.01,
+   "texto": "mas não do mesmo jeito.",
+   "bloco": 3
+  },
+  {
+   "ini": 34.49,
+   "fim": 36.13,
+   "texto": "A serpente fere o calcanhar;",
+   "bloco": 3
+  },
+  {
+   "ini": 36.56,
+   "fim": 38.91,
+   "texto": "a descendência da mulher fere a cabeça.",
+   "bloco": 3
+  },
+  {
+   "ini": 39.43,
+   "fim": 40.59,
+   "texto": "Um golpe machuca.",
+   "bloco": 3
+  },
+  {
+   "ini": 40.96,
+   "fim": 42.39,
+   "texto": "O outro é derrota.",
+   "bloco": 3
+  },
+  {
+   "ini": 42.89,
+   "fim": 44.46,
+   "texto": "Mas quem é essa descendência?",
+   "bloco": 4
+  },
+  {
+   "ini": 44.95,
+   "fim": 47.38,
+   "texto": "Nem todos os filhos de Adão vencem o diabo.",
+   "bloco": 4
+  },
+  {
+   "ini": 47.83,
+   "fim": 48.42,
+   "texto": "Por isso,",
+   "bloco": 4
+  },
+  {
+   "ini": 48.42,
+   "fim": 49.21,
+   "texto": "diz Calvino,",
+   "bloco": 4
+  },
+  {
+   "ini": 49.21,
+   "fim": 51.64,
+   "texto": "precisamos chegar a uma Cabeça única.",
+   "bloco": 4
+  },
+  {
+   "ini": 52.01,
+   "fim": 54.3,
+   "texto": "Como Paulo ensina da descendência de Abraão:",
+   "bloco": 4
+  },
+  {
+   "ini": 54.7,
+   "fim": 55.67,
+   "texto": "que é Cristo.",
+   "bloco": 4
+  },
+  {
+   "ini": 56.16,
+   "fim": 57.75,
+   "texto": "Na plenitude dos tempos,",
+   "bloco": 5
+  },
+  {
+   "ini": 57.75,
+   "fim": 59.34,
+   "texto": "Deus enviou o seu Filho,",
+   "bloco": 5
+  },
+  {
+   "ini": 59.34,
+   "fim": 60.53,
+   "texto": "nascido de mulher.",
+   "bloco": 5
+  },
+  {
+   "ini": 61.04,
+   "fim": 62.14,
+   "texto": "Ferido na cruz,",
+   "bloco": 5
+  },
+  {
+   "ini": 62.14,
+   "fim": 64.77,
+   "texto": "ali ele esmagou a cabeça do inimigo.",
+   "bloco": 5
+  },
+  {
+   "ini": 65.21,
+   "fim": 67.09,
+   "texto": "E a vitória dele é da Igreja:",
+   "bloco": 6
+  },
+  {
+   "ini": 67.45,
+   "fim": 72.35,
+   "texto": "o Deus de paz esmagará Satanás em pedaços debaixo dos vossos pés.",
+   "bloco": 6
+  },
+  {
+   "ini": 72.88,
+   "fim": 74.56,
+   "texto": "O Natal não começa em Belém.",
+   "bloco": 7
+  },
+  {
+   "ini": 74.95,
+   "fim": 75.98,
+   "texto": "Começa no Éden,",
+   "bloco": 7
+  },
+  {
+   "ini": 75.98,
+   "fim": 77.15,
+   "texto": "com uma promessa.",
+   "bloco": 7
+  },
+  {
+   "ini": 77.61,
+   "fim": 80.79,
+   "texto": "Amanhã começa o plano Advento com Calvino,",
+   "bloco": 7
+  },
+  {
+   "ini": 80.79,
+   "fim": 81.4,
+   "texto": "no Sola.",
+   "bloco": 7
+  }
+ ],
+ "legendas": [
+  {
+   "ini": 0.0,
+   "fim": 1.51,
+   "texto": "Bem-vindo ao Advento:",
+   "bloco": 0
+  },
+  {
+   "ini": 1.92,
+   "fim": 4.92,
+   "texto": "o tempo de esperar o Natal pelas promessas de Deus.",
+   "bloco": 0
+  },
+  {
+   "ini": 5.37,
+   "fim": 7.88,
+   "texto": "E a primeira delas vem logo depois da queda.",
+   "bloco": 0
+  },
+  {
+   "ini": 8.46,
+   "fim": 13.01,
+   "texto": "Gênesis 3:15: E inimizade porei entre ti e a mulher,",
+   "bloco": 1
+  },
+  {
+   "ini": 13.34,
+   "fim": 15.97,
+   "texto": "e entre tua descendência e a descendência dela;",
+   "bloco": 1
+  },
+  {
+   "ini": 16.48,
+   "fim": 20.04,
+   "texto": "esta te ferirá na cabeça, e tu lhe ferirás no calcanhar.",
+   "bloco": 1
+  },
+  {
+   "ini": 20.68,
+   "fim": 23.24,
+   "texto": "Calvino observa que Deus fala à serpente,",
+   "bloco": 2
+  },
+  {
+   "ini": 23.24,
+   "fim": 24.67,
+   "texto": "mas por causa do homem.",
+   "bloco": 2
+  },
+  {
+   "ini": 25.17,
+   "fim": 27.25,
+   "texto": "Por trás dela está Satanás.",
+   "bloco": 2
+  },
+  {
+   "ini": 27.76,
+   "fim": 30.72,
+   "texto": "E a sentença contra ele é consolo para quem caiu.",
+   "bloco": 2
+  },
+  {
+   "ini": 31.23,
+   "fim": 34.01,
+   "texto": "Os dois saem feridos, mas não do mesmo jeito.",
+   "bloco": 3
+  },
+  {
+   "ini": 34.49,
+   "fim": 36.13,
+   "texto": "A serpente fere o calcanhar;",
+   "bloco": 3
+  },
+  {
+   "ini": 36.56,
+   "fim": 38.91,
+   "texto": "a descendência da mulher fere a cabeça.",
+   "bloco": 3
+  },
+  {
+   "ini": 39.43,
+   "fim": 40.59,
+   "texto": "Um golpe machuca.",
+   "bloco": 3
+  },
+  {
+   "ini": 40.96,
+   "fim": 42.39,
+   "texto": "O outro é derrota.",
+   "bloco": 3
+  },
+  {
+   "ini": 42.89,
+   "fim": 44.46,
+   "texto": "Mas quem é essa descendência?",
+   "bloco": 4
+  },
+  {
+   "ini": 44.95,
+   "fim": 47.38,
+   "texto": "Nem todos os filhos de Adão vencem o diabo.",
+   "bloco": 4
+  },
+  {
+   "ini": 47.83,
+   "fim": 51.64,
+   "texto": "Por isso, diz Calvino, precisamos chegar a uma Cabeça única.",
+   "bloco": 4
+  },
+  {
+   "ini": 52.01,
+   "fim": 55.67,
+   "texto": "Como Paulo ensina da descendência de Abraão: que é Cristo.",
+   "bloco": 4
+  },
+  {
+   "ini": 56.16,
+   "fim": 59.34,
+   "texto": "Na plenitude dos tempos, Deus enviou o seu Filho,",
+   "bloco": 5
+  },
+  {
+   "ini": 59.34,
+   "fim": 60.53,
+   "texto": "nascido de mulher.",
+   "bloco": 5
+  },
+  {
+   "ini": 61.04,
+   "fim": 64.77,
+   "texto": "Ferido na cruz, ali ele esmagou a cabeça do inimigo.",
+   "bloco": 5
+  },
+  {
+   "ini": 65.21,
+   "fim": 67.09,
+   "texto": "E a vitória dele é da Igreja:",
+   "bloco": 6
+  },
+  {
+   "ini": 67.45,
+   "fim": 72.35,
+   "texto": "o Deus de paz esmagará Satanás em pedaços debaixo dos vossos pés.",
+   "bloco": 6
+  },
+  {
+   "ini": 72.88,
+   "fim": 74.56,
+   "texto": "O Natal não começa em Belém.",
+   "bloco": 7
+  },
+  {
+   "ini": 74.95,
+   "fim": 77.15,
+   "texto": "Começa no Éden, com uma promessa.",
+   "bloco": 7
+  },
+  {
+   "ini": 77.61,
+   "fim": 81.4,
+   "texto": "Amanhã começa o plano Advento com Calvino, no Sola.",
+   "bloco": 7
+  }
+ ]
+}
