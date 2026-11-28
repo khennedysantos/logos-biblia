@@ -40,7 +40,9 @@ Regras inegociáveis:
 
 INSTRUCAO_TITULOS = ("Traduza para o português os títulos e resumos do objeto JSON abaixo (são os títulos dos capítulos e os "
                      "resumos dos livros das Confissões de Agostinho; em títulos, use maiúscula só no começo e nos nomes "
-                     "próprios, e ponha o verbo na 3ª pessoa: “Proclama a grandeza de Deus…”). Responda SOMENTE com um "
+                     "próprios, e ponha o verbo na 3ª pessoa: “Proclama a grandeza de Deus…”; os pronomes de 3ª pessoa ficam em "
+                     "minúscula, mesmo quando o inglês escreve His/Him com maiúscula: “sua mãe”, “seus pecados”, "
+                     "“despertado por ele”). Responda SOMENTE com um "
                      "objeto JSON com exatamente as mesmas chaves.\n\n")
 
 
