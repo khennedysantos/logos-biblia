@@ -132,7 +132,7 @@ def pagina_inicial(livros):
 <div class="mesa-acoes"><a class="btn-ouro" href="/biblia/joao/1/">Começar por João</a></div>
 </div></div></section>
 <section class="conf-inicio"><div class="conf-cabeca"><div><h2>Confissões e catecismos</h2><p>Os símbolos de fé da Igreja, em português, por tradição.</p></div><a class="cm-acao" href="/confissoes/">Todas as confissões</a></div><div class="conf-grupos">
-<div class="conf-grupo"><h3>Igreja antiga</h3><a href="/confissoes/credos/">Credos antigos<span>IV–VIII</span></a></div>
+<div class="conf-grupo"><h3>Igreja antiga</h3><a href="/confissoes/credos/">Credos antigos<span>IV–VIII</span></a><a href="/pais/agostinho/confissoes/">Confissões de Agostinho<span>c. 400</span></a></div>
 <div class="conf-grupo"><h3>Padrões de Westminster</h3><a href="/confissoes/westminster/">Confissão de Fé<span>1647</span></a><a href="/confissoes/catecismo-maior/">Catecismo Maior<span>1647</span></a><a href="/confissoes/breve-catecismo/">Breve Catecismo<span>1647</span></a></div>
 <div class="conf-grupo"><h3>Três Formas de Unidade</h3><a href="/confissoes/confissao-belga/">Confissão Belga<span>1561</span></a><a href="/confissoes/heidelberg/">Catecismo de Heidelberg<span>1563</span></a><a href="/confissoes/canones-de-dort/">Cânones de Dort<span>1619</span></a></div>
 <div class="conf-grupo"><h3>Batista reformada</h3><a href="/confissoes/confissao-batista-1644/">1ª Confissão de Londres<span>1644</span></a><a href="/confissoes/confissao-batista-1689/">2ª Confissão de Londres<span>1689</span></a><a href="/confissoes/catecismo-batista/">Catecismo Batista<span>1693</span></a></div>
@@ -325,7 +325,11 @@ def main():
     # confissões e catecismos (ferramentas/paginas_confissoes.py); o índice de citações vai para as páginas de versículo
     from paginas_confissoes import gerar as gerar_confissoes
     confissoes, citacoes = gerar_confissoes(RAIZ, SITE, livros, slug, cortar, cabeca_seo, css_leve)
-    versiculos = gerar_versiculos(RAIZ, SITE, livros, slug, cortar, css_leve, citacoes)
+    # Pais da Igreja (ferramentas/paginas_pais.py): /pais/ e um capítulo por página, com o mesmo índice de citações
+    from paginas_pais import gerar as gerar_pais
+    pais, citacoes_pais = gerar_pais(RAIZ, SITE, livros, slug, cortar, cabeca_seo, css_leve)
+    confissoes += pais
+    versiculos = gerar_versiculos(RAIZ, SITE, livros, slug, cortar, css_leve, citacoes, citacoes_pais)
     urls += versiculos
 
     # páginas de texto avulsas (cada arquivo de ferramentas/paginas/ vira /nome/)
@@ -363,7 +367,7 @@ def main():
         encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     n_versoes = carimbar_dados()
-    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo) - len(confissoes)} do dicionário e dos temas, {len(confissoes)} das confissões, "
+    print(f"página inicial, {len(livros)} páginas de livro, {len(ordem)} de capítulo, {len(versiculos)} de versículo, {len(lexico)} do léxico, {len(acervo) - len(confissoes)} do dicionário e dos temas, {len(confissoes) - len(pais)} das confissões, {len(pais)} dos Pais da Igreja, "
           f"sitemap com {len(urls)} endereços, robots.txt, 404.html e versões de {n_versoes} grupos de dados")
 
 

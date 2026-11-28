@@ -42,7 +42,7 @@ def cortar_texto(t, n):
     return t if len(t) <= n else t[:n].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
 
 
-def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
+def gerar(raiz, site, livros, slug, cortar, css, citacoes=None, pais=None):
     """grava biblia/<livro>/<cap>/<v>/index.html e devolve os endereços para o sitemap"""
     info = {b["id"]: b for b in livros}
     s_de = {b["id"]: slug(b["pt"]) for b in livros}
@@ -137,6 +137,11 @@ def gerar(raiz, site, livros, slug, cortar, css, citacoes=None):
                     corpo.append('<h2>Nas confissões de fé</h2><ul class="vs-refs">' +
                                  "".join(f'<li><a href="{u}">{e(r)}</a></li>' for r, u, *_ in cit[:8]) + "</ul>" +
                                  (f'<p class="lex-mais">e mais {len(cit) - 8}.</p>' if len(cit) > 8 else ""))
+                cit = (pais or {}).get((l, c, v), [])
+                if cit:
+                    corpo.append('<h2>Nos pais da Igreja</h2><ul class="vs-refs">' +
+                                 "".join(f'<li><a href="{u}">{e(r)}</a> {e(cortar_texto(t, 200))}</li>' for r, u, t in cit[:4]) + "</ul>" +
+                                 (f'<p class="lex-mais">e mais {len(cit) - 4}.</p>' if len(cit) > 4 else ""))
                 lista = refs.get(str(v), [])
                 if lista:
                     itens = []

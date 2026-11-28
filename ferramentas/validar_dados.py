@@ -174,6 +174,27 @@ def main():
                         fim = m[1]
         avisos.append(f"{sublinhadas} palavras-chave sublinhadas")
 
+    # Pais da Igreja (data/pais/, ferramentas/pais_ccel.py): marcadores [n] da tradução iguais aos do inglês, provas na Bíblia
+    ids = {b["id"] for b in livros}
+    for arq in sorted((DATA / "pais").glob("*.json")):
+        obra, traduzidas = ler(arq), 0
+        for l in obra["livros"]:
+            for c in l["caps"]:
+                for sc in c["secoes"]:
+                    onde = f"pais/{arq.stem} {l['n']}.{c['n']} §{sc['n']}"
+                    marcas = sorted(set(re.findall(r"\[(\d+)\]", sc["en"])), key=int)
+                    if marcas != sorted(sc["provas"], key=int):
+                        erros.append(f"{onde}: marcadores do inglês {marcas} ≠ provas {sorted(sc['provas'], key=int)}")
+                    if sc.get("pt"):
+                        traduzidas += 1
+                        if sorted(re.findall(r"\[\d+\]", sc["pt"])) != sorted(re.findall(r"\[\d+\]", sc["en"])):
+                            erros.append(f"{onde}: marcadores [n] da tradução diferentes dos do inglês")
+                    for refs in sc["provas"].values():
+                        for r in refs:
+                            if r[0] not in ids:
+                                erros.append(f"{onde}: livro {r[0]} desconhecido")
+        avisos.append(f"pais/{arq.stem}: {traduzidas} seções traduzidas")
+
     if sem_lexico > palavras * 0.002:
         erros.append(f"{sem_lexico} palavras do interlinear apontam para um Strong que não está no léxico")
     elif sem_lexico:

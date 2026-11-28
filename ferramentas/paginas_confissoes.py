@@ -498,6 +498,11 @@ def gerar(raiz, site, livros, slug_livro, cortar, cabeca_seo, css):
                            f'<span class="cf-ler">{e(tamanhos[x["id"]])} · Ler ›</span></a>'
                            for x in docs if x["id"] in ds) + "</div>"
                    for t, sub, ds in TRADICOES) +
+           '<h2 class="cf-trad"><b>Pais da Igreja</b><span>Os escritos dos primeiros séculos</span></h2><div class="cf-cartoes">'
+           '<a class="cf-cartao" href="/pais/agostinho/confissoes/"><div class="cf-topo"><h3>Confissões de Agostinho</h3>'
+           '<span class="cf-ano">c. 400</span></div><p>A vida de Agostinho contada a Deus em forma de oração, da infância à '
+           'conversão, e suas meditações sobre a memória, o tempo e a criação.</p><span class="cf-ler">Ler ›</span></a>'
+           '</div>'
            f'<p class="fonte">{AVISO}</p>', [("Sola", "/"), ("Confissões", "/confissoes/")])
     # o texto de todos os documentos, para a busca do app (aba Confissões e o grupo da busca universal)
     nomes = {doc["id"]: doc["titulo"] for doc in docs}
