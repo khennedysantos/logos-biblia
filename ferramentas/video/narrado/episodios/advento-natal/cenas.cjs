@@ -1,4 +1,4 @@
-/* Especial de Advento e Natal (domingo, 29/11/2026): o plano "Advento com Calvino" e as leituras de /natal/.
+/* Especial de Advento e Natal (sábado, 28/11/2026, véspera do Advento): o plano "Advento com Calvino" e as leituras de /natal/.
    Cenas do vídeo narrado (ver ../../renderizar.cjs); os instantes vêm do tempos.json, um bloco do roteiro.txt por cena. */
 const telas = {
   // o plano do Advento aberto no painel de planos (abre no dia de hoje enquanto nada foi marcado)
@@ -54,7 +54,7 @@ function montar({ tempos, tela }) {
         <p class="rot e" data-t="${B[1].ini + .1}">Gênesis 3:15 · a primeira promessa</p>
         <div class="verso e" data-t="${B[1].ini + .4}"><p>E inimizade porei entre ti e a mulher, e entre tua descendência e a descendência dela; <mark>esta te ferirá na cabeça</mark>, e tu lhe ferirás no calcanhar.</p><span>Gênesis 3:15 · Bíblia Livre</span></div></div>` },
       { ini: B[2].ini, fim: B[3].ini, html: `<div class="mold"></div><div class="centro" style="justify-content:flex-start;padding-top:330px">
-        <p class="rot e" data-t="${B[2].ini + .1}">Hoje começa o Advento</p>
+        <p class="rot e" data-t="${B[2].ini + .1}">Amanhã começa o Advento</p>
         <p class="frase e" data-t="${ini(2, 1)}" style="font-size:96px">Advento com <em>Calvino</em></p>
         <div class="n27 e" data-t="${ini(2, 2)}" style="margin-top:70px"><b id="n27">27</b><span>dias de leitura</span></div>
         <p class="datas e" data-t="${ini(2, 2) + .8}">29 nov → 25 dez</p></div>` },

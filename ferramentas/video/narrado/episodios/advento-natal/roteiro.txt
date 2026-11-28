@@ -1,11 +1,11 @@
-# Domingo, 29/11/2026: especial de Advento e Natal (plano "Advento com Calvino" e /natal/). Um bloco por cena; ~1 min.
+# Sábado, 28/11/2026 (véspera do 1º Domingo do Advento): especial de Advento e Natal (plano "Advento com Calvino" e /natal/). Um bloco por cena; ~1 min.
 # Citação de Gregório: tradução do Sola em data/pais/gregorio-nazianzeno-natal.json (seção I).
 
 O Natal não começa em Belém. Começa no Éden.
 
 Logo depois da queda, Deus promete que a descendência da mulher feriria a cabeça da serpente. É a primeira promessa do Evangelho, em Gênesis {3|três}.
 
-Hoje começa o Advento, as quatro semanas antes do Natal. E o Sola preparou um plano especial: Advento com Calvino. São {27|vinte e sete} dias, de hoje até o dia {25|vinte e cinco}.
+Amanhã começa o Advento, as quatro semanas antes do Natal. E o Sola preparou um plano especial: Advento com Calvino. São {27|vinte e sete} dias, de amanhã até o dia {25|vinte e cinco}.
 
 Primeiro, as promessas: Abraão, o cetro de Judá, a estrela de Jacó. Depois, os profetas: Emanuel, o Menino que nos nasceu, o Servo ferido, Belém Efrata. E por fim, o nascimento: o anúncio a Maria, os pastores, e o Verbo que se fez carne.
 
