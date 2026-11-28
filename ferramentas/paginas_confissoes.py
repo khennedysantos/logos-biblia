@@ -80,7 +80,8 @@ RESUMO = {"credos": "Apostólico, Niceno, Atanásio e Calcedônia: a fé que tod
 # ao carregar, lerAbrir). No computador: marca, busca, Bíblia, "Estudar ▾" (um <details>), Confissões e Planos; no
 # celular (< 760px): uma faixa só no alto, com o ⋯ (outro <details>), e as abas fixas embaixo, como no app
 ESTUDAR = [  # (endereço, ícone, rótulo): o menu "Estudar" (no celular, o ⋯ leva os mesmos, menos "Meu estudo", que é aba)
-    ("/?abrir=meu", "progresso", "Meu estudo"), ("/?abrir=temas", "temas", "Temas"),
+    ("/?abrir=meu", "progresso", "Meu estudo"), ("/pais/", "pomba", "Pais da Igreja"),
+    ("/leituras/", "estante", "Leituras"), ("/?abrir=temas", "temas", "Temas"),
     ("/?abrir=dicionario", "dicionario", "Dicionário"), ("/?abrir=atlas", "atlas", "Atlas"),
     ("/?abrir=tempo", "tempo", "Linha do tempo"), ("/?abrir=notas", "anotacoes", "Anotações"), ("/?abrir=ajuda", "ajuda", "Como usar")]
 BARRA = [("/confissoes/", "ancora", "Confissões"), ("/planos/", "planos", "Planos")]
