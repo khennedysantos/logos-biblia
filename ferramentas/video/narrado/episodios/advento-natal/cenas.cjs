@@ -12,6 +12,7 @@ function montar({ tempos, LIVRO }) {
   return {
     css: `
 .abre{font:600 100px/1.12 "Cormorant Garamond";color:#F4EFE4}
+.sub0{font:500 40px/1.45 Inter;color:rgba(244,239,228,.8);margin-top:40px}
 .abre em{font-style:italic;font-weight:500;color:#D4AE6A}
 .verso{width:880px;background:#FBF8F1;border:1.5px solid #D8CDB6;border-radius:22px;padding:46px 52px;text-align:left;margin-top:56px}
 .verso p{font:400 52px/1.45 Cardo}
@@ -37,8 +38,11 @@ function montar({ tempos, LIVRO }) {
     semLegenda: [1, 6],                        // nos versículos o texto já está na tela
     cenas: [
       { classe: "escuro", ini: 0, fim: B[1].ini, html: `<div class="mold"></div><div class="centro">
-        <p class="rot e" data-t="0.1">Advento · a primeira promessa</p>
-        <p class="abre e" data-t="0.3" style="margin-top:60px">Depois da queda,<br><em>uma promessa</em></p></div>` },
+        <p class="rot e" data-t="0.1">Série de Advento · 1</p>
+        <p class="abre e" data-t="0.3" style="margin-top:60px">Bem-vindo ao <em>Advento</em></p>
+        <p class="sub0 e" data-t="${ini(0, 1)}">o tempo de esperar o Natal<br>pelas promessas de Deus</p>
+        <div class="fio e" data-t="${ini(0, 2)}"></div>
+        <p class="abre e" data-t="${ini(0, 2)}" style="font-size:76px">A primeira vem<br><em>logo depois da queda</em></p></div>` },
       { ini: B[1].ini, fim: B[2].ini, html: `<div class="mold"></div><div class="centro" ${topo(330)}>
         <p class="rot e" data-t="${B[1].ini + .1}">Gênesis 3:15</p>
         ${verso("Gênesis 3:15", "E inimizade porei entre ti e a mulher, e entre tua descendência e a <mark>descendência dela</mark>; esta te ferirá na <mark>cabeça</mark>, e tu lhe ferirás no <mark>calcanhar</mark>.", B[1].ini + .4)}</div>` },

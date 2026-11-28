@@ -2,7 +2,7 @@
 # Ensino a partir do comentário de Calvino em Gn 3:15 (data/commentaries/calvin/pt/GEN/3.json); versículos da Bíblia Livre.
 # Um bloco por cena; ~1 min.
 
-Logo depois da queda, Deus já fala de esperança.
+Bem-vindo ao Advento: o tempo de esperar o Natal pelas promessas de Deus. E a primeira delas vem logo depois da queda.
 
 Gênesis {3:15|três, quinze}: E inimizade porei entre ti e a mulher, e entre tua descendência e a descendência dela; esta te ferirá na cabeça, e tu lhe ferirás no calcanhar.
 
