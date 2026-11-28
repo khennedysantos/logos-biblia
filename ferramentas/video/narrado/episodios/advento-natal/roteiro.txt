@@ -1,18 +1,19 @@
-# Sábado, 28/11/2026 (véspera do 1º Domingo do Advento): especial de Advento e Natal (plano "Advento com Calvino" e /natal/). Um bloco por cena; ~1 min.
-# Citação de Gregório: tradução do Sola em data/pais/gregorio-nazianzeno-natal.json (seção I).
+# Sábado, 28/11/2026 (véspera do 1º Domingo do Advento): série de Advento, ep. 1 — a primeira promessa (Gênesis 3:15).
+# Ensino a partir do comentário de Calvino em Gn 3:15 (data/commentaries/calvin/pt/GEN/3.json); versículos da Bíblia Livre.
+# Um bloco por cena; ~1 min.
 
-O Natal não começa em Belém. Começa no Éden.
+Logo depois da queda, Deus já fala de esperança.
 
-Logo depois da queda, Deus promete que a descendência da mulher feriria a cabeça da serpente. É a primeira promessa do Evangelho, em Gênesis {3|três}.
+Gênesis {3:15|três, quinze}: E inimizade porei entre ti e a mulher, e entre tua descendência e a descendência dela; esta te ferirá na cabeça, e tu lhe ferirás no calcanhar.
 
-Amanhã começa o Advento, as quatro semanas antes do Natal. E o Sola preparou um plano especial: Advento com Calvino. São {27|vinte e sete} dias, de amanhã até o dia {25|vinte e cinco}.
+Calvino observa que Deus fala à serpente, mas por causa do homem. Por trás dela está Satanás. E a sentença contra ele é consolo para quem caiu.
 
-Primeiro, as promessas: Abraão, o cetro de Judá, a estrela de Jacó. Depois, os profetas: Emanuel, o Menino que nos nasceu, o Servo ferido, Belém Efrata. E por fim, o nascimento: o anúncio a Maria, os pastores, e o Verbo que se fez carne.
+Os dois saem feridos, mas não do mesmo jeito. A serpente fere o calcanhar; a descendência da mulher fere a cabeça. Um golpe machuca. O outro é derrota.
 
-Cada dia tem um tema e um versículo-chave, com o comentário de João Calvino a um toque.
+Mas quem é essa descendência? Nem todos os filhos de Adão vencem o diabo. Por isso, diz Calvino, precisamos chegar a uma Cabeça única. Como Paulo ensina da descendência de Abraão: que é Cristo.
 
-E para a semana do Natal, duas leituras clássicas, em português: o sermão de Gregório de Nazianzo, do ano {380|trezentos e oitenta}, e o de Spurgeon sobre Belém, de {1855|mil oitocentos e cinquenta e cinco}.
+Na plenitude dos tempos, Deus enviou o seu Filho, nascido de mulher. Ferido na cruz, ali ele esmagou a cabeça do inimigo.
 
-Cristo nasce: glorificai-o. Cristo vem do céu: saí ao seu encontro.
+E a vitória dele é da Igreja: o Deus de paz esmagará Satanás em pedaços debaixo dos vossos pés.
 
-Acesse {solabiblia.com.br/natal|sola bíblia ponto com ponto bê erre, barra natal}. É gratuito, e sem anúncios. Sola Scriptura.
+O Natal não começa em Belém. Começa no Éden, com uma promessa. Amanhã começa o plano Advento com Calvino, no Sola.
